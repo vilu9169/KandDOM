@@ -11,3 +11,44 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  --main-color:rgb(185, 175, 175);;
+  --secondary-color:rgb(125, 127, 129);
+}
+
+.doc-upload-button{
+  position: absolute;
+  background-color: var(--secondary-color);
+  width: 80%;
+  left: 50%;
+  top: 7vh;
+  padding: 20px;
+  border-radius: 30px;
+  text-align: center;
+  color: black;
+  transform: translate(-50%,-50%);
+}
+
+.profile-button {
+  position: absolute;
+  bottom: 2vh;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: var(--secondary-color);
+  width:  80%;
+  padding: 10px;
+  border-radius:30px ;
+  text-align: center;
+}
+
+.upload_window {
+  position: absolute;
+  width: 120vh;
+  height:1000px;
+  left:60%;
+  background-color: var(--secondary-color);
+  top: 50%;
+  transform: translate(-50%,-50%);
+  height: 70%;
+}
