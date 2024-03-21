@@ -6,7 +6,7 @@
 }
 
 .bg-1 {
-  background-color: var(--color-1);
+  background-color: var(--color-1) !important;
 }
 .bg-2 {
   background-color: var(--color-2);
@@ -26,6 +26,8 @@
 .h-80 {
   height: 80%;
 }
+
+/* Form CSS */
 
 .flex-container {
   width: 80%;
@@ -54,3 +56,57 @@
     resize: none !important;
     overflow: hidden;
 }
+/* ------------------------ */
+
+/* SideMenuBottom CSS */
+
+.person-button{
+  width: 80%;
+  height: 60px;
+  border-radius: 10px !important;
+  margin-top: 10px;
+  bottom: 13px;
+}
+
+.logout-button{
+  width: 80% !important;
+  height: 60px;
+  background-color: var(--color-3) !important;
+  border: none !important;
+  margin: auto;
+  border-top: thin solid black !important;
+}
+
+.settings-button{
+  z-index: 999;
+  margin: auto;
+  width: 80% !important;
+  height: 60px;
+  background-color: var(--color-3) !important;
+  border: none !important;
+  border-bottom: thin solid black !important;
+}
+
+.settings-icon {
+  margin-right: 10px;
+  margin-bottom: 2px;
+}
+
+.logout-icon{
+  transform: scaleX(-1);
+  margin-right: 10px;
+  margin-bottom: 2px;
+}
+
+.button-group-user{
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.user-icon {
+  margin-right: 10px;
+  margin-bottom: 4px;
+}
+
+
+/* --------------------- */
