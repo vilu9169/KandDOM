@@ -5,7 +5,12 @@ import Button from "react-bootstrap/Button";
 import { IoIosSend } from "react-icons/io";
 import MyForm from "./Form";
 import SideMenuBottom from "./SideMenuBottom";
+import SettingsMenu from "./SettingsMenu";
+import { useContext, useState } from "react";
+import { AppContext } from "./ShowSettingsHandler";
 function Start() {
+  const { buttonClicked } = useContext(AppContext)
+  
   return (
     <Container fluid className="position-absolute h-100 text-center bg-3">
       <Row className="h-100">
@@ -21,6 +26,7 @@ function Start() {
           </Row>
         </Col>
       </Row>
+      {buttonClicked && <SettingsMenu />}
     </Container>
   );
 }
