@@ -3,6 +3,7 @@
   --color-2: #eadbc8;
   --color-3: #dac0a3;
   --color-4: #0f2c59;
+  --color-5: #402f00;
 }
 
 .bg-1 {
@@ -17,14 +18,8 @@
 .bg-4 {
   background-color: var(--color-4) !important;
 }
-.xd {
-  background-color: rgb(122, 126, 175);
-}
-.h-10 {
-  height: 10%;
-}
-.h-80 {
-  height: 80%;
+.c-1 {
+  color: var(--color-5);
 }
 
 .h-15 {
@@ -54,17 +49,105 @@
   background-color: var(--color-1);
   border: 2px solid var(--color-3);
 }
+
 .form-control:focus {
-  /* background-color: var(--color-3); */
   background-color: var(--color-1) !important;
   border: 2px solid var(--color-3) !important;
-  box-shadow: 5px 5px var(--color-4) !important; /* blåa ringen runt*/
+  box-shadow: none !important;
+  /* box-shadow: 5px 5px var(--color-4) !important; */
 }
 
-.form-control{
-    resize: none !important;
-    overflow: hidden;
+.form-control {
+  resize: none !important;
+  overflow: hidden;
 }
+.message-button {
+  background-color: var(--color-3) !important;
+  border: 2px solid var(--color-3) !important;
+  height: 44px;
+  width: 44px;
+}
+.rect-button {
+    background-color: var(--color-3) !important;
+    border: 2px solid var(--color-3) !important;
+    height: 44px;
+    width: 44px;
+  }
+  .rect-button:hover {
+  box-shadow: 10px 10px var(--color-4);
+  transition: box-shadow 0.3s ease;
+  } 
+.wide-button {
+ font-weight: bold ;
+  color: black !important;
+  background-color: var(--color-3) !important;
+  border: 2px solid var(--color-3) !important;
+
+  border-radius: 5px;
+  height: 44px;
+}
+.wide-button:hover {
+  height: 44px;
+  box-shadow: 10px 10px var(--color-4);
+  transition: box-shadow 0.3s ease;
+}
+.input-group-container {
+  height: 44px;
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease;
+}
+.input-group-container:focus-within {
+  box-shadow: 10px 10px var(--color-4);
+}
+
+.input-textarea {
+  display: flex;
+  height: 100%;
+}
+
+.h-80px {
+  position: relative;
+  height: 80px;
+}
+.h-60px {
+  height: 60px;
+  position:relative;
+    z-index:999;
+}
+.size-20 {
+  color: var(--color-1) !important;
+  font-size: 20px !important;
+}
+.vertical-line {
+  position: absolute;
+  width: 2px;
+  height: 80%;
+  background-color: var(--color-3);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.middle-box {
+  position: absolute;
+  height: 44px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-2);
+}
+.uploadfile-container {
+  width: 80% !important;
+  border-radius: 5px;
+}
+.h-90 {
+  height: 90%;
+}
+.h-10 {
+  height: 10%;
+}
+
+.icon-margin {
+    margin-right: 15px; /* Adjust margin as needed */
+  }
 /* ------------------------ */
 
 /* SideMenuBottom CSS */
@@ -208,3 +291,4 @@
 }
 
 /* --------------------- */
+
