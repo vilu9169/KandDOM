@@ -7,13 +7,30 @@ import UploadFileWindow from "./UploadFileWindow"
 import { IoMdHelp } from "react-icons/io";
 
 
+
+import SideMenuBottom from "./SideMenuBottom";
+import SettingsMenu from "./SettingsMenu";
+import { useContext, useState } from "react";
+import { AppContext } from "./ShowSettingsHandler";
+import SideMenuTop from "./SideMenuTop";
+
 function Start() {
+  const { buttonClicked } = useContext(AppContext);
+
   return (
     <Container fluid className="position-absolute h-100 text-center bg-3">
       <Row className="h-100">
+
         <Col className="col-2">
           <Row className="h-75 bg-2">apa</Row>
           <Row className="h-25  bg-2">xd</Row>
+        <Col color="" className="col-2 sidemenu">
+          <Row className="h-75 bg-2 position-relative">
+            <SideMenuTop />
+          </Row>
+          <Row className="h-25  bg-2">
+            <SideMenuBottom />
+          </Row>
         </Col>
         <Col className="col-10 d-flex flex-column">
           <Row className="h-60px bg-3">
@@ -39,6 +56,7 @@ function Start() {
           </Row>
         </Col>
       </Row>
+      {buttonClicked && <SettingsMenu />}
     </Container>
   );
 }
