@@ -7,20 +7,31 @@ import { IoIosSettings } from "react-icons/io";
 import { IoIosLogOut } from "react-icons/io";
 import { Transition } from "react-transition-group";
 import { AppContext } from "./ShowSettingsHandler";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import LogIn from "./LogIn";
 function SideMenuBottom() {
   const [isVisible, setIsVisible] = useState(false);
   const { handleButtonClick } = useContext(AppContext)
   const innerContainerRef = useRef(null)
+  const personRef = useRef(null)
+  const navigate = useNavigate();
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
 
+  const handleLogout = () => {
+    // Perform logout actions here
+    // For example, clear local storage, reset user state, etc.
+    // Then navigate to the login page
+    navigate("/login");
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
         isVisible &&
+        !personRef.current.contains(event.target) &&
         innerContainerRef.current &&
         !innerContainerRef.current.contains(event.target)
       ) {
@@ -47,7 +58,7 @@ function SideMenuBottom() {
                 <IoIosSettings size={25} className="settings-icon" />
                 Settings
               </Button> 
-              <Button className="logout-button">
+              <Button onClick={handleLogout} className="logout-button">
                 <IoIosLogOut size={25} className="logout-icon" />
                 Log Out
               </Button>
@@ -55,6 +66,7 @@ function SideMenuBottom() {
           </Container>}
         </Transition>
         <Button
+          ref={personRef}
           className="bg-1 border-0 text-black person-button"
           onClick={toggleVisibility}
         >

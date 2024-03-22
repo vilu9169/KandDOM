@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-rou
 import Start from './components/start';
 import SettingsMenu from './components/SettingsMenu'
 import { AppProvider } from './components/ShowSettingsHandler';
+import LogIn from './components/LogIn';
 function App() {
   return (
    
@@ -10,6 +11,7 @@ function App() {
         <AppProvider>
       <Routes>
         <Route index element={<Start/>} />
+        <Route path='/login' element={<LogIn />} />
       </Routes>
       </AppProvider>
       </Router>
