@@ -34,8 +34,8 @@ def start_chat(project_id: str, location: str) -> str:
     # Set the endpoint URL
     #endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:streamGenerateContent "
     #Doesnt work bc no support for simple key but right otherwise
-    #endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/$sunlit-inn-417922/locations/us-central1/publishers/google/models/$gemini-1.0-pro:generateContent?key=AIzaSyAdg0t6I1vnn9vsspUz4wUzdnf2nW95sMA"
-    endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/chat-bison:predict"
+    endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/gemini-1.0-pro:generateContent"
+    #endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/chat-bison:predict"
     
 
     # Set the request payload
@@ -63,11 +63,29 @@ def start_chat(project_id: str, location: str) -> str:
         "topK": 40
     }
     }
+    payload ={
+    "contents": {
+        "role": "user",
+        "parts": [
+        {
+            #Preprompt the model with example questions and answers
+            
+            "text": "What is the capital of France?"
+        }
+        ]
+    }
+    }
 
     # Set the request headers
     headers = {
         "Content-Type": "application/json",
-        "Authorization": "Bearer ya29.a0Ad52N3_GY5n37jM0UdgsghJ8aku0aGoBpFyEde9193mIHIg89EqW0ZCACAditspsAPLdZmQDaAlyhlF58TXktmNwPWHp0ZJt1YjHlgV0kAV-_2h3POPmPPUU4F0s5oGP77xbh60QYUoq8SB9IEyzlAJ_XMNSjFOdCbVrxQX1bW4aCgYKAVQSARESFQHGX2MiXSlJdUidBCKwsGLY1p5Z2Q0178"
+        #Two options for getting the token
+        #gcloud auth print-access-token
+        #gcloud auth application-default print-access-token
+        
+        
+        #"Authorization": "Bearer ya29.a0Ad52N3_GY5n37jM0UdgsghJ8aku0aGoBpFyEde9193mIHIg89EqW0ZCACAditspsAPLdZmQDaAlyhlF58TXktmNwPWHp0ZJt1YjHlgV0kAV-_2h3POPmPPUU4F0s5oGP77xbh60QYUoq8SB9IEyzlAJ_XMNSjFOdCbVrxQX1bW4aCgYKAVQSARESFQHGX2MiXSlJdUidBCKwsGLY1p5Z2Q0178"
+        "Authorization": "Bearer ya29.a0Ad52N3-7qVPZa12Wse6BSJNQ24KZfkia7Gq4MlpP5wOBLNUKgOotIhW3ef3Rodk3qhQ6c2ytUjCrdj_eTyJ0GJDCoi_mzTEj4eTQSWsbid-nioSCgyM_VQXfrcb09Ejbhb6m8YIq3gYWYb8AZmivV7su6gij-F11yE2jaCgYKAXoSARESFQHGX2MiHTZTJzBemaPuTzEIvZbjSw0171"
     }
     print("Requesting to start the chat...")
     # Send the POST request
