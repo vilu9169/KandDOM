@@ -112,6 +112,7 @@ def start_chat(input, previous_messages) -> str:
     #Convert auth to string and remove last \r\n
     auth = auth.decode("utf-8")[:-2]
     # Set the request headers
+    print("Auth: ", auth)
     headers = {
         "Content-Type": "application/json",
         #Two options for getting the token
