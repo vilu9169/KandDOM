@@ -59,7 +59,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'myapp/build'),
+            os.path.join(BASE_DIR, 'C:/Users/Jakob/Skola/KandDOM/project/myapp/build'),
             os.path.join(BASE_DIR, 'myapp/templates/myapp/'),  # Add the templates/myapp/ directory
         ],
         'APP_DIRS': True,
@@ -178,6 +178,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AWS_ACCESS_KEY_ID = 'AKIAZQ3DRDEF3DEFYUPC'
 AWS_SECRET_ACCESS_KEY = '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'
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'myapp/build/static')
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'C:/Users/Jakob/Skola/KandDOM/project/myapp/build/static')
+]
