@@ -26,11 +26,6 @@
   height: 15%;
 }
 
-.sidemenu {
-  min-width: 200px;
-  min-height: 100%;
-}
-
 /* Form CSS */
 
 .flex-container {
@@ -68,21 +63,31 @@
   width: 44px;
 }
 .rect-button {
-    background-color: var(--color-3) !important;
-    border: 2px solid var(--color-3) !important;
-    height: 44px;
-    width: 44px;
-  }
-  .rect-button:hover {
+  background-color: var(--color-3) !important;
+  border: 2px solid var(--color-3) !important;
+  height: 44px;
+  width: 44px;
+}
+.rect-button:hover {
   box-shadow: 10px 10px var(--color-4);
   transition: box-shadow 0.3s ease;
-  } 
+}
+.pop-up-button {
+  color: black !important;
+  border: 2px solid var(--color-1) !important;
+  border-radius: 5px;
+  height: 44px !important;
+  transition: background-color 0.3s ease;
+}
+
+.pop-up-button:hover {
+  background-color: var(--color-2) !important;
+  transition: background-color 0.3s ease;
+}
 .wide-button {
- font-weight: bold ;
   color: black !important;
   background-color: var(--color-3) !important;
   border: 2px solid var(--color-3) !important;
-
   border-radius: 5px;
   height: 44px;
 }
@@ -104,18 +109,17 @@
   display: flex;
   height: 100%;
 }
-
 .h-80px {
   position: relative;
   height: 80px;
 }
 .h-60px {
   height: 60px;
-  position:relative;
-    z-index:999;
+  position: relative;
+  z-index: 999;
 }
 .size-20 {
-  color: var(--color-1) !important;
+  color: black !important;
   font-size: 20px !important;
 }
 .vertical-line {
@@ -138,6 +142,9 @@
   width: 80% !important;
   border-radius: 5px;
 }
+.w-90 {
+  width: 90% !important;
+}
 .h-90 {
   height: 90%;
 }
@@ -146,30 +153,13 @@
 }
 
 .icon-margin {
-    margin-right: 15px; /* Adjust margin as needed */
-  }
+  margin-right: 15px; /* Adjust margin as needed */
+}
 /* ------------------------ */
 
 /* SideMenuBottom CSS */
 
-.person-button{
-  width: 80%;
-  height: 60px;
-  border-radius: 10px !important;
-  margin-top: 10px;
-  bottom: 13px;
-}
-
-.logout-button{
-  width: 80% !important;
-  height: 60px;
-  background-color: var(--color-3) !important;
-  border: none !important;
-  margin: auto;
-  border-top: thin solid black !important;
-}
-
-.settings-button{
+.settings-button {
   z-index: 999;
   margin: auto;
   width: 80% !important;
@@ -179,50 +169,33 @@
   border-bottom: thin solid black !important;
 }
 
-.settings-icon {
-  margin-right: 10px;
-  margin-bottom: 2px;
-}
-
-.logout-icon{
-  transform: scaleX(-1);
-  margin-right: 10px;
-  margin-bottom: 2px;
-}
-
-.button-group-user{
+.user-pop-up-container{
+  height: 120px;
   margin-bottom: 10px;
   border-radius: 5px;
 }
-
-.user-icon {
-  margin-right: 10px;
-  margin-bottom: 4px;
-}
-
 
 /* --------------------- */
 
 /* SettingsWindow CSS */
 
-.settings-container{
+.settings-container {  
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.336);
-  filter: blur(0.1);
   width: 100%;
   height: 100%;
   left: 0;
-  position:absolute !important;
+  position: absolute !important;
 }
 
-.settings-window{
+.settings-window {
   position: absolute;
   height: 50%;
   width: 35% !important;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: var(--color-1);
   border-radius: 10px;
 }
 
@@ -232,7 +205,7 @@
 
 .top-menu-button {
   position: absolute;
-  left:50%;
+  left: 50%;
   top: 5%;
   transform: translate(-50%, -50%);
   height: 6%;
@@ -240,14 +213,13 @@
   background-color: var(--color-4) !important;
   border: none !important;
 }
-.top-menu-button:hover{
+.top-menu-button:hover {
   filter: brightness(0.8);
 }
 
 /* --------------------- */
 
 /* LogIn CSS */
-
 
 .login-container {
   position: absolute;
@@ -256,14 +228,13 @@
   /* Add any additional styling for the container */
 }
 
-.image-column{
+.image-column {
   width: 100%;
   height: 100%;
   background-color: var(--color-4);
 }
 
-
-.login-column{
+.login-column {
   width: 100%;
   height: 100%;
   background-color: var(--color-3);
@@ -271,24 +242,19 @@
 
 .video-header {
   color: var(--color-3);
-   position: absolute;
-   top: 30%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-
-.login-group {
-}
-
 .login-form {
   background-color: var(--color-3) !important;
   border-bottom: thin solid black !important;
   border-radius: 0 !important;
 }
-.login-form:active , .login-form:focus{
+.login-form:active,
+.login-form:focus {
   background-color: var(--color-2) !important;
 }
 
 /* --------------------- */
-
