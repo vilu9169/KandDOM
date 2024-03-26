@@ -2,6 +2,7 @@
 
 import os
 from django.shortcuts import render
+from rest_framework.response import Response
 
 def display_text_file(request):
     # Get the absolute path to the text file
@@ -11,4 +12,7 @@ def display_text_file(request):
         text_content = file.read()
     # Pass the text content to the template
     return render(request, 'display_text.html', {'text_content': text_content})
+
+def test_message(request):
+    return Response({'message': 'Hello, World!'})
    
