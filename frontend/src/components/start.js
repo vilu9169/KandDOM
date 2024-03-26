@@ -10,12 +10,14 @@ import { IoMdHelp } from "react-icons/io";
 
 import SideMenuBottom from "./SideMenuBottom";
 import SettingsMenu from "./SettingsMenu";
-import { useContext, useState } from "react";
+import { useContext, useState, createContext } from "react";
 import { AppContext } from "./ShowSettingsHandler";
 import SideMenuTop from "./SideMenuTop";
 import SideMenuFiles from "./SideMenuFiles.js";
+import Chatbot from "./Chatbot.js";
 
 function Start() {
+  
   const { buttonClicked } = useContext(AppContext);
 
   return (
@@ -46,9 +48,9 @@ function Start() {
               </Col>
             </Row>
           </Row>
-          <Row className="flex-grow-1 bg-1">
-            <UploadFileWindow></UploadFileWindow>
-          
+          <Row className=" flex-grow-1 bg-1">
+            {false && <UploadFileWindow></UploadFileWindow>}
+            <Chatbot></Chatbot>
           </Row>
           <Row className="h-80px bg-1 align-items-top">
             <MyForm></MyForm>

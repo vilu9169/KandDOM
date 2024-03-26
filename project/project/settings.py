@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-y!p(al7v0dyg1@irls#0)kz4#s*g9o7a(d)v$r1#oq*l-1%jnt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['13.50.225.96','ec2-13-50-225-96.eu-north-1.compute.amazonaws.com','ec2-13-48-47-249.eu-north-1.compute.amazonaws.com','13.48.47.249','ec2-16-171-70-243.eu-north-1.compute.amazonaws.com','16.171.70.243','ec2-13-49-175-2.eu-north-1.compute.amazonaws.com','13.49.175.2', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['16.171.79.116','ec2-16-171-79-116.eu-north-1.compute.amazonaws.com','13.50.225.96','ec2-13-50-225-96.eu-north-1.compute.amazonaws.com','ec2-13-48-47-249.eu-north-1.compute.amazonaws.com','13.48.47.249','ec2-16-171-70-243.eu-north-1.compute.amazonaws.com','16.171.70.243','ec2-13-49-175-2.eu-north-1.compute.amazonaws.com','13.49.175.2', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'rest_framework'
+
 ]
 
 MIDDLEWARE = [
