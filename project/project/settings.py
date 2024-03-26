@@ -15,7 +15,7 @@ from pathlib import Path
 import os 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 #BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))).parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -64,7 +64,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, '~/KandDOM/frontend/build'),
+            os.path.join(BASE_DIR, '/KandDOM/frontend/build'),
             os.path.join(BASE_DIR, 'myapp/templates/myapp/'),  # Add the templates/myapp/ directory
         ],
         'APP_DIRS': True,
@@ -184,5 +184,5 @@ AWS_ACCESS_KEY_ID = 'AKIAZQ3DRDEF3DEFYUPC'
 AWS_SECRET_ACCESS_KEY = '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'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '~/KandDOM/frontend/build/static')
+    os.path.join(BASE_DIR, '/KandDOM/frontend/build/static')
 ]
