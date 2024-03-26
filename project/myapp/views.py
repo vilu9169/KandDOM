@@ -3,7 +3,7 @@
 import os
 from django.shortcuts import render
 from rest_framework.response import Response
-
+from rest_framework.decorators import api_view, renderer_classes
 def display_text_file(request):
     # Get the absolute path to the text file
     file_path = os.path.join(os.path.dirname(__file__), 'example.txt')
@@ -13,6 +13,13 @@ def display_text_file(request):
     # Pass the text content to the template
     return render(request, 'display_text.html', {'text_content': text_content})
 
-def test_message(request):
-    return Response({'message': 'Hello, World!'})
+@api_view(['POST'])
+def chat_view(request):
+    if request.method == 'POST':
+        message = request.data.get('message')  # Access request data using DRF's request.data
+        if message:
+            response_data = {'message': f'Backend says: {message}'}
+        else: response_data = {'message': 'Backend says: Hello from Django using DRF!'}
+        return Response(response_data)
+    return Response({'error': 'Only POST requests are allowed.'}, status=400)
    

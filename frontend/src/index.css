@@ -302,6 +302,7 @@
 /* Chatbot.css */
 
 .chatbot-container {
+  position: absolute;
   overflow: auto !important;
   height: 100%;
   border-radius: 8px;
