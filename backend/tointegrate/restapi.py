@@ -28,6 +28,8 @@
 # #Dont actually run this it devours tokens
 # generate_text("sunlit-inn-417922", "us-central1")
 
+import subprocess
+
 import requests
 
 def start_chat(input, previous_messages) -> str:
@@ -103,16 +105,21 @@ def start_chat(input, previous_messages) -> str:
     #     ]
     # }
     # }
-
+    #auth = os.system("gcloud auth print-access-token")
+    #auth = subprocess.call("gcloud auth print-access-token", shell=True)
+    #DO above but retrieve the token
+    auth = subprocess.check_output("gcloud auth print-access-token", shell=True)
+    #Convert auth to string and remove last \r\n
+    auth = auth.decode("utf-8")[:-2]
     # Set the request headers
     headers = {
         "Content-Type": "application/json",
         #Two options for getting the token
         #gcloud auth print-access-token
         #gcloud auth application-default print-access-token
-        
-        
-        "Authorization": "Bearer ya29.a0Ad52N3_7OjjWvPg-6VR3SlVHGK_KDPjzXZYDYtP9iwA3f2KQq0_wiRLZNms1C0OcToW4cxRMHd1jqUJsgih119OXn8h7M6DCE4HZt8dIzxsxDK_KJy-ZsNxVvPzAcPhkhlCXbmHEiBXGei-fAwz8rMN2plDcmy8nIXKAeXTp2f8aCgYKAdQSARESFQHGX2Mi9WCLUZ8N-4iknoAgIP3S1g0178"
+        #Get acces token using syscall
+        "Authorization": "Bearer "+auth
+        #"Authorization": "Bearer ya29.a0Ad52N3_7OjjWvPg-6VR3SlVHGK_KDPjzXZYDYtP9iwA3f2KQq0_wiRLZNms1C0OcToW4cxRMHd1jqUJsgih119OXn8h7M6DCE4HZt8dIzxsxDK_KJy-ZsNxVvPzAcPhkhlCXbmHEiBXGei-fAwz8rMN2plDcmy8nIXKAeXTp2f8aCgYKAdQSARESFQHGX2Mi9WCLUZ8N-4iknoAgIP3S1g0178"
         #"Authorization": "Bearer ya29.a0Ad52N3_0oH9xeT4KT5ptYmgRtm0QVBG3AJ0Wk4Q2A33qzF-sI3IeE51G3GG1PvabAp49uD1n6vfhXToLDD46E5hfDmuyAXcpBXmMDFFxgcxoJEM-sqaholn64GnEo4WoOYGBbkPnI-P15ibzo6DAyXQn8RkvNSNjm4-i2QaCgYKAe4SARESFQHGX2Mi-s5ZSOfvQ5FkIEjuQOY8Pw0173"
     }
     #print("Requesting to start the chat...")
@@ -135,6 +142,8 @@ def start_chat(input, previous_messages) -> str:
         print(response.text)
         print(response.status_code)
         return "Failed to start the chat"
+
+
 
 # Call the function with your project ID and location
 prevmessages = []
