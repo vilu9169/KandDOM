@@ -183,10 +183,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AWS_ACCESS_KEY_ID = 'AKIAZQ3DRDEF3DEFYUPC'
 AWS_SECRET_ACCESS_KEY = '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'
 
-"""STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '/KandDOM/frontend/build/static')
-]"""
-
 STATICFILES_DIRS = [
-    BASE_DIR / 'KandDOM' / 'frontend' / 'build' / 'static'
+    os.path.join(BASE_DIR, '/KandDOM/frontend/build/static')
 ]
+
+
