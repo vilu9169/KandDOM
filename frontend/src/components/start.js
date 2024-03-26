@@ -20,10 +20,6 @@ function Start() {
   return (
     <Container fluid className="position-absolute h-100 text-center bg-3">
       <Row className="h-100">
-
-        <Col className="col-2">
-          <Row className="h-75 bg-2">apa</Row>
-          <Row className="h-25  bg-2">xd</Row>
         <Col color="" className="col-2 sidemenu">
           <Row className="h-75 bg-2 position-relative">
             <SideMenuTop />
