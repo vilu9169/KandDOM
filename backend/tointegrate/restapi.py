@@ -30,7 +30,7 @@
 
 import requests
 
-def start_chat(project_id: str, location: str) -> str:
+def start_chat(input) -> str:
     # Set the endpoint URL
     #endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:streamGenerateContent "
     #Doesnt work bc no support for simple key but right otherwise
@@ -41,14 +41,14 @@ def start_chat(project_id: str, location: str) -> str:
     # Set the request payload
     payload = {
     "instances": [{
-        "context":  "My name is Ned. You are my personal assistant. My favorite movies are Lord of the Rings and Hobbit.",
+        "context":  "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart med information från detta dokument. Detta är det dokument :",
         "examples": [ {
-            "input": {"content": "Who do you work for?"},
-            "output": {"content": "I work for Ned."}
+            "input": {"content": "När har konstapel Kalle interagerat med den åtalade?"},
+            "output": {"content": "Konstapel kalle har interagerat med den åtalade vid två tillfällen. Första gången var den 12:e januari 2022 under ett förhör och andra gången var den 15:e januari 2022 då han tillkallades till bostaden."}
         },
         {
-            "input": {"content": "What do I like?"},
-            "output": {"content": "Ned likes watching movies."}
+            "input": {"content": "Är den åtalade skyldig?"},
+            "output": {"content": "Jag är inte kapabel att besvara denna fråga. "}
         }],
         "messages": [
         {
@@ -58,7 +58,7 @@ def start_chat(project_id: str, location: str) -> str:
     }],
     "parameters": {
         "temperature": 0.3,
-        "maxOutputTokens": 200,
+        "maxOutputTokens": 400,
         "topP": 0.8,
         "topK": 40
     }
@@ -101,7 +101,7 @@ def start_chat(project_id: str, location: str) -> str:
         return "Failed to start the chat"
 
 # Call the function with your project ID and location
-print(start_chat("sunlit-inn-417922", "europe-west4"))
+print(start_chat("Hello! "))
 
 
 
