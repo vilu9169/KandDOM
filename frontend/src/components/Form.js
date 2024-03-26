@@ -13,7 +13,7 @@ function MyForm() {
   const {message, setMessage} = useContext(MessageContext);
   const {messages, setMessages} = useContext(ResponseContext);
 const chatWithGPT3 = async (userInput) => {
-  const apiEndpoint = 'http://127.0.0.1:8000/chat/';
+  const apiEndpoint = 'http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/chat/';
   const headers = {
     'Content-Type': 'application/json',
   };
