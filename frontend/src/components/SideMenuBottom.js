@@ -56,7 +56,7 @@ function SideMenuBottom() {
 
   return (
       <Container className="p-0 m-0 position-absolute bottom-0 start-50 translate-middle-x mb-3">
-        <Fade in={isVisible}>
+        {isVisible && <Fade in={isVisible}>
           <Container
             className="p-0 w-90 bg-1 user-pop-up-container"
             ref={innerContainerRef}
@@ -89,7 +89,7 @@ function SideMenuBottom() {
               </Button>
             </Row>
           </Container>
-        </Fade>
+        </Fade>}
         <Button
           ref={personRef}
           onClick={toggleVisibility}
