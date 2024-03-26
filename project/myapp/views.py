@@ -2,7 +2,7 @@
 
 import os
 from django.shortcuts import render
-from HttpRespone import Response
+from rest_framework.response import Response
 
 def display_text_file(request):
     # Get the absolute path to the text file
