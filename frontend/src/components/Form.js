@@ -21,7 +21,7 @@ const chatWithGPT3 = async (userInput) => {
 
   const data = {
     message,
-    messages
+    messages,
   };
   console.log("Data sent to backend:", data); 
 try {
