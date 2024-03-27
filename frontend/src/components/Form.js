@@ -19,23 +19,25 @@ function MyForm() {
     };
   
     // Extract only the text content from messages
-    const messageTexts = messages.map(msg => msg.text);
-    
+    const messageTexts = messages.map(msg => ({ text: msg.text }));
+  
     const data = {
       message: message,
-      messages: messageTexts, // Send only the text content
+      messages: JSON.stringify(messageTexts), // Stringify the array of message objects
     };
     
+    console.log("Message texts:", messageTexts);
     console.log("Data sent to backend:", data); 
   
     try {
-      const response = await axios.post(apiEndpoint, data, {headers});
+      const response = await axios.post(apiEndpoint, data, { headers });
       return response.data.message;
     } catch (error) {
       console.error('Error communicating with the API:', error.message);
       return '';
     }
   };
+  
 const handleSubmit = async (e) => {
   e.preventDefault();
   const userMessage = { text: message, user: true };
