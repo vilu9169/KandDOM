@@ -20,9 +20,9 @@ function MyForm() {
   
     // Extract only the text content from messages
     const messageTexts = messages.map(msg => msg.text);
-  
+    
     const data = {
-      message,
+      message: message,
       messages: messageTexts, // Send only the text content
     };
     
