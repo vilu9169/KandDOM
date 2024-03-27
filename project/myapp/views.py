@@ -48,7 +48,7 @@ def chat_view(request):
     messages = []
     messages_json = request.data.get('messages')
     previous_messages = json.loads(messages_json) if messages_json else []
-    print(request.data.get('messages'))  # Get all elements except the last one
+    print('Recieved messages: ', previous_messages)  # Get all elements except the last one
     
     for message in previous_messages:
         if odd:
@@ -102,7 +102,7 @@ def chat_view(request):
         "Content-Type": "application/json",
         "Authorization": "Bearer "+auth
     }
-    print(messages)
+    print('Messages to API: ',messages)
     response = requests.post(endpoint, json=payload, headers=headers)
         # Check the response status code
     if response.status_code == 200:
