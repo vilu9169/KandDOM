@@ -50,8 +50,7 @@ def chat_view(request):
     #Create a json struct for previous messages and the current message
     odd = True
     messages = []
-    previous_messages = json.loads(messages_json) if messages_json else []
-    previous_messages = [msg['text'] for msg in previous_messages]
+    previous_messages = [msg['text'] for msg in messages_json]
     print('Received messages: ', previous_messages)  # Get all elements except the last one
     
     for message in previous_messages:
