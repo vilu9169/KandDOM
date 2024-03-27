@@ -48,6 +48,7 @@ def chat_view(request):
     messages = []
     messages_json = request.data.get('messages')
     previous_messages = json.loads(messages_json) if messages_json else []
+    previous_messages = [msg['text'] for msg in messages]
     print('Recieved messages: ', previous_messages)  # Get all elements except the last one
     
     for message in previous_messages:
