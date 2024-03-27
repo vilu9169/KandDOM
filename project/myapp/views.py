@@ -29,38 +29,42 @@ def display_text_file(request):
    
 @api_view(['POST'])
 def chat_view(request):
+    print('request', request)   
+    print('Requst data',request.data)
     if request.method != 'POST':
         return Response({'error': 'Only POST requests are allowed.'}, status=400)
     endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/chat-bison:predict"
     new_message = request.data.get('message')
+    messages_json = request.data.get('messages')
+    print('newmessage', new_message)
+    print('Messages JSON: ', messages_json)
     #Load document from output.txt
-    dokument = ""
+    dokument = ""   
     with open("./output.txt", "r", encoding='utf-8') as file:
         dokument = file.read()	
-    
+    print('newmessage', new_message)
     #return
     #Create a context string
     context = "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. Detta är det dokument :" + dokument
     #print("Context: ", context)
     #Create a json struct for previous messages and the current message
     odd = True
-    #previous_messages = request.data.get('previous_messages')
     messages = []
-    messages_json = request.data.get('messages')
     previous_messages = json.loads(messages_json) if messages_json else []
-    print('Recieved messages: ', previous_messages)  # Get all elements except the last one
+    previous_messages = [msg['text'] for msg in previous_messages]
+    print('Received messages: ', previous_messages)  # Get all elements except the last one
     
     for message in previous_messages:
         if odd:
             messages.append({
                 "author": "user",
-                "content": message.text
+                "content": message
             })
             odd = False
         else:
             messages.append({
                 "author": "model",
-                "content": message.text
+                "content": message
             })
             odd = True
     messages.append({
