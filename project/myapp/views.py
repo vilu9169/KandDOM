@@ -35,6 +35,9 @@ def chat_view(request):
         return Response({'error': 'Only POST requests are allowed.'}, status=400)
     endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/chat-bison:predict"
     new_message = request.data.get('message')
+    messages_json = request.data.get('messages')
+    print('newmessage', new_message)
+    print('Messages JSON: ', messages_json)
     #Load document from output.txt
     dokument = ""
     with open("./output.txt", "r", encoding='utf-8') as file:
@@ -47,8 +50,6 @@ def chat_view(request):
     #Create a json struct for previous messages and the current message
     odd = True
     messages = []
-    messages_json = request.data.get('messages')
-    print('Messages JSON: ', messages_json)
     previous_messages = json.loads(messages_json) if messages_json else []
     previous_messages = [msg['text'] for msg in previous_messages]
     print('Received messages: ', previous_messages)  # Get all elements except the last one
