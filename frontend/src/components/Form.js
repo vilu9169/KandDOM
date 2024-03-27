@@ -23,7 +23,7 @@ function MyForm() {
   
     const data = {
       message: message,
-      messages: JSON.stringify(messageTexts), // Stringify the array of message objects
+      messages: messageTexts, // Stringify the array of message objects
     };
     
     console.log("Message texts:", messageTexts);
