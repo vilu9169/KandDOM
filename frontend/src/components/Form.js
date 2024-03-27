@@ -16,6 +16,7 @@ const chatWithGPT3 = async (userInput) => {
   const apiEndpoint = 'http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/chat/';
   const headers = {
     'Content-Type': 'application/json',
+    'method': 'POST',
   };
 
   const data = {
