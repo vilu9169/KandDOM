@@ -46,7 +46,7 @@ def chat_view(request):
     odd = True
     #previous_messages = request.data.get('previous_messages')
     messages = []
-    previous_messages = request.data.get('messages')
+    previous_messages = request.data.get('messages', [])
     print(request.data)  # Get all elements except the last one
     
     for message in previous_messages:
