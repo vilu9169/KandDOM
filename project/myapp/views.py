@@ -29,6 +29,8 @@ def display_text_file(request):
    
 @api_view(['POST'])
 def chat_view(request):
+    print('request', request)
+    print('Requst data',request.data)
     if request.method != 'POST':
         return Response({'error': 'Only POST requests are allowed.'}, status=400)
     endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/chat-bison:predict"
@@ -37,7 +39,7 @@ def chat_view(request):
     dokument = ""
     with open("./output.txt", "r", encoding='utf-8') as file:
         dokument = file.read()	
-    
+    print('newmessage', new_message)
     #return
     #Create a context string
     context = "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. Detta är det dokument :" + dokument
