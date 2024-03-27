@@ -19,10 +19,11 @@ const chatWithGPT3 = async (userInput) => {
   };
 
   const data = {
-    message
+    message,
+    messages
   };
 try {
-    const response = await axios.post(apiEndpoint, data);
+    const response = await axios.post(apiEndpoint, data, {headers});
     return response.data.message;
   } catch (error) {
     console.error('Error communicating with the API:', error.message);

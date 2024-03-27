@@ -44,10 +44,10 @@ def chat_view(request):
     context = "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. Detta är det dokument :" + dokument
     #print("Context: ", context)
     #Create a json struct for previous messages and the current message
-    messages = []
+    messages = request.data.get('messages')
     odd = True
     #previous_messages = request.data.get('previous_messages')
-    previous_messages = []
+    previous_messages = messages[:-1]
     for message in previous_messages:
         if odd:
             messages.append({
