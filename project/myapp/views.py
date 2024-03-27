@@ -32,7 +32,7 @@ def chat_view(request):
     if request.method != 'POST':
         return Response({'error': 'Only POST requests are allowed.'}, status=400)
     endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/chat-bison:predict"
-    message = request.data.get('message')
+    new_message = request.data.get('message')
     #Load document from output.txt
     dokument = ""
     with open("./output.txt", "r", encoding='utf-8') as file:
@@ -64,7 +64,7 @@ def chat_view(request):
             odd = True
     messages.append({
         "author": "user",
-        "content": message
+        "content": new_message
     })
     
     payload = {
