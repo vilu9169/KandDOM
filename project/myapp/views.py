@@ -28,14 +28,15 @@ def display_text_file(request):
 #     return Response({'error': 'Only POST requests are allowed.'}, status=400)
    
 @api_view(['POST'])
-def chat_view(request, input, previous_messages):
+def chat_view(request):
+    request = request.data.get('message')
     if request.method != 'POST':
         return Response({'error': 'Only POST requests are allowed.'}, status=400)
     endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/chat-bison:predict"
     
     #Load document from output.txt
     dokument = ""
-    with open("./myapp/output.txt", "r", encoding='utf-8') as file:
+    with open("./output.txt", "r", encoding='utf-8') as file:
         dokument = file.read()	
     
     #return
@@ -45,6 +46,8 @@ def chat_view(request, input, previous_messages):
     #Create a json struct for previous messages and the current message
     messages = []
     odd = True
+    #previous_messages = request.data.get('previous_messages')
+    previous_messages = []
     for message in previous_messages:
         if odd:
             messages.append({
