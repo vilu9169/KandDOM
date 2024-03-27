@@ -100,7 +100,7 @@ def chat_view(request):
         "Content-Type": "application/json",
         "Authorization": "Bearer "+auth
     }
-    return Response({"endpoint" : endpoint, "payload" : payload, "headers" : headers})
+    print({"endpoint" : endpoint, "payload" : payload, "headers" : headers})
     response = requests.post(endpoint, json=payload, headers=headers)
         # Check the response status code
     if response.status_code == 200:
