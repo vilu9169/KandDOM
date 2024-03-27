@@ -44,24 +44,23 @@ def chat_view(request):
     #print("Context: ", context)
     #Create a json struct for previous messages and the current message
     odd = True
-    #previous_messages = request.data.get('previous_messages')
     messages = []
     messages_json = request.data.get('messages')
     previous_messages = json.loads(messages_json) if messages_json else []
-    previous_messages = [msg['text'] for msg in messages]
-    print('Recieved messages: ', previous_messages)  # Get all elements except the last one
+    previous_messages = [msg['text'] for msg in previous_messages]
+    print('Received messages: ', previous_messages)  # Get all elements except the last one
     
     for message in previous_messages:
         if odd:
             messages.append({
                 "author": "user",
-                "content": message.text
+                "content": message
             })
             odd = False
         else:
             messages.append({
                 "author": "model",
-                "content": message.text
+                "content": message
             })
             odd = True
     messages.append({
