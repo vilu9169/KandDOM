@@ -23,6 +23,7 @@ const chatWithGPT3 = async (userInput) => {
     message,
     messages
   };
+  console.log("Data sent to backend:", data); 
 try {
     const response = await axios.post(apiEndpoint, data, {headers});
     return response.data.message;
