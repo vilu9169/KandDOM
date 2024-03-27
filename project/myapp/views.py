@@ -4,7 +4,6 @@ import os
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, renderer_classes
-import json
 
 def index(request):
     return render(request, 'index.html')
@@ -46,12 +45,9 @@ def chat_view(request):
     #Create a json struct for previous messages and the current message
     odd = True
     #previous_messages = request.data.get('previous_messages')
-    messages = json.loads(request.data.get('messages'))
-    if messages:  # Ensure messages is not None or empty
-        previous_messages = messages[:-1]  # Get all elements except the last one
-    else:
-        # Handle the case when messages is None or empty
-        previous_messages = []
+    messages = []
+    previous_messages = request.data.get('messages', [])[:-1]  # Get all elements except the last one
+    
     for message in previous_messages:
         if odd:
             messages.append({
