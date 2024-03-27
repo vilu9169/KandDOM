@@ -4,6 +4,7 @@ import os
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, renderer_classes
+import json
 
 def index(request):
     return render(request, 'index.html')
