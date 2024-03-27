@@ -35,7 +35,7 @@ def chat_view(request, input, previous_messages):
     
     #Load document from output.txt
     dokument = ""
-    with open("output.txt", "r", encoding='utf-8') as file:
+    with open("./myapp/output.txt", "r", encoding='utf-8') as file:
         dokument = file.read()	
     
     #return
