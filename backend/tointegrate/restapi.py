@@ -164,21 +164,3 @@ while(True):
 #print(start_chat("?"))
 
 
-
-
-# payload = {
-#     "contents": {
-#         "role": "user",
-#         "parts": [
-#         {
-#         "fileData": {
-#             "mimeType": "image/jpeg",
-#             "fileUri": "gs://generativeai-downloads/images/scones.jpg"
-#             }
-#         },
-#         {
-#             "text": "Describe this picture."
-#         }
-#         ]
-#     }
-#     }
