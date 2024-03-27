@@ -29,11 +29,10 @@ def display_text_file(request):
    
 @api_view(['POST'])
 def chat_view(request):
-    request = request.data.get('message')
     if request.method != 'POST':
         return Response({'error': 'Only POST requests are allowed.'}, status=400)
     endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/chat-bison:predict"
-    
+    request = request.data.get('message')
     #Load document from output.txt
     dokument = ""
     with open("./output.txt", "r", encoding='utf-8') as file:
