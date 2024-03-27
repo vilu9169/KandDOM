@@ -53,13 +53,13 @@ def chat_view(request):
         if odd:
             messages.append({
                 "author": "user",
-                "content": message
+                "content": message.text
             })
             odd = False
         else:
             messages.append({
                 "author": "model",
-                "content": message
+                "content": message.text
             })
             odd = True
     messages.append({
