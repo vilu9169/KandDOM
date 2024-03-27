@@ -39,7 +39,7 @@ def chat_view(request):
     print('newmessage', new_message)
     print('Messages JSON: ', messages_json)
     #Load document from output.txt
-    dokument = ""
+    dokument = ""   
     with open("./output.txt", "r", encoding='utf-8') as file:
         dokument = file.read()	
     print('newmessage', new_message)
