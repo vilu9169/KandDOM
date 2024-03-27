@@ -210,12 +210,12 @@ def start_chat(input, previous_messages) -> str:
 
 
 # Call the function with your project ID and location
-prevmessages = []
-while(True):
-    #Prompt user for input
-    print("Enter your message: ")
-    message = input()
-    res = start_chat(message, prevmessages)
-    prevmessages.append(message)
-    prevmessages.append(res)
-    print(res)
+# prevmessages = []
+# while(True):
+#     #Prompt user for input
+#     print("Enter your message: ")
+#     message = input()
+#     res = start_chat(message, prevmessages)
+#     prevmessages.append(message)
+#     prevmessages.append(res)
+#     print(res)
