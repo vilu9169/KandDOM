@@ -63,7 +63,7 @@ def chat_view(request):
             odd = True
     messages.append({
         "author": "user",
-        "content": input
+        "content": message
     })
     payload = {
     "instances": [{
