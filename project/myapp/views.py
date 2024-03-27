@@ -45,7 +45,7 @@ def chat_view(request):
     #Create a json struct for previous messages and the current message
     odd = True
     #previous_messages = request.data.get('previous_messages')
-    messages = request.data.get('messages')
+    messages = json.loads(request.data.get('messages'))
     if messages:  # Ensure messages is not None or empty
         previous_messages = messages[:-1]  # Get all elements except the last one
     else:
