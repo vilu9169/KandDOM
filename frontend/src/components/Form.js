@@ -12,26 +12,32 @@ import { useRef } from "react";
 function MyForm() {
   const {message, setMessage} = useContext(MessageContext);
   const {messages, setMessages} = useContext(ResponseContext);
-const chatWithGPT3 = async (userInput) => {
-  const apiEndpoint = 'http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/chat/';
-  const headers = {
-    'Content-Type': 'application/json',
-    'method': 'POST',
+  const chatWithGPT3 = async () => {
+    const apiEndpoint = 'http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/chat/';
+    const headers = {
+      'Content-Type': 'application/json',
+    };
+  
+    // Extract only the text content from messages
+    const messageTexts = messages.map(msg => ({ text: msg.text }));
+  
+    const data = {
+      message: message,
+      messages: messageTexts, // Stringify the array of message objects
+    };
+    
+    console.log("Message texts:", messageTexts);
+    console.log("Data sent to backend:", data); 
+  
+    try {
+      const response = await axios.post(apiEndpoint, { data }, { headers });
+      return response.data.message;
+    } catch (error) {
+      console.error('Error communicating with the API:', error.message);
+      return '';
+    }
   };
-
-  const data = {
-    message,
-    'messages' : JSON.stringify(messages),
-  };
-  console.log("Data sent to backend:", data); 
-try {
-    const response = await axios.post(apiEndpoint, data, {headers});
-    return response.data.message;
-  } catch (error) {
-    console.error('Error communicating with the API:', error.message);
-    return '';
-  }
-};
+  
 const handleSubmit = async (e) => {
   e.preventDefault();
   const userMessage = { text: message, user: true };
