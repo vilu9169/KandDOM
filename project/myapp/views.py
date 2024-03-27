@@ -47,7 +47,7 @@ def chat_view(request):
     #previous_messages = request.data.get('previous_messages')
     messages = []
     previous_messages = request.data.get('messages', [])
-    print(request.data)  # Get all elements except the last one
+    print(request.data.get('messages'))  # Get all elements except the last one
     
     for message in previous_messages:
         if odd:
@@ -63,7 +63,7 @@ def chat_view(request):
             })
             odd = True
     messages.append({
-        "author": "user",
+        "author": "user",   
         "content": new_message
     })
     
