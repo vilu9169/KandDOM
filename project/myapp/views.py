@@ -26,7 +26,7 @@ def display_text_file(request):
 #         else: response_data = {'message': 'Backend says: Hello from Django using DRF!'}
 #         return Response(response_data)
 #     return Response({'error': 'Only POST requests are allowed.'}, status=400)
-   
+import json
 @api_view(['POST'])
 def chat_view(request):
     print('request', request)   
