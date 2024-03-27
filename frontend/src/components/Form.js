@@ -30,7 +30,7 @@ function MyForm() {
     console.log("Data sent to backend:", data); 
   
     try {
-      const response = await axios.post(apiEndpoint, data, { headers });
+      const response = await axios.post(apiEndpoint, { data }, { headers });
       return response.data.message;
     } catch (error) {
       console.error('Error communicating with the API:', error.message);

@@ -29,7 +29,7 @@ def display_text_file(request):
    
 @api_view(['POST'])
 def chat_view(request):
-    print('request', request)
+    print('request', request)   
     print('Requst data',request.data)
     if request.method != 'POST':
         return Response({'error': 'Only POST requests are allowed.'}, status=400)
