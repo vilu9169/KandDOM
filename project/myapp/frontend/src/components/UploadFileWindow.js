@@ -6,11 +6,13 @@ import { IoIosDocument } from "react-icons/io";
 import { IoIosCopy } from "react-icons/io";
 
 function UploadFileWindow() {
+
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
 
     alert(`Uploaded file: ${file.name}`);
   };
+
   return (
     <Container className="m-auto p-2 h-75 bg-2 uploadfile-container">
       <Row className="h-10 w-100 bg-2 m-0 align-items-center d-flex justify-content-center">
@@ -27,6 +29,7 @@ function UploadFileWindow() {
 
         <Col className="col-5 p-0">
           <Row className="h-50 w-100 bg-2 m-0">
+
             <label
               htmlFor="file-upload"
               className="m-auto bg-3 w-75 wide-button d-flex justify-content-center align-items-center p-0"

@@ -6,12 +6,14 @@ import { IoIosLogIn } from "react-icons/io";
 import { useState } from "react";
 import LogInLogic from "./LogInLogic";
 
+
 function LogIn() {
   const videos = [
     "videos/b_roll1.mp4",
     "videos/b_roll2.mp4",
     "videos/b_roll3.mp4",
   ];
+
   const [showLoginForm, setShowLoginForm] = useState(false);
 
   const handleLoginClick = () => {

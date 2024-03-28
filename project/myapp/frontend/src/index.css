@@ -26,6 +26,8 @@
   height: 15%;
 }
 
+
+
 /* Form CSS */
 
 .flex-container {
@@ -35,9 +37,11 @@
   justify-content: center;
   margin: auto;
 }
+
 .br-5 {
   border-radius: 5px;
 }
+
 .text-input {
   border-radius: 30px;
 }
@@ -65,6 +69,7 @@
   width: 44px;
 }
 .rect-button {
+
   background-color: var(--color-3) !important;
   border: 2px solid var(--color-3) !important;
   height: 44px;
@@ -96,6 +101,26 @@
 }
 .wide-button:hover {
   cursor: pointer;
+    background-color: var(--color-3) !important;
+    border: 2px solid var(--color-3) !important;
+    height: 44px;
+    width: 44px;
+  }
+  .rect-button:hover {
+  box-shadow: 10px 10px var(--color-4);
+  transition: box-shadow 0.3s ease;
+  } 
+.wide-button {
+ font-weight: bold ;
+  color: black !important;
+  background-color: var(--color-3) !important;
+  border: 2px solid var(--color-3) !important;
+
+  border-radius: 5px;
+  height: 44px;
+}
+.wide-button:hover {
+
   height: 44px;
   box-shadow: 10px 10px var(--color-4);
   transition: box-shadow 0.3s ease;
@@ -113,17 +138,23 @@
   display: flex;
   height: 100%;
 }
+
 .h-80px {
   position: relative;
   height: 80px;
 }
 .h-60px {
   height: 60px;
+
   position: relative;
   z-index: 999;
 }
 .size-20 {
   color: black !important;
+    z-index:999;
+}
+.size-20 {
+  color: var(--color-1) !important;
   font-size: 20px !important;
 }
 .vertical-line {
@@ -146,9 +177,11 @@
   width: 80% !important;
   border-radius: 5px;
 }
+
 .w-90 {
   width: 90% !important;
 }
+
 .h-90 {
   height: 90%;
 }
@@ -157,13 +190,33 @@
 }
 
 .icon-margin {
+
   margin-right: 15px; /* Adjust margin as needed */
 }
+
 /* ------------------------ */
 
 /* SideMenuBottom CSS */
 
-.settings-button {
+
+.person-button{
+  width: 80%;
+  height: 60px;
+  border-radius: 10px !important;
+  margin-top: 10px;
+  bottom: 13px;
+}
+
+.logout-button{
+  width: 80% !important;
+  height: 60px;
+  background-color: var(--color-3) !important;
+  border: none !important;
+  margin: auto;
+  border-top: thin solid black !important;
+}
+
+.settings-button{
   z-index: 999;
   margin: auto;
   width: 80% !important;
@@ -173,15 +226,38 @@
   border-bottom: thin solid black !important;
 }
 
+
 .user-pop-up-container{
   height: 120px;
+
+.settings-icon {
+  margin-right: 10px;
+  margin-bottom: 2px;
+}
+
+.logout-icon{
+  transform: scaleX(-1);
+  margin-right: 10px;
+  margin-bottom: 2px;
+}
+
+.button-group-user{
   margin-bottom: 10px;
   border-radius: 5px;
 }
 
+
+.user-icon {
+  margin-right: 10px;
+  margin-bottom: 4px; 
+}
+
+
+
 /* --------------------- */
 
 /* SettingsWindow CSS */
+
 
 .settings-container {  
   z-index: 1000;
@@ -199,6 +275,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
   background-color: var(--color-1);
   border-radius: 10px;
 }
@@ -217,6 +294,7 @@
   background-color: var(--color-4) !important;
   border: none !important;
 }
+
 .top-menu-button:hover {
   filter: brightness(0.8);
 }
@@ -225,6 +303,8 @@
 
 /* LogIn CSS */
 
+
+
 .login-container {
   position: absolute;
   width: 100%; /* 100% width */
@@ -232,13 +312,15 @@
   /* Add any additional styling for the container */
 }
 
-.image-column {
+
+.image-column{
   width: 100%;
   height: 100%;
   background-color: var(--color-4);
 }
 
-.login-column {
+
+.login-column{
   width: 100%;
   height: 100%;
   background-color: var(--color-3);
@@ -246,11 +328,18 @@
 
 .video-header {
   color: var(--color-3);
+
   position: absolute;
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+
+.login-group {
+}
+
+
 .login-form {
   background-color: var(--color-3) !important;
   border-bottom: thin solid black !important;
@@ -258,7 +347,54 @@
 }
 .login-form:active,
 .login-form:focus {
+.login-form:active , .login-form:focus{
+
   background-color: var(--color-2) !important;
 }
 
 /* --------------------- */
+
+/* SideMenuTop CSS */
+
+.file-window {
+  position: absolute;
+  top:10%;
+}
+
+/* Chatbot.css */
+
+.chatbot-container {
+  position: absolute;
+  overflow: auto !important;
+  height: 100%;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: var(--color-1);
+}
+.chatbot-messages {
+  overflow-y: auto;
+}
+.message {
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.user-message {
+  background-color: var(--color-1);
+  text-align: left;
+}
+.ai-message {
+  background-color: var(--color-2);
+  text-align: left;
+}
+
+.user-text{
+  font-size: 12px;
+}
+
+.message-text {
+  margin-left: 10px;
+}
+
+
