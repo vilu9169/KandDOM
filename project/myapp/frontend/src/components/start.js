@@ -17,19 +17,19 @@ import SideMenuFiles from "./SideMenuFiles.js";
 import Chatbot from "./Chatbot.js";
 
 function Start() {
-  
+
   const { buttonClicked } = useContext(AppContext);
 
   return (
     <Container fluid className="position-absolute h-100 text-center bg-3">
       <Row className="h-100">
 
-        <Col color="" className="col-2 sidemenu">
-          <Row className="h-75 bg-2 position-relative">
+        <Col color="" className="col-2 sidemenu d-flex flex-column">
+          <Row className="h-60px bg-2 position-relative">
             <SideMenuTop />
-            <SideMenuFiles />
           </Row>
-          <Row className="h-25 bg-2">
+          <Row className="flex-grow-1  bg-2">las</Row>
+          <Row className="h-80px  bg-2">
             <SideMenuBottom />
           </Row>
         </Col>
@@ -38,17 +38,17 @@ function Start() {
             <Row className="h-100 bg-1 m-auto">
               <Col className="col-6 h-100 bg-1 align-items-end d-flex justify-content-start">
                 <h2 className="p-0 m-0">Pythia</h2>
-                {/* Add company icon */ }
+                {/* Add company icon */}
               </Col>
               <Col className="col-6 h-100 d-flex align-items-end justify-content-end">
                 <Button className="bg-3 rect-button align-items-center d-flex justify-content-center p-0">
-                <IoMdHelp className="size-20" />
-
+                  <IoMdHelp className="size-20" />
                 </Button>
               </Col>
             </Row>
           </Row>
-          <Row className=" position-relative flex-grow-1 bg-1">
+
+          <Row className=" flex-grow-1 bg-1">
             {false && <UploadFileWindow></UploadFileWindow>}
             <Chatbot></Chatbot>
           </Row>

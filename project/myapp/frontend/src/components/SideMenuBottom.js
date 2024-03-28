@@ -5,15 +5,21 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { useContext, useRef, useState, useEffect } from "react";
 import { IoIosSettings } from "react-icons/io";
 import { IoIosLogOut } from "react-icons/io";
+import { IoMdPerson } from "react-icons/io";
+
+import Row from "react-bootstrap/Row";
 import { Transition } from "react-transition-group";
 import { AppContext } from "./ShowSettingsHandler";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import LogIn from "./LogIn";
+
+import Collapse from "react-bootstrap/Collapse";
+import Fade from "react-bootstrap/Fade";
 function SideMenuBottom() {
   const [isVisible, setIsVisible] = useState(false);
-  const { handleButtonClick } = useContext(AppContext)
-  const innerContainerRef = useRef(null)
-  const personRef = useRef(null)
+  const { handleButtonClick } = useContext(AppContext);
+  const innerContainerRef = useRef(null);
+  const personRef = useRef(null);
   const navigate = useNavigate();
 
   const toggleVisibility = () => {
@@ -33,7 +39,7 @@ function SideMenuBottom() {
         isVisible &&
         !personRef.current.contains(event.target) &&
         innerContainerRef.current &&
-        !innerContainerRef.current.contains(event.target)
+        !innerContainerRef.current.contains(event.target) //kan ta bort denna, försvinner ännu vid nästa knapptryck
       ) {
         toggleVisibility(); // Trigger the handleButtonClick function
       }
@@ -49,34 +55,55 @@ function SideMenuBottom() {
   }, [toggleVisibility]); // Include handleButtonClick in the dependency array
 
   return (
-    <Container className="position-relative">
-      <Container className=" position-absolute bottom-0 start-50 translate-middle-x mb-3">
-        <Transition in={isVisible} timeout={0}>
-        {(isVisible) => <Container ref={innerContainerRef} style={{ transition:'opacity .2s ease-in-out', opacity: isVisible === 'entered' ? 1 : 0,}}>
-            <ButtonGroup vertical className="w-100 bg-3 button-group-user">
-              <Button onClick={handleButtonClick} className="settings-button ">
-                <IoIosSettings size={25} className="settings-icon" />
-                Settings
-              </Button> 
-              <Button onClick={handleLogout} className="logout-button">
-                <IoIosLogOut size={25} className="logout-icon" />
-                Log Out
+      <Container className="p-0 m-0 position-absolute bottom-0 start-50 translate-middle-x mb-3">
+        {isVisible && <Fade in={isVisible}>
+          <Container
+            className="p-0 w-90 bg-1 user-pop-up-container"
+            ref={innerContainerRef}
+          >
+            <Row className="p-0 m-0 h-50 w-100 ">
+              <Button
+                onClick={handleButtonClick}
+                className="m-auto bg-1 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
+              >
+                <span className="text-center justify-content-center d-flex align-items-center w-75">
+                  Settings
+                </span>
+                <span className="w-25 justify-content-center d-flex align-items-center">
+                  <IoIosSettings className="size-20" />
+                </span>
               </Button>
-            </ButtonGroup>
-          </Container>}
-        </Transition>
+            </Row>
+            <Row className="p-0 m-0 h-50 w-100">
+              {" "}
+              <Button
+                onClick={handleLogout}
+                className="m-auto bg-1 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
+              >
+                <span className="text-center justify-content-center d-flex align-items-center w-75">
+                  Log Out
+                </span>
+                <span className="w-25 justify-content-center d-flex align-items-center">
+                  <IoIosLogOut className="size-20" />
+                </span>
+              </Button>
+            </Row>
+          </Container>
+        </Fade>}
         <Button
           ref={personRef}
-          className="bg-1 border-0 text-black person-button"
           onClick={toggleVisibility}
+          className="m-auto bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
         >
-          {" "}
-          <FaUser className="user-icon" /> Julius Amorm
+          <span className="text-center justify-content-center d-flex align-items-center w-75">
+            Julius amorm
+          </span>
+          <span className="w-25 justify-content-center d-flex align-items-center">
+            <IoMdPerson className="size-20" />
+          </span>
         </Button>
       </Container>
 
-    </Container>
-    
   );
 }
 
