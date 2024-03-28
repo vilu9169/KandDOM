@@ -109,7 +109,7 @@ def start_chat(input, previous_messages) -> str:
     #auth = subprocess.call("gcloud auth print-access-token", shell=True)
     #DO above but retrieve the token
     #auth = subprocess.check_output("gcloud auth print-access-token", shell=True)
-    auth = subprocess.check_output("gcloud auth application-default print-access-token", shell=True)
+    auth = subprocess.check_output("gcloud auth print-access-token", shell=True)
     
     #Convert auth to string and remove last \r\n if on windows
     if(auth[-2] == 13):
