@@ -35,7 +35,9 @@
   justify-content: center;
   margin: auto;
 }
-
+.br-5 {
+  border-radius: 5px;
+}
 .text-input {
   border-radius: 30px;
 }
