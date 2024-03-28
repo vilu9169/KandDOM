@@ -26,10 +26,7 @@
   height: 15%;
 }
 
-.sidemenu {
-  min-width: 200px;
-  min-height: 100%;
-}
+
 
 /* Form CSS */
 
@@ -39,6 +36,10 @@
   align-items: center;
   justify-content: center;
   margin: auto;
+}
+
+.br-5 {
+  border-radius: 5px;
 }
 
 .text-input {
@@ -68,6 +69,38 @@
   width: 44px;
 }
 .rect-button {
+
+  background-color: var(--color-3) !important;
+  border: 2px solid var(--color-3) !important;
+  height: 44px;
+  width: 44px;
+}
+.rect-button:hover {
+  box-shadow: 10px 10px var(--color-4);
+  transition: box-shadow 0.3s ease;
+}
+.pop-up-button {
+  color: black !important;
+  border: 2px solid var(--color-1) !important;
+  border-radius: 5px;
+  height: 44px !important;
+  transition: background-color 0.3s ease;
+}
+
+.pop-up-button:hover {
+  background-color: var(--color-2) !important;
+  transition: background-color 0.3s ease;
+}
+.wide-button {
+  color: black !important;
+  background-color: var(--color-3) !important;
+  border: 2px solid var(--color-3) !important;
+  border-radius: 5px;
+  height: 44px;
+  transition: box-shadow 0.3s ease;
+}
+.wide-button:hover {
+  cursor: pointer;
     background-color: var(--color-3) !important;
     border: 2px solid var(--color-3) !important;
     height: 44px;
@@ -87,6 +120,7 @@
   height: 44px;
 }
 .wide-button:hover {
+
   height: 44px;
   box-shadow: 10px 10px var(--color-4);
   transition: box-shadow 0.3s ease;
@@ -111,7 +145,12 @@
 }
 .h-60px {
   height: 60px;
-  position:relative;
+
+  position: relative;
+  z-index: 999;
+}
+.size-20 {
+  color: black !important;
     z-index:999;
 }
 .size-20 {
@@ -138,6 +177,11 @@
   width: 80% !important;
   border-radius: 5px;
 }
+
+.w-90 {
+  width: 90% !important;
+}
+
 .h-90 {
   height: 90%;
 }
@@ -146,11 +190,14 @@
 }
 
 .icon-margin {
-    margin-right: 15px; /* Adjust margin as needed */
-  }
+
+  margin-right: 15px; /* Adjust margin as needed */
+}
+
 /* ------------------------ */
 
 /* SideMenuBottom CSS */
+
 
 .person-button{
   width: 80%;
@@ -179,6 +226,10 @@
   border-bottom: thin solid black !important;
 }
 
+
+.user-pop-up-container{
+  height: 120px;
+
 .settings-icon {
   margin-right: 10px;
   margin-bottom: 2px;
@@ -195,34 +246,37 @@
   border-radius: 5px;
 }
 
+
 .user-icon {
   margin-right: 10px;
   margin-bottom: 4px; 
 }
 
 
+
 /* --------------------- */
 
 /* SettingsWindow CSS */
 
-.settings-container{
+
+.settings-container {  
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.336);
-  filter: blur(0.1);
   width: 100%;
   height: 100%;
   left: 0;
-  position:absolute !important;
+  position: absolute !important;
 }
 
-.settings-window{
+.settings-window {
   position: absolute;
   height: 50%;
   width: 35% !important;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+
+  background-color: var(--color-1);
   border-radius: 10px;
 }
 
@@ -232,7 +286,7 @@
 
 .top-menu-button {
   position: absolute;
-  left:50%;
+  left: 50%;
   top: 5%;
   transform: translate(-50%, -50%);
   height: 6%;
@@ -240,7 +294,8 @@
   background-color: var(--color-4) !important;
   border: none !important;
 }
-.top-menu-button:hover{
+
+.top-menu-button:hover {
   filter: brightness(0.8);
 }
 
@@ -249,12 +304,14 @@
 /* LogIn CSS */
 
 
+
 .login-container {
   position: absolute;
   width: 100%; /* 100% width */
   height: 100%; /* 100% height */
   /* Add any additional styling for the container */
 }
+
 
 .image-column{
   width: 100%;
@@ -271,27 +328,32 @@
 
 .video-header {
   color: var(--color-3);
-   position: absolute;
-   top: 30%;
-   left: 50%;
-   transform: translate(-50%, -50%);
 
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 
 .login-group {
 }
 
+
 .login-form {
   background-color: var(--color-3) !important;
   border-bottom: thin solid black !important;
   border-radius: 0 !important;
 }
+.login-form:active,
+.login-form:focus {
 .login-form:active , .login-form:focus{
+
   background-color: var(--color-2) !important;
 }
 
 /* --------------------- */
+
 /* SideMenuTop CSS */
 
 .file-window {
@@ -334,4 +396,5 @@
 .message-text {
   margin-left: 10px;
 }
+
 
