@@ -3,21 +3,27 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import MyForm from "./Form";
-import UploadFileWindow from "./UploadFileWindow";
+import UploadFileWindow from "./UploadFileWindow"
 import { IoMdHelp } from "react-icons/io";
+
+
 
 import SideMenuBottom from "./SideMenuBottom";
 import SettingsMenu from "./SettingsMenu";
-import { useContext, useState } from "react";
+import { useContext, useState, createContext } from "react";
 import { AppContext } from "./ShowSettingsHandler";
 import SideMenuTop from "./SideMenuTop";
+import SideMenuFiles from "./SideMenuFiles.js";
+import Chatbot from "./Chatbot.js";
 
 function Start() {
+
   const { buttonClicked } = useContext(AppContext);
 
   return (
     <Container fluid className="position-absolute h-100 text-center bg-3">
       <Row className="h-100">
+
         <Col color="" className="col-2 sidemenu d-flex flex-column">
           <Row className="h-60px bg-2 position-relative">
             <SideMenuTop />
@@ -41,8 +47,10 @@ function Start() {
               </Col>
             </Row>
           </Row>
-          <Row className="flex-grow-1 bg-1">
-            <UploadFileWindow></UploadFileWindow>
+
+          <Row className=" flex-grow-1 bg-1">
+            {false && <UploadFileWindow></UploadFileWindow>}
+            <Chatbot></Chatbot>
           </Row>
           <Row className="h-80px bg-1 align-items-top">
             <MyForm></MyForm>

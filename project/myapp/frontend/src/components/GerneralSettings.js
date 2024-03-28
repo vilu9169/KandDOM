@@ -1,5 +1,6 @@
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
 
+
 function GeneralSettings() {
   return (
     <Container className="h-50">
@@ -24,3 +25,4 @@ function GeneralSettings() {
 }
 
 export default GeneralSettings;
+
