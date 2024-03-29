@@ -364,9 +364,9 @@
 /* Chatbot.css */
 
 .chatbot-container {
-  position: relative !important;
+  position: absolute !important;
   overflow: auto !important;
-  height: 90%;
+  height: 100%;
   border-radius: 8px;
   padding: 16px;
   background-color: var(--color-1);
