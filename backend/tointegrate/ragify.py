@@ -24,33 +24,42 @@ text_splitter = RecursiveCharacterTextSplitter(chunk_size = 500, chunk_overlap =
 splits = text_splitter.split_documents(loader.load())
 
 embeddings = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001")
-from pinecone import Pinecone, ServerlessSpec
+from pinecone import ServerlessSpec
+from langchain_pinecone import PineconeVectorStore
 
-pc = Pinecone(
-    api_key=os.environ.get("PINECONE_API_KEY"),
-    environment=os.getenv("PINECONE_ENV"),  # next to api key in console
-        
-)
+
 # initialize pinecone
 index_name = "langchain-demo"
-
+vectorstore = PineconeVectorStore(index_name, embeddings.embed_query, splits)
 # First, check if our index already exists. If it doesn't, we create it
-# Now do stuff
-if index_name not in pc.list_indexes().names():
-    pc.create_index(
-        name=index_name,
-        dimension=1536,
-        metric='euclidean',
-        spec=ServerlessSpec(
-            cloud='aws',
-            region='us-west-2'
-        )
-    )
+# if(index_name not in vectorstore.list_indexes().names()):
+#     vectorstore.create_index(
+#          name=index_name,
+#          dimension=768,
+#          metric='euclidean',
+#          spec=ServerlessSpec(
+#              cloud='aws',
+#              region='us-west-2'
+#          )
+#      )
 
-#vectorstore = Pinecone(index_name, embeddings.embed_query, splits)
+
+# Now do stuff
+# if index_name not in vectorstore.list_indexes().names():
+#     vectorstore.create_index(
+#         name=index_name,
+#         dimension=1536,
+#         metric='euclidean',
+#         spec=ServerlessSpec(
+#             cloud='aws',
+#             region='us-west-2'
+#         )
+#     )
+
+#
 print("past index creation for index ", index_name)
 # Vertex AI embedding model  uses 768 dimensions`
-vectorstore = pc.from_documents(splits, embeddings, index_name=index_name)
+vectorstore = vectorstore.from_documents(splits, embeddings, index_name=index_name)
 
 retriever = vectorstore.as_retriever()
 
@@ -62,7 +71,7 @@ rag_prompt = hub.pull("rlm/rag-prompt")
 
 print("past index rag_prompt creation ")
 from langchain.prompts import ChatPromptTemplate
-from langchain.llms import VertexAI
+from langchain_google_vertexai import VertexAI
 llm = VertexAI()
  
 
@@ -75,5 +84,5 @@ rag_chain = (
     | llm 
 )
 
-rci_output = rag_chain.invoke("What is Task Decomposition?")
+rci_output = rag_chain.invoke("Vem är åtalad?")
 print("rci_output is: ",rci_output)
