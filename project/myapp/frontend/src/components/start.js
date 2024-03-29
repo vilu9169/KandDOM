@@ -48,7 +48,7 @@ function Start() {
             </Row>
           </Row>
 
-          <Row className=" flex-grow-1 bg-1">
+          <Row className=" flex-grow-1 bg-1 position-relative">
             {false && <UploadFileWindow></UploadFileWindow>}
             <Chatbot></Chatbot>
           </Row>
