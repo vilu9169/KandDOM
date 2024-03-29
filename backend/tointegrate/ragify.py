@@ -31,30 +31,7 @@ from langchain_pinecone import PineconeVectorStore
 # initialize pinecone
 index_name = "langchain-demo"
 vectorstore = PineconeVectorStore(index_name, embeddings.embed_query, splits)
-# First, check if our index already exists. If it doesn't, we create it
-# if(index_name not in vectorstore.list_indexes().names()):
-#     vectorstore.create_index(
-#          name=index_name,
-#          dimension=768,
-#          metric='euclidean',
-#          spec=ServerlessSpec(
-#              cloud='aws',
-#              region='us-west-2'
-#          )
-#      )
 
-
-# Now do stuff
-# if index_name not in vectorstore.list_indexes().names():
-#     vectorstore.create_index(
-#         name=index_name,
-#         dimension=1536,
-#         metric='euclidean',
-#         spec=ServerlessSpec(
-#             cloud='aws',
-#             region='us-west-2'
-#         )
-#     )
 
 #
 print("past index creation for index ", index_name)
