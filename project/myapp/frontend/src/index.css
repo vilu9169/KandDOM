@@ -4,6 +4,18 @@
   --color-3: #dac0a3;
   --color-4: #0f2c59;
   --color-5: #402f00;
+  --text-color-main: #000000;
+}
+
+.dark-mode { 
+  --color-1: #121212;
+  --color-2: #282828;
+  --color-3: #eadbc8;
+  --text-color-main: #ffffff;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, a, button {
+  color: var(--text-color-main) !important;
 }
 
 .bg-1 {
@@ -80,7 +92,7 @@
   transition: box-shadow 0.3s ease;
 }
 .pop-up-button {
-  color: black !important;
+  color: var(--text-color-main) !important;
   border: 2px solid var(--color-1) !important;
   border-radius: 5px;
   height: 44px !important;
@@ -92,7 +104,7 @@
   transition: background-color 0.3s ease;
 }
 .wide-button {
-  color: black !important;
+  color: var(--text-color-main) !important;
   background-color: var(--color-3) !important;
   border: 2px solid var(--color-3) !important;
   border-radius: 5px;
@@ -112,7 +124,7 @@
   } 
 .wide-button {
  font-weight: bold ;
-  color: black !important;
+  color: var(--text-color-main) !important;
   background-color: var(--color-3) !important;
   border: 2px solid var(--color-3) !important;
 
@@ -150,7 +162,7 @@
   z-index: 999;
 }
 .size-20 {
-  color: black !important;
+  color: var(--text-color-main) !important;
     z-index:999;
 }
 .size-20 {
@@ -379,6 +391,7 @@
   border-radius: 4px;
   font-size: 16px;
   line-height: 1.5;
+
 }
 .user-message {
   background-color: var(--color-1);
