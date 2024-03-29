@@ -8,6 +8,8 @@ function SettingsMenu() {
   const { handleButtonClick } = useContext(AppContext);
   const innerContainerRef = useRef(null);
 
+  
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
