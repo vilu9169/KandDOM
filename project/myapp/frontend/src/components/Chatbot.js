@@ -7,7 +7,7 @@ const Chatbot = () => {
   const {messages} = useContext(ResponseContext);
 
   return (
-    <div className="chatbot-container position-absolute">
+    <div className="chatbot-container">
       <div className="chatbot-messages">
         {messages.map((message, index) => (
           <div
