@@ -12,7 +12,6 @@ endpoint = "https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn
 # Initialize conversation memory and chain
 memory = ConversationBufferMemory()  # Stores last two messages
 chain = ConversationChain(endpoint=endpoint, memory=memory)
-model.
 
 def chat():
     #Set the chains context

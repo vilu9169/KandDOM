@@ -11,11 +11,11 @@ def convert_pdf_to_text(pdf_file, output_file):
         print(f"Error converting PDF to text: {e}")
 
 # Specify the input PDF file and output text file
-pdf_file = "Huvudprotokoll 2008-07-16.pdf"
+pdf_file = "gbg_mordforsok.pdf"
 output_file = "output.pdf"
 
 # Call the function to convert the PDF to text
-convert_pdf_to_text(pdf_file, output_file)
+#convert_pdf_to_text(pdf_file, output_file)
 
 def extract_text_from_pdf(pdf_file):
     try:
@@ -23,9 +23,12 @@ def extract_text_from_pdf(pdf_file):
             reader = PyPDF2.PdfReader(file)
             num_pages = len(reader.pages)
             text = ""
+            #Separate pages so they start with { and end with }
             for page_num in range(num_pages):
+                text += "{"
                 page = reader.pages[page_num]
                 text += page.extract_text()
+                text += "}"
             return text
     except FileNotFoundError:
         print(f"Error: File '{pdf_file}' not found.")
