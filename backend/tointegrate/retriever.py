@@ -31,9 +31,9 @@ from langchain.schema.runnable import RunnablePassthrough
 qa = RetrievalQA.from_chain_type(  
     llm=llm,  
     chain_type="stuff",  
-    retriever=vectorstore.as_retriever()  
+    retriever=vectorstore.as_retriever(search_type="mmr", k=5),  
 )  
-res = qa.invoke("Vem är Målsägande?") 
+res = qa.invoke("Vilka är vittnen i fallet?") 
 
 
 print(res)
