@@ -4,7 +4,7 @@ import { AuthContext } from "./AuthContextProvider";
 import { useContext } from "react";
 
 function LogInLogic({ onSignUpClick }) {
-  let {loginUser} = useContext(AuthContext)
+  let { loginUser } = useContext(AuthContext)
   return (
     <Form className="m-auto h-100" onSubmit={ loginUser }>
       <Row className="h-25 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
@@ -15,6 +15,7 @@ function LogInLogic({ onSignUpClick }) {
           className="w-75 input-group-container"
           autoComplete={false}
           type="email"
+          name="email"
           placeholder="Email"
         />
       </Row>
@@ -22,6 +23,7 @@ function LogInLogic({ onSignUpClick }) {
         <Form.Control
           className="w-75 input-group-container"
           type="password"
+          name="password"
           placeholder="Password"
         />
         {/* <Form.Text className="ms-3 w-25">Glömt lösenord?</Form.Text>*/}
