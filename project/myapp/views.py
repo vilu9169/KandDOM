@@ -228,3 +228,8 @@ def start_chat(input, previous_messages) -> str:
 #     print(res)
 
 
+from .serializers import MyTokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer

@@ -1,9 +1,12 @@
 import { Button, Col, Container, FormGroup, Row, Form } from "react-bootstrap";
 import { IoIosLogIn } from "react-icons/io";
+import { AuthContext } from "./AuthContextProvider";
+import { useContext } from "react";
 
 function LogInLogic({ onSignUpClick }) {
+  let {loginUser} = useContext(AuthContext)
   return (
-    <Form className="m-auto h-100">
+    <Form className="m-auto h-100" onSubmit={ loginUser }>
       <Row className="h-25 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
         <h2 className="p-0 m-0">Welcome Back!</h2>
       </Row>
