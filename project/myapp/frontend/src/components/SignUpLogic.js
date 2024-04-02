@@ -13,6 +13,7 @@ function SignUpLogic({ onLoginClick }) {
           autoComplete={false}
           type="email"
           placeholder="Email"
+          name = "email"
         />
       </Row>
       <Row className="h-25 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
@@ -20,11 +21,12 @@ function SignUpLogic({ onLoginClick }) {
           className="w-75 input-group-container"
           type="password"
           placeholder="Password"
+          name="password"
         />
         {/* <Form.Text className="ms-3 w-25">Glömt lösenord?</Form.Text>*/}
       </Row>
       <Row className="h-25 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
-        <Button className="m-auto bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1">
+        <Button type="submit" className="m-auto bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1">
           <span className="text-center justify-content-center d-flex align-items-center w-100">
             Sign up
           </span>

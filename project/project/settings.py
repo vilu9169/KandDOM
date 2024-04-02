@@ -27,21 +27,23 @@ SECRET_KEY = 'django-insecure-y!p(al7v0dyg1@irls#0)kz4#s*g9o7a(d)v$r1#oq*l-1%jnt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['16.171.79.116','ec2-16-171-79-116.eu-north-1.compute.amazonaws.com','13.50.225.96','ec2-13-50-225-96.eu-north-1.compute.amazonaws.com','ec2-13-48-47-249.eu-north-1.compute.amazonaws.com','13.48.47.249','ec2-16-171-70-243.eu-north-1.compute.amazonaws.com','16.171.70.243','ec2-13-49-175-2.eu-north-1.compute.amazonaws.com','13.49.175.2', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','16.171.79.116','ec2-16-171-79-116.eu-north-1.compute.amazonaws.com','13.50.225.96','ec2-13-50-225-96.eu-north-1.compute.amazonaws.com','ec2-13-48-47-249.eu-north-1.compute.amazonaws.com','13.48.47.249','ec2-16-171-70-243.eu-north-1.compute.amazonaws.com','16.171.70.243','ec2-13-49-175-2.eu-north-1.compute.amazonaws.com','13.49.175.2', 'localhost', '127.0.0.1']
 CORS_ORIGIN_WHITELIST = [
     'http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:3000',  # Add your frontend URL here
+    'http://127.0.0.1:8000',
 ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework_simplejwt',
     'rest_framework',
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
@@ -124,16 +126,14 @@ WSGI_APPLICATION = 'project.wsgi.application'
     }
 }"""
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'testdb2',
+        'NAME': 'PythiaDB',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': 'mongodb+srv://carljohaneklund2:YSuCR9GXQaheIfxG@cluster0.pmuadxn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
-            'ssl': True,
-            'authSource': 'admin',
-            'authMechanism': 'SCRAM-SHA-1',
+            'host': 'mongodb+srv://viktorlundin3:KPfy0yPLimhGe4nD@pythiadb.bmdzzkd.mongodb.net/?retryWrites=true&w=majority&appName=PythiaDB',
         }
     }
 }
@@ -157,7 +157,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'myapp.CustomUser'
+AUTH_USER_MODEL = 'myapp.User'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

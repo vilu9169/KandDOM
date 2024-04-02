@@ -2,49 +2,51 @@ import { createContext, useState } from 'react'
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import Cookies from 'js-cookie';
+import axios from 'axios';
 const AuthContext = createContext()
 
 
 const AuthContextProvider = ({children}) => {
 
-    let [user, setUser] = useState(() => (localStorage.getItem('authTokens') ? jwtDecode(localStorage.getItem('authTokens')) : null))
-    let [authTokens, setAuthTokens] = useState(() => (localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null))
+    let [user, setUser] = useState(() => (Cookies.get('access_token') ? jwtDecode(Cookies.get('access_token')) : null))
+    let [authTokens, setAuthTokens] = useState(() => (Cookies.get('access_tokens') ? JSON.parse(Cookies.get('access_token')) : null))
     let [loading, setLoading] = useState(true)
 
     const navigate = useNavigate()
 
     let loginUser = async (e) => {
-        e.preventDefault()
-        console.log('username:', e.target.email.value)
-        const response = await fetch('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/token/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({email: e.target.email.value, password: e.target.password.value })
-        });
-        let data = await response.json();
+            e.preventDefault()
+            console.log('username:', e.target.email.value)
+            const body = {
+                    email: e.target.email.value,
+                    password: e.target.password.value
+            }
+            try {
+                    const {data} = await axios.post("http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/token/", body) // Updated URL to include the full address with the 'http://' protocol
+                    console.log("data: ", data)
+                    // Storing Access in cookie
+                    Cookies.set('access_token', data.access);
+                    Cookies.set('refresh_token', data.refresh);
+                    setUser(jwtDecode(data.access))
+                    navigate("/");
+                } catch (error) {
+                    console.error("error in token fetch: ", error.message)
+                }
 
-        if(data){
-            localStorage.setItem('authTokens', JSON.stringify(data));
-            setAuthTokens(data)
-            setUser(jwtDecode(data.access))
-            navigate('/')
-        } else {
-            alert('Something went wrong while logging in the user!')
-        }
     }
 
     let logoutUser = (e) => {
         e.preventDefault()
-        localStorage.removeItem('authTokens')
+        Cookies.remove('access_token');
+        Cookies.remove('refresh_token');
         setAuthTokens(null)
         setUser(null)
         navigate('/login')
     }
 
     const updateToken = async () => {
-        const response = await fetch('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/token/refresh/', {
+        const response = await fetch('1http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/token/refresh/', {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'
@@ -56,7 +58,7 @@ const AuthContextProvider = ({children}) => {
         if (response.status === 200) {
             setAuthTokens(data)
             setUser(jwtDecode(data.access))
-            localStorage.setItem('authTokens',JSON.stringify(data))
+            Cookies.set('access_token',JSON.stringify(data))
         } else {
             logoutUser()
         }
@@ -83,6 +85,10 @@ const AuthContextProvider = ({children}) => {
         return () => clearInterval(interval)
 
     },[authTokens])
+    useEffect(() => {
+        const access_token = Cookies.get('access_token');
+        setUser(access_token ? jwtDecode(access_token) : null);
+      }, [user]);
 
     return(
         <AuthContext.Provider value={contextData}>
