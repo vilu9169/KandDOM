@@ -8,13 +8,14 @@ import Chatbot from './components/Chatbot';
 import {MessageContextProvider} from './components/MessageContextProvider';
 import {ResponseContextProvider} from './components/ResponseContextProvider';
 import ContextProvider from './components/ContextProvider';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
       <Router>
        <ContextProvider>
       <Routes>
-        <Route index element={<Start/>} />
+        <Route path='/' element={<PrivateRoute><Start/></PrivateRoute>} />
         <Route path='/login' element={<LogIn />} />
       </Routes>
       </ContextProvider>
