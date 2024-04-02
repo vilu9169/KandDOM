@@ -9,7 +9,6 @@ import 'react-perfect-scrollbar/dist/css/styles.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <link rel="manifest" href="manifest.json" />
     <App />
   </React.StrictMode>
 );
