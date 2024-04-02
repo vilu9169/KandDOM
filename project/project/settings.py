@@ -186,7 +186,7 @@ AWS_ACCESS_KEY_ID = 'AKIAZQ3DRDEF3DEFYUPC'
 AWS_SECRET_ACCESS_KEY = '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'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'myapp/frontend/build/static')
+    os.path.join(os.path.join(BASE_DIR, 'frontend'), 'build', 'static'),
 ]
 
 from datetime import timedelta
