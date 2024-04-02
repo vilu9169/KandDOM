@@ -23,7 +23,7 @@ function LogInLogic() {
         />
         <Form.Text className="ms-3">Glömt lösenord?</Form.Text>
       </FormGroup>
-      <Button type="submit" className="bg-4 border-0 mt-3" href="/">
+      <Button type="submit" className="bg-4 border-0 mt-3">
         Login
       </Button>
     </Form>
