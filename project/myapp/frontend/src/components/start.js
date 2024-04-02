@@ -10,15 +10,19 @@ import { IoMdHelp } from "react-icons/io";
 
 import SideMenuBottom from "./SideMenuBottom";
 import SettingsMenu from "./SettingsMenu";
+import { showInfoWindowContext } from "./ShowInfoWindowContextProvider.js";
 import { useContext, useState, createContext } from "react";
 import { AppContext } from "./ShowSettingsHandler";
 import SideMenuTop from "./SideMenuTop";
 import SideMenuFiles from "./SideMenuFiles.js";
 import Chatbot from "./Chatbot.js";
+import InfoWindow from "./InfoWindow.js";
+
 
 function Start() {
 
   const { buttonClicked } = useContext(AppContext);
+  const { showInfoWindow , handleShowInfo } = useContext(showInfoWindowContext);
 
   return (
     <Container fluid className="position-absolute h-100 text-center bg-3">
@@ -40,8 +44,8 @@ function Start() {
                 <h2 className="p-0 m-0">Pythia</h2>
                 {/* Add company icon */}
               </Col>
-              <Col className="col-6 h-100 d-flex align-items-end justify-content-end">
-                <Button className="bg-3 rect-button align-items-center d-flex justify-content-center p-0">
+              <Col className=" col-6 h-100 d-flex align-items-end justify-content-end">
+                <Button onClick={handleShowInfo} className="bg-3 rect-button align-items-center d-flex justify-content-center p-0">
                   <IoMdHelp className="size-20" />
                 </Button>
               </Col>
@@ -58,6 +62,7 @@ function Start() {
         </Col>
       </Row>
       {buttonClicked && <SettingsMenu />}
+      {showInfoWindow && <InfoWindow />}
     </Container>
   );
 }

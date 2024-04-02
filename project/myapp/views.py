@@ -226,3 +226,5 @@ def start_chat(input, previous_messages) -> str:
 #     prevmessages.append(message)
 #     prevmessages.append(res)
 #     print(res)
+
+
