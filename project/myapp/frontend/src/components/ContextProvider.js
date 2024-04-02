@@ -2,11 +2,12 @@ import { MessageContextProvider } from "./MessageContextProvider";
 import { ResponseContextProvider } from "./ResponseContextProvider";
 import { AppProvider } from "./ShowSettingsHandler";
 import { DarkModeContextProvider } from "./DarkModeContextProvider";
-
+import { ShowInfoWindowContextProvider } from "./ShowInfoWindowContextProvider";
 
 function ContextProvider({ children }) {
 
   return (
+    <ShowInfoWindowContextProvider>
     <DarkModeContextProvider>
     <ResponseContextProvider>
     <MessageContextProvider>
@@ -16,6 +17,7 @@ function ContextProvider({ children }) {
     </MessageContextProvider>
     </ResponseContextProvider>
     </DarkModeContextProvider>
+    </ShowInfoWindowContextProvider>
   );
 }
 

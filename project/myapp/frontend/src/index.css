@@ -413,3 +413,28 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
 }
 
 
+/* InfoWindow CSS */
+
+.info-container {  
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.336);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute !important;
+}
+
+.info-window {
+  position: absolute;
+  height: 70%;
+  width: 50% !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-1);
+  border-radius: 10px;
+  text-align: left;
+}
+
+/* -------------- */
