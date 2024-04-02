@@ -29,7 +29,7 @@ function LogInLogic({ onSignUpClick }) {
       <Row className="h-25 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
         <Button
           className="m-auto bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
-          href="/"
+          type="submit"
         >
           <span className="text-center justify-content-center d-flex align-items-center w-75">
             Log in
