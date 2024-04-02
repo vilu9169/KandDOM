@@ -15,6 +15,7 @@ import LogIn from "./LogIn";
 
 import Collapse from "react-bootstrap/Collapse";
 import Fade from "react-bootstrap/Fade";
+
 function SideMenuBottom() {
   const [isVisible, setIsVisible] = useState(false);
   const { handleButtonClick } = useContext(AppContext);
@@ -58,13 +59,13 @@ function SideMenuBottom() {
       <Container className="p-0 m-0 position-absolute bottom-0 start-50 translate-middle-x mb-3">
         {isVisible && <Fade in={isVisible}>
           <Container
-            className="p-0 w-90 bg-1 user-pop-up-container"
+            className="p-0 mb-2  w-90 bg-1 user-pop-up-container"
             ref={innerContainerRef}
           >
             <Row className="p-0 m-0 h-50 w-100 ">
               <Button
                 onClick={handleButtonClick}
-                className="m-auto bg-1 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
+                className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
               >
                 <span className="text-center justify-content-center d-flex align-items-center w-75">
                   Settings
@@ -78,7 +79,7 @@ function SideMenuBottom() {
               {" "}
               <Button
                 onClick={handleLogout}
-                className="m-auto bg-1 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
+                className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
               >
                 <span className="text-center justify-content-center d-flex align-items-center w-75">
                   Log Out
