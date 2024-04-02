@@ -7,14 +7,23 @@
   --text-color-main: #000000;
 }
 
-.dark-mode { 
+.dark-mode {
   --color-1: #121212;
   --color-2: #282828;
   --color-3: #eadbc8;
   --text-color-main: #ffffff;
 }
 
-body, h1, h2, h3, h4, h5, h6, p, a, button {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button {
   color: var(--text-color-main) !important;
 }
 
@@ -37,8 +46,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
 .h-15 {
   height: 15%;
 }
-
-
 
 /* Form CSS */
 
@@ -81,7 +88,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
   width: 44px;
 }
 .rect-button {
-
   background-color: var(--color-3) !important;
   border: 2px solid var(--color-3) !important;
   height: 44px;
@@ -113,17 +119,17 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
 }
 .wide-button:hover {
   cursor: pointer;
-    background-color: var(--color-3) !important;
-    border: 2px solid var(--color-3) !important;
-    height: 44px;
-    width: 44px;
-  }
-  .rect-button:hover {
+  background-color: var(--color-3) !important;
+  border: 2px solid var(--color-3) !important;
+  height: 44px;
+  width: 44px;
+}
+.rect-button:hover {
   box-shadow: 10px 10px var(--color-4);
   transition: box-shadow 0.3s ease;
-  } 
+}
 .wide-button {
- font-weight: bold ;
+  font-weight: bold;
   color: var(--text-color-main) !important;
   background-color: var(--color-3) !important;
   border: 2px solid var(--color-3) !important;
@@ -132,7 +138,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
   height: 44px;
 }
 .wide-button:hover {
-
   height: 44px;
   box-shadow: 10px 10px var(--color-4);
   transition: box-shadow 0.3s ease;
@@ -163,7 +168,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
 }
 .size-20 {
   color: var(--text-color-main) !important;
-    z-index:999;
+  z-index: 999;
 }
 .size-20 {
   color: var(--color-1) !important;
@@ -202,7 +207,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
 }
 
 .icon-margin {
-
   margin-right: 15px; /* Adjust margin as needed */
 }
 
@@ -210,8 +214,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
 
 /* SideMenuBottom CSS */
 
-
-.person-button{
+.person-button {
   width: 80%;
   height: 60px;
   border-radius: 10px !important;
@@ -219,7 +222,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
   bottom: 13px;
 }
 
-.logout-button{
+.logout-button {
   width: 80% !important;
   height: 60px;
   background-color: var(--color-3) !important;
@@ -228,7 +231,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
   border-top: thin solid black !important;
 }
 
-.settings-button{
+.settings-button {
   z-index: 999;
   margin: auto;
   width: 80% !important;
@@ -238,42 +241,36 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
   border-bottom: thin solid black !important;
 }
 
-
-.user-pop-up-container{
+.user-pop-up-container {
   height: 120px;
   border-radius: 5px;
-  
 }
 .settings-icon {
   margin-right: 10px;
   margin-bottom: 2px;
 }
 
-.logout-icon{
+.logout-icon {
   transform: scaleX(-1);
   margin-right: 10px;
   margin-bottom: 2px;
 }
 
-.button-group-user{
+.button-group-user {
   margin-bottom: 10px;
   border-radius: 5px;
 }
 
-
 .user-icon {
   margin-right: 10px;
-  margin-bottom: 4px; 
+  margin-bottom: 4px;
 }
-
-
 
 /* --------------------- */
 
 /* SettingsWindow CSS */
 
-
-.settings-container {  
+.settings-container {
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.336);
   width: 100%;
@@ -317,8 +314,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
 
 /* LogIn CSS */
 
-
-
 .login-container {
   position: absolute;
   width: 100%; /* 100% width */
@@ -326,18 +321,12 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
   /* Add any additional styling for the container */
 }
 
-
-.image-column{
-  width: 100%;
-  height: 100%;
+.image-column {
   background-color: var(--color-4);
 }
 
-
-.login-column{
-  width: 100%;
-  height: 100%;
-  background-color: var(--color-3);
+.login-column {
+  flex: 0 0 500px !important;
 }
 
 .video-header {
@@ -348,12 +337,11 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-
-.login-group {
+.click-text{
+  color: var(--color-3);
+  text-decoration: underline;
+  cursor: pointer;
 }
-
-
 .login-form {
   background-color: var(--color-3) !important;
   border-bottom: thin solid black !important;
@@ -361,8 +349,8 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
 }
 .login-form:active,
 .login-form:focus,
-.login-form:active , .login-form:focus {
-
+.login-form:active,
+.login-form:focus {
   background-color: var(--color-2) !important;
 }
 
@@ -372,7 +360,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
 
 .file-window {
   position: absolute;
-  top:10%;
+  top: 10%;
 }
 
 /* Chatbot.css */
@@ -393,7 +381,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
   border-radius: 4px;
   font-size: 16px;
   line-height: 1.5;
-
 }
 .user-message {
   background-color: var(--color-1);
@@ -404,7 +391,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
   text-align: left;
 }
 
-.user-text{
+.user-text {
   font-size: 12px;
 }
 
@@ -412,10 +399,9 @@ body, h1, h2, h3, h4, h5, h6, p, a, button {
   margin-left: 10px;
 }
 
-
 /* InfoWindow CSS */
 
-.info-container {  
+.info-container {
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.336);
   width: 100%;
