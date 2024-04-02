@@ -15,6 +15,7 @@ const AuthContextProvider = ({children}) => {
 
     let loginUser = async (e) => {
         e.preventDefault()
+        console.log('username:', e.target.email.value)
         const response = await fetch('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/token/', {
             method: 'POST',
             headers: {
@@ -22,7 +23,6 @@ const AuthContextProvider = ({children}) => {
             },
             body: JSON.stringify({email: e.target.email.value, password: e.target.password.value })
         });
-        console.log('username:', e.target.email.value)
         let data = await response.json();
 
         if(data){
