@@ -15,7 +15,7 @@ const AuthContextProvider = ({children}) => {
 
     let loginUser = async (e) => {
         e.preventDefault()
-        const response = await fetch('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/token', {
+        const response = await fetch('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/token/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ const AuthContextProvider = ({children}) => {
     }
 
     const updateToken = async () => {
-        const response = await fetch('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/token/refresh', {
+        const response = await fetch('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/token/refresh/', {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'
