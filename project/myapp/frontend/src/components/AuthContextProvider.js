@@ -20,9 +20,9 @@ const AuthContextProvider = ({children}) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({username: e.target.username.value, password: e.target.password.value })
+            body: JSON.stringify({email: e.target.email.value, password: e.target.password.value })
         });
-        console.log('username:', e.target.username.value)
+        console.log('username:', e.target.email.value)
         let data = await response.json();
 
         if(data){
