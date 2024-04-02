@@ -16,22 +16,17 @@ import LogIn from "./LogIn";
 import Collapse from "react-bootstrap/Collapse";
 import Fade from "react-bootstrap/Fade";
 
+import { AuthContext } from "./AuthContextProvider";
+
 function SideMenuBottom() {
   const [isVisible, setIsVisible] = useState(false);
   const { handleButtonClick } = useContext(AppContext);
   const innerContainerRef = useRef(null);
   const personRef = useRef(null);
   const navigate = useNavigate();
-
+  const { logoutUser } = useContext(AuthContext);
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
-  };
-
-  const handleLogout = () => {
-    // Perform logout actions here
-    // For example, clear local storage, reset user state, etc.
-    // Then navigate to the login page
-    navigate("/login");
   };
 
   useEffect(() => {
@@ -78,7 +73,7 @@ function SideMenuBottom() {
             <Row className="p-0 m-0 h-50 w-100">
               {" "}
               <Button
-                onClick={handleLogout}
+                onClick={logoutUser}
                 className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
               >
                 <span className="text-center justify-content-center d-flex align-items-center w-75">

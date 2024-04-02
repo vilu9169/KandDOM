@@ -228,55 +228,48 @@ def start_chat(input, previous_messages) -> str:
 #     print(res)
 
 
-from rest_framework.generics import ListCreateAPIView
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.permissions import AllowAny
-from .models import CustomUser
-from .serializers import UserModelSerializer
+from django.shortcuts import render
+from rest_framework.views import APIView
+from .serializers import UserSerializer
+from rest_framework.response import Response
+from rest_framework.exceptions import AuthenticationFailed
+from .models import User
+from rest_framework_simplejwt.tokens import AccessToken, RefreshToken, TokenError
+from rest_framework import status
 
-class UserProfileListCreateView(ListCreateAPIView):
-    """Generic View for Listing and Creating User Profiles"""
-
-    queryset = CustomUser.objects.all()
-    serializer_class = UserModelSerializer
-    permission_classes = [AllowAny]
-
-    def create(self, validated_data):
-        user = CustomUser.objects.create_user(**validated_data)
-        return user
-
-from django.contrib.auth import authenticate
-from rest_framework import exceptions
-from rest_framework.generics import ListCreateAPIView
-from rest_framework_simplejwt.views import TokenObtainPairView
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-
-
-class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
-    username_field = 'email'
-
-    def validate(self, attrs):
-        credentials = {
-            'email': attrs.get('email'),
-            'password': attrs.get('password')
-        }
-
-        user = authenticate(**credentials)
-
-        if user:
-            if not user.is_active:
-                raise exceptions.AuthenticationFailed('User is deactivated')
-
-            data = {}
-            refresh = self.get_token(user)
-
-            data['refresh'] = str(refresh)
-            data['access'] = str(refresh.access_token)
-
-            return data
-        else:
-            raise exceptions.AuthenticationFailed('No active account found with the given credentials')
-
-
-class CustomTokenObtainPairView(TokenObtainPairView):
-    serializer_class = CustomTokenObtainPairSerializer
+class RegisterView(APIView):
+    def post(self, request):
+        serializer = UserSerializer(data = request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+class Loginview(APIView):
+    def post(self, request):
+        email = request.data["email"]
+        password = request.data["password"]
+        
+        try:
+            user = User.objects.get(email = email)
+        except User.DoesNotExist:
+            raise AuthenticationFailed("Account does  not exist")
+        if user is None:
+            raise AuthenticationFailed("User does not exist")
+        if not user.check_password(password):
+            raise AuthenticationFailed("Incorrect Password")
+        access_token = AccessToken.for_user(user)
+        refresh_token =RefreshToken.for_user(user)
+        return Response({
+            "access_token" : access_token,
+            "refresh_token" : refresh_token
+        })
+    
+class LogoutView(APIView):
+    def post(self, request):
+        try:
+            refresh_token = request.data['refresh_token']
+            if refresh_token:
+                token = RefreshToken(refresh_token)
+                token.blacklist()
+            return Response("Logout Successful", status=status.HTTP_200_OK)
+        except TokenError:
+            raise AuthenticationFailed("Invalid Token")
