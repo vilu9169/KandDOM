@@ -40,7 +40,8 @@ const AuthContextProvider = ({children}) => {
         e.preventDefault()
         const body = {
             email: e.target.email.value,
-            password: e.target.password.value
+            password: e.target.password.value,
+            name: e.target.name.value
         }
 
         try {
