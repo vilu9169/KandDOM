@@ -191,6 +191,7 @@ button {
   background-color: var(--color-2);
 }
 .uploadfile-container {
+  z-index: 999;
   width: 80% !important;
   border-radius: 5px;
 }
