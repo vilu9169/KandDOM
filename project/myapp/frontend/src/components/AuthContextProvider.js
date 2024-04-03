@@ -36,6 +36,23 @@ const AuthContextProvider = ({children}) => {
 
     }
 
+    let signupUser = async (e) => {
+        e.preventDefault()
+        const body = {
+            email: e.target.email.value,
+            password: e.target.password.value
+        }
+
+        try {
+            const response = await axios.post('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/signup/', body)
+            console.log(response)
+            loginUser(e)
+        } catch (error) {
+            console.error('Error in signup:', error.message)
+        }
+    }
+
+
     let logoutUser = (e) => {
         e.preventDefault()
         Cookies.remove('access_token');
@@ -73,6 +90,7 @@ const AuthContextProvider = ({children}) => {
         authTokens:authTokens,
         loginUser:loginUser,
         logoutUser:logoutUser,
+        signupUser:signupUser,
     }
 
     useEffect(()=>{
