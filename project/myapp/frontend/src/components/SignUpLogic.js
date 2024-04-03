@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { Button, Col, Container, FormGroup, Row, Form } from "react-bootstrap";
 import { IoIosLogIn } from "react-icons/io";
+import { AuthContext } from "./AuthContextProvider";
 
 function SignUpLogic({ onLoginClick }) {
+  const { signupUser } = useContext(AuthContext)
   return (
-    <Form className="m-auto h-100">
+    <Form onSubmit={signupUser} className="m-auto h-100">
       <Row className="h-25 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
         <h2 className="p-0 m-0">Create an account</h2>
       </Row>
@@ -33,7 +36,7 @@ function SignUpLogic({ onLoginClick }) {
         </Button>
         <Form.Text className="w-90">
           Already have an account?{" "}
-          <span onClick={onLoginClick} className="click-text">
+          <span className="click-text">
             Login
           </span>
         </Form.Text>
