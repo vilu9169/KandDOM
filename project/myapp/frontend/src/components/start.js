@@ -24,7 +24,7 @@ function Start() {
   const { user } = useContext(AuthContext);
   return (
     <>
-      {user && (
+       
         <Container fluid className="position-absolute h-100 text-center bg-3">
           <Row className="h-100">
             <Col color="" className="col-2 sidemenu d-flex flex-column">
@@ -63,7 +63,7 @@ function Start() {
             </Col>
           </Row>
         </Container>
-      )}
+      )
       {buttonClicked && <SettingsMenu />}
       {showInfoWindow && <InfoWindow />}
     </>

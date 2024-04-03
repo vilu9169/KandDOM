@@ -15,7 +15,7 @@ function App() {
       <Router>
        <ContextProvider>
       <Routes>
-        <Route path='/' element={<PrivateRoute><Start/></PrivateRoute>} />
+        <Route path='/' element={<Start/>} />
         <Route path='/login' element={<LogIn />} />
       </Routes>
       </ContextProvider>
