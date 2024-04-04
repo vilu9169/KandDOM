@@ -12,7 +12,7 @@ const AuthContextProvider = ({children}) => {
     let [authTokens, setAuthTokens] = useState(() => (Cookies.get('access_tokens') ? JSON.parse(Cookies.get('access_token')) : null))
     let [loading, setLoading] = useState(true)
     let [loginError, setLoginError] = useState(null)
-    let [singupError, setSignupError] = useState(null)
+    let [signupError, setSignupError] = useState(null)
     const navigate = useNavigate()
 
     let loginUser = async (e) => {
@@ -95,7 +95,7 @@ const AuthContextProvider = ({children}) => {
         user:user,
         authTokens:authTokens,
         loginError:loginError,
-        singupError:singupError,
+        signupError:signupError,
         loginUser:loginUser,
         logoutUser:logoutUser,
         signupUser:signupUser,
