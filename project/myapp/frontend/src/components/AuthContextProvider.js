@@ -32,8 +32,8 @@ const AuthContextProvider = ({children}) => {
                     navigate("/");
                     setError(null)
                 } catch (error) {
-                    setError(data.detail)
-                    console.log(data.detail)
+                    setError(error.response.data.detail)
+                    console.log(error.response.data.detail)
                     console.error("error in token fetch: ", error.message)
                 }
 
