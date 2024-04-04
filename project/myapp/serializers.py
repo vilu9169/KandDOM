@@ -11,7 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
         try :
             email = validated_data.get("email")
             user = User.objects.get(email=email)
-            if user.exists():
+            if user is None:
                 return serializers.ValidationError("User already exists")
         except User.DoesNotExist:
             password = validated_data.pop("password")
