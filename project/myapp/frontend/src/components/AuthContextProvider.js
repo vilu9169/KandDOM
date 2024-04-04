@@ -1,14 +1,13 @@
-import { createContext, useState } from 'react'
+import { createContext, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
-import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 const AuthContext = createContext()
 
 
 const AuthContextProvider = ({children}) => {
-
     let [user, setUser] = useState(() => (Cookies.get('access_token') ? jwtDecode(Cookies.get('access_token')) : null))
     let [authTokens, setAuthTokens] = useState(() => (Cookies.get('access_tokens') ? JSON.parse(Cookies.get('access_token')) : null))
     let [loading, setLoading] = useState(true)
