@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         password = validated_data.pop("password")
         instance = self.Meta.model(**validated_data)
-        if User.objects.exists(email=instance.email):
+        if User.objects.get(email=instance.email) is not None:
             raise serializers.ValidationError("Email already exists")
         if password is not None:
             instance.set_password(password)
