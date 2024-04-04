@@ -12,7 +12,7 @@ const AuthContextProvider = ({children}) => {
     let [user, setUser] = useState(() => (Cookies.get('access_token') ? jwtDecode(Cookies.get('access_token')) : null))
     let [authTokens, setAuthTokens] = useState(() => (Cookies.get('access_tokens') ? JSON.parse(Cookies.get('access_token')) : null))
     let [loading, setLoading] = useState(true)
-
+    let [error, setError] = useState(null)
     const navigate = useNavigate()
 
     let loginUser = async (e) => {
@@ -30,7 +30,10 @@ const AuthContextProvider = ({children}) => {
                     Cookies.set('refresh_token', data.refresh);
                     setUser(jwtDecode(data.access))
                     navigate("/");
+                    setError(null)
                 } catch (error) {
+                    setError(data.detail)
+                    console.log(data.detail)
                     console.error("error in token fetch: ", error.message)
                 }
 
