@@ -9,7 +9,7 @@ function SignUpLogic({ onLoginClick }) {
     <Form onSubmit={signupUser} className="m-auto h-100">
       <Row className="h-15 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
         <h2 className="p-0 m-0">Create an account</h2>
-        <p className="">{error}</p>
+        <p className=" p-0 m-0 text-danger">{error}</p>
       </Row>
       <Row className="h-15 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
         <Form.Control

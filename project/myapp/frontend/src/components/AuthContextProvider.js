@@ -93,6 +93,7 @@ const AuthContextProvider = ({children}) => {
     let contextData = {
         user:user,
         authTokens:authTokens,
+        error:error,
         loginUser:loginUser,
         logoutUser:logoutUser,
         signupUser:signupUser,
