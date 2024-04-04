@@ -46,7 +46,34 @@ button {
 .h-15 {
   height: 15%;
 }
+.h-60 {
+  height: 60%;
+}
+.h-80px {
+  position: relative;
+  height: 80px;
+}
+.h-60px {
+  height: 60px;
 
+  position: relative;
+  z-index: 999;
+}
+.h-90 {
+  height: 90%;
+}
+.h-10 {
+  height: 10%;
+}
+.h-20 {
+  height: 20%;
+}
+.h-80 {
+  height: 80%;
+}
+.h-70 {
+  height: 70%;
+}
 /* Form CSS */
 
 .flex-container {
@@ -156,16 +183,6 @@ button {
   height: 100%;
 }
 
-.h-80px {
-  position: relative;
-  height: 80px;
-}
-.h-60px {
-  height: 60px;
-
-  position: relative;
-  z-index: 999;
-}
 .size-20 {
   color: var(--text-color-main) !important;
   z-index: 999;
@@ -200,16 +217,6 @@ button {
   width: 90% !important;
 }
 
-.h-90 {
-  height: 90%;
-}
-.h-10 {
-  height: 10%;
-}
-.h-20 {
-  height: 20%;
-}
-
 .icon-margin {
   margin-right: 15px; /* Adjust margin as needed */
 }
@@ -221,7 +228,7 @@ button {
 .person-button {
   width: 80%;
   height: 60px;
-  border-radius: 10px !important;
+  border-radius: 5px !important;
   margin-top: 10px;
   bottom: 13px;
 }
@@ -292,7 +299,7 @@ button {
   transform: translate(-50%, -50%);
 
   background-color: var(--color-1);
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 /* --------------------- */
@@ -341,7 +348,7 @@ button {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.click-text{
+.click-text {
   color: var(--color-3);
   text-decoration: underline;
   cursor: pointer;
@@ -417,14 +424,23 @@ button {
 
 .info-window {
   position: absolute;
-  height: 70%;
-  width: 50% !important;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: var(--color-1);
-  border-radius: 10px;
+  border-radius: 5px;
   text-align: left;
 }
 
 /* -------------- */
+
+.circle{
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+}
+
+.big-roman{
+  font-size: 400%;
+  font-family: 'Times New Roman', Times, serif;
+}
