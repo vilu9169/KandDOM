@@ -8,10 +8,12 @@ import { MessageContext } from "./MessageContextProvider";
 import { ResponseContext } from "./ResponseContextProvider";
 import axios from "axios";
 import { useRef } from "react";
+import { UploadWindowContext } from "./UploadWindowContextProvider";
 
 function MyForm() {
   const {message, setMessage} = useContext(MessageContext);
   const {messages, setMessages} = useContext(ResponseContext);
+  const {showUploadWindow } = useContext(UploadWindowContext);
   const chatWithGPT3 = async () => {
     const apiEndpoint = 'http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/chat/';
     const headers = {
@@ -63,8 +65,9 @@ function handleKeyUp(event) {
 }
   return (
     <Form ref={form} onKeyUp={handleKeyUp} className="w-100 h-100 d-flex justify-content-center">
-      <InputGroup className="w-75 input-group-container">
+      <InputGroup  className="w-75 input-group-container">
         <Form.Control
+          disabled={showUploadWindow}
           as="textarea"
           name="q"
           placeholder="Message Pythia..."

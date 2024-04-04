@@ -5,9 +5,6 @@ import Button from "react-bootstrap/Button";
 import MyForm from "./Form";
 import UploadFileWindow from "./UploadFileWindow"
 import { IoMdHelp } from "react-icons/io";
-
-
-
 import SideMenuBottom from "./SideMenuBottom";
 import SettingsMenu from "./SettingsMenu";
 import { showInfoWindowContext } from "./ShowInfoWindowContextProvider.js";
@@ -17,14 +14,16 @@ import SideMenuTop from "./SideMenuTop";
 import Chatbot from "./Chatbot.js";
 import InfoWindow from "./InfoWindow.js";
 import { AuthContext } from "./AuthContextProvider";
+import { UploadWindowContext } from "./UploadWindowContextProvider";
 
 function Start() {
   const { buttonClicked } = useContext(AppContext);
   const { showInfoWindow, handleShowInfo } = useContext(showInfoWindowContext);
   const { user } = useContext(AuthContext);
+  const { showUploadWindow } = useContext(UploadWindowContext);
   return (
     <>
-      {user && (
+       
         <Container fluid className="position-absolute h-100 text-center bg-3">
           <Row className="h-100">
             <Col color="" className="col-2 sidemenu d-flex flex-column">
@@ -54,7 +53,7 @@ function Start() {
                 </Row>
               </Row>
               <Row className=" flex-grow-1 bg-1 position-relative">
-                {false && <UploadFileWindow></UploadFileWindow>}
+                {showUploadWindow && <UploadFileWindow/>}
                 <Chatbot></Chatbot>
               </Row>
               <Row className="h-80px bg-1 align-items-top">
@@ -63,7 +62,6 @@ function Start() {
             </Col>
           </Row>
         </Container>
-      )}
       {buttonClicked && <SettingsMenu />}
       {showInfoWindow && <InfoWindow />}
     </>

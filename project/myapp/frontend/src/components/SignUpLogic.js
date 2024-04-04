@@ -1,13 +1,17 @@
+import { useContext } from "react";
 import { Button, Col, Container, FormGroup, Row, Form } from "react-bootstrap";
 import { IoIosLogIn } from "react-icons/io";
-
+import { AuthContext } from "./AuthContextProvider";
 function SignUpLogic({ onLoginClick }) {
+  const { signupUser } = useContext(AuthContext)
+  const { signupError } = useContext(AuthContext)
   return (
-    <Form className="m-auto h-100">
-      <Row className="h-25 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
+    <Form onSubmit={signupUser} className="m-auto h-100">
+      <Row className="h-15 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
         <h2 className="p-0 m-0">Create an account</h2>
+        <p className=" p-0 m-0 text-danger">{signupError}</p>
       </Row>
-      <Row className="h-25 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
+      <Row className="h-15 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
         <Form.Control
           className="w-75 input-group-container"
           autoComplete={false}
@@ -17,6 +21,15 @@ function SignUpLogic({ onLoginClick }) {
         />
       </Row>
       <Row className="h-25 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
+        <Form.Control
+          className="w-75 input-group-container"
+          autoComplete={false}
+          type="name"
+          placeholder="Name"
+          name = "name"
+        />
+      </Row>
+      <Row className="h-15 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
         <Form.Control
           className="w-75 input-group-container"
           type="password"
@@ -33,7 +46,7 @@ function SignUpLogic({ onLoginClick }) {
         </Button>
         <Form.Text className="w-90">
           Already have an account?{" "}
-          <span onClick={onLoginClick} className="click-text">
+          <span className="click-text">
             Login
           </span>
         </Form.Text>
