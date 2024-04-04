@@ -53,8 +53,8 @@ const AuthContextProvider = ({children}) => {
             console.log(response)
             loginUser(e)
         } catch (error) {
-            setSignupError(error.response.data)
-            console.error('Error in signup:', error.response.data)
+            setSignupError(error.response.data.detail)
+            console.error('Error in signup:', error.response.data.detail)
         }
     }
 
