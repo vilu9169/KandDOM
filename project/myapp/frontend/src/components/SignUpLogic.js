@@ -4,12 +4,12 @@ import { IoIosLogIn } from "react-icons/io";
 import { AuthContext } from "./AuthContextProvider";
 function SignUpLogic({ onLoginClick }) {
   const { signupUser } = useContext(AuthContext)
-  const { error } = useContext(AuthContext)
+  const { signupError } = useContext(AuthContext)
   return (
     <Form onSubmit={signupUser} className="m-auto h-100">
       <Row className="h-15 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
         <h2 className="p-0 m-0">Create an account</h2>
-        <p className=" p-0 m-0 text-danger">{error}</p>
+        <p className=" p-0 m-0 text-danger">{signupError}</p>
       </Row>
       <Row className="h-15 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
         <Form.Control

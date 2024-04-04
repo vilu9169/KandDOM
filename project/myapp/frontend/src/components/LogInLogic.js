@@ -4,13 +4,13 @@ import { AuthContext } from "./AuthContextProvider";
 import { useContext } from "react";
 
 function LogInLogic({ onSignUpClick }) {
-  let { loginUser } = useContext(AuthContext)
-  let { error } = useContext(AuthContext)
+  const { loginUser } = useContext(AuthContext)
+  const { loginError } = useContext(AuthContext)
   return (
     <Form className="m-auto h-100" onSubmit={ loginUser }>
       <Row className="h-25 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
         <h2 className="p-0 m-0">Welcome Back!</h2>
-        <p className="p-0 m-0 text-danger">asasdasd</p>
+        <p className="p-0 m-0 text-danger">{loginError}</p>
       </Row>
       <Row className="h-25 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
         <Form.Control

@@ -12,7 +12,8 @@ const AuthContextProvider = ({children}) => {
     let [user, setUser] = useState(() => (Cookies.get('access_token') ? jwtDecode(Cookies.get('access_token')) : null))
     let [authTokens, setAuthTokens] = useState(() => (Cookies.get('access_tokens') ? JSON.parse(Cookies.get('access_token')) : null))
     let [loading, setLoading] = useState(true)
-    let [error, setError] = useState(null)
+    let [loginError, setLoginError] = useState(null)
+    let [singupError, setSignupError] = useState(null)
     const navigate = useNavigate()
 
     let loginUser = async (e) => {
@@ -30,9 +31,10 @@ const AuthContextProvider = ({children}) => {
                     Cookies.set('refresh_token', data.refresh);
                     setUser(jwtDecode(data.access))
                     navigate("/");
-                    setError(null)
+                    setLoginError(null)
+                    setSignupError(null)
                 } catch (error) {
-                    setError(error.response.data.detail)
+                    setLoginError(error.response.data.detail)
                     console.log(error.response.data.detail)
                     console.error("error in token fetch: ", error.message)
                 }
@@ -52,7 +54,7 @@ const AuthContextProvider = ({children}) => {
             console.log(response)
             loginUser(e)
         } catch (error) {
-            setError(error.response.data.detail)
+            setSignupError(error.response.data.detail)
             console.error('Error in signup:', error.message)
         }
     }
@@ -93,7 +95,8 @@ const AuthContextProvider = ({children}) => {
     let contextData = {
         user:user,
         authTokens:authTokens,
-        error:error,
+        loginError:loginError,
+        singupError:singupError,
         loginUser:loginUser,
         logoutUser:logoutUser,
         signupUser:signupUser,
