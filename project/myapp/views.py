@@ -248,7 +248,7 @@ class RegisterView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         if user is not None:
-            raise ValidationError("User with this email already exists")
+            raise ValidationError(detail="User with this email already exists")
         
 
 class Loginview(APIView):
