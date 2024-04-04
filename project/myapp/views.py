@@ -239,10 +239,14 @@ from rest_framework import status
 
 class RegisterView(APIView):
     def post(self, request):
-        serializer = UserSerializer(data = request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
+        try:
+            serializer = UserSerializer(data = request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response(serializer.data)
+        except AuthenticationFailed as e:
+            raise AuthenticationFailed("Account already exists")
+
 class Loginview(APIView):
     def post(self, request):
         email = request.data["email"]
