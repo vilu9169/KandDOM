@@ -2,13 +2,14 @@ import { useContext } from "react";
 import { Button, Col, Container, FormGroup, Row, Form } from "react-bootstrap";
 import { IoIosLogIn } from "react-icons/io";
 import { AuthContext } from "./AuthContextProvider";
-
 function SignUpLogic({ onLoginClick }) {
   const { signupUser } = useContext(AuthContext)
+  const { error } = useContext(AuthContext)
   return (
     <Form onSubmit={signupUser} className="m-auto h-100">
       <Row className="h-15 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
         <h2 className="p-0 m-0">Create an account</h2>
+        <p className="">{error}</p>
       </Row>
       <Row className="h-15 bg-1 m-auto w-100 d-flex justify-content-center align-items-center">
         <Form.Control
