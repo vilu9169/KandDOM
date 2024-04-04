@@ -11,7 +11,8 @@ const AuthContextProvider = ({children}) => {
     let [user, setUser] = useState(() => (Cookies.get('access_token') ? jwtDecode(Cookies.get('access_token')) : null))
     let [authTokens, setAuthTokens] = useState(() => (Cookies.get('access_tokens') ? JSON.parse(Cookies.get('access_token')) : null))
     let [loading, setLoading] = useState(true)
-
+    let [loginError, setLoginError] = useState(null)
+    let [singupError, setSignupError] = useState(null)
     const navigate = useNavigate()
 
     let loginUser = async (e) => {
@@ -29,11 +30,34 @@ const AuthContextProvider = ({children}) => {
                     Cookies.set('refresh_token', data.refresh);
                     setUser(jwtDecode(data.access))
                     navigate("/");
+                    setLoginError(null)
+                    setSignupError(null)
                 } catch (error) {
+                    setLoginError(error.response.data.detail)
+                    console.log(error.response.data.detail)
                     console.error("error in token fetch: ", error.message)
                 }
 
     }
+
+    let signupUser = async (e) => {
+        e.preventDefault()
+        const body = {
+            email: e.target.email.value,
+            password: e.target.password.value,
+            name: e.target.name.value
+        }
+
+        try {
+            const response = await axios.post('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/signup/', body)
+            console.log(response)
+            loginUser(e)
+        } catch (error) {
+            setSignupError(error.response.data.detail)
+            console.error('Error in signup:', error.message)
+        }
+    }
+
 
     let logoutUser = (e) => {
         e.preventDefault()
@@ -70,8 +94,11 @@ const AuthContextProvider = ({children}) => {
     let contextData = {
         user:user,
         authTokens:authTokens,
+        loginError:loginError,
+        singupError:singupError,
         loginUser:loginUser,
         logoutUser:logoutUser,
+        signupUser:signupUser,
     }
 
     useEffect(()=>{
