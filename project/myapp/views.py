@@ -241,12 +241,15 @@ from rest_framework import status
 class RegisterView(APIView):
     def post(self, request):
         try:
+            user = User.objects.get(email=request.data["email"])
+        except user.DoesNotExist:
             serializer = UserSerializer(data=request.data)
             serializer.is_valid(raise_exception=True)
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        except ValidationError as e:
-            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        if user is not None:
+            raise ValidationError("User with this email already exists")
+        
 
 class Loginview(APIView):
     def post(self, request):
