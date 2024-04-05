@@ -7,11 +7,31 @@ import { IoIosCopy } from "react-icons/io";
 
 function UploadFileWindow() {
 
-  const handleFileUpload = (event) => {
+  const handleFileUpload = async (event) => {
     const file = event.target.files[0];
+    
+    // Check if the selected file is a PDF
+    if (file.type !== 'application/pdf') {
+        alert('Please select a PDF file.');
+        return;
+    }
 
-    alert(`Uploaded file: ${file.name}`);
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+        const response = await fetch('http://127.0.0.1:8000/upload/', {
+            method: 'POST',
+            body: formData
+        });
+        const data = await response.json();
+        alert(`File uploaded successfully. Document ID: ${data.document_id}`);
+    } catch (error) {
+        console.error('Error uploading file:', error);
+        alert('An error occurred while uploading the file.');
+    }
   };
+
 
   return (
     <Container className="m-auto p-2 h-75 bg-2 uploadfile-container">
