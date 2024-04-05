@@ -35,3 +35,12 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()
+    
+from django.db import models
+from django_mongodb_engine.storage import GridFSStorage
+
+class PDFDocument(models.Model):
+    file = models.FileField(upload_to='pdf_documents/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    file_name = models.CharField(max_length=255)
+    

@@ -4,13 +4,44 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { IoIosDocument } from "react-icons/io";
 import { IoIosCopy } from "react-icons/io";
+import axios from 'axios';
+import React from 'react';
+
 
 function UploadFileWindow() {
 
-  const handleFileUpload = (event) => {
+  
+  const handleFileUpload = async (event) => {
     const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
 
-    alert(`Uploaded file: ${file.name}`);
+    try {
+      // Retrieve CSRF token from cookie
+      const csrftoken = getCookie('csrftoken');
+
+      // Send POST request with CSRF token included in headers
+      const response = await axios.post('http://127.0.0.1:8000/upload/', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'X-CSRFToken': csrftoken
+        }
+      });
+
+      // Display success message with uploaded file name
+      alert(`Uploaded file: ${file.name}`);
+    } catch (error) {
+      // Display error message if upload fails
+      alert('Error uploading file');
+      console.error(error);
+    }
+  };
+
+  // Function to retrieve CSRF token from cookie
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
   };
 
   return (
