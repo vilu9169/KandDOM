@@ -75,8 +75,6 @@ while(True):
         break
 
 
-exit()
-
 
 # Replace with your project ID and endpoint
 endpoint = "https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/chat-bison:predict"
