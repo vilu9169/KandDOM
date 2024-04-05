@@ -37,7 +37,7 @@ class User(AbstractUser):
     objects = UserManager()
     
 from django.db import models
-from django_mongodb_engine.storage import GridFSStorage
+#from django_mongodb_engine.storage import GridFSStorage
 
 class PDFDocument(models.Model):
     file = models.FileField(upload_to='pdf_documents/')

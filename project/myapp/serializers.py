@@ -9,23 +9,14 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'email', 'password']
         
     def create(self, validated_data):
-<<<<<<< Updated upstream
         password = validated_data.pop("password")
         instance = self.Meta.model(**validated_data)
         if password is not None:
             instance.set_password(password)
         instance.save()
         return instance
-=======
-            password = validated_data.pop("password")
-            instance = self.Meta.model(**validated_data)
-            if password is not None:
-                instance.set_password(password)
-            instance.save()
-            return instance
 
 class PDFDocumentSerializer(serializers.ModelSerializer):
     class Meta:
         model = PDFDocument
         fields = '__all__'
->>>>>>> Stashed changes

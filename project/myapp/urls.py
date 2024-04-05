@@ -11,9 +11,6 @@ urlpatterns = [
     path('test/', display_text_file, name='display_text'),
     path('token/', jwt_views.TokenObtainPairView.as_view(), name ="token_obtain_pair"),
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name="token_refresh"),
-<<<<<<< Updated upstream
-=======
     path('signup/', RegisterView.as_view(), name='register'),
     path('upload/', upload_pdf_file, name='upload_pdf_file')
->>>>>>> Stashed changes
 ]
