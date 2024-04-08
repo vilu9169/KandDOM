@@ -4,9 +4,10 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { IoIosDocument } from "react-icons/io";
 import { IoIosCopy } from "react-icons/io";
+import { AuthContext } from "./AuthContextProvider";
 
 function UploadFileWindow() {
-
+  const { userID } = useContext(AuthContext);
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     
@@ -17,7 +18,7 @@ function UploadFileWindow() {
     }
 
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('file', file, 'userID', userID);
 
     try {
         const response = await fetch('http://127.0.0.1:8000/upload/', {
@@ -83,5 +84,6 @@ function UploadFileWindow() {
     </Container>
   );
 }
+import { useContext } from "react";
 
 export default UploadFileWindow;
