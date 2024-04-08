@@ -236,6 +236,8 @@ from rest_framework.exceptions import AuthenticationFailed, ValidationError
 from .models import User
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken, TokenError
 from rest_framework import status
+from .models import Document
+from .serializers import DocumentSerializer
 
 
 class RegisterView(APIView):
@@ -281,3 +283,22 @@ class LogoutView(APIView):
             return Response("Logout Successful", status=status.HTTP_200_OK)
         except TokenError:
             raise AuthenticationFailed("Invalid Token")
+        
+@api_view(['POST'])
+def upload_document(request):
+    file_obj = request.FILES.get('file')
+    if file_obj:
+        # Create a new Document instance
+        document = Document.objects.create(
+            file = file_obj,
+            filename=file_obj.name,
+            content_type=file_obj.content_type,
+            size=file_obj.size,
+            # file_id= ''  # You may need to provide an appropriate file ID here
+        )
+
+        document.save()
+        # You might want to return the ID of the newly created document for future reference
+        return Response({'document_id ': str(document._id)})
+    else:
+        return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
