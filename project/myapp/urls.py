@@ -5,6 +5,7 @@ from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework_simplejwt import views as jwt_views
 from django.views.generic import TemplateView
 
+
 urlpatterns = [
     path('chat/', start_chat, name='chat_view'),
     re_path(r'^$', TemplateView.as_view(template_name='index.html')),
