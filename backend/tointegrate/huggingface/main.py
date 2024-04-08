@@ -1,7 +1,7 @@
 from sentence_transformers import SentenceTransformer
 
 
-model_path = "./sentence-bert-swedish-cased"
+model_path = "./multilingual-e5-large-instruct"
 
 model = SentenceTransformer(model_path)
 #Runt with -d
@@ -18,13 +18,14 @@ import json
 app = Flask(__name__)
 
 
-@app.route('/encode', methods=['POST'])
+@app.route(os.environ['AIP_PREDICT_ROUTE'], methods=['POST'])
 def classify_review():
     #texts = request.args.get('texts')
     #Get texts from the body of the request
     #Convert the texts json array to a python list
     #Input text is a comma separated list of texts as strings, convert to a list of strings
     texts = request.get_json()
+    print("\"texts\": ", texts)
     texts = json.loads(texts)
     print("\"texts\": ", texts)
     #Texts look like texts = ["Jag har en allergi. Kan jag vaccinera mig?"] and are comma separated, convert to a list of strings
@@ -34,11 +35,21 @@ def classify_review():
     #texts = request.get_json()
     if texts is None:
         return jsonify(code=403, message="bad request")
-    res = []
-    for text in texts["texts"]:
+    predictions = []
+    for text in texts["instances"]:
         print("text in texts is : ", text)
-        res.append(model.encode(text).tolist())
-    return res
+        predictions.append(model.encode(text).tolist())
+    return jsonify({"predictions" : predictions})
+
+
+@app.route(os.environ['AIP_HEALTH_ROUTE'], methods=['GET'])
+def health_response():
+    return "Hello world! I am healthy!"
+
+
+
+
+
 
 
 if __name__ == '__main__':
