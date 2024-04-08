@@ -34,7 +34,7 @@ const AuthContextProvider = ({children}) => {
                     Cookies.set('refresh_token', data.refresh);
                     setUser(jwtDecode(data.access).email)
                     setUserID(jwtDecode(data.access).user_id)
-                    print("User ID: ", jwtDecode(data.access).user_id, "User: ", jwtDecode(data.access).email)
+                    console.log("User ID: ", jwtDecode(data.access).user_id, "User: ", jwtDecode(data.access).email)
                     navigate("/");
                     setLoginError(null)
                     setSignupError(null)
