@@ -68,7 +68,7 @@ function InfoWindow() {
               from giving legal advice, passing judgement or making decisions.
             </Col>
           </Row>
-          <Row className="h-25 m-0 bg-3 br-5">
+          <Row className="h-25 m-2 bg-3 br-5">
             <Col className="col-10 h-100 d-flex justify-content-center align-items-center">
               <span className="big-roman m-3">IV.</span>
               Finally use pin(displayed under conversation) aswell as archive(displayed when hovering document in sidebar) to keep track of your convos and keep a exellent workflow.

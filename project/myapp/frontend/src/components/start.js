@@ -26,8 +26,8 @@ function Start() {
        
         <Container fluid className="position-absolute h-100 text-center bg-3">
           <Row className="h-100">
-            <Col color="" className="col-2 sidemenu d-flex flex-column">
-              <Row className="h-60px bg-2 position-relative">
+            <Col color="" className="col main-left d-flex flex-column">
+              <Row className="h-60px bg-2">
                 <SideMenuTop />
               </Row>
               <Row className="flex-grow-1  bg-2">las</Row>
@@ -35,7 +35,7 @@ function Start() {
                 <SideMenuBottom />
               </Row>
             </Col>
-            <Col className="col-10 d-flex flex-column">
+            <Col className="col d-flex flex-column main-right">
               <Row className="h-60px bg-3">
                 <Row className="h-100 bg-1 m-auto">
                   <Col className="col-6 h-100 bg-1 align-items-end d-flex justify-content-start">

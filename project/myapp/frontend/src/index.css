@@ -74,6 +74,11 @@ button {
 .h-70 {
   height: 70%;
 }
+
+.main-left{
+  flex: 0 0 300px !important;
+}
+
 /* Form CSS */
 
 .flex-container {
