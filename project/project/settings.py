@@ -32,9 +32,6 @@ CORS_ORIGIN_WHITELIST = [
     'http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000',  # Add your frontend URL here
     'http://127.0.0.1:8000',
 ]
-CSRF_COOKIE_SECURE = True
-
-CSRF_COOKIE_HTTPONLY = True
 
 
 # Application definition
