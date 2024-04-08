@@ -35,7 +35,7 @@ function LogIn() {
         </Col>
         <Col className="col bg-2 login-column">
           <Row className="h-100 align-items-center d-flex justify-content-center">
-            <Container className="w-75 h-50 bg-1 br-5">
+            <Container className="w-75 h-60 bg-1 br-5">
               {showLogInForm ? (
                 <LogInLogic onSignUpClick={handleSignUpClick}/>
               ) : showSignUpForm ? (

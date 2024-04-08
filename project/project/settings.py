@@ -190,6 +190,7 @@ AWS_SECRET_ACCESS_KEY = 'SLDBCr/Ox+8tAzD0tEnb3GdyqApTN1fv54j2gebA'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'myapp/frontend', 'build', 'static'),
 ]
+
 WEBPACK_LOADER = {
     'MANIFEST_FILE': os.path.join(BASE_DIR, "myapp/frontend/build/manifest.json"),
 }
@@ -228,3 +229,7 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
 }
+
+RECACT_ROUTES = [
+    'login',
+]
