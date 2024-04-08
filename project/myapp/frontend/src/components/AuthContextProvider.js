@@ -15,6 +15,9 @@ const AuthContextProvider = ({children}) => {
     let [signupError, setSignupError] = useState(null)
     const navigate = useNavigate()
 
+    axios.defaults.xsrfCookieName = 'csrftoken'
+    axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN'
+
     let loginUser = async (e) => {
             e.preventDefault()
             console.log('username:', e.target.email.value)
