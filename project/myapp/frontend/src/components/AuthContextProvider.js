@@ -13,6 +13,7 @@ const AuthContextProvider = ({children}) => {
     let [loading, setLoading] = useState(true)
     let [loginError, setLoginError] = useState(null)
     let [signupError, setSignupError] = useState(null)
+    let [userID, setUserID] = useState(null)
     const navigate = useNavigate()
 
     axios.defaults.xsrfCookieName = 'csrftoken'
@@ -31,7 +32,9 @@ const AuthContextProvider = ({children}) => {
                     // Storing Access in cookie
                     Cookies.set('access_token', data.access);
                     Cookies.set('refresh_token', data.refresh);
-                    setUser(jwtDecode(data.access))
+                    setUser(jwtDecode(data.access).email)
+                    setUserID(jwtDecode(data.access).user_id)
+                    print("User ID: ", jwtDecode(data.access).user_id, "User: ", jwtDecode(data.access).email)
                     navigate("/");
                     setLoginError(null)
                     setSignupError(null)

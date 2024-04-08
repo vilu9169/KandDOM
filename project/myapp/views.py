@@ -270,7 +270,8 @@ class Loginview(APIView):
         refresh_token =RefreshToken.for_user(user)
         return Response({
             "access_token" : access_token,
-            "refresh_token" : refresh_token
+            "refresh_token" : refresh_token,
+            'userID': user.id
         })
     
 class LogoutView(APIView):
