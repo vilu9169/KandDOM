@@ -15,6 +15,9 @@ const AuthContextProvider = ({children}) => {
     let [signupError, setSignupError] = useState(null)
     const navigate = useNavigate()
 
+    axios.defaults.xsrfCookieName = 'csrftoken'
+    axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN'
+
     let loginUser = async (e) => {
             e.preventDefault()
             console.log('username:', e.target.email.value)
@@ -23,7 +26,7 @@ const AuthContextProvider = ({children}) => {
                     password: e.target.password.value
             }
             try {
-                    const {data} = await axios.post("http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/token/", body) // Updated URL to include the full address with the 'http://' protocol
+                    const {data} = await axios.post("http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/api/token/", body) // Updated URL to include the full address with the 'http://' protocol
                     console.log("data: ", data)
                     // Storing Access in cookie
                     Cookies.set('access_token', data.access);
@@ -49,7 +52,7 @@ const AuthContextProvider = ({children}) => {
         }
 
         try {
-            const response = await axios.post('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/signup/', body)
+            const response = await axios.post('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/api/signup/', body)
             console.log(response)
             loginUser(e)
         } catch (error) {
@@ -69,7 +72,7 @@ const AuthContextProvider = ({children}) => {
     }
 
     const updateToken = async () => {
-        const response = await fetch('1http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/token/refresh/', {
+        const response = await fetch('1http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/api/token/refresh/', {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'
