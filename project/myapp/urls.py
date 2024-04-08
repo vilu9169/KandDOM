@@ -7,7 +7,8 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('chat/', chat_view, name='chat_view'),
-    re_path('.*/', TemplateView.as_view(template_name='index.html')),
+    re_path(r'^$', TemplateView.as_view(template_name='index.html')),
+    re_path(r'^login$', TemplateView.as_view(template_name='index.html')),
     path('test/', display_text_file, name='display_text'),
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name ="token_obtain_pair"),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name="token_refresh"),
