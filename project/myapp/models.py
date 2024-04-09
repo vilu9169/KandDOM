@@ -1,5 +1,6 @@
 # models.py
 
+from typing import Iterable
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 # Create your models here.
@@ -18,6 +19,9 @@ class Document(djmodels.Model):
         return self.filename
     def _id(self):
         return self._id
+    
+    def save(self, force_insert: bool = ..., force_update: bool = ..., using: str | None = ..., update_fields: Iterable[str] | None = ...) -> None:
+        return super().save(force_insert, force_update, using, update_fields)
 
 class UserManager(BaseUserManager):
     def _create_user(self, email, password=None, **extra_fields):
