@@ -6,6 +6,7 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.contrib.auth.models import BaseUserManager
 from djongo import models as djmodels
 from djongo.models.fields import ArrayReferenceField
+from .models import Document
 
 class UserManager(BaseUserManager):
     def _create_user(self, email, password=None, **extra_fields):
@@ -34,7 +35,7 @@ class User(AbstractUser):
     email = models.CharField(max_length=250, unique=True)
     password = models.CharField(max_length=250)
     username = None
-    documents = ArrayReferenceField(to='Document', on_delete=models.CASCADE)
+    documents = ArrayReferenceField(to=Document, on_delete=models.CASCADE)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()
