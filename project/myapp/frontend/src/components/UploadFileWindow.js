@@ -19,10 +19,11 @@ function UploadFileWindow() {
       alert("Please select a PDF file.");
       return;
     }
-
+    console.log('userID:', userID)
     const formData = new FormData();
     formData.append('file', file);
     formData.append('userID', userID);
+    console.log('formData:', formData)
 
     try {
 
