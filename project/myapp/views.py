@@ -238,6 +238,7 @@ from rest_framework_simplejwt.tokens import AccessToken, RefreshToken, TokenErro
 from rest_framework import status
 from .models import File
 from .serializers import DocumentSerializer
+from .models import User
 
 
 class RegisterView(APIView):
@@ -289,6 +290,11 @@ class LogoutView(APIView):
 def upload_document(request):
     file_obj = request.FILES.get('file')
     print(request.data['userID'])
+    
+    print("All documents in the database:")
+    for document in File.objects.all():
+        print(document)
+    
     if file_obj:
         # Create a new Document instance
         document = File.objects.create(
@@ -303,6 +309,11 @@ def upload_document(request):
         user = User.objects.get(id=request.data['userID'])
         user.documents.append(document._id)  # Add the document ID to the user's documents list
         user.save() 
+        
+        
+        print("All users in the database:")
+        for user in User.objects.all():
+            print(user)
 
         # You might want to return the ID of the newly created document for future reference
         return Response({'document_id ': str(document._id)})
