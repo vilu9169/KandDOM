@@ -234,11 +234,12 @@ from .serializers import UserSerializer
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed, ValidationError
 from .models import User
+from .models import File
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken, TokenError
 from rest_framework import status
 from .models import Document
 from .serializers import DocumentSerializer
-from .models import User
+
 
 
 class RegisterView(APIView):
@@ -311,9 +312,9 @@ def upload_document(request):
         user.save() 
         
         
-        print("All users in the database:")
+        """print("All users in the database:")
         for user in User.objects.all():
-            print(user)
+            print(user)"""
 
         # You might want to return the ID of the newly created document for future reference
         return Response({'document_id ': str(document._id)})
