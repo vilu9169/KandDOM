@@ -21,7 +21,7 @@ function UploadFileWindow() {
     }
     console.log('userID:', userID)
     let formData = new FormData();
-    
+
     formData.append('file', file); // Append the file to FormData
     formData.append('userID', userID);
 
@@ -34,7 +34,7 @@ function UploadFileWindow() {
         const response = await fetch('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/upload/', {
             method: 'POST',
             headers: headers,
-            body: FormData
+            body: formData
         });
         const data = await response.json();
         alert(`File uploaded successfully. Document ID: ${data.document_id}`);
