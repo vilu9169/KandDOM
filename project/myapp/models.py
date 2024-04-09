@@ -22,7 +22,6 @@ class Document(models.Model):
         return self._id
     
 class File(models.Model):
-    file_id = models.BigAutoField(unique=True)
     file=models.FileField(upload_to='pdf/')
     filename = models.CharField(max_length=255)
     content_type = models.CharField(max_length=100)
