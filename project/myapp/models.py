@@ -7,6 +7,17 @@ from django.contrib.auth.models import BaseUserManager
 from djongo import models as djmodels
 from djongo.models.fields import ArrayReferenceField
 
+class Document(djmodels.Model):
+    _id = djmodels.ObjectIdField()  # Assuming ObjectId is 24 characters long
+    file=djmodels.FileField(upload_to='pdf/')
+    filename = djmodels.CharField(max_length=255)
+    content_type = djmodels.CharField(max_length=100)
+    size = djmodels.IntegerField()
+    uploaded_at = djmodels.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.filename
+
 class UserManager(BaseUserManager):
     def _create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -38,14 +49,3 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()
-
-class Document(djmodels.Model):
-    _id = djmodels.ObjectIdField()  # Assuming ObjectId is 24 characters long
-    file=djmodels.FileField(upload_to='pdf/')
-    filename = djmodels.CharField(max_length=255)
-    content_type = djmodels.CharField(max_length=100)
-    size = djmodels.IntegerField()
-    uploaded_at = djmodels.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.filename
