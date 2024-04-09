@@ -20,9 +20,9 @@ function UploadFileWindow() {
       return;
     }
     console.log('userID:', userID)
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('userID', userID);
+    const body = { 
+      file: file,
+      userID: userID };
     console.log('formData:', formData)
 
     try {
