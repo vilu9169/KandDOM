@@ -2,6 +2,16 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useRef, useEffect } from "react";
 import { useContext } from "react";
 import { showInfoWindowContext } from "./ShowInfoWindowContextProvider";
+import timeLineLogo from "../assets/timeline.png";
+import timeLineBorderLogo from "../assets/timeline_border.png";
+import chatLogo from "../assets/chat.png";
+import chatBorderLogo from "../assets/chat_border.png";
+import folderLogo from "../assets/folder.png";
+import pinLogo from "../assets/pin.png";
+import pinArchiveLogo from "../assets/pin_archive.png";
+
+console.log(timeLineLogo);
+
 function InfoWindow() {
   const innerContainerRef = useRef(null);
   const { handleShowInfo } = useContext(showInfoWindowContext);
@@ -34,7 +44,11 @@ function InfoWindow() {
           <Row className="h-25 bg-1 br-5 mb-2">
             <Col className="col-2 h-100 d-flex justify-content-center align-items-center p-0">
               <div className="circle bg-3 d-flex justify-content-center align-items-center">
-                asdasd
+                <img
+                  className="p-0 m-0 w-75 h-75"
+                  src={folderLogo}
+                  alt="folderLogo"
+                />
               </div>
             </Col>
             <Col className="col-10 h-100 bg-1 d-flex justify-content-center align-items-center">
@@ -47,35 +61,51 @@ function InfoWindow() {
           <Row className="h-25 bg-3 m-2 br-5">
             <Col className="col-10 h-100 bg-3 d-flex justify-content-center align-items-center">
               <span className="big-roman m-3">II.</span>
-              You can always add additional dokuments to your chats by clicking the same button.
+              You can always add additional dokuments to your chats by clicking
+              the same button.
             </Col>
             <Col className="col-2 h-100 d-flex justify-content-center align-items-center p-0">
               <div className="circle bg-1 d-flex justify-content-center align-items-center">
-                asdasd
+                <img
+                  className="p-0 m-0 w-100 h-100"
+                  src={chatLogo}
+                  alt="chatLogo"
+                />
               </div>
             </Col>
           </Row>
           <Row className="h-25 m-2 bg-1 br-5">
             <Col className="col-2 h-100 d-flex justify-content-center align-items-center p-0">
               <div className="circle bg-3 d-flex justify-content-center align-items-center">
-                asdasd
+                <img
+                  className="p-0 m-0 w-100 h-100"
+                  src={timeLineLogo}
+                  alt="timeLineLogo"
+                />
               </div>
             </Col>
             <Col className="col-10 h-100 bg-1 d-flex justify-content-center align-items-center">
               <span className="big-roman m-3">III.</span>
-              Now you can start asking question, analyse the timeline or dive deeper into the realations that appear in the pdf. 
-              Remember that Pythia will answer questions about the document but will refrain
+              Now you can start asking question, analyse the timeline or dive
+              deeper into the realations that appear in the pdf. Remember that
+              Pythia will answer questions about the document but will refrain
               from giving legal advice, passing judgement or making decisions.
             </Col>
           </Row>
           <Row className="h-25 m-2 bg-3 br-5">
             <Col className="col-10 h-100 d-flex justify-content-center align-items-center">
               <span className="big-roman m-3">IV.</span>
-              Finally use pin(displayed under conversation) aswell as archive(displayed when hovering document in sidebar) to keep track of your convos and keep a exellent workflow.
+              Finally use pin(displayed under conversation) aswell as
+              archive(displayed when hovering document in sidebar) to keep track
+              of your convos and keep a exellent workflow.
             </Col>
             <Col className="col-2 h-100 d-flex justify-content-center align-items-center p-0">
               <div className="circle bg-1 d-flex justify-content-center align-items-center">
-                asdasd
+                <img
+                  className="p-0 m-0 w-100 h-100"
+                  src={pinArchiveLogo}
+                  alt="pinArchiveLogo"
+                />
               </div>
             </Col>
           </Row>

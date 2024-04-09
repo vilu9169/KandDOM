@@ -88,6 +88,13 @@ button {
 .file-drop-zone.dragging {
   border-color: var(--color-1);
 }
+.main-logo{
+  position: relative;
+  top: 10px;
+  left: 10px;
+  width: 60px !important;
+  height: 60px !important;
+}
 /* Form CSS */
 
 .flex-container {
