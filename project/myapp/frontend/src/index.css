@@ -78,7 +78,16 @@ button {
 .main-left{
   flex: 0 0 300px !important;
 }
+.file-drop-zone {
+  border-radius: 5px;
+  border: 2px dashed var(--color-3);
+  text-align: center;
+  transition: border-color 0.3s;
+}
 
+.file-drop-zone.dragging {
+  border-color: var(--color-1);
+}
 /* Form CSS */
 
 .flex-container {
