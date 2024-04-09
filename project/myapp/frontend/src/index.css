@@ -13,6 +13,28 @@
   --color-3: #eadbc8;
   --text-color-main: #ffffff;
 }
+@font-face{
+  font-family:"helvetica";
+  src:url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("woff"),
+  url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("opentype"),
+  url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("truetype");
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+form,
+div,
+span,
+button {
+  font-family: 'Courier New', monospace;
+  /*font-family: "helvetica";*/ /*  TODO: Byt till denna font när vi e klara, har bara en goofy nu så vi ser all text är samma font */ 
+}
 
 body,
 h1,
@@ -41,6 +63,9 @@ button {
 }
 .c-1 {
   color: var(--color-5);
+}
+.c-2{
+  color: var(--color-1) !important;
 }
 
 .h-15 {
@@ -94,6 +119,18 @@ button {
   left: 10px;
   width: 60px !important;
   height: 60px !important;
+}
+.login-logo{
+  position: relative;
+  left: 20px;
+  width: 100px !important;
+  height: 100px !important;
+}
+.intro-text-big{
+  font-size: 60px;
+  font-weight: bold;
+  /*-webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--color-1);*/ /* TODO: fixa så texten går att se på bakgrunden */
 }
 /* Form CSS */
 
@@ -362,10 +399,8 @@ button {
 }
 
 .video-header {
-  color: var(--color-3);
-
   position: absolute;
-  top: 30%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -463,5 +498,8 @@ button {
 
 .big-roman{
   font-size: 400%;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Times New Roman', Times, serif !important;
+}
+.bold{
+  font-weight: bold;
 }
