@@ -11,6 +11,7 @@ import { useContext } from "react";
 
 function UploadFileWindow() {
   const { userID } = useContext(AuthContext);
+  
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
 
