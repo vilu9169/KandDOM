@@ -19,7 +19,8 @@ function UploadFileWindow() {
     }
 
     const formData = new FormData();
-    formData.append('file', file, 'userID', userID);
+    formData.append('file', file);
+    formData.append('userID', userID);
 
     try {
         const response = await fetch('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/upload/', {
