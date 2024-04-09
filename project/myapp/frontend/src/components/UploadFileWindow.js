@@ -22,7 +22,7 @@ function UploadFileWindow() {
     formData.append('file', file, 'userID', userID);
 
     try {
-        const response = await fetch('http://127.0.0.1:8000/upload/', {
+        const response = await fetch('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/upload/', {
             method: 'POST',
             body: formData
         });
