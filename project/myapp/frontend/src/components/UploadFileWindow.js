@@ -22,10 +22,10 @@ function UploadFileWindow() {
     console.log('userID:', userID)
     let FormData = new FormData();
     FormData.set('data', {
-      file: file,
-      userID: userID
+      'file': file,
+      'userID': userID
     })
-    console.log(body)
+    console.log(FormData)
     const headers = {
       'Content-Type': 'multipart/form-data',
     }
