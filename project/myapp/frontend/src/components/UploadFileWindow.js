@@ -21,7 +21,8 @@ function UploadFileWindow() {
     }
 
     const formData = new FormData();
-    formData.append("file", file, "userID", userID);
+    formData.append('file', file);
+    formData.append('userID', userID);
 
     try {
 
