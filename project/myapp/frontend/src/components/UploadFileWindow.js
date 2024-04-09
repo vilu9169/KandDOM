@@ -24,7 +24,7 @@ function UploadFileWindow() {
       file: file,
       userID: userID };
     console.log(body)
-    headers = {
+    const headers = {
       'Content-Type': 'multipart/form-data',
     }
     try {
