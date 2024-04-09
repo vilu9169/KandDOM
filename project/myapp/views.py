@@ -301,6 +301,7 @@ def upload_document(request):
         document.save()
         user = User.objects.get(id=request.data['userID'])
         user.documents.add(document._id)
+        user.save()
         # You might want to return the ID of the newly created document for future reference
         return Response({'document_id ': str(document._id)})
     else:
