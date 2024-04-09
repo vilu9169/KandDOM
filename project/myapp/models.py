@@ -9,6 +9,7 @@ from djongo import models as djmodels
 from djongo.models.fields import ArrayReferenceField
 
 class Document(djmodels.Model):
+    _id = djmodels.ObjectIdField( primary_key=True, editable=False, db_column='_id')
     file=djmodels.FileField(upload_to='pdf/')
     filename = djmodels.CharField(max_length=255)
     content_type = djmodels.CharField(max_length=100)
@@ -19,9 +20,6 @@ class Document(djmodels.Model):
         return self.filename
     def _id(self):
         return self._id
-    
-    def save(self, force_insert: bool = ..., force_update: bool = ..., using: str | None = ..., update_fields: Iterable[str] | None = ...) -> None:
-        return super().save(force_insert, force_update, using, update_fields)
 
 class UserManager(BaseUserManager):
     def _create_user(self, email, password=None, **extra_fields):
