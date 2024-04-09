@@ -236,7 +236,7 @@ from rest_framework.exceptions import AuthenticationFailed, ValidationError
 from .models import User
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken, TokenError
 from rest_framework import status
-from .models import File
+from .models import Document
 from .serializers import DocumentSerializer
 from .models import User
 
@@ -297,7 +297,7 @@ def upload_document(request):
     
     if file_obj:
         # Create a new Document instance
-        document = File.objects.create(
+        document = Document.objects.create(
             file = file_obj,
             filename=file_obj.name,
             content_type=file_obj.content_type,
