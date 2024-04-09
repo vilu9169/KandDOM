@@ -22,7 +22,7 @@ const FileDropZone = ({ onFileUpload }) => {
 
     const files = e.dataTransfer.files;
 
-    // Upload files to the server
+    // ladda upp till server här
     onFileUpload(files);
   };
 
