@@ -8,7 +8,6 @@ from djongo import models as djmodels
 from djongo.models.fields import ArrayReferenceField
 
 class Document(djmodels.Model):
-    _id = djmodels.ObjectIdField(primary_key=True, unique=True)
     file=djmodels.FileField(upload_to='pdf/')
     filename = djmodels.CharField(max_length=255)
     content_type = djmodels.CharField(max_length=100)
