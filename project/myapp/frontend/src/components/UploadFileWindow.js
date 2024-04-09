@@ -24,11 +24,14 @@ function UploadFileWindow() {
       file: file,
       userID: userID };
     console.log(body)
-
+    headers = {
+      'Content-Type': 'multipart/form-data',
+    }
     try {
 
         const response = await fetch('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/upload/', {
             method: 'POST',
+            headers: headers,
             body: body
         });
         const data = await response.json();
