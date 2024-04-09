@@ -16,6 +16,8 @@ class Document(djmodels.Model):
 
     def __str__(self):
         return self.filename
+    def _id(self):
+        return self._id
 
 class UserManager(BaseUserManager):
     def _create_user(self, email, password=None, **extra_fields):
