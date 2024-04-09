@@ -292,9 +292,9 @@ def upload_document(request):
     file_obj = request.FILES.get('file')
     print(request.data['userID'])
     
-    print("All documents in the database:")
+    """print("All documents in the database:")
     for document in File.objects.all():
-        print(document)
+        print(document)"""
     
     if file_obj:
         # Create a new Document instance
