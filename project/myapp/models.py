@@ -20,6 +20,17 @@ class Document(models.Model):
         return self.filename
     def _id(self):
         return self._id
+    
+class File(models.Model):
+    id = models.BigAutoField( primary_key=True, editable=False, db_column='_id')
+    file=models.FileField(upload_to='pdf/')
+    filename = models.CharField(max_length=255)
+    content_type = models.CharField(max_length=100)
+    size = models.IntegerField()
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.filename
 
 class UserManager(BaseUserManager):
     def _create_user(self, email, password=None, **extra_fields):
