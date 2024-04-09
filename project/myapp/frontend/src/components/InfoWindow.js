@@ -36,7 +36,7 @@ function InfoWindow() {
   }, [handleShowInfo]); // Include handleButtonClick in the dependency array
   return (
     <Container fluid className=" info-container">
-      <Container ref={innerContainerRef} className="w-50 bg-2 info-window h-80">
+      <Container ref={innerContainerRef} className="w-75 bg-2 info-window h-80">
         <Row className="h-10 bg-2 m-auto w-100 d-flex justify-content-center align-items-center">
           <h2 className="m-0">How to use Pythia?</h2>
         </Row>
@@ -53,16 +53,25 @@ function InfoWindow() {
             </Col>
             <Col className="col-10 h-100 bg-1 d-flex justify-content-center align-items-center">
               <span className="big-roman m-3">I.</span>
-              To get started please upload one or multiple PDF documents you
-              would like to analyze. You can upload a by clicking the "Add
-              document" button in the top left corner of the screen.
+              <p className="p-0 m-0">
+                <span className="bold">Document Upload:</span> Begin by
+                uploading one or multiple PDF documents you wish to analyze.
+                Simply click the "Add document" button in the top left corner of
+                the screen. You can continue to add more documents as needed
+                throughout your interaction.
+              </p>
             </Col>
           </Row>
           <Row className="h-25 bg-3 m-2 br-5">
             <Col className="col-10 h-100 bg-3 d-flex justify-content-center align-items-center">
               <span className="big-roman m-3">II.</span>
-              You can always add additional dokuments to your chats by clicking
-              the same button.
+              <p className="p-0 m-0">
+                <span className="bold">Chatting with Pythia:</span> Engage with
+                Pythia by asking questions or initiating conversations. You can
+                type your queries directly into the chat interface and Pythia
+                will provide relevant answers based on the content of the
+                uploaded documents.
+              </p>
             </Col>
             <Col className="col-2 h-100 d-flex justify-content-center align-items-center p-0">
               <div className="circle bg-1 d-flex justify-content-center align-items-center">
@@ -86,18 +95,24 @@ function InfoWindow() {
             </Col>
             <Col className="col-10 h-100 bg-1 d-flex justify-content-center align-items-center">
               <span className="big-roman m-3">III.</span>
-              Now you can start asking question, analyse the timeline or dive
-              deeper into the realations that appear in the pdf. Remember that
-              Pythia will answer questions about the document but will refrain
-              from giving legal advice, passing judgement or making decisions.
+              <p className="p-0 m-0">
+                <span className="bold">Timeline Analysis and Relation Graphs:</span> Explore the timeline feature to analyze chronological events
+                within the documents. Additionally, delve into relationship
+                graphs to uncover connections and associations between different
+                elements within the content.
+              </p>
             </Col>
           </Row>
           <Row className="h-25 m-2 bg-3 br-5">
             <Col className="col-10 h-100 d-flex justify-content-center align-items-center">
               <span className="big-roman m-3">IV.</span>
-              Finally use pin(displayed under conversation) aswell as
-              archive(displayed when hovering document in sidebar) to keep track
-              of your convos and keep a exellent workflow.
+              <p className="p-0 m-0">
+                <span className="bold">Archiving and Pinning:</span> Maintain an
+                organized workflow by utilizing the archive and pin features.
+                Pin important messages or insights displayed under the
+                conversation for quick reference. Archive documents to keep
+                track of your conversations and maintain an excellent workflow.
+              </p>
             </Col>
             <Col className="col-2 h-100 d-flex justify-content-center align-items-center p-0">
               <div className="circle bg-1 d-flex justify-content-center align-items-center">
