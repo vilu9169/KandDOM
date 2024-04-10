@@ -7,20 +7,18 @@ import LogIn from './components/LogIn';
 import Chatbot from './components/Chatbot';
 import {MessageContextProvider} from './components/MessageContextProvider';
 import {ResponseContextProvider} from './components/ResponseContextProvider';
+import ContextProvider from './components/ContextProvider';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
       <Router>
-        <ResponseContextProvider>
-        <MessageContextProvider>
-        <AppProvider>
+       <ContextProvider>
       <Routes>
-        <Route index element={<Start/>} />
+        <Route path='/' element={<Start/>} />
         <Route path='/login' element={<LogIn />} />
       </Routes>
-      </AppProvider>
-      </MessageContextProvider>
-      </ResponseContextProvider>
+      </ContextProvider>
       </Router>
   );
 }
