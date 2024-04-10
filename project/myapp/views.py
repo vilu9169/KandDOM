@@ -306,12 +306,13 @@ def upload_document(request):
             # file_id= ''  # You may need to provide an appropriate file ID here
         )
         print("Before document.save")
-        document.save(force_insert=True)
+        document.save()
+
         print("document.save complete")
         user = User.objects.get(id=request.data['userID'])
         print("User.objects.get(id=request.data['ObjectId']) COMPLETE")
-        print(document.__id__())
-        user.documents.append(document.__id__())  # Add the document ID to the user's documents list
+        print(document._id)
+        user.documents.append(document._id)  # Add the document ID to the user's documents list
         user.save()
         
         

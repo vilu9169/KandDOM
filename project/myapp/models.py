@@ -16,11 +16,10 @@ class Document(models.Model):
     content_type = djmodels.CharField(max_length=100)
     size = djmodels.IntegerField()
     uploaded_at = djmodels.DateTimeField(auto_now_add=True)
-
+    def __getattr__(self, name):
+        return getattr(self.file, name)
     def __str__(self):
         return self.filename
-    def __id__(self):
-        return self.id
     def save(self, *args, **kwargs):
         self.id = 1
         super(Document, self).save(*args, **kwargs)
