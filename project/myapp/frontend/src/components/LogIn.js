@@ -5,7 +5,7 @@ import { IoIosLogIn } from "react-icons/io";
 
 import { useState } from "react";
 import LogInLogic from "./LogInLogic";
-
+import SignUpLogic from "./SignUpLogic";
 
 function LogIn() {
   const videos = [
@@ -14,23 +14,32 @@ function LogIn() {
     "videos/b_roll3.mp4",
   ];
 
-  const [showLoginForm, setShowLoginForm] = useState(false);
+  const [showLogInForm, setShowLogInForm] = useState(false);
+  const [showSignUpForm, setShowSignUpForm] = useState(false);
 
   const handleLoginClick = () => {
-    setShowLoginForm(true);
+    setShowLogInForm(true);
+    setShowSignUpForm(false);
+  };
+
+  const handleSignUpClick = () => {
+    setShowSignUpForm(true);
+    setShowLogInForm(false);
   };
 
   return (
     <Container fluid className=" text-center login-container">
       <Row className="h-100">
-        <Col className=" col-8 image-column m-0 p-0">
+        <Col className="col image-column m-0 p-0">
           <VideoBackground videos={videos} />
         </Col>
-        <Col className=" col-4 bg-2 login-column h-100">
+        <Col className="col bg-2 login-column">
           <Row className="h-100 align-items-center d-flex justify-content-center">
-            <Container className="w-75 h-50 bg-1 br-5">
-              {showLoginForm ? (
-                <LogInLogic></LogInLogic>
+            <Container className="w-75 h-60 bg-1 br-5">
+              {showLogInForm ? (
+                <LogInLogic onSignUpClick={handleSignUpClick}/>
+              ) : showSignUpForm ? (
+                <SignUpLogic onLoginClick={handleLoginClick}/>
               ) : (
                 <>
                   <Row className="h-50 d-flex align-items-center">
@@ -52,8 +61,8 @@ function LogIn() {
                     </Row>
                     <Row className="h-50">
                       <Button
-                        href="/"
                         className="m-auto bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
+                        onClick={handleSignUpClick}
                       >
                         <span className="text-center justify-content-center d-flex align-items-center w-100">
                           Sign up

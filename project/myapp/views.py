@@ -226,3 +226,108 @@ def start_chat(input, previous_messages) -> str:
 #     prevmessages.append(message)
 #     prevmessages.append(res)
 #     print(res)
+
+
+from django.shortcuts import render
+from rest_framework.views import APIView
+from .serializers import UserSerializer
+from rest_framework.response import Response
+from rest_framework.exceptions import AuthenticationFailed, ValidationError
+from .models import User
+from .models import Document
+from rest_framework_simplejwt.tokens import AccessToken, RefreshToken, TokenError
+from rest_framework import status
+from .models import Document
+from .serializers import DocumentSerializer
+
+
+
+class RegisterView(APIView):
+    def post(self, request):
+        try:
+            user = User.objects.get(email=request.data["email"])
+        except user.DoesNotExist:
+            serializer = UserSerializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        if user is not None:
+            raise ValidationError({"detail":"User with this email already exists"})
+        
+
+class Loginview(APIView):
+    def post(self, request):
+        email = request.data["email"]
+        password = request.data["password"]
+        
+        try:
+            user = User.objects.get(email = email)
+        except User.DoesNotExist:
+            raise AuthenticationFailed("Account does  not exist")
+        if user is None:
+            raise AuthenticationFailed("User does not exist")
+        if not user.check_password(password):
+            raise AuthenticationFailed("Incorrect Password")
+        access_token = AccessToken.for_user(user)
+        refresh_token =RefreshToken.for_user(user)
+        return Response({
+            "access_token" : access_token,
+            "refresh_token" : refresh_token,
+            'userID': user.id
+        })
+    
+class LogoutView(APIView):
+    def post(self, request):
+        try:
+            refresh_token = request.data['refresh_token']
+            if refresh_token:
+                token = RefreshToken(refresh_token)
+                token.blacklist()
+            return Response("Logout Successful", status=status.HTTP_200_OK)
+        except TokenError:
+            raise AuthenticationFailed("Invalid Token")
+        
+@api_view(['POST'])
+def upload_document(request):
+    file_obj = request.FILES.get('file')
+    print(request.data['userID'])
+    
+    """print("All documents in the database:")
+    for document in File.objects.all():
+        print(document)"""
+    
+    if file_obj:
+        # Create a new Document instance
+        document = Document.objects.create(
+            file = file_obj,
+            filename=file_obj.name,
+            content_type=file_obj.content_type,
+            size=file_obj.size,
+            # file_id= ''  # You may need to provide an appropriate file ID here
+        )
+        print("Before document.save")
+        document.save()
+
+        print("document.save complete")
+        user = User.objects.get(id=request.data['userID'])
+        print("User.objects.get(id=request.data['ObjectId']) COMPLETE")
+        print(document.__id__())
+        user.documents.add(document)  # Add the document ID to the user's documents list
+        user.save()
+        
+        
+        """print("All users in the database:")
+        for user in User.objects.all():
+            print(user)"""
+
+        # You might want to return the ID of the newly created document for future reference
+        return Response({'document_id ': str(document._id)})
+    else:
+        return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['POST'])
+def get_documents(request):
+    user = User.objects.get(id=request.data['userID'])
+    documents = user.documents.all()
+    serializer = DocumentSerializer(documents, many=True)
+    return Response(serializer.data)
