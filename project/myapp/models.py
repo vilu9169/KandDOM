@@ -22,7 +22,7 @@ class Document(djmodels.Model):
     def _id(self):
         return self._id
     def save(self, *args, **kwargs):
-        self.id = self._id
+        self.id = self._id.__str__()
         super(Document, self).save(*args, **kwargs)
     
 class File(models.Model):
