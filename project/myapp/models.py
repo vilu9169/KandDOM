@@ -9,7 +9,7 @@ from djongo import models as djmodels
 from djongo.models.fields import ArrayReferenceField
 
 class Document(models.Model):
-    #_id = djmodels.ObjectIdField()
+    _id = djmodels.ObjectIdField()
     #id = models.BigAutoField( primary_key=True, editable=False, db_column='_id')
     file= djmodels.FileField(upload_to='pdf/')
     filename = djmodels.CharField(max_length=255)
