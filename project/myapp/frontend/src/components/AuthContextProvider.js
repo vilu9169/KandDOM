@@ -13,7 +13,7 @@ const AuthContextProvider = ({children}) => {
     let [loading, setLoading] = useState(true)
     let [loginError, setLoginError] = useState(null)
     let [signupError, setSignupError] = useState(null)
-    let [userID, setUserID] = useState(() => (localStorage.get('userID') ? jwtDecode(Cookies.get('access_token')).user_id : null))
+    let [userID, setUserID] = useState(() => (localStorage.getItem('userID') ? jwtDecode(Cookies.get('access_token')).user_id : null))
     const navigate = useNavigate()
 
     axios.defaults.xsrfCookieName = 'csrftoken'
