@@ -23,7 +23,7 @@ class Document(models.Model):
     def __str__(self):
         return self.filename
     def save(self, *args, **kwargs):
-        self.id = 1
+        self.id = self._id
         super(Document, self).save(*args, **kwargs)
     
 class File(models.Model):

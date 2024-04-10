@@ -324,3 +324,10 @@ def upload_document(request):
         return Response({'document_id ': str(document._id)})
     else:
         return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['POST'])
+def get_documents(request):
+    user = User.objects.get(id=request.data['userID'])
+    documents = user.documents.all()
+    serializer = DocumentSerializer(documents, many=True)
+    return Response(serializer.data)
