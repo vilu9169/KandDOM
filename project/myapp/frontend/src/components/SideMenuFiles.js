@@ -14,24 +14,24 @@ function SideMenuFiles() {
   const body = {
     "userID": userID,
   }
-  const getFiles = async (e) => {
-    try {
-      const response = await axios.post("http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/api/documents/", body);
-      const data = await response.json();
-      console.log(data);
-      let fileArr = []
-      for (const file in data) {
-        console.log(file);
-        fileArr.push(file.name);
-      }
-      setFiles(fileArr);
-      return data;
-    }
-    catch (error) {
-      console.error("Error fetching files:", error);
-    }
-  };
-  getFiles()
+  // const getFiles = async (e) => {
+  //   try {
+  //     const response = await axios.post("http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/api/documents/", body);
+  //     const data = await response.json();
+  //     console.log(data);
+  //     let fileArr = []
+  //     for (const file in data) {
+  //       console.log(file);
+  //       fileArr.push(file.name);
+  //     }
+  //     setFiles(fileArr);
+  //     return data;
+  //   }
+  //   catch (error) {
+  //     console.error("Error fetching files:", error);
+  //   }
+  // };
+  // getFiles()
   return (
     <Container className="h-100 file-window">
       <h3 className=" mt-3 ms-3 text-start">Filer</h3>
