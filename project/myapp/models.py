@@ -8,14 +8,14 @@ from django.contrib.auth.models import BaseUserManager
 from djongo import models as djmodels
 from djongo.models.fields import ArrayReferenceField
 
-class Document(models.Model):
+class Document(djmodels.Model):
     #_id = djmodels.ObjectIdField()
     #id = models.BigAutoField( primary_key=True, editable=False, db_column='_id')
-    file=models.FileField(upload_to='pdf/')
-    filename = models.CharField(max_length=255)
-    content_type = models.CharField(max_length=100)
-    size = models.IntegerField()
-    uploaded_at = models.DateTimeField(auto_now_add=True)
+    file= djmodels.FileField(upload_to='pdf/')
+    filename = djmodels.CharField(max_length=255)
+    content_type = djmodels.CharField(max_length=100)
+    size = djmodels.IntegerField()
+    uploaded_at = djmodels.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.filename
