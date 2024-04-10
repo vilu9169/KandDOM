@@ -307,7 +307,7 @@ def upload_document(request):
         )
 
         document.save(force_insert=True)
-        user = User.objects.get(id=request.data['userID'])
+        user = User.objects.get(id=request.data['ObjectId'])
         user.documents.append(document._id)  # Add the document ID to the user's documents list
         user.save() 
         
