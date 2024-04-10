@@ -19,6 +19,8 @@ class Document(models.Model):
 
     def __str__(self):
         return self.filename
+    def __id__(self):
+        return self.id
     def save(self, *args, **kwargs):
         self.id = 1
         super(Document, self).save(*args, **kwargs)
