@@ -19,8 +19,6 @@ class Document(djmodels.Model):
 
     def __str__(self):
         return self.filename
-    def _id(self):
-        return self._id
     def save(self, *args, **kwargs):
         self.id = 1
         super(Document, self).save(*args, **kwargs)
