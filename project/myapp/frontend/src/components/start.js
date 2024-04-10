@@ -11,6 +11,7 @@ import { showInfoWindowContext } from "./ShowInfoWindowContextProvider.js";
 import { useContext } from "react";
 import { AppContext } from "./ShowSettingsHandler";
 import SideMenuTop from "./SideMenuTop";
+import SideMenuMiddle from "./SideMenuMiddle";
 import Chatbot from "./Chatbot.js";
 import InfoWindow from "./InfoWindow.js";
 import { AuthContext } from "./AuthContextProvider";
@@ -30,7 +31,10 @@ function Start() {
             <Row className="h-60px bg-2">
               <SideMenuTop />
             </Row>
-            <Row className="flex-grow-1  bg-2">las</Row>
+            <Row className="flex-grow-1  bg-2">
+              
+              <SideMenuMiddle></SideMenuMiddle>
+            </Row>
             <Row className="h-80px  bg-2">
               <SideMenuBottom />
             </Row>
