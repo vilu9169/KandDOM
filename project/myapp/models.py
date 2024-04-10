@@ -8,7 +8,7 @@ from django.contrib.auth.models import BaseUserManager
 from djongo import models as djmodels
 from djongo.models.fields import ArrayReferenceField
 
-class Document(djmodels.Model):
+class Document(models.Model):
     #_id = djmodels.ObjectIdField()
     #id = models.BigAutoField( primary_key=True, editable=False, db_column='_id')
     file= djmodels.FileField(upload_to='pdf/')
