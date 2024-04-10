@@ -4,6 +4,51 @@
   --color-3: #dac0a3;
   --color-4: #0f2c59;
   --color-5: #402f00;
+
+  --text-color-main: #000000;
+}
+
+.dark-mode {
+  --color-1: #8b8b8b;
+  --color-2: #3f3f3f;
+  --color-3: #121212;
+  --color-4: #f8f0e5;
+  --text-color-main: #f8f0e5;
+}
+@font-face{
+  font-family:"helvetica";
+  src:url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("woff"),
+  url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("opentype"),
+  url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("truetype");
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+form,
+div,
+span,
+button {
+  font-family: 'Courier New', monospace;
+  /*font-family: "helvetica";*/ /*  TODO: Byt till denna font när vi e klara, har bara en goofy nu så vi ser all text är samma font */ 
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button {
+  color: var(--text-color-main) !important;
 }
 
 .bg-1 {
@@ -92,8 +137,8 @@
   transition: background-color 0.3s ease;
 }
 .wide-button {
-  color: black !important;
-  background-color: var(--color-3) !important;
+
+  color: var(--text-color-main) !important;
   border: 2px solid var(--color-3) !important;
   border-radius: 5px;
   height: 44px;
@@ -101,12 +146,9 @@
 }
 .wide-button:hover {
   cursor: pointer;
-    background-color: var(--color-3) !important;
-    border: 2px solid var(--color-3) !important;
-    height: 44px;
-    width: 44px;
   }
-  .rect-button:hover {
+
+.rect-button:hover {
   box-shadow: 10px 10px var(--color-4);
   transition: box-shadow 0.3s ease;
   } 

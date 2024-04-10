@@ -9,8 +9,27 @@ function UploadFileWindow() {
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
+    // Check if the selected file is a PDF
+    if (file.type !== "application/pdf") {
+      alert("Please select a PDF file.");
+      return;
+    }
+    console.log('userID:', userID)
+    let formData = new FormData();
 
-    alert(`Uploaded file: ${file.name}`);
+    formData.append('file', file); // Append the file to FormData
+    formData.append('userID', userID);
+    try {
+        const response = await fetch('http://127.0.0.1:8000/upload/', {
+            method: 'POST',
+            body: formData
+        });
+        const data = await response.json();
+        alert(`File uploaded successfully. Document ID: ${data.document_id}`);
+    } catch (error) {
+      console.error("Error uploading file:", error);
+      alert("An error occurred while uploading the file.");
+    }
   };
 
   return (
