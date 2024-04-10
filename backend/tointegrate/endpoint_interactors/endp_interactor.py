@@ -1,5 +1,5 @@
 #Program that interacts with a deployed custom google vertex ai endpoint
-
+#Think this is garbage and replaced by endpoint_test
 import requests
 import json
 
