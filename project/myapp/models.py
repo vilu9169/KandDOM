@@ -17,7 +17,7 @@ class Document(models.Model):
     size = djmodels.IntegerField()
     uploaded_at = djmodels.DateTimeField(auto_now_add=True)
     def __getattr__(self, name):
-        return getattr(self.file, name)
+        return getattr(self, name)
     def __str__(self):
         return self.filename
     def save(self, *args, **kwargs):
