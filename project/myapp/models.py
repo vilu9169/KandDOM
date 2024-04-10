@@ -18,6 +18,8 @@ class Document(models.Model):
     uploaded_at = djmodels.DateTimeField(auto_now_add=True)
     def __getattribute__(self, attr):
         return super().__getattribute__(attr)
+    def __id__(self):
+        return self._id
     def __str__(self):
         return self.filename
     def save(self, *args, **kwargs):
