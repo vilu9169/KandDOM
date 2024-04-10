@@ -13,7 +13,7 @@ const AuthContextProvider = ({children}) => {
     let [loading, setLoading] = useState(true)
     let [loginError, setLoginError] = useState(null)
     let [signupError, setSignupError] = useState(null)
-    let [userID, setUserID] = useState(null)
+    let [userID, setUserID] = useState(() => (localStorage.get('userID') ? jwtDecode(Cookies.get('access_token')).user_id : null))
     const navigate = useNavigate()
 
     axios.defaults.xsrfCookieName = 'csrftoken'
@@ -34,6 +34,7 @@ const AuthContextProvider = ({children}) => {
                     Cookies.set('refresh_token', data.refresh);
                     setUser(jwtDecode(data.access).email)
                     setUserID(jwtDecode(data.access).user_id)
+                    localStorage.setItem('userID', jwtDecode(data.access).user_id)
                     navigate("/");
                     setLoginError(null)
                     setSignupError(null)
@@ -68,6 +69,7 @@ const AuthContextProvider = ({children}) => {
         e.preventDefault()
         Cookies.remove('access_token');
         Cookies.remove('refresh_token');
+        localStorage.removeItem('userID')
         setAuthTokens(null)
         setUser(null)
         navigate('/login')
