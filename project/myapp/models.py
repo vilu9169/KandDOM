@@ -24,7 +24,7 @@ class Document(models.Model):
     
 class File(models.Model):
     id = models.BigAutoField( primary_key=True, editable=False, db_column='_id')
-    file_id = models.BigAutoField(unique=True)
+    #file_id = models.BigAutoField(unique=True) removes in order for migrate to work
     file=models.FileField(upload_to='pdf/')
     filename = models.CharField(max_length=255)
     content_type = models.CharField(max_length=100)
