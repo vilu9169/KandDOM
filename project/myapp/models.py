@@ -9,7 +9,7 @@ from djongo import models as djmodels
 from djongo.models.fields import ArrayReferenceField
 
 class Document(models.Model):
-    #_id = djmodels.ObjectIdField()
+    _id = djmodels.ObjectIdField()
     id = models.BigAutoField( primary_key=True, editable=False, db_column='_id')
     file=models.FileField(upload_to='pdf/')
     filename = models.CharField(max_length=255)
@@ -57,7 +57,7 @@ class UserManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 class User(AbstractUser):
-    #_id = djmodels.ObjectIdField()
+    _id = djmodels.ObjectIdField()
     name = models.CharField(max_length=250)
     email = models.CharField(max_length=250, unique=True)
     password = models.CharField(max_length=250)
