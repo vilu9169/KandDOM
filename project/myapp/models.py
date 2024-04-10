@@ -21,6 +21,9 @@ class Document(djmodels.Model):
         return self.filename
     def _id(self):
         return self._id
+    def save(self, *args, **kwargs):
+        self.id = self._id
+        super(Document, self).save(*args, **kwargs)
     
 class File(models.Model):
     #id = models.BigAutoField( primary_key=True, editable=False, db_column='_id')
