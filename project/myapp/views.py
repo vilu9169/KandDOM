@@ -305,7 +305,7 @@ def upload_document(request):
             size=file_obj.size,
             # file_id= ''  # You may need to provide an appropriate file ID here
         )
-
+        print("Before document.save")
         document.save(force_insert=True)
         print("document.save complete")
         user = User.objects.get(id=request.data['ObjectId'])
