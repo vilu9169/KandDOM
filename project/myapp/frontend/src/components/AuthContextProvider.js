@@ -12,11 +12,31 @@ const AuthContextProvider = ({children}) => {
     let [loading, setLoading] = useState(true)
     let [loginError, setLoginError] = useState(null)
     let [signupError, setSignupError] = useState(null)
-    let [userID, setUserID] = useState(() => (localStorage.getItem('userID') ? jwtDecode(Cookies.get('access_token')).user_id : null))
+    let [userID, setUserID] = useState(() => (localStorage.getItem('userID') ? localStorage.getItem('userID') : null))
     const navigate = useNavigate()
-
+    const [files, setFiles] = useState([]);
+    let getFiles = async (e) => {
+        const body = {
+            user: userID
+        }
+      try {
+        const response = await axios.post("http://127.0.0.1:8000/api/documents/", body);
+        const data = await response.json();
+        console.log(data);
+        let fileArr = []
+        for (const file in data.data) {
+          console.log(file);
+          fileArr.push(file.name);
+        }
+        setFiles(fileArr);
+        return data;
+      }
+      catch (error) {
+        console.error("Error fetching files:", error);
+      }
+    };
     axios.defaults.xsrfCookieName = 'csrftoken'
-    axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN'
+    axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN'   
 
     let loginUser = async (e) => {
             e.preventDefault()
@@ -34,6 +54,7 @@ const AuthContextProvider = ({children}) => {
                     setUser(jwtDecode(data.access).email)
                     setUserID(jwtDecode(data.access).user_id)
                     localStorage.setItem('userID', jwtDecode(data.access).user_id)
+                    console.log("decoded: ", jwtDecode(data.access))
                     navigate("/");
                     setLoginError(null)
                     setSignupError(null)
@@ -54,7 +75,8 @@ const AuthContextProvider = ({children}) => {
         }
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/signup/', body)
+
+            const response = await axios.post('http://127.0.0.1:8000/signup/', body)
             console.log(response)
             loginUser(e)
         } catch (error) {
@@ -77,6 +99,7 @@ const AuthContextProvider = ({children}) => {
     const updateToken = async () => {
         //http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/api/token/refresh/
         const response = await fetch('http://127.0.0.1:8000/api/token/refresh/', {
+
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'

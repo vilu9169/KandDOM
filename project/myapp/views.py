@@ -238,8 +238,8 @@ from .models import Document
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken, TokenError
 from rest_framework import status
 from .models import Document
-from .serializers import DocumentSerializer
-
+from .serializers import DocumentSerializer, MyTokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenViewBase
 
 
 class RegisterView(APIView):
@@ -270,10 +270,11 @@ class Loginview(APIView):
             raise AuthenticationFailed("Incorrect Password")
         access_token = AccessToken.for_user(user)
         refresh_token =RefreshToken.for_user(user)
+        access_token["user"] = UserSerializer(user).data
+        print(UserSerializer(user).data)
         return Response({
             "access_token" : access_token,
             "refresh_token" : refresh_token,
-            'userID': user.id,
         })
     
 class LogoutView(APIView):
@@ -331,3 +332,6 @@ def get_documents(request):
     documents = user.documents.all()
     serializer = DocumentSerializer(documents, many=True)
     return Response(serializer.data)
+
+class MyTokenObtainPairView(TokenViewBase):
+    serializer_class = MyTokenObtainPairSerializer
