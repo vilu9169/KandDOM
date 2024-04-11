@@ -273,7 +273,7 @@ class Loginview(APIView):
         return Response({
             "access_token" : access_token,
             "refresh_token" : refresh_token,
-            'userID': user.id
+            'userID': user.id,
         })
     
 class LogoutView(APIView):

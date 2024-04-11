@@ -16,7 +16,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -133,7 +132,7 @@ DATABASES = {
         'NAME': 'PythiaDB',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': 'mongodb+srv://viktorlundin3:KPfy0yPLimhGe4nD@pythiadb.bmdzzkd.mongodb.net/?retryWrites=true&w=majority&appName=PythiaDB',
+            'host': 'mongodb+srv://viktorlundin3:N1b7t9N9JIJvHhGd@pythiadb.bmdzzkd.mongodb.net/?retryWrites=true&w=majority&appName=PythiaDB',
         }
     }
 }
