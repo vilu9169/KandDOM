@@ -6,7 +6,6 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 const AuthContext = createContext()
 
-
 const AuthContextProvider = ({children}) => {
     let [user, setUser] = useState(() => (Cookies.get('access_token') ? jwtDecode(Cookies.get('access_token')) : null))
     let [authTokens, setAuthTokens] = useState(() => (Cookies.get('access_tokens') ? JSON.parse(Cookies.get('access_token')) : null))
@@ -55,7 +54,7 @@ const AuthContextProvider = ({children}) => {
         }
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/upload/', body)
+            const response = await axios.post('http://127.0.0.1:8000/api/signup/', body)
             console.log(response)
             loginUser(e)
         } catch (error) {
@@ -77,7 +76,7 @@ const AuthContextProvider = ({children}) => {
 
     const updateToken = async () => {
         //http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/api/token/refresh/
-        const response = await fetch('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/api/token/refresh/', {
+        const response = await fetch('http://127.0.0.1:8000/api/token/refresh/', {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'

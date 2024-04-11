@@ -6,7 +6,6 @@ import { TbTimelineEventFilled } from "react-icons/tb";
 
 function SideMenuMiddle() {
   const [showTimeline, setShowTimeline] = useState(false);
-
   const handleButtonClick = () => {
     setShowTimeline(!showTimeline);
   };
