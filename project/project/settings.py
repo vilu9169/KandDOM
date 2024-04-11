@@ -14,7 +14,7 @@ from pathlib import Path
 
 import os 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-#BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = Path(__file__).resolve().parent
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -27,7 +27,11 @@ SECRET_KEY = 'django-insecure-y!p(al7v0dyg1@irls#0)kz4#s*g9o7a(d)v$r1#oq*l-1%jnt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['16.171.79.116','ec2-16-171-79-116.eu-north-1.compute.amazonaws.com','13.50.225.96','ec2-13-50-225-96.eu-north-1.compute.amazonaws.com','ec2-13-48-47-249.eu-north-1.compute.amazonaws.com','13.48.47.249','ec2-16-171-70-243.eu-north-1.compute.amazonaws.com','16.171.70.243','ec2-13-49-175-2.eu-north-1.compute.amazonaws.com','13.49.175.2', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','16.171.79.116','ec2-16-171-79-116.eu-north-1.compute.amazonaws.com','13.50.225.96','ec2-13-50-225-96.eu-north-1.compute.amazonaws.com','ec2-13-48-47-249.eu-north-1.compute.amazonaws.com','13.48.47.249','ec2-16-171-70-243.eu-north-1.compute.amazonaws.com','16.171.70.243','ec2-13-49-175-2.eu-north-1.compute.amazonaws.com','13.49.175.2', 'localhost', '127.0.0.1']
+CORS_ORIGIN_WHITELIST = [
+    'http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000',  # Add your frontend URL here
+    'http://127.0.0.1:8000',
+]
 
 
 # Application definition
@@ -39,7 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework_simplejwt',
     'rest_framework',
+    'corsheaders',
+    'rest_framework_simplejwt.token_blacklist',
+    'myapp',
+
 ]
 
 MIDDLEWARE = [
@@ -50,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -58,6 +68,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+            os.path.join(BASE_DIR, 'myapp/frontend/build'),
             os.path.join(BASE_DIR, 'myapp/templates/myapp/'),  # Add the templates/myapp/ directory
         ],
         'APP_DIRS': True,
@@ -115,16 +126,14 @@ WSGI_APPLICATION = 'project.wsgi.application'
     }
 }"""
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'testdb2',
+        'NAME': 'PythiaDB',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': 'mongodb+srv://carljohaneklund2:YSuCR9GXQaheIfxG@cluster0.pmuadxn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
-            'ssl': True,
-            'authSource': 'admin',
-            'authMechanism': 'SCRAM-SHA-1',
+            'host': 'mongodb+srv://viktorlundin3:KPfy0yPLimhGe4nD@pythiadb.bmdzzkd.mongodb.net/?retryWrites=true&w=majority&appName=PythiaDB',
         }
     }
 }
@@ -148,11 +157,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'myapp.User'
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.0/topics/i18n/
-
-LANGUAGE_CODE = 'en-us'
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
 
 TIME_ZONE = 'UTC'
 
@@ -175,3 +186,51 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #Not safe to store in code? 
 AWS_ACCESS_KEY_ID = 'AKIAZQ3DRDEF3DEFYUPC'
 AWS_SECRET_ACCESS_KEY = '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'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'myapp/frontend', 'build', 'static'),
+]
+
+WEBPACK_LOADER = {
+    'MANIFEST_FILE': os.path.join(BASE_DIR, "myapp/frontend/build/manifest.json"),
+}
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "UPDATE_LAST_LOGIN": False,
+
+    "ALGORITHM": "HS256",
+    "SIGNING_KEY": SECRET_KEY,
+    "VERIFYING_KEY": "",
+    "AUDIENCE": None,
+    "ISSUER": None,
+    "JSON_ENCODER": None,
+    "JWK_URL": None,
+    "LEEWAY": 0,
+
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
+    "USER_ID_FIELD": "id",
+    "USER_ID_CLAIM": "user_id",
+    "USER_AUTHENTICATION_RULE": "rest_framework_simplejwt.authentication.default_user_authentication_rule",
+
+    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
+    "TOKEN_TYPE_CLAIM": "token_type",
+    "TOKEN_USER_CLASS": "rest_framework_simplejwt.models.TokenUser",
+
+    "JTI_CLAIM": "jti",
+
+    "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
+    "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
+    "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
+}
+
+RECACT_ROUTES = [
+    '',
+    'login',
+]

@@ -1,0 +1,505 @@
+:root {
+  --color-1: #f8f0e5;
+  --color-2: #eadbc8;
+  --color-3: #dac0a3;
+  --color-4: #0f2c59;
+  --color-5: #402f00;
+  --text-color-main: #000000;
+}
+
+.dark-mode {
+  --color-1: #121212;
+  --color-2: #282828;
+  --color-3: #eadbc8;
+  --text-color-main: #ffffff;
+}
+@font-face{
+  font-family:"helvetica";
+  src:url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("woff"),
+  url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("opentype"),
+  url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("truetype");
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+form,
+div,
+span,
+button {
+  font-family: 'Courier New', monospace;
+  /*font-family: "helvetica";*/ /*  TODO: Byt till denna font när vi e klara, har bara en goofy nu så vi ser all text är samma font */ 
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button {
+  color: var(--text-color-main) !important;
+}
+
+.bg-1 {
+  background-color: var(--color-1) !important;
+}
+.bg-2 {
+  background-color: var(--color-2) !important;
+}
+.bg-3 {
+  background-color: var(--color-3) !important;
+}
+.bg-4 {
+  background-color: var(--color-4) !important;
+}
+.c-1 {
+  color: var(--color-5);
+}
+.c-2{
+  color: var(--color-1) !important;
+}
+
+.h-15 {
+  height: 15%;
+}
+.h-60 {
+  height: 60%;
+}
+.h-80px {
+  position: relative;
+  height: 80px;
+}
+.h-60px {
+  height: 60px;
+
+  position: relative;
+  z-index: 999;
+}
+.h-90 {
+  height: 90%;
+}
+.h-10 {
+  height: 10%;
+}
+.h-20 {
+  height: 20%;
+}
+.h-80 {
+  height: 80%;
+}
+.h-70 {
+  height: 70%;
+}
+
+.main-left{
+  flex: 0 0 300px !important;
+}
+.file-drop-zone {
+  border-radius: 5px;
+  border: 2px dashed var(--color-3);
+  text-align: center;
+  transition: border-color 0.3s;
+}
+
+.file-drop-zone.dragging {
+  border-color: var(--color-1);
+}
+.main-logo{
+  position: relative;
+  top: 10px;
+  left: 10px;
+  width: 60px !important;
+  height: 60px !important;
+}
+.login-logo{
+  position: relative;
+  left: 20px;
+  width: 100px !important;
+  height: 100px !important;
+}
+.intro-text-big{
+  font-size: 60px;
+  font-weight: bold;
+  /*-webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--color-1);*/ /* TODO: fixa så texten går att se på bakgrunden */
+}
+/* Form CSS */
+
+.flex-container {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.br-5 {
+  border-radius: 5px;
+}
+
+.text-input {
+  border-radius: 30px;
+}
+
+.form-control:not(active) {
+  background-color: var(--color-1);
+  border: 2px solid var(--color-3);
+}
+
+.form-control:focus {
+  background-color: var(--color-1) !important;
+  border: 2px solid var(--color-3) !important;
+  box-shadow: none !important;
+  /* box-shadow: 5px 5px var(--color-4) !important; */
+}
+
+.form-control {
+  resize: none !important;
+  overflow: hidden;
+}
+.message-button {
+  background-color: var(--color-3) !important;
+  border: 2px solid var(--color-3) !important;
+  height: 44px;
+  width: 44px;
+}
+.rect-button {
+  background-color: var(--color-3) !important;
+  border: 2px solid var(--color-3) !important;
+  height: 44px;
+  width: 44px;
+}
+.rect-button:hover {
+  box-shadow: 10px 10px var(--color-4);
+  transition: box-shadow 0.3s ease;
+}
+.pop-up-button {
+  color: var(--text-color-main) !important;
+  border: 2px solid var(--color-1) !important;
+  border-radius: 5px;
+  height: 44px !important;
+  transition: background-color 0.3s ease;
+}
+
+.pop-up-button:hover {
+  background-color: var(--color-2) !important;
+  transition: background-color 0.3s ease;
+}
+.wide-button {
+  color: var(--text-color-main) !important;
+  background-color: var(--color-3) !important;
+  border: 2px solid var(--color-3) !important;
+  border-radius: 5px;
+  height: 44px;
+  transition: box-shadow 0.3s ease;
+}
+.wide-button:hover {
+  cursor: pointer;
+  background-color: var(--color-3) !important;
+  border: 2px solid var(--color-3) !important;
+  height: 44px;
+  width: 44px;
+}
+.rect-button:hover {
+  box-shadow: 10px 10px var(--color-4);
+  transition: box-shadow 0.3s ease;
+}
+.wide-button {
+  font-weight: bold;
+  color: var(--text-color-main) !important;
+  background-color: var(--color-3) !important;
+  border: 2px solid var(--color-3) !important;
+
+  border-radius: 5px;
+  height: 44px;
+}
+.wide-button:hover {
+  height: 44px;
+  box-shadow: 10px 10px var(--color-4);
+  transition: box-shadow 0.3s ease;
+}
+.input-group-container {
+  height: 44px;
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease;
+}
+.input-group-container:focus-within {
+  box-shadow: 10px 10px var(--color-4);
+}
+
+.input-textarea {
+  display: flex;
+  height: 100%;
+}
+
+.size-20 {
+  color: var(--text-color-main) !important;
+  
+}
+.size-20 {
+  color: var(--color-1) !important;
+  font-size: 20px !important;
+}
+.vertical-line {
+  position: absolute;
+  width: 2px;
+  height: 80%;
+  background-color: var(--color-3);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.middle-box {
+  position: absolute;
+  height: 44px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-2);
+}
+.uploadfile-container {
+  z-index: 999;
+  width: 80% !important;
+  border-radius: 5px;
+}
+
+.w-90 {
+  width: 90% !important;
+}
+
+.icon-margin {
+  margin-right: 15px; /* Adjust margin as needed */
+}
+
+/* ------------------------ */
+
+/* SideMenuBottom CSS */
+
+.person-button {
+  width: 80%;
+  height: 60px;
+  border-radius: 5px !important;
+  margin-top: 10px;
+  bottom: 13px;
+}
+
+.logout-button {
+  width: 80% !important;
+  height: 60px;
+  background-color: var(--color-3) !important;
+  border: none !important;
+  margin: auto;
+  border-top: thin solid black !important;
+}
+
+.settings-button {
+  z-index: 999;
+  margin: auto;
+  width: 80% !important;
+  height: 60px;
+  background-color: var(--color-3) !important;
+  border: none !important;
+  border-bottom: thin solid black !important;
+}
+
+.user-pop-up-container {
+  height: 120px;
+  border-radius: 5px;
+}
+.settings-icon {
+  margin-right: 10px;
+  margin-bottom: 2px;
+}
+
+.logout-icon {
+  transform: scaleX(-1);
+  margin-right: 10px;
+  margin-bottom: 2px;
+}
+
+.button-group-user {
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.user-icon {
+  margin-right: 10px;
+  margin-bottom: 4px;
+}
+
+/* --------------------- */
+
+/* SettingsWindow CSS */
+
+.settings-container {
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.336);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  position: absolute !important;
+}
+
+.settings-window {
+  position: absolute;
+  height: 50%;
+  width: 35% !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: var(--color-1);
+  border-radius: 5px;
+}
+
+/* --------------------- */
+
+/* SideMenuTop CSS */
+
+.top-menu-button {
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  transform: translate(-50%, -50%);
+  height: 6%;
+  width: 60%;
+  background-color: var(--color-4) !important;
+  border: none !important;
+}
+
+.top-menu-button:hover {
+  filter: brightness(0.8);
+}
+
+/* --------------------- */
+
+/* LogIn CSS */
+
+.login-container {
+  position: absolute;
+  width: 100%; /* 100% width */
+  height: 100%; /* 100% height */
+  /* Add any additional styling for the container */
+}
+
+.image-column {
+  background-color: var(--color-4);
+}
+
+.login-column {
+  flex: 0 0 500px !important;
+}
+
+.video-header {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.click-text {
+  color: var(--color-3);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.login-form {
+  background-color: var(--color-3) !important;
+  border-bottom: thin solid black !important;
+  border-radius: 0 !important;
+}
+.login-form:active,
+.login-form:focus,
+.login-form:active,
+.login-form:focus {
+  background-color: var(--color-2) !important;
+}
+
+/* --------------------- */
+
+/* SideMenuTop CSS */
+
+.file-window {
+  position: absolute;
+  top: 10%;
+}
+
+/* Chatbot.css */
+
+.chatbot-container {
+  position: absolute !important;
+  overflow: auto !important;
+  height: 100%;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: var(--color-1);
+}
+.chatbot-messages {
+  overflow-y: auto;
+}
+.message {
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.user-message {
+  background-color: var(--color-1);
+  text-align: left;
+}
+.ai-message {
+  background-color: var(--color-2);
+  text-align: left;
+}
+
+.user-text {
+  font-size: 12px;
+}
+
+.message-text {
+  margin-left: 10px;
+}
+
+/* InfoWindow CSS */
+
+.info-container {
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.336);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute !important;
+}
+
+.info-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-1);
+  border-radius: 5px;
+  text-align: left;
+}
+
+/* -------------- */
+
+.circle{
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+}
+
+.big-roman{
+  font-size: 400%;
+  font-family: 'Times New Roman', Times, serif !important;
+}
+.bold{
+  font-weight: bold;
+}
