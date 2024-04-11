@@ -284,14 +284,17 @@ class LogoutView(APIView):
             return Response("Logout Successful", status=status.HTTP_200_OK)
         except TokenError:
             raise AuthenticationFailed("Invalid Token")
-        
+
+from django.core.files.storage import FileSystemStorage
+
 @api_view(['POST'])
 def upload_document(request):
-    file_obj = request.FILES.get('file')
+    if request.method == 'POST':
+        file_obj = request.FILES['file']
     if file_obj:
         # Create a new Document instance
         document = Document.objects.create(
-            file = file_obj,
+            pdf = file_obj,
             filename=file_obj.name,
             content_type=file_obj.content_type,
             size=file_obj.size,
