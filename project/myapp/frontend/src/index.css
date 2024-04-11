@@ -34,7 +34,8 @@ form,
 div,
 span,
 button {
-  font-family: 'Courier New', monospace;
+  font-family: "helvetica";
+  /*font-family: 'Courier New', monospace;*/
   /*font-family: "helvetica";*/ /*  TODO: Byt till denna font när vi e klara, har bara en goofy nu så vi ser all text är samma font */ 
 }
 
