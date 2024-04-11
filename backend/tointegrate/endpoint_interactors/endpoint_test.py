@@ -24,8 +24,8 @@ def predict_custom_trained_model_sample(
     project: str,
     endpoint_id: str,
     instances: Union[Dict, List[Dict]],
-    location: str = "us-central1",
-    api_endpoint: str = "us-central1-aiplatform.googleapis.com",
+    location: str = "europe-west4",
+    api_endpoint: str = "europe-west4-aiplatform.googleapis.com",
 ):
     """
     `instances` can be either single instance of type dict or a list
@@ -46,8 +46,12 @@ def predict_custom_trained_model_sample(
     endpoint = client.endpoint_path(
         project=project, location=location, endpoint=endpoint_id
     )
+    print("Sending prediction request to AI Platform model")
+    print("endpoint:", endpoint)
+    print("instances:", instances)
+    print("parameters:", parameters)
     response = client.predict(
-        endpoint=endpoint, instances=instances, parameters=parameters
+        endpoint=endpoint, instances=instances, parameters=parameters,
     )
     print("response")
     print(" deployed_model_id:", response.deployed_model_id)
@@ -58,10 +62,9 @@ def predict_custom_trained_model_sample(
 
 
 # [END aiplatform_predict_custom_trained_model_sample]
-
 predict_custom_trained_model_sample(
-    project="216007991413",
-    endpoint_id="9006623110648037376",
+    project="873900629060",
+    endpoint_id="4439410138540933120",
     location="europe-west4",
-    instances={["string"]}
+    instances={ "texts": ["Jag har en allergi. Kan jag vaccinera mig?"]}
 )
