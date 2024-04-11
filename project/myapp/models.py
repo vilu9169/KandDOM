@@ -71,3 +71,10 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()
+
+class ChatHistory(models.Models):
+    #chat_id = models.BigAutoField( primary_key=True, editable=False, db_column='chat_id')
+    user_id = models.IntegerField
+    inputoutput = djmodels.ArrayField(model_container = models.CharField())
+    pinned_indices = djmodels.ArrayField(model_container=models.IntegerField(), default=list)
+    embedding_id = models.IntegerField()
