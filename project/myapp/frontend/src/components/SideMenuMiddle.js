@@ -1,42 +1,32 @@
-const MongoClient = require('mongodb').MongoClient;
+import { Container, Button, ButtonGroup } from "react-bootstrap";
+import { AppContext } from "./ShowSettingsHandler";
+import { useContext, useEffect, useRef, useState } from "react";
+import TimeLine from "./TimeLine";
+import { TbTimelineEventFilled } from "react-icons/tb";
 
-// Connection URL
-const url = 'mongodb://localhost:27017';
+function SideMenuMiddle() {
+  const [showTimeline, setShowTimeline] = useState(false);
 
-// Database Name
-const dbName = 'your_database_name';
+  const handleButtonClick = () => {
+    setShowTimeline(!showTimeline);
+  };
 
-// Collection Name
-const collectionName = 'your_collection_name';
+  return (
+    <Container className="p-0 mt-3">
+      <Button
+          onClick={handleButtonClick}
+          className="m-auto bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
+        >
+          <span className="text-center justify-content-center d-flex align-items-center w-75">
+            Timeline
+          </span>
+          <span className="w-25 justify-content-center d-flex align-items-center">
+            <TbTimelineEventFilled className="size-20" />
+          </span>
+        </Button>
+      {showTimeline && <TimeLine />}
+    </Container>
+  );
+}
 
-// Create a new MongoClient
-const client = new MongoClient(url, { useNewUrlParser: true });
-
-// Connect to the MongoDB server
-client.connect(function(err) {
-    if (err) {
-        console.error('Error connecting to the database:', err);
-        return;
-    }
-
-    console.log('Connected successfully to the database');
-
-    // Get the database instance
-    const db = client.db(dbName);
-
-    // Get the collection
-    const collection = db.collection(collectionName);
-
-    // Find all documents in the collection
-    collection.find({}).toArray(function(err, documents) {
-        if (err) {
-            console.error('Error retrieving documents:', err);
-            return;
-        }
-
-        console.log('Retrieved documents:', documents);
-    });
-
-    // Close the connection
-    client.close();
-});
+export default SideMenuMiddle;
