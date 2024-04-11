@@ -79,9 +79,9 @@ class User(AbstractUser):
     pinned_indices = djmodels.ArrayField(model_container=models.IntegerField(), default=list)
     embedding_id = models.IntegerField()"""
 
-class ChatHistory(models.Model):  # Corrected from Models to Model
+"""class ChatHistory(models.Model):  # Corrected from Models to Model
     # Define your fields here
     user_id = models.IntegerField()
     inputoutput = models.ArrayField(model_container=models.CharField())
     pinned_indices = models.ArrayField(model_container=models.IntegerField(), default=list)
-    embedding_id = models.IntegerField()
+    embedding_id = models.IntegerField()"""
