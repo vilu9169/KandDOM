@@ -3,8 +3,9 @@ import PyPDF2
 
 def convert_pdf_to_text(pdf_file, output_file):
     try:
-        #subprocess.run(['ocrmypdf',"--redo-ocr" ,'--language', 'swe', pdf_file, output_file], check=True)
-        #subprocess.run(['ocrmypdf','--language', 'swe', pdf_file, output_file], check=True)
+        subprocess.run(['ocrm   ypdf',"--redo-ocr" ,'--language', 'swe', pdf_file, output_file], check=True)
+        
+        
         print("PDF converted to text successfully!")
     except subprocess.CalledProcessError as e:
         print(f"Error converting PDF to text: {e}")
