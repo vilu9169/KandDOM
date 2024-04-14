@@ -3,9 +3,8 @@ import PyPDF2
 
 def convert_pdf_to_text(pdf_file, output_file):
     try:
-        subprocess.run(['ocrmypdf',"--redo-ocr" ,'--language', 'swe', pdf_file, output_file], check=True)
-        
-        
+        #subprocess.run(['ocrmypdf',"--redo-ocr" ,'--language', 'swe', pdf_file, output_file], check=True)
+        #subprocess.run(['ocrmypdf','--language', 'swe', pdf_file, output_file], check=True)
         print("PDF converted to text successfully!")
     except subprocess.CalledProcessError as e:
         print(f"Error converting PDF to text: {e}")
@@ -15,9 +14,9 @@ pdf_file = "gbg_mordforsok.pdf"
 output_file = "output.pdf"
 
 # Call the function to convert the PDF to text
-#convert_pdf_to_text(pdf_file, output_file)
+convert_pdf_to_text(pdf_file, output_file)
 
-def extract_text_from_pdf(pdf_file):
+def extract_text_from_pdf(output_file):
     try:
         with open(pdf_file, 'rb') as file:
             reader = PyPDF2.PdfReader(file)
