@@ -415,7 +415,7 @@ def start_chat(request):
     model="claude-3-haiku@20240307",
     system = context,
     )
-    return Response(message.content[0].text)
+    return Response({"message" : message.content[0].text})
 
 
 
