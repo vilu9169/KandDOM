@@ -6,7 +6,7 @@ from rest_framework_simplejwt import views as jwt_views
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('chat/', chat_view, name='chat_view'),
+    path('chat/', start_chat, name='chat_view'),
     re_path(r'^$', TemplateView.as_view(template_name='index.html')),
     re_path(r'^login$', TemplateView.as_view(template_name='index.html')),
     path('test/', display_text_file, name='display_text'),
