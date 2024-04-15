@@ -356,6 +356,7 @@ llm = VertexAI()
 import subprocess
 import requests
 
+@api_view(['POST'])
 def start_chat(input, previous_messages) -> str:
     # Set the endpoint URL
     endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/chat-bison:predict"
