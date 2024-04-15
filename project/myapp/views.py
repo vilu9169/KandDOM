@@ -347,6 +347,7 @@ index = pc.Index(index_name)
 embeddings = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001")
 
 from langchain_pinecone import PineconeVectorStore  
+from anthropic import AnthropicVertex
 
 vectorstore = PineconeVectorStore(  
     index, embeddings  
@@ -358,19 +359,16 @@ import requests
 
 @api_view(['POST'])
 def start_chat(request):
+    print("Starting chat")
     # Set the endpoint URL
-    endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/chat-bison:predict"
-    #endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/gemini-1.5-pro:predict"
-    new_message = request.data.get('message')
-    messages_json = request.data.get('messages')
-    print('newmessage', new_message)
-    print('Messages JSON: ', messages_json)
-    
-    
-    context = "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar.  Detta är de RAG delar av dokument du har att tillgå :" 
+    MODEL="claude-3-haiku@20240307"
+    endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/europe-west4/publishers/anthropic/models/"+MODEL+":predict"
+    context = "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. Detta är de RAG delar av dokument du har att tillgå :" 
     index = 0
     prepend = ""
     append = ""
+    new_message = request.data.get('message')
+    messages_json = request.data.get('messages')
     for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 40, })).invoke(new_message):
         #The first 10 documents are prepended to the context
         #The last 10 documents are appended to append
@@ -384,6 +382,7 @@ def start_chat(request):
         #Extract text from document
     context += prepend + append
     #print("Context: ", context)
+    print("Rag done")
     #Create a json struct for previous messages and the current message
     messages = []
     odd = True
@@ -391,68 +390,32 @@ def start_chat(request):
     for message in previous_messages:
         if odd:
             messages.append({
-                "author": "user",
+                "role": "user",
                 "content": message
             })
             odd = False
         else:
             messages.append({
-                "author": "model",
+                "role": "assistant",
                 "content": message
             })
             odd = True
     messages.append({
-        "author": "user",
+        "role": "user",
         "content": new_message
     })
-    
-    payload = {
-    "instances": [{
-        "context":  context,
-         "examples": [ 
-         {
-             "input": {"content": "Är den åtalade skyldig?"},
-             "output": {"content": "Jag är en opartisk assistent och är inte kapabel att besvara denna fråga. "}
-         }],
-        "messages": messages,
-    }],
-    "parameters": {
-        "temperature": 0.3,
-        "maxOutputTokens": 2000,
-        "topP": 0.8,
-        "topK": 40
-    }
-    }
-    auth = subprocess.check_output("gcloud auth print-access-token", shell=True)
-    
-    #Convert auth to string and remove last \r\n if on windows
-    if(auth[-2] == 13):
-        auth = auth.decode("utf-8")[:-2]
-    else:
-        auth = auth.decode("utf-8")[:-1]
-    # Set the request headers
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer "+auth
-           }
-    # Send the POST request
-    response = requests.post(endpoint, json=payload, headers=headers)
 
-    # Check the response status code
-    if response.status_code == 200:
-        #Get the response
-        resp = response.text
-        #print("Response: ", resp)
-        #Response is a json object so convert it to a json object
-        import json
-        resp = json.loads(resp)
-        #Get the response
-        resp = resp["predictions"][0]["candidates"][0]["content"]
-        return  Response({"message" : resp})
-    else:
-        print(response.text)
-        print(response.status_code)
-        return "Failed to start the chat"
+    LOCATION="europe-west4"
+
+    client = AnthropicVertex(region=LOCATION, project_id="sunlit-inn-417922")
+
+    message = client.messages.create(
+    max_tokens=500,
+    messages=messages,
+    model="claude-3-haiku@20240307",
+    system = context,
+    )
+    return Response(message.content[0].text)
 
 
 
