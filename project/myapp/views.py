@@ -357,18 +357,21 @@ import subprocess
 import requests
 
 @api_view(['POST'])
-def start_chat(input, previous_messages) -> str:
+def start_chat(request):
     # Set the endpoint URL
     endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/chat-bison:predict"
     #endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/gemini-1.5-pro:predict"
-    
+    new_message = request.data.get('message')
+    messages_json = request.data.get('messages')
+    print('newmessage', new_message)
+    print('Messages JSON: ', messages_json)
     
     
     context = "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar.  Detta är de RAG delar av dokument du har att tillgå :" 
     index = 0
     prepend = ""
     append = ""
-    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 40, })).invoke(input):
+    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 40, })).invoke(new_message):
         #The first 10 documents are prepended to the context
         #The last 10 documents are appended to append
         if index < 10:
@@ -384,6 +387,7 @@ def start_chat(input, previous_messages) -> str:
     #Create a json struct for previous messages and the current message
     messages = []
     odd = True
+    previous_messages = [msg['text'] for msg in messages_json]
     for message in previous_messages:
         if odd:
             messages.append({
@@ -399,7 +403,7 @@ def start_chat(input, previous_messages) -> str:
             odd = True
     messages.append({
         "author": "user",
-        "content": input
+        "content": new_message
     })
     
     payload = {
