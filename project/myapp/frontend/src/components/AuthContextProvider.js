@@ -51,7 +51,7 @@ const AuthContextProvider = ({children}) => {
                     // Storing Access in cookie
                     Cookies.set('access_token', data.access);
                     Cookies.set('refresh_token', data.refresh);
-                    setUser(jwtDecode(data.access).email)
+                    setUser(jwtDecode(data.access).user)
                     setUserID(jwtDecode(data.access).user_id)
                     localStorage.setItem('userID', jwtDecode(data.access).user_id)
                     console.log("decoded: ", jwtDecode(data.access))
