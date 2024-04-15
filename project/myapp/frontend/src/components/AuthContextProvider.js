@@ -8,7 +8,7 @@ const AuthContext = createContext()
 
 
 const AuthContextProvider = ({children}) => {
-    let [user, setUser] = useState(() => (Cookies.get('access_token') ? jwtDecode(Cookies.get('access_token')) : null))
+    let [user, setUser] = useState(() => (Cookies.get('access_token') ? jwtDecode(Cookies.get('access_token')).user : []))
     let [authTokens, setAuthTokens] = useState(() => (Cookies.get('access_tokens') ? JSON.parse(Cookies.get('access_token')) : null))
     let [loading, setLoading] = useState(true)
     let [loginError, setLoginError] = useState(null)
@@ -56,7 +56,7 @@ const AuthContextProvider = ({children}) => {
                     setUser(jwtDecode(data.access).email)
                     setUserID(jwtDecode(data.access).user_id)
                     localStorage.setItem('userID', jwtDecode(data.access).user_id)
-                    console.log("decoded: ", jwtDecode(data.access))
+                    console.log("decoded: ", jwtDecode(data.access).user)
                     navigate("/");
                     setLoginError(null)
                     setSignupError(null)
