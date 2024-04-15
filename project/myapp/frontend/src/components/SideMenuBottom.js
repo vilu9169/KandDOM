@@ -15,7 +15,6 @@ import LogIn from "./LogIn";
 
 import Collapse from "react-bootstrap/Collapse";
 import Fade from "react-bootstrap/Fade";
-
 import { AuthContext } from "./AuthContextProvider";
 
 function SideMenuBottom() {
@@ -25,6 +24,10 @@ function SideMenuBottom() {
   const personRef = useRef(null);
   const navigate = useNavigate();
   const { logoutUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  
+  const userName = useState(user.name);
+
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
@@ -51,55 +54,59 @@ function SideMenuBottom() {
   }, [toggleVisibility]); // Include handleButtonClick in the dependency array
 
   return (
-      <Container className="p-0 m-0 position-absolute bottom-0 start-50 translate-middle-x mb-3">
-        <Fade mountOnEnter={true} unmountOnExit={true} appear={isVisible} in={isVisible} >
-          <Container
-            className="p-0 mb-2  w-90 bg-1 user-pop-up-container"
-            ref={innerContainerRef}
-          >
-            <Row className="p-0 m-0 h-50 w-100 ">
-              <Button
-                onClick={handleButtonClick}
-                className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
-              >
-                <span className="text-center justify-content-center d-flex align-items-center w-75">
-                  Settings
-                </span>
-                <span className="w-25 justify-content-center d-flex align-items-center">
-                  <IoIosSettings className="size-20" />
-                </span>
-              </Button>
-            </Row>
-            <Row className="p-0 m-0 h-50 w-100">
-              {" "}
-              <Button
-                onClick={logoutUser}
-                className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
-              >
-                <span className="text-center justify-content-center d-flex align-items-center w-75">
-                  Log Out
-                </span>
-                <span className="w-25 justify-content-center d-flex align-items-center">
-                  <IoIosLogOut className="size-20" />
-                </span>
-              </Button>
-            </Row>
-          </Container>
-        </Fade>
-        <Button
-          ref={personRef}
-          onClick={toggleVisibility}
-          className="m-auto bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
+    <Container className="p-0 m-0 position-absolute bottom-0 start-50 translate-middle-x mb-3">
+      <Fade
+        mountOnEnter={true}
+        unmountOnExit={true}
+        appear={isVisible}
+        in={isVisible}
+      >
+        <Container
+          className="p-0 mb-2  w-90 bg-1 user-pop-up-container"
+          ref={innerContainerRef}
         >
-          <span className="text-center justify-content-center d-flex align-items-center w-75">
-            Julius amorm
-          </span>
-          <span className="w-25 justify-content-center d-flex align-items-center">
-            <IoMdPerson className="size-20" />
-          </span>
-        </Button>
-      </Container>
-
+          <Row className="p-0 m-0 h-50 w-100 ">
+            <Button
+              onClick={handleButtonClick}
+              className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
+            >
+              <span className="text-center justify-content-center d-flex align-items-center w-75">
+                Settings
+              </span>
+              <span className="w-25 justify-content-center d-flex align-items-center">
+                <IoIosSettings className="size-20" />
+              </span>
+            </Button>
+          </Row>
+          <Row className="p-0 m-0 h-50 w-100">
+            {" "}
+            <Button
+              onClick={logoutUser}
+              className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
+            >
+              <span className="text-center justify-content-center d-flex align-items-center w-75">
+                Log Out
+              </span>
+              <span className="w-25 justify-content-center d-flex align-items-center">
+                <IoIosLogOut className="size-20" />
+              </span>
+            </Button>
+          </Row>
+        </Container>
+      </Fade>
+      <Button
+        ref={personRef}
+        onClick={toggleVisibility}
+        className="m-auto bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
+      >
+        <span className="text-center justify-content-center d-flex align-items-center w-75">
+          { userName }
+        </span>
+        <span className="w-25 justify-content-center d-flex align-items-center">
+          <IoMdPerson className="size-20" />
+        </span>
+      </Button>
+    </Container>
   );
 }
 

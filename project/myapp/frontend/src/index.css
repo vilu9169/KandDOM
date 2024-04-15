@@ -15,12 +15,14 @@
   --text-color-main: #f8f0e5;
 
 }
+/*
 @font-face{
   font-family:"helvetica";
   src:url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("woff"),
   url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("opentype"),
   url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("truetype");
 }
+*/
 body,
 h1,
 h2,
@@ -34,8 +36,8 @@ form,
 div,
 span,
 button {
-  font-family: "helvetica";
-  /*font-family: 'Courier New', monospace;*/
+  /*font-family: "helvetica";*/
+  font-family: 'Courier New', monospace;
   /*font-family: "helvetica";*/ /*  TODO: Byt till denna font när vi e klara, har bara en goofy nu så vi ser all text är samma font */ 
 }
 
