@@ -1,11 +1,5 @@
-import os
 from langchain_google_vertexai import VertexAIEmbeddings
-from langchain.text_splitter import CharacterTextSplitter, RecursiveCharacterTextSplitter
-from langchain_community.document_loaders import TextLoader
-from langchain.prompts import ChatPromptTemplate
 from langchain_google_vertexai import VertexAI
-from langchain.schema.runnable import RunnablePassthrough
-from langchain.chains import RetrievalQA
 
 
 from pinecone import Pinecone, ServerlessSpec, PodSpec  
@@ -18,36 +12,19 @@ index = pc.Index(index_name)
 embeddings = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001")
 
 from langchain_pinecone import PineconeVectorStore  
-#Load document text from file
-# with open(FIlE_PATH, "r", encoding="utf-8") as f:
-#     text_field = f.read()
+
 vectorstore = PineconeVectorStore(  
     index, embeddings  
 )  
 llm = VertexAI()
-
-
-# qa = RetrievalQA.from_chain_type(  
-#     llm=llm,  
-#     chain_type="stuff",  
-#     retriever=vectorstore.as_retriever(search_type="similarity", k=40),  
-# )  
-# res = qa.invoke("Ange samtliga vittnen i fallet") 
-
-
-# print(res)
-
-
-
-
 
 import subprocess
 import requests
 
 def start_chat(input, previous_messages) -> str:
     # Set the endpoint URL
-    #endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/chat-bison:predict"
-    endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/gemini-1.5-pro:predict"
+    endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/chat-bison:predict"
+    #endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/gemini-1.5-pro:predict"
     
     
     
@@ -149,6 +126,5 @@ while(True):
     prevmessages.append(message)
     prevmessages.append(res)
     print(res)
-#print(start_chat("?"))
 
 
