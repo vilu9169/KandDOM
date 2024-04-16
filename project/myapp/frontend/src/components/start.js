@@ -33,7 +33,7 @@ function Start() {
               <SideMenuTop />
             </Row>
             <Row className="flex-grow-1  bg-2">
-              
+              <SideMenuMiddle />
               {/* <SideMenuFiles></SideMenuFiles> */}
             </Row>
             <Row className="h-80px  bg-2">

@@ -328,10 +328,22 @@ def upload_document(request):
     
 @api_view(['POST'])
 def get_documents(request):
-    user = User.objects.get(id=request.data['userID'])
+    print(request.data)
+    user = User.objects.get(id=request.data['user'])
     documents = user.documents.all()
-    serializer = DocumentSerializer(documents, many=True)
-    return Response(serializer.data)
+    resp = []
+    for document in documents:
+        print(document, document.__id__())
+        id = str(document.__id__())
+        resp.append({
+            "id": id,
+            "filename": document.filename,
+            "content_type": document.content_type,
+            "size": document.size,
+            "uploaded_at": document.uploaded_at
+        })
+
+    return Response({'data' : resp})
 
 class MyTokenObtainPairView(TokenViewBase):
     serializer_class = MyTokenObtainPairSerializer
