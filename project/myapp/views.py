@@ -238,8 +238,8 @@ from .models import Document
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken, TokenError
 from rest_framework import status
 from .models import Document
-from .serializers import DocumentSerializer
-
+from .serializers import DocumentSerializer, MyTokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenViewBase
 
 
 class RegisterView(APIView):
@@ -270,10 +270,11 @@ class Loginview(APIView):
             raise AuthenticationFailed("Incorrect Password")
         access_token = AccessToken.for_user(user)
         refresh_token =RefreshToken.for_user(user)
+        access_token["user"] = UserSerializer(user).data
+        print(UserSerializer(user).data)
         return Response({
             "access_token" : access_token,
             "refresh_token" : refresh_token,
-            'userID': user.id
         })
     
 class LogoutView(APIView):
@@ -327,11 +328,25 @@ def upload_document(request):
     
 @api_view(['POST'])
 def get_documents(request):
-    user = User.objects.get(id=request.data['userID'])
+    print(request.data)
+    user = User.objects.get(id=request.data['user'])
     documents = user.documents.all()
-    serializer = DocumentSerializer(documents, many=True)
-    return Response(serializer.data)
+    resp = []
+    for document in documents:
+        print(document, document.__id__())
+        id = str(document.__id__())
+        resp.append({
+            "id": id,
+            "filename": document.filename,
+            "content_type": document.content_type,
+            "size": document.size,
+            "uploaded_at": document.uploaded_at
+        })
 
+    return Response({'data' : resp})
+
+class MyTokenObtainPairView(TokenViewBase):
+    serializer_class = MyTokenObtainPairSerializer
 
 from langchain_google_vertexai import VertexAIEmbeddings
 from langchain_google_vertexai import VertexAI
@@ -429,6 +444,5 @@ def start_chat(request):
 #     prevmessages.append(message)
 #     prevmessages.append(res)
 #     print(res)
-
 
 
