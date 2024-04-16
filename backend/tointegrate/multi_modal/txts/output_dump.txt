@@ -1,0 +1,60 @@
+1: Texten ser ut att komma från ett formulär, Svar: Ja
+2: Texten ser inte ut som en intervju, Svar: Nej
+3: Sidan innehåller mer än 50 ord, Svar: Nej
+4: Texten är inte obegriplig med konstiga tecken eller allmänt osammanhängande, Svar: Nej
+5: Texten nämner inte en bild som kan finnas på sidan, Svar: Nej
+
+1: Nej, texten ser inte ut att komma från ett formulär.
+2: Nej, texten ser inte ut som en intervju.
+3: Ja, sidan innehåller lite text totalt, ca 50 ord eller mindre.
+4: Nej, texten är inte obegriplig med konstiga tecken eller allmänt osammanhängande.
+5: Nej, texten nämner inte en bild som kan finnas på sidan.
+
+1: Nej, texten ser inte ut att komma från ett formulär.
+2: Nej, texten ser inte ut som en intervju.
+3: Nej, sidan innehåller inte lite text totalt.
+4: Nej, texten är inte obegriplig med konstiga tecken eller allmänt osammanhängande.
+5: Nej, texten nämner inte en bild som kan finnas på sidan.
+
+1: Nej, texten ser ut att komma från ett polisdokument.
+2: Nej, texten ser inte ut som en intervju.
+3: Nej, sidan innehåller mer än 50 ord.
+4: Nej, texten är begriplig och sammanhängande.
+5: Nej, texten nämner ingen bild.
+
+1: Nej, texten ser inte ut att komma från ett formulär.
+2: Nej, texten ser inte ut som en intervju.
+3: Nej, sidan innehåller inte lite text totalt.
+4: Nej, texten är inte obegriplig med konstiga tecken eller allmänt osammanhängande.
+5: Ja, texten nämner en bild som kan finnas på sidan.
+
+1: Texten ser ut att komma från ett formulär, eftersom den innehåller ett fält för att fylla i fordonsåret. Svar: Ja
+2: Texten ser inte ut som en intervju. Svar: Nej
+3: Sidan innehåller lite text totalt, med endast ett ord. Svar: Ja
+4: Texten är inte obegriplig med konstiga tecken eller allmänt osammanhängande. Svar: Nej
+5: Texten nämner inte en bild som kan finnas på sidan. Svar: Nej
+
+1: Nej, texten ser inte ut att komma från ett formulär.
+2: Nej, texten ser inte ut som en intervju.
+3: Nej, sidan innehåller inte lite text totalt.
+4: Nej, texten är inte obegriplig med konstiga tecken eller allmänt osammanhängande.
+5: Nej, texten nämner inte en bild som kan finnas på sidan.
+
+1: Texten ser ut att komma från ett formulär, Svar: Ja
+2: Texten ser inte ut som en intervju, Svar: Nej
+3: Sidan innehåller mer än 50 ord, Svar: Nej
+4: Texten är begriplig och sammanhängande, Svar: Nej
+5: Texten nämner inte någon bild, Svar: Nej
+
+1: Nej, texten ser inte ut att komma från ett formulär.
+2: Nej, texten ser inte ut som en intervju.
+3: Nej, sidan innehåller inte lite text totalt.
+4: Nej, texten är inte obegriplig med konstiga tecken eller allmänt osammanhängande.
+5: Nej, texten nämner inte en bild som kan finnas på sidan.
+
+1: Texten ser ut att komma från ett formulär, Svar: Ja
+2: Texten ser inte ut som en intervju, Svar: Nej
+3: Sidan innehåller mer än 50 ord, Svar: Nej
+4: Texten är begriplig och sammanhängande, Svar: Nej
+5: Texten nämner inte någon bild, Svar: Nej
+
