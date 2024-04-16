@@ -123,14 +123,14 @@ def start_chat(input, previous_messages) -> str:
         "content": input
     })
 
-    LOCATION="europe-west4"
-
+    #LOCATION="europe-west4"
+    LOCATION="us-central1"
     client = AnthropicVertex(region=LOCATION, project_id="sunlit-inn-417922")
 
     message = client.messages.create(
     max_tokens=500,
     messages=messages,
-    model="claude-3-haiku@20240307",
+    model=MODEL,
     system = context,
     )
     return message.content[0].text
