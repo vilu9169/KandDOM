@@ -10,6 +10,7 @@ import { useContext } from "react";
 
 function UploadFileWindow() {
   const { userID, getFiles } = useContext(AuthContext);
+  const baseURL = process.env.REACT_APP_API_URL;
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
 
@@ -25,7 +26,7 @@ function UploadFileWindow() {
     formData.append('userID', userID);
     try {
 
-        const response = await fetch('http://127.0.0.1:8000/upload/', {
+        const response = await fetch(baseURL+'upload/', {
             method: 'POST',
             body: formData
         });

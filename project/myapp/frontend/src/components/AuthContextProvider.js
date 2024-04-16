@@ -17,12 +17,15 @@ const AuthContextProvider = ({children}) => {
     let [userID, setUserID] = useState(() => (localStorage.getItem('userID') ? localStorage.getItem('userID') : null))
     const navigate = useNavigate()
     const [files, setFiles] = useState([]);
+
+    const baseURL = process.env.REACT_APP_API_URL
+
     let getFiles = async (e) => {
         const body = {
             user: userID
         }
       try {
-        const {data} = await axios.post("http://127.0.0.1:8000/api/documents/", body);
+        const {data} = await axios.post(baseURL+"api/documents/", body);
         console.log(data.data);
         let fileArr = []
         for (const file of data.data) {
@@ -48,7 +51,7 @@ const AuthContextProvider = ({children}) => {
                     password: e.target.password.value
             }
             try {
-                    const {data} = await axios.post("http://127.0.0.1:8000/api/token/", body) // Updated URL to include the full address with the 'http://' protocol
+                    const {data} = await axios.post(baseURL+"api/token/", body) // Updated URL to include the full address with the 'http://' protocol
                     console.log("data: ", data)
                     // Storing Access in cookie
                     Cookies.set('access_token', data.access);
@@ -78,7 +81,7 @@ const AuthContextProvider = ({children}) => {
         }
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/signup/', body)
+            const response = await axios.post(baseURL+'signup/', body)
             console.log(response)
             loginUser(e)
         } catch (error) {
@@ -100,7 +103,7 @@ const AuthContextProvider = ({children}) => {
 
     const updateToken = async () => {
         //http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/api/token/refresh/
-        const response = await fetch('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/api/token/refresh/', {
+        const response = await fetch(baseURL+'api/token/refresh/', {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'
