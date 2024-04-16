@@ -127,7 +127,7 @@ def chat_view(request):
 import subprocess
 import requests
 
-def start_chat(input, previous_messages) -> str:
+def start_chat2(input, previous_messages) -> str:
     endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/chat-bison:predict"
     
     #Load document from output.txt
@@ -347,3 +347,102 @@ def get_documents(request):
 
 class MyTokenObtainPairView(TokenViewBase):
     serializer_class = MyTokenObtainPairSerializer
+
+from langchain_google_vertexai import VertexAIEmbeddings
+from langchain_google_vertexai import VertexAI
+
+
+from pinecone import Pinecone, ServerlessSpec, PodSpec  
+
+pc = Pinecone(api_key="2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
+index_name = "langchain-demo"
+index = pc.Index(index_name)  
+#print(index.describe_index_stats())
+
+embeddings = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001")
+
+from langchain_pinecone import PineconeVectorStore  
+from anthropic import AnthropicVertex
+
+vectorstore = PineconeVectorStore(  
+    index, embeddings  
+)  
+llm = VertexAI()
+
+import subprocess
+import requests
+
+@api_view(['POST'])
+def start_chat(request):
+    print("Starting chat")
+    # Set the endpoint URL
+    MODEL="claude-3-haiku@20240307"
+    endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/europe-west4/publishers/anthropic/models/"+MODEL+":predict"
+    context = "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. Detta är de RAG delar av dokument du har att tillgå :" 
+    index = 0
+    prepend = ""
+    append = ""
+    new_message = request.data.get('message')
+    messages_json = request.data.get('messages')
+    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 40, })).invoke(new_message):
+        #The first 10 documents are prepended to the context
+        #The last 10 documents are appended to append
+        if index < 10:
+            prepend += rag.page_content
+        elif index >10 and index < 20:
+            append = rag.page_content + append
+        else:
+            prepend += rag.page_content
+        index += 1
+        #Extract text from document
+    context += prepend + append
+    #print("Context: ", context)
+    print("Rag done")
+    #Create a json struct for previous messages and the current message
+    messages = []
+    odd = True
+    previous_messages = [msg['text'] for msg in messages_json]
+    for message in previous_messages:
+        if odd:
+            messages.append({
+                "role": "user",
+                "content": message
+            })
+            odd = False
+        else:
+            messages.append({
+                "role": "assistant",
+                "content": message
+            })
+            odd = True
+    messages.append({
+        "role": "user",
+        "content": new_message
+    })
+
+    LOCATION="europe-west4"
+
+    client = AnthropicVertex(region=LOCATION, project_id="sunlit-inn-417922")
+
+    message = client.messages.create(
+    max_tokens=500,
+    messages=messages,
+    model="claude-3-haiku@20240307",
+    system = context,
+    )
+    return Response({"message" : message.content[0].text})
+
+
+
+# Call the function with your project ID and location
+# prevmessages = []
+# while(True):
+#     #Prompt user for input
+#     print("Enter your message: ")
+#     message = input()
+#     res = start_chat(message, prevmessages)
+#     prevmessages.append(message)
+#     prevmessages.append(res)
+#     print(res)
+
+
