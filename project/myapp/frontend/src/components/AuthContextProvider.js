@@ -22,15 +22,15 @@ const AuthContextProvider = ({children}) => {
             user: userID
         }
       try {
-        const response = await axios.post("http://127.0.0.1:8000/api/documents/", body);
-        const data = await response.json();
-        console.log(data);
+        const {data} = await axios.post("http://127.0.0.1:8000/api/documents/", body);
+        console.log(data.data);
         let fileArr = []
-        for (const file in data.data) {
+        for (const file of data.data) {
           console.log(file);
-          fileArr.push(file.name);
+          fileArr.push(file);
         }
         setFiles(fileArr);
+        console.log("Files:", files);
         return data;
       }
       catch (error) {
@@ -57,6 +57,7 @@ const AuthContextProvider = ({children}) => {
                     setUserID(jwtDecode(data.access).user_id)
                     localStorage.setItem('userID', jwtDecode(data.access).user_id)
                     console.log("decoded: ", jwtDecode(data.access).user)
+                    getFiles()
                     navigate("/");
                     setLoginError(null)
                     setSignupError(null)
@@ -126,7 +127,9 @@ const AuthContextProvider = ({children}) => {
         userID:userID,
         authTokens:authTokens,
         loginError:loginError,
+        files:files,
         signupError:signupError,
+        getFiles:getFiles,
         loginUser:loginUser,
         logoutUser:logoutUser,
         signupUser:signupUser,
