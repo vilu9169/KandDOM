@@ -165,10 +165,10 @@ ai_msg2 = AIMessage(
 
 binary_encodings = []
 
-# for verdict in verdicts:
-#     result = gemini_pro.invoke([binary_sys, HumanMessage(content=[{"type": "text", "text": verdict}])])
-#     binary_encodings.append(result.content)
+for verdict in verdicts:
+    result = gemini_pro.invoke([binary_sys, HumanMessage(content=[{"type": "text", "text": verdict}])])
+    binary_encodings.append(result.content)
 
-# for i, encoding, verdict in zip(range(start_page, start_page+no_pages), binary_encodings, verdicts):
-#     print(f"Binary encoding for page {i}:")
-#     print("verdict: "+ verdict+" encoding: "+encoding)
+for i, encoding, verdict in zip(range(start_page, start_page+no_pages), binary_encodings, verdicts):
+    print(f"Binary encoding for page {i}:")
+    print("verdict: "+ verdict+" encoding: "+encoding)
