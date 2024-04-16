@@ -18,10 +18,10 @@ def extract_text_from_pdf(pdf_file) -> str:
             text = ""
             #Separate pages so they start with { and end with }
             for page_num in range(num_pages):
-                text += "{pagestart nr "+ page_num+1 +"}"
+                text += "{pagestart nr "+ str(page_num+1) +"}"
                 page = reader.pages[page_num]
                 text += page.extract_text()
-                text +="{pageend nr "+ page_num+1 +"}"
+                text +="{pageend nr "+ str(page_num+1) +"}"
 
             return text
     except FileNotFoundError:
@@ -45,7 +45,7 @@ def text_to_rag(new_index_name, text):
     #text_splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=0)
     #splits = [Document(page_content=x) for x in text_splitter.split_text(text)]
     from langchain.text_splitter import RecursiveCharacterTextSplitter
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size = 1000, chunk_overlap = 150)
+    text_splitter = RecursiveCharacterTextSplitter(separators=["{pagestart", "{pageend"], chunk_overlap = 150)
     splits = [Document(page_content=x) for x in text_splitter.split_text(text)]
     #splits = text_splitter.split_text(text)    
     embeddings = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001")

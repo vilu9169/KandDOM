@@ -11,7 +11,7 @@ from langchain.chains import RetrievalQA
 from pinecone import Pinecone, ServerlessSpec, PodSpec  
 
 pc = Pinecone(api_key="2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
-index_name = "langchain-demo"
+index_name = "newsplits"
 index = pc.Index(index_name)  
 #print(index.describe_index_stats())
 
@@ -88,7 +88,7 @@ def start_chat(input, previous_messages) -> str:
     index = 0
     prepend = ""
     append = ""
-    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 60, })).invoke(ragadapt(input, previous_messages)):
+    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 40, })).invoke(ragadapt(input, previous_messages)):
         #The first 10 documents are prepended to the context
         #The last 10 documents are appended to append
         if index < 10:
