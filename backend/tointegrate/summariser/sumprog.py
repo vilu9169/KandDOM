@@ -71,32 +71,6 @@ def make_summary(input):
         else:
             loc = "europe-west4"
             return make_summary(input)
-# def summarise_multiple(input, location) -> str:
-#     # Set the endpoint URL
-#     context = "Du summerar delar av juridiska dokument som sedan kommer slås samman för att skapa en tidslinje av händelserna i dokumentet. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar."  
-#     #Create a json struct for previous messages and the current message
-
-#     client = AnthropicVertex(region=location, project_id="sunlit-inn-417922")
-#     messages = []
-#     for elem in input:
-#         messages.append({"content": ("Detta är delen av dokumentet du ska summera :" + elem.page_content), "role": "user"})
-#     try:
-#         message = client.messages.create(
-#         max_tokens=500,
-#         model="claude-3-haiku@20240307",
-#         messages = messages,
-#         system = context,
-#         )
-#         return message.content[0].text
-#     except Exception as e:
-#         print("Error: ", e)
-#         if(location == "europe-west4"):
-#             print("retrying in us-central1")
-#             return summarise_multiple(input, "us-central1")
-#         else:
-#             print("retrying in europe-west4")
-#             return summarise_multiple(input, "europe-west4")
-
 
 # Load documents
 loader = TextLoader("../Mordforsokgbg.txt", encoding="utf-8")
