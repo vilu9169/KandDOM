@@ -71,13 +71,8 @@ def chat_view(request):
         "content": new_message
     })
 
-    message = ChatHistory.objects.create(
-        user_id=request.data.get('userid'),  # Assuming the user is authenticated
-        embedding_id=1  # Assuming embedding_id is defined elsewhere
-    )
-    message.inputoutput.set(messages)
-    print("updated chat history")
     
+  
     payload = {
     "instances": [{
         "context":  context,
@@ -432,6 +427,11 @@ def start_chat(request):
         "role": "user",
         "content": new_message
     })
+    message = ChatHistory.objects.create(
+        user_id=request.data.get('userid'),  # Assuming the user is authenticated
+        embedding_id=1  # Assuming embedding_id is defined elsewhere
+    )
+    message.inputoutput.set(messages)
 
     LOCATION="europe-west4"
 
