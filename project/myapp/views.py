@@ -334,7 +334,7 @@ def upload_document(request):
             print(user)"""
 
         # You might want to return the ID of the newly created document for future reference
-        return Response({'document_id ': str(document.__id__())})
+        return Response({'document_id': str(document.__id__())})
     else:
         return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
     
