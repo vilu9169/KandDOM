@@ -50,7 +50,7 @@ def chat_view(request):
     #Create a json struct for previous messages and the current message
     odd = True
     messages = []
-    previous_messages = [msg['text'] for msg in messages_json]
+    previous_messages = [msg['text'] for msg in messages_json[:-1]]
     print('Received messages: ', previous_messages)  # Get all elements except the last one
     
     for message in previous_messages:
@@ -70,6 +70,13 @@ def chat_view(request):
         "author": "user",   
         "content": new_message
     })
+
+    message = ChatHistory.objects.create(
+        user_id=request.data.get('userid'),  # Assuming the user is authenticated
+        embedding_id=1  # Assuming embedding_id is defined elsewhere
+    )
+    message.inputoutput.set(messages)
+    print("updated chat history")
     
     payload = {
     "instances": [{
