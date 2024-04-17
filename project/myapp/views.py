@@ -295,8 +295,7 @@ from langchain_google_vertexai import VertexAI
 from pinecone import Pinecone, ServerlessSpec, PodSpec  
 
 pc = Pinecone(api_key="2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
-index_name = "langchain-demo"
-index = pc.Index(index_name)  
+
 #print(index.describe_index_stats())
 
 embeddings = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001")
@@ -336,7 +335,7 @@ def upload_document(request):
             print(user)"""
 
         # You might want to return the ID of the newly created document for future reference
-        return Response({'document_id ': str(document._id)})
+        return Response({'document_id ': str(document.__id__())})
     else:
         return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
     
@@ -376,6 +375,8 @@ import requests
 @api_view(['POST'])
 def start_chat(request):
     print("Starting chat")
+    index_name = request.data.get('index_name')
+    index = pc.Index(index_name)
     vectorstore = PineconeVectorStore(  
         index, embeddings  
     )  
