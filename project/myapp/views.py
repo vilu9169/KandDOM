@@ -506,4 +506,5 @@ def text_to_rag(new_index_name, text):
     
 def mainfunk(pdf_file, new_index_name):
     text = extract_text_from_pdf(pdf_file)
+    print(text)
     text_to_rag(new_index_name, text)
