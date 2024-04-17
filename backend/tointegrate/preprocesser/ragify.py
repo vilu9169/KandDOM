@@ -18,7 +18,6 @@ from langchain_community.document_loaders import TextLoader
 # Load documents
 loader = TextLoader("D:/Plugg/Kandarb/KandDOM/backend/tointegrate/output.txt", encoding="utf-8")
 # Split documents
-
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 text_splitter = RecursiveCharacterTextSplitter(chunk_size = 500, chunk_overlap = 0)
 splits = text_splitter.split_documents(loader.load())
