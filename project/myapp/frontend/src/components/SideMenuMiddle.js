@@ -12,7 +12,7 @@ function SideMenuMiddle() {
   const [showTimeline, setShowTimeline] = useState(false);
   const { files } = useContext(AuthContext);
   const [file, setFile] = useState(null);
-  const [messages, setMessages] = useState(ResponseContext);
+  const [messages, setMessages] = useContext(ResponseContext);
   const handleButtonClick = () => {
     setShowTimeline(!showTimeline);
   };
