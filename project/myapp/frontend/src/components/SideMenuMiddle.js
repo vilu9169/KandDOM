@@ -6,13 +6,20 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import { IoIosDocument } from "react-icons/io";
 import { Row } from "react-bootstrap";
 import { AuthContext } from "./AuthContextProvider";
+import { ResponseContext } from "./ResponseContextProvider";
 
 function SideMenuMiddle() {
   const [showTimeline, setShowTimeline] = useState(false);
   const { files } = useContext(AuthContext);
+  const [file, setFile] = useState(null);
+  const [messages, setMessages] = useState(ResponseContext);
   const handleButtonClick = () => {
     setShowTimeline(!showTimeline);
   };
+  const chooseDocument = (file) => {
+    setFile(file.id);
+    setMessages([]);
+  }
 
   return (
     <Container className="p-0 mt-3">
@@ -30,8 +37,8 @@ function SideMenuMiddle() {
       {showTimeline && <TimeLine />}
       <PerfectScrollbar>
       {files.map((file) => (
-        <Row className=" my-4 m-auto rounded-2 w-100 bg-3">
-          <p className="my-2 text-start"><IoIosDocument  size={30} /> { file.filename } </p>
+        <Row className=" my-4 overflow-scroll m-auto rounded-2 w-100 bg-3">
+          <p onClick={chooseDocument(file)} className="my-2 text-start"><IoIosDocument  size={30} /> { file.filename } </p>
         </Row>
         ), [files])}
         </PerfectScrollbar>
