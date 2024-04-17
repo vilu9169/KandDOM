@@ -78,7 +78,7 @@ class User(AbstractUser):
 
 
 ###This is just an example, has to be modified
-"""class InputOutput(models.Model): 
+class InputOutput(models.Model): 
     # Define fields for the InputOutput model
     # For example, you might have fields like 'message', 'timestamp', etc.
     message = models.CharField(max_length=255)
@@ -96,5 +96,6 @@ class Index(models.Model):
 class ChatHistory(models.Model):
     user_id = models.IntegerField()
     inputoutput = models.ManyToManyField('InputOutput')
-    pinned_indices = models.ManyToManyField(to="index",default=list)
-    embedding_id = models.IntegerField()"""
+    pinned_indices = models.ManyToManyField(to=Index, blank=True)
+    embedding_id = models.IntegerField()
+
