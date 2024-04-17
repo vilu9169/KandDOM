@@ -17,6 +17,7 @@ const AuthContextProvider = ({children}) => {
     let [userID, setUserID] = useState(() => (localStorage.getItem('userID') ? localStorage.getItem('userID') : null))
     const navigate = useNavigate()
     const [files, setFiles] = useState([]);
+    const [currentFile, setCurrentFile] = useState(null);
 
     const baseURL = process.env.REACT_APP_API_URL
 
@@ -132,6 +133,8 @@ const AuthContextProvider = ({children}) => {
         loginError:loginError,
         files:files,
         signupError:signupError,
+        currentFile:currentFile,
+        setCurrentFile:setCurrentFile,
         getFiles:getFiles,
         loginUser:loginUser,
         logoutUser:logoutUser,

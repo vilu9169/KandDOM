@@ -14,7 +14,7 @@ grid_fs_storage = GridFSStorage(collection='pdf')
 class Document(models.Model):
     _id = djmodels.ObjectIdField()
     #id = models.BigAutoField( primary_key=True, editable=False, db_column='_id')
-    file= djmodels.FileField(upload_to='files', storage=grid_fs_storage)
+    file= djmodels.FileField(upload_to='pdf/')
     filename = djmodels.CharField(max_length=255)
     content_type = djmodels.CharField(max_length=100)
     size = djmodels.IntegerField()
