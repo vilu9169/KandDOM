@@ -287,6 +287,12 @@ class LogoutView(APIView):
         except TokenError:
             raise AuthenticationFailed("Invalid Token")
         
+
+import getpass
+from langchain_google_vertexai import VertexAIEmbeddings
+from langchain.text_splitter import CharacterTextSplitter
+from langchain_community.document_loaders import TextLoader
+        
 @api_view(['POST'])
 def upload_document(request):
     file_obj = request.FILES.get('file')
