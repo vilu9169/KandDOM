@@ -25,7 +25,6 @@ function UploadFileWindow() {
 
     formData.append('file', file); // Append the file to FormData
     formData.append('userID', userID);
-    formData.append('index_name', )
     try {
 
         const response = await fetch(baseURL+'upload/', {
