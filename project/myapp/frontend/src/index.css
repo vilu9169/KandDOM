@@ -5,6 +5,7 @@
   --color-4: #0f2c59;
   --color-5: #402f00;
   --text-color-main: #000000;
+  --text-color-second: #808080;
 }
 
 .dark-mode {
@@ -85,9 +86,12 @@ button {
 }
 .h-60px {
   height: 60px;
-
   position: relative;
   z-index: 999;
+}
+.h-40px{
+  position: relative;
+  height: 40px;
 }
 .h-90 {
   height: 90%;
@@ -104,7 +108,12 @@ button {
 .h-70 {
   height: 70%;
 }
-
+.w-90 {
+  width: 90% !important;
+}
+.w-80 {
+  width: 80% !important;
+}
 .main-left{
   flex: 0 0 300px !important;
 }
@@ -272,9 +281,7 @@ button {
   border-radius: 5px;
 }
 
-.w-90 {
-  width: 90% !important;
-}
+
 
 .icon-margin {
   margin-right: 15px; /* Adjust margin as needed */
@@ -348,16 +355,15 @@ button {
   left: 0;
   position: absolute !important;
 }
-
+.small-setting-text{
+  font-size: 12px;
+  color: var(--text-color-second);
+}
 .settings-window {
   position: absolute;
-  height: 50%;
-  width: 35% !important;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  background-color: var(--color-1);
   border-radius: 5px;
 }
 

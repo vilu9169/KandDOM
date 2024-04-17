@@ -25,8 +25,8 @@ function SideMenuBottom() {
   const navigate = useNavigate();
   const { logoutUser } = useContext(AuthContext);
   const { user } = useContext(AuthContext);
-  
-  const userName = useState(user.name);
+
+  const [userName] = useState(user.name);
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
@@ -100,7 +100,7 @@ function SideMenuBottom() {
         className="m-auto bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
       >
         <span className="text-center justify-content-center d-flex align-items-center w-75">
-          { userName }
+          {userName}  
         </span>
         <span className="w-25 justify-content-center d-flex align-items-center">
           <IoMdPerson className="size-20" />
