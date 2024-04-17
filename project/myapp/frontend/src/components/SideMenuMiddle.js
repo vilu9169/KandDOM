@@ -17,6 +17,7 @@ function SideMenuMiddle() {
     setShowTimeline(!showTimeline);
   };
   const chooseDocument = (file) => {
+    console.log('file:', file.id)
     setCurrentFile(file.id);
     setMessages([]);
   };
@@ -38,7 +39,7 @@ function SideMenuMiddle() {
       <PerfectScrollbar>
       {files.map((file) => (
         <Row className=" my-4 overflow-scroll m-auto rounded-2 w-100 bg-3">
-          <span value={file} onClick={chooseDocument} className="my-2 text-start"><IoIosDocument  size={30} /> { file.filename } </span>
+          <Button value={file} onClick={e => chooseDocument(e.target.value)} className="my-2 text-start"><IoIosDocument  size={30} /> { file.filename } </Button>
         </Row>
         ), [files])}
         </PerfectScrollbar>
