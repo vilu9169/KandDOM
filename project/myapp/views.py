@@ -374,7 +374,7 @@ import requests
 @api_view(['POST'])
 def start_chat(request):
     print("Starting chat")
-    print(request.data).get('index_name')
+    print(request.data.get('index_name'))
     index_name = request.data.get('index_name')
     index = pc.Index(index_name)
     vectorstore = PineconeVectorStore(  
