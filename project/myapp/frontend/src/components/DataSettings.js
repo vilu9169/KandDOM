@@ -40,7 +40,7 @@ function DataSettings() {
   };
 
   return (
-    <Container className="h-50">
+    <Container className="h-100">
       <Row className="p-3">
         <Col className="col-6 d-flex align-items-center">Name: </Col>
         <Col className="col-6 d-flex justify-content-center align-items-center">
