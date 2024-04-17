@@ -24,7 +24,7 @@ function GeneralSettings() {
     console.log(!isDarkMode); // Use !isDarkMode to get the updated value
   };
   return (
-    <Container className="h-50">
+    <Container className="h-100">
       <Row className="p-3 d-flex align-items-center">
         <Col className="col-9 d-flex align-items-center">Dark Mode</Col>
         <Col className="col-3 d-flex justify-content-center align-items-center">
