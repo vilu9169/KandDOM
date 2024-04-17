@@ -78,3 +78,11 @@ class ChatHistory(models.Models):
     inputoutput = djmodels.ArrayField(model_container = models.CharField())
     pinned_indices = djmodels.ArrayField(model_container=models.IntegerField(), default=list)
     embedding_id = models.IntegerField()
+
+
+class EmbeddedVector(models.Model):
+    name = models.CharField(max_length=100)
+    embedding = models.JSONField()  # Assuming you store embeddings as JSON
+
+    def __str__(self):
+        return self.name
