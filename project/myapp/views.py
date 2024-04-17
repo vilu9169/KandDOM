@@ -309,7 +309,7 @@ def upload_document(request):
     """print("All documents in the database:")
     for document in File.objects.all():
         print(document)"""
-    print(Document.objects.all())
+    print(Document)
     if file_obj:
         # Create a new Document instance
         document = Document.objects.create(
