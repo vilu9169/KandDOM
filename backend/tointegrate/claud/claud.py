@@ -84,10 +84,11 @@ def start_chat(input, previous_messages) -> str:
     MODEL = "claude-3-sonnet@20240229"
     
     endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/europe-west4/publishers/anthropic/models/"+MODEL+":predict"
-    context = "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. Detta är de delar av dokument du har att tillgå :" 
+    context = "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. Var konsis om möjligt. Detta är de delar av dokument du har att tillgå :" 
     index = 0
     prepend = ""
     append = ""
+    
     for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 40, })).invoke(ragadapt(input, previous_messages)):
         #The first 10 documents are prepended to the context
         #The last 10 documents are appended to append
@@ -128,7 +129,7 @@ def start_chat(input, previous_messages) -> str:
     client = AnthropicVertex(region=LOCATION, project_id="sunlit-inn-417922")
 
     message = client.messages.create(
-    max_tokens=500,
+    max_tokens=1500,
     messages=messages,
     model=MODEL,
     system = context,

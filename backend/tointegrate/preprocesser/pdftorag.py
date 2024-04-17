@@ -4,10 +4,10 @@ import PyPDF2
 # output_file = "output.pdf"
 import os
 from langchain_google_vertexai import VertexAIEmbeddings
-from langchain.text_splitter import CharacterTextSplitter
 from langchain_pinecone import PineconeVectorStore
 from langchain.schema.document import Document
 from pinecone import Pinecone, ServerlessSpec
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 
 def extract_text_from_pdf(pdf_file) -> str:
@@ -44,7 +44,6 @@ def text_to_rag(new_index_name, text):
     # Split documents
     #text_splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=0)
     #splits = [Document(page_content=x) for x in text_splitter.split_text(text)]
-    from langchain.text_splitter import RecursiveCharacterTextSplitter
     text_splitter = RecursiveCharacterTextSplitter(separators=["{pagestart", "{pageend"], chunk_overlap = 150)
     splits = [Document(page_content=x) for x in text_splitter.split_text(text)]
     #splits = text_splitter.split_text(text)    
