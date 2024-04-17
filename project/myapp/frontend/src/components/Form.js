@@ -25,7 +25,7 @@ function MyForm() {
   
     // Extract only the text content from messages
     const messageTexts = messages.map(msg => ({ text: msg.text }));
-  
+    console.log('currentFile: ',currentFile)
     const data = {
       message: message,
       messages: messageTexts, // Stringify the array of message objects
@@ -34,7 +34,7 @@ function MyForm() {
     
     console.log("Message texts:", messageTexts);
     console.log("Data sent to backend:", data); 
-  
+    
     try {
       const response = await axios.post(apiEndpoint, data, { headers });
       return response.data.message;
