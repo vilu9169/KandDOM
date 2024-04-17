@@ -288,6 +288,36 @@ class LogoutView(APIView):
             raise AuthenticationFailed("Invalid Token")
 
 from django.core.files.storage import FileSystemStorage
+from gridfs import GridFS
+from .models import PDFDocument
+from pymongo import MongoClient
+from djongo.storage import GridFSStorage
+
+@api_view(['POST'])
+def upload_pdf(request):
+    if request.method == 'POST':
+        # Get the uploaded file from the request
+        uploaded_file = request.FILES['file']
+        
+        print('hej')
+        # Connect to the MongoDB database and GridFS
+        mongo_client = MongoClient('mongodb+srv://viktorlundin3:N1b7t9N9JIJvHhGd@pythiadb.bmdzzkd.mongodb.net/?retryWrites=true&w=majority&appName=PythiaDB')
+        db = mongo_client['PythiaDB']
+
+        # fs = GridFSStorage(collection='myfiles')
+        fs = GridFS(db)
+        print('hej')
+        # Store the uploaded file in GridFS
+        file_id = fs.put(uploaded_file, filename=uploaded_file.name)
+        
+        print(file_id)
+        # Create a new PDFDocument instance and save it to the database
+        new_pdf = PDFDocument(title=request.POST['title'], file_id=file_id)
+        new_pdf.save()
+        
+        return Response({'message': 'PDF uploaded successfully!'})
+    else:
+        return Response({'error': 'Only POST requests are allowed!'}, status=400)
 
 @api_view(['POST'])
 def upload_document(request):
