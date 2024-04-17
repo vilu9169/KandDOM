@@ -320,7 +320,7 @@ def upload_document(request):
         )
         print("Before document.save")
         document.save()
-        mainfunk(file_obj, document.__id__())
+        mainfunk('../pdf/'+document.filename, document.__id__())
         print("document.save complete")
         user = User.objects.get(id=request.data['userID'])
         print("User.objects.get(id=request.data['ObjectId']) COMPLETE")
