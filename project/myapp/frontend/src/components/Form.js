@@ -12,6 +12,7 @@ import { UploadWindowContext } from "./UploadWindowContextProvider";
 import { AuthContext } from "./AuthContextProvider";
 
 function MyForm() {
+  const {userID} = useContext(AuthContext);
   const {message, setMessage} = useContext(MessageContext);
   const {messages, setMessages} = useContext(ResponseContext);
   const {showUploadWindow } = useContext(UploadWindowContext);
@@ -30,6 +31,7 @@ function MyForm() {
       message: message,
       messages: messageTexts, // Stringify the array of message objects
       index_name: currentFile,
+      userid: userID,
     };
     
     console.log("Message texts:", messageTexts);
