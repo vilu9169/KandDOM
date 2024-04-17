@@ -18,7 +18,7 @@ function MyForm() {
   const { currentFile } = useContext(AuthContext);
   const baseURL = process.env.REACT_APP_API_URL;
   const chatWithGPT3 = async () => {
-    const apiEndpoint = baseURL+'/chat/';
+    const apiEndpoint = baseURL+'chat/';
     const headers = {
       'Content-Type': 'application/json',
     };
