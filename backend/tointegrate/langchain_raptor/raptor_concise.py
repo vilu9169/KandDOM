@@ -1,13 +1,12 @@
 from langchain_google_vertexai import VertexAI
 from langchain_google_vertexai import VertexAIEmbeddings
 from vertexai.language_models import TextEmbeddingModel
+from langchain_google_vertexai import VertexAIEmbeddings
+
 import os
 
-embd = TextEmbeddingModel.from_pretrained("textembedding-gecko-multilingual@001")
+embd = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001")
 
-# from langchain_openai import ChatOpenAI
-
-# model = ChatOpenAI(temperature=0, model="gpt-4-1106-preview")
 
 from langchain_anthropic import ChatAnthropic
 
@@ -114,7 +113,9 @@ def GMM_cluster(embeddings: np.ndarray, threshold: float, random_state: int = 0)
     """
     n_clusters = get_optimal_clusters(embeddings)
     gm = GaussianMixture(n_components=n_clusters, random_state=random_state)
+    print("start fitting")
     gm.fit(embeddings)
+    print("done fitting")
     probs = gm.predict_proba(embeddings)
     labels = [np.where(prob > threshold)[0] for prob in probs]
     return labels, n_clusters
@@ -210,7 +211,9 @@ def embed(texts):
     
     doc_count = 70
     if len(texts) < 70:
-        text_embeddings = embd.get_embeddings(texts)
+        text_embeddings = embd.embed(texts)
+        as_arrays = []
+        return np.array(text_embeddings)
     else:
         lower = 0
         upper = doc_count
@@ -218,7 +221,7 @@ def embed(texts):
         while(upper < len(texts)):
             #text_embeddings.append([]values)
             #TODO MIGHT JUST CREATE ONE LIST
-            for elem in embd.get_embeddings(texts[lower:upper]):
+            for elem in embd.embed(texts[lower:upper]):
                 text_embeddings.append(elem.values)
             print("Len tex_embeddings ", len(text_embeddings))
             lower = upper
@@ -289,6 +292,7 @@ def embed_cluster_summarize_texts(
 
     # Embed and cluster the texts, resulting in a DataFrame with 'text', 'embd', and 'cluster' columns
     df_clusters = embed_cluster_texts(texts)
+    
 
     # Prepare to expand the DataFrame for easier manipulation of clusters
     expanded_list = []
@@ -308,26 +312,30 @@ def embed_cluster_summarize_texts(
 
     print(f"--Generated {len(all_clusters)} clusters--")
 
-    # Summarization
-    template = """Here is a sub-set of LangChain Expression Langauge doc. 
-    
-    LangChain Expression Langauge provides a way to compose chain in LangChain.
-    
-    Give a detailed summary of the documentation provided.
-    
-    Documentation:
+
+    template = """Det här är en samling utdrag ur ett förundersökningsprotokoll, ett juridiskt dokument som sammanställer polis och åklagarens arbete i en brottsutredning.
+    Din uppgift är att ge en detaljerad summering av dokumentets innehåll. Du behöver inte förklara vad det är för typ av dokument, fokusera istället på att sammafatta
+    det som dokumentet förmedlar. Använd juridisk terminologi på liknande vis som i utdragen. Svara endast på svenska.
     {context}
     """
+
+
+
+
     prompt = ChatPromptTemplate.from_template(template)
     chain = prompt | model | StrOutputParser()
 
     # Format text within each cluster for summarization
     summaries = []
-    for i in all_clusters:
+    for index,i in zip(range(len(all_clusters)),all_clusters):
+        print(index)
         df_cluster = expanded_df[expanded_df["cluster"] == i]
         formatted_txt = fmt_txt(df_cluster)
         summaries.append(chain.invoke({"context": formatted_txt}))
 
+    for i,text in zip(range(len(texts)),summaries):
+        print("summering",i,":")
+        print(text)
     # Create a DataFrame to store summaries with their corresponding cluster and level
     df_summary = pd.DataFrame(
         {
@@ -360,7 +368,6 @@ def recursive_embed_cluster_summarize(
 
     # Perform embedding, clustering, and summarization for the current level
     df_clusters, df_summary = embed_cluster_summarize_texts(texts, level)
-
     # Store the results of the current level
     results[level] = (df_clusters, df_summary)
 
@@ -381,7 +388,7 @@ def recursive_embed_cluster_summarize(
 
 from langchain_community.document_loaders import TextLoader
 
-loader = TextLoader("tests/fall.txt", encoding="utf-8")
+loader = TextLoader("KandDOM/backend/tointegrate/Mord2008.txt", encoding="utf-8")
 
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -404,8 +411,6 @@ from langchain_pinecone import PineconeVectorStore
 all_texts = leaf_texts.copy()
 
 
-print(all_texts)
-
 #Iterate through the results to extract summaries from each level and add them to all_texts
 for level in sorted(results.keys()):
     # Extract summaries from the current level's DataFrame
@@ -414,8 +419,14 @@ for level in sorted(results.keys()):
     all_texts.extend(summaries)
 
 #Now, use all_texts to build the vectorstore with PineCone
-    
-vectorstore = PineconeVectorStore("raptor", embd.get_embeddings, all_texts)
 
-vectorstore.from_documents(all_texts, embd, index_name="raptor")
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+  
+#vectorstore = PineconeVectorStore("raptor", embd)
+
+#vectorstore.from_texts(all_texts, embd, index_name="raptor")
 
