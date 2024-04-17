@@ -407,6 +407,7 @@ def start_chat(request):
     #Create a json struct for previous messages and the current message
     messages = []
     odd = True
+    print("Messages JSON: ", messages_json)
     previous_messages = [msg['text'] for msg in messages_json]
     for message in previous_messages:
         if odd:
