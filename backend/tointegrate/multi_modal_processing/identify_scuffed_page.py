@@ -27,19 +27,18 @@ with open(pdf_file, 'rb') as file:
 gemini_pro = ChatVertexAI(model_name="gemini-pro", temperature=0, location="us-central1", convert_system_message_to_human=True)
 
 
+instructions : str = "Det här är textavläsning av en sida från ur ett förundersökningsprotokoll, din uppgift är att besvara följande fyra frågor om texten texten: " \
+"1. Om texten innehåller många benämningar med korta beskrivningar, vilket kan indikera att det är ett formulär." \
+"2. Om sidan innehåller ca 50 ord eller mindre totalt" \
+"3. Om texten är obegriplig med konstiga tecken eller allmänt osammanhängande." \
+"4. Om det finns en eller flera bildtexter som beskriver vad en bild visar" \
+"Ge en kort motivering för varje svar, och svara med Ja eller Nej." \
+"Ge alltid Ja/Nej svaret direkt efter motiveringen." \
+"Skriv sist en sammanställning av svaren på form '1: Ja/Nej, 2: Ja/Nej, 3: Ja/Nej, 4: Ja/Nej'"\
+"Svara alltid på svenska." \
 
-instructions : str = "Det här är textavläsning av en sida från ur en pdf, din uppgift är att avgöra om någon av följade fall stämmer in på texten: " \
-"1. Om texten ser ut att komma från ett formulär" \
-"2. Om texten ser ut som en intervju" \
-"3. Om sidan innehåller lite text totalt, där lite innebär ca 50 ord eller mindre." \
-"4. Om texten är obegriplig med konstiga tecken eller allmänt osammanhängande." \
-"5. Om texten nämner en bild som kan finnas på sidan" \
-"Resonera med ca 2 meningar och ge sedan ett Ja/Nej svar för varje punkt. " \
-"Förstår du formatet du ska svara på? Ge ett exempel på format." \
 
-
-
-sys_msg = HumanMessage(
+sys_msg = SystemMessage(
     content=[
         {
             "type": "text",
@@ -48,12 +47,12 @@ sys_msg = HumanMessage(
     ]
 )
 
-ai_example_text = "Ja jag tror jag förstår, här är ett exempel:\n" \
-"1: exempel motivering, Svar: Ja/Nej, \n" \
-"2: exempel motivering, Svar: Ja/Nej,\n" \
-"3: exempel motivering, Svar: Ja/Nej,\n" \
-"4: exempel motivering, Svar: Ja/Nej,\n" \
-"5: exempel motivering, Svar: Ja/Nej" \
+ai_example_text = "Ja jag tror jag förstår, här är ett exempel på format:\n" \
+"1: Nej texten inte ut som ett formulär, Svar: Nej, \n" \
+"2: exempel motivering, Svar: Ja,\n" \
+"3: exempel motivering, Svar: Nej,\n" \
+"4: exempel motivering, Svar: Nej,\n" \
+"1: Nej, 2: Ja, 3: Nej, 4: Nej"
 
 
 ai_example = AIMessage(
@@ -86,10 +85,12 @@ ai_response = AIMessage(
 
 verdicts = []
 
-for text in texts:
+start = time()
+for text,i in zip(texts, range(len(texts))):
     #print(text)
-    response = gemini_pro.invoke([sys_msg, ai_example, human_response, ai_response, HumanMessage(content=[{"type": "text", "text": text}])])
+    response = gemini_pro.invoke([sys_msg, HumanMessage(content=[{"type": "text", "text": text}])])
     verdicts.append(response.content)
+    print("page", i, "done after", time() - start, "seconds")
 
 
 for i,verdict in zip(range(start_page, start_page+no_pages), verdicts):
@@ -97,39 +98,37 @@ for i,verdict in zip(range(start_page, start_page+no_pages), verdicts):
     print(verdict)
 
 
-dump = "KandDOM/backend/tointegrate/multi_modal/txts/output_dump.txt"
-
-with open(dump, 'w', encoding='utf-8') as file:
-    for verdict in verdicts:
-        file.write(verdict)
-        file.write("\n\n")
+dump = "KandDOM/backend/tointegrate/multi_modal_processing/txts/output_dump.txt"
 
 
-binary_econdings_instructions = "Du är en assistent med en simpel uppgift, du ska göra om en serie svar till en binär sträng. Varje svar motsvarar en siffra i strängen, där 'Ja' motsvarar '1' och 'Nej' motsvarar '0'. " \
-"Svaren inleds med en kort motivering och följs sedan av ett Ja/Nej svar. Varje svar har också en numrering vilket motsvarar dess ordning i den binära strängen. " \
-"Ett exempel:"
-"1. Jag ser inget som liknar det, Svar: Nej"
-"2. Det finns en bild nämnd, Svar: Ja"
-"3. Paris ligger i frankrike, Svar Ja"
-"4. Det finns bevis för motsatsen, Svar: Nej"
-"5. Inget utmärkande stack ut, Svar: Ja"
-"Blir: 01101"
+binary_econdings_instructions = "Det här är en sammanställning svar på fyra frågor om en sida från ett förundersökningsprotokoll. " \
+"Längst ned i meddelnadet finns en sammanställning av svaren på form '1: Ja/Nej, 2: Ja/Nej, 3: Ja/Nej, 4: Ja/Nej'." \
+"Din uppgift är att omvandla svaren dem till en binär kod, där Ja motsvarar 1 och Nej motsvarar 0. " \
+"Ange bara siffran och ingen övrig text i ditt svar."
 
 
 binary_sys = SystemMessage(
     content=[
         {
             "type": "text",
-            "text": "Du är en assistent med en simpel uppgift, du ska göra om en serie svar på formen 'Ja' eller 'Nej' till en binär sträng. Varje svar motsvarar en siffra i strängen, där 'Ja' motsvarar '1' och 'Nej' motsvarar '0'.", \
-        }, 
+            "text": binary_econdings_instructions,
+        }
     ]
 )
+
+
+human_example = "1. Jag ser inget som liknar det, Svar: Ja\n"
+"2. Det finns en bild nämnd, Svar: Nej\n"
+"3. Paris ligger i frankrike, Svar Nej\n"
+"4. Det finns bevis för motsatsen, Svar: Nej\n"
+"Sammanställning:\n"
+"1: Ja, 2: Nej, 3: Nej, 4: Nej"
 
 human_msg1 = HumanMessage(
     content=[
         {
             "type": "text",
-            "text": "1: Ja, 2: Nej, 3: Ja, 4: Nej, 5: Ja",
+            "text": human_example,
         }, 
     ]
 )
@@ -138,7 +137,7 @@ ai_msg1 = AIMessage(
     content=[
         {
             "type": "text",
-            "text": "10101",
+            "text": "1000",
         },  
     ]
 )
@@ -148,7 +147,7 @@ human_msg2 = HumanMessage(
     content=[
         {
             "type": "text",
-            "text": "1: Nej, 2: Nej, 3: Nej, 4: Nej, 5: Nej",
+            "text": "1: Nej, 2: Ja, 3: Ja, 4: Nej",
         }, 
     ]
 )
@@ -157,18 +156,30 @@ ai_msg2 = AIMessage(
     content=[
         {
             "type": "text",
-            "text": "00000",
+            "text": "0110",
         },  
     ]
 )
 
 
 binary_encodings = []
+as_numbers = []
 
 for verdict in verdicts:
-    result = gemini_pro.invoke([binary_sys, HumanMessage(content=[{"type": "text", "text": verdict}])])
+    result = gemini_pro.invoke([binary_sys, human_msg1, ai_msg1, HumanMessage(content=[{"type": "text", "text": verdict}])])
     binary_encodings.append(result.content)
+    as_numbers.append(int(result.content))
+    print(time() - start, "seconds")
 
+to_dump = ""
 for i, encoding, verdict in zip(range(start_page, start_page+no_pages), binary_encodings, verdicts):
     print(f"Binary encoding for page {i}:")
-    print("verdict: "+ verdict+" encoding: "+encoding)
+    print("verdict: \n"+verdict)
+    print("encoding: "+encoding)
+    to_dump += f"\nBinary encoding for page {i}:\n\n" + "verdict: \n"+verdict + "\nencoding: "+encoding
+
+with open(dump, 'a', encoding='utf-8') as file:
+    file.write(to_dump)
+
+
+print(as_numbers)
