@@ -9,29 +9,32 @@ import { ResponseContext } from "./ResponseContextProvider";
 import axios from "axios";
 import { useRef } from "react";
 import { UploadWindowContext } from "./UploadWindowContextProvider";
+import { AuthContext } from "./AuthContextProvider";
 
 function MyForm() {
   const {message, setMessage} = useContext(MessageContext);
   const {messages, setMessages} = useContext(ResponseContext);
   const {showUploadWindow } = useContext(UploadWindowContext);
+  const { currentFile } = useContext(AuthContext);
   const baseURL = process.env.REACT_APP_API_URL;
   const chatWithGPT3 = async () => {
-    const apiEndpoint = baseURL+'/chat/';
+    const apiEndpoint = baseURL+'chat/';
     const headers = {
       'Content-Type': 'application/json',
     };
   
     // Extract only the text content from messages
     const messageTexts = messages.map(msg => ({ text: msg.text }));
-  
+    console.log('currentFile: ',currentFile)
     const data = {
       message: message,
       messages: messageTexts, // Stringify the array of message objects
+      index_name: currentFile,
     };
     
     console.log("Message texts:", messageTexts);
     console.log("Data sent to backend:", data); 
-  
+    
     try {
       const response = await axios.post(apiEndpoint, data, { headers });
       return response.data.message;

@@ -10,6 +10,7 @@ import { useContext } from "react";
 
 function UploadFileWindow() {
   const { userID, getFiles } = useContext(AuthContext);
+  const { setCurrentFile } = useContext(AuthContext);
   const baseURL = process.env.REACT_APP_API_URL;
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
@@ -32,6 +33,7 @@ function UploadFileWindow() {
         });
         const data = await response.json();
         getFiles()
+        setCurrentFile(data.document_id)
         alert(`File uploaded successfully. Document ID: ${data.document_id}`);
     } catch (error) {
       console.error("Error uploading file:", error);
