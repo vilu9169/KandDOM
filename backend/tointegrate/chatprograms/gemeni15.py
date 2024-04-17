@@ -7,7 +7,7 @@ def generate():
   vertexai.init(project="sunlit-inn-417922", location="us-central1")
   model = GenerativeModel("gemini-1.5-pro-preview-0409")
   responses = model.generate_content(
-      [],
+      ["Vad gjorde karl den 12e"],
       generation_config=generation_config,
       safety_settings=safety_settings,
       stream=True,
