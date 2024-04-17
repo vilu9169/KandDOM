@@ -11,13 +11,13 @@ import { ResponseContext } from "./ResponseContextProvider";
 function SideMenuMiddle() {
   const [showTimeline, setShowTimeline] = useState(false);
   const { files } = useContext(AuthContext);
-  const [file, setFile] = useState(null);
+  const [currentFile, setCurrentFile] = useState(null);
   const [messages, setMessages] = useContext(ResponseContext);
   const handleButtonClick = () => {
     setShowTimeline(!showTimeline);
   };
   const chooseDocument = (file) => {
-    setFile(file.id);
+    setCurrentFile(file.id);
     setMessages([]);
   };
 
