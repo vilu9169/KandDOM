@@ -19,7 +19,7 @@ function SideMenuMiddle() {
   const chooseDocument = (file) => {
     setFile(file.id);
     setMessages([]);
-  }
+  };
 
   return (
     <Container className="p-0 mt-3">
@@ -38,7 +38,7 @@ function SideMenuMiddle() {
       <PerfectScrollbar>
       {files.map((file) => (
         <Row className=" my-4 overflow-scroll m-auto rounded-2 w-100 bg-3">
-          <p onClick={chooseDocument(file)} className="my-2 text-start"><IoIosDocument  size={30} /> { file.filename } </p>
+          <span onClick={chooseDocument(file)} className="my-2 text-start"><IoIosDocument  size={30} /> { file.filename } </span>
         </Row>
         ), [files])}
         </PerfectScrollbar>
