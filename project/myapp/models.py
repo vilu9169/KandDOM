@@ -96,7 +96,7 @@ class Index(models.Model):
 class ChatHistory(models.Model):
     _id = djmodels.ObjectIdField()
     user_id = models.IntegerField()
-    inputoutput = models.ManyToManyField(to=InputOutput)
+    inputoutput = ArrayReferenceField(to=InputOutput)
     pinned_indices = models.ManyToManyField(to=Index, blank=True)
     embedding_id = models.IntegerField()
 
