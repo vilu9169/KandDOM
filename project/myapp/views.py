@@ -432,6 +432,7 @@ def start_chat(request):
         user_id=request.data.get('userid'),  # Assuming the user is authenticated
         embedding_id=1  # Assuming embedding_id is defined elsewhere
     )
+    print(request.data.get('userid'))
     message.inputoutput.set(messages)
 
     LOCATION="europe-west4"
