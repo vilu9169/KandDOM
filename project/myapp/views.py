@@ -234,12 +234,10 @@ from .serializers import UserSerializer
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed, ValidationError
 from .models import User
-from .models import Document
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken, TokenError
 from rest_framework import status
 from .models import Document
 from .serializers import DocumentSerializer
-
 
 
 class RegisterView(APIView):
@@ -302,29 +300,11 @@ def upload_document(request):
             size=file_obj.size,
             # file_id= ''  # You may need to provide an appropriate file ID here
         )
-        print("Before document.save")
+
         document.save()
-
-        print("document.save complete")
         user = User.objects.get(id=request.data['userID'])
-        print("User.objects.get(id=request.data['ObjectId']) COMPLETE")
-        print(document.__id__())
-        user.documents.add(document)  # Add the document ID to the user's documents list
-        user.save()
-        
-        
-        """print("All users in the database:")
-        for user in User.objects.all():
-            print(user)"""
-
+        user.documents.add(document._id)
         # You might want to return the ID of the newly created document for future reference
         return Response({'document_id ': str(document._id)})
     else:
         return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
-    
-@api_view(['POST'])
-def get_documents(request):
-    user = User.objects.get(id=request.data['userID'])
-    documents = user.documents.all()
-    serializer = DocumentSerializer(documents, many=True)
-    return Response(serializer.data)

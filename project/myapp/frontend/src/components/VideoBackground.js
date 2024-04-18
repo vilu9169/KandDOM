@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import apolloLogo from "../assets/apollo.png";
+import React, { useState, useEffect } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const VideoBackground = ({ videos }) => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
@@ -13,14 +12,7 @@ const VideoBackground = ({ videos }) => {
   }, [videos]);
 
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "100vh",
-        overflow: "hidden",
-      }}
-    >
+    <div style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}>
       {videos.map((video, index) => (
         <video
           key={index}
@@ -29,26 +21,24 @@ const VideoBackground = ({ videos }) => {
           muted
           loop
           style={{
-            left: 0,
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
+            left:0,
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
             opacity: index === currentVideoIndex ? 1 : 0,
-            transition: "opacity 1s ease",
+            transition: 'opacity 1s ease',
           }}
         />
       ))}
-      <Row className="video-header w-75 p-2">
-        <Col className="col h-100 d-flex justify-content-center align-items-center">
-          <h1 className="c-1 intro-text-big">Welcome to Pythia</h1>
-          <img
-            className="p-0 m-0 login-logo"
-            src={apolloLogo}
-            alt="apolloLogo"
-          />
-        </Col>
-      </Row>
+      <Container className='video-header'>
+        <Row>
+          <Col>
+            {/* Your content goes here */}
+            <h1>Welcome to Pythia</h1>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };

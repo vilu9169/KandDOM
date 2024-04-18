@@ -5,39 +5,34 @@ import Button from "react-bootstrap/Button";
 import { IoIosDocument } from "react-icons/io";
 import { IoIosCopy } from "react-icons/io";
 import { AuthContext } from "./AuthContextProvider";
-import FileDropZone from "./FileDropZone";
-
-import { useContext } from "react";
 
 function UploadFileWindow() {
   const { userID } = useContext(AuthContext);
-  
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
-
+    
     // Check if the selected file is a PDF
-    if (file.type !== "application/pdf") {
-      alert("Please select a PDF file.");
-      return;
+    if (file.type !== 'application/pdf') {
+        alert('Please select a PDF file.');
+        return;
     }
-    console.log('userID:', userID)
-    let formData = new FormData();
 
-    formData.append('file', file); // Append the file to FormData
-    formData.append('userID', userID);
+    const formData = new FormData();
+    formData.append('file', file, 'userID', userID);
+
     try {
-
-        const response = await fetch('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/upload/', {
+        const response = await fetch('http://127.0.0.1:8000/upload/', {
             method: 'POST',
             body: formData
         });
         const data = await response.json();
         alert(`File uploaded successfully. Document ID: ${data.document_id}`);
     } catch (error) {
-      console.error("Error uploading file:", error);
-      alert("An error occurred while uploading the file.");
+        console.error('Error uploading file:', error);
+        alert('An error occurred while uploading the file.');
     }
   };
+
 
   return (
     <Container className="m-auto p-2 h-75 bg-2 uploadfile-container">
@@ -45,9 +40,7 @@ function UploadFileWindow() {
         <h4 className="m-0">Upload document to start!</h4>
       </Row>
       <Row className="p-0 h-90 w-100 bg-2  m-0">
-        <Col className="col-5 p-0 bg-2 d-flex align-items-center justify-content-center">
-          <FileDropZone></FileDropZone>
-        </Col>
+        <Col className="col-5 p-0 bg-2">lol</Col>
         <Col className="col-2 p-0 bg-2 d-flex align-items-center justify-content-center position-relative">
           <div className="vertical-line"></div>
           <div className="middle-box d-flex align-items-center justify-content-center">
@@ -57,6 +50,7 @@ function UploadFileWindow() {
 
         <Col className="col-5 p-0">
           <Row className="h-50 w-100 bg-2 m-0">
+
             <label
               htmlFor="file-upload"
               className="m-auto bg-3 w-75 wide-button d-flex justify-content-center align-items-center p-0"
@@ -90,4 +84,6 @@ function UploadFileWindow() {
     </Container>
   );
 }
+import { useContext } from "react";
+
 export default UploadFileWindow;
