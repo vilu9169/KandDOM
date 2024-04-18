@@ -242,7 +242,7 @@ from rest_framework import status
 from .models import Document
 from .serializers import DocumentSerializer, MyTokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenViewBase
-from .models import ChatHistory
+from .models import ChatHistory, InputOutput
 
 
 class RegisterView(APIView):
@@ -428,11 +428,15 @@ def start_chat(request):
         "role": "user",
         "content": new_message
     })
-    message = ChatHistory.objects.create(
+    history = ChatHistory.objects.create(
         user_id=request.data.get('userid'),  # Assuming the user is authenticated
         embedding_id=1,  # Assuming embedding_id is defined elsewhere
         inputoutput= previous_messages
     )
+    inputoutput = InputOutput.objects.create(
+        message=new_message,
+    )
+    history.inputoutput.add(inputoutput)
     print(request.data.get('userid'))
 
     LOCATION="europe-west4"
