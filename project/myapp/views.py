@@ -470,6 +470,7 @@ def get_chat_history(request):
             "text": io.message,
             "text": io.response
         })
+    print(resp)
     return Response({'messages' : resp})
 
 # Call the function with your project ID and location
