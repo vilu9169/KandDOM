@@ -431,9 +431,9 @@ def start_chat(request):
     message = ChatHistory.objects.create(
         user_id=request.data.get('userid'),  # Assuming the user is authenticated
         embedding_id=1  # Assuming embedding_id is defined elsewhere
+        message=messages
     )
     print(request.data.get('userid'))
-    message.inputoutput.set(messages)
 
     LOCATION="europe-west4"
 
