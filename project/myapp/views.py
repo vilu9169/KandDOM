@@ -431,7 +431,6 @@ def start_chat(request):
     history = ChatHistory.objects.create(
         user_id=request.data.get('userid'),  # Assuming the user is authenticated
         embedding_id=1,  # Assuming embedding_id is defined elsewhere
-        inputoutput= previous_messages
     )
     inputoutput = InputOutput.objects.create(
         message=new_message,
