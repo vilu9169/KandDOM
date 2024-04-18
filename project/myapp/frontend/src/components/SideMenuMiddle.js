@@ -29,6 +29,7 @@ function SideMenuMiddle() {
       setMessages(data.messages);
     } catch (error) {
       console.error("Error fetching chat history:", error);
+      setMessages([]);
     }
   };
   const chooseDocument = (fileid) => {
