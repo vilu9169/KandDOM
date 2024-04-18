@@ -82,6 +82,7 @@ class InputOutput(models.Model):
     # Define fields for the InputOutput model
     # For example, you might have fields like 'message', 'timestamp', etc.
     message = models.CharField(max_length=1000)
+    response = models.CharField(max_length=2000)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

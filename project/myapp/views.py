@@ -428,17 +428,7 @@ def start_chat(request):
         "role": "user",
         "content": new_message
     })
-    try:
-        history = ChatHistory.objects.get(embedding_id=index_name)
-    except ChatHistory.DoesNotExist:
-        history = ChatHistory.objects.create(
-            user_id=request.data.get('userid'),  # Assuming the user is authenticated
-            embedding_id=index_name,  # Assuming embedding_id is defined elsewhere
-        )
-    inputoutput = InputOutput.objects.create(
-        message=new_message,
-    )
-    history.inputoutput.add(inputoutput)
+
     print(request.data.get('userid'))
 
     LOCATION="europe-west4"
@@ -451,9 +441,33 @@ def start_chat(request):
     model="claude-3-haiku@20240307",
     system = context,
     )
+    try:
+        history = ChatHistory.objects.get(embedding_id=index_name)
+    except ChatHistory.DoesNotExist:
+        history = ChatHistory.objects.create(
+            user_id=request.data.get('userid'),  # Assuming the user is authenticated
+            embedding_id=index_name,  # Assuming embedding_id is defined elsewhere
+        )
+
+    inputoutput = InputOutput.objects.create(
+        message= new_message,
+        response = message.content[0].text
+    )
+    history.inputoutput.add(inputoutput)
     return Response({"message" : message.content[0].text})
 
-
+@api_view(['POST'])
+def get_chat_history(request):
+    embedding_id = request.data.get('embedding_id')
+    history = ChatHistory.objects.get(embedding_id=embedding_id)
+    inputoutput = history.inputoutput.all()
+    resp = []
+    for io in inputoutput:
+        resp.append({
+            "text": io.message,
+            "text": io.response
+        })
+    return Response({'messages' : resp})
 
 # Call the function with your project ID and location
 # prevmessages = []

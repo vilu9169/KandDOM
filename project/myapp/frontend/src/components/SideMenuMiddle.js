@@ -7,19 +7,34 @@ import { IoIosDocument } from "react-icons/io";
 import { Row } from "react-bootstrap";
 import { AuthContext } from "./AuthContextProvider";
 import { ResponseContext } from "./ResponseContextProvider";
+import axios from "axios";
 
 function SideMenuMiddle() {
   const [showTimeline, setShowTimeline] = useState(false);
   const { files } = useContext(AuthContext);
   const {currentFile, setCurrentFile} = useContext(AuthContext);
   const {messages, setMessages} = useContext(ResponseContext);
+  const baseURL = process.env.REACT_APP_API_URL;
   const handleButtonClick = () => {
     setShowTimeline(!showTimeline);
   };
+  const getChatHistory = async () => {
+    const body = {
+      embedding_id: currentFile
+    }
+    try {
+      const {data} = await axios.post(baseURL+'api/getchat/', body);
+      console.log(data);
+      console.log(data.messages);
+      setMessages(data.messages);
+    } catch (error) {
+      console.error("Error fetching chat history:", error);
+    }
+  };
   const chooseDocument = (fileid) => {
-    console.log('file:', fileid)
+    console.log('file:', fileid);
     setCurrentFile(fileid);
-    setMessages([]);
+    getChatHistory();
   };
 
   return (
