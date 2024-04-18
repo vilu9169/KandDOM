@@ -8,16 +8,9 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.contrib.auth.models import BaseUserManager
 from djongo import models as djmodels
 from djongo.models.fields import ArrayReferenceField
-# from djongo.storage import GridFSStorage
+from djongo.storage import GridFSStorage
 
-# grid_fs_storage = GridFSStorage(collection='myfiles')
-
-class PDFDocument(models.Model):
-    filename = djmodels.CharField(max_length=255)
-    file = djmodels.FileField(upload_to='pdfs')
-
-    def __str__(self):
-        return self.filename
+grid_fs_storage = GridFSStorage(collection='myfiles')
 
 class Document(models.Model):
     _id = djmodels.ObjectIdField()
