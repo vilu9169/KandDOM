@@ -1,5 +1,7 @@
 # models.py
 from django.conf import settings
+
+from typing import Iterable
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 # Create your models here.
@@ -9,6 +11,36 @@ from djongo.models.fields import ArrayReferenceField
 from djongo.storage import GridFSStorage
 
 grid_fs_storage = GridFSStorage(collection='myfiles')
+
+class Document(models.Model):
+    _id = djmodels.ObjectIdField()
+    #id = models.BigAutoField( primary_key=True, editable=False, db_column='_id')
+    file= djmodels.FileField(upload_to='pdf/')
+    filename = djmodels.CharField(max_length=255)
+    content_type = djmodels.CharField(max_length=100)
+    size = djmodels.IntegerField()
+    uploaded_at = djmodels.DateTimeField(auto_now_add=True)
+    def __getattribute__(self, attr):
+        return super().__getattribute__(attr)
+    def __id__(self):
+        return self._id
+    def __str__(self):
+        return self.filename
+    def save(self, *args, **kwargs):
+        self.id = self._id
+        super(Document, self).save(*args, **kwargs)
+    
+class File(models.Model):
+    #id = models.BigAutoField( primary_key=True, editable=False, db_column='_id')
+    #file_id = models.BigAutoField(unique=True) removes in order for migrate to work
+    file=models.FileField(upload_to='pdf/')
+    filename = models.CharField(max_length=255)
+    content_type = models.CharField(max_length=100)
+    size = models.IntegerField()
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.filename
 
 class UserManager(BaseUserManager):
     def _create_user(self, email, password=None, **extra_fields):
@@ -33,11 +65,13 @@ class UserManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 class User(AbstractUser):
+    #_id = djmodels.ObjectIdField()
+    id = models.BigAutoField( primary_key=True, editable=False, db_column='id')
     name = models.CharField(max_length=250)
     email = models.CharField(max_length=250, unique=True)
     password = models.CharField(max_length=250)
     username = None
-    documents = ArrayReferenceField(to='Document', on_delete=models.CASCADE)
+    documents = ArrayReferenceField(to=Document, on_delete=models.CASCADE)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()
@@ -49,6 +83,3 @@ class Document(djmodels.Model):
     content_type = djmodels.CharField(max_length=100)
     size = djmodels.IntegerField()
     uploaded_at = djmodels.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.filename
