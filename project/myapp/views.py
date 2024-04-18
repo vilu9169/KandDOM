@@ -462,7 +462,7 @@ def get_chat_history(request):
     try:
         history = ChatHistory.objects.get(embedding_id=embedding_id)
     except ChatHistory.DoesNotExist:
-        return Response({'error': 'Chat history not found'})
+        raise ValueError ({'error': 'Chat history not found'})
     inputoutput = history.inputoutput.all()
     resp = []
     for io in inputoutput:
