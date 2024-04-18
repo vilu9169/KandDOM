@@ -486,7 +486,7 @@ def extract_text_from_pdf(pdf_file) -> str:
         print(f"Error: File '{pdf_file}' not found.")
         return None
     
-def text_to_rag(new_index_name, text):
+"""def text_to_rag(new_index_name, text):
     os.environ["PINECONE_API_KEY"] = "2e669c83-1a4f-4f19-a06a-42aaf6ea7e06"
     os.environ["PINECONE_ENV"] = "default"
     pc = Pinecone(api_key="2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
@@ -509,8 +509,35 @@ def text_to_rag(new_index_name, text):
     # initialize pinecone
     vectorstore = PineconeVectorStore(new_index_name, embeddings.embed_query, splits)
     # Vertex AI embedding model  uses 768 dimensions`
-    vectorstore = vectorstore.from_documents(splits, embeddings, index_name=new_index_name)
+    vectorstore = vectorstore.from_documents(splits, embeddings, index_name=new_index_name)"""
     
+def text_to_rag(new_index_name, text):
+    os.environ["PINECONE_API_KEY"] = "2e669c83-1a4f-4f19-a06a-42aaf6ea7e06"
+    os.environ["PINECONE_ENV"] = "default"
+    try:
+        pc = Pinecone(api_key="2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
+        pc.create_index(
+            name=new_index_name,
+            dimension=768,
+            metric="cosine",
+            spec=ServerlessSpec(
+                cloud='aws', 
+                region='us-west-2'
+            ) 
+        ) 
+        # Split documents
+        text_splitter = RecursiveCharacterTextSplitter(separators=["{pagestart", "{pageend"], chunk_overlap=150)
+        splits = [Document(page_content=x) for x in text_splitter.split_text(text)]
+        
+        embeddings = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001")
+        vectorstore = PineconeVectorStore(new_index_name, embeddings.embed_query, splits)
+        vectorstore = vectorstore.from_documents(splits, embeddings, index_name=new_index_name)
+    except Exception as e:
+        print(f"Error: {e}")
+
+
+
+
 def mainfunk(pdf_file, new_index_name):
     text = extract_text_from_pdf(pdf_file)
     print(text)
