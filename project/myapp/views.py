@@ -468,7 +468,9 @@ def get_chat_history(request):
     for io in inputoutput:
         resp.append({
             "text": io.message,
-            "text": io.response
+        })
+        resp.append({
+            "text": io.response,
         })
     print(resp)
     return Response({'messages' : resp})
