@@ -296,7 +296,7 @@ def upload_document(request):
     if file_obj:
         # Create a new Document instance
         document = Document.objects.create(
-            file = file_obj,
+            pdf = file_obj,
             filename=file_obj.name,
             content_type=file_obj.content_type,
             size=file_obj.size,
