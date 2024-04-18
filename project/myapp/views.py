@@ -430,7 +430,7 @@ def start_chat(request):
     })
     try:
         history = ChatHistory.objects.get(embedding_id=index_name)
-    except history.DoesNotExist:
+    except ChatHistory.DoesNotExist:
         history = ChatHistory.objects.create(
             user_id=request.data.get('userid'),  # Assuming the user is authenticated
             embedding_id=index_name,  # Assuming embedding_id is defined elsewhere
