@@ -127,7 +127,7 @@ def chat_view(request):
 import subprocess
 import requests
 
-def start_chat2(input, previous_messages) -> str:
+def start_chat(input, previous_messages) -> str:
     endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/chat-bison:predict"
     
     #Load document from output.txt
@@ -234,12 +234,12 @@ from .serializers import UserSerializer
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed, ValidationError
 from .models import User
-from .models import Document as UserDocument
+from .models import Document
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken, TokenError
 from rest_framework import status
 from .models import Document
-from .serializers import DocumentSerializer, MyTokenObtainPairSerializer
-from rest_framework_simplejwt.views import TokenViewBase
+from .serializers import DocumentSerializer
+
 
 
 class RegisterView(APIView):
@@ -270,11 +270,10 @@ class Loginview(APIView):
             raise AuthenticationFailed("Incorrect Password")
         access_token = AccessToken.for_user(user)
         refresh_token =RefreshToken.for_user(user)
-        access_token["user"] = UserSerializer(user).data
-        print(UserSerializer(user).data)
         return Response({
             "access_token" : access_token,
             "refresh_token" : refresh_token,
+            'userID': user.id
         })
     
 class LogoutView(APIView):
@@ -287,20 +286,6 @@ class LogoutView(APIView):
             return Response("Logout Successful", status=status.HTTP_200_OK)
         except TokenError:
             raise AuthenticationFailed("Invalid Token")
-
-from langchain_google_vertexai import VertexAIEmbeddings
-from langchain_google_vertexai import VertexAI
-
-
-from pinecone import Pinecone, ServerlessSpec, PodSpec  
-
-pc = Pinecone(api_key="2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
-
-#print(index.describe_index_stats())
-
-embeddings = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001")
-
-        
 
 from django.core.files.storage import FileSystemStorage
 from gridfs import GridFS
@@ -336,15 +321,11 @@ def upload_pdf(request):
 
 @api_view(['POST'])
 def upload_document(request):
-    file_obj = request.FILES.get('file')
-    print(request.data['userID'])
-    
-    """print("All documents in the database:")
-    for document in File.objects.all():
-        print(document)"""
+    if request.method == 'POST':
+        file_obj = request.FILES['file']
     if file_obj:
         # Create a new Document instance
-        document = UserDocument.objects.create(
+        document = Document.objects.create(
             file = file_obj,
             filename=file_obj.name,
             content_type=file_obj.content_type,
@@ -353,7 +334,7 @@ def upload_document(request):
         )
         print("Before document.save")
         document.save()
-        mainfunk('pdf/'+document.filename, str(document.__id__()))
+
         print("document.save complete")
         user = User.objects.get(id=request.data['userID'])
         print("User.objects.get(id=request.data['ObjectId']) COMPLETE")
@@ -367,178 +348,13 @@ def upload_document(request):
             print(user)"""
 
         # You might want to return the ID of the newly created document for future reference
-        return Response({'document_id': str(document.__id__())})
+        return Response({'document_id ': str(document._id)})
     else:
         return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
     
 @api_view(['POST'])
 def get_documents(request):
-    print(request.data)
-    user = User.objects.get(id=request.data['user'])
+    user = User.objects.get(id=request.data['userID'])
     documents = user.documents.all()
-    resp = []
-    for document in documents:
-        print(document, document.__id__())
-        id = str(document.__id__())
-        resp.append({
-            "id": id,
-            "filename": document.filename,
-            "content_type": document.content_type,
-            "size": document.size,
-            "uploaded_at": document.uploaded_at
-        })
-
-    return Response({'data' : resp})
-
-class MyTokenObtainPairView(TokenViewBase):
-    serializer_class = MyTokenObtainPairSerializer
-
-
-
-from langchain_pinecone import PineconeVectorStore  
-from anthropic import AnthropicVertex
-
-
-llm = VertexAI()
-
-import subprocess
-import requests
-
-@api_view(['POST'])
-def start_chat(request):
-    print("Starting chat")
-    print(request.data.get('index_name'))
-    index_name = request.data.get('index_name')
-    index = pc.Index(index_name)
-    vectorstore = PineconeVectorStore(  
-        index, embeddings  
-    )  
-    print("Vectorstore created")
-    # Set the endpoint URL
-    MODEL="claude-3-haiku@20240307"
-    endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/europe-west4/publishers/anthropic/models/"+MODEL+":predict"
-    context = "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. Detta är de RAG delar av dokument du har att tillgå :" 
-    index = 0
-    prepend = ""
-    append = ""
-    new_message = request.data.get('message')
-    messages_json = request.data.get('messages')
-    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 40,})).invoke(new_message):
-        #The first 10 documents are prepended to the context
-        #The last 10 documents are appended to append
-        if index < 10:
-            prepend += rag.page_content
-        elif index >10 and index < 20:
-            append = rag.page_content + append
-        else:
-            prepend += rag.page_content
-        index += 1
-        #Extract text from document
-    context += prepend + append
-    #print("Context: ", context)
-    print("Rag done")
-    #Create a json struct for previous messages and the current message
-    messages = []
-    odd = True
-    previous_messages = [msg['text'] for msg in messages_json]
-    for message in previous_messages:
-        if odd:
-            messages.append({
-                "role": "user",
-                "content": message
-            })
-            odd = False
-        else:
-            messages.append({
-                "role": "assistant",
-                "content": message
-            })
-            odd = True
-    messages.append({
-        "role": "user",
-        "content": new_message
-    })
-
-    LOCATION="europe-west4"
-
-    client = AnthropicVertex(region=LOCATION, project_id="sunlit-inn-417922")
-
-    message = client.messages.create(
-    max_tokens=500,
-    messages=messages,
-    model="claude-3-haiku@20240307",
-    system = context,
-    )
-    return Response({"message" : message.content[0].text})
-
-
-
-# Call the function with your project ID and location
-# prevmessages = []
-# while(True):
-#     #Prompt user for input
-#     print("Enter your message: ")
-#     message = input()
-#     res = start_chat(message, prevmessages)
-#     prevmessages.append(message)
-#     prevmessages.append(res)
-#     print(res)
-
-from pinecone import Pinecone, ServerlessSpec
-import PyPDF2
-# pdf_file = "gbg_mordforsok.pdf"
-# output_file = "output.pdf"
-import os
-from langchain_google_vertexai import VertexAIEmbeddings
-from langchain_pinecone import PineconeVectorStore
-from langchain.schema.document import Document
-from pinecone import Pinecone, ServerlessSpec
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-
-def extract_text_from_pdf(pdf_file) -> str:
-    try:
-        with open(pdf_file, 'rb') as file:
-            reader = PyPDF2.PdfReader(file)
-            num_pages = len(reader.pages)
-            text = ""
-            #Separate pages so they start with { and end with }
-            for page_num in range(num_pages):
-                text += "{pagestart nr "+ str(page_num+1) +"}"
-                page = reader.pages[page_num]
-                text += page.extract_text()
-                text +="{pageend nr "+ str(page_num+1) +"}"
-
-            return text
-    except FileNotFoundError:
-        print(f"Error: File '{pdf_file}' not found.")
-        return None
-    
-def text_to_rag(new_index_name, text):
-    os.environ["PINECONE_API_KEY"] = "2e669c83-1a4f-4f19-a06a-42aaf6ea7e06"
-    os.environ["PINECONE_ENV"] = "default"
-    pc = Pinecone(api_key="2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
-    pc.create_index(
-        name=new_index_name,
-        dimension=768,
-        metric="cosine",
-        spec=ServerlessSpec(
-            cloud='aws', 
-            region='us-west-2'
-        ) 
-    ) 
-    # Split documents
-    #text_splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=0)
-    #splits = [Document(page_content=x) for x in text_splitter.split_text(text)]
-    text_splitter = RecursiveCharacterTextSplitter(separators=["{pagestart", "{pageend"], chunk_overlap = 150)
-    splits = [Document(page_content=x) for x in text_splitter.split_text(text)]
-    #splits = text_splitter.split_text(text)    
-    embeddings = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001")
-    # initialize pinecone
-    vectorstore = PineconeVectorStore(new_index_name, embeddings.embed_query, splits)
-    # Vertex AI embedding model  uses 768 dimensions`
-    vectorstore = vectorstore.from_documents(splits, embeddings, index_name=new_index_name)
-    
-def mainfunk(pdf_file, new_index_name):
-    text = extract_text_from_pdf(pdf_file)
-    print(text)
-    text_to_rag(new_index_name, text)
+    serializer = DocumentSerializer(documents, many=True)
+    return Response(serializer.data)

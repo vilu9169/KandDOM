@@ -6,12 +6,12 @@ import { IoIosDocument } from "react-icons/io";
 import { IoIosCopy } from "react-icons/io";
 import { AuthContext } from "./AuthContextProvider";
 import FileDropZone from "./FileDropZone";
+
 import { useContext } from "react";
 
 function UploadFileWindow() {
-  const { userID, getFiles } = useContext(AuthContext);
-  const { setCurrentFile } = useContext(AuthContext);
-  const baseURL = process.env.REACT_APP_API_URL;
+  const { userID } = useContext(AuthContext);
+  
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
 
@@ -27,17 +27,11 @@ function UploadFileWindow() {
     formData.append('userID', userID);
     try {
 
-<<<<<<< HEAD
         const response = await fetch('http://localhost:3000/upload/', {
-=======
-        const response = await fetch(baseURL+'upload/', {
->>>>>>> main
             method: 'POST',
             body: formData
         });
         const data = await response.json();
-        getFiles()
-        setCurrentFile(data.document_id)
         alert(`File uploaded successfully. Document ID: ${data.document_id}`);
     } catch (error) {
       console.error("Error uploading file:", error);
