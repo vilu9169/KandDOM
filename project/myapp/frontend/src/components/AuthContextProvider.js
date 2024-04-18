@@ -8,41 +8,16 @@ const AuthContext = createContext()
 
 
 const AuthContextProvider = ({children}) => {
-    let [user, setUser] = useState(() => (Cookies.get('access_token') ? jwtDecode(Cookies.get('access_token')).user : []))
+    let [user, setUser] = useState(() => (Cookies.get('access_token') ? jwtDecode(Cookies.get('access_token')) : null))
     let [authTokens, setAuthTokens] = useState(() => (Cookies.get('access_tokens') ? JSON.parse(Cookies.get('access_token')) : null))
     let [loading, setLoading] = useState(true)
     let [loginError, setLoginError] = useState(null)
     let [signupError, setSignupError] = useState(null)
-
-    let [userID, setUserID] = useState(() => (localStorage.getItem('userID') ? localStorage.getItem('userID') : null))
+    let [userID, setUserID] = useState(() => (localStorage.getItem('userID') ? jwtDecode(Cookies.get('access_token')).user_id : null))
     const navigate = useNavigate()
-    const [files, setFiles] = useState([]);
-    const [currentFile, setCurrentFile] = useState(null);
 
-    const baseURL = process.env.REACT_APP_API_URL
-
-    let getFiles = async (e) => {
-        const body = {
-            user: userID
-        }
-      try {
-        const {data} = await axios.post(baseURL+"api/documents/", body);
-        console.log(data.data);
-        let fileArr = []
-        for (const file of data.data) {
-          console.log(file);
-          fileArr.push(file);
-        }
-        setFiles(fileArr);
-        console.log("Files:", files);
-        return data;
-      }
-      catch (error) {
-        console.error("Error fetching files:", error);
-      }
-    };
     axios.defaults.xsrfCookieName = 'csrftoken'
-    axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN'   
+    axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN'
 
     let loginUser = async (e) => {
             e.preventDefault()
@@ -52,16 +27,14 @@ const AuthContextProvider = ({children}) => {
                     password: e.target.password.value
             }
             try {
-                    const {data} = await axios.post(baseURL+"api/token/", body) // Updated URL to include the full address with the 'http://' protocol
+                    const {data} = await axios.post("http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/api/token/", body) // Updated URL to include the full address with the 'http://' protocol
                     console.log("data: ", data)
                     // Storing Access in cookie
                     Cookies.set('access_token', data.access);
                     Cookies.set('refresh_token', data.refresh);
                     setUser(jwtDecode(data.access).email)
                     setUserID(jwtDecode(data.access).user_id)
-                    localStorage.setItem('userID', jwtDecode(data.access).user_id)
-                    console.log("decoded: ", jwtDecode(data.access).user)
-                    getFiles()
+                    // localStorage.setItem('userID', jwtDecode(data.access).user_id)
                     navigate("/");
                     setLoginError(null)
                     setSignupError(null)
@@ -82,7 +55,7 @@ const AuthContextProvider = ({children}) => {
         }
 
         try {
-            const response = await axios.post(baseURL+'signup/', body)
+            const response = await axios.post('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/api/signup/', body)
             console.log(response)
             loginUser(e)
         } catch (error) {
@@ -103,8 +76,7 @@ const AuthContextProvider = ({children}) => {
     }
 
     const updateToken = async () => {
-        //http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/api/token/refresh/
-        const response = await fetch(baseURL+'api/token/refresh/', {
+        const response = await fetch('1http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/api/token/refresh/', {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'
@@ -131,11 +103,7 @@ const AuthContextProvider = ({children}) => {
         userID:userID,
         authTokens:authTokens,
         loginError:loginError,
-        files:files,
         signupError:signupError,
-        currentFile:currentFile,
-        setCurrentFile:setCurrentFile,
-        getFiles:getFiles,
         loginUser:loginUser,
         logoutUser:logoutUser,
         signupUser:signupUser,

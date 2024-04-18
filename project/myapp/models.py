@@ -8,9 +8,16 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.contrib.auth.models import BaseUserManager
 from djongo import models as djmodels
 from djongo.models.fields import ArrayReferenceField
-from djongo.storage import GridFSStorage
+# from djongo.storage import GridFSStorage
 
-grid_fs_storage = GridFSStorage(collection='pdf')
+# grid_fs_storage = GridFSStorage(collection='myfiles')
+
+class PDFDocument(models.Model):
+    filename = djmodels.CharField(max_length=255)
+    file = djmodels.FileField(upload_to='pdfs')
+
+    def __str__(self):
+        return self.filename
 
 class Document(models.Model):
     _id = djmodels.ObjectIdField()
@@ -76,26 +83,10 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
     objects = UserManager()
 
-
-
-###This is just an example, has to be modified
-"""class InputOutput(models.Model): 
-    # Define fields for the InputOutput model
-    # For example, you might have fields like 'message', 'timestamp', etc.
-    message = models.CharField(max_length=255)
-    timestamp = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.message
-
-class Index(models.Model):
-    index_value = models.IntegerField()
-
-    def __str__(self):
-        return str(self.index_value)
-
-class ChatHistory(models.Model):
-    user_id = models.IntegerField()
-    inputoutput = models.ManyToManyField('InputOutput')
-    pinned_indices = models.ManyToManyField(to="index",default=list)
-    embedding_id = models.IntegerField()"""
+# class Document(djmodels.Model):
+#     _id = djmodels.ObjectIdField()  # Assuming ObjectId is 24 characters long
+#     filename = djmodels.CharField(max_length=255)
+#     pdf=djmodels.FileField(upload_to='pdfs', storage=grid_fs_storage)
+#     content_type = djmodels.CharField(max_length=100)
+#     size = djmodels.IntegerField()
+#     uploaded_at = djmodels.DateTimeField(auto_now_add=True)
