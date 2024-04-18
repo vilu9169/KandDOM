@@ -21,4 +21,4 @@ from .models import Document
 class DocumentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Document
-        fields = ['_id', 'file', 'filename', 'content_type', 'size', 'uploaded_at']
+        fields = '__all__'

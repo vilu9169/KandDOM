@@ -11,8 +11,9 @@ def convert_pdf_to_text(pdf_file, output_file):
         print(f"Error converting PDF to text: {e}")
 
 # Specify the input PDF file and output text file
-pdf_file = "fuppar/Uppsala TR B 9788-23 Aktbil 36.pdf"
-output_file = "KandDOM/fuppar_pdf/kvinnofrid_del2.pdf"
+pdf_file = "Huvudprotokoll 2008-07-16.pdf"
+output_file = "output.pdf"
+
 # Call the function to convert the PDF to text
 convert_pdf_to_text(pdf_file, output_file)
 
@@ -31,16 +32,16 @@ def extract_text_from_pdf(pdf_file):
         return None
 
 # Specify the input PDF file
-pdf_file = "KandDOM/fuppar_pdf/kvinnofrid_del2.pdf"
+pdf_file = "output.pdf"
 
 # Call the function to extract text from the PDF
 text = extract_text_from_pdf(pdf_file)
 
 # Specify the output text file
-output_text_file = "KandDOM/fuppar_txt/kvinnofrid.txt"
+output_text_file = "output.txt"
 
 # Write the extracted text to the output text file, needs to be able to handle scandinavian characters
 with open(output_text_file, 'w', encoding='utf-8') as file:
     file.write(text)
 
-print("Text written successfully!")
+print("Text written to output.txt successfully!")

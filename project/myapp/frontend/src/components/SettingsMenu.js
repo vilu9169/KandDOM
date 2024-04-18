@@ -8,6 +8,8 @@ function SettingsMenu() {
   const { handleButtonClick } = useContext(AppContext);
   const innerContainerRef = useRef(null);
 
+  
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -34,28 +36,19 @@ function SettingsMenu() {
   return (
     <Container fluid className="position-absolute top-0 settings-container">
       <Container ref={innerContainerRef} className="settings-window">
-        <p
-          className="mt-4 pb-3 border-bottom border-black"
-          style={{ fontSize: "22px" }}
-        >
-          Inställningar
-        </p>
+        <p className="mt-4 pb-3 border-bottom border-black" style={{fontSize:'22px'}}>Inställningar</p>
         <ButtonGroup className="w-100">
           <Button
             onClick={() => changeSettingMenu(true)} // Wrap in an arrow function
-            className={`bg-${
-              activeButton ? "2" : "1"
-            } border-0 text-black general-button border-end`}
+            className={`bg-${activeButton ? '2' : '1'} border-0 text-black general-button border-end`}
           >
-            <p className="p-0 m-0">Allmänt</p>
+            Allmänt
           </Button>
           <Button
             onClick={() => changeSettingMenu(false)} // Wrap in an arrow function
-            className={`bg-${
-              activeButton ? "1" : "2"
-            } border-0 text-black data-button border-start`}
+            className={`bg-${activeButton ? '1' : '2'} border-0 text-black data-button border-start`}
           >
-            <p className="p-0 m-0">Data</p>
+            Data
           </Button>
         </ButtonGroup>
         {activeButton && <GeneralSettings />}
