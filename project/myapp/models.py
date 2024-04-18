@@ -100,3 +100,4 @@ class ChatHistory(models.Model):
     pinned_indices = models.ManyToManyField(to=Index, blank=True)
     embedding_id = models.IntegerField()
 
+
