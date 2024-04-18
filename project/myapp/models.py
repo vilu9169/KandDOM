@@ -81,7 +81,7 @@ class User(AbstractUser):
 class InputOutput(models.Model): 
     # Define fields for the InputOutput model
     # For example, you might have fields like 'message', 'timestamp', etc.
-    message = models.CharField(max_length=255)
+    message = models.CharField()
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -98,6 +98,6 @@ class ChatHistory(models.Model):
     user_id = models.IntegerField()
     inputoutput = ArrayReferenceField(to=InputOutput)
     pinned_indices = models.ManyToManyField(to=Index, blank=True)
-    embedding_id = models.IntegerField()
+    embedding_id = models.CharField()
 
 
