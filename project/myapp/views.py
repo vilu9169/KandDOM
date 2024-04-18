@@ -459,7 +459,10 @@ def start_chat(request):
 @api_view(['POST'])
 def get_chat_history(request):
     embedding_id = request.data.get('embedding_id')
-    history = ChatHistory.objects.get(embedding_id=embedding_id)
+    try:
+        history = ChatHistory.objects.get(embedding_id=embedding_id)
+    except ChatHistory.DoesNotExist:
+        return Response({'error': 'Chat history not found'})
     inputoutput = history.inputoutput.all()
     resp = []
     for io in inputoutput:
