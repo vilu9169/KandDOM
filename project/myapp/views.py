@@ -430,7 +430,7 @@ def start_chat(request):
     })
     history = None
     if ChatHistory.objects.filter(embedding_id=index_name).exists():
-        history = ChatHistory.objects.filter(embedding_id=index_name)
+        history = ChatHistory.objects.get(embedding_id=index_name)
     else:
         history = ChatHistory.objects.create(
             user_id=request.data.get('userid'),  # Assuming the user is authenticated
