@@ -428,10 +428,9 @@ def start_chat(request):
         "role": "user",
         "content": new_message
     })
-    history = None
-    if ChatHistory.objects.filter(embedding_id=index_name).exists():
+    try:
         history = ChatHistory.objects.get(embedding_id=index_name)
-    else:
+    except history.DoesNotExist:
         history = ChatHistory.objects.create(
             user_id=request.data.get('userid'),  # Assuming the user is authenticated
             embedding_id=index_name,  # Assuming embedding_id is defined elsewhere
