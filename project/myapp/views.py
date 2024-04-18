@@ -437,7 +437,7 @@ def start_chat(request):
             embedding_id=index_name,  # Assuming embedding_id is defined elsewhere
         )
     inputoutput = InputOutput.objects.create(
-        message=new_message,
+        message=messages,
     )
     history.inputoutput.add(inputoutput)
     print(request.data.get('userid'))
