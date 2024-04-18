@@ -15,7 +15,7 @@ grid_fs_storage = GridFSStorage(collection='myfiles')
 class Document(models.Model):
     _id = djmodels.ObjectIdField()
     #id = models.BigAutoField( primary_key=True, editable=False, db_column='_id')
-    file= djmodels.FileField(upload_to='pdfs')
+    file= djmodels.FileField(upload_to='pdf/')
     filename = djmodels.CharField(max_length=255)
     content_type = djmodels.CharField(max_length=100)
     size = djmodels.IntegerField()
@@ -76,10 +76,10 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
     objects = UserManager()
 
-# class Document(djmodels.Model):
-#     _id = djmodels.ObjectIdField()  # Assuming ObjectId is 24 characters long
-#     filename = djmodels.CharField(max_length=255)
-#     pdf=djmodels.FileField(upload_to='pdfs', storage=grid_fs_storage)
-#     content_type = djmodels.CharField(max_length=100)
-#     size = djmodels.IntegerField()
-#     uploaded_at = djmodels.DateTimeField(auto_now_add=True)
+class Document(djmodels.Model):
+    _id = djmodels.ObjectIdField()  # Assuming ObjectId is 24 characters long
+    filename = djmodels.CharField(max_length=255)
+    pdf=djmodels.FileField(upload_to='pdfs', storage=grid_fs_storage)
+    content_type = djmodels.CharField(max_length=100)
+    size = djmodels.IntegerField()
+    uploaded_at = djmodels.DateTimeField(auto_now_add=True)
