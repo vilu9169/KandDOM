@@ -241,6 +241,8 @@ from rest_framework import status
 from .models import Document
 from .serializers import DocumentSerializer, MyTokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenViewBase
+from .models import ChatHistory
+
 
 
 class RegisterView(APIView):
