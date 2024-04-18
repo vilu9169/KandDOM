@@ -133,7 +133,7 @@ DATABASES = {
         'NAME': 'PythiaDB',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': 'mongodb+srv://viktorlundin3:N1b7t9N9JIJvHhGd@pythiadb.bmdzzkd.mongodb.net/?retryWrites=true&w=majority&appName=PythiaDB',
+            'host': 'mongodb+srv://viktorlundin3:KPfy0yPLimhGe4nD@pythiadb.bmdzzkd.mongodb.net/?retryWrites=true&w=majority&appName=PythiaDB',
         }
     }
 }
