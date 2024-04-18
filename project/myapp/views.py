@@ -512,8 +512,8 @@ def extract_text_from_pdf(pdf_file) -> str:
     vectorstore = vectorstore.from_documents(splits, embeddings, index_name=new_index_name)"""
     
 def text_to_rag(new_index_name, text):
-    os.environ["PINECONE_API_KEY"] = "2e669c83-1a4f-4f19-a06a-42aaf6ea7e06"
-    os.environ["PINECONE_ENV"] = "default"
+    #os.environ["PINECONE_API_KEY"] = "2e669c83-1a4f-4f19-a06a-42aaf6ea7e06"
+    #os.environ["PINECONE_ENV"] = "default"
     try:
         pc = Pinecone(api_key="2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
         pc.create_index(
