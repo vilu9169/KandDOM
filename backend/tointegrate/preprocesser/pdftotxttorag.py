@@ -13,6 +13,54 @@ from langchain_text_splitters import CharacterTextSplitter
 from google.cloud import documentai
 import io
 import time
+import threading
+
+def async_handle_chunk(chunk_num, chunk_size, num_pages, pdf_file, client, name, resstrings):
+    reader = PyPDF2.PdfReader(pdf_file)
+    pagenr = chunk_num * chunk_size
+    start_page = chunk_num * chunk_size
+    end_page = min((chunk_num + 1) * chunk_size, num_pages)
+    print("Working with pages ", start_page, " to ", end_page)
+    writer = PyPDF2.PdfWriter()
+    for page_num in range(start_page, end_page):
+        writer.add_page(reader.pages[page_num])
+    response_bytes_stream = io.BytesIO()
+    writer.write(response_bytes_stream)
+    #Seek 0 to start reading
+    response_bytes_stream.seek(0)
+    # Read the file into memory
+    with response_bytes_stream as image:
+        image_content = image.read()
+    # Load Binary Data into Document AI RawDocument Object
+    raw_document = documentai.RawDocument(content=image_content, mime_type="application/pdf")
+
+    # Configure the process request
+    request = documentai.ProcessRequest(name=name, raw_document=raw_document)
+    result = client.process_document(request=request, )
+    #print("Result looks like ", result)
+
+    # For a full list of Document object attributes,
+    # please reference this page: https://googleapis.dev/python/documentai/latest/gapic/v1beta3/types.html#google.cloud.documentai.v1beta3.Document
+    document = result.document
+    # Read the text recognition output from the processor
+    resstring = ""
+    for page in document.pages:
+        resstring += "{pagestart nr "+ str(pagenr+1) +"}"
+        for block in page.blocks:
+            # Block content: [start_index: 15448
+            # end_index: 15463
+            # ]
+            split = str(block.layout.text_anchor.text_segments).split("\n")
+            if(len(split) > 2):
+                resstring += document.text[int(split[0][split[0].find(":") +2:]) : int(split[1][split[1].find(":") +2:])]
+            else:
+                resstring += document.text[0: int(split[0][split[0].find(":") +2:])]                
+        #resstring += page.layout.text_anchor.content
+        resstring +="{pageend nr "+ str(pagenr+1) +"}"+str(chr(28))
+        pagenr += 1
+    resstrings[chunk_num] = resstring
+    pass
+
 def ocr_pdf(pdf_file, project_id, location, processor_id):
     
     # You must set the api_endpoint if you use a location other than 'us'.
@@ -34,62 +82,28 @@ def ocr_pdf(pdf_file, project_id, location, processor_id):
         num_chunks = num_pages//chunk_size
     else:
         num_chunks = num_pages//chunk_size + 1
+    #resstring = ""
+    resstrings = []
+    #Add a new string for each chunk
+    for i in range(num_chunks):
+        resstrings.append("")
+        
+    threads = []
+    # Create and start threads
+    for i in range(num_chunks):
+        t = threading.Thread(target=async_handle_chunk, args=(i, chunk_size, num_pages, pdf_file, client, name, resstrings))
+        threads.append(t)
+        t.start()
+
+    # Wait for all threads to finish
+    for thread in threads:
+        thread.join()
+
+    
     resstring = ""
-    pagenr = 0
-    for chunk_num in range(num_chunks):
-        start_page = chunk_num * chunk_size
-        end_page = min((chunk_num + 1) * chunk_size, num_pages)
-        print("Working with pages ", start_page, " to ", end_page)
-        #Previously created new file for each chunk
-        #chunk_file = os.path.join(working_dir, f"writteto.pdf")
-        #Calculate time it takes to generate the chunk
-        # Extract the pages and save them as a new PDF file
-        writer = PyPDF2.PdfWriter()
-        for page_num in range(start_page, end_page):
-            writer.add_page(reader.pages[page_num])
-        response_bytes_stream = io.BytesIO()
-        writer.write(response_bytes_stream)
-        #Seek 0 to start reading
-        response_bytes_stream.seek(0)
-        # Read the file into memory
-        with response_bytes_stream as image:
-            image_content = image.read()
-        # Load Binary Data into Document AI RawDocument Object
-        raw_document = documentai.RawDocument(content=image_content, mime_type="application/pdf")
-
-        # Configure the process request
-        request = documentai.ProcessRequest(name=name, raw_document=raw_document)
-        result = client.process_document(request=request, )
-        #print("Result looks like ", result)
-
-        # For a full list of Document object attributes,
-        # please reference this page: https://googleapis.dev/python/documentai/latest/gapic/v1beta3/types.html#google.cloud.documentai.v1beta3.Document
-        document = result.document
-        # Read the text recognition output from the processor
-        for page in document.pages:
-            resstring += "{pagestart nr "+ str(pagenr+1) +"}"
-            for block in page.blocks:
-                # Block content: [start_index: 15448
-                # end_index: 15463
-                # ]
-                split = str(block.layout.text_anchor.text_segments).split("\n")
-                if(len(split) > 2):
-                    resstring += document.text[int(split[0][split[0].find(":") +2:]) : int(split[1][split[1].find(":") +2:])]
-                else:
-                    resstring += document.text[0: int(split[0][split[0].find(":") +2:])]
-                    
-                
-                # if not("start_index" in str(block.layout.text_anchor.text_segments)):
-                #     #Extract end_index using string slicing
-                    
-                #     resstring += document.text[: str(block.layout.text_anchor.text_segments)]
-                # else:
-                #     
-                
-            #resstring += page.layout.text_anchor.content
-            resstring +="{pageend nr "+ str(pagenr+1) +"}"+str(chr(28))
-            pagenr += 1
-    print("Resstring",resstring)
+    for res in resstrings:
+        resstring += res
+    #print("Resstring",resstring)
     return resstring
 
 def extract_text_from_pdf(pdf_file) -> str:
@@ -126,7 +140,7 @@ def text_to_rag(new_index_name, text):
     # Split documents
     #text_splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=0)
     #splits = [Document(page_content=x) for x in text_splitter.split_text(text)]
-    text_splitter = CharacterTextSplitter(chunk_size=100, chunk_overlap =50,separator=str(chr(28)))
+    text_splitter = CharacterTextSplitter(chunk_size=2, chunk_overlap =1,separator=str(chr(28)))
     splits = [Document(page_content=x) for x in text_splitter.split_text(text)]
     #splits = text_splitter.split_text(text)    
     embeddings = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001")
