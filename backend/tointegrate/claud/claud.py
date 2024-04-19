@@ -31,7 +31,7 @@ llm = VertexAI()
 from anthropic import AnthropicVertex
 
 
-def ragadapt(input, previous_messages) -> str:
+def ragadapt(input, previous_messages, project_id) -> str:
     # Set the endpoint URL
     MODEL="claude-3-haiku@20240307"
     endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/europe-west4/publishers/anthropic/models/"+MODEL+":predict"
@@ -59,7 +59,7 @@ def ragadapt(input, previous_messages) -> str:
 
     LOCATION="europe-west4"
 
-    client = AnthropicVertex(region=LOCATION, project_id="sunlit-inn-417922")
+    client = AnthropicVertex(region=LOCATION, project_id=project_id)
 
     message = client.messages.create(
     max_tokens=300,
@@ -77,19 +77,23 @@ def ragadapt(input, previous_messages) -> str:
 
 
 
-def start_chat(input, previous_messages) -> str:
+def start_chat(input, previous_messages, project_id) -> str:
     print("Starting chat")
     # Set the endpoint URL
     #MODEL="claude-3-haiku@20240307"
     MODEL = "claude-3-sonnet@20240229"
-    
+    #MODEL = "claude-3-opus@20240229"
     endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/europe-west4/publishers/anthropic/models/"+MODEL+":predict"
-    context = "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. Var konsis om möjligt. Detta är de delar av dokument du har att tillgå :" 
+    context = """Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. 
+    Var konsis om möjligt. Till ditt förfogande har du endast vissa delar av dokumentet, de delar som anses mest relevanta för frågan som ställts.
+    Bryt gärna ner information i mindre punkter och hänvisa alltid till sidan i dokumentet där du hittade informationen. Hänvisa alltid till sidan direkt efter påståendet
+    som hämtats från den sidan.
+    """
     index = 0
     prepend = ""
     append = ""
     
-    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 40, })).invoke(ragadapt(input, previous_messages)):
+    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 40, })).invoke(ragadapt(input, previous_messages, project_id=project_id)):
         #The first 10 documents are prepended to the context
         #The last 10 documents are appended to append
         if index < 10:
@@ -100,7 +104,7 @@ def start_chat(input, previous_messages) -> str:
             prepend += rag.page_content
         index += 1
         #Extract text from document
-    context += prepend + append
+    context += prepend + append + "Tänk på att alltid hänvisa till de sidor du hittat informationen på. formatera på följade vis [sidnummer]. Kom ihåg att din uppgift är att hitta relevant information, inte att dra slutsatser som inte står i dokumentet. Om användare ber om din åsikt bör du förklara detta att du bara är en assistent som inte kan eller bör ge åsikter i juridiska frågor."
     #print("Context: ", context)
     print("Rag done")
     #Create a json struct for previous messages and the current message
@@ -126,25 +130,27 @@ def start_chat(input, previous_messages) -> str:
 
     #LOCATION="europe-west4"
     LOCATION="us-central1"
-    client = AnthropicVertex(region=LOCATION, project_id="sunlit-inn-417922")
+    
+    client = AnthropicVertex(region=LOCATION, project_id=project_id)
 
     message = client.messages.create(
     max_tokens=1500,
     messages=messages,
     model=MODEL,
     system = context,
+    temperature=0.0,
     )
     return message.content[0].text
 
-
-
+#project_id="sunlit-inn-417922" #rikards
+project_id = "robust-summit-417910" #björns
 # Call the function with your project ID and location
 prevmessages = []
 while(True):
     #Prompt user for input
     print("Enter your message: ")
     message = input()
-    res = start_chat(message, prevmessages)
+    res = start_chat(message, prevmessages, project_id)
     prevmessages.append(message)
     prevmessages.append(res)
     print(res)

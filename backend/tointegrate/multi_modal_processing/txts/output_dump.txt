@@ -1079,3 +1079,311 @@ Nej. Texten innehåller inga bildtexter.
 
 1: Ja, 2: Nej, 3: Nej, 4: Nej
 encoding: 1000
+Binary encoding for page 0:
+
+verdict: 
+## Svar på frågor om texten:
+
+**1. Innehåller texten många benämningar med korta beskrivningar?**
+
+Ja. Texten innehåller många benämningar med korta beskrivningar, t.ex. "Målsägande", "Misstänkt", "Vittne", "Brottsbeskrivning", "Brottsplatsadress", "Händelse inträffad", "Aktör", "Roll". Detta indikerar att det är ett formulär.
+
+**2. Innehåller sidan ca 50 ord eller mindre totalt?**
+
+Nej. Texten innehåller betydligt fler än 50 ord.
+
+**3. Är texten obegriplig med konstiga tecken eller allmänt osammanhängande?**
+
+Nej. Texten är begriplig och sammanhängande.
+
+**4. Finns det en eller flera bildtexter som beskriver vad en bild visar?**
+
+Nej. Texten innehåller inga bildtexter.
+
+## Sammanställning av svaren:
+
+1: Ja, 2: Nej, 3: Nej, 4: Nej
+encoding: 1000
+Binary encoding for page 1:
+
+verdict: 
+## Analys av texten:
+
+**1. Innehåller texten många benämningar med korta beskrivningar?**
+
+Nej. Texten innehåller få benämningar och de har inga korta beskrivningar. 
+
+**2. Innehåller sidan ca 50 ord eller mindre totalt?**
+
+Ja. Texten innehåller ca 40 ord.
+
+**3. Är texten obegriplig med konstiga tecken eller allmänt osammanhängande?**
+
+Nej. Texten är begriplig och innehåller inga konstiga tecken.
+
+**4. Finns det en eller flera bildtexter som beskriver vad en bild visar?**
+
+Nej. Texten innehåller inga bildtexter.
+
+## Sammanställning:
+
+1: Nej, 2: Ja, 3: Nej, 4: Nej 
+
+encoding: 0100
+Binary encoding for page 2:
+
+verdict: 
+## Analys av texten:
+
+**1. Innehåller texten många benämningar med korta beskrivningar?**
+
+Ja, texten innehåller många benämningar med korta beskrivningar, vilket indikerar att det är ett formulär. Exempel på detta är "Diarienr", "Uppgiftstyp", "Sida", "Anmälan", "PM", "Sakkunnigutlåtande", "Foton brottsplats", "Fordon", "Förhör målsägande", "Förhör vittne", "Ersättningsanspråk", "Förhör misstänkt", "Personalia".
+
+**2. Innehåller sidan ca 50 ord eller mindre totalt?**
+
+Nej, sidan innehåller betydligt fler än 50 ord. Enbart listan med innehållsförteckningen innehåller över 50 ord.
+
+**3. Är texten obegriplig med konstiga tecken eller allmänt osammanhängande?**
+
+Nej, texten är inte obegriplig. Den är skriven på svenska och är sammanhängande.
+
+**4. Finns det en eller flera bildtexter som beskriver vad en bild visar?**
+
+Nej, det finns inga bildtexter i texten.
+
+## Sammanställning:
+
+1: Ja, texten innehåller många benämningar med korta beskrivningar.
+2: Nej, sidan innehåller betydligt fler än 50 ord.
+3: Nej, texten är inte obegriplig.
+4: Nej, det finns inga bildtexter i texten.
+encoding: 1000
+Binary encoding for page 3:
+
+verdict: 
+## Analys av texten:
+
+**1. Innehåller texten många benämningar med korta beskrivningar?**
+
+Ja, texten innehåller många benämningar med korta beskrivningar, såsom "Anmälningsdatum", "Enhet", "Brott/Benämning", "Variant", "Brottsform", "Rubricering", "Misstänkta personer", "Medverkansform", "Övriga aktörer", etc. Dessa benämningar följs ofta av korta beskrivningar, vilket tyder på att texten kan vara ett formulär.
+
+**2. Innehåller sidan ca 50 ord eller mindre totalt?**
+
+Nej, texten innehåller betydligt fler än 50 ord. Enbart avsnittet "Huvudanmälan" innehåller över 50 ord, och det finns ytterligare två avsnitt med information om misstänkta personer och brott/händelser.
+
+**3. Är texten obegriplig med konstiga tecken eller allmänt osammanhängande?**
+
+Nej, texten är inte obegriplig. Den är skriven på korrekt svenska och är logiskt uppbyggd. Den innehåller inga konstiga tecken eller andra tecken på att den skulle vara osammanhängande.
+
+**4. Finns det en eller flera bildtexter som beskriver vad en bild visar?**
+
+Nej, texten innehåller inga bildtexter.
+
+## Sammanställning:
+
+1: Ja, texten innehåller många benämningar med korta beskrivningar.
+2: Nej, texten innehåller betydligt fler än 50 ord.
+3: Nej, texten är inte obegriplig.
+4: Nej, det finns inga bildtexter.
+encoding: 1000
+Binary encoding for page 4:
+
+verdict: 
+## Analys av texten:
+
+**1. Innehåller texten många benämningar med korta beskrivningar?**
+
+Ja, texten innehåller många benämningar med korta beskrivningar, t.ex.:
+
+* Patrull 21-1410
+* pa Friberg, pa Melin och pasp Landing
+* RLC
+* Hamnvägen i Örsundsbro
+* Kevin
+* Husvagn NNX900
+* Allmänfarlig vårdslöshet
+* FILIP
+* Jful P. Andrée
+
+Dessa benämningar följs ofta av korta beskrivningar, vilket tyder på att det kan vara ett formulär.
+
+**Svar: Ja**
+
+**2. Innehåller sidan ca 50 ord eller mindre totalt?**
+
+Nej, texten innehåller betydligt fler än 50 ord. En grov uppskattning ger ca 250 ord.
+
+**Svar: Nej**
+
+**3. Är texten obegriplig med konstiga tecken eller allmänt osammanhängande?**
+
+Nej, texten är skriven på korrekt svenska och är fullt begriplig.
+
+**Svar: Nej**
+
+**4. Finns det en eller flera bildtexter som beskriver vad en bild visar?**
+
+Nej, texten innehåller inga bildtexter.
+
+**Svar: Nej**
+
+## Sammanställning av svaren:
+
+1: Ja, 2: Nej, 3: Nej, 4: Nej
+encoding: 1000
+Binary encoding for page 5:
+
+verdict: 
+## Analys av texten:
+
+**1. Innehåller texten många benämningar med korta beskrivningar?**
+
+Nej, texten innehåller endast en benämning ("Fordonsår") med en kort beskrivning ("1988"). Detta tyder inte på att det är ett formulär.
+
+**2. Innehåller sidan ca 50 ord eller mindre totalt?**
+
+Ja, texten innehåller endast 3 ord ("Fordonsår:", "1988", "6").
+
+**3. Är texten obegriplig med konstiga tecken eller allmänt osammanhängande?**
+
+Nej, texten är begriplig och innehåller inga konstiga tecken. Den är kort och saknar sammanhang, men inte obegriplig.
+
+**4. Finns det en eller flera bildtexter som beskriver vad en bild visar?**
+
+Nej, texten innehåller ingen information om bilder eller bildtexter.
+
+## Sammanställning av svaren:
+
+1: Nej, 2: Ja, 3: Nej, 4: Nej 
+
+encoding: 0100
+Binary encoding for page 6:
+
+verdict: 
+## Analys av texten:
+
+**1. Innehåller texten många benämningar med korta beskrivningar?**
+
+Nej. Texten innehåller inte många benämningar med korta beskrivningar. Den innehåller namn på personer och platser, men dessa beskrivs inte kortfattat.
+
+**2. Innehåller sidan ca 50 ord eller mindre totalt?**
+
+Nej. Texten innehåller mer än 50 ord. Den innehåller ungefär 170 ord.
+
+**3. Är texten obegriplig med konstiga tecken eller allmänt osammanhängande?**
+
+Nej. Texten är begriplig och sammanhängande. Den beskriver en händelse där en kvinna ringer polisen och tipsar om en misstänkt brandorsak.
+
+**4. Finns det en eller flera bildtexter som beskriver vad en bild visar?**
+
+Nej. Texten innehåller inga bilder eller bildtexter.
+
+## Sammanställning av svaren:
+
+1: Nej, 2: Nej, 3: Nej, 4: Nej
+encoding: 0000
+Binary encoding for page 7:
+
+verdict: 
+## Svar på frågor om texten:
+
+**1. Innehåller texten många benämningar med korta beskrivningar?**
+
+Nej. Texten innehåller inte många benämningar med korta beskrivningar. Den innehåller en del facktermer, men dessa är inte korta beskrivningar av något.
+
+**2. Innehåller sidan ca 50 ord eller mindre totalt?**
+
+Nej. Texten innehåller betydligt fler än 50 ord.
+
+**3. Är texten obegriplig med konstiga tecken eller allmänt osammanhängande?**
+
+Nej. Texten är inte obegriplig. Den är skriven på korrekt svenska och är sammanhängande.
+
+**4. Finns det en eller flera bildtexter som beskriver vad en bild visar?**
+
+Nej. Texten innehåller inga bilder eller bildtexter.
+
+## Sammanställning av svar:
+
+1: Nej, 2: Nej, 3: Nej, 4: Nej
+encoding: 0000
+Binary encoding for page 8:
+
+verdict: 
+## Analys av texten:
+
+**1. Innehåller texten många benämningar med korta beskrivningar?**
+
+Ja, texten innehåller många benämningar med korta beskrivningar, vilket indikerar att det är ett formulär. Exempel på detta är:
+
+* Uppdragsgivare
+* Allmän information om FSEC:s sakkunnigutlåtanden
+* Innehållsförteckning
+* Metodik
+* Ändamål
+* Inledande uppgifter
+* Om handläggarna
+* Teknisk undersökning
+* Platsbeskrivning
+* Byggnadsteknisk beskrivning
+* Omgivande undersökning
+* Utvändig undersökning
+* Invändig undersökning
+* Invändigt i byggnaden
+* Invändigt i husvagnen
+* Taktisk information
+* Information
+* Analys
+* Primärbrandområde
+* Brandorsak
+* Slutsats
+* Handläggning
+* Utlåtandeskala
+
+**2. Innehåller sidan ca 50 ord eller mindre totalt?**
+
+Nej, sidan innehåller betydligt fler än 50 ord. Enbart innehållsförteckningen innehåller över 50 ord.
+
+**3. Är texten obegriplig med konstiga tecken eller allmänt osammanhängande?**
+
+Nej, texten är inte obegriplig med konstiga tecken eller allmänt osammanhängande. Den är skriven på korrekt svenska och är logiskt strukturerad.
+
+**4. Finns det en eller flera bildtexter som beskriver vad en bild visar?**
+
+Nej, texten innehåller inga bildtexter.
+
+## Sammanställning:
+
+1: Ja
+2: Nej
+3: Nej
+4: Nej
+encoding: 1000
+Binary encoding for page 9:
+
+verdict: 
+## Svar på frågor om texten:
+
+**1. Innehåller texten många benämningar med korta beskrivningar?**
+
+Ja, texten innehåller många benämningar med korta beskrivningar, t.ex. "FSEC", "Nordisk Brandmanual", "brandplatsundersökning", "byggnaden", "Hamnvägen 16", "Örsundsbro", "brandfarliga vätskor", "brandskadad husvagn", "kriminaltekniker", "Magnus Andersson", "Larmtjänst", "brandskador", "3D-laserscanner", "Nationellt forensiskt centrum (NFC)", "Forensiker", "brandplatsundersökningar", "elektriska undersökningar", "brandrekonstruktioner", "FSEC", "kriminaltekniker", "polismyndigheten", "hundsök". Detta indikerar att texten kan vara ett formulär.
+
+**2. Innehåller sidan ca 50 ord eller mindre totalt?**
+
+Nej, texten innehåller betydligt fler än 50 ord.
+
+**3. Är texten obegriplig med konstiga tecken eller allmänt osammanhängande?**
+
+Nej, texten är inte obegriplig med konstiga tecken eller allmänt osammanhängande. Den är skriven på korrekt svenska och är lätt att förstå.
+
+**4. Finns det en eller flera bildtexter som beskriver vad en bild visar?**
+
+Nej, texten innehåller inga bildtexter.
+
+## Sammanställning av svaren:
+
+1: Ja, texten innehåller många benämningar med korta beskrivningar.
+2: Nej, texten innehåller betydligt fler än 50 ord.
+3: Nej, texten är inte obegriplig med konstiga tecken eller allmänt osammanhängande.
+4: Nej, texten innehåller inga bildtexter.
+encoding: 1100
