@@ -6,7 +6,7 @@ from langchain_google_vertexai import VertexAI
 from pinecone import Pinecone
 
 pc = Pinecone(api_key="2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
-index_name = "newsplits"
+index_name = "ownreaders"
 index = pc.Index(index_name)  
 #print(index.describe_index_stats())
 
@@ -29,6 +29,7 @@ loc = "europe-west4"
 #model = "claude-3-haiku@20240307"
 optind = 0
 options = ["us-central1", "asia-southeast1", "europe-west4"]
+#Haiku below
 #options = ["us-central1", "europe-west4"]
 loc = options[optind]
 
@@ -94,7 +95,7 @@ def start_chat(input, previous_messages) -> str:
     prepend = ""
     append = ""
     
-    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 40, })).invoke(ragadapt(input, previous_messages)):
+    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 20, })).invoke(ragadapt(input, previous_messages)):
         #The first 10 documents are prepended to the context
         #The last 10 documents are appended to append
         if index < 10:
