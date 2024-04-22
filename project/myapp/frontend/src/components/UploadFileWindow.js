@@ -34,6 +34,7 @@ function UploadFileWindow() {
         const data = await response.json();
         getFiles()
         setCurrentFile(data.document_id)
+        localStorage.setItem('currentFile', data.document_id)
         alert(`File uploaded successfully. Document ID: ${data.document_id}`);
     } catch (error) {
       console.error("Error uploading file:", error);

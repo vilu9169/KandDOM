@@ -477,6 +477,18 @@ def get_chat_history(request):
     print(resp)
     return Response({'messages' : resp})
 
+@api_view(['POST'])
+def delete_document(request):
+    document_id = request.data.get('document_id')
+    try:
+        document = Document.objects.get(id=document_id)
+        chat = ChatHistory.objects.get(embedding_id=document_id)
+    except Document.DoesNotExist:
+        raise ValueError({'error': 'Document not found'})
+    document.delete()
+    chat.delete()
+    return Response({'message': 'Document deleted successfully'})
+
 # Call the function with your project ID and location
 # prevmessages = []
 # while(True):
