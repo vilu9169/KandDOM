@@ -98,6 +98,9 @@ const AuthContextProvider = ({children}) => {
         Cookies.remove('access_token');
         Cookies.remove('refresh_token');
         localStorage.removeItem('userID')
+        localStorage.removeItem('files')
+        localStorage.removeItem('currentFile')
+        localStorage.removeItem('messages')
         setAuthTokens(null)
         setUser(null)
         navigate('/login')
