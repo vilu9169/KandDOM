@@ -2,6 +2,7 @@ import React, { useContext, useRef, useEffect } from 'react';
 import { ResponseContext } from './ResponseContextProvider';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css'; // Import Perfect Scrollbar CSS
+import ChatMessage from './ChatMessage';
 
 const Chatbot = () => {
   const { messages } = useContext(ResponseContext);
@@ -47,7 +48,7 @@ const Chatbot = () => {
             className={`message ${message.user ? 'user-message' : 'ai-message'}`}
           >
             <p className='user-text'>{message.user ? 'You' : 'Pythia'}</p>
-            <p className='message-text'>{message.text}</p>
+            <p className='message-text'><ChatMessage text={message.text} /></p>
           </div>
         ))}
       </div>
