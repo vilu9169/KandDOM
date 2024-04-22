@@ -3,6 +3,7 @@ import { ResponseContext } from './ResponseContextProvider';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css'; // Import Perfect Scrollbar CSS
 import Markdown from 'marked-react';
+import ChatMessage from './ChatMessage';
 
 const Chatbot = () => {
   const { messages } = useContext(ResponseContext);
@@ -48,7 +49,7 @@ const Chatbot = () => {
             className={`message ${message.user ? 'user-message' : 'ai-message'}`}
           >
             <p className='user-text'>{message.user ? 'You' : 'Pythia'}</p>
-            <p className='message-text'><Markdown> message.text </Markdown></p>
+            <p className='message-text'><ChatMessage text={message.text} /></p>
           </div>
         ))}
       </div>
