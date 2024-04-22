@@ -65,10 +65,8 @@ def ragadapt(input, previous_messages) -> str:
         max_tokens=300,
         messages=messages,
         model="claude-3-haiku@20240307",
-        #model = "claude-3-sonnet@20240229",
         system = context,
         )
-        print("Improved text", message.content[0].text)
         return message.content[0].text
     except Exception as e:
         print("Error: ", e)
@@ -94,8 +92,8 @@ def start_chat(input, previous_messages) -> str:
     index = 0
     prepend = ""
     append = ""
-    
-    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 20, })).invoke(ragadapt(input, previous_messages)):
+    #Knearest på alla 
+    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 30, })).invoke(ragadapt(input, previous_messages)):
         #The first 10 documents are prepended to the context
         #The last 10 documents are appended to append
         if index < 10:
