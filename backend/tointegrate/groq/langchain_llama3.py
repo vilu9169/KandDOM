@@ -10,9 +10,14 @@ import os
 #bpf
 #rekt
 
-#bpf=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
+# bpf=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
 
-#rekt=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
+# rekt=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
+
+# cj = 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
+
+# rikard = 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
+
 
 load_dotenv()
 
