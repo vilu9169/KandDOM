@@ -33,7 +33,7 @@ function SideMenuMiddle() {
     }
   };
   const deleteDocument = async (fileid) => {
-    resp = await axios.post(baseURL+'api/deletefile/', {fileid: fileid});
+    const resp = await axios.post(baseURL+'api/deletefile/', {fileid: fileid});
     console.log(resp);
   };
   const chooseDocument = (fileid) => {
