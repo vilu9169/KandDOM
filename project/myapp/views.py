@@ -249,7 +249,7 @@ class RegisterView(APIView):
     def post(self, request):
         try:
             user = User.objects.get(email=request.data["email"])
-        except user.DoesNotExist:
+        except User.DoesNotExist:
             serializer = UserSerializer(data=request.data)
             serializer.is_valid(raise_exception=True)
             serializer.save()
