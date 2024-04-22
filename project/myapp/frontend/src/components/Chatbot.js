@@ -3,7 +3,8 @@ import { ResponseContext } from "./ResponseContextProvider";
 import PerfectScrollbar from "perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css"; // Import Perfect Scrollbar CSS
 import apolloLogo from "../assets/apollo.png";
-import { Container } from "react-bootstrap";
+import pinLogo from "../assets/pin.png";
+import { Container, Row, Col } from "react-bootstrap";
 
 const Chatbot = () => {
   const { messages } = useContext(ResponseContext);
@@ -41,36 +42,34 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="chatbot-container" ref={chatWindowRef}>
-      <div className="chatbot-messages">
+    <Container className="chatbot-container" ref={chatWindowRef}>
+      <Container className="chatbot-messages w-100 p-0">
         {messages.map((message, index) => (
-          <Container>
-          <Row>
-            <Col className=""></Col>
-            <Col></Col>
-          </Row>
-          <Row>
-
-          </Row>
-          </Container>
-          /*   
-          <div
+          <Container
             key={index}
             className={`message ${
               message.user ? "user-message" : "ai-message"
-            }`}
+            } w-100 `}
           >
-            <img
-              className="p-0 m-0 chat-logo"
-              src={apolloLogo}
-              alt="apolloLogo"
-            />
-            <p className="user-text">{message.user ? "You" : "Pythia"}</p>
-            <p className="message-text">{message.text}</p>
-          </div>*/
+            <Row className="w-100">
+              <Col className="col w-50px d-flex justify-content-center align-items-center">
+                <img
+                  className="p-0 m-0 chat-logo"
+                  src={message.user ? pinLogo : apolloLogo}
+                  alt="chatLogo"
+                />
+              </Col>
+              <Col className="col d-flex align-items-center">
+                <p className="m-0 user-text">{message.user ? "You" : "Pythia"}</p>
+              </Col>
+            </Row>
+            <Row className="w-100">
+              <p className="message-text">{message.text}</p>
+            </Row>
+          </Container>
         ))}
-      </div>
-    </div>
+      </Container>
+    </Container>
   );
 };
 
