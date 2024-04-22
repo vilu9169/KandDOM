@@ -382,7 +382,7 @@ def start_chat(request):
     index = pc.Index(index_name)
     vectorstore = PineconeVectorStore(  
         index, embeddings  
-    )  
+    )
     print("Vectorstore created")
     # Set the endpoint URL
     MODEL="claude-3-haiku@20240307"

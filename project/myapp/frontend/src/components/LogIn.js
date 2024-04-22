@@ -9,9 +9,9 @@ import SignUpLogic from "./SignUpLogic";
 
 function LogIn() {
   const videos = [
-    "videos/b_roll1.mp4",
-    "videos/b_roll2.mp4",
-    "videos/b_roll3.mp4",
+    "../assets/videos/b_roll1.mp4",
+    "../assets/videos/b_roll2.mp4",
+    "../assets/videos/b_roll3.mp4",
   ];
 
   const [showLogInForm, setShowLogInForm] = useState(false);
