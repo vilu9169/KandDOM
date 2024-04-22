@@ -55,7 +55,7 @@ async def generate_function_call(prompt: str, project_id: str, location: str) ->
     ):
         # Extract the arguments to use in your API call
         entry = (
-            response.candidates[0].content.parts[0].function_call.args["diary_entry"]+response.candidates[0].content.parts[0].function_call.args["date"]
+            response.candidates[0].content.parts[0].function_call.args["diary_entry"]+" "+response.candidates[0].content.parts[0].function_call.args["date"]
         )
 
         with open("KandDOM/backend/tointegrate/using_tools/diary.txt", "a") as f:

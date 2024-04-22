@@ -1,8 +1,13 @@
 from anthropic import AnthropicVertex
+from time import time
+
+start = time()
+
 
 LOCATION="europe-west4" # or "europe-west4"
+PROJECT = "robust-summit-417910"
 
-client = AnthropicVertex(region=LOCATION, project_id="sunlit-inn-417922")
+client = AnthropicVertex(region=LOCATION, project_id=PROJECT)
 
 message = client.messages.create(
   max_tokens=1024,
@@ -15,3 +20,5 @@ message = client.messages.create(
   model="claude-3-haiku@20240307",
 )
 print(message.model_dump_json(indent=2))
+
+print("done in", time() - start, "seconds")

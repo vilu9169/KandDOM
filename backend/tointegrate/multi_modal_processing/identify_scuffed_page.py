@@ -198,6 +198,13 @@ import asyncio
 from typing import List
 
 
+location_options = ["us-central1", "europe-west4", "asia-east1", "asia-east2", "asia-northeast1", "asia-northeast3", "asia-south1", "asia-southeast1",
+                  "australia-sotheast1", "europe-central2", "europe-north1", "europe-southwest1", "europe-west1","europe-west2", "europe-west3", "europe-west4",
+                  "europe-west6","europe-west8", "europe-west9", "me-central1", "me-central2", "me-west1", "northamerica-northeast1", "southamerica-east1", "us-east1"
+                  "us-east4", "us-west5", "us-south1", "us-west1", "us-west4"]
+
+current_location_idx = 0
+
 motivation_instructions : str = """Det här är textavläsning av en sida från ur ett förundersökningsprotokoll, din uppgift är att besvara följande fyra frågor om texten texten:  
     1. Om texten är strukturerat i mindre sektioner med korta anmärkning snarare än långa meningar, vilket indikerar ett formulär.
     2. Om sidan innehåller färre än 50 ord totalt.
@@ -224,12 +231,15 @@ async def async_page_prediction(index, motivation_model : GenerativeModel, tool_
             Part.from_text(response.text),
         ],
     )
-    await async_page_tool_use(index, tool_model, as_content, tool_config, tool)
+    await async_page_tool_use(index, tool_model, as_content, tool_config, tool, location=location_options[current_location_idx])
     
         
-async def async_page_tool_use(index, tool_model : GenerativeModel, content, tool_config, tool):
+async def async_page_tool_use(index, tool_model : GenerativeModel, content, tool_config, tool, location):
     print("using tool on", index)
     try:    
+        vertexai.init(project=PROJECT_ID, location=location)
+
+        tool_model = GenerativeModel("gemini-1.5-pro-preview-0409", system_instruction= tool_instructions, )
         tool_use = await tool_model.generate_content_async(content, generation_config=tool_config, tools= [tool])
         #print(tool_use)
         if (
@@ -246,8 +256,11 @@ async def async_page_tool_use(index, tool_model : GenerativeModel, content, tool
             await page_handler(*entry, index)
     except Exception as e:
         print("Failed for page", index)
-        await async_page_tool_use(index, tool_model, content, tool_config, tool)
-        #print(e)
+        print(e)
+        global current_location_idx
+        current_location_idx += 1
+        print(f'switching to {location_options[current_location_idx]}')
+        await async_page_tool_use(index, tool_model, content, tool_config, tool, location=location_options[current_location_idx])
         #print(tool_use)
 
 
@@ -262,7 +275,8 @@ async def async_doc_classifier(path_to_document: str, start_page: int, no_pages:
             texts.append(text)
 
     moitvation_model = GenerativeModel("gemini-1.0-pro-002", system_instruction= motivation_instructions)
-    tool_model = GenerativeModel("gemini-1.0-pro-002", system_instruction= tool_instructions)
+    #tool_model = GenerativeModel("gemini-1.5-pro-preview-0409", system_instruction= tool_instructions)
+    tool_model = GenerativeModel("gemini-1.0-pro", system_instruction= tool_instructions)
 
     generation_config = {
     "max_output_tokens": 300,
@@ -322,11 +336,11 @@ async def page_handler(first, second, third, fourth, doc):
     elif fourth == "Ja":
         out+="bildtext"
     else:
-        print("oklar")
+        out+="oklar"
     print(out)
 
 
 
 
 
-output = asyncio.run(async_doc_classifier(pdf_file, 0, 1, REGION, PROJECT_ID))
+output = asyncio.run(async_doc_classifier(pdf_file, 0, 100, REGION, PROJECT_ID))
