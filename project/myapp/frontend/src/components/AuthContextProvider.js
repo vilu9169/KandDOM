@@ -16,8 +16,8 @@ const AuthContextProvider = ({children}) => {
 
     let [userID, setUserID] = useState(() => (localStorage.getItem('userID') ? localStorage.getItem('userID') : null))
     const navigate = useNavigate()
-    const [files, setFiles] = useState([]);
-    const [currentFile, setCurrentFile] = useState(null);
+    const [files, setFiles] = useState(localStorage.getItem('files') ? JSON.parse(localStorage.getItem('files')) : []);
+    const [currentFile, setCurrentFile] = useState(localStorage.getItem('currentFile') ? localStorage.getItem('currentFile') : null);
 
     const baseURL = process.env.REACT_APP_API_URL
 
@@ -34,6 +34,7 @@ const AuthContextProvider = ({children}) => {
           fileArr.push(file);
         }
         setFiles(fileArr);
+        localStorage.setItem('files', JSON.stringify(fileArr));
         console.log("Files:", files);
         return data;
       }
@@ -82,7 +83,7 @@ const AuthContextProvider = ({children}) => {
         }
 
         try {
-            const response = await axios.post(baseURL+'signup/', body)
+            const response = await axios.post(baseURL+'api/signup/', body)
             console.log(response)
             loginUser(e)
         } catch (error) {

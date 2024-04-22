@@ -32,9 +32,14 @@ function SideMenuMiddle() {
       setMessages([]);
     }
   };
+  const deleteDocument = async (fileid) => {
+    resp = await axios.post(baseURL+'api/deletefile/', {fileid: fileid});
+    console.log(resp);
+  };
   const chooseDocument = (fileid) => {
     console.log('file:', fileid);
     setCurrentFile(fileid);
+    localStorage.setItem('currentFile', fileid);
     getChatHistory();
   };
 
