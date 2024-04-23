@@ -60,7 +60,7 @@ function SideMenuMiddle() {
       <PerfectScrollbar>
       {files.map((file) => (
         <Row className=" my-4 overflow-scroll m-auto rounded-2 w-100 bg-3">
-          <Button value={file.id} onClick={e => setCurrentFile({currentFile:e.target.value}, chooseDocument(e.target.value))} className="my-2 text-start"><IoIosDocument  size={30} /> { file.filename } </Button>
+          <Button value={file.id} onClick={e => setCurrentFile({currentFile:e.target.value}, chooseDocument(currentFile))} className="my-2 text-start"><IoIosDocument  size={30} /> { file.filename } </Button>
         </Row>
         ), [files])}
         </PerfectScrollbar>
