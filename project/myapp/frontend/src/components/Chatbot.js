@@ -71,7 +71,7 @@ const Chatbot = () => {
               <p className="message-text"><ChatMessage text={message.text} /></p>
             </Row>
             <Row className="d-flex justify-content-start w-100 h-20px">
-              <TiPin className="m-0 p-0"/>
+              <TiPin className="m-0 p-0" />
             </Row>
           </Container>
         ))}

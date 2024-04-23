@@ -70,7 +70,7 @@ class User(AbstractUser):
     email = models.CharField(max_length=250, unique=True)
     password = models.CharField(max_length=250)
     username = None
-    documents = ArrayReferenceField(to=Document, on_delete=models.SET_NULL)
+    documents = ArrayReferenceField(to=Document, on_delete=models.CASCADE)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()
