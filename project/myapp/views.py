@@ -481,17 +481,26 @@ from bson import ObjectId
 @api_view(['POST'])
 def delete_document(request):
     document_id = request.data.get('fileid')
+    user = request.data.get('user')
     print(document_id)
     try:
         document = UserDocument.objects.get(_id=ObjectId(document_id))
     except UserDocument.DoesNotExist:
         raise ValueError({'error': 'Document not found'})
+    try:
+        user = User.objects.get(id=user)
+    except User.DoesNotExist:
+        raise ValueError({'error': 'Error no user found'})
+    user.documents.remove(document)
+    user.save()
     document.delete()
     pc.delete_index(document_id)
     try:
         chat = ChatHistory.objects.get(embedding_id=document_id)
     except ChatHistory.DoesNotExist:
         return Response({'message': 'Document deleted, no chat deleted'})
+    for io in chat.inputoutput.all():
+        io.delete()
     chat.delete()
 
     return Response({'message': 'Document deleted successfully'})
