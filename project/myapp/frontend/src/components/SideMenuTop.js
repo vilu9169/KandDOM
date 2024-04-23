@@ -6,8 +6,9 @@ import { AppContext } from "./ShowSettingsHandler";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { FaLayerGroup } from "react-icons/fa";
 import Fade from "react-bootstrap/Fade";
-
+import { IoMdHelp } from "react-icons/io"; 
 import { AuthContext } from "./AuthContextProvider";
+import { showInfoWindowContext } from "./ShowInfoWindowContextProvider";
 
 function SideMenuTop({ clickedDocument }) {
   const { handleShowUploadWindow } = useContext(UploadWindowContext);
@@ -17,6 +18,7 @@ function SideMenuTop({ clickedDocument }) {
   const personRef = useRef(null);
   const navigate = useNavigate();
   const { logoutUser } = useContext(AuthContext);
+  const { handleShowInfo } = useContext(showInfoWindowContext)
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
