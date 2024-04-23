@@ -38,7 +38,7 @@ function SideMenuMiddle() {
   };
   const deleteDocument = async (fileid) => {
     console.log('fileid:', fileid);
-    const resp = await axios.post(baseURL+'api/deletefile/', {fileid: fileid});
+    const resp = await axios.post(baseURL+'api/deletefile/', {fileid: fileid, user: user.id});
     console.log(resp);
     getFiles();
   };
