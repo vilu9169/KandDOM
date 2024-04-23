@@ -70,7 +70,7 @@ class User(AbstractUser):
     email = models.CharField(max_length=250, unique=True)
     password = models.CharField(max_length=250)
     username = None
-    documents = ArrayReferenceField(to=Document, on_delete=models.CASCADE)
+    documents = ArrayReferenceField(to=Document, on_delete=models.SET_NULL)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()
@@ -98,7 +98,7 @@ class Index(models.Model):
 class ChatHistory(models.Model):
     _id = djmodels.ObjectIdField()
     user_id = models.IntegerField()
-    inputoutput = ArrayReferenceField(to=InputOutput)
+    inputoutput = ArrayReferenceField(to=InputOutput, on_delete=models.CASCADE)
     pinned_indices = models.ManyToManyField(to=Index, blank=True)
     embedding_id = models.CharField(max_length=250)
 
