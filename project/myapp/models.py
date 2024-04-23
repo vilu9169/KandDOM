@@ -84,6 +84,7 @@ class InputOutput(models.Model):
     message = models.CharField(max_length=1000)
     response = models.CharField(max_length=2000)
     timestamp = models.DateTimeField(auto_now_add=True)
+    pinned = models.BooleanField(default=False)
 
     def __str__(self):
         return self.message
