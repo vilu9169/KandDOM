@@ -487,6 +487,8 @@ def delete_document(request):
         raise ValueError({'error': 'Document not found'})
     document.delete()
     chat.delete()
+    pc.delete_index(document_id)
+
     return Response({'message': 'Document deleted successfully'})
 
 # Call the function with your project ID and location
