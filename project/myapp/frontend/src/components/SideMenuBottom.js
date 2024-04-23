@@ -18,7 +18,7 @@ import { AuthContext } from "./AuthContextProvider";
 import { TbTimelineEventFilled } from "react-icons/tb";
 import TimeLine from "./TimeLine";
 
-function SideMenuBottom({ clickedDocument }) {
+function SideMenuBottom({ clickedDocument, showTimeline, setShowTimeline }) {
   const [isVisible, setIsVisible] = useState(false);
   const { handleButtonClick } = useContext(AppContext);
   const innerContainerRef = useRef(null);
@@ -28,8 +28,6 @@ function SideMenuBottom({ clickedDocument }) {
   const { user } = useContext(AuthContext);
 
   const [userName] = useState(user.name);
-
-  const [showTimeline, setShowTimeline] = useState(false);
 
   const handleTimelineButtonClick = () => {
     setShowTimeline(!showTimeline);
@@ -64,7 +62,7 @@ function SideMenuBottom({ clickedDocument }) {
     <Container className="p-0 m-0 position-absolute bottom-0 start-50 translate-middle-x mb-3">
       {clickedDocument && (
         <Button
-          onClick={handleTimelineButtonClick}
+          onClick={() => setShowTimeline(!showTimeline)}
           className="m-auto mb-3 bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
         >
           <span className="text-center justify-content-center d-flex align-items-center w-75">
@@ -127,8 +125,6 @@ function SideMenuBottom({ clickedDocument }) {
           <IoMdPerson className="size-20" />
         </span>
       </Button>
-
-      {showTimeline && <TimeLine />}
     </Container>
   );
 }

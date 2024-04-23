@@ -44,66 +44,70 @@ function SideMenuTop({ clickedDocument }) {
   return (
     <Container className="p-0 position-absolute top-0 start-50 translate-middle-x mt-3">
       {clickedDocument ? (
-        <div>
+        <Container>
+          <Button
+            onClick={handleShowInfo}
+            className="bg-3 rect-button align-items-center d-flex justify-content-center p-0"
+          >
+            <IoMdHelp className="size-20" />
+          </Button>
           Pinned messages
-        </div>
+        </Container>
       ) : (
         <>
-      <Button
-        ref={personRef}
-        onClick={toggleVisibility}
-        //onClick={handleShowUploadWindow}
-        className="m-auto bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
-      >
-        <span className="text-center justify-content-center d-flex align-items-center w-75">
-          Add document
-        </span>
-        <span className="w-25 justify-content-center d-flex align-items-center">
-          <IoIosDocument className="size-20" />
-        </span>
-      </Button>
-      <Fade
-        mountOnEnter={true}
-        unmountOnExit={true}
-        appear={isVisible}
-        in={isVisible}
-      >
-        <Container
-          className="p-0 mt-3  w-90 bg-1 user-pop-up-container"
-          ref={innerContainerRef}
-        >
-          <Row className="p-0 m-0 h-50 w-100 ">
-            <Button
-              onClick={handleShowUploadWindow}
-              className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
+          <Button
+            ref={personRef}
+            onClick={toggleVisibility}
+            //onClick={handleShowUploadWindow}
+            className="m-auto bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
+          >
+            <span className="text-center justify-content-center d-flex align-items-center w-75">
+              Add document
+            </span>
+            <span className="w-25 justify-content-center d-flex align-items-center">
+              <IoIosDocument className="size-20" />
+            </span>
+          </Button>
+          <Fade
+            mountOnEnter={true}
+            unmountOnExit={true}
+            appear={isVisible}
+            in={isVisible}
+          >
+            <Container
+              className="p-0 mt-3  w-90 bg-1 user-pop-up-container"
+              ref={innerContainerRef}
             >
-              <span className="text-center justify-content-center d-flex align-items-center w-75">
-                Add to new chat
-              </span>
-              <span className="w-25 justify-content-center d-flex align-items-center">
-                <IoIosDocument className="size-20" />
-              </span>
-            </Button>
-          </Row>
-          <Row className="p-0 m-0 h-50 w-100">
-            {" "}
-            <Button
-              onClick={handleShowUploadWindow}
-              className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
-            >
-              <span className="text-center justify-content-center d-flex align-items-center w-75">
-                Add to existing chat
-              </span>
-              <span className="w-25 justify-content-center d-flex align-items-center">
-                <FaLayerGroup className="size-20" />
-              </span>
-            </Button>
-          </Row>
-        </Container>
-        
-      </Fade>
-      
-      </>
+              <Row className="p-0 m-0 h-50 w-100 ">
+                <Button
+                  onClick={handleShowUploadWindow}
+                  className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
+                >
+                  <span className="text-center justify-content-center d-flex align-items-center w-75">
+                    Add to new chat
+                  </span>
+                  <span className="w-25 justify-content-center d-flex align-items-center">
+                    <IoIosDocument className="size-20" />
+                  </span>
+                </Button>
+              </Row>
+              <Row className="p-0 m-0 h-50 w-100">
+                {" "}
+                <Button
+                  onClick={handleShowUploadWindow}
+                  className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
+                >
+                  <span className="text-center justify-content-center d-flex align-items-center w-75">
+                    Add to existing chat
+                  </span>
+                  <span className="w-25 justify-content-center d-flex align-items-center">
+                    <FaLayerGroup className="size-20" />
+                  </span>
+                </Button>
+              </Row>
+            </Container>
+          </Fade>
+        </>
       )}
     </Container>
   );
