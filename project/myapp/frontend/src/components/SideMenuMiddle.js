@@ -18,9 +18,9 @@ function SideMenuMiddle() {
   const handleButtonClick = () => {
     setShowTimeline(!showTimeline);
   };
-  const getChatHistory = async () => {
+  const getChatHistory = async (fileid) => {
     const body = {
-      embedding_id: currentFile
+      embedding_id: fileid ? fileid : currentFile
     }
     try {
       const {data} = await axios.post(baseURL+'api/getchat/', body);
@@ -37,7 +37,7 @@ function SideMenuMiddle() {
     console.log(resp);
   };
   useEffect(() => console.log('currentFile:', currentFile), [currentFile]);
-  const chooseDocument = async (fileid) => {
+  const chooseDocument = (fileid) => {
     console.log('file:', fileid);
     setCurrentFile(prevFile => {
       // Use the latest value of fileid
@@ -45,7 +45,7 @@ function SideMenuMiddle() {
       localStorage.setItem('currentFile', newFile);
       return newFile;
     });
-    await getChatHistory();
+    getChatHistory(fileid);
   };
   return (
     <Container className="p-0 mt-3">

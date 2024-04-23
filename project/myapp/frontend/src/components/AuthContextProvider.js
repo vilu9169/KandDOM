@@ -21,7 +21,7 @@ const AuthContextProvider = ({children}) => {
 
     const baseURL = process.env.REACT_APP_API_URL
 
-    let getFiles = async (e) => {
+    let getFiles = async () => {
         const body = {
             user: userID
         }
