@@ -220,27 +220,14 @@ button {
   background-color: var(--color-2) !important;
   transition: background-color 0.3s ease;
 }
-.wide-button {
-  color: var(--text-color-main) !important;
-  border: 2px solid var(--color-3) !important;
-  border-radius: 5px;
-  height: 44px;
-  transition: box-shadow 0.3s ease;
-}
-.wide-button:hover {
-  cursor: pointer;
-  }
-
 .rect-button:hover {
   box-shadow: 10px 10px var(--color-4);
   transition: box-shadow 0.3s ease;
 }
 .wide-button {
-  font-weight: bold;
   color: var(--text-color-main) !important;
   background-color: var(--color-3) !important;
   border: 2px solid var(--color-3) !important;
-
   border-radius: 5px;
   height: 44px;
 }
@@ -518,4 +505,13 @@ button {
 }
 .bold{
   font-weight: bold;
+}
+.document-button{
+  color: var(--text-color-main) !important;
+  border: 2px solid var(--color-3) !important;
+  border-radius: 5px;
+}
+.document-button:hover{
+  box-shadow: 10px 10px var(--color-4);
+  transition: box-shadow 0.3s ease;
 }
