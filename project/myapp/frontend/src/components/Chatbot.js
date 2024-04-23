@@ -7,7 +7,7 @@ import pinLogo from "../assets/pin.png";
 import { Container, Row, Col } from "react-bootstrap";
 import { TiPin } from "react-icons/ti";
 import ChatMessage from './ChatMessage';
-
+import { TiPinOutline } from "react-icons/ti";
 const Chatbot = () => {
   const { messages } = useContext(ResponseContext);
   const chatWindowRef = useRef(null);
