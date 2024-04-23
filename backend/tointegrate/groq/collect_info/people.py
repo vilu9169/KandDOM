@@ -10,6 +10,7 @@ from time import time
 
 import json
 
+from util import print_tool_call
 
 load_dotenv()
 
@@ -18,34 +19,45 @@ client = Groq(
 )
 
 instructions = """
-Ditt jobb är att sammanställa information om personer från en text. Läs texten nedan och sammanställ och 
-separera den information som står om de olika personerna. Svara på svenska.
+Ditt jobb är att sammanställa information om personer från en text. Sammanställningen sak ha tre delar.\n
+1. Sammanfatta först vad texten handlar om i grova drag. \n
+2. Sammanställ all information om de olika personerna, gör en rubrik för varje person och gör sedan en punktlista\n
+med information om personerna, var nogrann med att inkludera allt som står om personerna.
+3. Sammanställ de relationer och kopplingar som nämns mellan personerna. Gör detta under en och samma rubrik.
+En koppling ska alltid vara mellan två personer och ska vara tydligt beskriven. \n
+Det är viktigt att du alltid svarar på svenska.
 """
 
 tool_instructions = """
-Ditt jobb är spara information om personer. Du får en sammanställning av informationen som samlats in. Du ska
-spara informationen om personerna genom att använda verktyget "lägg_till_info". 
+Ditt jobb är spara information om personer. Du får en sammanställning av informationen som samlats in. Till'
+din hjälp har du två verktyg. Det ena verktyget används för att lägga till information om en person. 
+Det andra vertyget registrerar information om relationen mellan två personer.
+Informationen som skickas in ska alltid vara på svenska. Om texten är på engelska, översätt det till svenska. \n
+
+Om något är otydligt kan du använda ett verktyg för att ställa frågor om orginalmaterialet. \n
 
 VIKTIGT: Använd verktyget en gång per person som nämns i sammanställnignen och registrera all information om
-personerna.
+personerna. 
 """
 
 
-file = ""
+
+file_path = "KandDOM/backend/tointegrate/Mord2008.txt"
 
 text = """Björn Westerlund är en person som är väldigt jobbig att ha att göra med. Han är en IT-student på 
 Uppsala Universitet. CJ gillar inte Björn. Men CJ gillar Calle Back eftersom han är lite av en kung.
 Calle studerar också i uppsala. Han är även mycket bättre än Björn på att programmera. Björn kan inte läsa 
 eller skriva. Björns kusin tycker också att han är jobbig. Han är glad att han inte pluggar i Uppsala så att 
-han slipper träffa Björn.
+han slipper träffa Björn. Den 17:e Maj rånade Björn en spritaffär i Oslo tillsammans med Rikard.
 """
-# with open("text.txt", "r") as file:
-#     text = file.read()
+with open(file_path, "r") as file:
+    text = file.read()
 
 
 
 start = time()
 extract_people_info = client.chat.completions.create(
+    temperature=0.0,
     messages=[
         {
             "role": "system",
@@ -80,16 +92,14 @@ log_people_info = client.chat.completions.create(
             "content": extracted,
         }
     ],
-    tools = [tools["ny_info"]],
+    tools = [tools["ny_info_person"], tools["ny_info_relation"], tools["sök_material"]],
     model="llama3-70b-8192",
 )
 
 try:
+    print("\n")
     for tool_call in log_people_info.choices[0].message.tool_calls:
-        args = json.loads(tool_call.function.arguments)
-        print(tool_call.function.name+"(namn: '"+args["namn"], 
-              "', info: '"+args["information"]+"')")
-        print("\n")
+        print_tool_call(tool_call)
 except Exception as e:
     print(e)
     print("No tool calls")
@@ -97,3 +107,5 @@ except Exception as e:
 
 print("done in", time() - start, "seconds")
 
+
+    
