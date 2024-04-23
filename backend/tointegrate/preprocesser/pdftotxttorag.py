@@ -12,7 +12,6 @@ from langchain_text_splitters import CharacterTextSplitter
 
 from google.cloud import documentai
 import io
-import time
 import threading
 
 def async_handle_chunk(chunk_num, chunk_size, num_pages, pdf_file, client, name, resstrings):
@@ -46,15 +45,14 @@ def async_handle_chunk(chunk_num, chunk_size, num_pages, pdf_file, client, name,
     resstring = ""
     for page in document.pages:
         resstring += "{pagestart nr "+ str(pagenr+1) +"}"
+        temp = ""
         for block in page.blocks:
-            # Block content: [start_index: 15448
-            # end_index: 15463
-            # ]
             split = str(block.layout.text_anchor.text_segments).split("\n")
             if(len(split) > 2):
-                resstring += document.text[int(split[0][split[0].find(":") +2:]) : int(split[1][split[1].find(":") +2:])]
+                temp += document.text[int(split[0][split[0].find(":") +2:]) : int(split[1][split[1].find(":") +2:])]
             else:
-                resstring += document.text[0: int(split[0][split[0].find(":") +2:])]                
+                temp += document.text[0: int(split[0][split[0].find(":") +2:])]                
+        resstring += temp
         #resstring += page.layout.text_anchor.content
         resstring +="{pageend nr "+ str(pagenr+1) +"}"+str(chr(28))
         pagenr += 1
@@ -103,6 +101,9 @@ def ocr_pdf(pdf_file, project_id, location, processor_id):
     resstring = ""
     for res in resstrings:
         resstring += res
+    #Print to .txt file
+    with open("output.txt", 'w', encoding='utf-8') as file:
+        file.write(resstring)
     #print("Resstring",resstring)
     return resstring
 
