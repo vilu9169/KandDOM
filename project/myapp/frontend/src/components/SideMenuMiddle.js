@@ -9,7 +9,9 @@ import { AuthContext } from "./AuthContextProvider";
 import { ResponseContext } from "./ResponseContextProvider";
 import axios from "axios";
 
+
 function SideMenuMiddle() {
+  const { user } = useContext(AuthContext);
   const [showTimeline, setShowTimeline] = useState(false);
   const { files } = useContext(AuthContext);
   const {currentFile, setCurrentFile} = useContext(AuthContext);
@@ -50,16 +52,17 @@ function SideMenuMiddle() {
   return (
     <Container className="p-0 mt-3">
       <Button
-          onClick={handleButtonClick}
-          className="m-auto bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
-        >
-          <span className="text-center justify-content-center d-flex align-items-center w-75">
-            Timeline
-          </span>
-          <span className="w-25 justify-content-center d-flex align-items-center">
-            <TbTimelineEventFilled className="size-20" />
-          </span>
-        </Button>
+        onClick={handleButtonClick}
+        className="m-auto bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
+      >
+        <span className="text-center justify-content-center d-flex align-items-center w-75">
+          Timeline
+        </span>
+        <span className="w-25 justify-content-center d-flex align-items-center">
+          <TbTimelineEventFilled className="size-20" />
+        </span>
+      </Button>
+
       {showTimeline && <TimeLine />}
       <PerfectScrollbar>
       {files.map((file) => (

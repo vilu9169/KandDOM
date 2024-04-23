@@ -5,20 +5,25 @@
   --color-4: #0f2c59;
   --color-5: #402f00;
   --text-color-main: #000000;
+  --text-color-second: #808080;
 }
 
 .dark-mode {
-  --color-1: #121212;
-  --color-2: #282828;
-  --color-3: #eadbc8;
-  --text-color-main: #ffffff;
+  --color-1: #8b8b8b;
+  --color-2: #3f3f3f;
+  --color-3: #121212;
+  --color-4: #f8f0e5;
+  --text-color-main: #f8f0e5;
+
 }
+/*
 @font-face{
   font-family:"helvetica";
   src:url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("woff"),
   url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("opentype"),
   url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("truetype");
 }
+*/
 body,
 h1,
 h2,
@@ -32,7 +37,9 @@ form,
 div,
 span,
 button {
-  font-family: 'Courier New', monospace;
+  /*font-family: "helvetica";*/
+  /*font-family: 'Courier New', monospace;*/
+  font-family: Verdana, sans-serif;
   /*font-family: "helvetica";*/ /*  TODO: Byt till denna font när vi e klara, har bara en goofy nu så vi ser all text är samma font */ 
 }
 
@@ -80,9 +87,16 @@ button {
 }
 .h-60px {
   height: 60px;
-
   position: relative;
   z-index: 999;
+}
+.h-40px{
+  position: relative;
+  height: 40px;
+}
+.h-20px{
+  position: relative;
+  height: 20px;
 }
 .h-90 {
   height: 90%;
@@ -99,7 +113,15 @@ button {
 .h-70 {
   height: 70%;
 }
-
+.w-90 {
+  width: 90% !important;
+}
+.w-80 {
+  width: 80% !important;
+}
+.w-50px{
+  flex: 0 0 50px !important;
+}
 .main-left{
   flex: 0 0 300px !important;
 }
@@ -119,6 +141,10 @@ button {
   left: 10px;
   width: 60px !important;
   height: 60px !important;
+}
+.chat-logo{
+  width: 30px !important;
+  height: 30px !important;
 }
 .login-logo{
   position: relative;
@@ -196,7 +222,6 @@ button {
 }
 .wide-button {
   color: var(--text-color-main) !important;
-  background-color: var(--color-3) !important;
   border: 2px solid var(--color-3) !important;
   border-radius: 5px;
   height: 44px;
@@ -204,11 +229,8 @@ button {
 }
 .wide-button:hover {
   cursor: pointer;
-  background-color: var(--color-3) !important;
-  border: 2px solid var(--color-3) !important;
-  height: 44px;
-  width: 44px;
-}
+  }
+
 .rect-button:hover {
   box-shadow: 10px 10px var(--color-4);
   transition: box-shadow 0.3s ease;
@@ -242,10 +264,6 @@ button {
 }
 
 .size-20 {
-  color: var(--text-color-main) !important;
-  
-}
-.size-20 {
   color: var(--color-1) !important;
   font-size: 20px !important;
 }
@@ -271,9 +289,7 @@ button {
   border-radius: 5px;
 }
 
-.w-90 {
-  width: 90% !important;
-}
+
 
 .icon-margin {
   margin-right: 15px; /* Adjust margin as needed */
@@ -347,16 +363,15 @@ button {
   left: 0;
   position: absolute !important;
 }
-
+.small-setting-text{
+  font-size: 12px;
+  color: var(--text-color-second);
+}
 .settings-window {
   position: absolute;
-  height: 50%;
-  width: 35% !important;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  background-color: var(--color-1);
   border-radius: 5px;
 }
 
@@ -436,7 +451,6 @@ button {
   position: absolute !important;
   overflow: auto !important;
   height: 100%;
-  border-radius: 8px;
   padding: 16px;
   background-color: var(--color-1);
 }
@@ -459,10 +473,12 @@ button {
 }
 
 .user-text {
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .message-text {
+  font-size: 14px;
   margin-left: 10px;
 }
 

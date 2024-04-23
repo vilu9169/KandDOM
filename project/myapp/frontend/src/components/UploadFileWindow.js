@@ -14,7 +14,6 @@ function UploadFileWindow() {
   const baseURL = process.env.REACT_APP_API_URL;
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
-
     // Check if the selected file is a PDF
     if (file.type !== "application/pdf") {
       alert("Please select a PDF file.");
@@ -23,11 +22,12 @@ function UploadFileWindow() {
     console.log('userID:', userID)
     let formData = new FormData();
 
+
     formData.append('file', file); // Append the file to FormData
     formData.append('userID', userID);
     try {
-
         const response = await fetch(baseURL+'upload/', {
+
             method: 'POST',
             body: formData
         });
