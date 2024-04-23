@@ -6,7 +6,7 @@ import apolloLogo from "../assets/apollo.png";
 import pinLogo from "../assets/pin.png";
 import { Container, Row, Col } from "react-bootstrap";
 import { TiPin } from "react-icons/ti";
-
+import ChatMessage from './ChatMessage';
 
 const Chatbot = () => {
   const { messages } = useContext(ResponseContext);
@@ -68,7 +68,7 @@ const Chatbot = () => {
               </Col>
             </Row>
             <Row className="w-100">
-              <p className="message-text">{message.text}</p>
+              <p className="message-text"><ChatMessage text={message.text} /></p>
             </Row>
             <Row className="d-flex justify-content-start w-100 h-20px">
               <TiPin className="m-0 p-0"/>
