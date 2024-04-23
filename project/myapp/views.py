@@ -359,6 +359,7 @@ def get_documents(request):
 
     return Response({'data' : resp})
 
+
 class MyTokenObtainPairView(TokenViewBase):
     serializer_class = MyTokenObtainPairSerializer
 
@@ -475,19 +476,23 @@ def get_chat_history(request):
         })
     print(resp)
     return Response({'messages' : resp})
+from bson import ObjectId
 
 @api_view(['POST'])
 def delete_document(request):
     document_id = request.data.get('fileid')
     print(document_id)
     try:
-        document = UserDocument.objects.get(_id=document_id)
-        chat = ChatHistory.objects.get(embedding_id=document_id)
+        document = UserDocument.objects.get(_id=ObjectId(document_id))
     except UserDocument.DoesNotExist:
         raise ValueError({'error': 'Document not found'})
     document.delete()
-    chat.delete()
     pc.delete_index(document_id)
+    try:
+        chat = ChatHistory.objects.get(embedding_id=document_id)
+    except ChatHistory.DoesNotExist:
+        return Response({'message': 'Document deleted, no chat deleted'})
+    chat.delete()
 
     return Response({'message': 'Document deleted successfully'})
 
