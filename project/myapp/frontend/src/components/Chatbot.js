@@ -12,7 +12,7 @@ const Chatbot = () => {
   const { messages } = useContext(ResponseContext);
   const chatWindowRef = useRef(null);
   let ps;
-
+  const a = true;
   useEffect(() => {
     if (chatWindowRef.current) {
       ps = new PerfectScrollbar(chatWindowRef.current, {
@@ -71,7 +71,7 @@ const Chatbot = () => {
               <p className="message-text"><ChatMessage text={message.text} /></p>
             </Row>
             <Row className="d-flex justify-content-start w-100 h-20px">
-              <TiPin className="m-0 p-0" />
+              <TiPin onClick={() => a = !a} className="m-0 p-0" style={{transform: `rotate(${a ? "30" : "0"})`}}/>
             </Row>
           </Container>
         ))}
