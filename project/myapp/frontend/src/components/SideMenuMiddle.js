@@ -36,6 +36,7 @@ function SideMenuMiddle() {
     const resp = await axios.post(baseURL+'api/deletefile/', {fileid: fileid});
     console.log(resp);
   };
+  useEffect(() => console.log('currentFile:', currentFile), [currentFile]);
   const chooseDocument = (fileid) => {
     console.log('file:', fileid);
     const newFile = fileid;
@@ -43,7 +44,6 @@ function SideMenuMiddle() {
     localStorage.setItem('currentFile', newFile);
     getChatHistory();
   };
-  useEffect(() => console.log('currentFile:', currentFile), [currentFile]);
   return (
     <Container className="p-0 mt-3">
       <Button
@@ -61,7 +61,7 @@ function SideMenuMiddle() {
       <PerfectScrollbar>
       {files.map((file) => (
         <Row className=" my-4 overflow-scroll m-auto rounded-2 w-100 bg-3">
-          <Button value={file.id} onClick={e => setCurrentFile(e.target.value, chooseDocument(e.target.value))} className="my-2 text-start"><IoIosDocument  size={30} /> { file.filename } </Button>
+          <Button value={file.id} onClick={e => chooseDocument(e.target.value)} className="my-2 text-start"><IoIosDocument  size={30} /> { file.filename } </Button>
         </Row>
         ), [files])}
         </PerfectScrollbar>
