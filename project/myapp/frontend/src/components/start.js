@@ -17,6 +17,7 @@ import InfoWindow from "./InfoWindow.js";
 import { AuthContext } from "./AuthContextProvider";
 import { UploadWindowContext } from "./UploadWindowContextProvider";
 import apolloLogo from "../assets/apollo.png";
+import TimeLine from "./TimeLine";
 
 function Start() {
   const { buttonClicked } = useContext(AppContext);
@@ -25,6 +26,8 @@ function Start() {
   const { showUploadWindow } = useContext(UploadWindowContext);
 
   const [clickedDocument, setClickedDocument] = useState(false); // Changed initial value to false
+
+  const [showTimeline, setShowTimeline] = useState(false); 
 
   const handleDocumentButtonClick = (fileId) => {
     // Set clickedDocument state to true when a document button is clicked
@@ -45,8 +48,12 @@ function Start() {
                 setClickedDocument={setClickedDocument}
               />
             </Row>
-            <Row className="h-80px  bg-2">
-              <SideMenuBottom clickedDocument={clickedDocument} />
+            <Row className="h-130px bg-2">
+              <SideMenuBottom
+                clickedDocument={clickedDocument}
+                showTimeline={showTimeline} // Pass showTimeline as prop
+                setShowTimeline={setShowTimeline}
+              />
             </Row>
           </Col>
           <Col className="col d-flex flex-column main-right">
@@ -82,6 +89,7 @@ function Start() {
       </Container>
       {buttonClicked && <SettingsMenu />}
       {showInfoWindow && <InfoWindow />}
+      {showTimeline && <TimeLine />}
     </>
   );
 }
