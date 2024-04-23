@@ -4,21 +4,25 @@ from langchain_community.document_loaders import TextLoader
 from langchain_community.document_loaders import TextLoader
 from anthropic import AnthropicVertex
 
-loc = "europe-west4"
+loc_sonnet = "europe-west4"
+loc_haiku = "us-central1"
 #model = "claude-3-haiku@20240307"
 model = "claude-3-sonnet@20240229"
-optind = 0
-options = ["us-central1", "asia-southeast1"]
-#options = ["us-central1", "europe-west4"]
-loc = options[optind]
+optind_sonnet = 0
+optind_haiku = 0
 
+#Sonnet below
+options_sonnet = ["us-central1", "asia-southeast1"]
+options_haiku = ["us-central1", "europe-west4"]
+loc_sonnet = options_sonnet[optind_sonnet]
+loc_haiku = options_haiku[optind_haiku]
 def summarise(input):
-    global loc, optind, options
-    print("loc: ", loc)
+    global loc_haiku, optind_haiku, options_haiku
+    print("loc: ", loc_haiku)
     # Set the endpoint URL
     context = "Skapa en tidslinje baserad på följande dokument. Använd bara information från detta dokument i dina svar och upprepa dig inte. Svara på formatet {time : \"åååå-mm-dd hh:mm\", event : \"händelsebeskrivning\"}. Händelsebeskrivningen ska vara utförlig. Information du inte kan förstå betydelsen av ignorerar du. "  
     #Create a json struct for previous messages and the current message
-    client = AnthropicVertex(region=loc, project_id="sunlit-inn-417922")
+    client = AnthropicVertex(region=loc_haiku, project_id="sunlit-inn-417922")
     try:
         message = client.messages.create(
         max_tokens=1500,
@@ -29,20 +33,20 @@ def summarise(input):
         return message.content[0].text
     except Exception as e:
         print("Error: ", e)
-        optind+=1
-        if(optind==len(options)):
-            optind = 0
-        loc = options[optind]
+        optind_haiku+=1
+        if(optind_haiku==len(options_haiku)):
+            optind_haiku = 0
+        loc_haiku = options_haiku[optind_haiku]
         return(summarise(input))
    
 
 def make_summary(input):
-    global loc, optind, options
-    print("loc: ", loc)
+    global loc_sonnet, optind_sonnet, options_sonnet
+    print("loc: ", loc_sonnet)
     context = "Du får in en tidslinje med händelser med tid och händelsebeskrivning. Du ska nu sammanfatta denna information. Svara på formatet {time :\"åååå-mm-dd hh:mm\" , event: \"händelsebeskrivning\"}. Det är strikt förbjudet att svaret innehåller delar som inte är på detta format. Alla svar skall vara på svenska. "
     #Create a json struct for previous messages and the current message
 
-    client = AnthropicVertex(region=loc, project_id="sunlit-inn-417922")
+    client = AnthropicVertex(region=loc_sonnet, project_id="sunlit-inn-417922")
 
     try:
         message = client.messages.create(
@@ -54,10 +58,10 @@ def make_summary(input):
         return message.content[0].text
     except Exception as e:
         print("Error: ", e)
-        optind+=1
-        if(optind==len(options)):
-            optind = 0
-        loc = options[optind]
+        optind_sonnet+=1
+        if(optind_sonnet==len(options_sonnet)):
+            optind_sonnet = 0
+        loc_sonnet = options_sonnet[optind_sonnet]
         return(make_summary(input))
 
 
