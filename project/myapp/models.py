@@ -7,6 +7,9 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.contrib.auth.models import BaseUserManager
 from djongo import models as djmodels
 from djongo.models.fields import ArrayReferenceField
+from djongo.storage import GridFSStorage
+
+grid_fs_storage = GridFSStorage(collection='pdf')
 
 class Document(models.Model):
     _id = djmodels.ObjectIdField()
@@ -72,16 +75,30 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
     objects = UserManager()
 
-"""class ChatHistory(models.Models):
-    #chat_id = models.BigAutoField( primary_key=True, editable=False, db_column='chat_id')
-    user_id = models.IntegerField
-    inputoutput = djmodels.ArrayField(model_container = models.CharField())
-    pinned_indices = djmodels.ArrayField(model_container=models.IntegerField(), default=list)
-    embedding_id = models.IntegerField()"""
 
-"""class ChatHistory(models.Model):  # Corrected from Models to Model
-    # Define your fields here
+
+###This is just an example, has to be modified
+class InputOutput(models.Model): 
+    # Define fields for the InputOutput model
+    # For example, you might have fields like 'message', 'timestamp', etc.
+    message = models.CharField(max_length=1000)
+    response = models.CharField(max_length=2000)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.message
+
+class Index(models.Model):
+    index_value = models.IntegerField()
+
+    def __str__(self):
+        return str(self.index_value)
+
+class ChatHistory(models.Model):
+    _id = djmodels.ObjectIdField()
     user_id = models.IntegerField()
-    inputoutput = models.ArrayField(model_container=models.CharField())
-    pinned_indices = models.ArrayField(model_container=models.IntegerField(), default=list)
-    embedding_id = models.IntegerField()"""
+    inputoutput = ArrayReferenceField(to=InputOutput)
+    pinned_indices = models.ManyToManyField(to=Index, blank=True)
+    embedding_id = models.CharField(max_length=250)
+
+

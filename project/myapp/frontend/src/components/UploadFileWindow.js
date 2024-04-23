@@ -6,12 +6,12 @@ import { IoIosDocument } from "react-icons/io";
 import { IoIosCopy } from "react-icons/io";
 import { AuthContext } from "./AuthContextProvider";
 import FileDropZone from "./FileDropZone";
-
 import { useContext } from "react";
 
 function UploadFileWindow() {
-  const { userID } = useContext(AuthContext);
-  
+  const { userID, getFiles } = useContext(AuthContext);
+  const { setCurrentFile } = useContext(AuthContext);
+  const baseURL = process.env.REACT_APP_API_URL;
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     // Check if the selected file is a PDF
@@ -26,12 +26,15 @@ function UploadFileWindow() {
     formData.append('file', file); // Append the file to FormData
     formData.append('userID', userID);
     try {
-        const response = await fetch('http://127.0.0.1:8000/upload/', {
+        const response = await fetch(baseURL+'upload/', {
 
             method: 'POST',
             body: formData
         });
         const data = await response.json();
+        getFiles()
+        setCurrentFile(data.document_id)
+        localStorage.setItem('currentFile', data.document_id)
         alert(`File uploaded successfully. Document ID: ${data.document_id}`);
     } catch (error) {
       console.error("Error uploading file:", error);
