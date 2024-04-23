@@ -15,6 +15,7 @@ function SideMenuMiddle() {
   const { user } = useContext(AuthContext);
   const [showTimeline, setShowTimeline] = useState(false);
   const { files } = useContext(AuthContext);
+  const { getFiles } = useContext(AuthContext);
   const {currentFile, setCurrentFile} = useContext(AuthContext);
   const {messages, setMessages} = useContext(ResponseContext);
   const baseURL = process.env.REACT_APP_API_URL;
@@ -38,6 +39,7 @@ function SideMenuMiddle() {
   const deleteDocument = async (fileid) => {
     const resp = await axios.post(baseURL+'api/deletefile/', {fileid: fileid});
     console.log(resp);
+    getFiles();
   };
   useEffect(() => console.log('currentFile:', currentFile), [currentFile]);
   const chooseDocument = (fileid) => {
