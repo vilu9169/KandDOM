@@ -22,7 +22,7 @@ function TimeLine() {
     },
   ];
   return (
-    <Container fluid className=" info-container">
+    <Container fluid className="info-container">
       <Container className="w-75 bg-2 info-window h-80">
         <Chrono
           mode="HORIZONTAL"

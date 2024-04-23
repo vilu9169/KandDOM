@@ -6,14 +6,12 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 const AuthContext = createContext()
 
-
 const AuthContextProvider = ({children}) => {
     let [user, setUser] = useState(() => (Cookies.get('access_token') ? jwtDecode(Cookies.get('access_token')).user : []))
     let [authTokens, setAuthTokens] = useState(() => (Cookies.get('access_tokens') ? JSON.parse(Cookies.get('access_token')) : null))
     let [loading, setLoading] = useState(true)
     let [loginError, setLoginError] = useState(null)
     let [signupError, setSignupError] = useState(null)
-
     let [userID, setUserID] = useState(() => (localStorage.getItem('userID') ? localStorage.getItem('userID') : null))
     const navigate = useNavigate()
     const [files, setFiles] = useState(localStorage.getItem('files') ? JSON.parse(localStorage.getItem('files')) : []);
@@ -58,7 +56,7 @@ const AuthContextProvider = ({children}) => {
                     // Storing Access in cookie
                     Cookies.set('access_token', data.access);
                     Cookies.set('refresh_token', data.refresh);
-                    setUser(jwtDecode(data.access).email)
+                    setUser(jwtDecode(data.access).user)
                     setUserID(jwtDecode(data.access).user_id)
                     localStorage.setItem('userID', jwtDecode(data.access).user_id)
                     console.log("decoded: ", jwtDecode(data.access).user)
@@ -119,7 +117,7 @@ const AuthContextProvider = ({children}) => {
         const data = await response.json()
         if (response.status === 200) {
             setAuthTokens(data)
-            setUser(jwtDecode(data.access))
+            setUser(jwtDecode(data.access).user) // Add .user here
             Cookies.set('access_token',JSON.stringify(data))
         } else {
             logoutUser()
@@ -157,7 +155,7 @@ const AuthContextProvider = ({children}) => {
     },[authTokens])
     useEffect(() => {
         const access_token = Cookies.get('access_token');
-        setUser(access_token ? jwtDecode(access_token) : null);
+        setUser(access_token ? jwtDecode(access_token).user : null); // Add .user here
       }, [user]);
 
     return(

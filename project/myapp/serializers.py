@@ -17,6 +17,11 @@ class UserSerializer(serializers.ModelSerializer):
             instance.save()
             return instance
     
+class UserTokenSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'name', 'email']
+        
 from rest_framework import serializers
 from .models import Document
 
@@ -33,7 +38,7 @@ class MyTokenObtainPairSerializer(TokenObtainSerializer):
 
         refresh = self.get_token(self.user)
 
-        refresh["user"] = UserSerializer(self.user).data # here you can add custom cliam
+        refresh["user"] = UserTokenSerializer(self.user).data # here you can add custom cliam
 
         data["refresh"] = str(refresh)
         data["access"] = str(refresh.access_token)

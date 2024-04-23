@@ -17,7 +17,6 @@ import InfoWindow from "./InfoWindow.js";
 import { AuthContext } from "./AuthContextProvider";
 import { UploadWindowContext } from "./UploadWindowContextProvider";
 import apolloLogo from "../assets/apollo.png";
-import SideMenuFiles from "./SideMenuFiles.js";
 
 function Start() {
   const { buttonClicked } = useContext(AppContext);
@@ -32,9 +31,8 @@ function Start() {
             <Row className="h-60px bg-2">
               <SideMenuTop />
             </Row>
-            <Row className="flex-grow-1  bg-2">
-              <SideMenuMiddle />
-              {/* <SideMenuFiles></SideMenuFiles> */}
+            <Row className="flex-grow-1 bg-2">
+              <SideMenuMiddle/>
             </Row>
             <Row className="h-80px  bg-2">
               <SideMenuBottom />
