@@ -18,4 +18,5 @@ urlpatterns = [
     path('api/signup/', RegisterView.as_view(), name='register'),
     path('api/documents/', get_documents, name='documents'),
     path('api/getchat/', get_chat_history, name='chat_history'),
+    path('api/pinchat/', toggle_pin, name='pin_chat'),
 ]
