@@ -2,9 +2,9 @@ from langchain_core.messages import HumanMessage
 from langgraph.graph import END, MessageGraph
 from langchain_google_vertexai import VertexAI
 from langchain_anthropic import AnthropicLLM
+from time import time
 
-
-model = VertexAI(model_name="gemini-pro")
+model = VertexAI(model_name="gemini-pro", location_name="europe-west4")
 
 graph = MessageGraph()
 
@@ -36,12 +36,14 @@ message = "give me a recipe for a cake"
 
 inputs  = HumanMessage("Let's rhyme on the word cat, repeasts are not allowed. I'll start: 'hat'")
 # print(output)
-
+start = time()
 for output in runnable.stream(inputs):
+    current = time()
     # stream() yields dictionaries with output keyed by node name
     for key, value in output.items():
         print(f"Output from node '{key}':")
         print("---")
         print(value)
     print("\n---\n")
+    print(f"Time elapsed: {current - start}")
 
