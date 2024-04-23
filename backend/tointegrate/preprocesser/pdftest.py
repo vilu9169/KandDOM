@@ -3,7 +3,7 @@ import PyPDF2
 
 def convert_pdf_to_text(pdf_file, output_file):
     try:
-        subprocess.run(['ocrm   ypdf',"--redo-ocr" ,'--language', 'swe', pdf_file, output_file], check=True)
+        subprocess.run(['ocrmypdf',"--redo-ocr" ,'--language', 'swe', pdf_file, output_file], check=True)
         
         
         print("PDF converted to text successfully!")
