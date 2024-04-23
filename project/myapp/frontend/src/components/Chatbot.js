@@ -5,6 +5,8 @@ import "perfect-scrollbar/css/perfect-scrollbar.css"; // Import Perfect Scrollba
 import apolloLogo from "../assets/apollo.png";
 import pinLogo from "../assets/pin.png";
 import { Container, Row, Col } from "react-bootstrap";
+import { TiPin } from "react-icons/ti";
+
 
 const Chatbot = () => {
   const { messages } = useContext(ResponseContext);
@@ -60,11 +62,16 @@ const Chatbot = () => {
                 />
               </Col>
               <Col className="col d-flex align-items-center">
-                <p className="m-0 user-text">{message.user ? "You" : "Pythia"}</p>
+                <p className="m-0 user-text">
+                  {message.user ? "You" : "Pythia"}
+                </p>
               </Col>
             </Row>
             <Row className="w-100">
               <p className="message-text">{message.text}</p>
+            </Row>
+            <Row className="d-flex justify-content-start w-100 h-20px">
+              <TiPin className="m-0 p-0"/>
             </Row>
           </Container>
         ))}

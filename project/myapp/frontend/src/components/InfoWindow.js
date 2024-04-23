@@ -1,6 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { useRef, useEffect } from "react";
-import { useContext } from "react";
+import { useRef, useEffect, useContext } from "react";
 import { showInfoWindowContext } from "./ShowInfoWindowContextProvider";
 import timeLineLogo from "../assets/timeline.png";
 import timeLineBorderLogo from "../assets/timeline_border.png";
