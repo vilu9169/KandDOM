@@ -456,6 +456,24 @@ def start_chat(request):
     history.inputoutput.add(inputoutput)
     return Response({"message" : message.content[0].text})
 
+
+@api_view(['POST'])
+def toggle_pin(request):
+    # Assuming you receive the ID of the message and the new pinned status from the frontend
+    message_id = request.data.get('id')
+    new_pinned_status = request.data.get('pinned')
+
+    try:
+        message = InputOutput.objects.get(pk=message_id)
+    except InputOutput.DoesNotExist:
+        return Response({'error': 'Message not found'}, status=404)
+
+    message.pinned = new_pinned_status
+    message.save()
+
+    return Response({'success': 'Pinned status updated successfully'})
+
+
 @api_view(['POST'])
 def get_chat_history(request):
     embedding_id = request.data.get('embedding_id')
