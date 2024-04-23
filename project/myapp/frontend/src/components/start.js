@@ -8,7 +8,7 @@ import { IoMdHelp } from "react-icons/io";
 import SideMenuBottom from "./SideMenuBottom";
 import SettingsMenu from "./SettingsMenu";
 import { showInfoWindowContext } from "./ShowInfoWindowContextProvider.js";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "./ShowSettingsHandler";
 import SideMenuTop from "./SideMenuTop";
 import SideMenuMiddle from "./SideMenuMiddle";
@@ -17,27 +17,36 @@ import InfoWindow from "./InfoWindow.js";
 import { AuthContext } from "./AuthContextProvider";
 import { UploadWindowContext } from "./UploadWindowContextProvider";
 import apolloLogo from "../assets/apollo.png";
-import SideMenuFiles from "./SideMenuFiles.js";
 
 function Start() {
   const { buttonClicked } = useContext(AppContext);
   const { showInfoWindow, handleShowInfo } = useContext(showInfoWindowContext);
   const { user } = useContext(AuthContext);
   const { showUploadWindow } = useContext(UploadWindowContext);
+
+  const [clickedDocument, setClickedDocument] = useState(false); // Changed initial value to false
+
+  const handleDocumentButtonClick = (fileId) => {
+    // Set clickedDocument state to true when a document button is clicked
+    setClickedDocument(true);
+    console.log("Clicked document with id:", fileId);
+  };
   return (
     <>
       <Container fluid className="position-absolute h-100 text-center bg-3">
         <Row className="h-100">
           <Col color="" className="col main-left d-flex flex-column">
             <Row className="h-60px bg-2">
-              <SideMenuTop />
+              <SideMenuTop clickedDocument={clickedDocument} />
             </Row>
-            <Row className="flex-grow-1  bg-2">
-              <SideMenuMiddle />
-              {/* <SideMenuFiles></SideMenuFiles> */}
+            <Row className="flex-grow-1 bg-2">
+              <SideMenuMiddle
+                clickedDocument={clickedDocument}
+                setClickedDocument={setClickedDocument}
+              />
             </Row>
             <Row className="h-80px  bg-2">
-              <SideMenuBottom />
+              <SideMenuBottom clickedDocument={clickedDocument} />
             </Row>
           </Col>
           <Col className="col d-flex flex-column main-right">
