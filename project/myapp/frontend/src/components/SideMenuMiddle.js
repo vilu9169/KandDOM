@@ -1,5 +1,5 @@
 import { Container, Button } from "react-bootstrap";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import TimeLine from "./TimeLine";
 import { TbTimelineEventFilled } from "react-icons/tb";
 import PerfectScrollbar from "react-perfect-scrollbar";
@@ -43,7 +43,7 @@ function SideMenuMiddle() {
     localStorage.setItem('currentFile', newFile);
     getChatHistory();
   };
-
+  useEffect(() => console.log('currentFile:', currentFile), [currentFile]);
   return (
     <Container className="p-0 mt-3">
       <Button
