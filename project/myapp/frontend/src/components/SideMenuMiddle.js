@@ -39,9 +39,12 @@ function SideMenuMiddle() {
   useEffect(() => console.log('currentFile:', currentFile), [currentFile]);
   const chooseDocument = (fileid) => {
     console.log('file:', fileid);
-    const newFile = fileid;
-    setCurrentFile(newFile);
-    localStorage.setItem('currentFile', newFile);
+    setCurrentFile(prevFile => {
+      // Use the latest value of fileid
+      const newFile = fileid;
+      localStorage.setItem('currentFile', newFile);
+      return newFile;
+    });
     getChatHistory();
   };
   return (
