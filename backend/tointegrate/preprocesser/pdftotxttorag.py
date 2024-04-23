@@ -1,0 +1,162 @@
+from pinecone import Pinecone, ServerlessSpec
+import PyPDF2
+# pdf_file = "gbg_mordforsok.pdf"
+# output_file = "output.pdf"
+import os
+from langchain_google_vertexai import VertexAIEmbeddings
+from langchain_pinecone import PineconeVectorStore
+from langchain.schema.document import Document
+from pinecone import Pinecone, ServerlessSpec
+#from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import CharacterTextSplitter
+
+from google.cloud import documentai
+import io
+import threading
+
+def async_handle_chunk(chunk_num, chunk_size, num_pages, pdf_file, client, name, resstrings):
+    reader = PyPDF2.PdfReader(pdf_file)
+    pagenr = chunk_num * chunk_size
+    start_page = chunk_num * chunk_size
+    end_page = min((chunk_num + 1) * chunk_size, num_pages)
+    print("Working with pages ", start_page, " to ", end_page)
+    writer = PyPDF2.PdfWriter()
+    for page_num in range(start_page, end_page):
+        writer.add_page(reader.pages[page_num])
+    response_bytes_stream = io.BytesIO()
+    writer.write(response_bytes_stream)
+    #Seek 0 to start reading
+    response_bytes_stream.seek(0)
+    # Read the file into memory
+    with response_bytes_stream as image:
+        image_content = image.read()
+    # Load Binary Data into Document AI RawDocument Object
+    raw_document = documentai.RawDocument(content=image_content, mime_type="application/pdf")
+
+    # Configure the process request
+    request = documentai.ProcessRequest(name=name, raw_document=raw_document)
+    result = client.process_document(request=request, )
+    #print("Result looks like ", result)
+
+    # For a full list of Document object attributes,
+    # please reference this page: https://googleapis.dev/python/documentai/latest/gapic/v1beta3/types.html#google.cloud.documentai.v1beta3.Document
+    document = result.document
+    # Read the text recognition output from the processor
+    resstring = ""
+    for page in document.pages:
+        resstring += "{pagestart nr "+ str(pagenr+1) +"}"
+        temp = ""
+        for block in page.blocks:
+            split = str(block.layout.text_anchor.text_segments).split("\n")
+            if(len(split) > 2):
+                temp += document.text[int(split[0][split[0].find(":") +2:]) : int(split[1][split[1].find(":") +2:])]
+            else:
+                temp += document.text[0: int(split[0][split[0].find(":") +2:])]                
+        resstring += temp
+        #resstring += page.layout.text_anchor.content
+        resstring +="{pageend nr "+ str(pagenr+1) +"}"+str(chr(28))
+        pagenr += 1
+    resstrings[chunk_num] = resstring
+    pass
+
+def ocr_pdf(pdf_file, project_id, location, processor_id):
+    
+    # You must set the api_endpoint if you use a location other than 'us'.
+    opts = {"api_endpoint": "eu-documentai.googleapis.com"}
+
+    client = documentai.DocumentProcessorServiceClient(client_options=opts)
+
+    # The full resource name of the processor, e.g.:
+    # projects/project_id/locations/location/processor/processor_id
+    # You must create new processors in the Cloud Console first
+    name = client.processor_path(project_id, location, processor_id)
+    # Create a working directory
+
+    # Split the document into chunks of 20 pages
+    chunk_size = 15
+    reader = PyPDF2.PdfReader(pdf_file)
+    num_pages = len(reader.pages)
+    if(num_pages%chunk_size == 0):
+        num_chunks = num_pages//chunk_size
+    else:
+        num_chunks = num_pages//chunk_size + 1
+    #resstring = ""
+    resstrings = []
+    #Add a new string for each chunk
+    for i in range(num_chunks):
+        resstrings.append("")
+        
+    threads = []
+    # Create and start threads
+    for i in range(num_chunks):
+        t = threading.Thread(target=async_handle_chunk, args=(i, chunk_size, num_pages, pdf_file, client, name, resstrings))
+        threads.append(t)
+        t.start()
+
+    # Wait for all threads to finish
+    for thread in threads:
+        thread.join()
+
+    
+    resstring = ""
+    for res in resstrings:
+        resstring += res
+    #Print to .txt file
+    with open("output.txt", 'w', encoding='utf-8') as file:
+        file.write(resstring)
+    #print("Resstring",resstring)
+    return resstring
+
+def extract_text_from_pdf(pdf_file) -> str:
+    try:
+        with open(pdf_file, 'rb') as file:
+            reader = PyPDF2.PdfReader(file)
+            num_pages = len(reader.pages)
+            text = ""
+            #Separate pages so they start with { and end with }
+            for page_num in range(num_pages):
+                text += "{pagestart nr "+ str(page_num+1) +"}"
+                page = reader.pages[page_num]
+                text += page.extract_text()
+                text +="{pageend nr "+ str(page_num+1) +"}"+str(chr(28))
+
+            return text
+    except FileNotFoundError:
+        print(f"Error: File '{pdf_file}' not found.")
+        return None
+    
+def text_to_rag(new_index_name, text):
+    os.environ["PINECONE_API_KEY"] = "2e669c83-1a4f-4f19-a06a-42aaf6ea7e06"
+    os.environ["PINECONE_ENV"] = "default"
+    pc = Pinecone(api_key="2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
+    pc.create_index(
+        name=new_index_name,
+        dimension=768,
+        metric="cosine",
+        spec=ServerlessSpec(
+            cloud='aws', 
+            region='us-west-2'
+        ) 
+    ) 
+    # Split documents
+    #text_splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=0)
+    #splits = [Document(page_content=x) for x in text_splitter.split_text(text)]
+    text_splitter = CharacterTextSplitter(chunk_size=2, chunk_overlap =1,separator=str(chr(28)))
+    splits = [Document(page_content=x) for x in text_splitter.split_text(text)]
+    #splits = text_splitter.split_text(text)    
+    embeddings = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001")
+    # initialize pinecone
+    vectorstore = PineconeVectorStore(new_index_name, embeddings.embed_query, splits)
+    # Vertex AI embedding model  uses 768 dimensions`
+    vectorstore = vectorstore.from_documents(splits, embeddings, index_name=new_index_name)
+    
+def mainfunk(pdf_file, new_index_name):
+    #text = extract_text_from_pdf(pdf_file)
+    text = ocr_pdf(pdf_file, "sunlit-inn-417922", "eu", "54cf154d8c525451")
+    text_to_rag(new_index_name, text)
+
+print("Name of the file to be converted to RAG: ")
+pdf_file = input()
+print("Name of the new index: ")
+new_index_name = input()
+mainfunk(pdf_file, new_index_name)
