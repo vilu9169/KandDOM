@@ -39,13 +39,13 @@ function SideMenuMiddle() {
   useEffect(() => console.log('currentFile:', currentFile), [currentFile]);
   const chooseDocument = async (fileid) => {
     console.log('file:', fileid);
-    await setCurrentFile(prevFile => {
+    setCurrentFile(prevFile => {
       // Use the latest value of fileid
       const newFile = fileid;
       localStorage.setItem('currentFile', newFile);
       return newFile;
     });
-    getChatHistory();
+    await getChatHistory();
   };
   return (
     <Container className="p-0 mt-3">
