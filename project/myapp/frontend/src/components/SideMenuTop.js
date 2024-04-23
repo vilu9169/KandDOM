@@ -9,7 +9,7 @@ import Fade from "react-bootstrap/Fade";
 
 import { AuthContext } from "./AuthContextProvider";
 
-function SideMenuTop() {
+function SideMenuTop({ clickedDocument }) {
   const { handleShowUploadWindow } = useContext(UploadWindowContext);
   const [isVisible, setIsVisible] = useState(false);
   const { handleButtonClick } = useContext(AppContext);
@@ -43,6 +43,12 @@ function SideMenuTop() {
   }, [toggleVisibility]);
   return (
     <Container className="p-0 position-absolute top-0 start-50 translate-middle-x mt-3">
+      {clickedDocument ? (
+        <div>
+          Pinned messages
+        </div>
+      ) : (
+        <>
       <Button
         ref={personRef}
         onClick={toggleVisibility}
@@ -94,7 +100,11 @@ function SideMenuTop() {
             </Button>
           </Row>
         </Container>
+        
       </Fade>
+      
+      </>
+      )}
     </Container>
   );
 }

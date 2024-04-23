@@ -12,12 +12,13 @@ import { Transition } from "react-transition-group";
 import { AppContext } from "./ShowSettingsHandler";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import LogIn from "./LogIn";
-
 import Collapse from "react-bootstrap/Collapse";
 import Fade from "react-bootstrap/Fade";
 import { AuthContext } from "./AuthContextProvider";
+import { TbTimelineEventFilled } from "react-icons/tb";
+import TimeLine from "./TimeLine";
 
-function SideMenuBottom() {
+function SideMenuBottom({ clickedDocument }) {
   const [isVisible, setIsVisible] = useState(false);
   const { handleButtonClick } = useContext(AppContext);
   const innerContainerRef = useRef(null);
@@ -27,6 +28,12 @@ function SideMenuBottom() {
   const { user } = useContext(AuthContext);
 
   const [userName] = useState(user.name);
+
+  const [showTimeline, setShowTimeline] = useState(false);
+
+  const handleTimelineButtonClick = () => {
+    setShowTimeline(!showTimeline);
+  };
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
@@ -55,6 +62,20 @@ function SideMenuBottom() {
 
   return (
     <Container className="p-0 m-0 position-absolute bottom-0 start-50 translate-middle-x mb-3">
+      {clickedDocument && (
+        <Button
+          onClick={handleTimelineButtonClick}
+          className="m-auto mb-3 bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
+        >
+          <span className="text-center justify-content-center d-flex align-items-center w-75">
+            Timeline
+          </span>
+          <span className="w-25 justify-content-center d-flex align-items-center">
+            <TbTimelineEventFilled className="size-20" />
+          </span>
+        </Button>
+      )}
+
       <Fade
         mountOnEnter={true}
         unmountOnExit={true}
@@ -100,12 +121,14 @@ function SideMenuBottom() {
         className="m-auto bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
       >
         <span className="text-center justify-content-center d-flex align-items-center w-75">
-          {userName}  
+          {userName}
         </span>
         <span className="w-25 justify-content-center d-flex align-items-center">
           <IoMdPerson className="size-20" />
         </span>
       </Button>
+
+      {showTimeline && <TimeLine />}
     </Container>
   );
 }
