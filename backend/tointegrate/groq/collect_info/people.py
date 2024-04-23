@@ -23,31 +23,21 @@ separera den information som står om de olika personerna. Svara på svenska.
 """
 
 tool_instructions = """
-Ditt jobb är spara information om personer. Du tar emot en lista med kända personer samt en sammanställning
-av ny information. Om sammanställningen innehåller information om en person som inte ingår i listan med kända
-personer ska du lägga till den personen samt all information om personen med hjälp av ett verktyg.
-Om sammanställningen innehåller information om en person som redan finns i listan med kända personer ska du 
-istället använda ett verktyg som lägger till ny information om personen. Tänkt på att inkludera all information 
-från sammanställningen. All information ska vara på svenska.
+Ditt jobb är spara information om personer. Du får en sammanställning av informationen som samlats in. Du ska
+spara informationen om personerna genom att använda verktyget "lägg_till_info". 
 
-VIKTIGT: Använd ett av verktygen per person som nämns i sammanställningen.
+VIKTIGT: Använd verktyget en gång per person som nämns i sammanställnignen och registrera all information om
+personerna.
 """
 
-
-lista = """
-Kända personer:\n
-Rikard Ahlkvist, IT-student på Uppsala Universitet, riktigt jobbig att ha att göra med,\n
-CJ, lite av en kung,\n
-
-Ny information:\n
-"""
 
 file = ""
 
 text = """Björn Westerlund är en person som är väldigt jobbig att ha att göra med. Han är en IT-student på 
 Uppsala Universitet. CJ gillar inte Björn. Men CJ gillar Calle Back eftersom han är lite av en kung.
 Calle studerar också i uppsala. Han är även mycket bättre än Björn på att programmera. Björn kan inte läsa 
-eller skriva.
+eller skriva. Björns kusin tycker också att han är jobbig. Han är glad att han inte pluggar i Uppsala så att 
+han slipper träffa Björn.
 """
 # with open("text.txt", "r") as file:
 #     text = file.read()
@@ -66,7 +56,8 @@ extract_people_info = client.chat.completions.create(
             "content": text,
         }
     ],
-    #tools = [tools["ny_person"]],
+    #model="llama2-70b-4096"
+    #model="mixtral-8x7b-32768"
     model="llama3-70b-8192",
 )
 
@@ -86,10 +77,10 @@ log_people_info = client.chat.completions.create(
         },
         {
             "role": "user",
-            "content": lista+extracted,
+            "content": extracted,
         }
     ],
-    tools = [tools["ny_person"], tools["ny_info"]],
+    tools = [tools["ny_info"]],
     model="llama3-70b-8192",
 )
 
@@ -105,3 +96,4 @@ except Exception as e:
 
 
 print("done in", time() - start, "seconds")
+
