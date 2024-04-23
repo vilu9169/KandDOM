@@ -37,6 +37,7 @@ function SideMenuMiddle() {
     }
   };
   const deleteDocument = async (fileid) => {
+    console.log('fileid:', fileid);
     const resp = await axios.post(baseURL+'api/deletefile/', {fileid: fileid});
     console.log(resp);
     getFiles();
@@ -70,7 +71,7 @@ function SideMenuMiddle() {
       <PerfectScrollbar>
       {files.map((file) => (
         <Row className=" my-4 overflow-scroll m-auto rounded-2 w-100 bg-3">
-          <Button value={file.id} onClick={e => chooseDocument(e.target.value)} className="my-2 text-start"><IoIosDocument  size={30} /> { file.filename }</Button><FaTrashAlt values={file.id} onClick={e => deleteDocument(e.target.values)} /> 
+          <Button value={file.id} onClick={e => chooseDocument(e.target.value)} className="my-2 text-start"><IoIosDocument  size={30} /> { file.filename }</Button><FaTrashAlt values={file.id} onClick={e => deleteDocument(e.target.values[0])} /> 
         </Row>
         ), [files])}
         </PerfectScrollbar>
