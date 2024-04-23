@@ -456,60 +456,6 @@ class MyTokenObtainPairView(TokenViewBase):
 #     history.inputoutput.add(inputoutput)
 #     return Response({"message" : message.content[0].text})
 
-<<<<<<< Updated upstream
-
-@api_view(['POST'])
-def toggle_pin(request):
-    # Assuming you receive the ID of the message and the new pinned status from the frontend
-    message_id = request.data.get('id')
-    new_pinned_status = request.data.get('pinned')
-
-    try:
-        message = InputOutput.objects.get(pk=message_id)
-    except InputOutput.DoesNotExist:
-        return Response({'error': 'Message not found'}, status=404)
-
-    message.pinned = new_pinned_status
-    message.save()
-
-    return Response({'success': 'Pinned status updated successfully'})
-
-
-@api_view(['POST'])
-def get_chat_history(request):
-    embedding_id = request.data.get('embedding_id')
-    try:
-        history = ChatHistory.objects.get(embedding_id=embedding_id)
-    except ChatHistory.DoesNotExist:
-        raise ValueError({'error': 'Chat history not found'})
-    inputoutput = history.inputoutput.all()
-    resp = []
-    for io in inputoutput:
-        resp.append({
-            "text": io.message,
-            "user": True
-        })
-        resp.append({
-            "text": io.response,
-            "user": False
-        })
-    print(resp)
-    return Response({'messages' : resp})
-
-@api_view(['POST'])
-def delete_document(request):
-    document_id = request.data.get('document_id')
-    try:
-        document = Document.objects.get(id=document_id)
-        chat = ChatHistory.objects.get(embedding_id=document_id)
-    except Document.DoesNotExist:
-        raise ValueError({'error': 'Document not found'})
-    document.delete()
-    chat.delete()
-    pc.delete_index(document_id)
-
-    return Response({'message': 'Document deleted successfully'})
-=======
 # @api_view(['POST'])
 # def get_chat_history(request):
 #     embedding_id = request.data.get('embedding_id')
@@ -542,7 +488,7 @@ def delete_document(request):
 #     document.delete()
 #     chat.delete()
 #     return Response({'message': 'Document deleted successfully'})
->>>>>>> Stashed changes
+
 
 # # Call the function with your project ID and location
 # # prevmessages = []
