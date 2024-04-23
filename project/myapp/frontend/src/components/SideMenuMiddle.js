@@ -8,6 +8,7 @@ import { Row } from "react-bootstrap";
 import { AuthContext } from "./AuthContextProvider";
 import { ResponseContext } from "./ResponseContextProvider";
 import axios from "axios";
+import { FaTrashAlt } from "react-icons/fa";
 
 
 function SideMenuMiddle() {
@@ -67,7 +68,7 @@ function SideMenuMiddle() {
       <PerfectScrollbar>
       {files.map((file) => (
         <Row className=" my-4 overflow-scroll m-auto rounded-2 w-100 bg-3">
-          <Button value={file.id} onClick={e => chooseDocument(e.target.value)} className="my-2 text-start"><IoIosDocument  size={30} /> { file.filename } </Button>
+          <Button value={file.id} onClick={e => chooseDocument(e.target.value)} className="my-2 text-start"><IoIosDocument  size={30} /> { file.filename } <FaTrashAlt values={file.id} onClick={e => deleteDocument(e.target.values)} /> </Button>
         </Row>
         ), [files])}
         </PerfectScrollbar>
