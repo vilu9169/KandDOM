@@ -1,41 +1,43 @@
 tools = {
-    "ny_person": {
-        "type": "function",
-        "function": {
-            "name": "lägg_till_person",
-            "description": "Använd för att registrera en tidigare inte känd person",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "namn": {
-                        "type": "string",
-                        "description": "Namnet på personen, både förnamn och efternamn om tillgängligt",
-                    },
-                    "information": {
-                        "type": "string",
-                        "description": "Sammanställ information om personen",
-                    },
-                },
-            },
-        },
-    },
     "ny_info": {
         "type": "function",
         "function": {
             "name": "ny_information",
-            "description": "Använd för att lägga till information om en person som tidigare inte var registrerat",
+            "description": "Använd för att lägga till information om en person",
             "parameters": {
                 "type": "object",
                 "properties": {
                     "namn": {
                         "type": "string",
-                        "description": "Namnet på personen, både förnamn och efternamn om tillgängligt",
+                        "description": "Namnet på personen",
                     },
                     "information": {
                         "type": "string",
-                        "description": "Den nya informationen som ska registreras",
+                        "description": "En text som innehåller informationen om personen",
                     },
                 },
+                "required" : ["namn","information"],
+            },
+        },
+    },
+    "multiply": {
+        "type": "function",
+        "function": {
+            "name": "multiply",
+            "description": "Multiply two numbers",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "a": {
+                        "type": "number",
+                        "description": "The first number",
+                    },
+                    "b": {
+                        "type": "number",
+                        "description": "The second number",
+                    },
+                },
+                "required": ["a", "b"],
             },
         },
     },
