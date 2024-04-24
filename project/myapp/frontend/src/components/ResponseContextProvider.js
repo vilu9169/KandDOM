@@ -1,11 +1,11 @@
 import React, { createContext, useState, useContext } from 'react';
-import { AppContext } from './ShowSettingsHandler';
+import { AuthContext } from './AuthContextProvider';
 import axios from 'axios';
 const ResponseContext = createContext();
 
 const ResponseContextProvider = ({ children }) => {
   const [messages, setMessages] = useState([]); // Fix the typo here
-  const { currentFile } = useContext(AppContext);
+  const { currentFile } = useContext(AuthContext);
   const baseURL = process.env.REACT_APP_API_URL;
   const getChatHistory = async (fileid) => {
     const body = {
