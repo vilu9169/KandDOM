@@ -78,7 +78,7 @@ const Chatbot = () => {
               <p className="message-text"><ChatMessage text={message.text} /></p>
             </Row>
             <Row className="d-flex justify-content-start w-100 h-20px">
-              <Button value={message.id} onClick={e => setPinned(e.target.value)}><TiPin className="m-0 p-0" style={{transform: `rotate(${message.pinned ? "30" : "0"})`}}/></Button>
+              <Button value={message.id} onClick={() => setPinned(message.id)}>{message.id}<TiPin className="m-0 p-0" style={{transform: `rotate(${message.pinned ? "30" : "0"})`}}/></Button>
             </Row>
           </Container>
         ))}
