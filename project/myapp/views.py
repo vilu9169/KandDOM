@@ -489,7 +489,7 @@ def get_chat_history(request):
 
 """@api_view(['POST'])
 def set_pinned(request):
-    message_id = request.data.get(['id'])
+    message_id = request.data.get('id')
     try:
         io = InputOutput.objects.get(id=message_id)
     except InputOutput.DoesNotExist:
