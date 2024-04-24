@@ -9,10 +9,12 @@ import { TiPin } from "react-icons/ti";
 import ChatMessage from './ChatMessage';
 import { TiPinOutline } from "react-icons/ti";
 import axios from 'axios';
+import { AuthContext } from "./AuthContextProvider";
 const Chatbot = () => {
   const { messages } = useContext(ResponseContext);
   const chatWindowRef = useRef(null);
   const { getChatHistory } = useContext(ResponseContext);
+  const { currentFile } = useContext(AuthContext);
   let ps;
   const baseURL = process.env.REACT_APP_API_URL
   useEffect(() => {
@@ -47,7 +49,7 @@ const Chatbot = () => {
   const setPinned = async (id) => {
     console.log(id)
     const resp = await axios.post(baseURL+'api/set_pinned/', {id:id})
-    getChatHistory(id)
+    getChatHistory(currentFile)
   }
 
   return (
