@@ -19,4 +19,5 @@ urlpatterns = [
     path('api/documents/', get_documents, name='documents'),
     path('api/getchat/', get_chat_history, name='chat_history'),
     path('api/deletefile/', delete_document, name='delete_file'),
+    path('api/set_pinned/', set_pinned, name='set_pinned'),
 ]

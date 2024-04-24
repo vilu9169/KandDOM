@@ -13,6 +13,7 @@ const Chatbot = () => {
   const chatWindowRef = useRef(null);
   let ps;
   const a = true;
+  const baseURL = process.env.REACT_APP_API_URL
   useEffect(() => {
     if (chatWindowRef.current) {
       ps = new PerfectScrollbar(chatWindowRef.current, {
@@ -42,6 +43,10 @@ const Chatbot = () => {
       chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight; // Set scroll position to bottom
     }
   };
+  const setPinned = async (message_id) => {
+    resp = await axios.post(baseURL+'api/set_pinned/', {id:message_id})
+    console.log(messages)
+  }
 
   return (
     <Container className="chatbot-container" ref={chatWindowRef}>
@@ -71,7 +76,7 @@ const Chatbot = () => {
               <p className="message-text"><ChatMessage text={message.text} /></p>
             </Row>
             <Row className="d-flex justify-content-start w-100 h-20px">
-              <TiPin onClick={() => a = !a} className="m-0 p-0" style={{transform: `rotate(${a ? "30" : "0"})`}}/>
+              <TiPin value={message.id} onClick={e => setPinned(e.target.value)} className="m-0 p-0" style={{transform: `rotate(${message.pinned ? "30" : "0"})`}}/>
             </Row>
           </Container>
         ))}

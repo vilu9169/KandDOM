@@ -321,8 +321,9 @@ def upload_document(request):
             # file_id= ''  # You may need to provide an appropriate file ID here
         )
         print("Before document.save")
+        print(document.file)
         document.save()
-        mainfunk('pdf/'+document.filename, str(document.__id__()))
+        mainfunk(str(document.file), str(document.__id__()))
         print("document.save complete")
         user = User.objects.get(id=request.data['userID'])
         print("User.objects.get(id=request.data['ObjectId']) COMPLETE")
@@ -467,6 +468,8 @@ def get_chat_history(request):
     resp = []
     for io in inputoutput:
         resp.append({
+            "pinned": io.pinned,
+            "id": io.id,
             "text": io.message,
             "user": True
         })
@@ -476,6 +479,19 @@ def get_chat_history(request):
         })
     print(resp)
     return Response({'messages' : resp})
+
+
+@api_view(['POST'])
+def set_pinned(request):
+    message_id = request.data.get(['id'])
+    try:
+        io = InputOutput.objects.get(id=message_id)
+    except InputOutput.DoesNotExist:
+        raise ValueError({'error':'no IO matching found'})
+    io.pinned = not io.pinned
+    io.save()
+    return Response({'response':'Successfully pinned'})
+
 from bson import ObjectId
 
 @api_view(['POST'])
