@@ -32,7 +32,6 @@ def handlesplit(split, retvals, i):
             sleep(20)
             continue
     split = str(events.choices[0].message.content)
-    print("Newsplit = ", split)
     while True:
         try:
             events = client.chat.completions.create(
@@ -57,8 +56,6 @@ def handlesplit(split, retvals, i):
             #Sleep for 20 seconds
             sleep(20)
             continue
-    print("Calling")
-    print(str(events.choices[0].message))
     ret = []
     try:
         for tool_call in events.choices[0].message.tool_calls:
@@ -123,7 +120,6 @@ retvals = merge
 
 
 print("Time: ", time()-ttime)
-print(retvals)
 def compfun(x):
     try:
         return x["time"].timestamp()
