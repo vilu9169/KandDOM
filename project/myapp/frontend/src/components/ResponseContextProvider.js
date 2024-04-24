@@ -5,6 +5,7 @@ const ResponseContext = createContext();
 
 const ResponseContextProvider = ({ children }) => {
   const [messages, setMessages] = useState([]); // Fix the typo here
+  const [ pinnedMessages, setPinnedMessages ] = useState([]);
   const { currentFile } = useContext(AuthContext);
   const baseURL = process.env.REACT_APP_API_URL;
   const getChatHistory = async (fileid) => {
@@ -14,12 +15,14 @@ const ResponseContextProvider = ({ children }) => {
     try {
       const { data } = await axios.post(baseURL + "api/getchat/", body);
       setMessages(data.messages);
+      setPinnedMessages(data.pinned);
     } catch (error) {
       console.error("Error fetching chat history:", error);
       setMessages([]);
     }
   };
   let contextData = {
+    pinnedMessages: pinnedMessages,
     messages:messages,
     setMessages:setMessages,
     getChatHistory:getChatHistory,

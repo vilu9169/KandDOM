@@ -9,21 +9,15 @@ import { FaTrashAlt } from "react-icons/fa";
 
 function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   const { user } = useContext(AuthContext);
-
+  const { pinnedMessages } = useContext(ResponseContext);
   const [showTimeline, setShowTimeline] = useState(false);
-  const { files } = useContext(AuthContext);
-  const { getFiles } = useContext(AuthContext);
-  const {currentFile, setCurrentFile} = useContext(AuthContext);
-  const {messages, setMessages} = useContext(ResponseContext);
-  const {getChatHistory} = useContext(ResponseContext);
+  const { files, getFiles, currentFile, setCurrentFile } = useContext(AuthContext);
+  const { messages, setMessages, getChatHistory } = useContext(ResponseContext);
   const baseURL = process.env.REACT_APP_API_URL;
-
-  
-
 
   const deleteDocument = async (fileid) => {
     console.log('fileid:', fileid);
-    const resp = await axios.post(baseURL+'api/deletefile/', {fileid: fileid, user: user.id});
+    const resp = await axios.post(baseURL + 'api/deletefile/', { fileid: fileid, user: user.id });
 
     console.log(resp);
     getFiles();
@@ -39,9 +33,11 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   return (
     <Container className="p-0 mt-3">
       {clickedDocument ? (
-        <div>
-          asdasdasdasd
-        </div>
+        pinnedMessages.map((pin) => (
+          <Row key={pin.id} className="my-4 m-auto br-5 w-100">
+            {pin}
+          </Row>
+        ))
       ) : (
         <>
           <hr className="w-90 m-auto" />
