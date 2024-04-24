@@ -19,8 +19,13 @@ const ResponseContextProvider = ({ children }) => {
       setMessages([]);
     }
   };
+  let contextData = {
+    messages:messages,
+    setMessages:setMessages,
+    getChatHistory:getChatHistory,
+  };
   return (
-      <ResponseContext.Provider value={{ messages, setMessages, getChatHistory }}> {/* Fix the typo here */}
+      <ResponseContext.Provider value={contextData}> {/* Fix the typo here */}
           {children}
       </ResponseContext.Provider>
   );
