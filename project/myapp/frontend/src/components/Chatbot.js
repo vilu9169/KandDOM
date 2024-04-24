@@ -12,8 +12,8 @@ import axios from 'axios';
 const Chatbot = () => {
   const { messages } = useContext(ResponseContext);
   const chatWindowRef = useRef(null);
+  const { getChatHistory } = useContext(ResponseContext);
   let ps;
-  const a = true;
   const baseURL = process.env.REACT_APP_API_URL
   useEffect(() => {
     if (chatWindowRef.current) {
@@ -46,8 +46,8 @@ const Chatbot = () => {
   };
   const setPinned = async (message) => {
     console.log(message)
-    const resp = await axios.post(baseURL+'api/set_pinned/', {id:message.id})
-    message.pinned = !message.pinned
+    const resp = await axios.post(baseURL+'api/set_pinned/', {id:message})
+    getChatHistory(message)
   }
 
   return (
@@ -78,7 +78,7 @@ const Chatbot = () => {
               <p className="message-text"><ChatMessage text={message.text} /></p>
             </Row>
             <Row className="d-flex justify-content-start w-100 h-20px">
-              <Button value={message} onClick={e => setPinned(e.target.value)}><TiPin className="m-0 p-0" style={{transform: `rotate(${message.pinned ? "30" : "0"})`}}/></Button>
+              <Button value={message.id} onClick={e => setPinned(e.target.value)}><TiPin className="m-0 p-0" style={{transform: `rotate(${message.pinned ? "30" : "0"})`}}/></Button>
             </Row>
           </Container>
         ))}

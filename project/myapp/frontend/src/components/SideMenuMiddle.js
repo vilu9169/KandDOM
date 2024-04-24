@@ -15,23 +15,11 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   const { getFiles } = useContext(AuthContext);
   const {currentFile, setCurrentFile} = useContext(AuthContext);
   const {messages, setMessages} = useContext(ResponseContext);
-
+  const {getChatHistory} = useContext(ResponseContext);
   const baseURL = process.env.REACT_APP_API_URL;
 
   
 
-  const getChatHistory = async (fileid) => {
-    const body = {
-      embedding_id: fileid ? fileid : currentFile
-    };
-    try {
-      const { data } = await axios.post(baseURL + "api/getchat/", body);
-      setMessages(data.messages);
-    } catch (error) {
-      console.error("Error fetching chat history:", error);
-      setMessages([]);
-    }
-  };
 
   const deleteDocument = async (fileid) => {
     console.log('fileid:', fileid);
