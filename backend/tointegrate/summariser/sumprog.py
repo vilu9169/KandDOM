@@ -86,6 +86,7 @@ def cleaned(olddata):
         #Ask claud to summarise the string
         newdata.append({"time": key, "event": str})
     #Convert the newdata to a string
+    return newdata
     asstr = ""
     for event in newdata:
         #If time has no hour and minute, only print date
@@ -193,7 +194,7 @@ for elem in struct:
 struct = sorted(struct, key = lambda x: x["time"].timestamp())
 
 
-#struct = cleaned(struct)
+struct = cleaned(struct)
 for elem in struct:
     #Print the time as a string
     print(elem["time"])
