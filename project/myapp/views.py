@@ -466,6 +466,7 @@ def get_chat_history(request):
         raise ValueError({'error': 'Chat history not found'})
     inputoutput = history.inputoutput.all()
     resp = []
+    pinned = []
     for io in inputoutput:
         resp.append({
             "pinned": io.pinned,
@@ -477,8 +478,10 @@ def get_chat_history(request):
             "text": io.response,
             "user": False
         })
+        if io.pinned:
+            pinned.append(io.id)
     print(resp)
-    return Response({'messages' : resp})
+    return Response({'messages' : resp, 'pinned': pinned})
 
 
 @api_view(['POST'])
