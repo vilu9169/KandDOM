@@ -4,7 +4,7 @@ import PerfectScrollbar from "perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css"; // Import Perfect Scrollbar CSS
 import apolloLogo from "../assets/apollo.png";
 import pinLogo from "../assets/pin.png";
-import { Container, Row, Col } from "react-bootstrap";
+import { Button ,Container, Row, Col } from "react-bootstrap";
 import { TiPin } from "react-icons/ti";
 import ChatMessage from './ChatMessage';
 import { TiPinOutline } from "react-icons/ti";
@@ -78,7 +78,7 @@ const Chatbot = () => {
               <p className="message-text"><ChatMessage text={message.text} /></p>
             </Row>
             <Row className="d-flex justify-content-start w-100 h-20px">
-              <TiPin value={message} onClick={e => setPinned(e.target.value)} className="m-0 p-0" style={{transform: `rotate(${message.pinned ? "30" : "0"})`}}/>
+              <Button value={message} onClick={e => setPinned(e.target.value)}><TiPin className="m-0 p-0" style={{transform: `rotate(${message.pinned ? "30" : "0"})`}}/></Button>
             </Row>
           </Container>
         ))}
