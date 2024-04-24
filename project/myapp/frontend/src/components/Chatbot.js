@@ -44,10 +44,10 @@ const Chatbot = () => {
       chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight; // Set scroll position to bottom
     }
   };
-  const setPinned = async (message) => {
-    console.log(message)
-    const resp = await axios.post(baseURL+'api/set_pinned/', {id:message})
-    getChatHistory(message)
+  const setPinned = async (id) => {
+    console.log(id)
+    const resp = await axios.post(baseURL+'api/set_pinned/', {id:id})
+    getChatHistory(id)
   }
 
   return (
@@ -78,7 +78,7 @@ const Chatbot = () => {
               <p className="message-text"><ChatMessage text={message.text} /></p>
             </Row>
             <Row className="d-flex justify-content-start w-100 h-20px">
-              <Button value={message.id} onClick={() => setPinned(message.id)}>{message.id}<TiPin className="m-0 p-0" style={{transform: `rotate(${message.pinned ? "30" : "0"})`}}/></Button>
+              {message.user && <TiPin onClick={() => setPinned(message.id)} className="m-0 p-0" style={{transform: `rotate(${message.pinned ? "30" : "0"})`}}/>}
             </Row>
           </Container>
         ))}
