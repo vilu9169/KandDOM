@@ -45,9 +45,9 @@ const Chatbot = () => {
     }
   };
   const setPinned = async (message) => {
+    console.log(message)
     const resp = await axios.post(baseURL+'api/set_pinned/', {id:message.id})
     message.pinned = !message.pinned
-    console.log(messages)
   }
 
   return (
