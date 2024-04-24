@@ -11,7 +11,7 @@ urlpatterns = [
     re_path(r'^login$', TemplateView.as_view(template_name='index.html')),
     path('test/', display_text_file, name='display_text'),
 
-    path('upload/', upload_document, name='upload'),
+    path('api/upload/', upload_document, name='upload'),
     path('api/token/', MyTokenObtainPairView.as_view(), name ="token_obtain_pair"),
 
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name="token_refresh"),
