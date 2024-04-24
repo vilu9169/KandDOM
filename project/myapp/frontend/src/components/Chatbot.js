@@ -8,6 +8,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { TiPin } from "react-icons/ti";
 import ChatMessage from './ChatMessage';
 import { TiPinOutline } from "react-icons/ti";
+import axios from 'axios';
 const Chatbot = () => {
   const { messages } = useContext(ResponseContext);
   const chatWindowRef = useRef(null);
@@ -43,8 +44,9 @@ const Chatbot = () => {
       chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight; // Set scroll position to bottom
     }
   };
-  const setPinned = async (message_id) => {
-    resp = await axios.post(baseURL+'api/set_pinned/', {id:message_id})
+  const setPinned = async (message) => {
+    const resp = await axios.post(baseURL+'api/set_pinned/', {id:message.id})
+    message.pinned = !message.pinned
     console.log(messages)
   }
 
@@ -76,7 +78,7 @@ const Chatbot = () => {
               <p className="message-text"><ChatMessage text={message.text} /></p>
             </Row>
             <Row className="d-flex justify-content-start w-100 h-20px">
-              <TiPin value={message.id} onClick={e => setPinned(e.target.value)} className="m-0 p-0" style={{transform: `rotate(${message.pinned ? "30" : "0"})`}}/>
+              <TiPin value={message} onClick={e => setPinned(e.target.value)} className="m-0 p-0" style={{transform: `rotate(${message.pinned ? "30" : "0"})`}}/>
             </Row>
           </Container>
         ))}
