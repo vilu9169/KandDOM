@@ -1,15 +1,15 @@
-import { Button, Container, Row } from "react-bootstrap";
+import { Button, Container, Row, Col } from "react-bootstrap";
 import { IoIosDocument } from "react-icons/io";
 import { useContext, useRef, useState, useEffect } from "react";
 import { UploadWindowContext } from "./UploadWindowContextProvider";
 import { AppContext } from "./ShowSettingsHandler";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom"; 
 import { FaLayerGroup } from "react-icons/fa";
 import Fade from "react-bootstrap/Fade";
-
+import { IoReturnUpBack } from "react-icons/io5";
 import { AuthContext } from "./AuthContextProvider";
 
-function SideMenuTop({ clickedDocument }) {
+function SideMenuTop({ clickedDocument, setClickedDocument }) {
   const { handleShowUploadWindow } = useContext(UploadWindowContext);
   const [isVisible, setIsVisible] = useState(false);
   const { handleButtonClick } = useContext(AppContext);
@@ -29,45 +29,49 @@ function SideMenuTop({ clickedDocument }) {
         innerContainerRef.current &&
         !innerContainerRef.current.contains(event.target) //kan ta bort denna, försvinner ännu vid nästa knapptryck
       ) {
-        toggleVisibility(); // Trigger the handleButtonClick function
+        toggleVisibility(); 
       }
     };
 
-    // Add event listener to detect clicks outside of the inner container
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      // Clean up event listener on component unmount
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [toggleVisibility]);
+
   return (
-    <Container className="p-0 position-absolute top-0 start-50 translate-middle-x mt-3">
+    <Container className="p-0 mt-3">
       {clickedDocument ? (
-        <Container>
-          <Button
-            onClick={handleShowInfo}
-            className="bg-3 rect-button align-items-center d-flex justify-content-center p-0"
-          >
-            <IoMdHelp className="size-20" />
-          </Button>
-          Pinned messages
-        </Container>
+        <Row className="w-90 m-auto">
+          <Col className="col-3 align-items-center d-flex justify-content-start">
+            <Button
+              onClick={() => setClickedDocument(false)}
+              className="bg-3 rect-button align-items-center d-flex justify-content-center p-0"
+            >
+              <IoReturnUpBack className="size-20" />
+            </Button>
+          </Col>
+          <Col className="col-9 pinned-text align-items-center d-flex justify-content-center">
+            Pinned messages
+          </Col>
+        </Row>
       ) : (
         <>
-          <Button
-            ref={personRef}
-            onClick={toggleVisibility}
-            //onClick={handleShowUploadWindow}
-            className="m-auto bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
-          >
-            <span className="text-center justify-content-center d-flex align-items-center w-75">
-              Add document
-            </span>
-            <span className="w-25 justify-content-center d-flex align-items-center">
-              <IoIosDocument className="size-20" />
-            </span>
-          </Button>
+          <div className="d-flex justify-content-center">
+            <Button
+              ref={personRef}
+              onClick={toggleVisibility}
+              className="m-auto bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
+            >
+              <span className="text-center justify-content-center d-flex align-items-center w-75">
+                Add document
+              </span>
+              <span className="w-25 justify-content-center d-flex align-items-center">
+                <IoIosDocument className="size-20" />
+              </span>
+            </Button>
+          </div>
           <Fade
             mountOnEnter={true}
             unmountOnExit={true}
@@ -79,10 +83,7 @@ function SideMenuTop({ clickedDocument }) {
               ref={innerContainerRef}
             >
               <Row className="p-0 m-0 h-50 w-100 ">
-                <Button
-                  onClick={handleShowUploadWindow}
-                  className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
-                >
+                <Button className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1">
                   <span className="text-center justify-content-center d-flex align-items-center w-75">
                     Add to new chat
                   </span>

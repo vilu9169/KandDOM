@@ -103,7 +103,7 @@ function SideMenuBottom({ clickedDocument, showTimeline, setShowTimeline }) {
               onClick={logoutUser}
               className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
             >
-              <span className="text-center justify-content-center d-flex align-items-center w-75">
+              <span className="small text-center justify-content-center d-flex align-items-center w-75">
                 Log Out
               </span>
               <span className="w-25 justify-content-center d-flex align-items-center">
