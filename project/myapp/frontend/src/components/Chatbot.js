@@ -12,6 +12,7 @@ import axios from 'axios';
 import { AuthContext } from "./AuthContextProvider";
 
 export const scrollToPin = (ref) => {
+  console.log(ref)
   ref.current.scrollIntoView({behavior: 'smooth'});
 }
 
