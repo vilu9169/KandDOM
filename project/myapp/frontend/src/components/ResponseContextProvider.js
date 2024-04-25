@@ -38,6 +38,7 @@ const ResponseContextProvider = ({ children }) => {
     setMessages:setMessages,
     getChatHistory:getChatHistory,
     pinRef:pinRef,
+    arrLength:arrLength
   };
   return (
       <ResponseContext.Provider value={contextData}> {/* Fix the typo here */}

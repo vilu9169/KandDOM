@@ -22,6 +22,7 @@ const Chatbot = () => {
   const { getChatHistory } = useContext(ResponseContext);
   const { currentFile } = useContext(AuthContext);
   const { pinRef } = useContext(ResponseContext);
+  const { arrLength } = useContext(ResponseContext);
   let ps;
   const baseURL = process.env.REACT_APP_API_URL
 
@@ -65,10 +66,8 @@ const Chatbot = () => {
       <Container className="chatbot-messages w-100 p-0">
         {messages.map((message, index) => (
           <Container
-            ref={(pin, id=pinRef.current.length) => {if (message.pinned)
-              
-              pinRef.current[id] = pin;
-            }
+            ref={(pin) => message.pinned ?
+              pinRef.current[arrLength.length] = pin : null
             }
             key={index}
             className={`message ${
