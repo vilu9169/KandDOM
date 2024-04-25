@@ -84,7 +84,7 @@ function handleKeyUp(event) {
           onSubmit={handleSubmit}
         />
         <Button onClick={handleSubmit} className="bg-3 message-button d-flex">
-          <IoIosSend className="m-auto size-20"/>
+          <IoIosSend className=" m-auto size-20"/>
         </Button>
       </InputGroup>
     </Form>
