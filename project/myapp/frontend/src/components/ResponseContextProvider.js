@@ -7,7 +7,7 @@ const ResponseContextProvider = ({ children }) => {
   const [messages, setMessages] = useState([]); // Fix the typo here
   const [ pinnedMessages, setPinnedMessages ] = useState([]);
   const { currentFile } = useContext(AuthContext);
-  const [ pinRef, setPinRef ] = useRef([]);
+  const pinRef = useRef([]);
   const arrLength = pinnedMessages.length;
   
   if (pinRef.current.length !== arrLength) {
