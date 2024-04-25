@@ -15,6 +15,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   const { files, getFiles, currentFile, setCurrentFile } = useContext(AuthContext);
   const { messages, setMessages, getChatHistory } = useContext(ResponseContext);
   const baseURL = process.env.REACT_APP_API_URL;
+  const { pinRef } = useContext(ResponseContext);
   const deleteDocument = async (fileid) => {
     console.log('fileid:', fileid);
     const resp = await axios.post(baseURL + 'api/deletefile/', { fileid: fileid, user: user.id });
@@ -41,11 +42,11 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   return (
     <Container className="p-0 mt-3">
       {clickedDocument ? (
-        pinnedMessages.map((pin) => (
+        pinnedMessages.map((pin, index) => (
           <Row key={pin.id} className="my-4 m-auto br-5 w-100">
             <Button
               classname="m-auto bg-3 w-90 document-button d-flex justify-content-start align-items-center p-2 text-start"
-              onClick={() => scrollToPin(pin.id)}
+              onClick={() => scrollToPin(pinRef[index])}
               >
                 {pin.filename}
                 {pin}
