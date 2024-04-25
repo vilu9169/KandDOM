@@ -64,16 +64,9 @@ const Chatbot = () => {
   return (
     <Container className="chatbot-container" ref={chatWindowRef}>
       <Container className="chatbot-messages w-100 p-0">
-        {messages.map((message, index) => {
-          let pinIndex = 0;
-          return (
+        {messages.map((message, index) => (
           <Container
-            ref={(pin) => {
-              if (message.pinned) {
-                pinRef.current[pinIndex++] = pin;
-              }
-            }
-            }
+            ref={pinRef.current[index]}
             key={index}
             className={`message ${
               message.user ? "user-message" : "ai-message"
@@ -100,7 +93,7 @@ const Chatbot = () => {
               {message.user && <TiPin onClick={() => setPinned(message.id)} className="m-0 p-0" style={{transform: `rotate(${message.pinned ? "-30deg" : "0"})`}}/>}
             </Row>
           </Container>
-        )})}
+        ))}
       </Container>
     </Container>
   );
