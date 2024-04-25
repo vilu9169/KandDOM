@@ -32,14 +32,6 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
     setClickedDocument(true); // Set clickedDocument to true when a document is chosen
   };
 
-  const scrollToPin = (pinId) => {
-    const pinElement = document.getElementById(pinId);
-    print("pinElement:", pinElement)
-    if (pinElement) {
-      pinElement.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <Container className="p-0 mt-3">
       {clickedDocument ? (
