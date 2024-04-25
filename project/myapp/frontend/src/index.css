@@ -406,7 +406,7 @@ button {
 }
 
 .image-column {
-  background-color: var(--color-4);
+  background-color: var(--color-1);
 }
 
 .login-column {
@@ -527,8 +527,8 @@ button {
   min-height: 40px;
 }
 .document-button:hover{
-  box-shadow: 10px 10px var(--color-4);
-  transition: box-shadow 0.3s ease;
+  background-color: var(--color-1) !important;
+  transition: background-color 0.3s ease;
 }
 .icons-container {
   opacity: 0;
@@ -536,9 +536,9 @@ button {
   top: 50%;
   right: 0px;
   transform: translateY(-50%);
-  background-color: var(--color-3);
+  background-color: var(--color-1);
   transition: opacity 0.3s ease;
-  box-shadow: -10px 0px 10px 1px var(--color-3);
+  box-shadow: -10px 0px 10px 1px var(--color-1);
 }
 
 .document-button:hover .icons-container {

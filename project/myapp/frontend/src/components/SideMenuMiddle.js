@@ -66,7 +66,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
                 <Button
                   onClick={() => chooseDocument(file.id)}
                   value={file.id}
-                  className={`small m-auto bg-3 w-90 document-button d-flex justify-content-start align-items-center p-2 text-start position-relative ${
+                  className={`small m-auto bg-2 w-90 document-button d-flex justify-content-start align-items-center p-2 text-start position-relative ${
                     file.id === currentFile ? "highlighted" : ""
                   }`}
                 >
