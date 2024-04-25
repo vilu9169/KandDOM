@@ -30,6 +30,13 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
     setClickedDocument(true); // Set clickedDocument to true when a document is chosen
   };
 
+  const scrollToPin = (pinId) => {
+    const pinElement = document.getElementById(pinId);
+    if (pinElement) {
+      pinElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <Container className="p-0 mt-3">
       {clickedDocument ? (
@@ -37,11 +44,11 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
           <Row key={pin.id} className="my-4 m-auto br-5 w-100">
             <Button
               className="m-auto bg-3 w-90 document-button d-flex justify-content-start align-items-center p-2 text-start"
-              >
-                {pin.filename}
-                {pin}
-              </Button>
-            
+              onClick={() => scrollToPin(pin.id)}
+            >
+              {pin.filename}
+              {pin}
+            </Button>
           </Row>
         ))
       ) : (
