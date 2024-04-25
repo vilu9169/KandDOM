@@ -41,9 +41,9 @@ function SideMenuTop({ clickedDocument, setClickedDocument }) {
   }, [toggleVisibility]);
 
   return (
-    <Container className="p-0 mt-3">
+    <Container className="p-0">
       {clickedDocument ? (
-        <Row className="w-90 m-auto">
+        <Row className="w-90 m-auto h-80px d-flex justify-content-center">
           <Col className="col-3 align-items-center d-flex justify-content-start">
             <Button
               onClick={() => setClickedDocument(false)}
@@ -58,7 +58,7 @@ function SideMenuTop({ clickedDocument, setClickedDocument }) {
         </Row>
       ) : (
         <>
-          <div className="d-flex justify-content-center">
+          <div className="h-80px d-flex justify-content-center">
             <Button
               ref={personRef}
               onClick={toggleVisibility}
