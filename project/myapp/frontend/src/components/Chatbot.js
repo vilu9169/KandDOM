@@ -11,17 +11,18 @@ import { TiPinOutline } from "react-icons/ti";
 import axios from 'axios';
 import { AuthContext } from "./AuthContextProvider";
 
-export const scrollToPin = (ref, index) => {
-  console.log(ref)
-  ref.current[index].scrollIntoView({block: 'start'}); 
+
+export const scrollToPin = (pinRef, index) => {
+  console.log(pinRef.current[index])
+  pinRef.current[index].scrollIntoView({block: 'start'}); 
 }
 
 const Chatbot = () => {
   const { messages } = useContext(ResponseContext);
   const chatWindowRef = useRef(null);
+  const { pinRef } = useContext(ResponseContext);
   const { getChatHistory } = useContext(ResponseContext);
   const { currentFile } = useContext(AuthContext);
-  const { pinRef } = useContext(ResponseContext);
   const { arrLength } = useContext(ResponseContext);
   let ps;
   const baseURL = process.env.REACT_APP_API_URL
