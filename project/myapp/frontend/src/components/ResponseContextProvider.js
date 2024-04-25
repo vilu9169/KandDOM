@@ -8,11 +8,11 @@ const ResponseContextProvider = ({ children }) => {
   const [ pinnedMessages, setPinnedMessages ] = useState([]);
   const { currentFile } = useContext(AuthContext);
   const pinRef = useRef([]);
-  const arrLength = pinnedMessages.length;
+  const arrLength = messages.length / 2;
   
   useEffect(() => {
     // Ensure pinRef is properly populated when pinnedMessages change
-    pinRef.current = Array(pinnedMessages.length)
+    pinRef.current = Array(arrLength)
       .fill()
       .map((_, i) => pinRef.current[i] || createRef());
     console.log("pinRef.current", pinRef.current);
@@ -26,6 +26,9 @@ const ResponseContextProvider = ({ children }) => {
     try {
       const { data } = await axios.post(baseURL + "api/getchat/", body);
       setMessages(data.messages);
+      for (let i = 0; i < data.pinned.length; i++) {
+        data.pinned[i].index = i;
+      }
       setPinnedMessages(data.pinned);
     } catch (error) {
       console.error("Error fetching chat history:", error);
