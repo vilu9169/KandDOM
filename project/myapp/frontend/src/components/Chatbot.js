@@ -59,6 +59,7 @@ const Chatbot = () => {
   const setPinned = async (id) => {
     console.log(id)
     const resp = await axios.post(baseURL+'api/set_pinned/', {id:id})
+
     getChatHistory(currentFile)
   }
 
@@ -67,7 +68,7 @@ const Chatbot = () => {
       <Container className="chatbot-messages w-100 p-0">
         {messages.map((message, index) => (
           <Container
-            ref={pinRef.current[index]}
+            ref={message.pinned ? pinRef.current[index] : null}
             key={index}
             className={`message ${
               message.user ? "user-message" : "ai-message"
