@@ -6,6 +6,7 @@ import { AuthContext } from "./AuthContextProvider";
 import { ResponseContext } from "./ResponseContextProvider";
 import axios from "axios";
 import { FaTrashAlt } from "react-icons/fa";
+import { scrollToPin } from "./Chatbot";
 
 function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   const { user } = useContext(AuthContext);
@@ -14,7 +15,6 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   const { files, getFiles, currentFile, setCurrentFile } = useContext(AuthContext);
   const { messages, setMessages, getChatHistory } = useContext(ResponseContext);
   const baseURL = process.env.REACT_APP_API_URL;
-
   const deleteDocument = async (fileid) => {
     console.log('fileid:', fileid);
     const resp = await axios.post(baseURL + 'api/deletefile/', { fileid: fileid, user: user.id });
@@ -22,6 +22,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
     console.log(resp);
     getFiles();
   };
+
 
   const chooseDocument = (fileid) => {
     setCurrentFile(fileid);
@@ -43,12 +44,12 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
         pinnedMessages.map((pin) => (
           <Row key={pin.id} className="my-4 m-auto br-5 w-100">
             <Button
-              className="m-auto bg-3 w-90 document-button d-flex justify-content-start align-items-center p-2 text-start"
+              classname="m-auto bg-3 w-90 document-button d-flex justify-content-start align-items-center p-2 text-start"
               onClick={() => scrollToPin(pin.id)}
-            >
-              {pin.filename}
-              {pin}
-            </Button>
+              >
+                {pin.filename}
+                {pin}
+              </Button>
           </Row>
         ))
       ) : (

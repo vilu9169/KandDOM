@@ -10,6 +10,11 @@ import ChatMessage from './ChatMessage';
 import { TiPinOutline } from "react-icons/ti";
 import axios from 'axios';
 import { AuthContext } from "./AuthContextProvider";
+
+export const scrollToPin = (id) => {
+  id.current.scrollIntoView({behavior: 'smooth'});
+}
+
 const Chatbot = () => {
   const { messages } = useContext(ResponseContext);
   const chatWindowRef = useRef(null);
@@ -57,6 +62,7 @@ const Chatbot = () => {
       <Container className="chatbot-messages w-100 p-0">
         {messages.map((message, index) => (
           <Container
+            ref={message.id}
             key={index}
             className={`message ${
               message.user ? "user-message" : "ai-message"
@@ -80,7 +86,7 @@ const Chatbot = () => {
               <p className="message-text"><ChatMessage text={message.text} /></p>
             </Row>
             <Row className="d-flex justify-content-start w-100 h-20px">
-              {message.user && <TiPin onClick={() => setPinned(message.id)} className="m-0 p-0" style={{transform: `rotate(${message.pinned ? "-45deg" : "0"})`}}/>}
+              {message.user && <TiPin onClick={() => setPinned(message.id)} className="m-0 p-0" style={{transform: `rotate(${message.pinned ? "-30deg" : "0"})`}}/>}
             </Row>
           </Container>
         ))}
