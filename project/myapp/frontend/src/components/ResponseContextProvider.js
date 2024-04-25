@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useRef, createRef } from 'react';
+import React, { createContext, useState, useContext, useRef, createRef, useEffect } from 'react';
 import { AuthContext } from './AuthContextProvider';
 import axios from 'axios';
 const ResponseContext = createContext();
@@ -10,12 +10,13 @@ const ResponseContextProvider = ({ children }) => {
   const pinRef = useRef([]);
   const arrLength = pinnedMessages.length;
   
-  if (pinRef.current.length !== arrLength) {
-    // add or remove refs
-    pinRef.current = Array(arrLength)
+  useEffect(() => {
+    // Ensure pinRef is properly populated when pinnedMessages change
+    pinRef.current = Array(pinnedMessages.length)
       .fill()
       .map((_, i) => pinRef.current[i] || createRef());
-  }
+    console.log("pinRef.current", pinRef.current);
+  }, [pinnedMessages]);
 
   const baseURL = process.env.REACT_APP_API_URL;
   const getChatHistory = async (fileid) => {
