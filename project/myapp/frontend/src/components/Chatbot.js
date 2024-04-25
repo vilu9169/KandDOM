@@ -11,8 +11,8 @@ import { TiPinOutline } from "react-icons/ti";
 import axios from 'axios';
 import { AuthContext } from "./AuthContextProvider";
 
-export const scrollToPin = (id) => {
-  id.current.scrollIntoView({behavior: 'smooth'});
+export const scrollToPin = (ref) => {
+  ref.current.scrollIntoView({behavior: 'smooth'});
 }
 
 const Chatbot = () => {
@@ -20,8 +20,10 @@ const Chatbot = () => {
   const chatWindowRef = useRef(null);
   const { getChatHistory } = useContext(ResponseContext);
   const { currentFile } = useContext(AuthContext);
+  const { pinRef } = useContext(ResponseContext);
   let ps;
   const baseURL = process.env.REACT_APP_API_URL
+
   useEffect(() => {
     if (chatWindowRef.current) {
       ps = new PerfectScrollbar(chatWindowRef.current, {
@@ -62,7 +64,7 @@ const Chatbot = () => {
       <Container className="chatbot-messages w-100 p-0">
         {messages.map((message, index) => (
           <Container
-            ref={message.id}
+            ref={pinRef[index]}
             key={index}
             className={`message ${
               message.user ? "user-message" : "ai-message"

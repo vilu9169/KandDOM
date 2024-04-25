@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect, createRef } from 'react';
 import { AuthContext } from './AuthContextProvider';
 import axios from 'axios';
 const ResponseContext = createContext();
@@ -7,6 +7,18 @@ const ResponseContextProvider = ({ children }) => {
   const [messages, setMessages] = useState([]); // Fix the typo here
   const [ pinnedMessages, setPinnedMessages ] = useState([]);
   const { currentFile } = useContext(AuthContext);
+  const [ pinRef, setPinRef ] = useState([]);
+  const arrLength = pinnedMessages.length;
+
+  useEffect(() => {
+    // add or remove refs
+    setPinRef((pinRef) =>
+      Array(arrLength)
+        .fill()
+        .map((_, i) => pinRef[i] || createRef()),
+    );
+  }, [arrLength]);
+
   const baseURL = process.env.REACT_APP_API_URL;
   const getChatHistory = async (fileid) => {
     const body = {
@@ -26,6 +38,7 @@ const ResponseContextProvider = ({ children }) => {
     messages:messages,
     setMessages:setMessages,
     getChatHistory:getChatHistory,
+    pinRef:pinRef,
   };
   return (
       <ResponseContext.Provider value={contextData}> {/* Fix the typo here */}
