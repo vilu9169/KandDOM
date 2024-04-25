@@ -26,8 +26,10 @@ const ResponseContextProvider = ({ children }) => {
     try {
       const { data } = await axios.post(baseURL + "api/getchat/", body);
       setMessages(data.messages);
-      for (let i = 0; i < data.pinned.length-1; i++) {
-        data.pinned[i].index = i;
+      let i = 0;
+      for (const pin of data.pinned) {
+        pin.index = i;
+        i++;
       }
       setPinnedMessages(data.pinned);
     } catch (error) {
