@@ -23,6 +23,7 @@ const Chatbot = () => {
   const { currentFile } = useContext(AuthContext);
   const { pinRef } = useContext(ResponseContext);
   let ps;
+  let pinID;
   const baseURL = process.env.REACT_APP_API_URL
 
   useEffect(() => {
@@ -65,7 +66,11 @@ const Chatbot = () => {
       <Container className="chatbot-messages w-100 p-0">
         {messages.map((message, index) => (
           <Container
-            ref={pin => {if (message.pinned) pinRef.current[index] = pin}}
+            ref={pin => {if (message.pinned) 
+              pinID = pinRef.current.length+1;
+              pinRef.current[pinID] = pin;
+            }
+            }
             key={index}
             className={`message ${
               message.user ? "user-message" : "ai-message"
