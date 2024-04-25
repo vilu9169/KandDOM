@@ -1,0 +1,74 @@
+import React, { useEffect } from "react";
+import { Unstable_Popup as BasePopup } from "@mui/base/Unstable_Popup";
+import { BsThreeDots } from "react-icons/bs";
+import { IoMdCreate } from "react-icons/io";
+import { Container, Button } from "react-bootstrap";
+import { IoMdTrash } from "react-icons/io";
+
+export default function SimplePopup({ onDeleteClick }) {
+  const [anchor, setAnchor] = React.useState(null);
+
+  const handleClick = (event) => {
+    event.stopPropagation(); // Stop propagation to prevent document-button click
+    setAnchor(anchor ? null : event.currentTarget);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (anchor && !anchor.contains(event.target)) {
+        setAnchor(null);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [anchor]);
+
+  const open = Boolean(anchor);
+  const id = open ? "simple-popper" : undefined;
+
+  const handleDeleteClick = () => {
+    onDeleteClick();
+    setAnchor(null);
+  };
+
+  return (
+    <div className="m-2">
+      <button
+        className="p-0 iconButton d-flex justify-content-start align-items-center"
+        aria-describedby={id}
+        type="button"
+        onClick={handleClick}
+      >
+        <BsThreeDots />
+      </button>
+      <BasePopup id={id} open={open} anchor={anchor}>
+        <div className="p-2 popupBody">
+          <Button
+            className="m-auto my-2 bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
+          >
+            <span className="small text-center justify-content-center d-flex align-items-center w-75">
+              Rename Chat
+            </span>
+            <span className="w-25 justify-content-center d-flex align-items-center">
+              <IoMdCreate className="size-20" />
+            </span>
+          </Button>
+          <Button
+            className="m-auto my-2 bg-danger w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
+          >
+            <span className="small text-center justify-content-center d-flex align-items-center w-75">
+              Delete Chat
+            </span>
+            <span className="w-25 justify-content-center d-flex align-items-center">
+              <IoMdTrash className="size-20" />
+            </span>
+          </Button>
+        </div>
+      </BasePopup>
+    </div>
+  );
+}
