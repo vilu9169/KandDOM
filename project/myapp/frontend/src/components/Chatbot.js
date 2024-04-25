@@ -13,7 +13,7 @@ import { AuthContext } from "./AuthContextProvider";
 
 export const scrollToPin = (ref) => {
   console.log(ref)
-  ref.scrollIntoView({block: 'end'});
+  ref.scrollIntoView({block: 'start'});
 }
 
 const Chatbot = () => {
