@@ -4,7 +4,6 @@ from groq import Groq
 
 from dotenv import load_dotenv
 
-from self_made_tools import tools
 
 from time import time
 load_dotenv()
