@@ -8,11 +8,7 @@ from langchain_mongodb import MongoDBAtlasVectorSearch
 from vertexai.generative_models import GenerativeModel
 import vertexai.preview.generative_models as generative_models
 from groq import Groq
-from collection_tools import tools
-from util import print_tool_call, extract_args
-import traceback
-
-
+from collect_info.collection_tools import tools
 
 load_dotenv()
 
@@ -21,6 +17,53 @@ dbclient = MongoClient(os.environ.get("MONGO_DB_URI"))
 db = dbclient["collected_info"]
 collection = db["people"]
 embedder = VertexAIEmbeddings("textembedding-gecko-multilingual")
+
+#text_splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=20)
+
+#docs = text_splitter.split_documents(data)
+
+metadata = {"other" : "hi world"}
+
+docs = [Document(page_content="I like you", metadata=metadata)]
+
+print("docs:" ,docs[0])
+
+# vector_search = MongoDBAtlasVectorSearch.from_documents(documents=docs, embedding=embedder, collection=collection,
+#                                            index_name="vector_cosine_index") 
+
+vector_search = MongoDBAtlasVectorSearch(embedding=embedder, collection=collection, index_name="vector_cosine_index")
+query = "I love you"
+results = vector_search.similarity_search(query)
+
+for result in results:
+    print("Results:", result.page_content, )
+    try:
+        print("metadata: "+result.metadata["other"])
+    except:
+        print("No metadata")
+try:
+    result = collection.delete_one({"text": "I like you"})
+    print(result)
+except:
+    print("Could not delete")
+
+#embedding = embedder.embed("Carl Persson")
+
+# print(embedding[0])
+# person = {
+#     "name": "Carl Persson",
+#     "age": 35,
+#     "city": "Stockholm",
+#     "vector" : embedding[0],
+# }
+
+
+# try:
+#     collection.insert_one(person)
+#     print("Person added")
+# except Exception as e:
+#     print(e)
+#     print("Person not added")
 
 info_instructions = """Du är en assistent som hanterar ett arkiv som sparar information om personer
 Du har fått ny information om en person samt den tidigare kända informationen.
@@ -37,15 +80,6 @@ personen samt den tidigare kända beskrivningen. Din uppgift är att avgöra om 
 Beskrivningen bör endast uppdateras då den nya informationen är relevant för att identifiera personen.
 Exempel på relevant information är släktband till en annan person, en beskrivning utan namn eller att 
 personen är med i en grupp eller organisation.
-
-Om personen saknar namn och du vet vad personen heter, använd verktyget "sätt_namn" för att ge personen ett namn.
-"""
-
-tell_if_new_instructions = """Du är en assistent som hjälper användare söka efter personer i ett arkiv.
-Användaren har skickat in ett namn som inte var en exakt match bland tidigare namn. Din uppgift är att
-avgöra om det nya namnet är en ny person som ska läggas till i arkivet eller om det är en person som redan
-finns i arkivet. Du får upp till tre alternativ att välja mellan. Du ska sedan använda ett verktyg för att
-förmedla till användaren om personen är ny eller inte.
 """
 
 
@@ -60,17 +94,16 @@ rawdog = {
 class Personhandler:
     def __init__(self):
         self.collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["people"]
-        self.vector_store = MongoDBAtlasVectorSearch(embedding=embedder, collection=collection, index_name="vector_cosine_index")
+        self.searcher = MongoDBAtlasVectorSearch(embedding=embedder, collection=collection, index_name="vector_cosine_index")
         self.info_model = GenerativeModel("gemini-1.0-pro", system_instruction=[info_instructions], safety_settings=rawdog)
-        self.groq = Groq(api_key=os.environ.get("GROQ_API_KEY")).chat.completions
-
+        self.description_model = Groq(api_key=os.environ.get("GROQ_API_KEY")).chat.completions
     def handle_ny_info_person(self,alias, new_info):
         person = self._get_current_info(alias)
         name = person["name"]
-        info = person["info"]
+        old_info = person["info"]
         description = person["description"]
-        info = self._update_info(info, new_info)
-        self._update_description(description, new_info, name, info)
+        self._update_info(old_info, new_info)
+        self._
         
 
     def _get_current_info(self, name) -> Document:
@@ -78,9 +111,8 @@ class Personhandler:
         if person:
             return person
         else:
-            nearest = self.vector_store.similarity_search(name,k=3)
-            corrected_name = self._check_if_new(name, nearest)
-            return self.collection.find_one({"name": corrected_name})
+            nearest = self.searcher.similarity_search(name,k=1)[0]
+            return nearest
         
     def _update_info(self, old_info, new_info):
         chat = self.info_model.start_chat()
@@ -92,9 +124,9 @@ class Personhandler:
             print(e)
             print("Could not update info")
     
-    def _update_description(self, current_description, new_info, name, info):
-        message = "Nuvarande namn: "+name+"\n"+"**Nuvarande beskrivning**\n "+current_description+"\n\n **Ny information**\n "+new_info
-        response = self.groq.create(
+    def _update_description(self, current_description, new_info):
+        message = "**Nuvarande beskrivning**\n "+current_description+"\n\n **Ny information**\n "+new_info
+        response = self.description_model.create(
             messages=[
                 {
                     "role": "system",
@@ -106,50 +138,14 @@ class Personhandler:
                 }
             ],
             tools=[tools["ändra_beskrivning"], tools["sätt_namn"]],
-            model="llama3-70b-8192",
+            model="llama3-8b-8192",
         )
         try:
-            description = response.choices[0].message.tool_calls[0].function.arguments["ny_info"]
-            print_tool_call(response.choices[0].message.tool_calls[0])
-            metadata = {"name": name, "info": info}
-            new_person = Document(page_content=description, metadata=metadata)
+            description = response.choices[0].message.function_calls[0].parameters["ny_info"]
             try:
-                self.collection.delete_one({"text": current_description})
-                self.vector_store.add_documents([new_person])
+                self.collection.update_one({"description": current_description}, {"$set": {"description": description}})
             except Exception as e:
                 print(e)
                 print("Could not update description")
         except:
             pass
-
-    def _check_if_new(self, name, nearest):
-        prompt = "Sökning: "+name+"\nAlternativ: "
-        for i, option in enumerate(nearest):
-            prompt += str(i+1)+". Namn: "+option["name"]+"Beskrivning: "+option["text"]+"\n"
-        response = self.groq.create(
-            messages=[
-                {
-                    "role": "system",
-                    "content": tell_if_new_instructions,
-                },
-                {
-                    "role": "user",
-                    "content": name,
-                }
-            ],
-            tools=[tools["identifiera_person"]],
-            model="llama3-70b-8192",
-        )
-        try:
-            args = extract_args(response.choices[0].message.tool_calls[0])
-            print_tool_call(response.choices[0].message.tool_calls[0])
-            if not args["finns_sedan_tidigare"]:
-                name = args["namn"]
-                metadata = {"name": name, "info": ""}
-                new_person = Document(page_content=args["beskrivning_av_ny_person"], metadata=metadata)
-                self.vector_store.add_documents(new_person)
-            return args["namn"]
-        except Exception as e:
-            print(e)
-            print(traceback.format_exc())
-            print("Did not classify person")
