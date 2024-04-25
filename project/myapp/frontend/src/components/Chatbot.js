@@ -80,7 +80,7 @@ const Chatbot = () => {
               <p className="message-text"><ChatMessage text={message.text} /></p>
             </Row>
             <Row className="d-flex justify-content-start w-100 h-20px">
-              {message.user && <TiPin onClick={() => setPinned(message.id)} className="m-0 p-0" style={{transform: `rotate(${message.pinned ? "-30deg" : "0"})`}}/>}
+              {message.user && <TiPin onClick={() => setPinned(message.id)} className="m-0 p-0" style={{transform: `rotate(${message.pinned ? "-45deg" : "0"})`}}/>}
             </Row>
           </Container>
         ))}
