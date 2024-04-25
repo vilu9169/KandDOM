@@ -11,9 +11,9 @@ import { TiPinOutline } from "react-icons/ti";
 import axios from 'axios';
 import { AuthContext } from "./AuthContextProvider";
 
-export const scrollToPin = (ref) => {
+export const scrollToPin = (ref, index) => {
   console.log(ref)
-  ref.scrollIntoView({block: 'start'}); 
+  ref.current[index].scrollIntoView({block: 'start'}); 
 }
 
 const Chatbot = () => {
