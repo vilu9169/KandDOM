@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect, createRef } from 'react';
+import React, { createContext, useState, useContext, useRef, createRef } from 'react';
 import { AuthContext } from './AuthContextProvider';
 import axios from 'axios';
 const ResponseContext = createContext();
@@ -7,17 +7,15 @@ const ResponseContextProvider = ({ children }) => {
   const [messages, setMessages] = useState([]); // Fix the typo here
   const [ pinnedMessages, setPinnedMessages ] = useState([]);
   const { currentFile } = useContext(AuthContext);
-  const [ pinRef, setPinRef ] = useState([]);
+  const [ pinRef, setPinRef ] = useRef([]);
   const arrLength = pinnedMessages.length;
-
-  useEffect(() => {
+  
+  if (pinRef.current.length !== arrLength) {
     // add or remove refs
-    setPinRef((pinRef) =>
-      Array(arrLength)
-        .fill()
-        .map((_, i) => pinRef[i] || createRef()),
-    );
-  }, [arrLength]);
+    pinRef.current = Array(arrLength)
+      .fill()
+      .map((_, i) => pinRef.current[i] || createRef());
+  }
 
   const baseURL = process.env.REACT_APP_API_URL;
   const getChatHistory = async (fileid) => {
