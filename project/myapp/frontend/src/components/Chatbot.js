@@ -64,7 +64,7 @@ const Chatbot = () => {
       <Container className="chatbot-messages w-100 p-0">
         {messages.map((message, index) => (
           <Container
-            ref={pinRef[index]}
+            ref={el => pinRef.current[index] = el}
             key={index}
             className={`message ${
               message.user ? "user-message" : "ai-message"
