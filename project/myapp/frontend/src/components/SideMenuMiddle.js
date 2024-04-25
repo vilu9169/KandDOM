@@ -35,6 +35,11 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
       {clickedDocument ? (
         pinnedMessages.map((pin) => (
           <Row key={pin.id} className="my-4 m-auto br-5 w-100">
+            <Button
+              classname="m-auto bg-3 w-90 document-button d-flex justify-content-start align-items-center p-2 text-start"
+              >
+                {pin.filename}
+              </Button>
             {pin}
           </Row>
         ))
