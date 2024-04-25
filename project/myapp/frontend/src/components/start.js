@@ -39,8 +39,8 @@ function Start() {
       <Container fluid className="position-absolute h-100 text-center bg-3">
         <Row className="h-100">
           <Col color="" className="col main-left d-flex flex-column">
-            <Row className="h-60px bg-2">
-              <SideMenuTop clickedDocument={clickedDocument} />
+            <Row className="h-80px bg-2">
+              <SideMenuTop clickedDocument={clickedDocument} setClickedDocument={setClickedDocument} />
             </Row>
             <Row className="flex-grow-1 bg-2">
               <SideMenuMiddle

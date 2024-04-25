@@ -5,24 +5,23 @@ import { IoIosDocument } from "react-icons/io";
 import { AuthContext } from "./AuthContextProvider";
 import { ResponseContext } from "./ResponseContextProvider";
 import axios from "axios";
-import { FaTrashAlt } from "react-icons/fa";
+import { IoIosArchive } from "react-icons/io";
+import SimplePopup from "./ThreeDotLogic";
 
 function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   const { user } = useContext(AuthContext);
 
   const [showTimeline, setShowTimeline] = useState(false);
-  const { files } = useContext(AuthContext);
+  const { files, currentFile } = useContext(AuthContext); 
   const { getFiles } = useContext(AuthContext);
-  const {currentFile, setCurrentFile} = useContext(AuthContext);
-  const {messages, setMessages} = useContext(ResponseContext);
+  const { setCurrentFile } = useContext(AuthContext);
+  const { messages, setMessages } = useContext(ResponseContext);
 
   const baseURL = process.env.REACT_APP_API_URL;
 
-  
-
   const getChatHistory = async (fileid) => {
     const body = {
-      embedding_id: fileid ? fileid : currentFile
+      embedding_id: fileid ? fileid : currentFile,
     };
     try {
       const { data } = await axios.post(baseURL + "api/getchat/", body);
@@ -34,8 +33,11 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   };
 
   const deleteDocument = async (fileid) => {
-    console.log('fileid:', fileid);
-    const resp = await axios.post(baseURL+'api/deletefile/', {fileid: fileid, user: user.id});
+    console.log("fileid:", fileid);
+    const resp = await axios.post(baseURL + "api/deletefile/", {
+      fileid: fileid,
+      user: user.id,
+    });
 
     console.log(resp);
     getFiles();
@@ -43,15 +45,16 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
 
   const chooseDocument = (fileid) => {
     setCurrentFile(fileid);
-    localStorage.setItem('currentFile', fileid);
+    localStorage.setItem("currentFile", fileid);
     getChatHistory(fileid);
-    setClickedDocument(true); // Set clickedDocument to true when a document is chosen
+    setClickedDocument(true);
   };
 
   return (
-    <Container className="p-0 mt-3">
+    <Container className="p-0">
       {clickedDocument ? (
         <div>
+          <hr className="w-90 m-auto" />
           asdasdasdasd
         </div>
       ) : (
@@ -59,13 +62,30 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
           <hr className="w-90 m-auto" />
           <PerfectScrollbar>
             {files.map((file) => (
-              <Row key={file.id} className="my-4 m-auto br-5 w-100">
+              <Row key={file.id} className="my-3 m-auto br-5 w-100">
                 <Button
                   onClick={() => chooseDocument(file.id)}
                   value={file.id}
-                  className="m-auto bg-3 w-90 document-button d-flex justify-content-start align-items-center p-2 text-start"
+                  className={`small m-auto bg-3 w-90 document-button d-flex justify-content-start align-items-center p-2 text-start position-relative ${
+                    file.id === currentFile ? "highlighted" : ""
+                  }`}
                 >
                   {file.filename}
+                  <Container
+                    className={`p-1 w-80px h-100 d-flex justify-content-center align-items-center ${
+                      file.id === currentFile
+                        ? "highlighted-iconbox"
+                        : "icons-container"
+                    }`}
+                  >
+                    <SimplePopup
+                      onDeleteClick={() => deleteDocument(file.id)}
+                    />
+                    <IoIosArchive
+                      className="m-2 archive-icon"
+                      onClick={() => console.log("Edit document")}
+                    />
+                  </Container>
                 </Button>
               </Row>
             ))}
