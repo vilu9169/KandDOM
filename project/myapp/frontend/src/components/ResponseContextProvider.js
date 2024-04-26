@@ -19,7 +19,9 @@ const ResponseContextProvider = ({ children }) => {
   }, [pinnedMessages]);
 
   const baseURL = process.env.REACT_APP_API_URL;
-  const getChatHistory = async (fileid) => {
+
+
+  /*const getChatHistory = async (fileid) => {
     const body = {
       embedding_id: fileid ? fileid : currentFile
     };
@@ -36,7 +38,45 @@ const ResponseContextProvider = ({ children }) => {
       console.error("Error fetching chat history:", error);
       setMessages([]);
     }
+  };*/
+
+
+  const getChatHistory = async (fileid) => {
+    const body = {
+      embedding_id: fileid ? fileid : currentFile
+    };
+    try {
+      const { data } = await axios.post(baseURL + "api/getchat/", body);
+      setMessages(data.messages);
+  
+      if (Array.isArray(data.pinned)) {
+        let i = 0;
+        const pinnedMessages = data.pinned.map(pin => {
+          if (typeof pin === 'object' && pin !== null) {
+            pin.index = i;
+            i++;
+            return pin;
+          } else {
+            // Handle unexpected data format for pinned messages
+            return null;
+          }
+        }).filter(pin => pin !== null); // Remove null entries
+  
+        setPinnedMessages(pinnedMessages);
+      } else {
+        // Handle unexpected data format for pinned messages
+        console.error('Unexpected data format for pinned messages:', data.pinned);
+        setPinnedMessages([]);
+      }
+    } catch (error) {
+      console.error("Error fetching chat history:", error);
+      setMessages([]);
+      setPinnedMessages([]);
+    }
   };
+
+
+
   let contextData = {
     pinnedMessages: pinnedMessages,
     messages:messages,
