@@ -50,7 +50,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
         pinnedMessages.map((pin, index) => (
           <Row key={pin.id} className="my-4 m-auto br-5 w-100">
             <Button
-              classname="m-auto bg-3 w-90 document-button d-flex justify-content-start align-items-center p-2 text-start"
+              className="m-auto bg-3 w-90 document-button d-flex justify-content-start align-items-center p-2 text-start"
               
               onClick={() => {console.log(index); return scrollToPin(pinRef , pin.index)}}
               >
