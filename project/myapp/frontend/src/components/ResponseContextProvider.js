@@ -48,6 +48,7 @@ const ResponseContextProvider = ({ children }) => {
     try {
       const { data } = await axios.post(baseURL + "api/getchat/", body);
       setMessages(data.messages);
+      console.log("data.pinned", data.pinned);
   
       if (Array.isArray(data.pinned)) {
         const pins = data.pinned.map((pin, index) => ({ id:pin.id, index }));
