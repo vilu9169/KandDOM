@@ -8,7 +8,7 @@ const ResponseContextProvider = ({ children }) => {
   const [ pinnedMessages, setPinnedMessages ] = useState([]);
   const { currentFile } = useContext(AuthContext);
   const pinRef = useRef([]);
-  const arrLength = messages.length / 2;
+  const arrLength = pinnedMessages.length;
   
   useEffect(() => {
     // Ensure pinRef is properly populated when pinnedMessages change
@@ -51,8 +51,9 @@ const ResponseContextProvider = ({ children }) => {
   
       if (Array.isArray(data.pinned)) {
         let i = 0;
-        const pinnedMessages = data.pinned.map(pin => {
+        const pins = data.pinned.map(pin => {
           if (typeof pin === 'object' && pin !== null) {
+            pin.id = pin.id;
             pin.index = i;
             i++;
             return pin;
@@ -61,8 +62,8 @@ const ResponseContextProvider = ({ children }) => {
             return null;
           }
         }).filter(pin => pin !== null); // Remove null entries
-  
-        setPinnedMessages(pinnedMessages);
+        console.log("pinnedMessages", pins);
+        setPinnedMessages(pins);
       } else {
         // Handle unexpected data format for pinned messages
         console.error('Unexpected data format for pinned messages:', data.pinned);
