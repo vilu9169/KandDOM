@@ -54,11 +54,10 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
               
               onClick={() => {console.log(pin.index); return scrollToPin(pinRef , pin.index)}}
               >
-                {pin}
+                {pin.id}
               </Button>
           </Row>
         ))
-
       ) : (
         <>
           <hr className="w-90 m-auto" />

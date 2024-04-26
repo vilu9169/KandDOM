@@ -480,7 +480,7 @@ def get_chat_history(request):
             "user": False
         })
         if io.pinned:
-            pinned.append(io.id)
+            pinned.append({'id':io.id})
     print(resp)
     return Response({'messages' : resp, 'pinned': pinned})
 
