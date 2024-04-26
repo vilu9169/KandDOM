@@ -14,7 +14,7 @@ import { AuthContext } from "./AuthContextProvider";
 
 export const scrollToPin = (pinRef, index) => {
   console.log(pinRef.current[index].current);
-  (pinRef.current[index]).current.scrollIntoView({behavior: 'smooth' ,block: 'start'}); 
+  (pinRef.current[index]).current.scrollIntoView({block: 'start'}); 
 }
 
 const Chatbot = () => {
@@ -70,7 +70,7 @@ const Chatbot = () => {
   }
   let pinnedIndex = 0;
   return (
-    <Container className="chatbot-container" ref={chatWindowRef}>
+    <Container className="chatbot-container" ref={chatWindowRef} style={{scrollBehavior:'smooth'}}>
       <Container className="chatbot-messages w-100 p-0">
         {messages.map((message, index) => (
           <Container
