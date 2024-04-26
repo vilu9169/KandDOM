@@ -71,7 +71,7 @@ const Chatbot = () => {
   let pinnedIndex = 0;
   return (
     <Container className="chatbot-container" ref={chatWindowRef}>
-      <Container className="chatbot-messages w-100 p-0">
+      <Container className="chatbot-messages w-100 p-0 overflow-hidden">
         {messages.map((message, index) => (
           <Container
             ref={ message.pinned ? pinRef.current[pinnedIndex++] : null}
