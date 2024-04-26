@@ -54,7 +54,6 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
               
               onClick={() => {console.log(pin.index); return scrollToPin(pinRef , pin.index)}}
               >
-                {pin.filename}
                 {pin}
               </Button>
           </Row>
