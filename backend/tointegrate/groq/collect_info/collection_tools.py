@@ -1,5 +1,5 @@
 tools = {
-    "ny_info_person": {
+    "ny_information_om_person": {
         "type": "function",
         "function": {
             "name": "ny_information_om_person",
@@ -38,13 +38,41 @@ tools = {
                     },
                     "beskrivning av relation": {
                         "type": "string",
-                        "description": "Namn på personerna och hur de är kopplade till varandra",
+                        "description": "Namn på personerna och hur de är kopplade till varandra t. ex. 'Person1 är moder till person2' eller 'Person1 och Person2 åkte till Paris tillsammans 2019'",
                     },
                 },
                 "required": ["person1", "person2", "beskrivning av relation"],
             },
         },
     },
+
+
+    "ny_gruppering": {
+        "type": "function",
+        "function": {
+            "name": "ny_gruppering",
+            "description": "Använd för att registrera en gruppering av personer som nämns i texten, t. ex. en familj, företag, organisation etc.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "gruppering": {
+                        "type": "string",
+                        "description": "Namnet eller beskrivning av grupperingen",
+                    },
+                    "personer": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                        },
+                        "description": "En lista med namn på personer som tillhör grupperingen",
+                    },
+                },
+                "required" : ["gruppering", "personer"],
+            },
+        },
+    },
+
+
     "sök_material" : {
         "type": "function",
         "function": {
@@ -75,11 +103,11 @@ tools = {
                         "description": "Den nya fullständiga beskrivningen",
                     },
                 },
-                "required": ["ny beskrivning"],
+                "required": ["ny_beskrivning"],
             },
         },
     },
-    "sätt_namn" : {
+    "uppdatera_namn" : {
         "type": "function",
         "function": {
             "name": "sätt_namn",
@@ -114,10 +142,10 @@ tools = {
                     },
                     "beskrivning_av_ny_person": {
                         "type": "string",
-                        "description": "Kort identifierande text, ange endast om personen inte finns i arkivet sedan tidigare",
+                        "description": "Kort identifierande text",
                     },
                 },
-                "required": ["finns_sedan_tidigare", "namn"],
+                "required": ["finns_sedan_tidigare", "namn", "beskrivning_av_ny_person"],
             },
         },
     },
