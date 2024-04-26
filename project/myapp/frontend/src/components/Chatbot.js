@@ -58,6 +58,7 @@ const Chatbot = () => {
   };
   const setPinned = async (id) => {
     console.log(id)
+    console.log(baseURL+'api/set_pinned/')
     const resp = await axios.post(baseURL+'api/set_pinned/', {id:id})
 
     getChatHistory(currentFile)
