@@ -50,7 +50,7 @@ const ResponseContextProvider = ({ children }) => {
       setMessages(data.messages);
   
       if (Array.isArray(data.pinned)) {
-        const pins = data.pinned.map((pin, index) => ({ ...pin, index }));
+        const pins = data.pinned.map((pin, index) => ({ id:pin.id, index }));
         console.log("pinnedMessages", pins);
         setPinnedMessages(pins);
       } else {
