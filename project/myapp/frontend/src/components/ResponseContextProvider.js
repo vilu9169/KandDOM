@@ -50,14 +50,7 @@ const ResponseContextProvider = ({ children }) => {
       setMessages(data.messages);
   
       if (Array.isArray(data.pinned)) {
-        let i = 0;
-        const pins = data.pinned.map(pin => {
-          {
-            pin.index = i;
-            i++;
-            return pin;
-          }
-        }).filter(pin => pin !== null); // Remove null entries
+        const pins = data.pinned.map((pin, index) => ({ ...pin, index }));
         console.log("pinnedMessages", pins);
         setPinnedMessages(pins);
       } else {
