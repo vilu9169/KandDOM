@@ -499,7 +499,7 @@ def set_pinned(request):
 @api_view(['POST'])
 def set_pinned(request):
     try:
-        message_id = request.data.get('message_id')
+        message_id = request.data.get('id')
         io = InputOutput.objects.get(id=message_id)
         io.pinned = not io.pinned
         io.save()
