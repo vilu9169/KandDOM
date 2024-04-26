@@ -53,7 +53,6 @@ const ResponseContextProvider = ({ children }) => {
         let i = 0;
         const pins = data.pinned.map(pin => {
           {
-            pin.id = pin.id;
             pin.index = i;
             i++;
             return pin;
