@@ -4,6 +4,7 @@ import os
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, renderer_classes
+from django.shortcuts import get_object_or_404
 
 def index(request):
     return render(request, 'index.html')
@@ -484,7 +485,7 @@ def get_chat_history(request):
     return Response({'messages' : resp, 'pinned': pinned})
 
 
-@api_view(['POST'])
+"""@api_view(['POST'])
 def set_pinned(request):
     message_id = request.data.get(['id'])
     try:
@@ -493,7 +494,19 @@ def set_pinned(request):
         raise ValueError({'error':'no IO matching found'})
     io.pinned = not io.pinned
     io.save()
-    return Response({'response':'Successfully pinned'})
+    return Response({'response':'Successfully pinned'})"""
+    
+@api_view(['POST'])
+def set_pinned(request):
+    try:
+        message_id = request.data.get('message_id')
+        io = get_object_or_404(InputOutput, id=message_id)
+        # Proceed with your logic here
+        return Response({'success': True})
+    except InputOutput.DoesNotExist:
+        return Response({'error': 'InputOutput matching query does not exist.'}, status=400)
+    except Exception as e:
+        return Response({'error': str(e)}, status=500)
 
 from bson import ObjectId
 
