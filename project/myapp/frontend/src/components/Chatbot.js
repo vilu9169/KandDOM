@@ -61,7 +61,7 @@ const Chatbot = () => {
     console.log(baseURL+'api/set_pinned/')
     const resp = await axios.post(baseURL+'api/set_pinned/', {id:id})
     console.log(resp)
-    if (resp.success) {
+    if (resp.data.success) {
       getChatHistory(currentFile)
     }
     else {
