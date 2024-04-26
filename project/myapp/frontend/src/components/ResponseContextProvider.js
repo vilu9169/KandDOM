@@ -52,14 +52,11 @@ const ResponseContextProvider = ({ children }) => {
       if (Array.isArray(data.pinned)) {
         let i = 0;
         const pins = data.pinned.map(pin => {
-          if (typeof pin === 'object' && pin !== null) {
+          {
             pin.id = pin.id;
             pin.index = i;
             i++;
             return pin;
-          } else {
-            // Handle unexpected data format for pinned messages
-            return null;
           }
         }).filter(pin => pin !== null); // Remove null entries
         console.log("pinnedMessages", pins);
