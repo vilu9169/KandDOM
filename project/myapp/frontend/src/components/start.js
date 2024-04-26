@@ -25,9 +25,13 @@ function Start() {
   const { user } = useContext(AuthContext);
   const { showUploadWindow } = useContext(UploadWindowContext);
 
-  const [clickedDocument, setClickedDocument] = useState(false); // Changed initial value to false
+  const [clickedDocument, setClickedDocument] = useState(false);
 
-  const [showTimeline, setShowTimeline] = useState(false); 
+  const [showTimeline, setShowTimeline] = useState(false);
+
+  const closeTimeline = () => {
+    setShowTimeline(false);
+  };
 
   const handleDocumentButtonClick = (fileId) => {
     // Set clickedDocument state to true when a document button is clicked
@@ -40,7 +44,10 @@ function Start() {
         <Row className="h-100">
           <Col color="" className="col main-left d-flex flex-column">
             <Row className="h-80px bg-2">
-              <SideMenuTop clickedDocument={clickedDocument} setClickedDocument={setClickedDocument} />
+              <SideMenuTop
+                clickedDocument={clickedDocument}
+                setClickedDocument={setClickedDocument}
+              />
             </Row>
             <Row className="flex-grow-1 bg-2">
               <SideMenuMiddle
@@ -51,15 +58,15 @@ function Start() {
             <Row className="h-130px bg-2">
               <SideMenuBottom
                 clickedDocument={clickedDocument}
-                showTimeline={showTimeline} // Pass showTimeline as prop
+                showTimeline={showTimeline}
                 setShowTimeline={setShowTimeline}
               />
             </Row>
           </Col>
           <Col className="col d-flex flex-column main-right">
-            <Row className="h-60px bg-3">
+            <Row className="h-80px bg-3">
               <Row className="h-100 bg-1 m-auto">
-                <Col className="col-6 h-100 bg-1 align-items-end d-flex justify-content-start">
+                <Col className="col-6 h-100 bg-1 align-items-center d-flex justify-content-start">
                   <h2 className="p-0 m-0">Pythia</h2>
                   <img
                     className="p-0 m-0 main-logo"
@@ -67,7 +74,7 @@ function Start() {
                     alt="apolloLogo"
                   />
                 </Col>
-                <Col className=" col-6 h-100 d-flex align-items-end justify-content-end">
+                <Col className=" col-6 h-100 d-flex align-items-center justify-content-end">
                   <Button
                     onClick={handleShowInfo}
                     className="bg-3 rect-button align-items-center d-flex justify-content-center p-0"
@@ -89,7 +96,7 @@ function Start() {
       </Container>
       {buttonClicked && <SettingsMenu />}
       {showInfoWindow && <InfoWindow />}
-      {showTimeline && <TimeLine />}
+      {showTimeline && <TimeLine closeTimeline={closeTimeline} />}
     </>
   );
 }
