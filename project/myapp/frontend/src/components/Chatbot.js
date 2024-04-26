@@ -68,13 +68,13 @@ const Chatbot = () => {
       console.log('Error setting pinned')
     }
   }
-
+  let pinnedIndex = 0;
   return (
     <Container className="chatbot-container" ref={chatWindowRef}>
       <Container className="chatbot-messages w-100 p-0">
         {messages.map((message, index) => (
           <Container
-            ref={ message.pinned ? pinRef.current[index] : null}
+            ref={ message.pinned ? pinRef.current[pinnedIndex++] : null}
             key={index}
             className={`message ${
               message.user ? "user-message" : "ai-message"
