@@ -3,7 +3,7 @@ import { IoIosDocument } from "react-icons/io";
 import { useContext, useRef, useState, useEffect } from "react";
 import { UploadWindowContext } from "./UploadWindowContextProvider";
 import { AppContext } from "./ShowSettingsHandler";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import { FaLayerGroup } from "react-icons/fa";
 import Fade from "react-bootstrap/Fade";
 import { IoReturnUpBack } from "react-icons/io5";
@@ -29,7 +29,7 @@ function SideMenuTop({ clickedDocument, setClickedDocument }) {
         innerContainerRef.current &&
         !innerContainerRef.current.contains(event.target) //kan ta bort denna, försvinner ännu vid nästa knapptryck
       ) {
-        toggleVisibility(); 
+        toggleVisibility();
       }
     };
 
@@ -79,7 +79,7 @@ function SideMenuTop({ clickedDocument, setClickedDocument }) {
             in={isVisible}
           >
             <Container
-              className="p-0 mt-3  w-90 bg-1 user-pop-up-container"
+              className="p-0 w-90 bg-1 user-pop-up-container"
               ref={innerContainerRef}
             >
               <Row className="p-0 m-0 h-50 w-100 ">
