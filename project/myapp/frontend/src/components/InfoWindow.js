@@ -52,7 +52,7 @@ function InfoWindow() {
             </Col>
             <Col className="col-10 h-100 bg-1 d-flex justify-content-center align-items-center">
               <span className="big-roman m-3">I.</span>
-              <p className="p-0 m-0">
+              <p className="p-0 m-0 small">
                 <span className="bold">Document Upload:</span> Begin by
                 uploading one or multiple PDF documents you wish to analyze.
                 Simply click the "Add document" button in the top left corner of
