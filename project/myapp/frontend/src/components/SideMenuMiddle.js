@@ -47,12 +47,12 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   return (
     <Container className="p-0">
       {clickedDocument ? (
-        pinnedMessages.map((pin, index) => (
-          <Row key={pin.id} className="my-4 m-auto br-5 w-100">
+        pinnedMessages.map((pin) => (
+          <Row key={pin.index} className="my-4 m-auto br-5 w-100">
             <Button
               className="m-auto bg-3 w-90 document-button d-flex justify-content-start align-items-center p-2 text-start"
               
-              onClick={() => {console.log(index); return scrollToPin(pinRef , pin.index)}}
+              onClick={() => {console.log(pin.index); return scrollToPin(pinRef , pin.index)}}
               >
                 {pin.filename}
                 {pin}
