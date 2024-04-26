@@ -500,7 +500,9 @@ def set_pinned(request):
 def set_pinned(request):
     try:
         message_id = request.data.get('message_id')
-        io = get_object_or_404(InputOutput, id=message_id)
+        io = InputOutput.objects.get(id=message_id)
+        io.pinned = not io.pinned
+        io.save()
         # Proceed with your logic here
         return Response({'success': True})
     except InputOutput.DoesNotExist:
