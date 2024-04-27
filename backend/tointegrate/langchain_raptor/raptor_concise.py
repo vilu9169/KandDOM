@@ -2,10 +2,10 @@ from langchain_google_vertexai import VertexAI
 from langchain_google_vertexai import VertexAIEmbeddings
 from vertexai.language_models import TextEmbeddingModel
 from langchain_google_vertexai import VertexAIEmbeddings
-
+from time import time
 import os
+import asyncio
 
-embd = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001")
 
 
 from langchain_anthropic import ChatAnthropic
@@ -25,6 +25,7 @@ from sklearn.mixture import GaussianMixture
 
 RANDOM_SEED = 224  # Fixed seed for reproducibility
 
+start = time()
 ### --- Code from citations referenced above (added comments and docstrings) --- ###
 
 
@@ -91,6 +92,7 @@ def get_optimal_clusters(
     max_clusters = min(max_clusters, len(embeddings))
     n_clusters = np.arange(1, max_clusters)
     bics = []
+    print("calculating optimal cluster amount")
     for n in n_clusters:
         gm = GaussianMixture(n_components=n, random_state=random_state, covariance_type="full")
         gm.fit(embeddings)
@@ -113,9 +115,7 @@ def GMM_cluster(embeddings: np.ndarray, threshold: float, random_state: int = 0)
     """
     n_clusters = get_optimal_clusters(embeddings)
     gm = GaussianMixture(n_components=n_clusters, random_state=random_state)
-    print("start fitting")
     gm.fit(embeddings)
-    print("done fitting")
     probs = gm.predict_proba(embeddings)
     labels = [np.where(prob > threshold)[0] for prob in probs]
     return labels, n_clusters
@@ -143,12 +143,15 @@ def perform_clustering(
         return [np.array([0]) for _ in range(len(embeddings))]
 
     # Global dimensionality reduction
+    print("performing dimensionality reduction, time:", time()-start)
     reduced_embeddings_global = global_cluster_embeddings(embeddings, dim)
+    print("done dimensionality reduction, time:", time()-start)
     # Global clustering
+    print("fitting with GMM")
     global_clusters, n_global_clusters = GMM_cluster(
         reduced_embeddings_global, threshold
     )
-
+    print("done fitting with GMM, time:", time()-start)
     all_local_clusters = [np.array([]) for _ in range(len(embeddings))]
     total_clusters = 0
 
@@ -195,7 +198,14 @@ def perform_clustering(
 ### --- Our code below --- ###
 
 
-def embed(texts):
+
+async def get_embedding_async(texts: List[str], embedder, index):
+    print("getting embedding for",index)
+    response = await embedder.aembed_documents(texts)
+    print("embedding",index," done in", time() - start, "seconds")
+    return response
+
+async def embed(texts):
     """
     Generate embeddings for a list of text documents.
 
@@ -208,32 +218,39 @@ def embed(texts):
     Returns:
     - numpy.ndarray: An array of embeddings for the given text documents.
     """
-    
+    embd = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001")  
+    print("no_of_texts", len(texts))
     doc_count = 70
-    if len(texts) < 70:
+    divided_texts = []
+    if len(texts) < doc_count:
+        print("Embedding\nTotal documents:", len(texts))
         text_embeddings = embd.embed(texts)
+        print("Done embedding")
         as_arrays = []
         return np.array(text_embeddings)
     else:
         lower = 0
         upper = doc_count
-        text_embeddings = []
-        while(upper < len(texts)):
-            #text_embeddings.append([]values)
-            #TODO MIGHT JUST CREATE ONE LIST
-            for elem in embd.embed(texts[lower:upper]):
-                text_embeddings.append(elem.values)
-            print("Len tex_embeddings ", len(text_embeddings))
+        text_embeddings: List[List[float]] = []
+        while(upper <= len(texts)):
+            divided_texts.append(texts[lower:upper])
             lower = upper
             if upper < len(texts)-doc_count:
                 upper += doc_count
+            elif upper == len(texts):
+                upper = len(texts)+1
             else:
                 upper = len(texts)
+        tasks = [get_embedding_async(text, embd, i) for i,text in enumerate(divided_texts)]
+        results = await asyncio.gather(*tasks)
+        for result in results:
+            for embd in result:
+                text_embeddings.append(embd)
     text_embeddings_np = np.array(text_embeddings)
     return text_embeddings_np
 
 
-def embed_cluster_texts(texts):
+async def embed_cluster_texts(texts):
     """
     Embeds a list of texts and clusters them, returning a DataFrame with texts, their embeddings, and cluster labels.
 
@@ -246,7 +263,8 @@ def embed_cluster_texts(texts):
     Returns:
     - pandas.DataFrame: A DataFrame containing the original texts, their embeddings, and the assigned cluster labels.
     """
-    text_embeddings_np = embed(texts)  # Generate embeddings
+    texts = [text for text in texts if text != ""]
+    text_embeddings_np = await embed(texts)  # Generate embeddings
     cluster_labels = perform_clustering(
         text_embeddings_np, 10, 0.1
     )  # Perform clustering on the embeddings
@@ -270,8 +288,13 @@ def fmt_txt(df: pd.DataFrame) -> str:
     unique_txt = df["text"].tolist()
     return "--- --- \n --- --- ".join(unique_txt)
 
+async def get_summary_async(text: str, chain, index):
+    response = await chain.ainvoke({"context": text})
+    print("summary",index," done in", time() - start, "seconds")
+    return response
 
-def embed_cluster_summarize_texts(
+
+async def embed_cluster_summarize_texts(
     texts: List[str], level: int
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
@@ -291,7 +314,7 @@ def embed_cluster_summarize_texts(
     """
 
     # Embed and cluster the texts, resulting in a DataFrame with 'text', 'embd', and 'cluster' columns
-    df_clusters = embed_cluster_texts(texts)
+    df_clusters = await embed_cluster_texts(texts)
     
 
     # Prepare to expand the DataFrame for easier manipulation of clusters
@@ -327,15 +350,19 @@ def embed_cluster_summarize_texts(
 
     # Format text within each cluster for summarization
     summaries = []
+    texts = []
     for index,i in zip(range(len(all_clusters)),all_clusters):
-        print(index)
+        print("creating summary",index)
         df_cluster = expanded_df[expanded_df["cluster"] == i]
         formatted_txt = fmt_txt(df_cluster)
-        summaries.append(chain.invoke({"context": formatted_txt}))
-
+        texts.append(formatted_txt)
+    tasks = [get_summary_async(text, chain, i) for i,text in enumerate(texts)]
+    summaries = await asyncio.gather(*tasks)
+    print("summaries done")
     for i,text in zip(range(len(texts)),summaries):
-        print("summering",i,":")
-        print(text)
+        pass
+        #print("summering",i,":")
+       # print(text)
     # Create a DataFrame to store summaries with their corresponding cluster and level
     df_summary = pd.DataFrame(
         {
@@ -348,7 +375,7 @@ def embed_cluster_summarize_texts(
     return df_clusters, df_summary
 
 
-def recursive_embed_cluster_summarize(
+async def recursive_embed_cluster_summarize(
     texts: List[str], level: int = 1, n_levels: int = 3
 ) -> Dict[int, Tuple[pd.DataFrame, pd.DataFrame]]:
     """
@@ -367,7 +394,7 @@ def recursive_embed_cluster_summarize(
     results = {}  # Dictionary to store results at each level
 
     # Perform embedding, clustering, and summarization for the current level
-    df_clusters, df_summary = embed_cluster_summarize_texts(texts, level)
+    df_clusters, df_summary = await embed_cluster_summarize_texts(texts, level)
     # Store the results of the current level
     results[level] = (df_clusters, df_summary)
 
@@ -376,7 +403,7 @@ def recursive_embed_cluster_summarize(
     if level < n_levels and unique_clusters > 1:
         # Use summaries as the input texts for the next level of recursion
         new_texts = df_summary["summaries"].tolist()
-        next_level_results = recursive_embed_cluster_summarize(
+        next_level_results = await recursive_embed_cluster_summarize(
             new_texts, level + 1, n_levels
         )
 
@@ -388,45 +415,56 @@ def recursive_embed_cluster_summarize(
 
 from langchain_community.document_loaders import TextLoader
 
-loader = TextLoader("KandDOM/backend/tointegrate/Mord2008.txt", encoding="utf-8")
+async def main():
+    loader = TextLoader("KandDOM/fuppar_txt/schizzad.txt", encoding="utf-8")
 
 
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-text_splitter = RecursiveCharacterTextSplitter(chunk_size = 500, chunk_overlap = 0)
-splits = text_splitter.split_documents(loader.load())
+    from langchain.text_splitter import RecursiveCharacterTextSplitter
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size = 500, chunk_overlap = 0)
+    splits = text_splitter.split_documents(loader.load())
 
-# Build tree
-leaf_texts = []
+    # Build tree
+    leaf_texts = []
 
-for text in splits:
-    leaf_texts.append(text.page_content)
-results = recursive_embed_cluster_summarize(leaf_texts, level=1, n_levels=3)
+    for text in splits:
+        leaf_texts.append(text.page_content)
+    max_levels = 5
+    results = await recursive_embed_cluster_summarize(leaf_texts, level=1, n_levels=max_levels)
 
+    top_level_index = len(results)
+    for level in results:
+        print(level)
+    
+    print("top level:", top_level_index)
+    top_level = results[top_level_index]
 
-
-
-from langchain_pinecone import PineconeVectorStore
-
-# Initialize all_texts with leaf_texts
-all_texts = leaf_texts.copy()
-
-
-#Iterate through the results to extract summaries from each level and add them to all_texts
-for level in sorted(results.keys()):
-    # Extract summaries from the current level's DataFrame
-    summaries = results[level][1]["summaries"].tolist()
-    # Extend all_texts with the summaries from the current level
-    all_texts.extend(summaries)
-
-#Now, use all_texts to build the vectorstore with PineCone
-
-from dotenv import load_dotenv
-
-load_dotenv()
+    print("cluster size: ",len(top_level[0]))
+    print(top_level[1]["summaries"].tolist()[0])
 
 
-  
-#vectorstore = PineconeVectorStore("raptor", embd)
+    from langchain_pinecone import PineconeVectorStore
 
-#vectorstore.from_texts(all_texts, embd, index_name="raptor")
+    # Initialize all_texts with leaf_texts
+    all_texts = leaf_texts.copy()
+
+
+    #Iterate through the results to extract summaries from each level and add them to all_texts
+    for level in sorted(results.keys()):
+        # Extract summaries from the current level's DataFrame
+        summaries = results[level][1]["summaries"].tolist()
+        # Extend all_texts with the summaries from the current level
+        all_texts.extend(summaries)
+
+    #Now, use all_texts to build the vectorstore with PineCone
+
+    from dotenv import load_dotenv
+
+    load_dotenv()
+
+
+asyncio.run(main())
+    
+    #vectorstore = PineconeVectorStore("raptor", embd)
+
+    #vectorstore.from_texts(all_texts, embd, index_name="raptor")
 
