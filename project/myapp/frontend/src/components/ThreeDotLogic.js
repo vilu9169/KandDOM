@@ -63,13 +63,14 @@ export default function SimplePopup({ file }) {
             </span>
           </Button>
           <Button
+            onClick={() => deleteDocument(file.id)}
             className="m-auto my-2 bg-danger w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
           >
             <span className="small text-center justify-content-center d-flex align-items-center w-75">
               Delete Chat
             </span>
             <span className="w-25 justify-content-center d-flex align-items-center">
-              <IoMdTrash className="size-20" onClick={() => deleteDocument(file.id)}/>
+              <IoMdTrash className="size-20" />
             </span>
           </Button>
         </div>
