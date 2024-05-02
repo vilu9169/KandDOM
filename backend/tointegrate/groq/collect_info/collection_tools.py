@@ -20,7 +20,7 @@ tools = {
             },
         },
     },
-    "ny_info_relation": {
+    "ny_information_om_relation": {
         "type": "function",
         "function": {
             "name": "ny_information_om_relation",
@@ -45,8 +45,6 @@ tools = {
             },
         },
     },
-
-
     "ny_gruppering": {
         "type": "function",
         "function": {
@@ -66,14 +64,37 @@ tools = {
                         },
                         "description": "En lista med namn på personer som tillhör grupperingen",
                     },
+                    "information": {
+                        "type": "string",
+                        "description": "En text som innehåller informationen om grupperingen",
+                    },
                 },
-                "required" : ["gruppering", "personer"],
+                "required": ["gruppering", "personer"],
             },
         },
     },
-
-
-    "sök_material" : {
+    "ny_information_om_gruppering": {
+        "type": "function",
+        "function": {
+            "name": "ny_information_om_gruppering",
+            "description": "Använd för att registrera information om en gruppering av personer, t. ex. en familj, företag, organisation etc.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "gruppering": {
+                        "type": "string",
+                        "description": "Namn och beskrivning av grupperingen",
+                    },
+                    "information": {
+                        "type": "string",
+                        "description": "En text som innehåller informationen om grupperingen",
+                    },
+                },
+                "required": ["gruppering", "information"],
+            },
+        },
+    },
+    "sök_material": {
         "type": "function",
         "function": {
             "name": "sök_material",
@@ -107,7 +128,7 @@ tools = {
             },
         },
     },
-    "uppdatera_namn" : {
+    "uppdatera_namn": {
         "type": "function",
         "function": {
             "name": "sätt_namn",
@@ -132,7 +153,7 @@ tools = {
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "finns_sedan_tidigare" : {
+                    "finns_sedan_tidigare": {
                         "type": "boolean",
                         "description": "Om personen finns i arkivet sedan tidigare",
                     },
@@ -145,7 +166,72 @@ tools = {
                         "description": "Kort identifierande text",
                     },
                 },
-                "required": ["finns_sedan_tidigare", "namn", "beskrivning_av_ny_person"],
+                "required": [
+                    "finns_sedan_tidigare",
+                    "namn",
+                    "beskrivning_av_ny_person",
+                ],
+            },
+        },
+    },
+    "lägg_till_info_om_existerande_gruppering": {
+        "type": "function",
+        "function": {
+            "name": "lägg_till_info_om_existerande_gruppering",
+            "description": "Använd för att lägga till information om en sen tidigare känd gruppering av personer",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "namn": {
+                        "type": "string",
+                        "description": "Namnet på den identifierade grupperingen",
+                    },
+                    "index": {
+                        "type": "integer",
+                        "description": "Gruppens index i listan av förslag.",
+                    },
+                    "personer_som_ska_läggas_till": {
+                        "type": "array",
+                        "personer": {
+                            "type": "string",
+                            "description": "Namn på person som inte stod med tidigare men som ska ingå i grupperingen",
+                        },
+                        "description": "En lista med namn på personer som tillhör grupperingen men som inte ingick sedan tidigare",
+                    },
+                },
+                "required": [
+                    "finns_sedan_tidigare",
+                    "namn",
+                    "beskrivning_av_ny_gruppering",
+                ],
+            },
+        },
+    },
+    "skapa_gruppering": {
+        "type": "function",
+        "function": {
+            "name": "skapa_gruppering",
+            "description": "Använd för att skapa en ny gruppering av personer",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "gruppering": {
+                        "type": "string",
+                        "description": "Namnet eller beskrivning av grupperingen",
+                    },
+                    "personer": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                        },
+                        "description": "En lista med namn på personer som tillhör grupperingen",
+                    },
+                    "beskrivning_av_gruppering": {
+                        "type": "string",
+                        "description": "En kort beskrivning av grupperingen",
+                    },
+                    "required": ["gruppering", "personer"],
+                },
             },
         },
     },

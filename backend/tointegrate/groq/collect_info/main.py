@@ -48,6 +48,12 @@ for tool_call in tool_calls:
         name = args["namn"]
         information = args["information"]
         handler.ny_info_person(name, information)
+    elif function.name == "ny_information_om_relation":
+        args = extract_args(tool_call)
+        person1 = args["person1"]
+        person2 = args["person2"]
+        relation = args["beskrivning av relation"]
+        handler.ny_information_om_relation(person1, person2, relation)
     else:
         print(f'{function.name} not implemented yet')
 

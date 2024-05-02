@@ -54,7 +54,7 @@ namnet är kännt. Fokusera på hur personen förhåller sig till andra personer
 
 
 
-tell_if_new_instructions = """Du är en assistent som hjälper användare söka efter personer i ett arkiv.
+tell_if_new_person_instructions = """Du är en assistent som hjälper användare söka efter personer i ett arkiv.
 Användaren har skickat in ett namn som inte var en exakt match bland tidigare namn. Din uppgift är att
 avgöra om det nya namnet är en ny person som ska läggas till i arkivet eller om det är en person som redan
 finns i arkivet. Du får upp till tre alternativ att välja mellan. Du ska sedan använda ett verktyg för att
@@ -65,14 +65,18 @@ förmedla till användaren om personen är ny eller inte.
 
 class Personhandler:
     def __init__(self):
-        self.collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["people"]
-        self.vector_store = MongoDBAtlasVectorSearch(embedding=embedder, collection=collection, index_name="vector_cosine_index")
-        generation_config=GenerationConfig(
+        self.people_collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["people"]
+        self.relations_collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["relations"]
+        self.groups_collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["groups"]
+        self.people_store = MongoDBAtlasVectorSearch(embedding=embedder, collection=self.people_collection, index_name="vector_cosine_index")
+        self.groups_store = MongoDBAtlasVectorSearch(embedding=embedder, collection=self.groups_collection, index_name="vector_cosine_index")
+        config=GenerationConfig(
                 temperature=0.0,
                 candidate_count=1,
             ),
-        self.info_model = GenerativeModel("gemini-1.0-pro", system_instruction=[info_instructions], safety_settings=gemini_unfiltered)
+        self.info_model = GenerativeModel("gemini-1.0-pro", system_instruction=[info_instructions], safety_settings=gemini_unfiltered, generation_config=config)
         self.groq = Groq(api_key=os.environ.get("GROQ_API_KEY")).chat.completions
+        self.summary_model = GenerativeModel("gemini-1.0-pro", system_instruction=[summarize_description_instructions], safety_settings=gemini_unfiltered, generation_config=config)
 
     def ny_info_person(self,alias, new_info):
         person = self._get_current_info(alias)
@@ -84,13 +88,13 @@ class Personhandler:
         
 
     def _get_current_info(self, name) -> Document:
-        person = self.collection.find_one({"name": name})
+        person = self.people_collection.find_one({"name": name})
         if person:
             return person
         else:
-            nearest = self.vector_store.similarity_search(name,k=3)
-            corrected_name = self._check_if_new(name, nearest)
-            return self.collection.find_one({"name": corrected_name})
+            nearest = self.people_store.similarity_search(name,k=3)
+            corrected_name = self._check_if_new_person(name, nearest)
+            return self.people_collection.find_one({"name": corrected_name})
         
     def _update_info(self, old_info, new_info):
         chat = self.info_model.start_chat()
@@ -99,7 +103,7 @@ class Personhandler:
         response = chat.send_message(message).candidates[0].content.text
         print("Updated info: \n"+response)
         try:
-            self.collection.update_one({"info": old_info}, {"$set": {"info": response}})
+            self.people_collection.update_one({"info": old_info}, {"$set": {"info": response}})
             return response
         except Exception as e:
             print(e)
@@ -129,8 +133,8 @@ class Personhandler:
     #         metadata = {"name": name, "info": info}
     #         new_person = Document(page_content=description, metadata=metadata)
     #         try:
-    #             deletion = self.collection.delete_one({"text": current_description})
-    #             self.vector_store.add_documents([new_person])
+    #             deletion = self.people_collection.delete_one({"text": current_description})
+    #             self.people_store.add_documents([new_person])
     #         except Exception as e:
     #             print(e)
     #             print(traceback.format_exc())
@@ -143,8 +147,9 @@ class Personhandler:
     #             print(e)
     #             print(traceback.format_exc())
 
-    def _update_description(self, current_description, new_info, name, info):
-        message = "Nuvarande namn: "+name+"\n"+"**Information om person**\n"
+
+    def _generate_description(self, info):
+        response = self.info_model.generate_content(info)
         try:
             args = extract_args(response.choices[0].message.tool_calls[0])
             description = args["ny_beskrivning"]
@@ -152,8 +157,8 @@ class Personhandler:
             metadata = {"name": name, "info": info}
             new_person = Document(page_content=description, metadata=metadata)
             try:
-                deletion = self.collection.delete_one({"text": current_description})
-                self.vector_store.add_documents([new_person])
+                deletion = self.people_collection.delete_one({"text": current_description})
+                self.people_store.add_documents([new_person])
             except Exception as e:
                 print(e)
                 print(traceback.format_exc())
@@ -167,7 +172,7 @@ class Personhandler:
                 print(traceback.format_exc())
 
 
-    def _check_if_new(self, name, nearest : List[Document]):
+    def _check_if_new_person(self, name, nearest : List[Document]):
         prompt = "Sökning: "+name+"\nAlternativ: "
         for i, option in enumerate(nearest):
             prompt += str(i+1)+". Namn: "+option.metadata["name"]+"Beskrivning: "+option.page_content+"\n"
@@ -175,11 +180,11 @@ class Personhandler:
             messages=[
                 {
                     "role": "system",
-                    "content": tell_if_new_instructions,
+                    "content": tell_if_new_person_instructions,
                 },
                 {
                     "role": "user",
-                    "content": name,
+                    "content": prompt,
                 }
             ],
             tools=[tools["identifiera_person"]],
@@ -193,7 +198,7 @@ class Personhandler:
                 name = args["namn"]
                 metadata = {"name": name, "info": ""}
                 new_person = Document(page_content=args["beskrivning_av_ny_person"], metadata=metadata)
-                self.vector_store.add_documents([new_person])
+                self.people_store.add_documents([new_person])
             else:
                 print("User was identied as "+args["namn"])
             return args["namn"]
@@ -201,3 +206,78 @@ class Personhandler:
             print(e)
             print(traceback.format_exc())
             print("Did not classify person")
+
+
+    def ny_information_om_relation(self, name1, name2, relation):
+        person1 = self._check_if_new_person(name1)
+        person2 = self._check_if_new_person(name2)
+
+        filter = {"person1": person1, "person2": person2}
+        update = {"$concat": {"info": relation}}
+
+        self.relations_collection.update_one(filter, update)
+
+
+    def ny_gruppering(self, name  : str, members : List[str], info : str):
+        group_string = "**Gruppnamn: "+name+"**\nMedlemmar:\n"
+        for person in members:
+            group_string += person+"\n"
+        group_string += "Information om gruppen:"+info
+        group_name, members = self._check_if_new_group(group_string)
+        
+        filter = {"name": group}
+        update = {"$concat": {"members": members}}
+
+        self.people_collection.update_one(filter , update)
+
+    def _check_if_new_group(self, group_string):
+        options = self.groups_store.similarity_search(group_string, k=3)
+        prompt = "Sökning: "+group_string+"\nAlternativ: "
+        for i, option in enumerate(options):
+            prompt += str(i+1)+". Grupp: "+option.metadata["name"]+"Medlemmar: "+option.page_content+"\n"
+        response = self.groq.create(
+            messages=[
+                {
+                    "role": "system",
+                    "content": tell_if_new_group_instructions,
+                },
+                {
+                    "role": "user",
+                    "content": prompt,
+                }
+            ],
+            tools=[tools["lägg_till_info_om_existerande_gruppering"], tools["skapa_gruppering"]],
+            model="mixtral-8x7b-32768",
+        )
+        try:
+            name = response.choices[0].message.tool_calls[0].function.name
+            if name == "skapa_gruppering":
+                print_tool_call(response.choices[0].message.tool_calls[0])
+                args = extract_args(response.choices[0].message.tool_calls[0])
+                name = args["namn"]
+                members = args["members"]
+                metadata = {"name": name, "members" : members, "info": group_string}
+                new_group = Document(page_content=args["beskrivning_av_ny_gruppering"], metadata=metadata)
+                self.groups_store.add_documents([new_group])
+                return name, members
+            elif name == "lägg_till_info_om_existerande_gruppering":
+                print_tool_call(response.choices[0].message.tool_calls[0])
+                args = extract_args(response.choices[0].message.tool_calls[0])
+                name = args["namn"]
+                members = args["members"]
+                if len(members) > 0:
+                    self.groups_collection.update_one({"name": name}, {"$push": {"members": members}})
+                metadata = {"name": name, "members" : members, "info": group_string}
+                new_group = Document(page_content=args["beskrivning_av_gruppering"], metadata=metadata)
+                self.groups_store.add_documents([new_group])
+            else:
+                print("Group was identied as "+args["namn"])
+            return args["namn"]
+        except Exception as e:
+            print(e)
+            print(traceback.format_exc())
+            print("Did not classify group")
+
+
+    def ny_information_om_grupp(self, ):
+        pass
