@@ -16,24 +16,24 @@ tools = {
         "type": "function",
         "function": {
             "name": "skapa_händelse",
-            "description": "Använd för att spara information och tid om en händelse samt vilka sidor man kan läsa om händelsen på.",
+            "description": "Använd för att spara information, tid och sidreferenser till en händelse. Skriv in datum och tid för händelsen, sidor där informationen finns och information om händelsen. Var noga med att skriva på svenska.",
             "parameters": {
                 "type": "object",
                 "properties": {
                     "time": {
                         "type": "string",
-                        "description": "Datum och tid då händelsen inträffade. Skall endast vara en tid per händelse.",
+                        "description": "Datum och tid då händelsen inträffade. Skall endast vara en tid per händelse. Tider ska anges på formatet DD/MM/YY HH:MM",
                     },
                     "pages": {
                         "type": "string",
-                        "description": "Sidorna på vilka man kan återfinna information om händelsen.",
+                        "description": "Sidnummer till sidorna där information om händelsen finns.",
                     },
                     "information": {
                         "type": "string",
                         "description": "Information om händelsen.",
                     },
                 },
-                "required": ["time","pages" , "information"],
+                "required": ["time","pages","information"],
             },
         },
     },
@@ -69,11 +69,11 @@ vectorstore = PineconeVectorStore(
 
 def summarise_gemeni_par(input, index, res):
 
-    cont = "Du är en LLM som hämtar dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem. Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och datum samt tidpunkten när den skede. Var utförlig i händelsebeskrivningarna. Du måste alltid inkludera vilka sidor du hittade informationen. Alla svar måste vara på svenska. Här är materialet du ska behandla  :" + input 
+    cont = "Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem. Alla dina svar måste vara på svenska. Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och datum samt tidpunkten när den skede. Tidpunkter ska vara på formatet Tider ska anges på formen DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska. Du måste alltid inkludera vilka sidor du hittade informationen. Här är materialet du ska behandla  :" + input 
     generation_config = {
-    "max_output_tokens": 8192,
-    "temperature": 0,
-    "top_p": 0.95,
+    "max_output_tokens": 4400,
+    "temperature": 0.1,
+    "top_p": 1,
     }
 
     safety_settings = {
@@ -132,7 +132,7 @@ def handlesplit(split, retvals, i):
                 ],
                 tools = [tools["timelinemaker"]],
                 model="llama3-70b-8192",
-                temperature=0.0,
+                temperature=0.1,
             )
             break
         except Exception as e:
@@ -153,59 +153,6 @@ def handlesplit(split, retvals, i):
                 ret.append({"time": args["time"],"pages": args["pages"] , "information": args["information"]})
         retvals[i] = ret
         pass
-    except Exception as e:
-        print(e)
-        print("No tool calls")
-        pass
-
-
-#Cleans the dates and times by merging and removing duplicates
-def cleandates(dates):
-    #Merge dates
-    instructions = """
-    Du är en funktionsanropande LLM.
-    Du har fått in en samling händelser där det kan finnas duppletter av samma händelse vid samma eller olika tid.
-    Ta bort duppletter. Om händelser skett vid samma tidpunkt och liknar varandra ska de slås samman till en händelse.
-    Svara på svenska. Alla datum och sidreferenser måste bevaras. Se till att sidreferenserna bevaras korrekta.
-    VIKTIGT: Använd ett av verktygen per händelse.
-    """
-    while True:
-        try:
-            events = client.chat.completions.create(
-                messages=[
-                    {
-                        "role": "system",
-                        "content": instructions,
-                    },
-                    {
-                        "role": "user",
-                        "content": dates,
-                    }
-                ],
-                tools = [tools["timelinemaker"]],
-                model="llama3-70b-8192",
-                temperature=0.0,
-            )
-            break
-        except Exception as e:
-            print(e)
-            print("Error during cleaning")
-            #Sleep for 20 seconds
-            sleep(20)
-            continue
-    ret = []
-    try:
-        for tool_call in events.choices[0].message.tool_calls:
-            args = json.loads(tool_call.function.arguments)
-            #Add to dict
-            try :
-                ret.append({"time": parser.parse(args["time"]), "pages":args["pages"], "information": args["information"]})
-            except Exception as e:
-                print(e)
-                print("Could not parse time in cleandates")
-                #print the information
-                print(args["information"])
-        return ret
     except Exception as e:
         print(e)
         print("No tool calls")
@@ -290,11 +237,11 @@ def analyzefromstr(input):
             print("Error parsing time: ", e)
     return struct
 
-# timerstart = time()
-# with open("schizzomord.txt", "r", encoding="utf-8") as file:
-#     filecontents = file.read()
-# res = analyzefromstr(filecontents)
-# print("Time taken: ", time()-timerstart)
-# for elem in res:
-#     print(elem)
-#     print("\n\n")
+timerstart = time()
+with open("schizzomord.txt", "r", encoding="utf-8") as file:
+    filecontents = file.read()
+res = analyzefromstr(filecontents)
+print("Time taken: ", time()-timerstart)
+for elem in res:
+    print(elem)
+    print("\n\n")

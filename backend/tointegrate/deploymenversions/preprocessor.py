@@ -151,7 +151,7 @@ def text_to_rag(new_index_name, text):
     vectorstore = vectorstore.from_documents(splits, embeddings, index_name=new_index_name)
 
 from timelinemaker import analyzefromstr
-#Takes a pdf file and a new index name as input
+#Takes a pdf file path and a new index name as input
 #Extracts text from the pdf file and converts it to RAG which is stored in the new index
 def mainfunk(pdf_file, new_index_name):
     text = ocr_pdf(pdf_file, "sunlit-inn-417922", "eu", "54cf154d8c525451")
