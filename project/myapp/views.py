@@ -235,9 +235,9 @@ from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed, ValidationError
 from .models import User
 from .models import Document
+# from .models import PDFDocument
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken, TokenError
 from rest_framework import status
-from .models import Document
 from .serializers import DocumentSerializer
 
 
@@ -288,6 +288,36 @@ class LogoutView(APIView):
             raise AuthenticationFailed("Invalid Token")
 
 from django.core.files.storage import FileSystemStorage
+from djongo.storage import GridFSStorage
+from django.conf import settings
+from pymongo import MongoClient
+
+@api_view(['POST'])
+def upload_pdf(request):
+    if request.method == 'POST':
+        file_obj = request.FILES.get('file')
+    if file_obj:
+        client = MongoClient()
+        db = client['PythiaDB']
+        gridfs = GridFSStorage(database=db)
+        gridfs._save(file_obj.name, file_obj)
+
+        return Response({'document_id ': str(file_obj)})
+    else:
+        return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
+# @api_view(['POST'])
+# def upload_pdf(request):
+#     if request.method == 'POST':
+#         file_obj = request.FILES.get('file')
+#     if file_obj:
+#         db = settings.DATABASES['default']
+#         # Initialize GridFS storage with the database connection
+#         storage = GridFSStorage(database='PythiaDB', collection='myfiles', base_url=''.join([db['CLIENT']['host'], 'myfiles/']))
+#         file_id = storage.save(file_obj.name, file_obj)
+#         return Response({'document_id ': str(file_id)})
+#     else:
+#         return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['POST'])
 def upload_document(request):
@@ -296,29 +326,27 @@ def upload_document(request):
     if file_obj:
         # Create a new Document instance
         document = Document.objects.create(
-            pdf = file_obj,
-            filename=file_obj.name,
-            content_type=file_obj.content_type,
-            size=file_obj.size,
+            file = file_obj,
+            filename = file_obj.name,
             # file_id= ''  # You may need to provide an appropriate file ID here
         )
         print("Before document.save")
         document.save()
 
         print("document.save complete")
-        user = User.objects.get(id=request.data['userID'])
-        print("User.objects.get(id=request.data['ObjectId']) COMPLETE")
+        # user = User.objects.get(id=request.data['userID'])
+        # print("User.objects.get(id=request.data['ObjectId']) COMPLETE")
         print(document.__id__())
-        user.documents.add(document)  # Add the document ID to the user's documents list
-        user.save()
+        # user.documents.add(document)  # Add the document ID to the user's documents list
+        # user.save()
         
         
-        """print("All users in the database:")
-        for user in User.objects.all():
-            print(user)"""
+        # """print("All users in the database:")
+        # for user in User.objects.all():
+        #     print(user)"""
 
         # You might want to return the ID of the newly created document for future reference
-        return Response({'document_id ': str(document._id)})
+        return Response({'document_id ': str(document.id)})
     else:
         return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
     
@@ -328,3 +356,4 @@ def get_documents(request):
     documents = user.documents.all()
     serializer = DocumentSerializer(documents, many=True)
     return Response(serializer.data)
+    
