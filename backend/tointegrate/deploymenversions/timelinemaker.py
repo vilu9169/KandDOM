@@ -237,11 +237,11 @@ def analyzefromstr(input):
             print("Error parsing time: ", e)
     return struct
 
-timerstart = time()
-with open("schizzomord.txt", "r", encoding="utf-8") as file:
-    filecontents = file.read()
-res = analyzefromstr(filecontents)
-print("Time taken: ", time()-timerstart)
-for elem in res:
-    print(elem)
-    print("\n\n")
+# timerstart = time()
+# with open("schizzomord.txt", "r", encoding="utf-8") as file:
+#     filecontents = file.read()
+# res = analyzefromstr(filecontents)
+# print("Time taken: ", time()-timerstart)
+# for elem in res:
+#     print(elem)
+#     print("\n\n")
