@@ -158,10 +158,12 @@ def mainfunk(pdf_file, new_index_name):
     text_to_rag(new_index_name, text)
     #After text to rag run timelinemaker
     res = analyzefromstr(text)
-    print(res)
+    #Res contains a dictioary with the timeline, 
+    #Objects in the dictonary have "time", "pages" and "information" fields and are sorted by time
+    # print(res)
 
-print("Name of the file to be converted to RAG: ")
-pdf_file = input()
-print("Name of the new index: ")
-new_index_name = input()
-mainfunk(pdf_file, new_index_name)
+# print("Name of the file to be converted to RAG: ")
+# pdf_file = input()
+# print("Name of the new index: ")
+# new_index_name = input()
+# mainfunk(pdf_file, new_index_name)
