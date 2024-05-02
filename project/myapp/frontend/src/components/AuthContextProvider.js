@@ -44,9 +44,9 @@ const AuthContextProvider = ({children}) => {
     axios.defaults.xsrfCookieName = 'csrftoken'
     axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN'   
 
-    let getTimeLine = async () => {
+    let getTimeLine = async (fileid) => {
         const body = {
-            documentID: currentFile
+            documentID: fileid
         }
         try {
             const {data} = await axios.post(baseURL+"api/get_timeline/", body);

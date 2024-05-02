@@ -26,7 +26,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
     setCurrentFile(fileid);
     localStorage.setItem("currentFile", fileid);
     getChatHistory(fileid);
-    getTimeLine();
+    getTimeLine(fileid);
     setClickedDocument(true);
   };
 
