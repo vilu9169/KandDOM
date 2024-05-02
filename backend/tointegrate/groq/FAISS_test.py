@@ -25,15 +25,13 @@ print(texts)
 
 embedder = VertexAIEmbeddings("textembedding-gecko-multilingual")
 
-db = FAISS.from_texts(["init"], embedder, distance_strategy=DistanceStrategy, ids=[1])
+db = FAISS.from_texts(["init"], embedder, distance_strategy=DistanceStrategy.COSINE, ids=["init"])
 
 db.index_to_docstore_id
 
 db.delete
 
-result  = db.delete([1])
-
-
+result  = db.delete(["init"])
 
 
 print("FAISSING")
