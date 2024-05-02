@@ -17,6 +17,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
 
   const { files, getFiles, currentFile, setCurrentFile } = useContext(AuthContext);
   const { messages, setMessages, getChatHistory } = useContext(ResponseContext);
+  const { timeLine, setTimeline } = useContext(AuthContext);
   const baseURL = process.env.REACT_APP_API_URL;
   const { pinRef } = useContext(ResponseContext);
 

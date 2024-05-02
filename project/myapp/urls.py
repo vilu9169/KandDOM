@@ -20,4 +20,5 @@ urlpatterns = [
     path('api/getchat/', get_chat_history, name='chat_history'),
     path('api/deletefile/', delete_document, name='delete_file'),
     path('api/set_pinned/', set_pinned, name='set_pinned'),
+    path('api/get_timeline/', getTimeLine, name='get_timeline'),
 ]

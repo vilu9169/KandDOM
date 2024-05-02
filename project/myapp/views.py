@@ -608,3 +608,20 @@ def mainfunk(pdf_file, new_index_name):
     text = extract_text_from_pdf(pdf_file)
     print(text)
     text_to_rag(new_index_name, text)
+
+from preprocessor import mainfunk as mainfunk2
+
+@api_view(['POST'])
+def getTimeLine(request):
+    documentID = request.data.get('documentID')
+    try:
+        document = UserDocument.objects.get(_id=ObjectId(documentID))
+    except UserDocument.DoesNotExist:
+        raise ValueError({'error': 'Document not found'})
+    if document.timeline is None:
+        timeline = mainfunk2(str(document.file), str(document.__id__()))
+        document.timeline = timeline
+        document.save()
+    else:
+        timeline = document.timeline
+    return Response({'timeline': timeline})
