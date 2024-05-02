@@ -65,7 +65,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
                         : "icons-container"
                     }`}
                   >
-                    <SimplePopup
+                    <SimplePopup file={file} 
                     />
                     <IoIosArchive
                       className="m-2 archive-icon"

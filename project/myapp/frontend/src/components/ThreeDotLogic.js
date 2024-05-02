@@ -1,12 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { Unstable_Popup as BasePopup } from "@mui/base/Unstable_Popup";
 import { BsThreeDots } from "react-icons/bs";
 import { IoMdCreate } from "react-icons/io";
 import { Container, Button } from "react-bootstrap";
 import { IoMdTrash } from "react-icons/io";
+import axios from "axios";
+import { AuthContext } from "./AuthContextProvider";
 
-export default function SimplePopup({ onDeleteClick }) {
+
+export default function SimplePopup({ file }) {
   const [anchor, setAnchor] = React.useState(null);
+  const { user, getFiles } = useContext(AuthContext);
   const baseURL = process.env.REACT_APP_API_URL;
   const handleClick = (event) => {
     event.stopPropagation(); // Stop propagation to prevent document-button click
@@ -35,10 +39,6 @@ export default function SimplePopup({ onDeleteClick }) {
   const open = Boolean(anchor);
   const id = open ? "simple-popper" : undefined;
 
-  const handleDeleteClick = () => {
-    onDeleteClick();
-    setAnchor(null);
-  };
 
   return (
     <div className="m-2">
