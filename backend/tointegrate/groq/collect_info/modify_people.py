@@ -14,7 +14,7 @@ from typing import List
 
 from util import print_tool_call, extract_args, gemini_unfiltered
 
-from langchain_community import FAISS
+from langchain_community.vectorstores import FAISS
 
 load_dotenv()
 
