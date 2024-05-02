@@ -50,7 +50,7 @@ const AuthContextProvider = ({children}) => {
         }
         try {
             const {data} = await axios.post(baseURL+"api/get_timeline/", body);
-            console.log(data.data);
+            console.log(data);
             setTimeLine(data.timeline);
             console.log("TimeLine:", timeLine);
             return data;
