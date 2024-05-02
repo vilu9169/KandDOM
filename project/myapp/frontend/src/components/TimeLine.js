@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import { Chrono } from "react-chrono";
 import { AuthContext } from "./AuthContextProvider";
 
+
 function TimeLine({ closeTimeline }) {
   const timelineContainerRef = useRef(null);
   const { timeLine } = useContext(AuthContext);
