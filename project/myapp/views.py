@@ -321,6 +321,7 @@ def upload_document(request):
             size=file_obj.size,
             # file_id= ''  # You may need to provide an appropriate file ID here
         )
+        
         print("Before document.save")
         print(document.file)
         document.save()
@@ -331,6 +332,7 @@ def upload_document(request):
         print(document.__id__())
         user.documents.add(document)  # Add the document ID to the user's documents list
         user.save()
+        print(document.)
         
         
         """print("All users in the database:")
