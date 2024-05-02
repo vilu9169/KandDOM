@@ -7,12 +7,17 @@ import { IoMdTrash } from "react-icons/io";
 
 export default function SimplePopup({ onDeleteClick }) {
   const [anchor, setAnchor] = React.useState(null);
-
+  const baseURL = process.env.REACT_APP_API_URL;
   const handleClick = (event) => {
     event.stopPropagation(); // Stop propagation to prevent document-button click
     setAnchor(anchor ? null : event.currentTarget);
   };
-
+  const deleteDocument = async (fileid) => {
+    console.log('fileid:', fileid);
+    const resp = await axios.post(baseURL + 'api/deletefile/', { fileid: fileid, user: user.id });
+    console.log(resp);
+    getFiles();
+  };
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (anchor && !anchor.contains(event.target)) {
@@ -64,7 +69,7 @@ export default function SimplePopup({ onDeleteClick }) {
               Delete Chat
             </span>
             <span className="w-25 justify-content-center d-flex align-items-center">
-              <IoMdTrash className="size-20" />
+              <IoMdTrash className="size-20" onDeleteClick={() => deleteDocument(file.id)}/>
             </span>
           </Button>
         </div>

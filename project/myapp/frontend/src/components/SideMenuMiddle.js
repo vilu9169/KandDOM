@@ -19,22 +19,6 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   const { messages, setMessages, getChatHistory } = useContext(ResponseContext);
   const baseURL = process.env.REACT_APP_API_URL;
   const { pinRef } = useContext(ResponseContext);
-  const deleteDocument = async (fileid) => {
-    console.log('fileid:', fileid);
-    const resp = await axios.post(baseURL + 'api/deletefile/', { fileid: fileid, user: user.id });
-    console.log(resp);
-    getFiles();
-  };
-
-  /*
-  const deleteDocument = async (fileid) => {
-    console.log("fileid:", fileid);
-    const resp = await axios.post(baseURL + "api/deletefile/", {
-      fileid: fileid,
-      user: user.id,
-    });
-  */
-  
 
 
   const chooseDocument = (fileid) => {
@@ -80,7 +64,6 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
                     }`}
                   >
                     <SimplePopup
-                      onDeleteClick={() => deleteDocument(file.id)}
                     />
                     <IoIosArchive
                       className="m-2 archive-icon"
