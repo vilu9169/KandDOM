@@ -69,7 +69,7 @@ export default function SimplePopup({ file }) {
               Delete Chat
             </span>
             <span className="w-25 justify-content-center d-flex align-items-center">
-              <IoMdTrash className="size-20" onDeleteClick={() => deleteDocument(file.id)}/>
+              <IoMdTrash className="size-20" onClick={() => deleteDocument(file.id)}/>
             </span>
           </Button>
         </div>
