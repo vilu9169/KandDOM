@@ -177,7 +177,7 @@ def bettersort(theevents):
         return theevents["time"].timestamp()
 def analyzefromstr(input):
     from langchain.docstore.document import Document
-
+    print("start analyzefromstr")
     doc =  Document(page_content=input, metadata={"source": "local"})
     #Load inputstring as a document
     # Split documents
