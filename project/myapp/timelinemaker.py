@@ -20,7 +20,7 @@ tools = {
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "time": {
+                    "title": {
                         "type": "string",
                         "description": "Datum och tid då händelsen inträffade. Skall endast vara en tid per händelse. Tider ska anges på formatet DD/MM/YY HH:MM",
                     },
@@ -28,7 +28,7 @@ tools = {
                         "type": "string",
                         "description": "Sidnummer till sidorna där information om händelsen finns.",
                     },
-                    "information": {
+                    "cardTitle": {
                         "type": "string",
                         "description": "Information om händelsen.",
                     },
@@ -159,10 +159,10 @@ def handlesplit(split, retvals, i):
             args = json.loads(tool_call.function.arguments)
             #Add to dict
             try :
-                ret.append({"time": parser.parse(args["time"]),"pages": args["pages"] , "information": args["information"]})
+                ret.append({"title": parser.parse(args["title"]),"pages": args["pages"] , "cardTitle": args["cardTitle"]})
             except Exception as e:
                 #Append time anyways
-                ret.append({"time": args["time"],"pages": args["pages"] , "information": args["information"]})
+                ret.append({"title": args["title"],"pages": args["pages"] , "cardTitle": args["cardTitle"]})
         retvals[i] = ret
         pass
     except Exception as e:
