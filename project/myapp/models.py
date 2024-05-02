@@ -10,25 +10,27 @@ from djongo import models as djmodels
 from djongo.models.fields import ArrayReferenceField
 from djongo.storage import GridFSStorage
 
-grid_fs_storage = GridFSStorage(collection='myfiles')
+# class PDFDocument(djmodels.Model):
+#     pdf = GridFSField(collection='myfiles')
 
-class Document(models.Model):
-    _id = djmodels.ObjectIdField()
-    #id = models.BigAutoField( primary_key=True, editable=False, db_column='_id')
-    file= djmodels.FileField(upload_to='pdf/')
+fs = GridFSStorage(collection='myfiles')
+
+# class ObjectIdField(djmodels.Model):
+#     def __init__(self, *args, **kwargs):
+
+class Document(djmodels.Model):
     filename = djmodels.CharField(max_length=255)
-    content_type = djmodels.CharField(max_length=100)
-    size = djmodels.IntegerField()
-    uploaded_at = djmodels.DateTimeField(auto_now_add=True)
-    def __getattribute__(self, attr):
-        return super().__getattribute__(attr)
-    def __id__(self):
-        return self._id
+    #id = models.BigAutoField( primary_key=True, editable=False, db_column='_id')
+    file = djmodels.FileField(upload_to='pdf/', storage = fs)
+    # def __getattribute__(self, attr):
+    #     return super().__getattribute__(attr)
     def __str__(self):
         return self.filename
+    def __id__(self):
+        return self.id
     def save(self, *args, **kwargs):
-        self.id = self._id
-        super(Document, self).save(*args, **kwargs)
+        self.id = self.file
+    #     super(Document, self).save(*args, **kwargs)
     
 class File(models.Model):
     #id = models.BigAutoField( primary_key=True, editable=False, db_column='_id')
@@ -76,10 +78,10 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
     objects = UserManager()
 
-class Document(djmodels.Model):
-    _id = djmodels.ObjectIdField()  # Assuming ObjectId is 24 characters long
-    filename = djmodels.CharField(max_length=255)
-    pdf=djmodels.FileField(upload_to='pdfs', storage=grid_fs_storage)
-    content_type = djmodels.CharField(max_length=100)
-    size = djmodels.IntegerField()
-    uploaded_at = djmodels.DateTimeField(auto_now_add=True)
+# class Document(djmodels.Model):
+#     _id = djmodels.ObjectIdField()  # Assuming ObjectId is 24 characters long
+#     filename = djmodels.CharField(max_length=255)
+#     pdf=djmodels.FileField(upload_to='pdfs', storage=grid_fs_storage)
+#     content_type = djmodels.CharField(max_length=100)
+#     size = djmodels.IntegerField()
+#     uploaded_at = djmodels.DateTimeField(auto_now_add=True)
