@@ -156,6 +156,7 @@ const AuthContextProvider = ({children}) => {
         timeLine:timeLine,
         setTimeLine:setTimeLine,
         setCurrentFile:setCurrentFile,
+        getTimeLine:getTimeLine,
         getFiles:getFiles,
         loginUser:loginUser,
         logoutUser:logoutUser,
