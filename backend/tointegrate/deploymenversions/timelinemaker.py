@@ -40,10 +40,13 @@ tools = {
 }
 
 
-client = Groq(
-    api_key="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",
-)
-pc = Pinecone(api_key="2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
+
+
+groqalts = ["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", "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","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","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"]
+groqind = 0
+
+
+pc = Pinecone(api_key = "2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
 index_name = "gbgmordforsok"
 index = pc.Index(index_name)  
 
@@ -108,6 +111,12 @@ def summarise_gemeni_par(input, index, res):
      
 #Handles parsing a split using functions in LLAMA3 hosted on Groq
 def handlesplit(split, retvals, i):
+    global groqind, groqalts
+    gind = groqind
+    galts = groqalts
+    client = Groq(
+    api_key=galts[gind],
+    )
     if(len(split) == 0):
         retvals[i] = []
         return
@@ -138,8 +147,11 @@ def handlesplit(split, retvals, i):
         except Exception as e:
             print(e)
             print("Error during split handling")
-            #Sleep for 20 seconds
-            sleep(20)
+            #Switch to next key
+            gind += 1
+            if(gind == len(galts)):
+                gind = 0
+            client = Groq(api_key=galts[gind])
             continue
     ret = []
     try:
