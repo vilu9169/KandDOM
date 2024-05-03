@@ -14,7 +14,7 @@ from typing import List
 
 from util import print_tool_call, extract_args, gemini_unfiltered
 
-from langchain_community.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS, DistanceStrategy
 
 load_dotenv()
 
@@ -33,7 +33,7 @@ behöver du inte förändra något. Lägg aldrig till något som inte står blan
 Viktigt: Svara bara med den nya versionen av informationen, skriv INTE att du har uppdaterat informationen eller andra kommentarer, det förstör i arkivet!
 """
 
-# depricated
+# depricated, not used
 description_instructions = """ 
 Du är en assistent som hanterar ett arkiv som sparar information om personer. För att identifiera
 personer i arkivet används en kortfattad beskrivning av personen. Du har fått ny information om
@@ -68,21 +68,27 @@ Din uppgift är att avgöra om den nya gruppen är en ny grupp som ska läggas t
 Du får upp till tre alternativ bland tidigare kända grupper att välja mellan. Om gruppen finns i arkivet sedan tidigare ska du lägga till den nya informationen om gruppen 
 till den existerande gruppen samt lägga till de medlemmar som inte är med i gruppen sedan tidigare. Om gruppen är ny ska du skapa en ny grupp med den nya informationen."""
 
+class Relation:
+    def __init__(self, person1, person2, info):
+        self.person1 = person1
+        self.person2 = person2
+        self.info = info
 
 class Personhandler:
-    def __init__(self):
+    def __init__(self, embedder):
         self.people_collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["people"]
         self.relations_collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["relations"]
         self.groups_collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["groups"]
-        self.people_store = MongoDBAtlasVectorSearch(embedding=embedder, collection=self.people_collection, index_name="vector_cosine_index")
-        self.groups_store = MongoDBAtlasVectorSearch(embedding=embedder, collection=self.groups_collection, index_name="vector_cosine_index")
+        self.people_store = FAISS(embedding_function=embedder,distance_strategy=DistanceStrategy.COSINE)#MongoDBAtlasVectorSearch(embedding=embedder, collection=self.people_collection, index_name="vector_cosine_index")
+        self.groups_store = FAISS(embedding_function=embedder,distance_strategy=DistanceStrategy.COSINE)#MongoDBAtlasVectorSearch(embedding=embedder, collection=self.groups_collection, index_name="vector_cosine_index")
+        self.relations_struct : dict[str, Relation] = {}
         config=GenerationConfig(
                 temperature=0.0,
                 candidate_count=1,
             ),
         self.info_model = GenerativeModel("gemini-1.0-pro", system_instruction=[info_instructions], safety_settings=gemini_unfiltered, generation_config=config)
         self.groq = Groq(api_key=os.environ.get("GROQ_API_KEY")).chat.completions
-        self.description_model = GenerativeModel("gemini-1.0-pro", system_instruction=[summarize_description_instructions], safety_settings=gemini_unfiltered, generation_config=config)
+        self.description_model = GenerativeModel("gemini-1.0-pro", system_instruction=[create_description_instructions], safety_settings=gemini_unfiltered, generation_config=config)
 
     def ny_info_person(self,alias, new_info):
         person = self._get_current_info(alias)
@@ -153,13 +159,11 @@ class Personhandler:
     #             print(e)
     #             print(traceback.format_exc())
 
-
-    def _generate_description(self, info):
-        self.description_model.generate_content(info)
-
-
-
-        response = self.info_model.generate_content(info)
+    def _generate_update_description(self, person : Document):
+        info = person.metadata["info"]
+        name = person.metadata["name"]
+        prompt = "Name: "+name+"Information: "+info
+        response = self.description_model.generate_content(prompt)
         try:
             args = extract_args(response.choices[0].message.tool_calls[0])
             description = args["ny_beskrivning"]
@@ -167,7 +171,9 @@ class Personhandler:
             metadata = {"name": name, "info": info}
             new_person = Document(page_content=description, metadata=metadata)
             try:
-                deletion = self.people_collection.delete_one({"text": current_description})
+                deletion = self.people_store.delete([name])
+                if not deletion:
+                    print("ERROR: no deletion during update")
                 self.people_store.add_documents([new_person])
             except Exception as e:
                 print(e)
@@ -281,3 +287,6 @@ class Personhandler:
             print(e)
             print(traceback.format_exc())
             print("Did not classify group")
+
+    def move_to_db():
+        pass

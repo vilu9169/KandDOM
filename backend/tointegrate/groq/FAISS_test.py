@@ -27,9 +27,19 @@ embedder = VertexAIEmbeddings("textembedding-gecko-multilingual")
 
 db = FAISS.from_texts(["init"], embedder, distance_strategy=DistanceStrategy.COSINE, ids=["init"])
 
+
+
+
 db.index_to_docstore_id
 
+
+metadata = {"name" : "eric", "info": "eric är dum"}
+
+doc = Document(page_content="hehehe", metadata=metadata)
+db.add_documents()
+
 db.delete
+
 
 result  = db.delete(["init"])
 
