@@ -105,8 +105,9 @@ def use_tools_on_summary(summary):
                 "content": summary,
             }
         ],
-        tools = [tools["ny_information_om_person"], tools["ny_info_relation"], tools["ny_gruppering"]],
-        model="llama3-70b-8192",
+        tools = [tools["ny_information_om_person"], tools["ny_information_om_relation"], 
+                tools["ny_information_om_gruppering"]],
+        model="llama3-8b-8192",
     )
 
     try:

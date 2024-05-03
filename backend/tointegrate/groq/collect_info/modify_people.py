@@ -1,7 +1,6 @@
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
-from langchain_google_vertexai import VertexAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 from langchain_mongodb import MongoDBAtlasVectorSearch
@@ -22,7 +21,6 @@ dbclient = MongoClient(os.environ.get("MONGO_DB_URI"))
 
 db = dbclient["collected_info"]
 collection = db["people"]
-embedder = VertexAIEmbeddings("textembedding-gecko-multilingual")
 
 info_instructions = """Du är en assistent som hanterar ett arkiv som sparar information om personer
 Du har fått ny information om en person samt den tidigare kända informationen.
@@ -68,44 +66,53 @@ Din uppgift är att avgöra om den nya gruppen är en ny grupp som ska läggas t
 Du får upp till tre alternativ bland tidigare kända grupper att välja mellan. Om gruppen finns i arkivet sedan tidigare ska du lägga till den nya informationen om gruppen 
 till den existerande gruppen samt lägga till de medlemmar som inte är med i gruppen sedan tidigare. Om gruppen är ny ska du skapa en ny grupp med den nya informationen."""
 
+
+def init_FAISS(embedder):
+    db = FAISS.from_texts(["init"], embedder, distance_strategy=DistanceStrategy.COSINE, ids=["init"])
+    db.delete(["init"])
+    return db
+
+
 class Relation:
     def __init__(self, person1, person2, info):
         self.person1 = person1
         self.person2 = person2
         self.info = info
 
+
 class Personhandler:
     def __init__(self, embedder):
+        self.embedder = embedder
         self.people_collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["people"]
         self.relations_collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["relations"]
         self.groups_collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["groups"]
-        self.people_store = FAISS(embedding_function=embedder,distance_strategy=DistanceStrategy.COSINE)#MongoDBAtlasVectorSearch(embedding=embedder, collection=self.people_collection, index_name="vector_cosine_index")
-        self.groups_store = FAISS(embedding_function=embedder,distance_strategy=DistanceStrategy.COSINE)#MongoDBAtlasVectorSearch(embedding=embedder, collection=self.groups_collection, index_name="vector_cosine_index")
+        self.people_store = init_FAISS(self.embedder)#MongoDBAtlasVectorSearch(embedding=embedder, collection=self.people_collection, index_name="vector_cosine_index")
+        self.people_dict : dict[str, Document] = {}
+        self.groups_store = init_FAISS(self.embedder)#MongoDBAtlasVectorSearch(embedding=embedder, collection=self.groups_collection, index_name="vector_cosine_index")
+        self.groups_dict : dict[str, Document] = {}
         self.relations_struct : dict[str, Relation] = {}
-        config=GenerationConfig(
-                temperature=0.0,
-                candidate_count=1,
-            ),
+        config=GenerationConfig(temperature=0.0, candidate_count=1)
         self.info_model = GenerativeModel("gemini-1.0-pro", system_instruction=[info_instructions], safety_settings=gemini_unfiltered, generation_config=config)
         self.groq = Groq(api_key=os.environ.get("GROQ_API_KEY")).chat.completions
         self.description_model = GenerativeModel("gemini-1.0-pro", system_instruction=[create_description_instructions], safety_settings=gemini_unfiltered, generation_config=config)
 
     def ny_info_person(self,alias, new_info):
         person = self._get_current_info(alias)
-        name = person["name"]
-        info = person["info"]
-        description = person["text"]
+        name = person.metadata["name"]
+        info = person.metadata["info"]
+        description = person.page_content
         info = self._update_info(info, new_info)
-        self._update_description(description, new_info, name, info)
+        metadata = {"name": name, "info": info}
+        updated_person = Document(page_content=description, metadata=metadata)
+        self._generate_update_description(updated_person)
         
 
     def _get_current_info(self, name) -> Document:
-        person = self.people_collection.find_one({"name": name})
-        if person:
-            return person
+        search_result = self.people_store.similarity_search(name,k=3)
+        if search_result[0] and search_result[0].metadata["name"] == name:
+            return search_result[0]
         else:
-            nearest = self.people_store.similarity_search(name,k=3)
-            corrected_name = self._check_if_new_person(name, nearest)
+            corrected_name = self._check_if_new_person(name, search_result)
             return self.people_collection.find_one({"name": corrected_name})
         
     def _update_info(self, old_info, new_info):
@@ -175,6 +182,7 @@ class Personhandler:
                 if not deletion:
                     print("ERROR: no deletion during update")
                 self.people_store.add_documents([new_person])
+                self.people_dict.update({name : new_person})
             except Exception as e:
                 print(e)
                 print(traceback.format_exc())
@@ -215,6 +223,7 @@ class Personhandler:
                 metadata = {"name": name, "info": ""}
                 new_person = Document(page_content=args["beskrivning_av_ny_person"], metadata=metadata)
                 self.people_store.add_documents([new_person])
+                self.people_dict.update({name : new_person})
             else:
                 print("User was identied as "+args["namn"])
             return args["namn"]
@@ -271,6 +280,7 @@ class Personhandler:
                 metadata = {"name": name, "members" : members, "info": info}
                 new_group = Document(page_content=args["beskrivning_av_ny_gruppering"], metadata=metadata)
                 self.groups_store.add_documents([new_group])
+                self.groups_dict.update({name : new_group})
                 return name, members
             elif name == "lägg_till_info_om_existerande_gruppering":
                 print_tool_call(response.choices[0].message.tool_calls[0])
@@ -288,5 +298,17 @@ class Personhandler:
             print(traceback.format_exc())
             print("Did not classify group")
 
-    def move_to_db():
-        pass
+    def move_to_db(self):
+        people = self.people_store.similarity_search(".", k=self.people_store.index.ntotal)
+        relations = self.relations_struct.values()
+        groups = self.groups_store.similarity_search(".", k=self.groups_store.index.ntotal)
+        people_db_store = MongoDBAtlasVectorSearch(embedding=self.embedder, collection=self.people_collection, index_name="vector_cosine_index")
+        groups_db_store = MongoDBAtlasVectorSearch(embedding=self.embedder, collection=self.groups_collection, index_name="vector_cosine_index")
+    
+        people_db_store.add_documents([people])
+        groups_db_store.add_documents([groups])
+        relations_to_insert = []
+        for relation in relations:
+            self.description_model.generate_content(relation.info)
+            relations_to_insert.append({"person1": relation.person1, "person2": relation.person2, "info": relation.info})
+        self.relations_collection.insert_many(relations_to_insert)
