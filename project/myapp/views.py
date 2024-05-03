@@ -326,7 +326,7 @@ def upload_document(request):
         print("Before document.save")
         print(document.file)
         document.save()
-        document.timeline = mainfunk2(str(document.file))
+        # document.timeline = mainfunk2(str(document.file))
         document.save()
         # mainfunk(str(document.file), str(document.__id__()))
         print("document.save complete")
