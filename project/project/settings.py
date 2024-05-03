@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','16.171.79.116','ec2-16-171-79-116.eu-north-1.compute.amazonaws.com','13.50.225.96','ec2-13-50-225-96.eu-north-1.compute.amazonaws.com','ec2-13-48-47-249.eu-north-1.compute.amazonaws.com','13.48.47.249','ec2-16-171-70-243.eu-north-1.compute.amazonaws.com','16.171.70.243','ec2-13-49-175-2.eu-north-1.compute.amazonaws.com','13.49.175.2', 'localhost', '127.0.0.1']
 CORS_ORIGIN_WHITELIST = [
-    'http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000',  # Add your frontend URL here
+    # 'http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000',  # Add your frontend URL here
     'http://127.0.0.1:8000',
 ]
 
