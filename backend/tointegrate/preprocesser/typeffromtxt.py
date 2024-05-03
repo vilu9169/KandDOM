@@ -8,7 +8,7 @@ from pinecone import Pinecone, ServerlessSpec
 #from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_text_splitters import CharacterTextSplitter
 
-from google.cloud import documentai
+#from google.cloud import documentai
 import io
 import threading
 
@@ -89,8 +89,13 @@ def mainfunk(file): #, new_index_name):
     ocr_pdf(text)
     #text_to_rag(new_index_name, text)
 
-print("Textfile: ")
-pdf_file = input()
+# print("Textfile: ")
+# pdf_file = input()
 #print("Name of the new index: ")
 #new_index_name = input()
-mainfunk(pdf_file) #, new_index_name)
+#mainfunk(pdf_file) #, new_index_name)
+
+output = extract_text_from_pdf("_pdfs/häleri.pdf")
+
+with open("KandDOM/backend/tointegrate/groq/txts/häleri.txt", "w") as file:
+    file.write(output)
