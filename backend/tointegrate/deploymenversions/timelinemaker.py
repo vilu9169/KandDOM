@@ -16,7 +16,7 @@ tools = {
         "type": "function",
         "function": {
             "name": "skapa_händelse",
-            "description": "Använd för att spara information, tid och sidreferenser till en händelse. Skriv in datum och tid för händelsen, sidor där informationen finns och information om händelsen. Var noga med att skriva på svenska.",
+            "description": "Använd för att spara information, tid och sidreferenser till en händelse från ett visst dokument. Skriv in datum och tid för händelsen, sidor där informationen finns och information om händelsen. Var noga med att skriva på svenska.",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -32,8 +32,12 @@ tools = {
                         "type": "string",
                         "description": "Information om händelsen.",
                     },
+                    "document": {
+                        "type": "string",
+                        "description": "Namnet på dokumentet som händelsen hämtades ifrån.",
+                    }
                 },
-                "required": ["time","pages","information"],
+                "required": ["time","pages","information", "document"],
             },
         },
     },
