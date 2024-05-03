@@ -45,7 +45,7 @@ personen är med i en grupp eller organisation.
 Om personen saknar namn och du vet vad personen heter, använd verktyget "sätt_namn" för att ge personen ett namn.
 """
 
-summarize_description_instructions = """
+create_description_instructions = """
 Du är en assistent som summerar information om en person för att skapa en kort text som identifierar personen. Inkludera alltid namn om 
 namnet är kännt. Fokusera på hur personen förhåller sig till andra personer, grupper och händelser, lägg inte fokus på personens egenskaper.
 """
@@ -57,10 +57,16 @@ namnet är kännt. Fokusera på hur personen förhåller sig till andra personer
 tell_if_new_person_instructions = """Du är en assistent som hjälper användare söka efter personer i ett arkiv.
 Användaren har skickat in ett namn som inte var en exakt match bland tidigare namn. Din uppgift är att
 avgöra om det nya namnet är en ny person som ska läggas till i arkivet eller om det är en person som redan
-finns i arkivet. Du får upp till tre alternativ att välja mellan. Du ska sedan använda ett verktyg för att
+finns i arkivet. Du får upp till tre alternativ bland tidigare kända personer att välja mellan. Du ska sedan använda ett verktyg för att
 förmedla till användaren om personen är ny eller inte.
 """
 
+
+tell_if_new_group_instructions = """
+Du är en assistent som hjälper användare söka efter grupper i ett arkiv. Användaren har skickat in en beskrivning av en grupp som inte var en exakt match bland tidigare grupper. 
+Din uppgift är att avgöra om den nya gruppen är en ny grupp som ska läggas till i arkivet eller om det är en grupp som redan finns i arkivet. 
+Du får upp till tre alternativ bland tidigare kända grupper att välja mellan. Om gruppen finns i arkivet sedan tidigare ska du lägga till den nya informationen om gruppen 
+till den existerande gruppen samt lägga till de medlemmar som inte är med i gruppen sedan tidigare. Om gruppen är ny ska du skapa en ny grupp med den nya informationen."""
 
 
 class Personhandler:
@@ -76,7 +82,7 @@ class Personhandler:
             ),
         self.info_model = GenerativeModel("gemini-1.0-pro", system_instruction=[info_instructions], safety_settings=gemini_unfiltered, generation_config=config)
         self.groq = Groq(api_key=os.environ.get("GROQ_API_KEY")).chat.completions
-        self.summary_model = GenerativeModel("gemini-1.0-pro", system_instruction=[summarize_description_instructions], safety_settings=gemini_unfiltered, generation_config=config)
+        self.description_model = GenerativeModel("gemini-1.0-pro", system_instruction=[summarize_description_instructions], safety_settings=gemini_unfiltered, generation_config=config)
 
     def ny_info_person(self,alias, new_info):
         person = self._get_current_info(alias)
@@ -149,6 +155,10 @@ class Personhandler:
 
 
     def _generate_description(self, info):
+        self.description_model.generate_content(info)
+
+
+
         response = self.info_model.generate_content(info)
         try:
             args = extract_args(response.choices[0].message.tool_calls[0])
@@ -218,19 +228,15 @@ class Personhandler:
         self.relations_collection.update_one(filter, update)
 
 
-    def ny_gruppering(self, name  : str, members : List[str], info : str):
+    def ny_information_om_gruppering(self, name  : str, members : List[str], info : str):
         group_string = "**Gruppnamn: "+name+"**\nMedlemmar:\n"
         for person in members:
             group_string += person+"\n"
         group_string += "Information om gruppen:"+info
-        group_name, members = self._check_if_new_group(group_string)
+        self._check_if_new_group(group_string, info)
         
-        filter = {"name": group}
-        update = {"$concat": {"members": members}}
 
-        self.people_collection.update_one(filter , update)
-
-    def _check_if_new_group(self, group_string):
+    def _check_if_new_group(self, group_string, info):
         options = self.groups_store.similarity_search(group_string, k=3)
         prompt = "Sökning: "+group_string+"\nAlternativ: "
         for i, option in enumerate(options):
@@ -256,7 +262,7 @@ class Personhandler:
                 args = extract_args(response.choices[0].message.tool_calls[0])
                 name = args["namn"]
                 members = args["members"]
-                metadata = {"name": name, "members" : members, "info": group_string}
+                metadata = {"name": name, "members" : members, "info": info}
                 new_group = Document(page_content=args["beskrivning_av_ny_gruppering"], metadata=metadata)
                 self.groups_store.add_documents([new_group])
                 return name, members
@@ -267,9 +273,7 @@ class Personhandler:
                 members = args["members"]
                 if len(members) > 0:
                     self.groups_collection.update_one({"name": name}, {"$push": {"members": members}})
-                metadata = {"name": name, "members" : members, "info": group_string}
-                new_group = Document(page_content=args["beskrivning_av_gruppering"], metadata=metadata)
-                self.groups_store.add_documents([new_group])
+                self.groups_collection.update_one({"name": name}, {"$concat": {"info": info}})
             else:
                 print("Group was identied as "+args["namn"])
             return args["namn"]
@@ -277,7 +281,3 @@ class Personhandler:
             print(e)
             print(traceback.format_exc())
             print("Did not classify group")
-
-
-    def ny_information_om_grupp(self, ):
-        pass
