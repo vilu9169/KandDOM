@@ -19,6 +19,7 @@ class Document(models.Model):
     content_type = djmodels.CharField(max_length=100)
     size = djmodels.IntegerField()
     uploaded_at = djmodels.DateTimeField(auto_now_add=True)
+    timeline = djmodels.JSONField()
     def __getattribute__(self, attr):
         return super().__getattribute__(attr)
     def __id__(self):

@@ -16,6 +16,7 @@ const AuthContextProvider = ({children}) => {
     const navigate = useNavigate()
     const [files, setFiles] = useState(localStorage.getItem('files') ? JSON.parse(localStorage.getItem('files')) : []);
     const [currentFile, setCurrentFile] = useState(localStorage.getItem('currentFile') ? localStorage.getItem('currentFile') : null);
+    const [timeLine, setTimeLine] = useState([]);
 
     const baseURL = process.env.REACT_APP_API_URL
 
@@ -42,6 +43,22 @@ const AuthContextProvider = ({children}) => {
     };
     axios.defaults.xsrfCookieName = 'csrftoken'
     axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN'   
+
+    let getTimeLine = async (fileid) => {
+        const body = {
+            documentID: fileid
+        }
+        try {
+            const {data} = await axios.post(baseURL+"api/get_timeline/", body);
+            console.log(data);
+            setTimeLine(data.timeline);
+            console.log("TimeLine:", timeLine);
+            return data;
+        }
+        catch (error) {
+            console.error("Error fetching timeline:", error);
+        }
+    }
 
     let loginUser = async (e) => {
             e.preventDefault()
@@ -136,7 +153,10 @@ const AuthContextProvider = ({children}) => {
         files:files,
         signupError:signupError,
         currentFile:currentFile,
+        timeLine:timeLine,
+        setTimeLine:setTimeLine,
         setCurrentFile:setCurrentFile,
+        getTimeLine:getTimeLine,
         getFiles:getFiles,
         loginUser:loginUser,
         logoutUser:logoutUser,

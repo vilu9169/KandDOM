@@ -1,484 +1,1151 @@
-FörundersökningsprotokollÅklnr
-AM-56591-08
+{pagestart nr 1}1
+Polisen
+Enhet
+Förundersökningsprotokoll
+Region Syd, Utredningsjour 7 PO Malmö
+Handläggare (Protokollförare)
+Amelia Isaksson
+Undersökningsledare
+Amelia Isaksson
+Polisens diarienummer
+5000-K284928-23
+Personer i ärendet
+Målsägande
+Matbutiken I Värnhem Ab
+Förtursmål
+Nej
+Ersättningsyrkanden
+Finns ej
+Misstänkt (Efternamn och förnamn)
+Friman, Kati Marjan Gina Danica
+Brott
+Ringa stöld
+Arkiv/Åkl. ex
+Beslag
+Företrädare
+Åklnr
+Signerat av
+Amelia Isaksson
+Signerat datum GSRÄTT
+2023-03-24 17:11
+INKOM: 2023-04-06
+Datu LNR: B 3972-23
+2023+03-212
+Målsägande vill bli underrättad om tidpunkt för huvudförhandlingen
+Nej
+Tolk krävs
+Personnummer
+19950822-3584
+Förhandsgodkännande enligt RB 48:10
+Nej
+Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
+2023-03-10
+Information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt är överlämnad vid ett personligt sammanträffande
+Underrättad om slutförd förundersökning / utredning enligt RB 23:18a
+2023-03-13, skriftlig underrättelse genom lösbrev
+Yttrande senast (rådrum)
+2023-03-22
+Resultat av slutunderrättelse
+Har inte avhörts
+Försvarare
+Önskas ej
+Underrättad om slutförd förundersökning / utredning
+Yttrande senast (rådrum)
+Resultat av slutunderrättelse
+Misstänkt (Efternamn och förnamn)
+Friman, Tanja Tamara
+Brott
+Ringa stöld
+Personnummer
+19640510-0287
+Förhandsgodkännande enligt RB 48:10
+Nej
+Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
+Information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt är överlämnad vid ett personligt sammanträffande
+Underrättad om slutförd förundersökning / utredning enligt RB 23:18a
+2023-03-13, skriftlig underrättelse genom lösbrev
+Yttrande senast (rådrum)
+2023-03-22
+Resultat av slutunderrättelse
+Har inte avhörts
+Försvarare
+Begärd, namnges senare
+Underrättad om slutförd förundersökning / utredning
+Yttrande senast (rådrum)
+Resultat av slutunderrättelse
+{pageend nr 1}{pagestart nr 2}Brott i ärendet
+Brottsbeskrivning
+Ringa stöld
+Brottsplatsadress
+Ica Supermarket Värnhem, Östra Förstadsgatan
+50, Malmö
+Aktör
+Friman, Kati Marjan Gina Danica
+Friman, Tanja Tamara
+Matbutiken I Värnhem Ab
+Tullgren, Anna Seema
+Notering
+Övervaknings film finns.
+Händelse inträffad
+Händelse inträffad mellan
+2023-03-10
+Roll
+Misstänkt
+Misstänkt
+Målsägande
+Vittne
+2
+{pageend nr 2}{pagestart nr 3}Diarienr
+Uppgiftstyp
+Anmälan
+5000-K284928-23
+Anmälan
+3
+Innehållsförteckning
+Sida
+Bilaga: Ursprunglig anmälan
+Fotografier
+Fotografi(er) Kvitto samt tillgripet gods......
+Fotografi(er) Kvitto på betalda varor..
+Fotografi(er) Tanja Friman.……………………
+Fotografi(er) Kati Friman.………………..
+Förhör vittne
+Förhör med vittne, Tullgren, Anna Seema
+4
+6
+14
+15
+19
+25
+Förhör misstänkt
+Förhör med misstänkt, Friman, Kati Marjan Gina Danica
+Förhör med misstänkt, Friman, Tanja Tamara
+26
+28
+Personalia
+Bilaga skäligen misstänkt, Friman, Kati Marjan Gina Danica………......
+30
+Personalia, Friman, Kati Marjan Gina Danica………………………..
+31
+Bilaga skäligen misstänkt, Friman, Tanja Tamara....
+32
+Personalia, Friman, Tanja Tamara……....
+33
+{pageend nr 3}{pagestart nr 4}Polisen
+Huvudanmälan
+5000-K284928-23
+Anmälningsuppgifter
+Anmälningsdatum: 2023-03-10 14:24
+Anmälningssätt: Telefon
+Enhet: 561520IG6, BF-IGV 6 LPO Malmö Söder
+Anmälningsansvarig: Lundgren, Lina
+Brott/Händelse
+Brott/Benämning: Ringa stöld
+Variant: Ringa stöld
+Brottsform: Fullbordat
+Rubricering: Ringa stöld
+Ica Supermarket Värnhem, Östra Förstadsgatan 50, Malmö
+t.o.m Fredag 2023-03-10 12:10
+Misstänkta personer:
+Friman, Kati Marjan Gina Danica
+Medverkansform: Gärningsman
+Friman, Tanja Tamara
+Medverkansform: Gärningsman
+Övriga aktörer:
+Matbutiken I Värnhem Ab
+Tullgren, Anna Seema
+Fritext
+INLEDNING
+Målsägande
+Vittne
+Patrull 65-3650 blev beordrade till Ica Supermarket med anledning av en ringa stöld. .
+BROTTET
+Kati och Tanja har tillsammans och i samförstånd tillgripit varor till ett värde av 488,6kr och sedan
+passerat sista betalningsmöjligheten utan att betala.
+ÖVERVAKNINGSKAMEROR
+Finns, avfilmat. Se Filip.
+TILLGRIPET GODS
+Se kvitto i FILIP.
+{pageend nr 4}{pagestart nr 5}TVÅNGSMEDEL
+Butikspersonal August envarsgrep Kati och Tanja 2023-03-10 kl. 12:10. Prövat och hävt kl 12:35 av
+Pa Hansen.
+ERSÄTTNINGSANSPRÅK
+Finns ej, varorna återlämnade till butiken.
+ÖVRIGT
+Bilder i Filip.
+5
+{pageend nr 5}{pagestart nr 6}Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+Polisen
+Datum
+ANTECKNINGAR
+2023-03-10
+Diarienummer
+5000-K284928-23
+Bildbilaga
+Kvitto på tillgripet gods samt bilder på det tillgripna godset.
+6
+Sida 1 (8)
+{pageend nr 6}{pagestart nr 7}Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+1. Kvitto över tillgripna varor.
+Värnhem
+ICA
+Supermarket
+Östra Förstadsgatan 50
+212 12 Malmö
+Tel.nr. 040-101230
+Org.nr. 559027-0723
+Säljare: 
+134
+Datum: 2023-03-10
+Kassa: 01 Nr: 8345
+Tid: 12:27
+Ref. 4401597601001285500310237
+PARKERAT KVITTO
+Blåbär
+Burrata
+Caesarsallad
+Frukostknäckebröd
+Gräddost mild
+Majskorn
+Mat&Bak
+Pesto solt. tomat
+Plommontomat
+Rökt Prickig Korv
+Stjärnor Cheese
+Tonfisk i olja
+Tulpan 15p
+5,00
+36,95
+54,95
+20,00
+29,95
+19,95
+21,95
+15,00
+39,95
+10,00
+20,95
+15,95
+198,00
+2st*99,00
+Registrerade artiklar för 488,60
+Alla registrerade kuponger och
+pant returkvitton ska återlämnas
+till kunden.
+Vid återtag av kvitto kan ev.
+kombinationsrabatter påverkas.
+TACK FÖR BESÖKET!
+VÄLKOMMEN ATER
+E-presentkort bytes ej.
+E- presentkort reklameras hos utgivaren
+בי
+7
+Sida 2 (8)
+{pageend nr 7}{pagestart nr 8}NYB
+Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+ti papper
+ba
+120
+стрид
+04-06-2923
+13 neagr
+EKSTRÖMS
+01-05-2022
+613 16307
+EKSTRÖMS
+MSKAKAS!
+EKSTRÖMS
+NIUTNING SEDAN 1848
+OMSKAKAS
+EKSTRÖMS
+NJUTNING SEDAN 1848
+R KLASSISKA
+SAFT
+OPPA
+IN PAC-VITAMIN
+Cod smak
+VÅR KLASSISKA
+SAFT
+SOPPA
+RIK PA C-VITAMIN
+God smak
+g ur tiden
+ICA
+Ägg 10st
+Från frigående höns inomhus
+*A*A
+FRÅN SVENSKA GARDAR
+SVERIGE
+SVERIGE
+Storlek
+M-L
+OMPENSERADE AGG 997 OVERS
+2. Varor som de misstänkta betalade för.
+OMSKAKAS!
+CA
+SÖTA & VITKÖTTIGA
+BLÅBÄR
+125g
+ICA AB. Box 4075. 169 04 Solna, Sverige.
+Kundkontakt: 020-83 33 33 eller 
+ICA.se
+Sorteras som plastförpackning
+.
+KLASS 1. Packade för
+Sort: Legacy
+Ursprung: Chile
+NL72794
+Batch:L0803
+7 318693 254055
+L003S
+NA LANDSKAP
+Sida 3 (8)
+8
+{pageend nr 8}{pagestart nr 9}3. Tillgripet gods.
+Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+wasa
+KIVIKS
+37
+Ett et
+B
+Sida 4 (8)
+9
+{pageend nr 9}{pagestart nr 10}Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+a.
+Was
+4.
+wasa
+94291
+10
+Sida 5 (8)
+{pageend nr 10}{pagestart nr 11}Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+Blomsterboda
+15 tulpaner
+HALIBARA B cre
+TRAN LOKALA COUN
+DACARS
+CARMITI
+SACTSUND
+$15808 91686
+5. Tillgripet gods.
+Blomsterboda
+15 tulpaner
+ww
+DACARS
+CARANTY
+WELCKE
+LOKA
+HAV
+11
+FRUK
+Estre
+1434
+wasa
+iveco
+EKOLOGISK
+PLOMMONTOMATER
+400 g
+SINCE 1919
+FRU
+/VETEKNACH
+RIK PA 
+FIB
+Cheese
+& ONION
+Fantastiskt,
+sproda
+iveco
+1,5 KG
+01
+188/0
+33
+45100
+0950119
+373010050950113116
+Supe
+Värnh
+måndag-söndag.
+Vi ses!
+speciellt utvalda för dig (och alla andra
+Välkommen! Denna vecka har vi ett helt ging n
+Telefon 040-101230
+DRYIN
+Ica.se/supermarket/varnhem
+Inspireras på
+85g
+CA Hemm
+Felj oss på f
+BREDBAR
+Lönneberga
+LEVERPASTEJ
+ORIGINAL
+Sida 6 (8)
+{pageend nr 11}{pagestart nr 12}Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+12
+nad forpocke
+% Off (Dup
+21.12.22 - 21.04.23 0
+FORVARING & MALL
+7 318690 07171
+FISK
+INFORM
+butatun
+50/70
+ICA
+Sart Brightwe
+BLÅBÄR
+SOTA & VITKÖTTIGA
+125g
+S
+SVEDRAN
+Petters
+LLA
+A KORV
+OVER BOKSPAN
+106
+6. Tillgripet gods.
+Sida 7 (8)
+{pageend nr 12}{pagestart nr 13}Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+MARIER
+ASSVER
+113
+ଧy8y78
+ขยาย
+FOLLOW
+7. Tillgripet gods.
+KOTT FRAN
+SVERIGE
+Petters
+A
+KORV
+OVER BOKSPAN
+FEAN GEBORG SEDAN 1936
+ICA
+CAESARSALLAD
+MED KYCKLING,
+GRANA 
+PADANO
+, BACON
+OCH 
+CAESARDRESSING
+SVENSK KYCKLING
+270g
+13
+Sida 8 (8)
+{pageend nr 13}{pagestart nr 14}Fotografi(er)
+Kvitto på betalda varor
 Signerat av
 Signerat datum
-Polismyndighet
-Dalarna
+Polisen
 Enhet
-KA Avesta
-Handläggare (Protokollförare)
-Polisinspektör Maria DeljerudDatum
-2008-07-16
-Undersökningsledare
-Vice Chefsåklagare Patrik Säflund
-Bitr. undersökningsledare
-Kammaråklagare Ann-Charlotte Ädling
-Polisens diarienummer
-2000-K8431-08
-Målsägande Målsägandebiträde/Stödperson/Särskild företrädare
-Forsström, Torbjörn Wikner, Catarina, förordnad 2008-04-17
-Höglund, Carina Wikner, Catarina, förordnad 2008-04-17
-Juncosa Höglund, Engla
-Juncosa Höglund, Sol Wikner, Catarina, förordnad 2008-04-17
-Juncosa Crespo, Antonio
-Förtursmål
-NejBeslag
-FinnsMålsägande vill bli underrättad om tidpunkt för huvudförhandlingen
-Nej
-Ersättningsyrkanden Tolk krävs
-Misstänkt (Efternamn och förnamn)
-Eklund, Per AndersPersonnummer
-19650806-7532
-Brott
-Grov våldtäkt, Mord
-Underrättelse om utredning enligt RB 23:18 Underrättelse Yttrande Underrättelse
-utsänd senast slutförd
-2008-07-16 2008-07-14Underrättelsesätt, misstänkt
-Utredningen delgiven mt Eklund 08-07-09 t.o.m
-08-07-14.
-Försvarare
-Leif Silbersky, förordnad 2008-04-08  2008-07-16 2008-07-14
-Underrättelsesätt, försvarare
-Utredningen delgiven försvararen successivt från 08-06-25
-t.o.m 08-07-14Resultat av underrättelse mt
-Ej erinranResultat av underrättelse försv
-Ej erinran
-Utredningsuppgifter/Redovisningshandlingar
-Diarienr Uppgiftstyp Sida
-Anmälan
-2000-K8431-08 Anmälan A1.......................................................................................................... 1
-Bilaga: Ursprunglig anmälan
-Primärrapport C 126 Primärrapport - Dödsfall / Engla....................................... 4
-Första förhör med mt
-Förhör S 30-a - Mt Eklund Anders 08-04-07 .................................................. 5
-Personalia
-Bilaga skäligen misstänkt, Eklund, Per Anders.................................................... 8
-Personalia, Eklund, Per Anders............................................................................ 9ERSÄTTNINGSANSPRÅK
-Preciseras  senare i samråd med målsägandebiträde.1
-Brottsanmälan
-A1Signerad av
-Signerad datum
-Polismyndighet
-Dalarna
+Region Syd, BF-IGV 6 LPO Malmö Söder
+Originalhandlingens förvaringsplats
+Involverad personal
+Amelia Isaksson
+Datum
+2023-03-10
+Funktion
+Diarienr
+5000-K284928-23
+Tid
+15:35
+Uppgiftslämnare
+14
+{pageend nr 14}{pagestart nr 15}Fotografi(er) Tanja Friman, 2023-03-10 17:24 diarienr: 5000-K284928-23
+Polisen
+Datum
+2023-03-10
+ANTECKNINGAR
+Tanja Friman, 640510-0287.
+Bildbilaga
+Diarienummer
+5000-K284928-23
+15
+Sida 1 (4)
+{pageend nr 15}{pagestart nr 16}Fotografi(er) Tanja Friman, 2023-03-10 17:24 diarienr: 5000-K284928-23
+11/0
+Estrella
+45100
+HET! NYHET
+UGNS
+AKAD
+CHIPS-
+Estrella
+ella L
+Estrella
+Estrella
+15%
+Estrella
+95%
+wasa
+Sohrrec
+Estrella
+Estrella
+Estrella
+Eua
+wasa
+Ägg
+EAT NAT
+a bar of nuts and
+...and nothing d
+Simple...ism
+NATURAL
+alhes
+Simple... Isn't it?
+wasaZ
+EAT NATUR
+a bar of nuts and fruit
+...and nothing dodgy.
+Simple...isn't it?
+www.eatnatural.co.uk
+1. Bild på misstänkt Tanja. Beslut fotografering JFUL J. Bladh.
+16
+PR
+EAT
+ab
+Simp
+TEI
+Sida 2 (4)
+{pageend nr 16}{pagestart nr 17}Fotografi(er) Tanja Friman, 2023-03-10 17:24 diarienr: 5000-K284928-23
+11/3
+45100
+Estrella
+NYHET! NYHET!
+UGNS
+AKAD
+Estrella
+Estrella
+Condi
+Estrella
+M
+Boercream
+Estrella
+13%
+15%
+Estrella
+Estrella
+Estrella
+ula
+O'Pate
+2. Bild på misstänkt Tanja. Beslut fotografering JFUL J. Bladh.
+-
+17
+EAT NATU
+a bar of nuts and
+...and nothing de
+Simple...isn
+EAT
+TURAL
+be of sand
+doties tot
+Simple...Isn't it?
+EAT NATU
+a bar of nuts and fruit
+...and nothing dodgy.
+Simple...isn't it
+www.eatnatural.co.uk
+Sida 3 (4)
+{pageend nr 17}{pagestart nr 18}Fotografi(er) Tanja Friman, 2023-03-10 17:24 diarienr: 5000-K284928-23
+45100
+Estrella
+NYHET! NYHET
+UGNS
+AKAL
+Estrella
+Estrella
+Estrella
+18
+Simple....isn
+Estrella
+13%
+93%
+EAT NAT
+a bar of nuts and
+...and nothing de
+Simple...isn
+EAT N
+Estrella
+Estrella
+Estrella
+Eula
+3. Bild på misstänkt Tanja. Beslut fotografering JFUL J. Bladh.
+EAT N
+a bar of nut
+...and nothi
+Simple...
+wwwwww.eatnatura
+EAT
+HATURAL
+EIN
+Sida 4 (4)
+{pageend nr 18}{pagestart nr 19}Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
+Polisen
+Datum
+2023-03-10
+ANTECKNINGAR
+Kati Friman, 950822-3584
+Bildbilaga
+Diarienummer
+5000-K284928-23
+19
+Sida 1 (6)
+{pageend nr 19}{pagestart nr 20}Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
+20
+1. Misstänkt Kati. Beslut foto jful Bladh.
+Sida 2 (6)
+{pageend nr 20}{pagestart nr 21}Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
+21
+#0
+2. Misstänkt Kati. Beslut foto jful Bladh.
+Sida 3 (6)
+{pageend nr 21}{pagestart nr 22}Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
+22
+3. Misstänkt Kati. Beslut foto jful Bladh.
+Sida 4 (6)
+{pageend nr 22}{pagestart nr 23}Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
+23
+4. Misstänkt Kati. Beslut foto jful Bladh.
+Sida 5 (6)
+{pageend nr 23}{pagestart nr 24}Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
+24
+5. Misstänkt Kati. Beslut foto jful Bladh.
+Sida 6 (6)
+{pageend nr 24}{pagestart nr 25}Polisen
 Enhet
-LKJDiarienr
-2000-K8431-08
-Anmält datum
-2008-04-05Registreringsdatum
-2008-04-06Överförd från RAR
-2008-04-06
-Brottsplats
-STJÄRNSUND - TORSÅKER, LV 764 764
-STJÄRNSUNDOmrådeskod
-0103000083
-Brottstid
-Lördag 2008-04-05 14:20 - Lördag 2008-04-05 14:35
-Brottsbeskrivning Brottskod Antal
-Grov våldtäkt 0652 1
-Mord 0310 1
-Människorov 0404 1
-Involverade personer Roll
-Forsström, Torbjörn Målsägande
-Höglund, Carina Målsägande
-Juncosa Crespo, Antonio Målsägande
-Juncosa Höglund, Engla Målsägande
-Juncosa Höglund, Sol Målsägande
-Höglund, Carina Anmälare
-Eklund, Per Anders Misstänkt
-Boquist, Emelie Christina Annan
-Höglund, Carina Helen Uppgiftslämnare
-Köpmans, Karin Emma Annan
-Rodin Olofsson, Susanne Margaretha Elisabeth Annan
-Involverad personal Funktion
-Friberg Marie Anmälningsupptagare
-Lundqvist Mikael Handläggare (RAR)
-Fritext grundanmälan
-BROTTET
-Engla försvann på väg hem från Stjärnsund, efter att ha varit och spelat 
-fotboll.
-I övrigt se förhör i DurTvå.2
-A N M Ä L A N                     ARKIVEXEMPLAR   
-                                                               2008-04-06 09.22
- Polismyndigheten                                              2000-K8431-08   
- DALARNA                                                       Sida: 1         
- ------------------------------------------------------------------------------
- Anm.upptagande p-mynd: DALARNA                           Dnr: 2000-K8431-08   
- Enhet: LKJ         Myndighetskod: 2000      Dnr annan p-mynd:                 
- Anmälningsdatum: 2008-04-05 kl: 19.45  Anmälningssätt: Polisman i tjänst      
- Upptagen av:     Inspektör Marie Friberg                                      
- Inskriven av:    Inspektör Marie Friberg                                      
- Inskriven:       2008-04-06 kl: 00.10  Handl. p-mynd: DALARNA                 
- Enhet:           LKJ                                                          
- ------------------------------------------------------------------------------
- BROTTSPLATS                                      Områdeskod: 0103000083       
-                                                                               
- STJÄRNSUND - TORSÅKER, LV 764 764, STJÄRNSUND                                 
- ------------------------------------------------------------------------------
- BROTTSTID                                                                     
-                                                                               
- Lördag 2008-04-05 kl 14.20 t.o.m Lördag 2008-04-05 kl 14.35                   
- ------------------------------------------------------------------------------
- BROTT/HÄNDELSE                                                           1.40 
-                                                                Brottskod  Ant 
- Människorov                                                         0404    1 
- ------------------------------------------------------------------------------
- SAMMANDRAG                                                                    
-                                                                               
- MÅLSÄGANDE:                               MISSTÄNKT:                          
- JUNCOSA HÖGLUND, ENGLA                                                        
-                                                                               
- ANMÄLARE:                                 ÖVRIGT:                             
- HÖGLUND, CARINA                           Fritext                             
-                                                                               
- VITTNE:                                                                       
-                                                                               
-                                                                               
- BILAGOR:                                                                      
- Förhör i DurTvå                                                               
-                                                                               
- ------------------------------------------------------------------------------
- FRITEXT                                                                       
-                                                                               
- BROTTET                                                                       
- Engla försvann på väg hem från Stjärnsund, efter att ha varit och spelat      
- fotboll.                                                                      
- I övrigt se förhör i DurTvå.                                                  
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
- ------------------------------------------------------------------------------
- Länskriminaljouren           Besöksadress: Kristinegatan 26                   
- Box 739                      Faxnr: 023-460 56                                
- 791 29 FALUN                 Handläggande enhet: Länskriminaljouren           
- Tfn: 114 14                  Handläggare: Kommissarie Mikael Lundqvist        
- E-post: polismyndigheten@dalarna.police.se                                    3
-                             A N M Ä L A N                     ARKIVEXEMPLAR   
-                                                               2008-04-06 09.22
- Polismyndigheten                                              2000-K8431-08   
- DALARNA                                                       Sida: 2         
- ------------------------------------------------------------------------------
- MÅLSÄGANDEN                                                                   
- JUNCOSA HÖGLUND, ENGLA MATILDA Kön: K                                         
- Försäkringsbolag:                                                             
- Rättsintyg:                                                                   
-                                                                               
- ------------------------------------------------------------------------------
- ANMÄLARE                                                                      
- HÖGLUND, CARINA HELEN Kön: K                                                  
-                                                                               
- ------------------------------------------------------------------------------
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
-                                                                               
- ------------------------------------------------------------------------------
- BESLUT OM FÖRUNDERSÖKNING                                                     
- Datum: 2008-04-05 18.15 Beslut av: Kommissarie Tore Strand                    
- Förundersökning inleds                                                        
- ------------------------------------------------------------------------------
- Länskriminaljouren           Besöksadress: Kristinegatan 26                   
- Box 739                      Faxnr: 023-460 56                                
- 791 29 FALUN                 Handläggande enhet: Länskriminaljouren           
- Tfn: 114 14                  Handläggare: Kommissarie Mikael Lundqvist        
- E-post: polismyndigheten@dalarna.police.se-A 91 PolismyndighetendDalarna PRIMÄRRAPPORT,l o Dödsfall
-.v—/z' 02 Arbetsenhet  — 03 Utskriftsdatum
-RÅ nn  n - 2008-04-14
-05 Handläggare,  tffå.
-Insp Maria Deljerud04 Dnr K /(/X?J/_OF
-KI4T3-08
-06 Händelsen  anmäld  till polisen (datum,  kl) | av (namn,  tfn)
-.JENTITETSUPPGIFTER M M08-04-05,  19.45 Höglund,  Carina
-07 Den avlidnes  efternamn  och alla förnamn  (i rätt följd, tilltalsnamnet  markeras),  yrke e! tidigare  sysselsättning 08 Personnummer
-Juncosa  Höglund,  ENGLA 9280305-0047
-09 Postadress  (utdelningsadress  och ortsadress) 10 Folkbokföringsort  (församling)
-Stigsbo  Björktjärn  104, 770 71 STRÄRNSUND Hedemora
-11 Identitetskontroll  (ange hur identiteten  styrkts;  t ex id-handlings  art, nr, år/namn  på person  som styrkt identiteten)
-Ej identifieradI id-kontroll  utförd av
-12 Anhörigs  namn, adress,  tfn samt släktförhållande,  underrättad  om händelsen  (datum,  kl)
-Moder:Höglund,  Carina, 073-6878719
-13 Närvarande  vid polisens  platsundersökning
-Nej
-14 Plats där kroppen  förvaras 15 Kroppen  avvisiterad  av (namn, tfn)
-205 16 Plats där ev omhändertagna  föremål/kontanter  förvaras I Signum
->
-17 Läkare som konstaterat  dödsfallet  (namn, tfn) I48 Dödsfallet  konstaterat  datum, kl I Utf dödsbevis
-ha [ ]sa [INej
-2 19 Läkare, som den avlidne ev konsulterat  under den senaste tiden (namn, tfn) I Utf dödsbevis
-- [ ]sa [ ]Nej
-UPPGIFTER OM HÄNDELSEN20 Händelsen  inträffade  (v-dag,  datum, kl)
-08-04-0521 Plats för händelsen
-22 Händelseförlopp:  Omständigheter  vid den avlidnes  anträffande,  platsbeskrivning,  synliga skador på kroppen,  anträffade  mediciner  och kända
-missbruksförhållanden,  ev transport  till läkare, sågs senast i livet.
-Kroppen  anträffad  väster om rv 56. Se bif. anmälan. .
-I—_l Forts-blad
-RPS 414.2 02-0623 Avrapporterande  polismans  underskrift
-BESLUT  OM RÄTTSMEDICINSK  UNDERSÖKNING
-24 Polismyndighetens  beslut
-Rättsmedicinsk  likbbsiktning
-Datum |Utvidgad  rättsmedicinsk  obduktion E]).Rättsmedicinsk  obduktion
-e I Namnförtydligande  och titel
-08-04-14 Mats Nygårds
-Primärrapport C 126 Primärrapport - Dödsfall / Engla, 2008-04-14 15:12   diarienr: 2000-K8431-08
-  4.07-04-2008 — 19:55 FRÅN= ” T-03 . -036 — P.002/005 — F-218
-Dur: K8431-08
-Polisområde  Helsingborz
-Lokala  kriminalenheten
-FÖRHÖR
-Förhöret  påbörjades: 080407 kl 19.00 (Rb 23:9)
-Hörd person: Eklund,  Anders
-Personnummer: 650806-7532
-Förhörsledare: Insp Monica  Lydén
-Förhörsplats: Polishuset,  Helsingborg
-Närvarande  vid förhöret:
-Önskemnål  om försvarare: Advokat  Leif Silbersky
-Anledning  till förhöret: 080405 Människorov
-Den hörde är: D misstänkt B vittne LJ annat
-Anders Eklund  vill medverka  till förhör utan närvaro av försvarare.
-Anders informeras  om, att han har hämtats till förhör enligt beslut 080507 kl 15.40 av Vcå
-Patrik Sävlund.
-Anders tillfrågas  om sina förehavande  under lördagen  den 080405.
-Anders berättar att han denna dag steg upp ca kl 09.00. Han var då i sin bostad på Kyrkvägen
-2 A i Torsåker  där han bor ensam. Han drack lite kaffe och gav sig i väg för att vara I
-Hedemora  kl 10.30. Han körde i sin personbil,  en röd Saab 900 JGM 732. Han körde från
-Torsåker  via Hofors, .vängde av vid Långshyttan  och vidare till Hedemora.  Han säger att der
-är den snabbaste  vägen från Torsåker  till Hedemora.
-Anders ärende i Hedemora  var att träffa sin flickvän,  Elin okänt eftermaran.  De träffas
-sporadiskt  sedan 1 V2 år rillbaka. Elin är 20 år. De brukar träffas på Lappens Vägkrog  i
-Hedemora.  Krogen lijger utmed vägen från Hedemora  till Säter. Anders träffade alltså Elin på
-krogen vid ca kl 10.31) som de hade bestämt. De stannade  på krogen 15-20 minuter varefter de
-åkte iväg i Anders bil upp mot Säter, svängde av strax innan Säter och kom in på en mindre
-väg som går till Fägg>by. I närheten av Feggeby  körde de in på en skogsväg  och stannade
-bilen. Där hade de sanlag och satt sedan och pratade ett tag.
-Därefter åkte de tillbuka till Lappens  krog och anlände dit vid kl 12.00-12.15.  Anders åt lunch
-medan Elin endast drack en kopp kaffe. De vara klara kl 12.30-12.40  varefter de åkte vidare.
-De körde först en rur.da i Hedemora  och sedan tvättade de bilen på OK, som ligger vid
-Sätervägen  nära en rondell. De var klara med det vid ca kl 13.30 då Anders körde tillbaka till
-Lappens  krog och släppte av Elin.
-Sid. 1
-Förhör S 30-a - Mt Eklund Anders 08-04-07, 2008-04-07 19:00   diarienr: 2000-K8431-08
-  5. 07-04-2008 19:55 FRÅN= T-036 — P.003/005 — F-219
-Anders körde vidare mr sin bostad i Totsåker.  Han körde vägen mot Längshyttan,  svängde  av
-och körde mot Stjärnsund.  Det finns en vägskylt  Stjärnsund  17 km. Han påpekar,  att det är en
-krokig och dålig väg till Stjärnsund.  Anders uppskattar,  att han anlände  till Stjärnsund  vid ca
-kl 14.00. Strax efter S'järnsund  delar sig vägen. En går mot Torsåker  och. den andra mot
-Horndal och Byvalla. Anders körde vägen mot Torsäker  och Hofors. Anders gjorde inga stopp
-utan han körde raka vä.gen mot sin bostad. Han parkerade  sin bil i ett garage som han hyr
-tillsammans  med sin ligenhet.  Därefter  gick han till sin bostad.
-Anders stannade  i sin sostad fram till ca kl 19.50. Då körde han ensam med sin bil till en
-pizzeria  Granliden  i Svorvik och inhandiade  en pizza. Der är ca en mil mellan Torsåker  och
-Storvik  och han anlärvde  till pizzerian  ca kl 20.00. Han uppskattar,  att han återvände  till sin
-bostad vid ca kl 20.30.Anders  var ensam i sin bostad fram till kl 19.50 och även efter att han
-hade hämtat sin pizza.. Den enda kontakt  han hade var, att Elin skickade  nägra SMS. Anders
-svarade varje gång hor skickade.  Han fick första SMS:et  vid ca kl 17.00 och det sista vid ca kl
-20.30.
-På fråga svarar Anderz, att han har Elins telefonnumrmer  i sin mobiltelefon.  Där har han även
-telefonnumret  till Leit' på Lappens  krog i Hedemora-
-Anders gick till sängs vid kl 22.30-23.00.
-Anders tillfrågas  om lilin. Han berättar, att hon under helgen besökte  sira föräldrar,  som är
-bosatta i Hedemora.  Annars är hon elev vid en skola i Surahammar  och är inackorderad  där,
-troligen  hos en familj
-Under söndagen  080406 sov Anders till ca kl 11.00. han åkte till Lappens  krog i Storvik  vid
-ca kl 13.00 och åt lunch. Därefter  återvände  han till sin bostad och packade  för sin tur med
-lastbilen  söderöver.
-Anders är anställd som lastbilschaufför  på åkeriet Rolf Kvist Åkeri som ligger i Gästrike
-Hammarby.  Anders körde med sin lastbil 080406 kl 16.30 från Torsåker.  Bilen stod strax
-nedanför  Anders bostad. Den var då lastad. Anders körde mot Norrköping  där han skulle lossa
-lasten, sågat virke. Hin lossade allt vid Pamuskajen  ute på Händelö  kl 06.00 den 080407.
-Därefter  fortsatte  han till Äby och lastade blorsjord  mm som han körde till Mölndal.  Han
-lämnade  Aby vid kl C7.15-07.30.  Anders nämner art han stannade  för att tanka på en Preem-
-mack på Vätternleden  ca kl 09.30-10.00.  Anders stannade  vid Bilspedition  i Borås och åt
-lunch på Tvp kockar ca kl 11.30. Han lossade på K-Raura  i Mölndal  vic ca kl 13.00.
-Anders körde tom bil till Benders i Frillesås.  Där lastade han plattor och kantsten  som skulle
-köras till Landskrona.  Där ska han lossa tidigt 080408. Det var alltså till Landskrona  han var
-på väg då polisen toj; kontakt med honom på Hallansåsen.  Anders hade stannat för att duscha
-och äta. Då han var på väg gående från kiosken  mot sin lastbil kom polisen och ville prata
-med honom.
-Anders berättar, att han i dag vid middagstid  blev uppringd  av trafikpolisen  i Dalarna. Anders
-befann  sig då i Borås och hade stannat  för art äta.
-Polismannen,  vars naumn Anders inte kan erinra sig, berättade,  att fyra personer  som hade gått
-utefter vägen strax elter Stjärnsund  hade fotograferat  Anders bil. De hade även fotograferat
-flickan, som nurmmera är försvunnen. Anders blev av polisen  tillfrågad,  om han hade sett någon
-Sid. 2
-Förhör S 30-a - Mt Eklund Anders 08-04-07, 2008-04-07 19:00   diarienr: 2000-K8431-08
-  6. 07-04-2008 — 19:55 FRÅN= [ . 1T-036 — P.004/005 — F-219
-bil stå parkerad eller upp sackad efter vägen i det här områdetr varifrån flickan skulle ha
-försvunnit. |
-Anders kommer ihåg artt han berättade han för polisen, att han mötte fyra personer, två män
-och två kvinnor, på vägen strax efter Stjärnsund.  Det var efter att vägen delar sigi riktning
-mot Torsåker. Anders berättade även, SOom Svar på frågan om han hade sett någon bil i
-närheten, att han såg en jusblåaktig  bil, okänt fabrikat, kombi, i mellanklass  ca 1 V4-2 km
-efter att han hade mött de fyra personerna,  som kom gående. Anders såg ingen person i eller i
-närheten  av bilen.
-På fråga svarar Anders, att han inte lade märke till att någon av de fyra personerna
-fotograferade  honom.
-g något barn på vägen från Stjärnsund  till Torsåker.  De
-På fråga svarar Anders, att han inte så
-han har berättat  om.
-enda han såg, var de fyra personerna,  Som
-Anders tillfrågas om ver hans bil, JGM 732 finns nu. Han svarar, att den står i hans garage i
-närheten av bostaden. Anders ritar en skiss. Om man kommer från Solbergavägen,  svänger in
-i där ligger en länga
-på Kyrkvägen,  passerar  hyreshuset  där Anders bor , tar av till höger och
-med garage. Anders har sin bil i port nr 2, räknat från höger. Han har nycklarna  till garaget
-med sig.
-Anders säger, att han beräknar att kormma tillbaka till sin bostad 080408 ca kl 21.30-22.00.
-Ander Eklund  förnekar  människorov.
-Genomläst  och godkäat.
-Förhöret  avslutas  kl 20.35
-Sid. 3
-Förhör S 30-a - Mt Eklund Anders 08-04-07, 2008-04-07 19:00   diarienr: 2000-K8431-08
-  78
-Bilaga - Skäligen misstänkt
-Polismyndighet
-Dalarna
+Region Syd, BF-IGV 6 LPO Malmö Söder
+Hörd person
+Tullgren, Anna
+Den hörde är
+Vittne
+Tolk
+ID Styrkt
+Ja
+Sätt
+MPMF
+Förhör
+Signerat av
+Signerat datum
+25
+25
+Diarienr
+5000-K284928-23
+Personnummer
+Ställning till misstänkt - målsägande - vittne
+Anledning till förhör / Misstankar som misstänkt har underrättats om
+Ringa stöld, Fullbordat
+Ytterligare information om anledning till förhör
+Anna informeras att hon hörs som vittne gällande ringa stöld.
+Anna jobbade i kassan vid aktuellt tidpunkt.
+Språk
+Underrättad om rätt till försvarare Godtar den försvarare som rätten förordnar
+Försvarare/ombud önskas
+Förhörsledare
+Lina Lundgren
+Förhörsplats
+Ica, Östra förstadsgatan 50
+Förhörsvittne
+Berättelse
+Underrättad om misstanke
+Försvarare/ombud närvarande
+Förhörsdatum
+2023-03-10
+Typ av förhör
+RB 23:6
+Utskrivet av
+LL
+Förhör påbörjat
+13:07
+Förhör avslutat
+13:13
+Förhörssätt
+Anna ombeds berätta fritt om händelsen.
+Anna berättar att kvinnorna hade en korg eller vagn. Anna stod vid kassan närmst
+självscanningen och kvinnorna stod vid självscanningskassan närmst Anna. Kvinnorna hade
+lagt upp alla sina varor på bänken, det var mycket saker.
+Anna berättar att personalen har en iPad vid sidan om kassan där man ser aktiviteten vid
+självscanningskassorna. Anna tror hon såg att tre saker var inscannade, det senaste hon såg
+tror hon var blåbär. När hon tittade på kvinnorna så såg hon att den ena kvinnan tog en
+burrata och la ner denna i påsen. Burratan kom inte upp som scannad på personalens iPad. Då
+ringde Anna kollegan August som sprang ut och grep kvinnorna. Anna berättar att allting
+gick snabbt från det att hon såg burratan till att Anna hade ringt August och plötsligt var
+kvinnornas påse full. Anna förstod då att kvinnorna hade tagit många varor.
+Kollegan August kom och grep kvinnorna utanför butiken.
+Anna tillfrågas om hon uppfattade om båda kvinnorna var delaktiga i stölden.
+Den ena höll scannern och den andra packade ner.
+Uppläst utan invändningar.
+{pageend nr 25}{pagestart nr 26}Polisen
 Enhet
-KA AvestaDiarienr
-2000-K8431-08
+Region Syd, BF-IGV 6 LPO Malmö Söder
+Hörd person
+Friman, Kati Marjan Gina Danica
+Den hörde är
+Misstänkt
+ID Styrkt
+Ja
+Sätt
+RES
+Förhör
+Signerat av
+Signerat datum
+26
+26
+Diarienr
+5000-K284928-23
+Personnummer
+19950822-3584
+Ställning till misstänkt - målsägande - vittne
+Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
+2023-03-10 Mikael Hansen
+Tolk
+Språk
+Anledning till förhör / Misstankar som misstänkt har underrättats om
+Ringa stöld, Fullbordat, Gärningsman
+Ytterligare information om anledning till förhör
+Underrättad om misstanke
+2023-03-10
+Kati delges misstanke gällande ringa stöld gemensamt och i samförstånd med hennes mamma Tanja.
+Detta genom att uppsåtligen och olovligen tillgripit gods ett värde av 488,60 kr och därefter passerat
+sista betalningsmöjlighet utan att betala, detta på Ica Supermarket på Östra Förstadsgatan 50 i Malmö
+2023-03-10 t.o.m kl 12:10.
+Underrättad om rätt till försvarare Godtar den försvarare som rätten förordnar
+Ja
+Försvarare/ombud önskas
+Önskar ej försvarare vid
+detta förhör, vid kommande
+förhör eller vid en eventuell
+rättegång.
+Förhörsledare
+Mikael Hansen
+Förhörsplats
+I affären
+Förhörsvittne
+Försvarare/ombud närvarande
+Förhörsdatum
+2023-03-10
+Typ av förhör
+RB 23:6
+Förhör påbörjat
+12:46
+Förhörssätt
+Utskrivet av
+Förhör avslutat
+13:01
+Berättelse
+Förhörsledarens kommentarer och anteckningar skrivs i kursiv stil.
+Kati underrättas om att detta är ett förhör.
+Kati underrättas om sin rätt att ej behöva yttra sig över misstanken och inte heller i övrigt
+behöva medverka till utredningen av sin egen skuld.
+Kati delges misstanke gällande ringa stöld gemensamt och i samförstånd med hennes mamma
+Tanja. Detta genom att uppsåtligen och olovligen tillgripit gods ett värde av 488,60 kr och
+därefter passerat sista betalningsmöjlighet utan att betala, detta på Ica Supermarket på
+Östra Förstadsgatan i Malmö 2023-03-10 t.o.m kl 12:10.
+Kati förstår misstanken.
+{pageend nr 26}{pagestart nr 27}Förhör med Friman, Kati Marjan Gina Danica; 2023-03-10 12:46 diarienr: 5000-K284928-23
+Kati underrättas om rätten till försvarare och Kati godtar att förhöret hålls utan försvarare
+närvarande.
+Vid kommande förhör eller vid en eventuell rättegång begär inte Kati att biträdas av en
+offentlig försvarare.
+Kati informeras om att staten betalar kostanden för en offentlig försvarare men att den som
+döms kan bli skyldig att betala tillbaka hela eller delar av kostnaden.
+Kati berättar att hon och Tanja var på Ica och handlade. När de skulle gå till kassorna var de
+lång kö och Kati och Tanja gick då till snabbkassan.
+Kati började skanna varorna och det blev något problem med skanningen då både Kati och
+Tanja höll på med varorna. Kati hade ingen aning vad som skannats och inte av de varor som
+låg på bänken och i påsen.
+Kati berättar att hon visste att hennes mamma stoppade ner saker i påsen som inte var
+skannade. Kati minns inte vilka saker det var men måste varit flera då det var mer saker i
+påsen än de som Kati skannat. Kati tror att hon själv la ner något i påsen som inte var skannat
+men vet inte vad det var för något.
+Kati berättar att hon märkte att det var mer i påsen än hon hade skannat direkt när hon kom ut
+då påsen var tung. Kati vet inte varför hon inte gjorde någonting åt det.
+Kati berättar att hon hade pengar med sig i butiken och hade kunnat betala för alla varor om
+hennes mamma inte stoppat ner andra saker i påsen.
+Kati berättar att om hon hade planerat att stjäla innan hon gick in i butiken hade hon inte
+stannat när personalen kom efter henne.
+Kati berättar att hon aldrig tidigare stulit någonting.
+Kati ERKÄNNER brottet ringa stöld.
+Kati GODTAR ett eventuellt strafföreläggande.
+Uppläst utan invändning.
+27
+{pageend nr 27}{pagestart nr 28}Förhör
+Signerat av
+Signerat datum
+28
+28
+Polisen
+Enhet
+Region Syd, BF-IGV 6 LPO Malmö Söder
+Hörd person
+Friman, Tanja Tamara
+Den hörde är
+Misstänkt
+Tolk
+ID Styrkt
+Ja
+Sätt
+Svenskt pass
+Språk
+Diarienr
+5000-K284928-23
+Personnummer
+19640510-0287
+Ställning till misstänkt - målsägande - vittne
+Anledning till förhör / Misstankar som misstänkt har underrättats om
+Ringa stöld, Fullbordat, Gärningsman
+Ytterligare information om anledning till förhör
+Underrättad om misstanke
+2023-03-10
+Tanja delges misstanke om ringa stöld genom att gemensamt och i samförstånd med Kati tillgripit varor
+till ett värde om 488,60kr och därefter passerat sista betalningsmöjlighet utan att betala för varorna.
+Detta på Ica Värnhem, Östra Förstadsgatan 50, 2023-03-10 t.o.m. kl. 12:10.
+Underrättad om rätt till försvarare Godtar den försvarare som rätten förordnar
+Ja
+Förhörsledare
+Lina Lundgren
+Förhörsplats
+Ica, Östra förstadsgatan 50
+Förhörsvittne
+Försvarare/ombud önskas
+Eleonora Johansson
+Försvarare/ombud närvarande
+Förhörsdatum
+2023-03-10
+Typ av förhör
+RB 23:6
+Förhör påbörjat
+12:45
+Förhör avslutat
+12:56
+Förhörssätt
+Utskrivet av
+LL
+Berättelse
+Tanja delges misstanke om ringa stöld genom att gemensamt och i samförstånd med
+Kati tillgripit varor till ett värde om 488,60kr och därefter passerat sista
+betalningsmöjlighet utan att betala för varorna. Detta på Ica Värnhem, Östra
+Förstadsgatan 50, 2023-03-10 t.o.m. kl. 12:10.
+Tanja förstår brottsmisstanken.
+Tanja är informerad i enlighet med FUK 12 §.
+Tanja informeras om rätten till försvarare och godtar att förhöret hålls utan försvarare
+närvarande. Vid eventuella kommande förhör önskar Tanja Eleonora Johansson som
+försvarare.
+Tanja ombeds berätta fritt utifrån misstanken.
+Tanja säger att hon scannade och erkänner att hon inte scannade alla saker. Tanja säger att det
+var dumt.
+Tanja tillfrågas hur de valde ut varorna de inte scannade.
+Tanja säger att det var en slump.
+Tanja tillfrågas om de bestämt sig att inte betala för alla varorna redan innan de gick in i
+{pageend nr 28}{pagestart nr 29}Förhör med Friman, Tanja Tamara; 2023-03-10 12:45 diarienr: 5000-K284928-23
+butiken.
+Tanja säger nej, hon stjäl inte. Det var något som bara flög i henne, Tanja handlar alltid i
+denna butik.
+Tanja tillfrågas om hon eller Kati har pengar att betala för varorna.
+Tanja säger att hon själv inte har pengar men hon tror att Kati har. Tanja betalade 73,95kr för
+de varorna de scannade.
+Tanja tillfrågas hur de gick till vid kassan.
+Tanja säger att Kati scannade och Tanja la i påsen. Tanja säger att hon trodde att Kati hade
+scannat varorna. På fråga vad hon menar med detta så kan inte Tanja specificera mer.
+Tanja kan heller inte svara på frågan om hon trodde att Kati scannade för alla varorna.
+Tanja tillfrågas vad som hände efter att de lämnat kassan.
+Tanja säger att de gick ut utanför butiken och sen kom en kille som sa att de skulle gå tillbaka
+in i butiken.
+Tanja ERKÄNNER brott.
+Tanja är informerad om och införstådd med innebörden av strafföreläggande. Tanja skulle
+godta ett eventuellt strafföreläggande.
+Tanja är informerad om och införstådd med innebörden av förenklad delgivning. Tanja anger
+finns folkbokföringsadress som sin delgivningsadress.
+Uppläst utan invändningar.
+29
+{pageend nr 29}{pagestart nr 30}Bilaga - Skäligen misstänkt
+Polisen
+Enhet
+Region Syd, Utredningsjour 7 PO Malmö
 Skäligen misstänkt person
-Eklund, Per AndersPersonnr
-19650806-7532
+Friman, Kati Marjan Gina Danica
+Identifierad
+Ja
+Kontrollsätt
+Dataslagning
+Personnr
+19950822-3584
+Kommentar
+RES
 Misstankeuppgift
+Rubricering
+Ringa stöld
+Händelse inträffad
+Brottsplatsadress
+Ica Supermarket Värnhem, Östra Förstadsgatan 50
 Brottsmisstankenr
-200008500794Diarienr
-2000-K8431-08
+POD50-BM2023-1668210010-84
+:
+Diarienr
+5000-K284928-23
+Brottskod(Misstanke)
+-2023-03-10 12:10
+Områdeskod
+05020100800074
+Diarienr
+5000-K284928-23
+Status
+FU/Utredning pågår
 Brottskod
-0310Brottsbeskrivning
-Mord
-Beslutsdatum
-2008-04-14Beslutsfattare
-Säflund, Patrik
-Misstankeuppgift
-Brottsmisstankenr
-200008500908Diarienr
-2000-K8431-08
-Brottskod
-0652Brottsbeskrivning
-Grov våldtäkt
-Beslutsdatum
-2008-05-07Beslutsfattare
-Säflund, Patrik9
+0853
+Brottsbeskrivning
+Ringa stöld
+Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
+2023-03-10
+Information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt är överlämnad vid ett personligt sammanträffande
+Underrättelse om misstanke
+2023-03-10
+Beslutsdatum misstankebeslut
+2023-03-10
+Informerad om möjlighet till strafflindring (FUK 12c)
+Beslutsfattare misstankebeslut
+Isaksson, Amelia
+30
+30
+{pageend nr 30}{pagestart nr 31}Polisen
 Personalia och dagsbotsuppgift
-Utskriftsdatum
-2008-07-16
+Kallas för
+Öknamn
 Namn
-Eklund, Per AndersPersonnummer
-19650806-7532
+Friman, Kati Marjan Gina Danica
 Tilltalsnamn
-AndersKallas för Öknamn
-Medborgarskapsland
+Kati
+Födelseförsamling
+Hyllie
+Medborgarskap
 Sverige
-Adress
-Kyrkvägen 2 ATelefonnr
-813 40  Torsåker
+Postadress
+Garagegatan 14A
+212 51 Malmö
+Födelselän
+Födelseort utland
+Utskriftsdatum
+2023-03-24
+Personnummer
+19950822-3584
+Kön
+Kvinna
+Hemvistland
+Telefonnr
+0704424154: Mobiltelefon
 Folkbokföringsort
-Torsåker
+Malmö
 Föräldrars/Vårdnadshavares namn och adress (beträffande den som inte fyllt 20 år)
 Utbildning
-Yrke
-Arbetsgivare Telefonnr
-      
+Yrke / Titel
+Arbetsgivare
+Anställning (nuvarande och tidigare)
+Uppgav att hon jobbar på Kastrup
+Arbetsförhet och hälsotillstånd
+Kompletterande uppgifter
+Uppgiven inkomst
+264000
+Försörjningsplikt
+Förmögenhet
+0
+Bidrag
+Kontroll utförd
+Taxerad inkomst
+0
+Taxeringskontroll utförd av
+Pa L. Lundgren
+Taxeringsår
+2021
+Datum
+2023-03-10
+Telefonnr
+Hemmavarande barn under 18 år
+0
+Skulder
+0
+31
+{pageend nr 31}{pagestart nr 32}Bilaga - Skäligen misstänkt
+Polisen
+Enhet
+Region Syd, Utredningsjour 7 PO Malmö
+Skäligen misstänkt person
+Friman, Tanja Tamara
+Identifierad
+Kontrollsätt
+Personnr
+19640510-0287
+Kommentar
+Ja
+Pass (svenskt)
+Misstankeuppgift
+Rubricering
+Ringa stöld
+Brottsplatsadress
+Ica Supermarket Värnhem, Östra Förstadsgatan 50
+Brottsmisstankenr
+POD50-BM2023-1668226169-81
+Diarienr
+5000-K284928-23
+Händelse inträffad
+Brottskod(Misstanke)
+:
+-2023-03-10 12:10
+Områdeskod
+05020100800074
+Diarienr
+5000-K284928-23
+Status
+FU/Utredning pågår
+Brottskod
+0853
+Brottsbeskrivning
+Ringa stöld
+Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
+Information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt är överlämnad vid ett personligt sammanträffande
+Underrättelse om misstanke
+Informerad om möjlighet till strafflindring (FUK 12c)
+2023-03-10
+Beslutsdatum misstankebeslut
+2023-03-10
+Beslutsfattare misstankebeslut
+Isaksson, Amelia
+32
+32
+{pageend nr 32}{pagestart nr 33}Polisen
+Personalia och dagsbotsuppgift
+Namn
+Friman, Tanja Tamara
+Tilltalsnamn
+Tanja
+Födelseförsamling
+Finska Förs.
+Medborgarskap
+Sverige
+Postadress
+Garagegatan 14A
+212 51 Malmö
+Kallas för
+Öknamn
+Utskriftsdatum
+2023-03-24
+Personnummer
+19640510-0287
+Kön
+Kvinna
+Födelselän
+Stockholms län
+Hemvistland
+Födelseort utland
+Telefonnr
+0733408185: Mobiltelefon
+Folkbokföringsort
+Malmö
+Föräldrars/Vårdnadshavares namn och adress (beträffande den som inte fyllt 20 år)
+Utbildning
+Yrke / Titel
+Arbetsgivare
 Anställning (nuvarande och tidigare)
 Arbetsförhet och hälsotillstånd
 Kompletterande uppgifter
 Uppgiven inkomst
-Maka/make/sambos inkomst
+0
 Försörjningsplikt
-Förmögenhet
-0Bidrag Civilstånd
-Ogift
+Telefonnr
+Bidrag
+Sjukersättning 5500kr/mån
+Bostadsbidrag 5300kr/mån
 Hemmavarande barn under 18 år
 0
 Skulder
+200000
+Förmögenhet
+0
 Kontroll utförd
 Taxerad inkomst
-360000Taxeringsår
-2007
-Maka/make/sambos taxerade inkomst
+120400
 Taxeringskontroll utförd av
-Insp M DeljerudDatum
-2008-06-18Underrättelse/Delgivning jml RB 23:18
-Polismyndighet
-Dalarna
+Pa L. Lundgren
+Taxeringsår
+2021
+Datum
+2023-03-10
+33
+33
+{pageend nr 33}{pagestart nr 34}Underrättelse/Delgivning jml RB 23:18a
+Polisen
 Enhet
-KA Avesta
+Region Syd, Utredningsjour 7 PO Malmö
 Ärende
 Diarienr
-2000-K8431-08Handläggare
-Deljerud, Maria
+5000-K284928-23
 Gärning
-K8431-08, Mord och grov våldtäkt i Stjärnsund.
-K8800-08, Barnpornografibrott alt. grovt.
-K8816-08, Våldtäkt i Sandviken
+Underrättad av
+Isaksson, Amelia
+Ringa stöld Fullbordat, Ica Supermarket Värnhem Östra Förstadsgatan 50 Malmö, mellan - och
+2023-03-10 12:10
 Berörd person
 Personnr
-19650806-7532Efternamn
-EklundFörnamn
-Per Anders
-Underrättelse utsänd
- Yttrande senast
-2008-07-16Underrättelse slutförd
-2008-07-14Delgiven info. om ev. förenklad delgivning
- 
+19950822-3584
 Underrättelsesätt
-Utredningen delgiven mt Eklund 08-07-09 t.o.m 08-07-14.
+Efternamn
+Friman
+Skriftlig underrättelse genom lösbrev
+Datum utsänd
+2023-03-13
 Notering
-Resultat av underrättelsen/delgivningen
-Ej erinran
+Förnamn
+Kati Marjan Gina Danica
+Delgiven info. om ev. förenklad delgivning
+2023-03-10
+Yttrande senast (rådrum)
+2023-03-22
+Misstänkt har getts möjlighet att ta del av materialet från den slutförda utredningen (RB 23:18a § / FUK
+12 §)
+Resultat av slutunderrättelse
+Har inte avhörts
+Information gällande erinran
 Försvarare
 Namn
-Leif Silbersky
-Underrättelse utsänd
- Yttrande senast
-2008-07-16Underrättselse slutförd
-2008-07-14
 Underrättelsesätt
-Utredningen delgiven försvararen successivt från 08-06-25 t.o.m 08-07-14
+Datum utsänd
 Notering
-Resultat av underrättelsen/delgivningen
-Ej erinran
+Resultat av slutunderrättelse
+Information gällande erinran
+Yttrande senast (rådrum)
+{pageend nr 34}{pagestart nr 35}Underrättelse/Delgivning jml RB 23:18a
+Polisen
+Enhet
+Region Syd, Utredningsjour 7 PO Malmö
+Ärende
+Diarienr
+5000-K284928-23
+Gärning
+Underrättad av
+Isaksson, Amelia
+Ringa stöld Fullbordat, Ica Supermarket Värnhem Östra Förstadsgatan 50 Malmö, mellan - och
+2023-03-10 12:10
+Berörd person
+Personnr
+19640510-0287
+Underrättelsesätt
+Efternamn
+Friman
+Skriftlig underrättelse genom lösbrev
+Datum utsänd
+2023-03-13
+Notering
+Förnamn
+Tanja Tamara
+Yttrande senast (rådrum)
+2023-03-22
+Resultat av slutunderrättelse
+Har inte avhörts
+Information gällande erinran
+Försvarare
+Namn
+Underrättelsesätt
+Datum utsänd
+Notering
+Önskar advokat Eleonora Johansson
+Resultat av slutunderrättelse
+Information gällande erinran
+Yttrande senast (rådrum)
+{pageend nr 35}
