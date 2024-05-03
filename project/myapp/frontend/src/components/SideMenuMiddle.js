@@ -22,18 +22,18 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   const { pinRef } = useContext(ResponseContext);
 
 
-  const getChatHistory = async (fileid) => {
-    const body = {
-      embedding_id: fileid ? fileid : currentFile,
-    };
-    try {
-      const { data } = await axios.post(baseURL + "api/getchat/", body);
-      setMessages(data.messages);
-    } catch (error) {
-      console.error("Error fetching chat history:", error);
-      setMessages([]);
-    }
-  };
+  // const getChatHistory = async (fileid) => {
+  //   const body = {
+  //     embedding_id: fileid ? fileid : currentFile,
+  //   };
+  //   try {
+  //     const { data } = await axios.post(baseURL + "api/getchat/", body);
+  //     setMessages(data.messages);
+  //   } catch (error) {
+  //     console.error("Error fetching chat history:", error);
+  //     setMessages([]);
+  //   }
+  // };
 
   const deleteDocument = async (fileid) => {
     console.log("fileid:", fileid);
