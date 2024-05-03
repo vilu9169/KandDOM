@@ -1,11 +1,8 @@
 #A summarizer utilising claud
-from langchain_community.document_loaders import TextLoader
-from langchain_community.document_loaders import TextLoader
 from langchain_google_vertexai import VertexAIEmbeddings
 from dateutil import parser
 from vertexai.generative_models import GenerativeModel, Part, FinishReason
 import vertexai.preview.generative_models as generative_models
-from time import time
 from time import sleep
 import vertexai
 from pinecone import Pinecone
@@ -22,7 +19,7 @@ tools = {
                 "properties": {
                     "time": {
                         "type": "string",
-                        "description": "Datum och tid då händelsen inträffade. Skall endast vara en tid per händelse. Tider ska anges på formatet DD/MM/YY HH:MM",
+                        "description": "Datum och tid då händelsen inträffade. Skall endast vara en tid per händelse. Tider måste alltid anges på formatet DD/MM/YY HH:MM.",
                     },
                     "pages": {
                         "type": "string",
@@ -34,7 +31,7 @@ tools = {
                     },
                     "document": {
                         "type": "string",
-                        "description": "Namnet på dokumentet som händelsen hämtades ifrån.",
+                        "description": "Namnet på dokumentet som händelsen hämtades ifrån. Namnet på dokumentet finns på samma plats som sidnumret.",
                     }
                 },
                 "required": ["time","pages","information", "document"],
@@ -75,8 +72,7 @@ vectorstore = PineconeVectorStore(
 )  
 
 def summarise_gemeni_par(input, index, res):
-
-    cont = "Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem. Alla dina svar måste vara på svenska. Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och datum samt tidpunkten när den skede. Tidpunkter ska vara på formatet Tider ska anges på formen DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska. Du måste alltid inkludera vilka sidor du hittade informationen. Här är materialet du ska behandla  :" + input 
+    cont = "Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem. Alla dina svar måste vara på svenska. Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och datum samt tidpunkten när den skede. Tidpunkter ska vara på formatet DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska. Du måste alltid inkludera vilka sidor du hittade informationen. Här är materialet du ska behandla  :" + input 
     generation_config = {
     "max_output_tokens": 4400,
     "temperature": 0.1,
@@ -163,10 +159,10 @@ def handlesplit(split, retvals, i):
             args = json.loads(tool_call.function.arguments)
             #Add to dict
             try :
-                ret.append({"time": parser.parse(args["time"]),"pages": args["pages"] , "information": args["information"]})
+                ret.append({"time": parser.parse(args["time"], dayfirst=True),"pages": args["pages"] , "information": args["information"],"document": args["document"]})
             except Exception as e:
                 #Append time anyways
-                ret.append({"time": args["time"],"pages": args["pages"] , "information": args["information"]})
+                ret.append({"time": args["time"],"pages": args["pages"] , "information": args["information"], "document": args["document"]})
         retvals[i] = ret
         pass
     except Exception as e:
@@ -223,31 +219,9 @@ def analyzefromstr(input):
     for elem in retvals:
         struct += elem
 
-    #Order all events by time
-    #Todo rework to only drop events without time in the second iteration and keep for the first
-    #Use a better sortfunction to accomplish this instead of the current one
     struct = sorted(struct, key = lambda x: bettersort(x))
     for elem in struct:
-        #Print the time as a string
-        elem["time"] = str(elem["time"])
-    merged = ""
-    # for elem in struct:
-    #     merged += "{time : \"" + elem["time"] + "\" pages : " + elem["pages"] + "\", event : \"" + elem["information"] + "\"}\n"
-    # #Split data again and clean it
-    # # res = []
-    # # newspltis = 10000
-    # # splits = [merged[i:i+newspltis] for i in range(0, len(merged), newspltis)]
-    # # for i in range(len(splits)):
-    # #     res+=cleandates(splits[i])
-    # #Order all events by time
-    # #srted = sorted(res, key = lambda x: bettersort(x))
-
-    # #Parse as desired
-    # for elem in srted:
-    #     elem["time"] = str(elem["time"].strftime("%d/%m/%Y %H:%M"))
-    for elem in struct:
         try:
-            elem["time"] = parser.parse(elem["time"])
             elem["time"] = str(elem["time"].strftime("%d/%m/%Y %H:%M"))
         except Exception as e:
             print("Error parsing time: ", e)

@@ -45,7 +45,7 @@ def async_handle_chunk(chunk_num, chunk_size, num_pages, pdf_file, client, name,
     # Read the text recognition output from the processor
     resstring = ""
     for page in document.pages:
-        resstring += "{pagestart page: "+ str(pagenr+1) +"}"
+        resstring += "{pagestart page "+ str(page_num+1) + " in document "+pdf_file +" }"
         temp = ""
         for block in page.blocks:
             split = str(block.layout.text_anchor.text_segments).split("\n")
@@ -55,7 +55,8 @@ def async_handle_chunk(chunk_num, chunk_size, num_pages, pdf_file, client, name,
                 temp += document.text[0: int(split[0][split[0].find(":") +2:])]                
         resstring += temp
         #resstring += page.layout.text_anchor.content
-        resstring +="{pageend page: "+ str(pagenr+1) +"}"+str(chr(28))
+        resstring +="{pageend page "+ str(page_num+1)+ " in document "+pdf_file +"}"+str(chr(28))
+
         pagenr += 1
     resstrings[chunk_num] = resstring
     pass
@@ -178,14 +179,16 @@ def mainfunk(pdf_file, new_index_name):
 # print("Name of the new index: ")
 # new_index_name = input()
 # mainfunk(pdf_file, new_index_name)
-pdf_files = []
-while True:
-    print("Name of the files to be processed using RAG(write \"end\" to end input): ")
-    pdf_file = input()
-    if(pdf_file == "end"):
-        break
-    else:
-        pdf_files.append(pdf_file)
-print("Name of the new index: ")
-new_index_name = input()
-handle_multi_pdfs(pdf_files, new_index_name)
+
+
+# pdf_files = []
+# while True:
+#     print("Name of the files to be processed using RAG(write \"end\" to end input): ")
+#     pdf_file = input()
+#     if(pdf_file == "end"):
+#         break
+#     else:
+#         pdf_files.append(pdf_file)
+# print("Name of the new index: ")
+# new_index_name = input()
+# handle_multi_pdfs(pdf_files, new_index_name)
