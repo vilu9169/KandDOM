@@ -86,6 +86,7 @@ def cleaned(olddata):
         #Ask claud to summarise the string
         newdata.append({"time": key, "event": str})
     #Convert the newdata to a string
+    return newdata
     asstr = ""
     for event in newdata:
         #If time has no hour and minute, only print date
@@ -140,7 +141,7 @@ print("number of splits: ", len(splits))
 
 timelines = []
 totind = 0
-for elem in splits[:2]:
+for elem in splits[:3]:
     #Send in 5 splits at a time
     timelines.append(summarise(elem.page_content))
     totind += 1
@@ -178,7 +179,6 @@ for elem in timelines:
     
             
 from dateutil import parser
-#print("STRUCT: ", struct)
 for elem in struct:
     #Remove the first char
     #Time is on the form "2022-03-01 12:00", or "22-06-01", convert to datetime object
@@ -197,5 +197,5 @@ struct = sorted(struct, key = lambda x: x["time"].timestamp())
 struct = cleaned(struct)
 for elem in struct:
     #Print the time as a string
-    print( elem["time"])
+    print(elem["time"])
     print(elem["event"])
