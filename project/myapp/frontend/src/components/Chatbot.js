@@ -11,6 +11,8 @@ import { TiPinOutline } from "react-icons/ti";
 import axios from "axios";
 import { AuthContext } from "./AuthContextProvider";
 import { IoMdPerson } from "react-icons/io";
+import { IoIosCopy } from "react-icons/io";
+import { MdChangeCircle } from "react-icons/md";
 
 export const scrollToPin = (pinRef, index) => {
   console.log(pinRef.current[index].current);
@@ -26,8 +28,8 @@ const Chatbot = () => {
   const { arrLength } = useContext(ResponseContext);
   let ps;
   const baseURL = process.env.REACT_APP_API_URL;
-  
-  const [isHovered, setIsHovered] = useState(false);
+
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   useEffect(() => {
     if (chatWindowRef.current) {
@@ -71,18 +73,17 @@ const Chatbot = () => {
   };
   let pinnedIndex = 0;
   return (
-    <Container 
-      className="chatbot-container" 
-      ref={chatWindowRef} 
-      onMouseEnter={() => setIsHovered(true)} 
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <Container className="chatbot-container" ref={chatWindowRef}>
       <Container className="chatbot-messages w-100 p-0 overflow-hidden">
         {messages.map((message, index) => (
           <Container
             ref={message.pinned ? pinRef.current[pinnedIndex++] : null}
             key={index}
-            className={`message ${message.user ? "user-message" : "ai-message"} w-100 `}
+            onMouseEnter={() => setHoveredIndex(index)} // Update hovered index
+            onMouseLeave={() => setHoveredIndex(null)} // Reset hovered index
+            className={`message ${
+              message.user ? "user-message" : "ai-message"
+            } w-100 `}
           >
             <Row className="w-100">
               <Col className="col w-50px d-flex justify-content-center align-items-center">
@@ -103,23 +104,27 @@ const Chatbot = () => {
               </Col>
             </Row>
             <Row className="w-100">
-              <p className="message-text p-3 m-auto">
+              <p className="message-text px-3 py-1 m-auto">
                 <ChatMessage text={message.text} />
               </p>
             </Row>
-            {isHovered && (
-              <Row className="xd d-flex align-items-center justify-content-start w-100 h-20px">
-                {message.user && (
+            <Row className="d-flex align-items-center justify-content-start w-100 h-25px">
+              { hoveredIndex === index && message.user && (
+                <Container className="h-100 d-flex align-items-center justify-content-start p-0 m-0">
                   <TiPin
                     onClick={() => setPinned(message.id)}
-                    className={`m-0 w-30px size-20 p-0 ${message.pinned ? "c-secondary" : ""}`}
+                    className={`m-2 size-20 p-0 ${
+                      message.pinned ? "c-secondary" : ""
+                    }`}
                     style={{
                       transform: `rotate(${message.pinned ? "-30deg" : "0"})`,
                     }}
                   />
-                )}
-              </Row>
-            )}
+                  <IoIosCopy className="m-2 size-20" />
+                  <MdChangeCircle className="m-2 size-20" />
+                </Container>
+              )}
+            </Row>
           </Container>
         ))}
       </Container>
