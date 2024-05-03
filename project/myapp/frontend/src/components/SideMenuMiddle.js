@@ -17,30 +17,16 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
 
   const { files, getFiles, currentFile, setCurrentFile } = useContext(AuthContext);
   const { messages, setMessages, getChatHistory } = useContext(ResponseContext);
+  const { timeLine, setTimeline, getTimeLine } = useContext(AuthContext);
   const baseURL = process.env.REACT_APP_API_URL;
   const { pinRef } = useContext(ResponseContext);
-  const deleteDocument = async (fileid) => {
-    console.log('fileid:', fileid);
-    const resp = await axios.post(baseURL + 'api/deletefile/', { fileid: fileid, user: user.id });
-    console.log(resp);
-    getFiles();
-  };
-
-  /*
-  const deleteDocument = async (fileid) => {
-    console.log("fileid:", fileid);
-    const resp = await axios.post(baseURL + "api/deletefile/", {
-      fileid: fileid,
-      user: user.id,
-    });
-  */
-  
 
 
   const chooseDocument = (fileid) => {
     setCurrentFile(fileid);
     localStorage.setItem("currentFile", fileid);
     getChatHistory(fileid);
+    getTimeLine(fileid);
     setClickedDocument(true);
   };
 
@@ -79,8 +65,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
                         : "icons-container"
                     }`}
                   >
-                    <SimplePopup
-                      onDeleteClick={() => deleteDocument(file.id)}
+                    <SimplePopup file={file} 
                     />
                     <IoIosArchive
                       className="m-2 archive-icon"

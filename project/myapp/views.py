@@ -319,10 +319,14 @@ def upload_document(request):
             filename=file_obj.name,
             content_type=file_obj.content_type,
             size=file_obj.size,
+            timeline = []
             # file_id= ''  # You may need to provide an appropriate file ID here
         )
+        
         print("Before document.save")
         print(document.file)
+        document.save()
+        document.timeline = mainfunk2(str(document.file))
         document.save()
         mainfunk(str(document.file), str(document.__id__()))
         print("document.save complete")
@@ -331,6 +335,7 @@ def upload_document(request):
         print(document.__id__())
         user.documents.add(document)  # Add the document ID to the user's documents list
         user.save()
+        print(document.timeline)
         
         
         """print("All users in the database:")
@@ -487,7 +492,7 @@ def get_chat_history(request):
 
 """@api_view(['POST'])
 def set_pinned(request):
-    message_id = request.data.get(['id'])
+    message_id = request.data.get('id')
     try:
         io = InputOutput.objects.get(id=message_id)
     except InputOutput.DoesNotExist:
@@ -606,5 +611,27 @@ def text_to_rag(new_index_name, text):
     
 def mainfunk(pdf_file, new_index_name):
     text = extract_text_from_pdf(pdf_file)
-    print(text)
+    #print(text)
     text_to_rag(new_index_name, text)
+
+from . preprocessor import mainfunk as mainfunk2
+
+@api_view(['POST'])
+def getTimeLine(request):
+    documentID = request.data.get('documentID')
+    try:
+        print("get doc")
+        document = UserDocument.objects.get(_id=ObjectId(documentID))
+    except UserDocument.DoesNotExist:
+        print("no doc")
+        raise ValueError({'error': 'Document not found'})
+    if document.timeline is None:
+        print("start make timeline")
+        timeline = mainfunk2(str(document.file))
+        document.timeline = timeline
+        document.save()
+        print("done timeline")
+    else:
+        timeline = document.timeline
+    print(timeline)
+    return Response({'timeline': timeline})

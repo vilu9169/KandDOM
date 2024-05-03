@@ -1,18 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { Unstable_Popup as BasePopup } from "@mui/base/Unstable_Popup";
 import { BsThreeDots } from "react-icons/bs";
 import { IoMdCreate } from "react-icons/io";
 import { Container, Button } from "react-bootstrap";
 import { IoMdTrash } from "react-icons/io";
+import axios from "axios";
+import { AuthContext } from "./AuthContextProvider";
 
-export default function SimplePopup({ onDeleteClick }) {
+
+export default function SimplePopup({ file }) {
   const [anchor, setAnchor] = React.useState(null);
-
+  const { user, getFiles } = useContext(AuthContext);
+  const baseURL = process.env.REACT_APP_API_URL;
   const handleClick = (event) => {
     event.stopPropagation(); // Stop propagation to prevent document-button click
     setAnchor(anchor ? null : event.currentTarget);
   };
-
+  const deleteDocument = async (fileid) => {
+    console.log('fileid:', fileid);
+    const resp = await axios.post(baseURL + 'api/deletefile/', { fileid: fileid, user: user.id });
+    console.log(resp);
+    getFiles();
+  };
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (anchor && !anchor.contains(event.target)) {
@@ -30,10 +39,6 @@ export default function SimplePopup({ onDeleteClick }) {
   const open = Boolean(anchor);
   const id = open ? "simple-popper" : undefined;
 
-  const handleDeleteClick = () => {
-    onDeleteClick();
-    setAnchor(null);
-  };
 
   return (
     <div className="m-2">
@@ -58,6 +63,7 @@ export default function SimplePopup({ onDeleteClick }) {
             </span>
           </Button>
           <Button
+            onClick={() => deleteDocument(file.id)}
             className="m-auto my-2 bg-danger w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
           >
             <span className="small text-center justify-content-center d-flex align-items-center w-75">
