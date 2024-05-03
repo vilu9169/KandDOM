@@ -6,18 +6,59 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 const AuthContext = createContext()
 
-
 const AuthContextProvider = ({children}) => {
-    let [user, setUser] = useState(() => (Cookies.get('access_token') ? jwtDecode(Cookies.get('access_token')) : null))
+    let [user, setUser] = useState(() => (Cookies.get('access_token') ? jwtDecode(Cookies.get('access_token')).user : []))
     let [authTokens, setAuthTokens] = useState(() => (Cookies.get('access_tokens') ? JSON.parse(Cookies.get('access_token')) : null))
     let [loading, setLoading] = useState(true)
     let [loginError, setLoginError] = useState(null)
     let [signupError, setSignupError] = useState(null)
-    let [userID, setUserID] = useState(() => (localStorage.getItem('userID') ? jwtDecode(Cookies.get('access_token')).user_id : null))
+    let [userID, setUserID] = useState(() => (localStorage.getItem('userID') ? localStorage.getItem('userID') : null))
     const navigate = useNavigate()
+    const [files, setFiles] = useState(localStorage.getItem('files') ? JSON.parse(localStorage.getItem('files')) : []);
+    const [currentFile, setCurrentFile] = useState(localStorage.getItem('currentFile') ? localStorage.getItem('currentFile') : null);
+    const [timeLine, setTimeLine] = useState([]);
 
+    const baseURL = process.env.REACT_APP_API_URL
+
+    let getFiles = async () => {
+        const body = {
+            user: userID
+        }
+      try {
+        const {data} = await axios.post(baseURL+"api/documents/", body);
+        console.log(data.data);
+        let fileArr = []
+        for (const file of data.data) {
+          console.log(file);
+          fileArr.push(file);
+        }
+        setFiles(fileArr);
+        localStorage.setItem('files', JSON.stringify(fileArr));
+        console.log("Files:", files);
+        return data;
+      }
+      catch (error) {
+        console.error("Error fetching files:", error);
+      }
+    };
     axios.defaults.xsrfCookieName = 'csrftoken'
-    axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN'
+    axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN'   
+
+    let getTimeLine = async (fileid) => {
+        const body = {
+            documentID: fileid
+        }
+        try {
+            const {data} = await axios.post(baseURL+"api/get_timeline/", body);
+            console.log(data);
+            setTimeLine(data.timeline);
+            console.log("TimeLine:", timeLine);
+            return data;
+        }
+        catch (error) {
+            console.error("Error fetching timeline:", error);
+        }
+    }
 
     let loginUser = async (e) => {
             e.preventDefault()
@@ -27,14 +68,16 @@ const AuthContextProvider = ({children}) => {
                     password: e.target.password.value
             }
             try {
-                    const {data} = await axios.post("http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/api/token/", body) // Updated URL to include the full address with the 'http://' protocol
+                    const {data} = await axios.post(baseURL+"api/token/", body) // Updated URL to include the full address with the 'http://' protocol
                     console.log("data: ", data)
                     // Storing Access in cookie
                     Cookies.set('access_token', data.access);
                     Cookies.set('refresh_token', data.refresh);
-                    setUser(jwtDecode(data.access).email)
+                    setUser(jwtDecode(data.access).user)
                     setUserID(jwtDecode(data.access).user_id)
                     localStorage.setItem('userID', jwtDecode(data.access).user_id)
+                    console.log("decoded: ", jwtDecode(data.access).user)
+                    getFiles()
                     navigate("/");
                     setLoginError(null)
                     setSignupError(null)
@@ -55,7 +98,7 @@ const AuthContextProvider = ({children}) => {
         }
 
         try {
-            const response = await axios.post('http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/api/signup/', body)
+            const response = await axios.post(baseURL+'api/signup/', body)
             console.log(response)
             loginUser(e)
         } catch (error) {
@@ -70,13 +113,17 @@ const AuthContextProvider = ({children}) => {
         Cookies.remove('access_token');
         Cookies.remove('refresh_token');
         localStorage.removeItem('userID')
+        localStorage.removeItem('files')
+        localStorage.removeItem('currentFile')
+        localStorage.removeItem('messages')
         setAuthTokens(null)
         setUser(null)
         navigate('/login')
     }
 
     const updateToken = async () => {
-        const response = await fetch('1http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/api/token/refresh/', {
+        //http://ec2-16-171-79-116.eu-north-1.compute.amazonaws.com:8000/api/token/refresh/
+        const response = await fetch(baseURL+'api/token/refresh/', {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'
@@ -87,7 +134,7 @@ const AuthContextProvider = ({children}) => {
         const data = await response.json()
         if (response.status === 200) {
             setAuthTokens(data)
-            setUser(jwtDecode(data.access))
+            setUser(jwtDecode(data.access).user) // Add .user here
             Cookies.set('access_token',JSON.stringify(data))
         } else {
             logoutUser()
@@ -103,7 +150,14 @@ const AuthContextProvider = ({children}) => {
         userID:userID,
         authTokens:authTokens,
         loginError:loginError,
+        files:files,
         signupError:signupError,
+        currentFile:currentFile,
+        timeLine:timeLine,
+        setTimeLine:setTimeLine,
+        setCurrentFile:setCurrentFile,
+        getTimeLine:getTimeLine,
+        getFiles:getFiles,
         loginUser:loginUser,
         logoutUser:logoutUser,
         signupUser:signupUser,
@@ -121,7 +175,7 @@ const AuthContextProvider = ({children}) => {
     },[authTokens])
     useEffect(() => {
         const access_token = Cookies.get('access_token');
-        setUser(access_token ? jwtDecode(access_token) : null);
+        setUser(access_token ? jwtDecode(access_token).user : null); // Add .user here
       }, [user]);
 
     return(

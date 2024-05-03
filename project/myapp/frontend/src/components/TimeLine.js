@@ -1,41 +1,50 @@
+import React, { useRef, useEffect, useContext } from "react";
 import { Container } from "react-bootstrap";
 import { Chrono } from "react-chrono";
-//import "react-chrono/dist/styles.css";
+import { AuthContext } from "./AuthContextProvider";
 
-function TimeLine() {
-  const items = [
-    {
-      title: "May 24, 1940",
-      cardTitle: "Dunkirk",
-      cardSubtitle:
-        "Men of the British Expeditionary Force (BEF) wade out to a destroyer during the evacuation from Dunkirk.",
-      cardDetailedText:
-        "On 10 May 1940, Hitler began his long-awaited offensive in the west...",
-    },
-    {
-      title: "May 1945",
-      cardTitle: "sdfsdafd",
-      cardSubtitle:
-        "Men of the British Expeditionary Force (BEF) wade out to a destroyer during the evacuation from Dunkirk.",
-      cardDetailedText:
-        "On 10 May 1940, Hitler began his long-awaited offensive in the west...",
-    },
-  ];
+
+function TimeLine({ closeTimeline }) {
+  const timelineContainerRef = useRef(null);
+  const { timeLine } = useContext(AuthContext);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        timelineContainerRef.current &&
+        !timelineContainerRef.current.contains(event.target)
+      ) {
+        closeTimeline();
+      }
+    };
+
+    // Add event listener to detect clicks outside of the timeline container
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      // Clean up event listener on component unmount
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [closeTimeline]);
   return (
-    <Container fluid className=" info-container">
-      <Container className="w-75 bg-2 info-window h-80">
+    <Container fluid className="info-container">
+      <Container
+        className="w-75 bg-2 info-window h-80"
+        ref={timelineContainerRef}
+      >
         <Chrono
-          mode="HORIZONTAL"
+          mode="VERTICAL"
+          cardHeight="100"
+          contentDetailsHeight="0"
           theme={{
-            //toolbarBtnBgColor: '#eadbc8',
-            toolbarBgColor: "#f8f0e5", 
+            toolbarBgColor: "#f8f0e5",
             primary: "#dac0a3",
             secondary: "#f8f0e5",
             cardBgColor: "#f8f0e5",
             titleColor: "grey",
             titleColorActive: "black",
           }}
-          items={items}
+          items={timeLine}
         />
       </Container>
     </Container>
