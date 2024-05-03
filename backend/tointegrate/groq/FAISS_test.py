@@ -18,7 +18,6 @@ text5 = "I am happy"
 print(text)
 
 
-
 texts = [text, text1, text3, text4, text5]
 
 print(texts)
@@ -39,7 +38,6 @@ doc = Document(page_content="hehehe", metadata=metadata)
 db.add_documents()
 
 db.delete
-
 
 result  = db.delete(["init"])
 

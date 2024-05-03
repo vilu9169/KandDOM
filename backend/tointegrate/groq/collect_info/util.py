@@ -1,5 +1,7 @@
 import json
 from vertexai import generative_models
+from langchain_community.vectorstores import FAISS
+
 
 def print_tool_call(tool_call):
     out = ""
@@ -17,6 +19,13 @@ def extract_args(tool_call):
     return args
 
 
+def print_FAISS(faiss_store : FAISS):
+    total_amount = faiss_store.index.ntotal
+    entries = faiss_store.similarity_search("get all", total_amount)
+    for entry in entries:
+        print(entry.page_content)
+        print("Metadata: ")
+        print(entry.metadata)
 
 
 gemini_unfiltered = {
