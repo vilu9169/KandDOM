@@ -1,30 +1,83 @@
-import { Container, Button, ButtonGroup } from "react-bootstrap";
-import { AppContext } from "./ShowSettingsHandler";
-import { useContext, useEffect, useRef, useState } from "react";
-import TimeLine from "./TimeLine";
-import { TbTimelineEventFilled } from "react-icons/tb";
+import { Container, Button, Row } from "react-bootstrap";
+import { useContext, useState, useEffect } from "react";
+import PerfectScrollbar from "react-perfect-scrollbar";
+import { IoIosDocument } from "react-icons/io";
+import { AuthContext } from "./AuthContextProvider";
+import { ResponseContext } from "./ResponseContextProvider";
+import axios from "axios";
 
-function SideMenuMiddle() {
+import { scrollToPin } from "./Chatbot";
+import { IoIosArchive } from "react-icons/io";
+import SimplePopup from "./ThreeDotLogic";
+
+function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
+  const { user } = useContext(AuthContext);
+  const { pinnedMessages } = useContext(ResponseContext);
   const [showTimeline, setShowTimeline] = useState(false);
 
-  const handleButtonClick = () => {
-    setShowTimeline(!showTimeline);
+  const { files, getFiles, currentFile, setCurrentFile } = useContext(AuthContext);
+  const { messages, setMessages, getChatHistory } = useContext(ResponseContext);
+  const { timeLine, setTimeline, getTimeLine } = useContext(AuthContext);
+  const baseURL = process.env.REACT_APP_API_URL;
+  const { pinRef } = useContext(ResponseContext);
+
+
+  const chooseDocument = (fileid) => {
+    setCurrentFile(fileid);
+    localStorage.setItem("currentFile", fileid);
+    getChatHistory(fileid);
+    getTimeLine(fileid);
+    setClickedDocument(true);
   };
 
   return (
-    <Container className="p-0 mt-3">
-      <Button
-          onClick={handleButtonClick}
-          className="m-auto bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
-        >
-          <span className="text-center justify-content-center d-flex align-items-center w-75">
-            Timeline
-          </span>
-          <span className="w-25 justify-content-center d-flex align-items-center">
-            <TbTimelineEventFilled className="size-20" />
-          </span>
-        </Button>
-      {showTimeline && <TimeLine />}
+    <Container className="p-0">
+      {clickedDocument ? (
+        pinnedMessages.map((pin) => (
+          <Row key={pin.index} className="my-4 m-auto br-5 w-100">
+            <Button
+              className="m-auto bg-3 w-90 document-button d-flex justify-content-start align-items-center p-2 text-start"
+              
+              onClick={() => {console.log(pin.index); return scrollToPin(pinRef , pin.index)}}
+              >
+                {pin.id}
+              </Button>
+          </Row>
+        ))
+      ) : (
+        <>
+          <hr className="w-90 m-auto" />
+          <PerfectScrollbar>
+            {files.map((file) => (
+              <Row key={file.id} className="my-3 m-auto br-5 w-100">
+                <Button
+                  onClick={() => chooseDocument(file.id)}
+                  value={file.id}
+                  className={`small m-auto bg-2 w-90 document-button d-flex justify-content-start align-items-center p-2 text-start position-relative ${
+                    file.id === currentFile ? "highlighted" : ""
+                  }`}
+                >
+                  {file.filename}
+                  <Container
+                    className={`p-1 w-80px h-100 d-flex justify-content-center align-items-center ${
+                      file.id === currentFile
+                        ? "highlighted-iconbox"
+                        : "icons-container"
+                    }`}
+                  >
+                    <SimplePopup file={file} 
+                    />
+                    <IoIosArchive
+                      className="m-2 archive-icon"
+                      onClick={() => console.log("Edit document")}
+                    />
+                  </Container>
+                </Button>
+              </Row>
+            ))}
+          </PerfectScrollbar>
+        </>
+      )}
     </Container>
   );
 }

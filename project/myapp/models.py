@@ -7,6 +7,9 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.contrib.auth.models import BaseUserManager
 from djongo import models as djmodels
 from djongo.models.fields import ArrayReferenceField
+from djongo.storage import GridFSStorage
+
+grid_fs_storage = GridFSStorage(collection='pdf')
 
 class Document(models.Model):
     _id = djmodels.ObjectIdField()
@@ -16,6 +19,7 @@ class Document(models.Model):
     content_type = djmodels.CharField(max_length=100)
     size = djmodels.IntegerField()
     uploaded_at = djmodels.DateTimeField(auto_now_add=True)
+    timeline = djmodels.JSONField()
     def __getattribute__(self, attr):
         return super().__getattribute__(attr)
     def __id__(self):
@@ -71,3 +75,32 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()
+
+
+
+###This is just an example, has to be modified
+class InputOutput(models.Model): 
+    # Define fields for the InputOutput model
+    # For example, you might have fields like 'message', 'timestamp', etc.
+    message = models.CharField(max_length=1000)
+    response = models.CharField(max_length=2000)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    pinned = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.message
+
+class Index(models.Model):
+    index_value = models.IntegerField()
+
+    def __str__(self):
+        return str(self.index_value)
+
+class ChatHistory(models.Model):
+    _id = djmodels.ObjectIdField()
+    user_id = models.IntegerField()
+    inputoutput = ArrayReferenceField(to=InputOutput, on_delete=models.CASCADE)
+    pinned_indices = models.ManyToManyField(to=Index, blank=True)
+    embedding_id = models.CharField(max_length=250)
+
+

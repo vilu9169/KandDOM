@@ -4,6 +4,7 @@ import os
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, renderer_classes
+from django.shortcuts import get_object_or_404
 
 def index(request):
     return render(request, 'index.html')
@@ -50,7 +51,7 @@ def chat_view(request):
     #Create a json struct for previous messages and the current message
     odd = True
     messages = []
-    previous_messages = [msg['text'] for msg in messages_json]
+    previous_messages = [msg['text'] for msg in messages_json[:-1]]
     print('Received messages: ', previous_messages)  # Get all elements except the last one
     
     for message in previous_messages:
@@ -70,7 +71,9 @@ def chat_view(request):
         "author": "user",   
         "content": new_message
     })
+
     
+  
     payload = {
     "instances": [{
         "context":  context,
@@ -127,7 +130,7 @@ def chat_view(request):
 import subprocess
 import requests
 
-def start_chat(input, previous_messages) -> str:
+def start_chat2(input, previous_messages) -> str:
     endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/chat-bison:predict"
     
     #Load document from output.txt
@@ -234,19 +237,19 @@ from .serializers import UserSerializer
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed, ValidationError
 from .models import User
-from .models import Document
+from .models import Document as UserDocument
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken, TokenError
 from rest_framework import status
-from .models import Document
-from .serializers import DocumentSerializer
-
+from .serializers import DocumentSerializer, MyTokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenViewBase
+from .models import ChatHistory, InputOutput
 
 
 class RegisterView(APIView):
     def post(self, request):
         try:
             user = User.objects.get(email=request.data["email"])
-        except user.DoesNotExist:
+        except User.DoesNotExist:
             serializer = UserSerializer(data=request.data)
             serializer.is_valid(raise_exception=True)
             serializer.save()
@@ -270,10 +273,11 @@ class Loginview(APIView):
             raise AuthenticationFailed("Incorrect Password")
         access_token = AccessToken.for_user(user)
         refresh_token =RefreshToken.for_user(user)
+        access_token["user"] = UserSerializer(user).data
+        print(UserSerializer(user).data)
         return Response({
             "access_token" : access_token,
             "refresh_token" : refresh_token,
-            'userID': user.id
         })
     
 class LogoutView(APIView):
@@ -286,6 +290,19 @@ class LogoutView(APIView):
             return Response("Logout Successful", status=status.HTTP_200_OK)
         except TokenError:
             raise AuthenticationFailed("Invalid Token")
+
+from langchain_google_vertexai import VertexAIEmbeddings
+from langchain_google_vertexai import VertexAI
+
+
+from pinecone import Pinecone, ServerlessSpec, PodSpec  
+
+pc = Pinecone(api_key="2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
+
+#print(index.describe_index_stats())
+
+embeddings = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001")
+
         
 @api_view(['POST'])
 def upload_document(request):
@@ -295,25 +312,30 @@ def upload_document(request):
     """print("All documents in the database:")
     for document in File.objects.all():
         print(document)"""
-    
     if file_obj:
         # Create a new Document instance
-        document = Document.objects.create(
+        document = UserDocument.objects.create(
             file = file_obj,
             filename=file_obj.name,
             content_type=file_obj.content_type,
             size=file_obj.size,
+            timeline = []
             # file_id= ''  # You may need to provide an appropriate file ID here
         )
+        
         print("Before document.save")
+        print(document.file)
         document.save()
-
+        document.timeline = mainfunk2(str(document.file))
+        document.save()
+        mainfunk(str(document.file), str(document.__id__()))
         print("document.save complete")
         user = User.objects.get(id=request.data['userID'])
         print("User.objects.get(id=request.data['ObjectId']) COMPLETE")
         print(document.__id__())
         user.documents.add(document)  # Add the document ID to the user's documents list
         user.save()
+        print(document.timeline)
         
         
         """print("All users in the database:")
@@ -321,13 +343,295 @@ def upload_document(request):
             print(user)"""
 
         # You might want to return the ID of the newly created document for future reference
-        return Response({'document_id ': str(document._id)})
+        return Response({'document_id': str(document.__id__())})
     else:
         return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
     
 @api_view(['POST'])
 def get_documents(request):
-    user = User.objects.get(id=request.data['userID'])
+    print(request.data)
+    user = User.objects.get(id=request.data['user'])
     documents = user.documents.all()
-    serializer = DocumentSerializer(documents, many=True)
-    return Response(serializer.data)
+    resp = []
+    for document in documents:
+        print(document, document.__id__())
+        id = str(document.__id__())
+        resp.append({
+            "id": id,
+            "filename": document.filename,
+            "content_type": document.content_type,
+            "size": document.size,
+            "uploaded_at": document.uploaded_at
+        })
+
+    return Response({'data' : resp})
+
+
+class MyTokenObtainPairView(TokenViewBase):
+    serializer_class = MyTokenObtainPairSerializer
+
+
+
+from langchain_pinecone import PineconeVectorStore  
+from anthropic import AnthropicVertex
+
+
+llm = VertexAI()
+
+import subprocess
+import requests
+
+@api_view(['POST'])
+def start_chat(request):
+    print("Starting chat")
+    print(request.data.get('index_name'))
+    index_name = request.data.get('index_name')
+    index = pc.Index(index_name)
+    vectorstore = PineconeVectorStore(  
+        index, embeddings  
+    )
+    print("Vectorstore created")
+    # Set the endpoint URL
+    MODEL="claude-3-haiku@20240307"
+    endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/europe-west4/publishers/anthropic/models/"+MODEL+":predict"
+    context = "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. Detta är de RAG delar av dokument du har att tillgå :" 
+    index = 0
+    prepend = ""
+    append = ""
+    new_message = request.data.get('message')
+    messages_json = request.data.get('messages')
+    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 40,})).invoke(new_message):
+        #The first 10 documents are prepended to the context
+        #The last 10 documents are appended to append
+        if index < 10:
+            prepend += rag.page_content
+        elif index >10 and index < 20:
+            append = rag.page_content + append
+        else:
+            prepend += rag.page_content
+        index += 1
+        #Extract text from document
+    context += prepend + append
+    #print("Context: ", context)
+    print("Rag done")
+    #Create a json struct for previous messages and the current message
+    messages = []
+    odd = True
+    previous_messages = [msg['text'] for msg in messages_json]
+    for message in previous_messages:
+        if odd:
+            messages.append({
+                "role": "user",
+                "content": message
+            })
+            odd = False
+        else:
+            messages.append({
+                "role": "assistant",
+                "content": message
+            })
+            odd = True
+    messages.append({
+        "role": "user",
+        "content": new_message
+    })
+
+    print(request.data.get('userid'))
+
+    LOCATION="europe-west4"
+
+    client = AnthropicVertex(region=LOCATION, project_id="sunlit-inn-417922")
+
+    message = client.messages.create(
+    max_tokens=500,
+    messages=messages,
+    model="claude-3-haiku@20240307",
+    system = context,
+    )
+    try:
+        history = ChatHistory.objects.get(embedding_id=index_name)
+    except ChatHistory.DoesNotExist:
+        history = ChatHistory.objects.create(
+            user_id=request.data.get('userid'),  # Assuming the user is authenticated
+            embedding_id=index_name,  # Assuming embedding_id is defined elsewhere
+        )
+
+    inputoutput = InputOutput.objects.create(
+        message= new_message,
+        response = message.content[0].text
+    )
+    history.inputoutput.add(inputoutput)
+    return Response({"message" : message.content[0].text})
+
+@api_view(['POST'])
+def get_chat_history(request):
+    embedding_id = request.data.get('embedding_id')
+    try:
+        history = ChatHistory.objects.get(embedding_id=embedding_id)
+    except ChatHistory.DoesNotExist:
+        raise ValueError({'error': 'Chat history not found'})
+    inputoutput = history.inputoutput.all()
+    resp = []
+    pinned = []
+    for io in inputoutput:
+        resp.append({
+            "pinned": io.pinned,
+            "id": io.id,
+            "text": io.message,
+            "user": True
+        })
+        resp.append({
+            "text": io.response,
+            "user": False
+        })
+        if io.pinned:
+            pinned.append({'id':io.id})
+    print(resp)
+    return Response({'messages' : resp, 'pinned': pinned})
+
+
+"""@api_view(['POST'])
+def set_pinned(request):
+    message_id = request.data.get('id')
+    try:
+        io = InputOutput.objects.get(id=message_id)
+    except InputOutput.DoesNotExist:
+        raise ValueError({'error':'no IO matching found'})
+    io.pinned = not io.pinned
+    io.save()
+    return Response({'response':'Successfully pinned'})"""
+    
+@api_view(['POST'])
+def set_pinned(request):
+    try:
+        message_id = request.data.get('id')
+        io = InputOutput.objects.get(id=message_id)
+        io.pinned = not io.pinned
+        io.save()
+        # Proceed with your logic here
+        return Response({'success': True})
+    except InputOutput.DoesNotExist:
+        return Response({'error': 'InputOutput matching query does not exist.'}, status=400)
+    except Exception as e:
+        return Response({'error': str(e)}, status=500)
+
+from bson import ObjectId
+
+@api_view(['POST'])
+def delete_document(request):
+    document_id = request.data.get('fileid')
+    user = request.data.get('user')
+    print(document_id)
+    try:
+        document = UserDocument.objects.get(_id=ObjectId(document_id))
+    except UserDocument.DoesNotExist:
+        raise ValueError({'error': 'Document not found'})
+    try:
+        user = User.objects.get(id=user)
+    except User.DoesNotExist:
+        raise ValueError({'error': 'Error no user found'})
+    user.documents.remove(document)
+    user.save()
+    document.delete()
+    pc.delete_index(document_id)
+    try:
+        chat = ChatHistory.objects.get(embedding_id=document_id)
+    except ChatHistory.DoesNotExist:
+        return Response({'message': 'Document deleted, no chat deleted'})
+    for io in chat.inputoutput.all():
+        io.delete()
+    chat.delete()
+
+    return Response({'message': 'Document deleted successfully'})
+
+# Call the function with your project ID and location
+# prevmessages = []
+# while(True):
+#     #Prompt user for input
+#     print("Enter your message: ")
+#     message = input()
+#     res = start_chat(message, prevmessages)
+#     prevmessages.append(message)
+#     prevmessages.append(res)
+#     print(res)
+
+from pinecone import Pinecone, ServerlessSpec
+import PyPDF2
+# pdf_file = "gbg_mordforsok.pdf"
+# output_file = "output.pdf"
+import os
+from langchain_google_vertexai import VertexAIEmbeddings
+from langchain_pinecone import PineconeVectorStore
+from langchain.schema.document import Document
+from pinecone import Pinecone, ServerlessSpec
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+def extract_text_from_pdf(pdf_file) -> str:
+    try:
+        with open(pdf_file, 'rb') as file:
+            reader = PyPDF2.PdfReader(file)
+            num_pages = len(reader.pages)
+            text = ""
+            #Separate pages so they start with { and end with }
+            for page_num in range(num_pages):
+                text += "{pagestart nr "+ str(page_num+1) +"}"
+                page = reader.pages[page_num]
+                text += page.extract_text()
+                text +="{pageend nr "+ str(page_num+1) +"}"
+
+            return text
+    except FileNotFoundError:
+        print(f"Error: File '{pdf_file}' not found.")
+        return None
+    
+def text_to_rag(new_index_name, text):
+    os.environ["PINECONE_API_KEY"] = "2e669c83-1a4f-4f19-a06a-42aaf6ea7e06"
+    os.environ["PINECONE_ENV"] = "default"
+    pc = Pinecone(api_key="2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
+    pc.create_index(
+        name=new_index_name,
+        dimension=768,
+        metric="cosine",
+        spec=ServerlessSpec(
+            cloud='aws', 
+            region='us-west-2'
+        ) 
+    ) 
+    # Split documents
+    #text_splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=0)
+    #splits = [Document(page_content=x) for x in text_splitter.split_text(text)]
+    text_splitter = RecursiveCharacterTextSplitter(separators=["{pagestart", "{pageend"], chunk_overlap = 150)
+    splits = [Document(page_content=x) for x in text_splitter.split_text(text)]
+    #splits = text_splitter.split_text(text)    
+    embeddings = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001")
+    # initialize pinecone
+    vectorstore = PineconeVectorStore(new_index_name, embeddings.embed_query, splits)
+    # Vertex AI embedding model  uses 768 dimensions`
+    vectorstore = vectorstore.from_documents(splits, embeddings, index_name=new_index_name)
+    
+def mainfunk(pdf_file, new_index_name):
+    text = extract_text_from_pdf(pdf_file)
+    #print(text)
+    text_to_rag(new_index_name, text)
+
+from . preprocessor import mainfunk as mainfunk2
+
+@api_view(['POST'])
+def getTimeLine(request):
+    documentID = request.data.get('documentID')
+    try:
+        print("get doc")
+        document = UserDocument.objects.get(_id=ObjectId(documentID))
+    except UserDocument.DoesNotExist:
+        print("no doc")
+        raise ValueError({'error': 'Document not found'})
+    if document.timeline is None:
+        print("start make timeline")
+        timeline = mainfunk2(str(document.file))
+        document.timeline = timeline
+        document.save()
+        print("done timeline")
+    else:
+        timeline = document.timeline
+    print(timeline)
+    return Response({'timeline': timeline})
