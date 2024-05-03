@@ -45,34 +45,6 @@ tools = {
             },
         },
     },
-    "ny_gruppering": {
-        "type": "function",
-        "function": {
-            "name": "ny_gruppering",
-            "description": "Använd för att registrera en gruppering av personer som nämns i texten, t. ex. en familj, företag, organisation etc.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "gruppering": {
-                        "type": "string",
-                        "description": "Namnet eller beskrivning av grupperingen",
-                    },
-                    "personer": {
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                        },
-                        "description": "En lista med namn på personer som tillhör grupperingen",
-                    },
-                    "information": {
-                        "type": "string",
-                        "description": "En text som innehåller informationen om grupperingen",
-                    },
-                },
-                "required": ["gruppering", "personer"],
-            },
-        },
-    },
     "ny_information_om_gruppering": {
         "type": "function",
         "function": {
@@ -81,16 +53,24 @@ tools = {
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "gruppering": {
+                    "namn": {
                         "type": "string",
                         "description": "Namn och beskrivning av grupperingen",
                     },
-                    "information": {
-                        "type": "string",
-                        "description": "En text som innehåller informationen om grupperingen",
+                    "gruppmedlemmar": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "description": "Namn på person som tillhör grupperingen, använd förnamn och efternamn om tillgängligt",
+                        },
+                        "description": "En lista med namn på personer som tillhör grupperingen, lämna tom om ingen person i gruppen kan identifieras",
+                        "information": {
+                            "type": "string",
+                            "description": "En text som innehåller informationen om grupperingen",
+                        },
                     },
+                    "required": ["gruppering", "information"],
                 },
-                "required": ["gruppering", "information"],
             },
         },
     },
@@ -196,7 +176,7 @@ tools = {
                             "type": "string",
                             "description": "Namn på person som inte stod med tidigare men som ska ingå i grupperingen",
                         },
-                        "description": "En lista med namn på personer som tillhör grupperingen men som inte ingick sedan tidigare",
+                        "description": "En lista med namn på personer som tillhör grupperingen men som inte ingick sedan tidigare, lämna tom om ingen sådan person finns",
                     },
                 },
                 "required": [
@@ -211,7 +191,7 @@ tools = {
         "type": "function",
         "function": {
             "name": "skapa_gruppering",
-            "description": "Använd för att skapa en ny gruppering av personer",
+            "description": "Använd för att registreraen ny gruppering av personer",
             "parameters": {
                 "type": "object",
                 "properties": {
