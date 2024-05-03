@@ -1,7 +1,5 @@
 from pinecone import Pinecone, ServerlessSpec
 import PyPDF2
-# pdf_file = "gbg_mordforsok.pdf"
-# output_file = "output.pdf"
 import os
 from langchain_google_vertexai import VertexAIEmbeddings
 from langchain_pinecone import PineconeVectorStore
@@ -9,11 +7,34 @@ from langchain.schema.document import Document
 from pinecone import Pinecone, ServerlessSpec
 #from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_text_splitters import CharacterTextSplitter
-from timelinemaker import analyzefromstr
 
 from google.cloud import documentai
 import io
 import threading
+
+linebreaks = []
+numchars = []
+def pagestats(pageinfo):
+    #Count the number of linebreaks
+    linebreaks.append(pageinfo.count("\n"))
+    #Count the number of characters
+    numchars.append(len(pageinfo))
+    
+def pageconclusion():
+    #Calculate average number of linebreaks
+    avglinebreaks = sum(linebreaks)/len(linebreaks)
+    #Calculate average number of characters
+    avgchars = sum(numchars)/len(numchars)
+    print("Average number of linebreaks: ", avglinebreaks)
+    print("Average number of characters: ", avgchars)
+    #Find all pages with 1.5 standard deviations below the average number of characters
+    for i in range(len(numchars)):
+        if(numchars[i] < avgchars - 1.5*avgchars):
+            print("Page ", i, " has fewer characters than expected.")
+    #Find all pages with fewer then 1.5 standard deviations below the average number of linebreaks
+    for i in range(len(linebreaks)):
+        if(linebreaks[i] < avglinebreaks - 1.5*avglinebreaks):
+            print("Page ", i, " has fewer linebreaks than expected.")
 
 def async_handle_chunk(chunk_num, chunk_size, num_pages, pdf_file, client, name, resstrings):
     reader = PyPDF2.PdfReader(pdf_file)
@@ -43,9 +64,10 @@ def async_handle_chunk(chunk_num, chunk_size, num_pages, pdf_file, client, name,
     # please reference this page: https://googleapis.dev/python/documentai/latest/gapic/v1beta3/types.html#google.cloud.documentai.v1beta3.Document
     document = result.document
     # Read the text recognition output from the processor
-    resstring = ""
+    resstring = []
     for page in document.pages:
-        resstring += "{pagestart page: "+ str(pagenr+1) +"}"
+        rizz = ""
+        rizz += "{pagestart nr "+ str(pagenr+1) +"}"
         temp = ""
         for block in page.blocks:
             split = str(block.layout.text_anchor.text_segments).split("\n")
@@ -53,10 +75,11 @@ def async_handle_chunk(chunk_num, chunk_size, num_pages, pdf_file, client, name,
                 temp += document.text[int(split[0][split[0].find(":") +2:]) : int(split[1][split[1].find(":") +2:])]
             else:
                 temp += document.text[0: int(split[0][split[0].find(":") +2:])]                
-        resstring += temp
+        rizz += temp
         #resstring += page.layout.text_anchor.content
-        resstring +="{pageend page: "+ str(pagenr+1) +"}"+str(chr(28))
+        rizz +="{pageend nr "+ str(pagenr+1) +"}"+str(chr(28))
         pagenr += 1
+        resstring.append(rizz)
     resstrings[chunk_num] = resstring
     pass
 
@@ -85,7 +108,7 @@ def ocr_pdf(pdf_file, project_id, location, processor_id):
     resstrings = []
     #Add a new string for each chunk
     for i in range(num_chunks):
-        resstrings.append("")
+        resstrings.append([])
         
     threads = []
     # Create and start threads
@@ -97,14 +120,19 @@ def ocr_pdf(pdf_file, project_id, location, processor_id):
     # Wait for all threads to finish
     for thread in threads:
         thread.join()
-
-    
+    #Merge the strings into one array
+    mergedarr = []
+    for i in range(num_chunks):
+        mergedarr += resstrings[i]
+        pagestats(resstrings[i])
+    pageconclusion()
     resstring = ""
     for res in resstrings:
         resstring += res
     #Print to .txt file
     with open("output.txt", 'w', encoding='utf-8') as file:
         file.write(resstring)
+    pageconclusion()
     #print("Resstring",resstring)
     return resstring
 
@@ -116,10 +144,10 @@ def extract_text_from_pdf(pdf_file) -> str:
             text = ""
             #Separate pages so they start with { and end with }
             for page_num in range(num_pages):
-                text += "{pagestart page "+ str(page_num+1) + " in document "+pdf_file +" }"
+                text += "{pagestart nr "+ str(page_num+1) +"}"
                 page = reader.pages[page_num]
                 text += page.extract_text()
-                text +="{pageend page "+ str(page_num+1)+ " in document "+pdf_file +"}"+str(chr(28))
+                text +="{pageend nr "+ str(page_num+1) +"}"+str(chr(28))
 
             return text
     except FileNotFoundError:
@@ -130,20 +158,18 @@ def text_to_rag(new_index_name, text):
     os.environ["PINECONE_API_KEY"] = "2e669c83-1a4f-4f19-a06a-42aaf6ea7e06"
     os.environ["PINECONE_ENV"] = "default"
     pc = Pinecone(api_key="2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
-    #Try to create the index, if it already exists do nothing
-    try:
-        pc.create_index(
-            name=new_index_name,
-            dimension=768,
-            metric="cosine",
-            spec=ServerlessSpec(
-                cloud='aws', 
-                region='eu-west-1'
-            ) 
+    pc.create_index(
+        name=new_index_name,
+        dimension=768,
+        metric="cosine",
+        spec=ServerlessSpec(
+            cloud='aws', 
+            region='us-west-2'
         ) 
-    except Exception as e:
-        print("Index already exists")
+    ) 
     # Split documents
+    #text_splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=0)
+    #splits = [Document(page_content=x) for x in text_splitter.split_text(text)]
     text_splitter = CharacterTextSplitter(chunk_size=2, chunk_overlap =1,separator=str(chr(28)))
     splits = [Document(page_content=x) for x in text_splitter.split_text(text)]
     #splits = text_splitter.split_text(text)    
@@ -153,39 +179,13 @@ def text_to_rag(new_index_name, text):
     # Vertex AI embedding model  uses 768 dimensions`
     vectorstore = vectorstore.from_documents(splits, embeddings, index_name=new_index_name)
     
-def handle_multi_pdfs(pdf_files, new_index_name):
-    alltexts  = ""
-    for pdf_file in pdf_files:
-        text = ocr_pdf(pdf_file, "sunlit-inn-417922", "eu", "54cf154d8c525451")
-        text_to_rag(new_index_name, text)
-        #After text to rag run timelinemaker
-        alltexts += text
-    res = analyzefromstr(alltexts)
-    print(res)
-#Takes a pdf file path and a new index name as input
-#Extracts text from the pdf file and converts it to RAG which is stored in the new index
-def mainfunk(pdf_file, new_index_name):
+def mainfunk(pdf_file): #, new_index_name):
+    #text = extract_text_from_pdf(pdf_file)
     text = ocr_pdf(pdf_file, "sunlit-inn-417922", "eu", "54cf154d8c525451")
-    text_to_rag(new_index_name, text)
-    #After text to rag run timelinemaker
-    res = analyzefromstr(text)
-    #Res contains a dictioary with the timeline, 
-    #Objects in the dictonary have "time", "pages" and "information" fields and are sorted by time
-    # print(res)
+    #text_to_rag(new_index_name, text)
 
-# print("Name of the file to be converted to RAG: ")
-# pdf_file = input()
-# print("Name of the new index: ")
-# new_index_name = input()
-# mainfunk(pdf_file, new_index_name)
-pdf_files = []
-while True:
-    print("Name of the files to be processed using RAG(write \"end\" to end input): ")
-    pdf_file = input()
-    if(pdf_file == "end"):
-        break
-    else:
-        pdf_files.append(pdf_file)
-print("Name of the new index: ")
-new_index_name = input()
-handle_multi_pdfs(pdf_files, new_index_name)
+print("Name of the file to be converted to RAG: ")
+pdf_file = input()
+#print("Name of the new index: ")
+#new_index_name = input()
+mainfunk(pdf_file) #, new_index_name)
