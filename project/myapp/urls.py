@@ -9,7 +9,10 @@ urlpatterns = [
     path('chat/', start_chat, name='chat_view'),
     re_path(r'^$', TemplateView.as_view(template_name='index.html')),
     re_path(r'^login$', TemplateView.as_view(template_name='index.html')),
-    path('test/', display_text_file, name='display_text'),
+    # path('pdf-view/<str:pdf_filename>/<str:section>/', pdf_view, name='display_pdf_with_section'),
+    path('pdf-view/<str:pdf_filename>/', pdf_view, name='display_pdf'),
+    
+
 
     path('upload/', upload_document, name='upload'),
     path('api/token/', MyTokenObtainPairView.as_view(), name ="token_obtain_pair"),

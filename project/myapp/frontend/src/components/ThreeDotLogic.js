@@ -6,6 +6,8 @@ import { Container, Button } from "react-bootstrap";
 import { IoMdTrash } from "react-icons/io";
 import axios from "axios";
 import { AuthContext } from "./AuthContextProvider";
+import { MdOutlineOpenInNew } from "react-icons/md";
+
 
 
 export default function SimplePopup({ file }) {
@@ -40,6 +42,16 @@ export default function SimplePopup({ file }) {
   const id = open ? "simple-popper" : undefined;
 
 
+  const openPdfInNewWindow = (pdfFilename, section) => {
+    let url = `http://127.0.0.1:8000/pdf-view/${pdfFilename}/`;
+    
+    if (section) {
+      url += `#page=${section}`;
+    }
+    
+    window.open(url, '_blank');
+  };
+
   return (
     <div className="m-2">
       <button
@@ -63,7 +75,17 @@ export default function SimplePopup({ file }) {
             </span>
           </Button>
           <Button
-            onClick={() => deleteDocument(file.id)}
+            className="m-auto my-2 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
+            onClick={() => openPdfInNewWindow("komp.pdf", "5")}
+          >
+            <span className="small text-center justify-content-center d-flex align-items-center w-75">
+              View pdf
+            </span>
+            <span className="w-25 justify-content-center d-flex align-items-center">
+              <MdOutlineOpenInNew className="size-20" />
+            </span>
+          </Button>
+          <Button
             className="m-auto my-2 bg-danger w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
           >
             <span className="small text-center justify-content-center d-flex align-items-center w-75">

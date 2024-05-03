@@ -614,6 +614,36 @@ def mainfunk(pdf_file, new_index_name):
     #print(text)
     text_to_rag(new_index_name, text)
 
+from django.http import FileResponse, Http404
+
+# def pdf_view(request):
+#     try:
+#         return FileResponse(open('Kompendium - Allt.pdf', 'rb'), content_type='application/pdf')
+#     except FileNotFoundError:
+#         raise Http404()
+    
+
+def pdf_view(request, pdf_filename, section=None):
+    try:
+        # Open the PDF file
+        pdf_file = open(pdf_filename, 'rb')
+        
+        # Check if a section query parameter is provided
+        section = request.GET.get('section')
+        
+        if section:
+            # If section is provided, construct the URL with the hash fragment
+            pdf_url = f'/pdf-view/#page={section}'
+        else:
+            # If no section is provided, just use the regular URL
+            pdf_url = '/pdf-view/'
+        
+        # Close the PDF file after constructing the response
+        response = FileResponse(pdf_file, content_type='application/pdf')
+        response['Content-Disposition'] = 'inline; filename="'+ pdf_filename +'"'       
+        return response
+    except FileNotFoundError:
+        raise Http404()
 from . preprocessor import mainfunk as mainfunk2
 
 @api_view(['POST'])

@@ -22,6 +22,30 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   const { pinRef } = useContext(ResponseContext);
 
 
+  const getChatHistory = async (fileid) => {
+    const body = {
+      embedding_id: fileid ? fileid : currentFile,
+    };
+    try {
+      const { data } = await axios.post(baseURL + "api/getchat/", body);
+      setMessages(data.messages);
+    } catch (error) {
+      console.error("Error fetching chat history:", error);
+      setMessages([]);
+    }
+  };
+
+  const deleteDocument = async (fileid) => {
+    console.log("fileid:", fileid);
+    const resp = await axios.post(baseURL + "api/deletefile/", {
+      fileid: fileid,
+      user: user.id,
+    });
+
+    console.log(resp);
+    getFiles(); 
+  };
+
   const chooseDocument = (fileid) => {
     setCurrentFile(fileid);
     localStorage.setItem("currentFile", fileid);
