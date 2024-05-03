@@ -1,21 +1,21 @@
-import React, { useContext, useRef, useEffect } from "react";
+import React, { useContext, useRef, useEffect, useState } from "react";
 import { ResponseContext } from "./ResponseContextProvider";
 import PerfectScrollbar from "perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css"; // Import Perfect Scrollbar CSS
 import apolloLogo from "../assets/apollo.png";
 import pinLogo from "../assets/pin.png";
-import { Button ,Container, Row, Col } from "react-bootstrap";
+import { Button, Container, Row, Col } from "react-bootstrap";
 import { TiPin } from "react-icons/ti";
-import ChatMessage from './ChatMessage';
+import ChatMessage from "./ChatMessage";
 import { TiPinOutline } from "react-icons/ti";
-import axios from 'axios';
+import axios from "axios";
 import { AuthContext } from "./AuthContextProvider";
-
+import { IoMdPerson } from "react-icons/io";
 
 export const scrollToPin = (pinRef, index) => {
   console.log(pinRef.current[index].current);
-  (pinRef.current[index]).current.scrollIntoView({block: 'start'}); 
-}
+  pinRef.current[index].current.scrollIntoView({ block: "start" });
+};
 
 const Chatbot = () => {
   const { messages } = useContext(ResponseContext);
@@ -25,7 +25,9 @@ const Chatbot = () => {
   const { currentFile } = useContext(AuthContext);
   const { arrLength } = useContext(ResponseContext);
   let ps;
-  const baseURL = process.env.REACT_APP_API_URL
+  const baseURL = process.env.REACT_APP_API_URL;
+  
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     if (chatWindowRef.current) {
@@ -57,36 +59,42 @@ const Chatbot = () => {
     }
   };
   const setPinned = async (id) => {
-    console.log(id)
-    console.log(baseURL+'api/set_pinned/')
-    const resp = await axios.post(baseURL+'api/set_pinned/', {id:id})
-    console.log(resp)
+    console.log(id);
+    console.log(baseURL + "api/set_pinned/");
+    const resp = await axios.post(baseURL + "api/set_pinned/", { id: id });
+    console.log(resp);
     if (resp.data.success) {
-      getChatHistory(currentFile)
+      getChatHistory(currentFile);
+    } else {
+      console.log("Error setting pinned");
     }
-    else {
-      console.log('Error setting pinned')
-    }
-  }
+  };
   let pinnedIndex = 0;
   return (
-    <Container className="chatbot-container" ref={chatWindowRef}>
+    <Container 
+      className="chatbot-container" 
+      ref={chatWindowRef} 
+      onMouseEnter={() => setIsHovered(true)} 
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <Container className="chatbot-messages w-100 p-0 overflow-hidden">
         {messages.map((message, index) => (
           <Container
-            ref={ message.pinned ? pinRef.current[pinnedIndex++] : null}
+            ref={message.pinned ? pinRef.current[pinnedIndex++] : null}
             key={index}
-            className={`message ${
-              message.user ? "user-message" : "ai-message"
-            } w-100 `}
+            className={`message ${message.user ? "user-message" : "ai-message"} w-100 `}
           >
             <Row className="w-100">
               <Col className="col w-50px d-flex justify-content-center align-items-center">
-                <img
-                  className="p-0 m-0 chat-logo"
-                  src={message.user ? pinLogo : apolloLogo}
-                  alt="chatLogo"
-                />
+                {message.user ? (
+                  <IoMdPerson className="chat-logo" />
+                ) : (
+                  <img
+                    className="p-0 m-0 chat-logo"
+                    src={apolloLogo}
+                    alt="chatLogo"
+                  />
+                )}
               </Col>
               <Col className="col d-flex align-items-center">
                 <p className="m-0 user-text">
@@ -95,11 +103,23 @@ const Chatbot = () => {
               </Col>
             </Row>
             <Row className="w-100">
-              <p className="message-text"><ChatMessage text={message.text} /></p>
+              <p className="message-text p-3 m-auto">
+                <ChatMessage text={message.text} />
+              </p>
             </Row>
-            <Row className="d-flex justify-content-start w-100 h-20px">
-              {message.user && <TiPin onClick={() => setPinned(message.id)} className="m-0 p-0" style={{transform: `rotate(${message.pinned ? "-30deg" : "0"})`}}/>}
-            </Row>
+            {isHovered && (
+              <Row className="xd d-flex align-items-center justify-content-start w-100 h-20px">
+                {message.user && (
+                  <TiPin
+                    onClick={() => setPinned(message.id)}
+                    className={`m-0 w-30px size-20 p-0 ${message.pinned ? "c-secondary" : ""}`}
+                    style={{
+                      transform: `rotate(${message.pinned ? "-30deg" : "0"})`,
+                    }}
+                  />
+                )}
+              </Row>
+            )}
           </Container>
         ))}
       </Container>

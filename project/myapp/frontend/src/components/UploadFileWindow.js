@@ -6,11 +6,15 @@ import { IoIosDocument } from "react-icons/io";
 import { IoIosCopy } from "react-icons/io";
 import { AuthContext } from "./AuthContextProvider";
 import FileDropZone from "./FileDropZone";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import { UploadWindowContext } from "./UploadWindowContextProvider";
 
 function UploadFileWindow() {
+  const { value } = useContext(UploadWindowContext);
   const { userID, getFiles } = useContext(AuthContext);
   const { setCurrentFile } = useContext(AuthContext);
+  const [title, setTitle] = useState("Upload document to start!");
+
   const baseURL = process.env.REACT_APP_API_URL;
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
@@ -21,7 +25,6 @@ function UploadFileWindow() {
     }
     console.log('userID:', userID)
     let formData = new FormData();
-
 
     formData.append('file', file); // Append the file to FormData
     formData.append('userID', userID);
@@ -42,11 +45,21 @@ function UploadFileWindow() {
       alert("An error occurred while uploading the file.");
     }
   };
+  
+  useEffect(() => {
+    if (value === 1) {
+      setTitle("Upload document to a new chat.");
+    } else if (value === 2) {
+      setTitle("Upload document to current existing chat.");
+    } else {
+      setTitle("Upload document to start!");
+    }
+  }, [value]);
 
   return (
     <Container className="m-auto p-2 h-75 bg-2 uploadfile-container">
       <Row className="h-10 w-100 bg-2 m-0 align-items-center d-flex justify-content-center">
-        <h4 className="m-0">Upload document to start!</h4>
+        <h4 className="m-0">{title}</h4>
       </Row>
       <Row className="p-0 h-90 w-100 bg-2  m-0">
         <Col className="col-5 p-0 bg-2 d-flex align-items-center justify-content-center">

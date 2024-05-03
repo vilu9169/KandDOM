@@ -74,6 +74,9 @@ button {
 .c-2{
   color: var(--color-1) !important;
 }
+.c-secondary{
+  color: var(--text-color-second) !important;
+}
 
 .h-15 {
   height: 15%;
@@ -126,6 +129,12 @@ button {
 }
 .w-50px{
   flex: 0 0 50px !important;
+}
+.xd{
+  padding-left: 10px !important;
+}
+.w-30px{
+  width: 30px !important;
 }
 .w-80px{
  width: 80px !important;
@@ -480,7 +489,6 @@ button {
 
 .message-text {
   font-size: 14px;
-  margin-left: 10px;
 }
 
 /* InfoWindow CSS */
