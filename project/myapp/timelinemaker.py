@@ -20,7 +20,7 @@ tools = {
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "title": {
+                    "time": {
                         "type": "string",
                         "description": "Datum och tid då händelsen inträffade. Skall endast vara en tid per händelse. Tider ska anges på formatet DD/MM/YY HH:MM",
                     },
@@ -28,7 +28,7 @@ tools = {
                         "type": "string",
                         "description": "Sidnummer till sidorna där information om händelsen finns.",
                     },
-                    "cardTitle": {
+                    "information": {
                         "type": "string",
                         "description": "Information om händelsen.",
                     },
@@ -72,7 +72,7 @@ vectorstore = PineconeVectorStore(
 
 def summarise_gemeni_par(input, index, res):
 
-    cont = "Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem. Alla dina svar måste vara på svenska. Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och datum samt tidpunkten när den skede. Tidpunkter ska vara på formatet Tider ska anges på formen DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska. Du måste alltid inkludera vilka sidor du hittade informationen. Här är materialet du ska behandla  :" + input 
+    cont = "Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem. Alla dina svar måste vara på svenska. Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och datum samt tidpunkten när den skede. Tidpunkter ska vara på formatet Tider ska anges på formen DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska och . Du måste alltid inkludera vilka sidor du hittade informationen. Här är materialet du ska behandla  :" + input 
     generation_config = {
     "max_output_tokens": 4400,
     "temperature": 0.1,
@@ -122,7 +122,7 @@ def handlesplit(split, retvals, i):
         return
     instructions = """
     Du är en funktionsanropande LLM.
-    Ditt jobb är att skapa händelser utifrån en text. Läs texten och skapa händelser med hjälp ett verktyg som sparar en händelsebeskrivning tillsammans med händelsens tid och vilka sidor man kan läsa om händelsen på . Det ska vara exakt en tid per händelse.
+    Ditt jobb är att skapa händelser utifrån en text. Läs texten och skapa händelser med hjälp ett verktyg som sparar en händelsebeskrivning tillsammans med händelsens tid och vilka sidor man kan läsa om händelsen på, . Det ska vara exakt en tid per händelse.
     Du sak använda verktyget \"skapa_händelse\" och ange tider på formen DD/MM/YY HH:MM. Det är absolut förbjudet att inte ange en tid på detta format.
     VIKTIGT: Använd ett av verktygen per händelse.
     """
@@ -159,25 +159,26 @@ def handlesplit(split, retvals, i):
             args = json.loads(tool_call.function.arguments)
             #Add to dict
             try :
-                ret.append({"title": parser.parse(args["title"]),"pages": args["pages"] , "cardTitle": args["cardTitle"]})
+                ret.append({"title": parser.parse(args["time"], dayfirst=True),"pages": args["pages"] , "cardTitle": args["information"]})
             except Exception as e:
                 #Append time anyways
-                ret.append({"title": args["title"],"pages": args["pages"] , "cardTitle": args["cardTitle"]})
+                ret.append({"title": args["time"],"pages": args["pages"] , "cardTitle": args["information"]})
         retvals[i] = ret
         pass
     except Exception as e:
         print(e)
         print("No tool calls")
         pass
-    
+
+from datetime import datetime
 def bettersort(theevents):
-    if(type(theevents["time"]) == str):
+    if(type(theevents["title"]) == str):
         return 0
     else:
-        return theevents["time"].timestamp()
+        return theevents["title"].timestamp()
 def analyzefromstr(input):
     from langchain.docstore.document import Document
-    print("start analyzefromstr")
+
     doc =  Document(page_content=input, metadata={"source": "local"})
     #Load inputstring as a document
     # Split documents
@@ -217,34 +218,14 @@ def analyzefromstr(input):
 
     struct = []
     for elem in retvals:
+        print(elem)
         struct += elem
 
-    #Order all events by time
-    #Todo rework to only drop events without time in the second iteration and keep for the first
-    #Use a better sortfunction to accomplish this instead of the current one
     struct = sorted(struct, key = lambda x: bettersort(x))
     for elem in struct:
-        #Print the time as a string
-        elem["time"] = str(elem["time"])
-    merged = ""
-    # for elem in struct:
-    #     merged += "{time : \"" + elem["time"] + "\" pages : " + elem["pages"] + "\", event : \"" + elem["information"] + "\"}\n"
-    # #Split data again and clean it
-    # # res = []
-    # # newspltis = 10000
-    # # splits = [merged[i:i+newspltis] for i in range(0, len(merged), newspltis)]
-    # # for i in range(len(splits)):
-    # #     res+=cleandates(splits[i])
-    # #Order all events by time
-    # #srted = sorted(res, key = lambda x: bettersort(x))
-
-    # #Parse as desired
-    # for elem in srted:
-    #     elem["time"] = str(elem["time"].strftime("%d/%m/%Y %H:%M"))
-    for elem in struct:
         try:
-            elem["time"] = parser.parse(elem["time"])
-            elem["time"] = str(elem["time"].strftime("%d/%m/%Y %H:%M"))
+            print(elem["title"])
+            elem["title"] = str(elem["title"].strftime("%d/%m/%Y %H:%M"))
         except Exception as e:
             print("Error parsing time: ", e)
     return struct
