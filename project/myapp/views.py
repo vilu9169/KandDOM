@@ -516,7 +516,7 @@ def set_pinned(request):
         return Response({'error': str(e)}, status=500)
 
 from bson import ObjectId
-
+import os
 @api_view(['POST'])
 def delete_document(request):
     document_id = request.data.get('fileid')
@@ -532,8 +532,12 @@ def delete_document(request):
         raise ValueError({'error': 'Error no user found'})
     user.documents.remove(document)
     user.save()
-    document.delete()
+    if os.path.exists(str(document.file)):
+        os.remove(str(document.file))
+    else:
+        print("The file does not exist")
     pc.delete_index(document_id)
+    document.delete()
     try:
         chat = ChatHistory.objects.get(embedding_id=document_id)
     except ChatHistory.DoesNotExist:
