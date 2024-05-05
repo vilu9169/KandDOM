@@ -21,6 +21,9 @@ def extract_args(tool_call):
 
 def print_FAISS(faiss_store : FAISS):
     total_amount = faiss_store.index.ntotal
+    if total_amount == 0:
+        print("No entries in FAISS store")
+        return
     entries = faiss_store.similarity_search("get all", total_amount)
     for entry in entries:
         print(entry.page_content)

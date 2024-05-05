@@ -46,6 +46,7 @@ Om personen saknar namn och du vet vad personen heter, använd verktyget "sätt_
 create_description_instructions = """
 Du är en assistent som summerar information om en person för att skapa en kort text som identifierar personen. Inkludera alltid namn om 
 namnet är kännt. Fokusera på hur personen förhåller sig till andra personer, grupper och händelser, lägg inte fokus på personens egenskaper.
+Använd endast information som står i texten, din sammanfattning om personen bör vara strikt kortare än texten du sammanfattar.
 """
 
 
@@ -56,7 +57,7 @@ tell_if_new_person_instructions = """Du är en assistent som hjälper användare
 Användaren har skickat in ett namn som inte var en exakt match bland tidigare namn. Din uppgift är att
 avgöra om det nya namnet är en ny person som ska läggas till i arkivet eller om det är en person som redan
 finns i arkivet. Du får upp till tre alternativ bland tidigare kända personer att välja mellan. Du ska sedan använda ett verktyg för att
-förmedla till användaren om personen är ny eller inte.
+förmedla till användaren om personen är ny eller inte. Tänk på att personen kan ha olika stavningar på sitt namn.
 """
 
 
@@ -96,38 +97,31 @@ class Personhandler:
         self.groq = Groq(api_key=os.environ.get("GROQ_API_KEY")).chat.completions
         self.description_model = GenerativeModel("gemini-1.0-pro", system_instruction=[create_description_instructions], safety_settings=gemini_unfiltered, generation_config=config)
 
-    def ny_info_person(self,alias, new_info):
-        person = self._get_current_info(alias)
+    def ny_info_person(self, alias, new_info):
+        person = self._get_current_info(alias, new_info)
         name = person.metadata["name"]
         info = person.metadata["info"]
         description = person.page_content
-        info = self._update_info(info, new_info)
+        info += "\n "+new_info #self._update_info(new_info)
         metadata = {"name": name, "info": info}
         updated_person = Document(page_content=description, metadata=metadata)
         self._generate_update_description(updated_person)
         
 
-    def _get_current_info(self, name) -> Document:
+    def _get_current_info(self, name, new_info) -> Document:
         search_result = self.people_store.similarity_search(name,k=3)
-        if search_result[0] and search_result[0].metadata["name"] == name:
+        if search_result and search_result[0].metadata["name"] == name:
             return search_result[0]
         else:
-            corrected_name = self._check_if_new_person(name, search_result)
-            return self.people_collection.find_one({"name": corrected_name})
+            corrected_name = self._check_if_new_person(name, new_info, search_result)
+            return self.people_dict[corrected_name]
         
-    def _update_info(self, old_info, new_info):
-        chat = self.info_model.start_chat()
-        message = "**Tidigare känd information**\n "+old_info+"\n\n **ny information att inkludera**\n "+new_info
-        print("Old info: \n"+old_info)
+    def _update_info(self, new_info):
+        self.people_dict
         response = chat.send_message(message).candidates[0].content.text
         print("Updated info: \n"+response)
-        try:
-            self.people_collection.update_one({"info": old_info}, {"$set": {"info": response}})
-            return response
-        except Exception as e:
-            print(e)
-            print(traceback.format_exc())
-            print("Could not update info")
+        self.people_collection.update_one({"info": old_info}, {"$set": {"info": response}})
+        return response
     
     # def _update_description(self, current_description, new_info, name, info):
     #     message = "Nuvarande namn: "+name+"\n"+"**Nuvarande beskrivning**\n "+current_description+"\n\n **Ny information**\n "+new_info
@@ -169,64 +163,101 @@ class Personhandler:
     def _generate_update_description(self, person : Document):
         info = person.metadata["info"]
         name = person.metadata["name"]
-        prompt = "Name: "+name+"Information: "+info
-        response = self.description_model.generate_content(prompt)
-        try:
-            args = extract_args(response.choices[0].message.tool_calls[0])
-            description = args["ny_beskrivning"]
-            print_tool_call(response.choices[0].message.tool_calls[0])
-            metadata = {"name": name, "info": info}
-            new_person = Document(page_content=description, metadata=metadata)
-            try:
-                deletion = self.people_store.delete([name])
-                if not deletion:
-                    print("ERROR: no deletion during update")
-                self.people_store.add_documents([new_person])
-                self.people_dict.update({name : new_person})
-            except Exception as e:
-                print(e)
-                print(traceback.format_exc())
-                print("Could not update description")
-        except:
-            try: 
-                print("Tool was not used to change name or description, text output:")
-                print(response.choices[0])
-            except Exception as e:
-                print(e)
-                print(traceback.format_exc())
+        prompt = "Namn: "+name+" \nInformation: "+info
+        new_description = self.description_model.generate_content(prompt).candidates[0].content.text
+        metadata = {"name": name, "info": info}
+        new_person = Document(page_content=new_description, metadata=metadata)
+        deletion = self.people_store.delete([name])
+        if not deletion:
+            print("ERROR: no deletion during update")
+        self.people_store.add_documents([new_person], ids=[name])
+        self.people_dict.update({name : new_person})
 
 
-    def _check_if_new_person(self, name, nearest : List[Document]):
-        prompt = "Sökning: "+name+"\nAlternativ: "
-        for i, option in enumerate(nearest):
-            prompt += str(i+1)+". Namn: "+option.metadata["name"]+"Beskrivning: "+option.page_content+"\n"
-        response = self.groq.create(
+    tell_if_new_instructions = """
+    Du är en assistent som hjälper användare söka efter personer iblandade i ett rättsfall.
+    Användaren har skickat in ett namn som inte var en exakt match bland tidigare namn. Din uppgift är att
+    avgöra om det nya namnet är en ny person inte registrerats sedan tidigare eller om det är en person som redan
+    finns sparad. Du får upp till tre alternativ bland tidigare kända personer att välja mellan. Avgör om personen är samma som ett av de namn som står som alternativ, 
+    om personen endast nämns i beskrivningen av andra personen är de mycket sannolikt inte registrerade sedan tidigare. Utgå endast från information som står i texten, inte från egna antaganden.
+    
+    Resonera kring varför personen är ny eller inte, och välj det alternativ som anses vara mest sannolikt.
+    Återge ordagrant det alternativ som anses vara mest sannolikt. Samt skriv uttryckligen "Alternativ 'nummer på alternativ'"
+    """
+    tell_if_new_person_instructions = """
+    Du har fått en analys av personsökning, ditt jobb är att registrera analysen med hjälp av verktyget "identifiera_person". Läs slutsatsen och skriv sedan in den i verktyget.
+    """
+
+    def _check_if_new_person(self, name, info, nearest : List[Document]):
+        search = "Namn: "+name+" Information: "+info
+        nearest_names = [doc.metadata["name"] for doc in nearest]
+        prompt = "Här är personen som ska matchas samt lite information: "+search+"\nHär är de möjliga alternativen för vem personen kan vara: "
+        if len(nearest) == 0:
+            prompt += "\n1. Inga tidigarer kända personer hittades, personen måste vara ny"
+        else:
+            for i, option in enumerate(nearest):
+                prompt += str(i+1)+". Namn: "+option.metadata["name"]+"\n Information om "+option.metadata["name"]+ ": "+option.page_content+"\n"
+            prompt += "Här är alltså de möjliga alternativen för vem "+name+" kan vara, välj det som verkar mest troligt:\n"
+            for i, option in enumerate(nearest):
+                prompt += str(i+1)+". "+name+" är samma person som "+option.metadata["name"]+" \n"
+            prompt += str(len(nearest)+1)+". "+name+" är en annan person än"
+            for i, option in zip(range(len(nearest)-1),nearest):
+                prompt += " "+option.metadata["name"]+","
+            if len(nearest) > 1:
+                prompt += "eller "+nearest[-1].metadata["name"]
+            else:
+                prompt += " "+nearest[0].metadata["name"]
+        print(prompt)
+        model = GenerativeModel("gemini-1.5-pro-preview-0409", system_instruction=[self.tell_if_new_instructions], safety_settings=gemini_unfiltered, generation_config=GenerationConfig(temperature=0.0, candidate_count=1))
+        response = model.generate_content(prompt).candidates[0].content.text
+        # response = self.groq.create(
+        #     messages=[
+        #         {
+        #             "role": "system",
+        #             "content": self.tell_if_new_instructions,
+        #         },
+        #         {
+        #             "role": "user",
+        #             "content": prompt,
+        #         }
+        #     ],
+        #     max_tokens=300,
+        #     model="llama3-70b-8192",
+        # ).choices[0].message.content
+        
+        print("Model response: ")
+        print(response)
+
+        tool_use = self.groq.create(
             messages=[
                 {
                     "role": "system",
-                    "content": tell_if_new_person_instructions,
+                    "content": self.tell_if_new_person_instructions,
                 },
                 {
                     "role": "user",
-                    "content": prompt,
+                    "content": response,
                 }
             ],
             tools=[tools["identifiera_person"]],
             model="llama3-70b-8192",
         )
         try:
-            args = extract_args(response.choices[0].message.tool_calls[0])
-            print_tool_call(response.choices[0].message.tool_calls[0])
-            if not args["finns_sedan_tidigare"]:
+            args = extract_args(tool_use.choices[0].message.tool_calls[0])
+            print_tool_call(tool_use.choices[0].message.tool_calls[0])
+            if args["Siffra_på_alternativ"] == len(nearest)+1: #args["finns_sedan_tidigare"]:
                 print("User was not found before")
-                name = args["namn"]
                 metadata = {"name": name, "info": ""}
-                new_person = Document(page_content=args["beskrivning_av_ny_person"], metadata=metadata)
-                self.people_store.add_documents([new_person])
+                new_person = Document(page_content="init", metadata=metadata)
+                self.people_store.add_documents([new_person], ids=[name])
                 self.people_dict.update({name : new_person})
+                # self._generate_update_description(new_person)
+                return name
             else:
-                print("User was identied as "+args["namn"])
-            return args["namn"]
+                option = args["Siffra_på_alternativ"]
+                corrected_name = nearest_names[option-1]
+                print("User was identied as "+corrected_name)
+                return corrected_name
         except Exception as e:
             print(e)
             print(traceback.format_exc())
@@ -234,13 +265,22 @@ class Personhandler:
 
 
     def ny_information_om_relation(self, name1, name2, relation):
-        person1 = self._check_if_new_person(name1)
-        person2 = self._check_if_new_person(name2)
+        person1 = self.people_dict.get(name1)
+        person2 = self.people_dict.get(name2)
+        if not person1:
+            search_result = self.people_store.similarity_search(name1, k=3)
+            person1 = self._check_if_new_person(name1, relation, search_result)
+        if not person2:
+            search_result = self.people_store.similarity_search(name2, k=3)
+            person2 = self._check_if_new_person(name2, relation, search_result)
 
-        filter = {"person1": person1, "person2": person2}
-        update = {"$concat": {"info": relation}}
-
-        self.relations_collection.update_one(filter, update)
+        in_order1, in_order2 = sorted([name1, name2])
+        names_string = in_order1+in_order2
+        result = self.relations_struct.get(names_string)
+        if result:
+            result.info += "\n"+relation
+        if not result:
+            self.relations_struct.update({names_string : Relation(name1, name2, relation)})
 
 
     def ny_information_om_gruppering(self, name  : str, members : List[str], info : str):
@@ -279,7 +319,7 @@ class Personhandler:
                 members = args["members"]
                 metadata = {"name": name, "members" : members, "info": info}
                 new_group = Document(page_content=args["beskrivning_av_ny_gruppering"], metadata=metadata)
-                self.groups_store.add_documents([new_group])
+                self.groups_store.add_documents([new_group], ids=[name])
                 self.groups_dict.update({name : new_group})
                 return name, members
             elif name == "lägg_till_info_om_existerande_gruppering":
