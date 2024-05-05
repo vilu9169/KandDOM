@@ -17,7 +17,7 @@ med information om personerna, var nogrann med att inkludera allt som står om p
 3. Sammanställ de relationer och kopplingar som nämns mellan personerna. Gör detta under en och samma rubrik.
 En koppling ska alltid vara mellan två personer och ska vara tydligt beskriven. \n
 4. Sammanställ grupperingar av personer som nämns i texten om de förekommer, t. ex. en familj, företag, organisation etc. . Gör detta under en och samma rubrik. \n
-Det är viktigt att du alltid svarar på svenska.
+Det är viktigt att du alltid svarar på svenska. Skriv all information med fullständiga meningar och ange på vilken sida i texten du hittade informationen.
 """
 
 tool_instructions = """
@@ -81,7 +81,7 @@ def summarize_people_groq(text):
 
 def summarize_people_gemini(text):
     start = time()
-    model = GenerativeModel("gemini-1.0-pro", system_instruction=[instructions], safety_settings=gemini_unfiltered)
+    model = GenerativeModel("gemini-1.5-pro-preview-0409", system_instruction=[instructions], safety_settings=gemini_unfiltered)
     chat = model.start_chat()
     summary = chat.send_message(text).candidates[0].content.text
     print(summary)
@@ -107,13 +107,11 @@ def use_tools_on_summary(summary):
         ],
         tools = [tools["ny_information_om_person"], tools["ny_information_om_relation"], 
                 tools["ny_information_om_gruppering"]],
-        model="llama3-8b-8192",
+        model="llama3-70b-8192",
     )
 
     try:
         print("\n")
-        for tool_call in log_people_info.choices[0].message.tool_calls:
-            print_tool_call(tool_call)
         return log_people_info.choices[0].message.tool_calls
     except Exception as e:
         print(e)

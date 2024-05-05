@@ -2,7 +2,7 @@ from process_text import process_text
 from modify_people import Personhandler
 from langchain_google_vertexai import VertexAIEmbeddings
 from util import print_FAISS
-
+from people import use_tools_on_summary
 
 text : str
 
@@ -16,11 +16,23 @@ pages = text.split(chr(28))
 
 to_process = pages[0]
 
+
 embedder = VertexAIEmbeddings("textembedding-gecko-multilingual")
 
 person_handler = Personhandler(embedder)
 
+
+summary = """
+##Grupper
+Bandidos
+Bandidos är en kriminell organisation med 7000 medlemmar i Sverige, däribland Björn och Rikard.
+"""
+
+#use_tools_on_summary(summary)
+
 people, relations, groups = process_text(to_process, person_handler)
+
+
 
 
 print_FAISS(people)

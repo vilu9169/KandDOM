@@ -36,12 +36,12 @@ tools = {
                         "type": "string",
                         "description": "Namnet på den andra personen",
                     },
-                    "beskrivning av relation": {
+                    "beskrivning_av_relation": {
                         "type": "string",
                         "description": "Namn på personerna och hur de är kopplade till varandra t. ex. 'Person1 är moder till person2' eller 'Person1 och Person2 åkte till Paris tillsammans 2019'",
                     },
                 },
-                "required": ["person1", "person2", "beskrivning av relation"],
+                "required": ["person1", "person2", "beskrivning_av_relation"],
             },
         },
     },
@@ -53,23 +53,23 @@ tools = {
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "namn": {
+                    "beskrivande_namn": {
                         "type": "string",
-                        "description": "Namn och beskrivning av grupperingen",
+                        "description": "Namn som beskriver gruppen",
                     },
                     "gruppmedlemmar": {
                         "type": "array",
                         "items": {
                             "type": "string",
-                            "description": "Namn på person som tillhör grupperingen, använd förnamn och efternamn om tillgängligt",
                         },
                         "description": "En lista med namn på personer som tillhör grupperingen, lämna tom om ingen person i gruppen kan identifieras",
-                        "information": {
-                            "type": "string",
-                            "description": "En text som innehåller informationen om grupperingen",
-                        },
+                        
                     },
-                    "required": ["gruppering", "information"],
+                    "information": {
+                        "type": "string",
+                        "description": "En text som innehåller informationen om grupperingen",
+                    },
+                    #"required": ["namn"],
                 },
             },
         },
@@ -137,19 +137,14 @@ tools = {
                         "type": "boolean",
                         "description": "Om personen finns i arkivet sedan tidigare",
                     },
-                    "namn": {
-                        "type": "string",
-                        "description": "Namnet på den identifierade personen",
-                    },
-                    "beskrivning_av_ny_person": {
-                        "type": "string",
-                        "description": "Kort identifierande text",
+                    "Siffra_på_alternativ": {
+                        "type": "integer",
+                        "description": "Siffra på alternativet som ansågs vara mest sannolikt",
                     },
                 },
                 "required": [
                     "finns_sedan_tidigare",
-                    "namn",
-                    "beskrivning_av_ny_person",
+                    "Siffra_på_alternativ",
                 ],
             },
         },
@@ -174,7 +169,6 @@ tools = {
                         "type": "array",
                         "personer": {
                             "type": "string",
-                            "description": "Namn på person som inte stod med tidigare men som ska ingå i grupperingen",
                         },
                         "description": "En lista med namn på personer som tillhör grupperingen men som inte ingick sedan tidigare, lämna tom om ingen sådan person finns",
                     },
