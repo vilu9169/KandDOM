@@ -211,14 +211,14 @@ def mainfunk(pdf_file, new_index_name):
 # mainfunk(pdf_file, new_index_name)
 
 
-# pdf_files = []
-# while True:
-#     print("Name of the files to be processed using RAG(write \"end\" to end input): ")
-#     pdf_file = input()
-#     if(pdf_file == "end"):
-#         break
-#     else:
-#         pdf_files.append(pdf_file)
-# print("Name of the new index: ")
-# new_index_name = input()
-# handle_multi_pdfs(pdf_files, new_index_name)
+pdf_files = []
+while True:
+    print("Name of the files to be processed using RAG(write \"end\" to end input): ")
+    pdf_file = input()
+    if(pdf_file == "end"):
+        break
+    else:
+        pdf_files.append(pdf_file)
+print("Name of the new index: ")
+new_index_name = input()
+handle_multi_pdfs(pdf_files, new_index_name)
