@@ -1,3312 +1,1102 @@
-{pagestart nr 1}HEMLIG
+{pagestart nr 1}1
 Polisen
 Enhet
 Förundersökningsprotokoll
-Region Mitt, Grova brott 2 PO Uppsala
+Region Syd, Utredningsjour 7 PO Malmö
 Handläggare (Protokollförare)
-Charlotte Backlund
+Amelia Isaksson
 Undersökningsledare
-Erik Grönvall
+Amelia Isaksson
 Polisens diarienummer
-5000-K1113302-23
+5000-K284928-23
 Personer i ärendet
-Arkiv/Åkl. ex
-Åklnr
-AM-123936-23
-Signerat av
-Charlotte Backlund
-Signerat datumINGSRÄTT
-2024402-14 09:18
-DatumOM: 2024-02-15
-202402-1201-23
-AKTBIL: 202
+Målsägande
+Matbutiken I Värnhem Ab
 Förtursmål
 Nej
 Ersättningsyrkanden
-Målsägande vill bli underrättad om tidpunkt för huvudförhandlingen
+Finns ej
+Misstänkt (Efternamn och förnamn)
+Friman, Kati Marjan Gina Danica
+Brott
+Ringa stöld
+Arkiv/Åkl. ex
 Beslag
+Företrädare
+Åklnr
+Signerat av
+Amelia Isaksson
+Signerat datum GSRÄTT
+2023-03-24 17:11
+INKOM: 2023-04-06
+Datu LNR: B 3972-23
+2023+03-212
+Målsägande vill bli underrättad om tidpunkt för huvudförhandlingen
 Nej
 Tolk krävs
-Misstänkt (Efternamn och förnamn)
-Ibrahim, Yahya Ali
-Brott
 Personnummer
-20040104-3930
+19950822-3584
 Förhandsgodkännande enligt RB 48:10
 Nej
-Misstänkt har delgivits information om att förenklad delgivning kan komma att användas av polis och tingsrätt (skriftligt överlämnad vid ett personligt sammanträffande).
-Misstänkt har delgivits information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt (skriftligt överlämnad vid ett personligt sammanträffande).
+Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
+2023-03-10
+Information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt är överlämnad vid ett personligt sammanträffande
 Underrättad om slutförd förundersökning / utredning enligt RB 23:18a
-2024-01-30, underrättelse genom vanlig delgivning
+2023-03-13, skriftlig underrättelse genom lösbrev
 Yttrande senast (rådrum)
+2023-03-22
 Resultat av slutunderrättelse
 Har inte avhörts
 Försvarare
-Olsson, Thomas, förordnad 2023-10-09
+Önskas ej
 Underrättad om slutförd förundersökning / utredning
-2024-01-30, skriftlig underrättelse
-Misstänkt (Efternamn och förnamn)
-Ramadani, Ruzdi
 Yttrande senast (rådrum)
+Resultat av slutunderrättelse
+Misstänkt (Efternamn och förnamn)
+Friman, Tanja Tamara
+Brott
+Ringa stöld
+Personnummer
+19640510-0287
+Förhandsgodkännande enligt RB 48:10
+Nej
+Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
+Information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt är överlämnad vid ett personligt sammanträffande
+Underrättad om slutförd förundersökning / utredning enligt RB 23:18a
+2023-03-13, skriftlig underrättelse genom lösbrev
+Yttrande senast (rådrum)
+2023-03-22
 Resultat av slutunderrättelse
 Har inte avhörts
-Personnummer
-20020221-5075
-Brott
-Förhandsgodkännande enligt RB 48:10
-Nej
-Misstänkt har delgivits information om att förenklad delgivning kan komma att användas av polis och tingsrätt (skriftligt överlämnad vid ett personligt sammanträffande).
-Misstänkt har delgivits information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt (skriftligt överlämnad vid ett personligt sammanträffande).
-Underrättad om slutförd förundersökning / utredning enligt RB 23:18a
-2024-02-12, underrättelse genom vanlig delgivning
-Yttrande senast (rådrum)
-Resultat av slutunderrättelse
-Ingen erinran
 Försvarare
-Awrohum, Kinora, förordnad 2023-10-17
+Begärd, namnges senare
 Underrättad om slutförd förundersökning / utredning
-2024-02-12, skriftlig underrättelse
 Yttrande senast (rådrum)
 Resultat av slutunderrättelse
-Ingen erinran
-{pageend nr 1}{pagestart nr 2}HEMLIG
-Misstänkt (Efternamn och förnamn)
-Karlsson, Edison
-Brott
-Personnummer
-20080323-6454
-Förhandsgodkännande enligt RB 48:10
-Nej
-Misstänkt har delgivits information om att förenklad delgivning kan komma att användas av polis och tingsrätt (skriftligt överlämnad vid ett personligt sammanträffande).
-Misstänkt har delgivits information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt (skriftligt överlämnad vid ett personligt sammanträffande).
-Underrättad om slutförd förundersökning / utredning enligt RB 23:18a
-2024-02-12, underrättelse genom vanlig delgivning
-Yttrande senast (rådrum)
-Resultat av slutunderrättelse
-Ingen erinran
-Försvarare
-Karlsson, Bo, förordnad 2023-09-07
-Underrättad om slutförd förundersökning / utredning
-2024-02-12, skriftlig underrättelse
-Yttrande senast (rådrum)
-Resultat av slutunderrättelse
-Ingen erinran
-Misstänkt (Efternamn och förnamn)
-Isaksson, Tilda Amanda
-Brott
-Personnummer
-20000901-1040
-Förhandsgodkännande enligt RB 48:10
-Nej
-Misstänkt har delgivits information om att förenklad delgivning kan komma att användas av polis och tingsrätt (skriftligt överlämnad vid ett personligt sammanträffande).
-Misstänkt har delgivits information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt (skriftligt överlämnad vid ett personligt sammanträffande).
-Underrättad om slutförd förundersökning / utredning enligt RB 23:18a
-2024-02-12, underrättelse genom vanlig delgivning
-Yttrande senast (rådrum)
-Resultat av slutunderrättelse
-Ingen erinran
-Försvarare
-Begärd, Zeito, Elias
-Underrättad om slutförd förundersökning / utredning
-2024-02-12, skriftlig underrättelse
-Misstänkt (Efternamn och förnamn)
-Yttrande senast (rådrum)
-Resultat av slutunderrättelse
-Ingen erinran
-Personnummer
-Hietamies Sahlström, Magnus Sebastian
-Brott
-19940611-7110
-Förhandsgodkännande enligt RB 48:10
-Nej
-Misstänkt har delgivits information om att förenklad delgivning kan komma att användas av polis och tingsrätt (skriftligt överlämnad vid ett personligt sammanträffande).
-Misstänkt har delgivits information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt (skriftligt överlämnad vid ett personligt sammanträffande).
-Underrättad om slutförd förundersökning / utredning enligt RB 23:18a
-2024-02-12, underrättelse genom vanlig delgivning
-Yttrande senast (rådrum)
-Resultat av slutunderrättelse
-Ingen erinran
-Försvarare
-Liljeblad, Fredrik, förordnad 2024-01-04
-{pageend nr 2}{pagestart nr 3}Underrättad om slutförd förundersökning / utredning
-2024-02-12, skriftlig underrättelse
-Yttrande senast (rådrum)
+{pageend nr 1}{pagestart nr 2}Brott i ärendet
+Brottsbeskrivning
+Ringa stöld
+Brottsplatsadress
+Ica Supermarket Värnhem, Östra Förstadsgatan
+50, Malmö
+Aktör
+Friman, Kati Marjan Gina Danica
+Friman, Tanja Tamara
+Matbutiken I Värnhem Ab
+Tullgren, Anna Seema
 Notering
-Resultat av slutunderrättelse
-Ingen erinran
-HEMLIG
-{pageend nr 3}{pagestart nr 4}Diarienr
-5000-K1113302-23
+Övervaknings film finns.
+Händelse inträffad
+Händelse inträffad mellan
+2023-03-10
+Roll
+Misstänkt
+Misstänkt
+Målsägande
+Vittne
+2
+{pageend nr 2}{pagestart nr 3}Diarienr
 Uppgiftstyp
-Tillägg
-Externt dokument
+Anmälan
+5000-K284928-23
+Anmälan
+3
 Innehållsförteckning
-Inkommen skrivelse Erinran..
-Bilaga: Kontoutdrag och Snapchat
-Förhör
-Förhör Förhör 1 (16 oktober)_MASKAD.
-Förhör med misstänkt, Karlsson, Edison
-Bilaga: Karta
-Personalia
-HEMLIG
 Sida
-5
-24
-64
-Bilaga skäligen misstänkt, Hietamies Sahlström, Magnus Sebastian
-69
-Personalia, Hietamies Sahlström, Magnus Sebastian…........
-70
-Bilaga skäligen misstänkt, Ibrahim, Yahya Ali...
-71
-Personalia, Ibrahim, Yahya Ali.........
-Bilaga skäligen misstänkt, Isaksson, Tilda Amanda...
-72
-73
-Personalia, Isaksson, Tilda Amanda...
-Bilaga skäligen misstänkt, Karlsson, Edison........
-Personalia, Karlsson, Edison
-Bilaga skäligen misstänkt, Ramadani, Ruzdi..
-74
-75
-76
-77
-Personalia, Ramadani, Ruzdi.....
-78
-{pageend nr 4}{pagestart nr 5}Inkommen skrivelse Erinran, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-SEPTEMBER.
-ADVOKATBYRÅ
-Advokaterna Arido Degavro, Pia Engström Lindgren, Kinora Awrohum, Kristina Boethius samt Niklas Fjällström
-Till
-Kammaråklagare
-Erik Grönvall
-Erinran avseende mål B 7101-23
-5
-HEMLIG
-På uppdrag av Ruzdi Ramadani, får jag i egenskap av offentlig försvarare, för hans räkning
-förnärvarande inge följande bevisning i rubricerade mål till vederläggande av
-brottsmisstanken om stämpling till grovt vapenbrott.
-Skriftlig bevisning
-Bankkontoutdrag under aktuell brottsperiod utvisande att Ramadani befunnit sig i
-Katrineholm.
-Flertalet inloggningar jämte inloggningsförsök på Ramadanis SnapChat från enheter och
-platser runt om i Sverige som bevisligen inte kan vara inloggningar från Ramadani själv.
-Stockholm den 1 februari 2024
-Kinora Awrohum
-Advokatfirman Kinora Awrohum AB
-Kontor
-Stockholm
-Uppsala
-Norrköping
-Org.nr 559008-9487
-Godkänd för F-skatt
-Adress
-Kaplansbacken 4B
-Kungsgatan 62 2 tr
-Repslagaregatan 19
-Tel 08 519 77 977
-Fax 08 519 77 976
-kinora@septemberadvokat.se
-Postnummer
-112 24 Stockholm
-753 41 Uppsala
-602 25 Norrköping
-Arvode Bg 836-3335
-Klientmedel Bg 8327-9, 704 814 267-8
-info@septemberadvokat.se
-www.septemberadvokat.se
-{pageend nr 5}{pagestart nr 6}Kontoutdrag och Snapchat, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-Kontohavare
-Ruzdi Ramadani
-6
-HEMLIG
-SEB
-Beviljad kredit 2024-01-23
-SEK 0,00
-Ruzdi ramadani 5383 06 972 36/SEK
-Ruzdi ramadani
-9/1/2023-10/31/2023
-Bokförd
-Valutadatum
-VerifikationsnummerText
-Belopp
-Saldo
-Ingående saldo
-100,20
-2023-09-01
-2023-09-01
-5490990789
-46720026965
-100,00
-200,20
-2023-09-01
-2023-09-01
-5490990789
-46720026965
-50,00
-250,20
-2023-09-01
-2023-09-01
-5484722169
-Coop Kyrkoga
--90,95
-159,25
-2023-09-04
-2023-09-02
-5484666033
-Coop Kyrkoga
--91,90
-67,35
-2023-09-04
-2023-09-02
-5484666042
-Coop Kyrkoga
--66,75
-0,60
-2023-09-04
-2023-09-03
-5490990789
-46720026965
-100,00
-100,60
-2023-09-04
-2023-09-03
-5490990789
-46707716529
-5,00
-105,60
-2023-09-04
-2023-09-03
-5490990789
-46720026965
-59,00
-164,60
-2023-09-04
-2023-09-04
-5490990789
-46720026965
-30,00
-194,60
-2023-09-04
-2023-09-04
-5490990789
-46722833045
-20,00
-214,60
-2023-09-04
-2023-09-04
-5484776886
-Coop Kyrkoga
--71,95
-142,65
-2023-09-04
-2023-09-04
-5484202263
-Mcd 218-Ka
--90,00
-52,65
-2023-09-04
-2023-09-04
-5490990789
-46739659949
-100,00
-152,65
-2023-09-05
-2023-09-05
-5490990789
-46720026965
-50,00
-202,65
-2023-09-05
-2023-09-05
-5484665123
-Coop Kyrkoga
--25,00
-177,65
-2023-09-05
-2023-09-05
-5484665143
-Coop Kyrkoga
--10,95
-166,70
-2023-09-05
-2023-09-05
-5484335880
-Shell Katrin
--65,00
-101,70
-2023-09-06
-2023-09-06
-5490990789
-46720026965
-100,00
-201,70
-2023-09-06
-2023-09-06
-5484839807
-4075158 Pres
--65,00
-136,70
-2023-09-06
-2023-09-06
-5484356472
-Coop Kyrkoga
--75,95
-60,75
-2023-09-06
-2023-09-06
-5484356475
-Coop Kyrkoga
--21,95
-38,80
-2023-09-07
-2023-09-07
-5490990789
-46722833045
-65,00
-103,80
-2023-09-07
-2023-09-07
-5490990789
-46722833045
-10,00
-113,80
-2023-09-07
-2023-09-07
-5490990789
-46737226830
-20,00
-133,80
-2023-09-07
-2023-09-07
-5484171896
-Livshornan K
--30,00
-103,80
-2023-09-07
-2023-09-07
-5490990789
-46722833045
-55,00
-158,80
-2023-09-08
-2023-09-08
-5490990789
-46704276438
-100,00
-258,80
-2023-09-08
-2023-09-08
-5484761867
-Livsmedel Ka
--35,00
-223,80
-2023-09-08
-2023-09-08
-2023-09-08
-2023-09-08
-5484387016
-5484478441
-Shell Katrin
--52,00
-171,80
-Livshornan K
--65,00
-106,80
-SEB10640Stockholm. Telefon 0771-621000
-Sida 1(8)
-Skandinaviska Enskilda Banken AB (publ). Organisationsnummer: 502032-9081. Styrelse säte: Stockholm
-www.seb.se
-{pageend nr 6}{pagestart nr 7}Kontoutdrag och Snapchat, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-2024-01-31 14:53
-423737739_318594724480485_1350705930589934163_n.jpg (1536x2048)
-פי "יייטטטיוטטו זיי
-Team Snapchat 16 okt.
-till mig v
-Har precis loggat in!
-Hej ramadaniruz,
-det ser ut som om någon loggade in på ditt konto
-från en enhet som heter "iPhone 11" den den 16
-oktober 2023 kl. 16:32 CEST. Inloggningen skedde
-någonstans i närheten av Bjorkvik, Sverige (IP =
-213.66.60.34).
-Om detta var du kan du bortse från detta mejl, du
-behöver inte göra något ytterligare.
-7
-HEMLIG
-https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/423737739_318594724480485_1350705930589934163_n.jpg?stp=dst-jpg_p1080x2048&_nc_...
-1/1
-11
-{pageend nr 7}{pagestart nr 8}Kontoutdrag och Snapchat, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-2024-01-31 14:54
-423541678 230421766794240_8341169994056567869_n.jpg (1536x2048)
-8
-HEMLIG
-Team Snapchat 3 okt.
-e
-till mig
-ibr
-Har precis loggat in!
-Hej ramadaniruz,
-det ser ut som om någon loggade in på ditt konto
-från en enhet som heter "iPhone 8" den den 3
-oktober 2023 kl. 3:15 CEST. Inloggningen skedde
-någonstans i närheten av Jonkoping, Sverige (IP =
-83.185.90.39).
-Om detta var du kan du bortse från detta mejl, du
-behöver inte göra något ytterligare.
-Om det inte var du bör du ändra ditt lösenord i
-53
-!!!
-0
-0
-https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/423541678_230421766794240_8341169994056567869_n.jpg?stp=dst-jpg_p1080x2048&_nc_...
-1/1
-11
-{pageend nr 8}{pagestart nr 9}Kontoutdrag och Snapchat, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-2024-01-31 14:54
-423422613_221791651018464_1244782000687628477_n.jpg (1536x2048)
-9
-HEMLIG
-13:21 S
-+
-Team Snapchat i okt.
-till mig
-13%
-ㄖㄖ
-@
-Har precis loggat in!
-Hej ramadaniruz,
-det ser ut som om någon loggade in på ditt konto
-från en enhet som heter "iPhone XS Max" den den 1
-oktober 2023 kl. 13:15 CEST. Inloggningen skedde
-någonstans i närheten av Helsingborg, Sverige (IP
-= 83.187.173.161).
-Om detta var du kan du bortse från detta mejl, du
-behöver inte göra något ytterligare.
-Om det inte var du bör du ändra ditt lösenord i
-53
-0
-0
-https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/423422613_221791651018464_1244782000687628477_n.jpg?stp=dst-jpg_p1080x2048&_nc_...
-1/1
-{pageend nr 9}{pagestart nr 10}Kontoutdrag och Snapchat, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-2024-01-31 14:55
-423455023_639862821528327_8263029128651400485_n.jpg (1536x2048)
-10
-HEMLIG
-←
-Team Snapchat 7 sep
-till mig
-回
-:
-Θ
-G
-Har precis loggat in!
-Hej ramadaniruz,
-det ser ut som om någon loggade in på ditt konto
-från en enhet som heter "iPhone14,7" den den 7
-september 2023 kl. 13:43 CEST. Inloggningen
-skedde någonstans i närheten av Tibro, Sverige (IP
-81.228.127.197).
-Om detta var du kan du bortse från detta mejl, du
-behöver inte göra något ytterligare.
-Om det inte var du bör du ändra ditt lösenord i
-Snapchat-appen eller på vår support-webbplats här.
-Läs mer om vad du kan göra om någon har försökt
-0
-!!!
-https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/423455023_639862821528327_8263029128651400485_n.jpg?stp=dst-jpg_p1080x2048&_nc_...
-1/1
-{pageend nr 10}{pagestart nr 11}Kontoutdrag och Snapchat, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-2024-01-31 14:55
-423221116_870909998146665_8929789614960235421_n.jpg (1536x2048)
-Team Snapchat 12 sep.
-till mig
-v
-E
-@
-Har precis loggat in!
+Bilaga: Ursprunglig anmälan
+Fotografier
+Fotografi(er) Kvitto samt tillgripet gods......
+Fotografi(er) Kvitto på betalda varor..
+Fotografi(er) Tanja Friman.……………………
+Fotografi(er) Kati Friman.………………..
+Förhör vittne
+Förhör med vittne, Tullgren, Anna Seema
 4
-Hej ramadaniruz,
-det ser ut som om någon loggade in på ditt konto
-från en enhet som heter "iPhone 7" den den 12
-september 2023 kl. 1:50 CEST. Inloggningen
-skedde någonstans i närheten av Bjorkvik, Sverige
-(IP 213.66.60.34).
-=
-Om detta var du kan du bortse från detta mejl, du
-behöver inte göra något ytterligare.
-Om det inte var du bör du ändra ditt lösenord i
-Snapchat-appen eller på vår support-webbplats här.
-53
-0
-11
-HEMLIG
-https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/423221116_870909998146665_8929789614960235421_n.jpg?stp=dst-jpg_p1080x2048&_nc_c...
-1/1
-{pageend nr 11}{pagestart nr 12}Kontoutdrag och Snapchat, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-2024-01-31 14:56
-423619295_1045804683177079_6401786984042816052_n.jpg (1536x2048)
-Team Snapchat 29 aug.
-till mig
-V
-Har precis loggat in!
-Hej ramadaniruz,
-det ser ut som om någon loggade in på ditt konto
-från en enhet som heter "iPhone 13 Pro" den den
-29 augusti 2023 kl. 20:51 CEST. Inloggningen
-skedde någonstans i närheten av Boras, Sverige (IP
-= 95.193.102.169).
-Om detta var du kan du bortse från detta mejl, du
-behöver inte göra något ytterligare.
-Om det inte var du bör du ändra ditt lösenord i
-53
-III
-0
-0
-12
-HEMLIG
-https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/423619295_1045804683177079_6401786984042816052_n.jpg?stp=dst-jpg_p1080x2048&_nc...
-1/1
-{pageend nr 12}{pagestart nr 13}Kontoutdrag och Snapchat, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-2024-01-31 14:56
-423455178_1057213218920089_2005089567118884122_n.jpg (1536x2048)
-13
-HEMLIG
-Ny Snapchat-Inloggning Inkorgen
-☆
-Team Snapchat 4 sep.
-:
-till mig
-✓
-Har precis loggat in!
-Hej ramadaniruz,
-det ser ut som om någon loggade in på ditt konto
-från en enhet som heter "2201117TY" den den 4
-september 2023 kl. 13:43 CEST. Inloggningen
-skedde någonstans i närheten av Sverige (IP =
-81.92.27.129).
-Om detta var du kan du bortse från detta mejl, du
-behöver inte göra något ytterligare.
-53
-0
-0
-https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/423455178_1057213218920089_2005089567118884122_n.jpg?stp=dst-jpg_p1080x2048&_nc...
-1/1
-{pageend nr 13}{pagestart nr 14}Kontoutdrag och Snapchat, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-2024-01-31 14:56
-423541861 753869046298851_2376143877887749083_n.jpg (1536x2048)
-Team Snapchat 19 aug.
-till mig v
-Har precis loggat in!
-Hej ramadaniruz,
-det ser ut som om någon loggade in på ditt konto
-från en enhet som heter "iPhone XR" den den 19
-augusti 2023 kl. 20:17 CEST. Inloggningen skedde
-någonstans i närheten av Sverige (IP =
-81.92.27.129).
-Om detta var du kan du bortse från detta mejl, du
-behöver inte göra något ytterligare.
-Om det inte var du bör du ändra ditt lösenord i
-Snanchat-annen eller nå vår sunport-webbplats här
-0
-III
-0
+6
 14
-HEMLIG
-https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/423541861_753869046298851_2376143877887749083_n.jpg?stp=dst-jpg_p1080x2048&_nc_... 1/1
-{pageend nr 14}{pagestart nr 15}Kontoutdrag och Snapchat, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-2024-01-31 14:57
-423221409_893161372509785_374431775765195203_n.jpg (1152x2048)
-13.25 S
-49%
-k
-Attempted Log In
-Hi ramadaniruz,
-It looks like someone attempted to log into your
-account from a device "iPhone14,7" on September
-4, 2023 at 13:38 CEST. The login took place
-somewhere near Goteborg, Sweden (IP =
-94.234.114.49).
-If this was you, please disregard this email. No
-further action is needed.
-If this wasn't you, please change your password in
-the Snapchat app or from our Support website here.
-Read more about what to do if your account may be
-compromised here.
-If this is not your Snapchat account or you did not
-sign up for Snapchat please remove your email
-0
 15
-HEMLIG
-https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/423221409_893161372509785_374431775765195203_n.jpg?stp=dst-jpg_p1080x2048&_nc_c... 1/1
-11
-{pageend nr 15}{pagestart nr 16}Kontoutdrag och Snapchat, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-2024-01-31 14:57
-423737799_1149616672691223_2689011854983380368_n.jpg (1536x2048)
-Har precis loggat in!
-Hej ramadaniruz,
-det ser ut som om någon loggade in på ditt konto
-från en enhet som heter "iPhone 13 mini" den den
-25 juli 2023 kl. 0:51 CEST. Inloggningen skedde
-någonstans i närheten av Stockholm, Sverige (IP =
-194.16.88.150).
-Om detta var du kan du bortse från detta mejl, du
-behöver inte göra något ytterligare.
-Om det inte var du bör du ändra ditt lösenord i
-Snapchat-appen eller på vår support-webbplats här.
-Läs mer om vad du kan göra om någon har försökt
-komma in på ditt konto här.
-Om det här inte är ditt Snapchat-konto eller om du
-53
-0
-16
-HEMLIG
-https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/423737799_1149616672691223_2689011854983380368_n.jpg?stp=dst-jpg_p1080x2048&_nc...
-1/1
-{pageend nr 16}{pagestart nr 17}Kontoutdrag och Snapchat, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-2024-01-31 14:57
-418835046_1476974969582647_6847073492381103967_n.jpg (1536x2048)
-Team Snapchat 4 aug.
-till mig
-Har precis loggat in!
-Hej ramadaniruz,
-det ser ut som om någon loggade in på ditt konto
-från en enhet som heter "iPhone 7" den den 4
-augusti 2023 kl. 19:09 CEST. Inloggningen skedde
-någonstans i närheten av Bjorkvik, Sverige (IP =
-213.66.60.34).
-Om detta var du kan du bortse från detta mejl, du
-behöver inte göra något ytterligare.
-Om det inte var du bör du ändra ditt lösenord i
-53
-!!!
-0
-0
-17
-HEMLIG
-https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/418835046_1476974969582647_6847073492381103967_n.jpg?stp=dst-jpg_p1080x2048&_nc...
-1/1
-{pageend nr 17}{pagestart nr 18}416125212_1558553701642411_3393056936082446625_n.jpg (1536x2048)
-Kontoutdrag och Snapchat, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-2024-01-31 14:57
-←
-回
-Team Snapchat 10 aug.
-till mig
-✓
-ㄖㄖ
-e
-Har precis loggat in!
-Hej ramadaniruz,
-det ser ut som om någon loggade in på ditt konto
-från en enhet som heter "iPhone 8 Plus" den den 10
-augusti 2023 kl. 1:33 CEST. Inloggningen skedde
-någonstans i närheten av Sodra Sandby, Sverige (IP
-= 83.187.188.59).
-Om detta var du kan du bortse från detta mejl, du
-behöver inte göra något ytterligare.
-53
-O
-0
-18
-HEMLIG
-https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/416125212_1558553701642411_3393056936082446625_n.jpg?stp=dst-jpg_p1080x2048&_nc...
-111
-1/1
-{pageend nr 18}{pagestart nr 19}Kontoutdrag och Snapchat, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-2024-01-31 14:58
-423599813_911798237218484_7202361236904201381_n.jpg (1152x2048)
 19
-HEMLIG
-Team Snap... 2023-04-23
-till mig
-く
-ill 49%
-ㄖㄖ
-Har precis loggat in!
-Hej ramadaniruz,
-det ser ut som om någon loggade in på ditt konto
-från en enhet som heter "moto g22" den den 23
-april 2023 kl. 19:06 CEST. Inloggningen skedde
-någonstans i närheten av Stockholm, Sverige (IP =
-90.129.219.43).
-Om detta var du kan du bortse från detta mejl, du
-behöver inte göra något ytterligare.
-Om det inte var du bör du ändra ditt lösenord i
-Snapchat-appen eller på vår support-webbplats här.
-III
-0
-https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/423599813_911798237218484_7202361236904201381_n.jpg?stp=dst-jpg_p1080x2048&_nc_...
-1/1
-{pageend nr 19}{pagestart nr 20}Kontoutdrag och Snapchat, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-2024-01-31 14:58
-↑
-416107936_1077676240050545_7879812957070529513_n.jpg (1152x2048)
-13:28 S
-49%
-Har precis loggat in!
-Hej ramadaniruz,
-det ser ut som om nagon loggade in på ditt konto
-från en enhet som heter 'iPhone 13 den den 24
-april 2023 kl. 18:05 CEST. Inloggningen skedde
-någonstans i närheten av Uppsala, Sverige (IP =
-90.129.197.164).
-Om detta var du kan du bortse från detta mejl, du
-behöver inte göra något ytterligare.
-Om det inte var du bör du ändra ditt lösenord i
-Snapchat-appen eller på vår support-webbplats har
-Läs mer om vad du kan göra om någon har försökt
-komma in på ditt konto har
-45
-0
-https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/416107936_1077676240050545_7879812957070529513_n.jpg?stp=dst-jpg_p1080x2048&_nc... 1/1
-111
-20
-HEMLIG
-{pageend nr 20}{pagestart nr 21}Kontoutdrag och Snapchat, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-2024-01-31 14:58
-13:27 S
-416221836_394133843270033_3654946922484919895_n.jpg (1152x2048)
-T
-Team Snap... 2023-07-01
-till mig v
-@
-49%
-ཤ:
-Har precis loggat in!
-Hej ramadaniruz,
-det ser ut som om någon loggade in på ditt konto
-från en enhet som heter "iPhone 7" den den 1 juli
-2023 kl. 5:41 CEST. Inloggningen skedde
-någonstans i närheten av Goteborg, Sverige (IP
-83.187.180.116).
-Om detta var du kan du bortse fran detta mejl, du
-behöver inte göra något ytterligare.
-Om det inte var du bör du ändra ditt lösenord i
-Snapchat-appen eller på vår support-webbplats här.
-Iäs mer om vad du kan göra om någon har försökt
-III
-21
-HEMLIG
-https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/416221836_394133843270033_3654946922484919895_n.jpg?stp=dst-jpg_p1080x2048&_nc_... 1/1
-{pageend nr 21}{pagestart nr 22}Kontoutdrag och Snapchat, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-2024-01-31 14:58
-423472496_1450045255939615_1189003364256610692_n.jpg (1152x2048)
-22
-HEMLIG
-13:26 S
-K
-+
-ㄖㄖ
-Har precis loggat in!
-Hej ramadaniruz,
-det ser ut som om någon loggade in på ditt konto
-från en enhet som heter "iPhone 13 Pro" den den 9
-augusti 2023 kl. 22:13 CEST. Inloggningen skedde
-någonstans i närheten av Perstorp, Sverige (IP =
-83.187.180.202).
-Om detta var du kan du bortse från detta mejl, du
-behöver inte göra något ytterligare.
-Om det inte var du bör du ändra ditt lösenord i
-Snapchat-appen eller på vår support-webbplats här.
-Läs mer om vad du kan göra om någon har försökt
-komma in på ditt konto här.
-Om det här inte är ditt Snapchat-konto eller om du
-inte registrerat dig hos Snapchat ska du ta bort din
-e-postadress från detta konto här.
-Tack,
-Team Snapchat
-!!!
-0
-49%4
-11
-https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/423472496_1450045255939615_1189003364256610692_n.jpg?stp=dst-jpg_p1080x2048&_nc... 1/1
-{pageend nr 22}{pagestart nr 23}Kontoutdrag och Snapchat, 2024-02-02 14:47 diarienr: 5000-K1113302-23
-2024-01-31 14:59
-423599906_1954413114977139_3309902073831150770_n.jpg (1152x2048)
-23
-HEMLIG
-←
-13.30 S
-+
-- 50%
-: 0
-Har precis loggat in!
-Hej ramadaniruz,
-det ser ut som om någon loggade in på ditt konto
-från en enhet som heter "iPhone 8" den den 11
-oktober 2023 kl. 17:08 CEST. Inloggningen skedde
-någonstans i närheten av Malmo, Sverige (IP =
-83.185.88.48).
-Om detta var du kan du bortse från detta mejl, du
-behöver inte göra något ytterligare.
-Om det inte var du bör du ändra ditt lösenord i
-Snapchat-appen eller på vår support-webbplats här.
-Läs mer om vad du kan göra om någon har försökt
-komma in på ditt konto här.
-Om det här inte är ditt Snapchat-konto eller om du
-inte registrerat dig hos Snapchat ska du ta bort din
-e-postadress från detta konto har.
-Tack,
-Team Snapchat
-III
-0
-https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/423599906_1954413114977139_3309902073831150770_n.jpg?stp=dst-jpg_p1080x2048&_nc... 1/1
-{pageend nr 23}{pagestart nr 24}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-Polisen
-Enhet
-Region Mitt, Grova brott 2 PO Uppsala
-Hörd person
-Hietamies Sahlström, Magnus Sebastian
-Den hörde är
-Misstänkt
-ID Styrkt
-Ja
-Sätt
-Häktad
-Tolk
-24
-HEMLIG
-Förhör
-Förhör 1
-Signerat av
-Signerat datum
-Diarienr
-5000-K1113302-23
-Personnummer
-19940611-7110
-Ställning till misstänkt - målsägande - vittne
-Språk
-Anledning till förhör / Misstankar som misstänkt har underrättats om
-Mord, Fullbordat, Medhjälp till
-Ytterligare information om anledning till förhör
-Underrättad om misstanke
-2023-10-16
-Sebastian Sahlström är skäligen misstänkt för medhjälp till mord genom att ha ombesörjt boende samt
-ha genomfört ekonomiska transaktioner till gärningsmännen under tiden 2 september till 7 september
-2023 i Uppsala. Detta har skett på okänd plats i landet.
-Underrättad om 12 § FUK Underrättad om rätt till försvarare Godtar den försvarare som rätten förordnar
-Ja
-Försvarare/ombud önskas
-Peter Frisén
-Försvarare/ombud närvarande
-Ja
-Förhörsledare
-Anna Kullenberg
-Förhörsplats
-Häktet i Kalmar
-Förhörsvittne
-Förhörsdatum
-2023-10-16
-Förhör påbörjat
-09:58
-Förhör avslutat
-Typ av förhör
-RB 23:6
-Utskrivet av
-Förhörssätt
-11:00
-Videobandsförhör
-Ljudbandsförhör
-Involverad personal
-Peter Eriksson
-Berättelse
-Förhörsledarnas frågor redovisas i kursiv text.
-Sebastian delges FUK § 12 samt FUK § 12 c.
-Delgiven misstanke:
-Funktion
-Biträdande förhörsledare
-Sebastian Sahlström är skäligen misstänkt för medhjälp till mord genom att ha ombesörjt
-boende samt ha genomfört ekonomiska transaktioner till gärningsmännen under tiden 2
-september till 7 september 2023 i Uppsala. Detta har skett på okänd plats i landet.
-Vill du säga något kring misstanken?
-Sebastian har inget att säga om den.
-Vad kan du berätta om dig själv som är bra för oss att veta?
-Ingenting.
-{pageend nr 24}{pagestart nr 25}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
 25
-HEMLIG
-Var har du din bostad?
-Sebastian uppger att han blivit av med sin bostad i Virserum. Han är skriven hos sin mamma
-men bor inte där. Han vill inte uppge den adress han bodde på innan.
-Berätta om din mobiltelefon. Har du flera?
-Sebastian har en Iphone som han har haft länge. Han vet inte vilken modell det är på
-telefonen.
-Är det någon mer än du som använder telefonen?
-Sebastian säger att han inte vet det. Att det är Icloud och att vem som helst kan använda
-Icloud. Han har ett lösenord som han inte delar. Han tror inte att det är någon mer än han
-själv som använder telefonen.
-Du har uppgett att ditt nummer är 0732554462 när du sökt pass. Stämmer det?
-Sebastian kan inte sitt nummer men säger att det kan stämma.
-Det finns ett till nummer, 0720066139 som är kopplat till några av dina konton på Sociala
-medier.
-Sebastian känner inte igen det.
-Vad har du för mailadress?
-dalian124@hotmail.com. Den har han haft länge.
-Det finns en annan mailadress som vi hittat, sahlstrom.s.h@gmail.com.
-Sebastian använder den i kontakt med Svenska kyrkan och liknande.
-Mobiltelefoner BG164691 p 2 och 3
-Punkten 2 är en Iphone, låg i din byxficka vid gripandet.
-Sebastian säger att det är hans telefon, den som han använder. Han säger att den låg på
-marken när de grep honom.
-Punkten 3 är en Sony, låg i din byxficka vid gripandet.
-Sebastian säger att det är hans telefon, han köpte den nyss.
-Hur länge har du haft den?
-Sebastian säger att han köpte den 2 dagar innan han greps.
-Vad använder du den till?
-Sebastian säger att han har den för att använda sitt BankID på. Hans Iphone laddar ur.
-Vad använder du för appar?
-{pageend nr 25}{pagestart nr 26}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
+Förhör misstänkt
+Förhör med misstänkt, Friman, Kati Marjan Gina Danica
+Förhör med misstänkt, Friman, Tanja Tamara
 26
-HEMLIG
-Sebastian uppger att han bara använder Snapchat men vill inte berätta vilket användarnamn
-han har. Han använder inte Signal eller Whatsapp och har aldrig gjort det.
-Har du eller har du haft konto på Airbnb?
-Sebastian uppger att han aldrig har haft något Airbnb-konto eller bokat boende genom
-Airbnb.
-Airbnb bokning HMRFEDSKKT
-230904 gjordes en bokning för en lägenhet i Uppsala. Kontot skapades 230902, kopplas till
-mobilnumret 0722067373 och med användarnamnet Sebastian Hermansson.
-Det är inte Sebastians konto. Han känner inte igen uppgifterna som är kopplade till det.
-Telefonnumret är kopplat till Angelo
-Han vet inte vem det är och har aldrig varit i kontakt med honom.
-Vet du vem det är?
-Sebastian förevisas chatt 1 mellan Kurt Spurt (ägare) och mrthe_mexx (Angelo
-Sebastian känner inte igen detta.
-Han köpte telefonen begagnad och kontant av en okänd person utanför Coop i Virserum. De
-fick kontakt på Blocket. Sebastian har ingen kommentar angående eventuellt innehåll.
-Polisen har hämtat ut kontouppgifter från Airbnb. Där finns ett konto uppgivet, från vilket
-betalningen för bokningen går och som är kopplat till dig och ditt Revolut-konto.
-Sebastian förevisas bilaga 1- kontoutdrag från Revolut.
-Sebastian uppger att han inte har något Revolut-konto som han vet om.
-I utdrag från ditt Revolut-konto kan man se att betalning till Airbnb gjorts.
-Sebastian har inga kommentarer till detta. Han vill inte kommentera något.
-Är det du som har skapat Airbnb-kontot eller har använt kontot?
-Sebastian svarar nej.
-Hur kan det komma sig att betalningen görs från ditt konto?
-Sebastian säger att han inte vet.
-I din telefon har vi hittat ett antal skärmdumpar.
-Sebastian förevisas bilaga 2, 3 och 4 - Airbnb-bokning.
-Sebastian har inga kommentarer till detta.
-Om du inte haft tillgång till Airbnb-kontot, hur har du annars fått tillgång till dessa
-uppgifter som finns som skärmdumpar på din telefon?
-{pageend nr 26}{pagestart nr 27}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-27
-HEMLIG
-Sebastian kan inte förklara det.
-Vem är Yahya Ibrahim?
-Sebastian säger att han aldrig hört talas om honom.
-I förhör har du sagt att du är skriven hos din mamma men att du bor i en lägenhet på
-Kyrkogatan i Virserum.
-Sebastian säger att han bodde där men gör det inte längre. Han bodde ensam där.
-I husrannsakan 230917 på Kyrkogatan 12 hittade man ett kuvert med anteckningar ovanpå
-garderoben i sovrummet. Beslag107076 p.3. Känner du till det?
-Sebastian förevisas bilaga 5-foto på kuvert med handskriven text.
-Sebastian vet inget om det, de har inte sagt att de varit hemma hos honom. Han har inte blivit
-förhörd om beslagen. Han vet ingenting om det som står på kuvertet eller hur de har kommit
-dit. Han säger att det är som en fritidsgård hemma hos honom.
-Summan som står på kuvertet överensstämmer med det om du betalat ut från ditt konto till
-Airbnb. Hur förklarar du det?
-Sebastian har inga kommentarer. Han säger att hans körkort är borta. Det hände innan han
-blev gripen. Han har inte gjort en anmälan, det är krångligt då han sitter häktad.
-Menar du att man kan använda ditt körkort till att betala från ditt konto?
-Sebastian säger "jag vet inte". Han säger att man kan skapa saker med körkort, vad som helst.
-Är det någon annan än du som använder ditt konto?
-Sebastian säger att han inte vet.
-Vad har du själv använt ditt Revolut-konto till?
-Sebastian har inte använt det till något "vad han vet". Han kan inte minnas att han har ett
-sådant.
-Vem är Sebastian Hermansson?
-Sebastian har aldrig hört det namnet eller vet vem det är.
-I ett mail till din gmail-adress finns en inbjudan från Airbnb där Sebastian Hermansson
-bjuder in dig till sin resa. Förevisas bilaga 12 - email med inbjudan Airbnb från Sebastian
-Hermansson.
-Sebastian känner inte igen mailet men medger att det är hans gmail-adress.
-I en Signalchatt (förevisas chatt 2) mellan dig och Forbes Jump frågar du om du ska skriva
-till värden från Sebastian H och se om de kan väcka honom. Du skickar även en skärmdump
-av konversationen med värden.
-{pageend nr 27}{pagestart nr 28}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
 28
-HEMLIG
-Han har inte Signal och vet inget om chatten.
-Signalkontot är kopplat till ett av dina telefonnummer som slutar på 3, det du använder i din
-kommunikation med bl.a. Svenska kyrkan.
-Sebastian säger att han inte har något Signal-konto.
-Polisen bedömer att det är du som använder Airbnb-kontot och gör bokningen.
-Sebastian säger att han inte har något med det att göra.
-Samma summa som finns antecknat dras från ditt Revolutkonto. Förevisas bilaga 1.
-Sebastian har inget med det att göra. Han kan heller inte förklara det och har inga
-kommentarer.
-Precis innan du gör din betalning sätter Daniel Birgersson in samma summa på ditt konto.
-Det sker 230904 kl. 10:48 och 10:51. Vem är han? Förevisas bilaga 1.
-Sebastian har aldrig hört det namnet. Han uppger att han brukar sova vid den tiden. Han
-brukar vakna på eftermiddagen. Sebastian är just nu sjukskriven.
-Polisen vet att de som bor i lägenheten som bokningen avser, bl.a. Yayha Ibrahim, utför ett
-mord under tiden de bor där. Vet du något om det?
-Sebastian svarar nej.
-Strax innan bokningen genomförs har du tagit en skärmbild med din telefon, gällande
-sökning på Airbnb. Sökningen gäller Storkällsvägen, 4-9 september för 2 personer.
-Förevisas bilaga 6 – skärmdump på Airbnb-sökning.
-Sebastian känner inte till något om detta.
-I din telefon, från ditt nummer, finns 2 samtal till boendet registrerade. Båda är
-2023-09-04 kl. 13:19 samt 15:43 och båda är besvarade. Enligt vittnesuppgifter är det en
-man som pratar svenska utan utländsk brytning som ringer. Förevisas bilaga 7 -
-samtalslogg.
-Sebastian vet inget om detta. Inga kommentarer.
-2023-09-06 omkring kl. 20:30 skjuts en person till döds på Storkällsvägen 19 i Uppsala.
-Sebastian vet inget om detta.
-2023-09-08 kl. 13:12 ser vi i din web-historik att du tittat på en artikel som beskriver
-mordet. Förvisas bilaga 13 – web historik.
-Sebastian minns inget sånt. Han säger att han brukar kolla alla nyheter.
-Har du swish och vilken bank?
-Sebastian säger att han har swish, på SEB.
-Har du swishat till Yayha Ibrahim?
-{pageend nr 28}{pagestart nr 29}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-29
-HEMLIG
-Sebastian uppger att han inte känner igen det. Han vet inte om någon annan än han själv
-använder hans swish. Han uppger att det är som en fritidsgård hemma hos honom och alla
-kan komma åt hans telefon. Det är lätt att komma åt hans bankID.
-Sebastian säger att han fått brev hem från banken på grund av att något hänt på hans konto.
-Det har varit konstiga överföringar och liknande. Sebastian håller på att skriva en fullmakt så
-att han kan få hjälp att kolla upp det.
-Enligt uthämtad information från din bank och från Yahyas bank så kan man se att du har
-swishat Yahya 2 tillfällen 2023-09-05 samt 1 tillfälle 2023-09-06. Förevisas bilaga 8 -
-swishhistorik.
-Sebastian vet inget om det.
-I din telefon har vi hittat skärmdumpar på samma swishar. Förevisas bilaga 9-11 –
-skärmdumpar på swishar.
-Sebastian vet inget om det.
-Du säger att du inte vet om någon annan har använt ditt konto och du har fått brev från
-SEB.
-Sebastian svarar ja och att han kan fixa fram brevet om det behövs. Han vet inte vad som är
-konstigt med hans konto men har fått ett nytt kort skickat till sig.
-Har du låtit andra använda dina uppgifter?
-Sebastian säger att han inte vet om något sånt. Han vet dock inte var hans körkort är.
-Har du kontroll på ditt bankID?
-Sebastian säger att han inte har det eftersom han oftast har telefonen liggande framme och det
-är ofta andra människor hemma hos honom. Han säger att vem som helst kan använda den
-och att man kan lägga in flera koder eller sätt att öppna telefonen.
-Vi har pratat om ett konto på Airbnb och en särskild bokning. Har du haft eller har andra
-konton på Airbnb?
-Sebastian svarar att han inte tror det. Han känner inte igen det.
-2023-09-02 får du två mail till ditt gmail-konto från Airbnb där du ombeds bekräfta din
-mailadress. Strax innan mailet kommer får du ett sms från Airbnb. Förevisas bilaga 12 –
-email från Airbnb och 14 - sms från Airbnb.
-Sebastian vet inget om detta. Han har inte startat något konto på Airbnb.
-Har du bett någon annan starta konto på Airbnb?
-Sebastian svarar nej.
-I en Signalchatt från 2023-09-07, från din Iphone och ditt nummer, frågar du om den
-andra personen vet om någon som kan skapa ett konto på Airbnb, där du får
-inloggningsuppgifterna mot betalning och där boendena ska användas till "att trycka".
-{pageend nr 29}{pagestart nr 30}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-Förevisas chatt 3 - Kim
-och Ivksib 1337 (owner).
+Personalia
+Bilaga skäligen misstänkt, Friman, Kati Marjan Gina Danica………......
 30
-HEMLIG
-Sebastian vet inget om det. Han använder inte Signal och vet inte hur en signalchatt kan
-finnas där. Han har aldrig hört uttrycket "att trycka".
-I en annan Signalchatt från 2023-09-16, från din Iphone och ditt nummer, frågar du igen
-om den andra personen vet om någon som kan skapa ett konto på Airbnb mot betalning och
-där boendena ska användas till "att trycka". Förevisas chatt 4 - Terranexitot och Ivksib 1337
-(owner).
-Sebastian säger igen att han inte vet något om det, han använder inte Signal.
-Sebastian säger att han inte har något alls med det vi påstår att han gjort, att göra.
-Förevisas film 1 och 2 - utökad screenshot där den som filmar skriver med boendet.
-Sebastian vet inget om det.
-Mot bakgrund av alla de omständigheter och bevisning vi tagit upp, förstår du att vi har ett
-intresse för dig och av att veta hur inblandad du är?
-Sebastian har inget med detta att göra. Han säger att hans körkort är borta och man kan göra
-mycket med det. Han har inte gjort något av detta.
-Angående din nya telefon, hur gick köpet till och vad betalade du för den?
-Sebastian köpte den av en person via Blocket. Han betalade 500 kr i kontanter till personen
-som han mötte utanför Ica i Virserum. Han blev gripen den 17 september och köpte telefonen
-den 15 september.
-Han heter sahlstrom_s på Snapchat.
-I övrigt har Sebastian inget att säga.
-UPPLÄST OCH GODKÄNT 231108/AK
-{pageend nr 30}{pagestart nr 31}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-aktuellt datum 2023-09-04
+Personalia, Friman, Kati Marjan Gina Danica………………………..
 31
-HEMLIG
-Revolut
-Transactions history
-Exported at 2023-09-20 07:05:44 Z +00
-Account Holder
-First Name Last Name Date
-of birth Phone
-Email Address
-Opening Date
-Account Status Account
-Wallet Reference Number
-Account Details
-BIC / Sort Code
-IBAN / Account Number
-Sebastian Sahlström 1994-06-11
-+46732554462
-sahlstrom.s.h@gmail.com
-2021-07-21
-63751983
-REVOLT21
-LT20
-Reporting Period
-Start Date
-End Date
-Transactions history
-2023-01-01
-2023-09-20
-Type
-Created
-date
-Completed
-date
-Description
-Amount
-Currency
-State
-Balance
-2023-09-
-13 21:06:
-2023-09-13
-21:06:28
-TRANSFER
-To SEK
--130.00
-SEK
-Completed
-154 SEK
-28
-2023-09-
-13 21:04:
-CARD PAYMENT
-34
-apple.com/bill
--58.00
-SEK
-Declined
-TRANSFER
-2023-09-
-13 19:09:
-27
-2023-09-13
-19:09:27
-To Besparing till
--0.18
-EUR
-Completed
-€87.38
-CARD PAYMENT
-2023-09-
-13 19:09:
-27
-2023-09-14
-05:15:52
-Infiniza Ltd
--41.82
-EUR
-Completed
-€45.56
-2023-09-
-13 19:08:
-2023-09-13
-19:08:36
-EXCHANGE
-36
-Exchanged to EUR
--500.00
-SEK
-Completed
-0.92 SEK
-{pageend nr 31}{pagestart nr 32}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-2023-09-
-2023-09-05
-04 10:54:
-01:34:09
-CASHBACK
-44
-Plan Cashback
-3.53
-SEK
-Completed
-12.38 SEK
-2023-09-
-2023-09-05
-CARD PAYMENT
-04 10:54:
-44
-01:34:08
-Airbnb Hmrfedskkt
--3525.89
-SEK
-Completed
-288.19 SEK
-CARD PAYMENT
-2023-09-
-04 10:53:
-56
-2023-09-
-CARD PAYMENT
-04 10:53:
-55
-Airbnb Hmrfedskkt
--3525.89
-SEK
-Declined
-Airbnb Hmrfedskkt
--3525.89
-SEK
-Declined
-2023-09-
-04 10:53:
-2023-09-04
-10:53:18
-3,851.19
-SEK
-CARD PAYMENT
-Airbnb Inc
-0.00
-SEK
-18
-Completed
-2023-09-
-04 10:52:
-2023-09-04
-10:52:40
-EXCHANGE
-40
-Exchanged to SEK
--300.00
-EUR
-Completed
-8
-2023-09-
-TOPUP
-04 10:51:
-2023-09-04
-10:51:55
-Payment from Daniel Birgersson 50.00
-EUR
-Completed
-€300
-55
-2023-09-
-TOPUP
-04 10:48:
-04
-2023-09-04
-10:48:05
-Payment from Daniel Birgersson 250.00
-EUR
-Completed
-€250
-TRANSFER
-2023-09-
-03 22:32:
-53
-2023-09-03
-22:32:53
-To Besparing till
--6.68
-SEK
-Completed
-365.88 SEK
-2023-09-
-03 22:32:
-2023-09-05
-04:52:32
-CARD PAYMENT
-Infiniza Ltd
--243.32
-SEK
-Completed
-44.87 SEK
-52
-2023-09-
-03 21:23:
-2023-09-03
-21:23:39
-TRANSFER
-39
-To Besparing till
--1.00
-SEK
-Completed
-372.56 SEK
-CASHBACK
-2023-09-
-03 21:23:
-39
-2023-09-04
-05:16:08
-Plan Cashback
-0.08
-SEK
-Completed
-8.82 SEK
-CARD PAYMENT
-2023-09-
-03 21:23:
-38
-2023-09-04
-05:16:08
-Prime Video Channels
--79.00
-SEK
-Completed
-286.88 SEK
-2023-09-
-TRANSFER
-03 21:12:
-52
-2023-09-03
-21:12:52
-To Besparing till
--8.00
-SEK
-Completed
-373.56 SEK
-CASHBACK
-2023-09-
-03 21:12:
-52
-2023-09-04
-12:39:24
-Plan Cashback
-0.03
-SEK
-Completed
-8.85 SEK
-CARD PAYMENT
-2023-09-
-03 21:12:
-52
-2023-09-04
-12:39:24
-3,815.08
-SEK
-Postnord
--32.00
-SEK
-Completed
-TOPUP
-2023-09-
-03 19:29:
-43
-2023-09-03
-19:30:05
-Top-Up by *9941
-500.00
-SEK
-Completed
-381.56 SEK
-2023-09-
-03 10:28:
-2023-09-03
-10:28:04
-EXCHANGE
-04
-Exchanged to SEK
--1.78
-EUR
-Completed
-€0
-2023-09-
-02 23:58:
-FEE
-27
-2023-09-02
-23:58:27
-Metal plan fee
--139.99
-SEK
-Completed
-385.66 SEK
-E
-"
-"
-E
+Bilaga skäligen misstänkt, Friman, Tanja Tamara....
 32
-HEMLIG
-{pageend nr 32}{pagestart nr 33}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
+Personalia, Friman, Tanja Tamara……....
 33
-HEMLIG
-。 airbnb.se/trips/v1
-Resor
-I dag
-Väntande
-Centrum
-Hela boendet (lägenhet) med R
-4 sep.-
-7 sep.
-2023
-som värd
-Centrum, Uppsala län
-Sverige
-Utforska saker att göra nära Groningen
-a
-Traditionell italiensk
-matupplevelse -...
-* 4.97 (32)
-Vegetariskt italienskt
-kök, Antipasti, pasta...
-* 5.0 (1)
-B
-Visa all
-Utforska
-Onskelistor
-Resor
-inkorg
-Profil
-{pageend nr 33}{pagestart nr 34}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-。
-airbnb.se/book/confirmat
-4-7 sep. 2023-2 gäster
-3 525,89 kr SEK totalt
-Sista steget: Dela dina resplaner
-Lát din värd veta vem som reser med dig. Vi kommer att e-posta
-resplanen även till dessa andra gäster.
-Gäst 2: Fullständigt namn
-Yahye Ibrahim
-E-postadress
-Bla.futureinvest@gmail.com
-34
-HEMLIG
-Dela din resplan med vem som helst som kan vilja veta dina planer.
-Lägg till e-postadress
-Lägg till e-postadress
-Hoppa över
-Skicka
-88
-GIF
-&
-(
-ö ä
-σ
-1
-"3
-2
-3
-4
-(D
-r
+{pageend nr 3}{pagestart nr 4}Polisen
+Huvudanmälan
+5000-K284928-23
+Anmälningsuppgifter
+Anmälningsdatum: 2023-03-10 14:24
+Anmälningssätt: Telefon
+Enhet: 561520IG6, BF-IGV 6 LPO Malmö Söder
+Anmälningsansvarig: Lundgren, Lina
+Brott/Händelse
+Brott/Benämning: Ringa stöld
+Variant: Ringa stöld
+Brottsform: Fullbordat
+Rubricering: Ringa stöld
+Ica Supermarket Värnhem, Östra Förstadsgatan 50, Malmö
+t.o.m Fredag 2023-03-10 12:10
+Misstänkta personer:
+Friman, Kati Marjan Gina Danica
+Medverkansform: Gärningsman
+Friman, Tanja Tamara
+Medverkansform: Gärningsman
+Övriga aktörer:
+Matbutiken I Värnhem Ab
+Tullgren, Anna Seema
+Fritext
+INLEDNING
+Målsägande
+Vittne
+Patrull 65-3650 blev beordrade till Ica Supermarket med anledning av en ringa stöld. .
+BROTTET
+Kati och Tanja har tillsammans och i samförstånd tillgripit varor till ett värde av 488,6kr och sedan
+passerat sista betalningsmöjligheten utan att betala.
+ÖVERVAKNINGSKAMEROR
+Finns, avfilmat. Se Filip.
+TILLGRIPET GODS
+Se kvitto i FILIP.
+{pageend nr 4}{pagestart nr 5}TVÅNGSMEDEL
+Butikspersonal August envarsgrep Kati och Tanja 2023-03-10 kl. 12:10. Prövat och hävt kl 12:35 av
+Pa Hansen.
+ERSÄTTNINGSANSPRÅK
+Finns ej, varorna återlämnade till butiken.
+ÖVRIGT
+Bilder i Filip.
 5
-t y
-#
-$
-&
-6
-asdfg hj k
-?123
-↑
-{pageend nr 34}{pagestart nr 35}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-35
-HEMLIG
-airbnb.se/guest/inbox/15
-Svarstid: 1 timme
-B
-Lägenheter Uppsala Centralstation 2be...
-Väntande 4-7 sep.
-Annons
-Dela boende
-4 sep. 2023
-För att skydda din betalning ska du alltid
-kommunicera och betala via Airbnbs webbplats
-eller-app.
-Värdar kan inte se din profilbild förrän efter det
-att din bokning är bekräftad. Läs mer
-Sebastian 12:54
-Besöker vänner i Uppsala, gillar city läget,
-det är jag Sebastian Hermansson och min
-vän Yahye Ibrahim som reser
-Din bokningsförfrågan har skickats. Värden har 24
-timmar på sig att svara. Visa förfrågan
-Skriv ett meddelande
-235
-{pageend nr 35}{pagestart nr 36}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-2025-5000- By 10 7076 p.5
-296987
-Sebastian Hermansson
-Yahye ibrahim
-Sebbe H1337@outlook.com
-765
-25 Cak
-3564,37
-R
-3525.89
-Yah
-bla. futureinvest@gmail.com
-Yahye Ibrahim
-36
-HEMLIG
-{pageend nr 36}{pagestart nr 37}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-airbnb.se/s/Storkällsväge
-Storkällsvägen
-4-9 sep. 2 gäster
-Lägenhet i Sala backe
-Nära till överallt
-4 sängar
-Privat värd
-1440 kr SEK natt 7198 kr SEK totalt
-Sällsynt fynd
-Lägenhet i Centrum
-น
-4,5 (10)
-4,54 (26)
-Apartments Uppsala Centralstation 2bed(City läge)
-2 sångar
-Professionell värd
-1176 kr SEK natt 5.876 kr SEK totalt
-Karta
-Utforska
-Önskelistor
-Logga in
-37
-HEMLIG
-{pageend nr 37}{pagestart nr 38}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-®
-Extraktionsrapport - Google Android Generic
-Samtalslogg (2)
-38
-HEMLIG
-Cellebrite
-www.cellebrite.com
-Parter
-Tidstämpel
-Längd Status
-Landsko Nätverk
-Videos
-Källinformation
-d
-amtal
-1
-Till:
-2023-09-04
-00:05:44 Besvarad
-Källa:
-2010
-15:43:46(UTC+0)
-Källfil:
-EXTRACTION FFS.zip/data/d
-Orientering:
-Utgående
-2
-Till:
-4546
-Rum1Uppsala 2 AB
-Orientering:
-Utgående
-2023-09-04
-00:01:53 Besvarad
-13:19:19(UTC+0)
-Källa:
-Källfil:
-EXTRACTION FFS.zip/data/d
-Radera
-d
-{pageend nr 38}{pagestart nr 39}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-39
-HEMLIG
-Kontonummer
-ficka
-32730122346
-32730122346
-32730122346
-32730122346
-32730122346
-32730122346
-32730122346
-32730122346
-32730122346
-32730122346
-32730122346
-32730122346
-32730122346
-32730122346
-32730122345
-SEK
-SEK
-SEK
-SEK
-SEK
-SEK
-SEK
-SEK
-SEK
-SEK
-SEK
-SEK
-SEK
-SEK
-SEK
-Valuta Transaktion
-sdatum
-2023-09-07 06:34:15
-Tidpunkt Transaktionstyp
-Belopp IN
-Belopp UT
-Saldo
-Land
-Motpartens
-Swishnummer
-Motpartens namn
-Textmeddelande
-Kortnummer
-Anslutet
-Swishnummer
-Extern
-Bankintern
-transaktionsrefere transaktionsrefe
-ns
-rens
-KORT
--17,00
-1489,04 SE
-2023-09-07 06:34:15
-KORT
--39,00
-1506,04 SE
-2023-09-07 06:34:15
-KORT
--151,00
-1545,04 SE
-Kortköp 230904 CHERRY KONFEKTYR
-Kortköp 230904 CHERRY KONFEKTYR
-Kortköp 230904 CHERRY KONFEKTYR
-18715
-8715
-3990966792
-3990966780
-8715
-3990966623
-2023-09-06 23:35:57
-2023-09-06 23:13:17
-2023-09-06 22:54:27
-Swish betalning
-Bankomat
-Swish inbetalning
--340,00
-1696,04 SE
-5462
-M
-Swish betalning M
-46763035865
--700,00
-2036,04 SE
-Bankomat kl 23.13 230906
-8715
-2023-09-06 10:48:14
-Swish inbetalning
-1 000,00
-500,00
-2 736,04 SE
-1736,04 SE
-4548
-Robin Stenström
-Swish inbetalning Robin Stenström
-46732554462
-HIETAMIES SAHLSTRÖM,
-Swish inbetalning HIETAMIES SAHLSTRÖM
-46763035865
-46763035865
-2023-09-06 06:33:44
-KORT
--99,00
-1236,04 SE
-Kortköp 230904 Zettle "Jacob Statio
-8715
-7157714511540223 3780980052
-1502204901
-7157689613220215 3780980052
-7157253879250270 3780980052
-39901744236
-2023-09-06 06:33:44
-KORT
--266,80
-1335,04 SE
-Kortköp 230905 TIER SE
-8715
-39901742153
-2023-09-06 06:33:44
-KORT
--17,60
-1601,84 SE
-Kortköp 230904 TIER Mobility Sweden
-8715
-2023-09-06 06:33:44
-KORT
--29,95
-1619,44 SE
-Kortköp 230904 COOP STATIONSGALLERI
-8715
-3990916489
-3990411202
-2023-09-06 01:00:52
-Swish betalning
--50,00
-1 649,39 SE
-5128
-Swish betalning A
-2023-09-05 21:04:36
-Swish inbetalning
-1000,00
-2023-09-05 16:03:58
-Bankomat
--500,00
-2023-09-05 11:36:20
-Swish inbetalning
-500,00
-1699,39 SE
-699,39 SE
-1199,39 SE
-46732554462
-HIETAMIES SAHLSTRÖM,
-Swish inbetalning HIETAMIES SAHLSTRÖM
-Bankomat kl 16.03 230905
-46763035865
-46763035865
-18715
-46732554462
-HIETAMIES SAHLSTRÖM,
-Swish inbetalning HIETAMIES SAHLSTROM
-46763035865
-7156901464020565 3780980052
-7156759696680456 3780980052
-1820107930
-7156418745350198 3780980052
-Confidential
-{pageend nr 39}{pagestart nr 40}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-40
-HEMLIG
-Din betalning är skickad!
-5 sep. 2023, kl 11:36
-Ibrahim Yahya Ali
-+46 76 303 58 65
-500 kr
-SWISH
-X
-{pageend nr 40}{pagestart nr 41}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-41
-HEMLIG
-Din betalning är skickad!
-5 sep. 2023, kl 21:04
-Ibrahim Yahya Ali
-+46 76 303 58 65
-1 000 kr
-SWISH
-{pageend nr 41}{pagestart nr 42}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-42
-HEMLIG
-Din betalning är skickad!
-6 sep. 2023, kl 10:48
-Ibrahim Yahya Ali
-+46 76 303 58 65
-500 kr
-SWISH
-+
-{pageend nr 42}{pagestart nr 43}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-□
-Extraktionsrapport - Google Android Generic
-E-post (3)
-43
-HEMLIG
-Cellebrite
-www.cellebrite.com
-#
-Parter
-1
-Tidstämpel:
-2023-09-12
-17:44:34(UTC+0)
-Från:
-invitation@airbnb.com
-Airbnb
-Till:
-sahlstrom.s.h@gmail.com
-sahlstrom.s.h@gmail.com
-Orientering:
-Inkommande
-Innehåll
-Annan
-Ämne: Sebastian Hermansson bjöd in dig till sin resa till Sjödalen, Sverige Status: Oläst
-Brödtext:
-Konto:
-sahlstrom.s.h@gmail.com
-[https://www.airbnb.se?eal_exp=1697132672&amp;eal_sig=1967aa62297e Stycke:
-4a3ea026eb59323e8952459a3228d563db6891c97f2bd796bbd9&amp;eal MD5:
-uid=535189911&amp;eluid=4&amp;euid=a0c1c2e8-0ac2-1278-dae2-
-720a006e892a]
-Gör dig redo för din kommande resa
-Hej Sebastian,
-Sebastian bokadedenna eget rum i Sjödalen
-[https://www.airbnb.se/rooms/933389835862423887?c=.pi80.pkdmlyYWx
-pdHkvc2hhcmVfaXRpbmVyYXJ5&amp;euid=a0c1c2e8-0ac2-1278-dae2-
-720a006e892a] och lade till dig som gäst. Här är din resplan, inklusive
-adress och incheckningsuppgifter.
-Gå till resplan
-[https://www.airbnb.se/trips/v1/claim_invite/1-HOME-HMQCS59TP2-
-397297224-
-75405ef980d203571757cc2
-0e3bad401
-Källfil:
-EXTRACTION FFS.zip/dat
-48%257C183%257C1%257CY4R%252FgHvrlZkCSAlvGjBnHoppJCZ%25
-2
-Tidstämpel:
-2023-09-02
-21:13:19(UTC+0)
-Från:
-noreply@airbnb.com
-Airbnb
-Till:
-sahlstrom.s.h@gmail.com
-sahlstrom.s.h@gmail.com
-Orientering:
-Inkommande
-2B3GjekAwWoA2cyYVNu%252BjfBDfBOу5ZSzqeBJBqhaVJIFUETnugaA
-%252BaTA1ExjJ7GZbI3V9smhlHyt3Hx5gzo7EquhEvyTcziMtibWZHe0%2
-52BnKC5hhKf6WZCiCllwcxLsEndgmhl9v29q9mJ79r4%253D?c=.pi80.pkd
-mlyYWxpdHkvc2hhcmVfaXRpbmVyYXJ5&amp;euid=a0c1c2e8-0ac2-
-1278-dae2-720a006e892a]
-[https://www.airbnb.se/rooms/933389835862423887?c=.pi80.
-E-posthuvud:
-Posten trunkerades på grund av längd
-Datafiler: mes-1.eml
-Ämne: Airbnbs användarvillkor för boende i Europa
-Brödtext:
-Status: Oläst
-Konto:
-sahlstrom.s.h@gmail.com
-[https://www.airbnb.se?eal_exp=1696281198&amp;eal sig-8ebf3e042477 Stycke:
-Da97725d3afdf6341531a9d924caa5a94154386b6a75ef044ccd&amp;eal_u MD5:
-id=535189911&amp;eluid=0&amp;euid=9cc04bc6-0213-3657-3c37-
-4f7e6bee2820]
-Hej Sebastian,
-Vi skickar dig detta e-postmeddelande så att du enkelt kan få tillgång till
-våra nuvarandeanvändarvillkor
-[https://www.airbnb.se/terms?c=.pi80.pkdHJ1c3RfcHJpdmFjeS9ldV90b3M
-%3D&amp;euid=9cc04bc6-0213-3657-3c37-4f7e6bee2820]
-betalningsvillkor
-(https://www.airbnb.se/terms/payments terms?c=.pi80.pkdHJ1c3RfcHJpd
-mFjeS9ldV90b3M%3D&amp;euid=9cc04bc6-0213-3657-3c37-
-4f7e6bee2820] och vårsekretesspolicy
-[https://www.airbnb.se/terms/privacy_policy?c=.pi80.pkdHJ1c3RfcHJpdmF
-jeS9ldV90b3M%3D&amp;euid=9cc04bc6-0213-3657-3c37-4f7e6bee2820]
-Dessa villkor innehåller viktig information om dina juridiska rättigheter,
-rättsmedel och skyldigheter. Du kan granska villkoren och policyerna
-genom att följa länkarna ovan eller genom att öppna bilagorna i detta e-
-postmeddelande.
-Tack f
-E-posthuvud:
-Posten trunkerades på grund av längd
-Bilagor:
-https://mail.google.com/mail/?ui=2
-&ik-b9770f50bc&attid=0,1&th=18a
-57be3b16432e6&view=att&zw
-airbnb terms of service.pdf
-https://mail.google.com/mail/?ui=2
-&ik-b9770f50bc&attid=0.3&th=18a
-57be3b16432e6&view=att&zw
-airbnb privacy policy.pdf
-Datafiler: mes-2.eml
-https://mail.google.com/mail/?ui=2
-&ik-b9770f50bc&attid=0.2&th=18a
-57be3b16432e6&view=att&zw
-airbnb payments terms of service
-.pdf
-d8e1d6836ce24dec781a42
-54c8a4f9fc
-Källfil:
-EXTRACTION_FFS.zip/dat
-Raderad
-{pageend nr 43}{pagestart nr 44}44
-HEMLIG
-3
-Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-Tidstampel:
-2023-09-02
-Från:
-21:13:19(UTC+0)
-automated@airbnb.com
-Airbnb
-Till:
-sahlstrom.s.h@gmail.com
-sahlstrom.s.h@gmail.com
-Orientering:
-Inkommande
-Amne: Vänligen bekräfta din e-postadress
-Brödtext:
-Status: Oläst
-Konto:
-sahlstrom.s.h@gmail.com
-[https://www.airbnb.se/?c=.pi80.pkYm9va2luZy9hdXRoZW50aWNhdGlvbi Stycke:
-9jb25maXJtX2VtYWls&amp;euid=35bc5eb6-2478-0652-cacd-
-503b5f1bd1db]
-Hej Sebastian,
-Välkommen till Airbnb! För att komma igång måste du bekräfta din e-
-postadress.
-Bekräfta e-postadress
-[https://www.airbnb.se/confirm_email?code=bc0f0a1b5ba3650da7bfab27c
-e224647&amp;redirect_params%5Baction%5D=account_activation&amp;r
-edirect_params%5Bcontroller%5D=verification&amp;redirect_params%5B
-skip_intro%5D=true&amp;user_id=535189911]
-Airbnb Ireland UC
-8 Hanover Quay
-Dublin 2, Ireland
-E-posthuvud:
-Datafiler: mes-3.eml
-MD5:
-dc8a9d9c99273c1e7fa2f8a
-e5a11a5a6
-Källfil:
-EXTRACTION FFS.zip/dat
-{pageend nr 44}{pagestart nr 45}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-Extraction Report - Apple iPhone
-Web History (1)
-Title
-1
-Tvà anhållna
-för mordet på
-mamma till
-gängkriminell |
-SVT Nyheter
-URL
-https://www.svt.se/nyheter/lokalt/uppsala/tva-
-anhallna-for-mordet-pa-mamma-till-
-gangkriminell-kao358
-Last Visited
-Visits
-Usage
-Pattern
-2023-09-08
-13:12:52(UTC+
-1
-0)
-45
-HEMLIG
-Cellebrite
-www.cellebrite.com
-Additional info
-Source Info
-Deleted
-Artifact Family:
-Source
-Repository Path:
-Source: Safari
-Account:
-Source file:
-EXTRACTION
-Service
-Identifier:
-{pageend nr 45}{pagestart nr 46}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-Extraction Report - Google Android Generic
-Chats (1)
-Native Messages (1)
-1
-46
-HEMLIG
-Cellebrite
-www.cellebrite.com
-Start Time: 2023-09-02 21:12:42(UTC+0)
-Last Activity: 2023-09-02 21:12:42(UTC+0)
-Number of attachments: 0
-Source: Native Messages
-Source file: EXTRACTION_FFS.zip/data/data/com.android.providers.telephony/databases/mmssms.db: 0x4B1776 (Table: sms,
-Body file: chat-1.txt
-Participants:
-2586
-From: |
-2586
-Din verifieringskod för Airbnb är 496441.
-Status: Read
-Source Info:
-2023-09-02 21:12:42(UTC+0)
-Deleted
-{pageend nr 46}{pagestart nr 47}LERT-23-33794_535191418_BASIC_SUBSCRIBER INFORMATION
-ABNB
-A
-B
-C
-D
-1 user id first_name last_name
-2
-535191418 Sebastian
-E
-created_at
-birthdate email
-Hermansson 02/09/2023 21:26 06/06/1994 SebbeH1337@Outlook.com
-F
-G
-phone_number
-46722067373
-Page 1 of 4
-Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-HEMLIG
-{pageend nr 47}{pagestart nr 48}LERT-23-33794_535191418_IP LOGS
-ABNB
-B
-C
-UTC timestamp
-user_id
-activity_type
-2 535191418 airlock_satisfied:arkose_bot_detection
-1234
-535191418 airlock_flow_satisfied:captcha_flow
-4 535191418 airlock_friction_satisfied:arkose_bot_detection
-5 535191418 airlock_suggested:account_lookup
-6
-535191418 login_credentials_valid
-7
-535191418 login
-8
-535191418 payment instrument_created
-9 535191418 reservation_requested
-10 535191418 airlock_friction satisfied:three_d_secure_verification
-11 535191418 reservation_requested
-12 535191418 airlock_satisfied:three_d_secure_verification
-13 535191418 airlock_flow_satisfied:flow_reactive_sca_v2
-14 535191418 message_sent
-15 535191418 airlock_suggested:reactive_sca_v2
-16 535191418 reservation_accepted
-17 535191418 reservation_requested
-18 535191418 reservation_requested
-19 535191418 instant_book_accepted
-20 535191418 message_sent
-21 535191418 message_sent
-22 535191418 message_sent
-23 535191418 message_sent
-24 535191418 message_sent
-25 535191418 message_sent
-26 535191418 message_sent
-27 535191418 message sent
-D
-ip
-04/09/2023 10:38 94.234.105.163
-04/09/2023 10:38 94.234.105.163
-04/09/2023 10:38 94.234.105.163
-04/09/2023 10:38:94.234.105.163
-04/09/2023 10:39 94.234.105.163
-04/09/2023 10:39 94.234.105.163
-04/09/2023 10:53 94.234.105.163
-04/09/2023 10:53 94.234.105.163
-04/09/2023 10:54 94.234.105.163
-04/09/2023 10:54 94.234.105.163
-04/09/2023 10:54 94.234.105.163
-04/09/2023 10:54 94.234.105.163
-04/09/2023 10:54 94.234.105.163
-04/09/2023 10:54 94.234.105.163
-04/09/2023 12:04 195.178.180.206
-12/09/2023 17:27 94.234.104.121
-12/09/2023 17:32 94.234.104.121
-12/09/2023 17:32 94.234.104.121
-12/09/2023 17:47 94.234.105.85
-12/09/2023 17:53 94.234.105.85
-12/09/2023 17:54 94.234.105.85
-13/09/2023 12:31 94.234.108.22
-13/09/2023 12:34 94.234.108.22
-13/09/2023 12:39 94.234.108.22
-14/09/2023 08:14 212.181.146.102
-14/09/2023 08:16 212.181.146.102
-Malmö
-28 535191418 message_sent
-14/09/2023 08:16 212.181.146.102
-29 535191418 message_sent
-14/09/2023 08:17 212.181.146.102
-30 535191418 message sent
-31 535191418 message_sent
-14/09/2023 08:21 212.181.146.102
-14/09/2023 08:23 212.181.146.102
-Page 2 of 4
-Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-48
-HEMLIG
-{pageend nr 48}{pagestart nr 49}LERT-23-33794_535191418_RESERVATION_INFORMATION
-A
-B
-C
-D
-E
-G
-123
-1 guest_id
-confirmation code created_at
-535191418 HMRFEDSKKT
-535191418 HMQCS59TP2
-amount
-start date
-04/09/2023 SEK 3,525.89 04/09/2023
-12/09/2023 SEK 1,882.35 12/09/2023
-3
-F
-H
-nights number_of_guests city country
-2 Centrum SE
-I
-2
-2 Sjödalen SE
-Page 3 of 4
-ABNB
-Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-49
-HEMLIG
-{pageend nr 49}{pagestart nr 50}LERT-23-33794_535191418_PAYMENT_INFORMATION
-ABNB
-A
-1
-user_id
-2
-B
-C
-D
-E
-instrument_type cc_last_four cc_type expiration_month expiration_year issuing bank
-535191418 Credit Card
-2028 REVOLUT LTD
-7861 master
-8
-Page 4 of 4
-Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-50
-HEMLIG
-{pageend nr 50}{pagestart nr 51}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-Li
-Extraktionsrapport - Google Android Generic
-Chatter (1)
-Snapchat (1)
-kurt_bussnies (1)
-#
-1
-Starttid: 2023-09-13 16:25:08(UTC+0)
-Senaste aktivitet: 2023-09-13 16:28:17(UTC+0)
-Antal bifogade filer: 0
-Källa: Snapchat
-Konto: kurt bussnies
-Källfil: EXTRACTION FFS.zip/
-EXTRACTION_FFS.zip/data/data/com.snapchat.android/databases
-EXTRACTION FFS.zip/data/data/com.snapchat.android/databases
-Datafiler: chat-1.txt
-Deltagare:
-Identifierare: 02e080
-mrthe_mexx
-Angelo
-kurt bussnies
-Kurt Spurt (ägare)
-From: mrthe_mexx Angelo
-To: kurt bussnies Kurt Spurt (owner)
-Risplockaren hälsar att han ska bah göra färdigt några saker sen inom en snar framtid är
-han redo att börja jobba för dig som din Man I Växjö! Han kommer höra av sig till mig när
-han e redo! Så kan du få hans nr/snap/Signal w/e så kan ni prata ihop er så kan du förklara
-för honom allt vad han ska göra och hur det går till!
-Deltagare
-kurt bussnies Kurt Spurt
-Levererad
-Läst
-2023-09-13
-16:25:14(UTC
-Spelade
-Källinformation:
-+0)
-2023-09-13 16:25:08(UTC+0)
-51
-THEMLIG
-Cellebrite
-www.cellebrite.com
-Raderad
-{pageend nr 51}{pagestart nr 52}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-From: mrthe_mexx Angelo L
-To: kurt bussnies Kurt Spurt (owner)
-Och jag kommer alltid finnas där i Växjö och haffa kunder till han för känner endo hela
-Växjö trots allt!
-Deltagare
-Levererad
-52
-HEMLIG
-kurt bussnies Kurt Spurt
-Källinformation:
-Läst
-Spelade
-2023-09-13
-16:25:41(UTC
-+0)
-2023-09-13 16:25:40(UTC+0)
-{pageend nr 52}{pagestart nr 53}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-®
-Extraction Report - Apple iPhone
-Chats (1)
-Signal (1)
-1
-Start Time: 2023-09-08 12:54:54(UTC+0)
-Last Activity: 2023-09-17 15:49:02(UTC+0)
-Number of attachments: 39
-Source: Signal
-Source file: EXTRACTION_FFS.zip/root/private/var/mobile/Containers/Shared/AppGroup/C1C8EAD6-F072-4CE4-9A88-
-Body file: chat-1.txt
-Participants:
-Identifier:
-+5078484113
-FORBES GUMP
-+46720066139
-Ivksib 1337 (owner)
-From: +46720066139 Ivksib 1337 (owner)
-nya
-Source Info:
-53
-HEMLIG
-Cellebrite
-www.cellebrite.com
-Deleted
-2023-09-08 12:54:54(UTC+0)
-From: +46720066139 Ivksib 1337 (owner)
-Dunder
-Source Info:
-From: +46720066139 Ivksib 1337 (owner)
-Raderar den andra da
-Source Info
-2023-09-08 12:56:06(UTC+0)
-2023-09-08 12:56:11(UTC+0)
-{pageend nr 53}{pagestart nr 54}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-54
-From: System Message
-Incoming call.
-HEMLIG
-Label: System
-Source Info:
-From: System Message
-Incoming call.
-Label: System
-Source Info:
-From: System Message
-Incoming call.
-Label: System
-Source Info:
-2023-09-13 12:16:50(UTC+0)
-2023-09-13 12:19:28(UTC+0)
-2023-09-13 12:20:17(UTC+0)
-From: +46720066139 Ivksib 1337 (owner)
-Ska jag skriva till värden från Sebastian H och se om dom kan väcka honom?
-Source Info:
-From: +46720066139 Ivksib 1337 (owner)
-aa
-Source Info:
-2023-09-13 12:28:53(UTC+0)
-2023-09-13 12:30:06(UTC+0)
-From: +46720066139 Ivksib 1337 (owner)
-bror kolla
-Source Info
-2023-09-13 12:30:11(UTC+0)
-9
-{pageend nr 54}{pagestart nr 55}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-From: +46720066139 Ivksib 1337 (owner)
-assá shunno e ju retard
-Source Info:
-55
-HEMLIG
-2023-09-13 12:30:20(UTC+0)
-From: +46720066139 Ivksib 1337 (owner)
-Attachments:
-Size: 113936
-2023-09-13 12:30:24(UTC+0)
-Source Info:
-From: +46720066139 Ivksib 1337 (owner)
-För hon hade skrivit så till Sebastian
-2023-09-13 12:30:35(UTC+0)
-Source Info
-From: +46720066139 Ivksib 1337 (owner)
-okej men skriv igen att hon måste väcka honom
-Source Info
-From: +46720066139 Ivksib 1337 (owner)
-Attachments:
-2023-09-13 12:31:02(UTC+0)
-Size: 117231
-2023-09-13 12:31:45(UTC+0)
-Source Info:
-91
-{pageend nr 55}{pagestart nr 56}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-56
-HEMLIG
-<
-airbnb.se/guest/inbox/15
-M
-Svarstid: 1 timme
-V
-Eget rum bara 22 minuter från centralst...
-Resa slutförd 12-14 sep.
-Bokning
-Dela boende
-Vägbesk
-S
-Sebastian 10:17
-Kan du väcka han för jag kommer runt
-utcheckningen
-S
-S
-M
-10:20
-Utcheckning var kl 10 egentligen :) Jag
-väcker honom.
-Sebastian 10:21
-Skulle vara jätte snällt hade för mig det
-var kl 11 Förlåt
-Mi
-10:22
-Fara-ingenjör.
-Han är inte i rummet dock. Men hans
-grejer finns.
-Jag var vacken sedan 7 men han kanske
-smig ut medan jag jobbade.
-Sebastian 10:23
-Va?
-Läst av Michele
-Skriv ett meddelande
-{pageend nr 56}{pagestart nr 57}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-(
-Extraction Report - Apple iPhone
-Chats (1)
-Signal (1)
-#
-1
-Start Time: 2023-09-07 15:11:06(UTC+0)
-Last Activity: 2023-09-17 13:12:28(UTC+0)
-Number of attachments: 2
-Source: Signal
-Source file: EXTRACTION FFS.zip/root/private/var/mobile/Containers/Shared/AppGroup/C1C8EAD6-F072-4CE4-9A88-
-Body file: chat-1.txt
-Participants:
-Identifier:
-2594
-Kim
-+46720066139
-Ivksib 1337 (owner)
-From: +46720066139 Ivksib 1337 (owner)
-https://www.airbnb.se
-Source Info:
-57
-HEMLIG
-Cellebrite
-www.cellebrite.com
-Deleted
-2023-09-17 12:42:41(UTC+0)
-From: +46720066139 Ivksib 1337 (owner)
-Vet du någon som kan skapa ett konto där vi delar ut en lax Max
-Source Info:
-2023-09-17 12:43:04(UTC+0)
-From: +46720066139 Ivksib 1337 (owner)
-Skapa ett konto på air bnb?
-Source Info:
-2023-09-17 12:43:23(UTC+0)
-{pageend nr 57}{pagestart nr 58}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-From: +46720066139 Ivksib 1337 (owner)
-Vadå för bokningar osv?
-Source Info:
-From: +46720066139 Ivksib 1337 (owner)
-Till att vara på och trycka
-Source Info:
-58
-HEMLIG
-2023-09-17 12:43:30(UTC+0)
-From: +46720066139 Ivksib 1337 (owner)
-2023-09-17 12:45:22(UTC+0)
-Till att va på en plats och trycka?
-2023-09-17 12:46:01(UTC+0)
-Source Info:
-From: +46720066139 Ivksib 1337 (owner)
-De du menar eller
-Source Info:
-2023-09-17 12:46:09(UTC+0)
-From: +46720066139 Ivksib 1337 (owner)
-Ah
-Source Info:
-2023-09-17 12:46:14(UTC+0)
-From: +46720066139 Ivksib 1337 (owner)
-Aa okey, så det behövs någon som kan boka air bnb åt någon annan alltså?
-Source Info:
-2023-09-17 12:53:16(UTC+0)
-{pageend nr 58}{pagestart nr 59}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-59
-HEMLIG
-From: +46720066139 Ivksib 1337 (owner)
-Ska checka hur länge är bokningen
-2023-09-17 12:53:25(UTC+0)
-Source Info:
-From: +46720066139 Ivksib 1337 (owner)
-Jag behöver bara inloggnings uppgifterna
-2023-09-17 12:53:50(UTC+0)
-Source Info
-From: +46720066139 Ivksib 1337 (owner)
-Så löser vi bokningarna själv
-Source Info:
-2023-09-17 12:54:00(UTC+0)
-From: +46720066139 Ivksib 1337 (owner)
-Brukar vara ett par dagar men dom köper hela kontot för en lax
-Source Info:
-From: +46720066139 Ivksib 1337 (owner)
-Hmm okey ska checka in på dedär
-Source Info:
-2023-09-17 12:54:20(UTC+0)
-2023-09-17 13:12:28(UTC+0)
-{pageend nr 59}{pagestart nr 60}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-Extraction Report - Apple iPhone
-Chats (1)
-Signal (1)
-1
-Start Time: 2023-09-16 18:30:46(UTC+0)
-60
-Chatt HEMLIG
-Cellebrite
-www.cellebrite.com
-Last Activity: 2023-09-17 16:04:28(UTC+0)
-Number of attachments: 1
-Source: Signal
-Source file: EXTRACTION_FFS.zip/root/private/var/mobile/Containers/Shared/AppGroup/C1C8EAD6-F072-4CE4-9A88-
-Body file: chat-1.txt
-Participants:
-Identifier:
-0345
-Terranexitot
-+46720066139
-Ivksib 1337 (owner)
-From: +46720066139 Ivksib 1337 (owner)
-Har du någon som kan skapa ett konto pa
-Source Info:
-Deleted
-2023-09-17 12:46:46(UTC+0)
-From: +46720066139 Ivksib 1337 (owner)
-https://www.airbnb.se
-Source Info:
-From: +46720066139 Ivksib 1337 (owner)
-Så får du en lax för kontot
-Source Info:
-2023-09-17 12:46:49(UTC+0)
-2023-09-17 12:46:58(UTC+0)
-{pageend nr 60}{pagestart nr 61}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-61
-HEMLIG
-From: +46720066139 Ivksib 1337 (owner)
-Ska kolla med min polare en sekund
-2023-09-17 12:47:15(UTC+0)
-Source Info:
-From: +46720066139 Ivksib 1337 (owner)
-En vada? Det kostar ju inget
-Source Info:
-2023-09-17 12:47:30(UTC+0)
-From: +46720066139 Ivksib 1337 (owner)
-Nej jag vet men har köpare för en lax av kontot
-Source Info:
-2023-09-17 12:47:54(UTC+0)
-From: +46720066139 Ivksib 1337 (owner)
-Dom använder det och hyr platser som dom trycker på
-Source Info:
-2023-09-17 12:48:46(UTC+0)
-{pageend nr 61}{pagestart nr 62}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-by
-12:32 O
-06 kr
-1446 kr SEK
-2 gäster
-Stol 2 451 kr SEK
-1373 kr SEK
-1942 kr SEK
-1176 kr SEK
-7 KIIN
-UUD NI JEK
-475 kr SEK
-1647 kr SEK
-059 kr SEK
-1628 kr SEK
-Knivsta
-Google
-Sigtuna
-4G+
-85%
-26
-Almunge
-1942 kr SEK
-Märsta
-750 kr SEK
-Kekommandon Kartdata ©2023 Google 5 km
-48 boenden
-1436 kr SE
-Användarvillkor
-62
-HEMLIG
-{pageend nr 62}{pagestart nr 63}Förhör Förhör 1 (16 oktober)_MASKAD, 2024-01-23 09:45 diarienr: 5000-K1113302-23
-12:42
-4G+
-82%
-airbnb.se/book/stays/46€
-Skicka bokningsförfrågan.
-Hela boendet (lägenhet
-Lägenheter Upps
-Centralstation 2bed
-✰ 4,54 (26)
-14
-Din resa
+{pageend nr 5}{pagestart nr 6}Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+Polisen
 Datum
-4-9 sep.
-Gäster
-2 gäster
-Redigera
-Redigera
-Prisuppgifter
-999,00 kr SEK x 5 nätter
-Airbnbs serviceavgift
-Totalt (SEK)
-4 995,00 kr SEK
-881,47 kr SEK
-5 876,47 kr
-Mer information
-Betala med
-Kredit- eller kontokort
-+
-PayPal
-PayPal
-+
-63
-HEMLIG
-{pageend nr 63}{pagestart nr 64}HEMLIG
-64
-Förhör
+ANTECKNINGAR
+2023-03-10
+Diarienummer
+5000-K284928-23
+Bildbilaga
+Kvitto på tillgripet gods samt bilder på det tillgripna godset.
+6
+Sida 1 (8)
+{pageend nr 6}{pagestart nr 7}Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+1. Kvitto över tillgripna varor.
+Värnhem
+ICA
+Supermarket
+Östra Förstadsgatan 50
+212 12 Malmö
+Tel.nr. 040-101230
+Org.nr. 559027-0723
+Säljare: 
+134
+Datum: 2023-03-10
+Kassa: 01 Nr: 8345
+Tid: 12:27
+Ref. 4401597601001285500310237
+PARKERAT KVITTO
+Blåbär
+Burrata
+Caesarsallad
+Frukostknäckebröd
+Gräddost mild
+Majskorn
+Mat&Bak
+Pesto solt. tomat
+Plommontomat
+Rökt Prickig Korv
+Stjärnor Cheese
+Tonfisk i olja
+Tulpan 15p
+5,00
+36,95
+54,95
+20,00
+29,95
+19,95
+21,95
+15,00
+39,95
+10,00
+20,95
+15,95
+198,00
+2st*99,00
+Registrerade artiklar för 488,60
+Alla registrerade kuponger och
+pant returkvitton ska återlämnas
+till kunden.
+Vid återtag av kvitto kan ev.
+kombinationsrabatter påverkas.
+TACK FÖR BESÖKET!
+VÄLKOMMEN ATER
+E-presentkort bytes ej.
+E- presentkort reklameras hos utgivaren
+בי
+7
+Sida 2 (8)
+{pageend nr 7}{pagestart nr 8}NYB
+Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+ti papper
+ba
+120
+стрид
+04-06-2923
+13 neagr
+EKSTRÖMS
+01-05-2022
+613 16307
+EKSTRÖMS
+MSKAKAS!
+EKSTRÖMS
+NIUTNING SEDAN 1848
+OMSKAKAS
+EKSTRÖMS
+NJUTNING SEDAN 1848
+R KLASSISKA
+SAFT
+OPPA
+IN PAC-VITAMIN
+Cod smak
+VÅR KLASSISKA
+SAFT
+SOPPA
+RIK PA C-VITAMIN
+God smak
+g ur tiden
+ICA
+Ägg 10st
+Från frigående höns inomhus
+*A*A
+FRÅN SVENSKA GARDAR
+SVERIGE
+SVERIGE
+Storlek
+M-L
+OMPENSERADE AGG 997 OVERS
+2. Varor som de misstänkta betalade för.
+OMSKAKAS!
+CA
+SÖTA & VITKÖTTIGA
+BLÅBÄR
+125g
+ICA AB. Box 4075. 169 04 Solna, Sverige.
+Kundkontakt: 020-83 33 33 eller 
+ICA.se
+Sorteras som plastförpackning
+.
+KLASS 1. Packade för
+Sort: Legacy
+Ursprung: Chile
+NL72794
+Batch:L0803
+7 318693 254055
+L003S
+NA LANDSKAP
+Sida 3 (8)
+8
+{pageend nr 8}{pagestart nr 9}3. Tillgripet gods.
+Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+wasa
+KIVIKS
+37
+Ett et
+B
+Sida 4 (8)
+9
+{pageend nr 9}{pagestart nr 10}Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+a.
+Was
+4.
+wasa
+94291
+10
+Sida 5 (8)
+{pageend nr 10}{pagestart nr 11}Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+Blomsterboda
+15 tulpaner
+HALIBARA B cre
+TRAN LOKALA COUN
+DACARS
+CARMITI
+SACTSUND
+$15808 91686
+5. Tillgripet gods.
+Blomsterboda
+15 tulpaner
+ww
+DACARS
+CARANTY
+WELCKE
+LOKA
+HAV
+11
+FRUK
+Estre
+1434
+wasa
+iveco
+EKOLOGISK
+PLOMMONTOMATER
+400 g
+SINCE 1919
+FRU
+/VETEKNACH
+RIK PA 
+FIB
+Cheese
+& ONION
+Fantastiskt,
+sproda
+iveco
+1,5 KG
+01
+188/0
+33
+45100
+0950119
+373010050950113116
+Supe
+Värnh
+måndag-söndag.
+Vi ses!
+Välkommen! Denna vecka har vi ett helt ging n
+speciellt utvalda för dig (och alla andra
+CA Hemm
+Telefon 040-101230
+DRYIN
+Ica.se/supermarket/varnhem
+Inspireras på
+85g
+Felj oss på f
+BREDBAR
+Lönneberga
+LEVERPASTEJ
+ORIGINAL
+Sida 6 (8)
+{pageend nr 11}{pagestart nr 12}Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+12
+nad forpocke
+% Off (Dup
+21.12.22 - 21.04.23 0
+FORVARING & MALL
+7 318690 07171
+FISK
+INFORM
+butatun
+50/70
+ICA
+Sart Brightwe
+BLÅBÄR
+SOTA & VITKÖTTIGA
+125g
+S
+SVEDRAN
+Petters
+LLA
+A KORV
+OVER BOKSPAN
+106
+6. Tillgripet gods.
+Sida 7 (8)
+{pageend nr 12}{pagestart nr 13}Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+MARIER
+ASSVER
+113
+ଧy8y78
+ขยาย
+FOLLOW
+7. Tillgripet gods.
+KOTT FRAN
+SVERIGE
+Petters
+A
+KORV
+OVER BOKSPAN
+FEAN GEBORG SEDAN 1936
+ICA
+CAESARSALLAD
+MED KYCKLING,
+GRANA 
+PADANO
+, BACON
+OCH 
+CAESARDRESSING
+SVENSK KYCKLING
+270g
+13
+Sida 8 (8)
+{pageend nr 13}{pagestart nr 14}Fotografi(er)
+Kvitto på betalda varor
 Signerat av
+Signerat datum
 Polisen
 Enhet
-Region Mitt, Grova brott 2 PO Uppsala
+Region Syd, BF-IGV 6 LPO Malmö Söder
+Originalhandlingens förvaringsplats
+Involverad personal
+Amelia Isaksson
+Datum
+2023-03-10
+Funktion
+Diarienr
+5000-K284928-23
+Tid
+15:35
+Uppgiftslämnare
+14
+{pageend nr 14}{pagestart nr 15}Fotografi(er) Tanja Friman, 2023-03-10 17:24 diarienr: 5000-K284928-23
+Polisen
+Datum
+2023-03-10
+ANTECKNINGAR
+Tanja Friman, 640510-0287.
+Bildbilaga
+Diarienummer
+5000-K284928-23
+15
+Sida 1 (4)
+{pageend nr 15}{pagestart nr 16}Fotografi(er) Tanja Friman, 2023-03-10 17:24 diarienr: 5000-K284928-23
+11/0
+Estrella
+45100
+HET! NYHET
+UGNS
+AKAD
+CHIPS-
+Estrella
+ella L
+Estrella
+Estrella
+15%
+Estrella
+95%
+wasa
+Sohrrec
+Estrella
+Estrella
+Estrella
+Eua
+wasa
+Ägg
+EAT NAT
+a bar of nuts and
+...and nothing d
+Simple...ism
+NATURAL
+alhes
+Simple... Isn't it?
+wasaZ
+EAT NATUR
+a bar of nuts and fruit
+...and nothing dodgy.
+Simple...isn't it?
+www.eatnatural.co.uk
+1. Bild på misstänkt Tanja. Beslut fotografering JFUL J. Bladh.
+16
+PR
+EAT
+ab
+Simp
+TEI
+Sida 2 (4)
+{pageend nr 16}{pagestart nr 17}Fotografi(er) Tanja Friman, 2023-03-10 17:24 diarienr: 5000-K284928-23
+11/3
+45100
+Estrella
+NYHET! NYHET!
+UGNS
+AKAD
+Estrella
+Estrella
+Condi
+Estrella
+M
+Boercream
+Estrella
+13%
+15%
+Estrella
+Estrella
+Estrella
+ula
+O'Pate
+2. Bild på misstänkt Tanja. Beslut fotografering JFUL J. Bladh.
+-
+17
+EAT NATU
+a bar of nuts and
+...and nothing de
+Simple...isn
+EAT
+TURAL
+be of sand
+doties tot
+Simple...Isn't it?
+EAT NATU
+a bar of nuts and fruit
+...and nothing dodgy.
+Simple...isn't it
+www.eatnatural.co.uk
+Sida 3 (4)
+{pageend nr 17}{pagestart nr 18}Fotografi(er) Tanja Friman, 2023-03-10 17:24 diarienr: 5000-K284928-23
+45100
+Estrella
+NYHET! NYHET
+UGNS
+AKAL
+Estrella
+Estrella
+Estrella
+18
+Simple....isn
+Estrella
+13%
+93%
+EAT NAT
+a bar of nuts and
+...and nothing de
+Simple...isn
+EAT N
+Estrella
+Estrella
+Estrella
+Eula
+3. Bild på misstänkt Tanja. Beslut fotografering JFUL J. Bladh.
+EAT N
+a bar of nut
+...and nothi
+Simple...
+wwwwww.eatnatura
+EAT
+HATURAL
+EIN
+Sida 4 (4)
+{pageend nr 18}{pagestart nr 19}Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
+Polisen
+Datum
+2023-03-10
+ANTECKNINGAR
+Kati Friman, 950822-3584
+Bildbilaga
+Diarienummer
+5000-K284928-23
+19
+Sida 1 (6)
+{pageend nr 19}{pagestart nr 20}Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
+20
+1. Misstänkt Kati. Beslut foto jful Bladh.
+Sida 2 (6)
+{pageend nr 20}{pagestart nr 21}Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
+21
+#0
+2. Misstänkt Kati. Beslut foto jful Bladh.
+Sida 3 (6)
+{pageend nr 21}{pagestart nr 22}Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
+22
+3. Misstänkt Kati. Beslut foto jful Bladh.
+Sida 4 (6)
+{pageend nr 22}{pagestart nr 23}Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
+23
+4. Misstänkt Kati. Beslut foto jful Bladh.
+Sida 5 (6)
+{pageend nr 23}{pagestart nr 24}Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
+24
+5. Misstänkt Kati. Beslut foto jful Bladh.
+Sida 6 (6)
+{pageend nr 24}{pagestart nr 25}Polisen
+Enhet
+Region Syd, BF-IGV 6 LPO Malmö Söder
 Hörd person
-Karlsson, Edison
+Tullgren, Anna
+Den hörde är
+Vittne
+Tolk
+ID Styrkt
+Ja
+Sätt
+MPMF
+Förhör
+Signerat av
+Signerat datum
+25
+25
+Diarienr
+5000-K284928-23
+Personnummer
+Ställning till misstänkt - målsägande - vittne
+Anledning till förhör / Misstankar som misstänkt har underrättats om
+Ringa stöld, Fullbordat
+Ytterligare information om anledning till förhör
+Anna informeras att hon hörs som vittne gällande ringa stöld.
+Anna jobbade i kassan vid aktuellt tidpunkt.
+Språk
+Underrättad om rätt till försvarare Godtar den försvarare som rätten förordnar
+Försvarare/ombud önskas
+Förhörsledare
+Lina Lundgren
+Förhörsplats
+Ica, Östra förstadsgatan 50
+Förhörsvittne
+Berättelse
+Underrättad om misstanke
+Försvarare/ombud närvarande
+Förhörsdatum
+2023-03-10
+Typ av förhör
+RB 23:6
+Utskrivet av
+LL
+Förhör påbörjat
+13:07
+Förhör avslutat
+13:13
+Förhörssätt
+Anna ombeds berätta fritt om händelsen.
+Anna berättar att kvinnorna hade en korg eller vagn. Anna stod vid kassan närmst
+självscanningen och kvinnorna stod vid självscanningskassan närmst Anna. Kvinnorna hade
+lagt upp alla sina varor på bänken, det var mycket saker.
+Anna berättar att personalen har en iPad vid sidan om kassan där man ser aktiviteten vid
+självscanningskassorna. Anna tror hon såg att tre saker var inscannade, det senaste hon såg
+tror hon var blåbär. När hon tittade på kvinnorna så såg hon att den ena kvinnan tog en
+burrata och la ner denna i påsen. Burratan kom inte upp som scannad på personalens iPad. Då
+ringde Anna kollegan August som sprang ut och grep kvinnorna. Anna berättar att allting
+gick snabbt från det att hon såg burratan till att Anna hade ringt August och plötsligt var
+kvinnornas påse full. Anna förstod då att kvinnorna hade tagit många varor.
+Kollegan August kom och grep kvinnorna utanför butiken.
+Anna tillfrågas om hon uppfattade om båda kvinnorna var delaktiga i stölden.
+Den ena höll scannern och den andra packade ner.
+Uppläst utan invändningar.
+{pageend nr 25}{pagestart nr 26}Polisen
+Enhet
+Region Syd, BF-IGV 6 LPO Malmö Söder
+Hörd person
+Friman, Kati Marjan Gina Danica
+Den hörde är
+Misstänkt
+ID Styrkt
+Ja
+Sätt
+RES
+Förhör
+Signerat av
+Signerat datum
+26
+26
+Diarienr
+5000-K284928-23
+Personnummer
+19950822-3584
+Ställning till misstänkt - målsägande - vittne
+Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
+2023-03-10 Mikael Hansen
+Tolk
+Språk
+Anledning till förhör / Misstankar som misstänkt har underrättats om
+Ringa stöld, Fullbordat, Gärningsman
+Ytterligare information om anledning till förhör
+Underrättad om misstanke
+2023-03-10
+Kati delges misstanke gällande ringa stöld gemensamt och i samförstånd med hennes mamma Tanja.
+Detta genom att uppsåtligen och olovligen tillgripit gods ett värde av 488,60 kr och därefter passerat
+sista betalningsmöjlighet utan att betala, detta på Ica Supermarket på Östra Förstadsgatan 50 i Malmö
+2023-03-10 t.o.m kl 12:10.
+Underrättad om rätt till försvarare Godtar den försvarare som rätten förordnar
+Ja
+Försvarare/ombud önskas
+Önskar ej försvarare vid
+detta förhör, vid kommande
+förhör eller vid en eventuell
+rättegång.
+Förhörsledare
+Mikael Hansen
+Förhörsplats
+I affären
+Förhörsvittne
+Försvarare/ombud närvarande
+Förhörsdatum
+2023-03-10
+Typ av förhör
+RB 23:6
+Förhör påbörjat
+12:46
+Förhörssätt
+Utskrivet av
+Förhör avslutat
+13:01
+Berättelse
+Förhörsledarens kommentarer och anteckningar skrivs i kursiv stil.
+Kati underrättas om att detta är ett förhör.
+Kati underrättas om sin rätt att ej behöva yttra sig över misstanken och inte heller i övrigt
+behöva medverka till utredningen av sin egen skuld.
+Kati delges misstanke gällande ringa stöld gemensamt och i samförstånd med hennes mamma
+Tanja. Detta genom att uppsåtligen och olovligen tillgripit gods ett värde av 488,60 kr och
+därefter passerat sista betalningsmöjlighet utan att betala, detta på Ica Supermarket på
+Östra Förstadsgatan i Malmö 2023-03-10 t.o.m kl 12:10.
+Kati förstår misstanken.
+{pageend nr 26}{pagestart nr 27}Förhör med Friman, Kati Marjan Gina Danica; 2023-03-10 12:46 diarienr: 5000-K284928-23
+Kati underrättas om rätten till försvarare och Kati godtar att förhöret hålls utan försvarare
+närvarande.
+Vid kommande förhör eller vid en eventuell rättegång begär inte Kati att biträdas av en
+offentlig försvarare.
+Kati informeras om att staten betalar kostanden för en offentlig försvarare men att den som
+döms kan bli skyldig att betala tillbaka hela eller delar av kostnaden.
+Kati berättar att hon och Tanja var på Ica och handlade. När de skulle gå till kassorna var de
+lång kö och Kati och Tanja gick då till snabbkassan.
+Kati började skanna varorna och det blev något problem med skanningen då både Kati och
+Tanja höll på med varorna. Kati hade ingen aning vad som skannats och inte av de varor som
+låg på bänken och i påsen.
+Kati berättar att hon visste att hennes mamma stoppade ner saker i påsen som inte var
+skannade. Kati minns inte vilka saker det var men måste varit flera då det var mer saker i
+påsen än de som Kati skannat. Kati tror att hon själv la ner något i påsen som inte var skannat
+men vet inte vad det var för något.
+Kati berättar att hon märkte att det var mer i påsen än hon hade skannat direkt när hon kom ut
+då påsen var tung. Kati vet inte varför hon inte gjorde någonting åt det.
+Kati berättar att hon hade pengar med sig i butiken och hade kunnat betala för alla varor om
+hennes mamma inte stoppat ner andra saker i påsen.
+Kati berättar att om hon hade planerat att stjäla innan hon gick in i butiken hade hon inte
+stannat när personalen kom efter henne.
+Kati berättar att hon aldrig tidigare stulit någonting.
+Kati ERKÄNNER brottet ringa stöld.
+Kati GODTAR ett eventuellt strafföreläggande.
+Uppläst utan invändning.
+27
+{pageend nr 27}{pagestart nr 28}Förhör
+Signerat av
+Signerat datum
+28
+28
+Polisen
+Enhet
+Region Syd, BF-IGV 6 LPO Malmö Söder
+Hörd person
+Friman, Tanja Tamara
 Den hörde är
 Misstänkt
 Tolk
 ID Styrkt
 Ja
 Sätt
-Känd av polis
+Svenskt pass
 Språk
-Anledning till förhör / Misstankar som misstänkt har underrättats om
-Mord, Fullbordat, Gärningsman
-Anledning till förhör / Misstankar som misstänkt har underrättats om
-Grovt vapenbrott, Fullbordat, Gärningsman
-Ytterligare information om anledning till förhör
-Mord samt grovt vapenbrott
-Underrättad om 12 § FUK
-Ja
-Försvarare/ombud önskas
-Bo Karlsson
-Signerat datum
 Diarienr
-5000-K1113302-23
+5000-K284928-23
 Personnummer
-20080323-6454
+19640510-0287
 Ställning till misstänkt - målsägande - vittne
+Anledning till förhör / Misstankar som misstänkt har underrättats om
+Ringa stöld, Fullbordat, Gärningsman
+Ytterligare information om anledning till förhör
+Underrättad om misstanke
+2023-03-10
+Tanja delges misstanke om ringa stöld genom att gemensamt och i samförstånd med Kati tillgripit varor
+till ett värde om 488,60kr och därefter passerat sista betalningsmöjlighet utan att betala för varorna.
+Detta på Ica Värnhem, Östra Förstadsgatan 50, 2023-03-10 t.o.m. kl. 12:10.
 Underrättad om rätt till försvarare Godtar den försvarare som rätten förordnar
-Förhörsledare
-Eva-Maria Sjömark
-Förhörsplats
-Förhörsvittne
-Underrättad om misstanke
-2023-09-07
-Underrättad om misstanke
-2023-09-09
-Försvarare/ombud närvarande
 Ja
+Förhörsledare
+Lina Lundgren
+Förhörsplats
+Ica, Östra förstadsgatan 50
+Förhörsvittne
+Försvarare/ombud önskas
+Eleonora Johansson
+Försvarare/ombud närvarande
 Förhörsdatum
-2024-02-12
+2023-03-10
 Typ av förhör
 RB 23:6
-Utskrivet av
 Förhör påbörjat
-10:34
+12:45
 Förhör avslutat
-11:22
+12:56
 Förhörssätt
-Videobandsförhör
-Ljudbandsförhör
-Involverad personal
-Charlotte Backlund
+Utskrivet av
+LL
 Berättelse
-Funktion
-Biträdande förhörsledare
-Detta är en detaljerad sammanfattning av förhöret, undertecknad har lyssnat på ljudfilen och
-därefter skrivit vad som sägs dock inte ordagrant.
-Förhörsledarnas frågor skrivs i kursiv stil samt övriga anmärkningar skrivs i kursiv stil inom
-parantes.
-Förhöret hålls då det inkommit en önskan från misstänkt att peka ut vart han har befunnit sig
-och hur han har rört sig på brottsplatsen. Vid förhöret har vi använt oss av det som kallas
-"street view" i google maps och misstänkt har fått klicka sig fram i området omkring
-brottsplatsen. Karta som använts vid förhöret ligger med som bilaga.
-Misstänkt får själv välja varifrån han vill börja berätta och han börjar vid rondellen,
-Vaksalagatan/Fyrislundsgatan.
-Det här ser ut som vägen vi tog in (Alvin pekar på Smedjevägen). Ja, det är nog vägen.
-Beskriv gärna samtidigt som du pekar hur ni åkt.
-Okej, jag vill bara kolla runt lite på kartan och se om jag känner igen mig.
-Det här minns jag att jag såg, just det där (Alvin pekar mot de högre husen på Storkällsvägen
-2-4).
-{pageend nr 64}{pagestart nr 65}Förhör med Karlsson, Edison; 2024-02-12 10:34 diarienr: 5000-K1113302-23
-65
-HEMLIG
-Är det här brottsplatsen? (Alvin pekar mot Storkällsvägen 19)
-Ja, det är rätt hus. Vi ska ju vara tydliga med att när du ser detta har du tagit del av
-förundersökningen.
-Ja, det har jag gjort.
-Det här ser ut som flyktvägen vi tog, men det kan vara lite längre bort, men jag minns inte
-exakt (Alvin pekar in på Kvarnkullevägen).
-Här var scootern hittad va? (Alvin pekar in mot ett skogsparti på Smedjevägen)
-Ja, det var där i närheten, det stämmer.
-Minns du att ni körde in i området på bilvägen? (Smedjevägen)
-Ja, det är jag ganska 100 på.
-Hur rörde ni er efter det?
-En grej som jag minns är att vi åkte den här rondellen (Vaksalagatan/Fyrislundsgatan) och
-så körde vi normalt på bilvägen och vi stannade till här (korsningen
-Vaksalagatan/Smedjevägen/Norra Slavstavägen) och jag tror han kollade kartan men vi
-fortsatte (på Vaksalagatan) och jag tror vi körde fel.
-Här vände vi om (på Vaksalagatan i höjd med Brillingevägen) så körde vi tillbaka så tog vi
-den här vägen in och det var en kurva (Smedjevägen).
-Men det är här jag tappar bort mig lite, jag minns inte exakt (i höjd med Storkällsvägen 3).
-Vart gjorde ni av crossen?
-Jag minns att vi inte dumpade den innan. Här måste jag ha stannat någonstans
-(Storkällsvägen 2). Det kan ha varit där eller här (Storkvällsvägen 2-6).
-Dom högre husen känner jag igen, men jag kan inte ge en exakt position.
-Jag känner igen det här huset (Storkällsvägen 3) jag minns att det var sån färg, tegelhus. Jag
-stannade någonstans vid det huset.
-Hur kommer det sig att i stannade så långt bort?
-För jag ville inte vara med om något sånt, jag ville inte bevittna något mord. Hade jag stannat
-lite närmare hade jag både kunnat se och höra och det ville jag inte, och som sagt jag hörde
-både ett skott och en kvinna skrika och det är ändå långt ifrån.
-Så du stannade där, höll du i crossen då?
-Jag minns inte exakt men jag tror jag parkerade den och gick ifrån den lite. Sen när vi väl
-stack från platsen så minns jag ganska bra, vi körde hit (från Storkällsvägen upp vänster på
-Smedjevägen). Antingen så körde vi in i ett träd eller så dog crossen här, något av det. Sen så
-lämnade vi crossen. Flyktvägen är jag inte hundra på men jag tror vi fortsatte här (rakt upp
-på Smedjevägen och in på Brillingevägen och upp på en traktorväg mot hus nummer 28 på
-Brillingevägen).
-Det här är flyktvägen, jag är hundra procent. Jag är helt säker, det är den exakta vägen. Jag
-minns stängslet och staketet. Här sprang vi och vi vek av framme vid huset och vi vek av
-vänster på en ås eller åker.
-(Alvin tar sig tillbaka till Storkällsvägen och ställer sig vid Storkällsvägen 3)
-Som jag sa, här eller någonstans bort från brottsplatsen ställde jag mig.
-Och då parkerade du crossen?
-Ja, eller parkerade, jag la den ner. Den stod inte mitt i vägen minns jag.
-Vad hände sen?
-{pageend nr 65}{pagestart nr 66}Förhör med Karlsson, Edison; 2024-02-12 10:34 diarienr: 5000-K1113302-23
-66
-HEMLIG
-Jag stannade och sa att jag inte ville följa med längre.
-Hur länge var han borta?
-Jag minns inte exakt men ett par minuter kanske. Sen kom han tillbaka och han sprang och vi
-hoppade på crossen.
-Hade han något med sig när han kom tillbaka?
-Ett vapen menar du? Det hade han med sig, jag vet det. Han kan ha haft det i handen när han
-sprang tillbaka, men min minnesbild är inte bra. Jag tror att han inte hade hunnit lägga in det i
-byxfickan, men det är en spekulation.
-Rörde du dig något till fots när du stod där och väntade?
-Ja kanske i en liten cirkel.
-Gick Yahya iväg direkt när ni kom till platsen?
-När jag stannade crossen kanske han stannade i en minut, sen gick han iväg. Jag tror inte vi
-pratade något innan.
-Är det något mer du vill berätta från platsen?
-Nej, bara att jag såg någon bil och en kvinna på cykel med ett barn när jag stod där ensam.
-Hur vet du att Yahya hade ett vapen med sig till platsen?
-Jag såg det klart och tydligt i hans byxficka. Jag såg ett vapenformat föremål och jag vet ju
-hur det ser ut. Något svart som stack ut från hans ficka, det var inte kolven utan det var nog
-magasinet som stack ut.
-Såg du om vapnet hade en ljuddämpare på sig?
-Det hade ingen ljuddämpare, det hade aldrig gått in i hans ficka. För ljuddämparen var ju
-lång. Det kan jag svära på, 100 procent.
-Kan han ha satt på ljuddämparen senare?
-Nej jag tror inte det för då hade jag inte hört skottet. Det lät ganska högt, där jag stod lät det
-jävligt högt och det fattar jag inte att ingen vaknade i huset. Även om det är ljuddämpare eller
-inte så hör man ett sånt skott inifrån. Plus att en när kvinna skriker, det lät väldigt högt.
-Har han sagt något om en ljuddämpare?
-Nej.. men efter händelsen så när vi kom tillbaka med taxin och upp till hotellrummet så tror
-jag kanske att ljuddämparen var på soffan eller soffbordet. Jag är rätt hundra på att han inte
-hade den med sig.
-Filmen när vi ser er på Dragarbrunnsgatan, då ser det ut som att du har ett par svarta byxor
-på dig, vems är det?
-Om jag hade på mig dom måste det ha varit mina men jag minns faktiskt inte. Jag kan mycket
-väl ha haft med mig dom, men jag är inte säker.
-Jag minns att jag hade ett par svarta byxor när jag körde till brottsplatsen. Men jag har sett att
-det inte fanns några svarta byxor i beslag men jag vet faktiskt inte vart de tagit vägen.
-Har någon av er gjort er av med dom?
-Jag är rätt hundra på att jag hade dom med mig på hotellet efteråt.
-Tog du av dig dom senare?
-Jag tror jag tog av mig dom efter när vi kom tillbaka och tog på mig mina jeans.
-{pageend nr 66}{pagestart nr 67}Förhör med Karlsson, Edison; 2024-02-12 10:34 diarienr: 5000-K1113302-23
-Hade du fler par byxor med mig när du åkte till brottsplatsen?
-Jag tror bara jag hade ett par byxor.
-Var jeansen på hotellrummet då?
-67
-HEMLIG
-Ja, jag antar det.
-Varför hade du dom svarta byxorna?
-Kanske för att dom var skönare när man sitter på en cross och jag hade ändå räknat med att
-jag skulle behöva springa så dom var skönare.
-Känns det som att du fått visa på ett bra sätt?
-Ja, det känns som att jag fått visa tillräckligt.
-Du säger att du såg vapnet i en ficka som du beskrev, vilken ficka var det som vapnet låg i?
-Jag tror han var högerhänt så det måste nog vara höger byxficka. Han använde telefonen med
-höger och i förundersökningsprotokollet så har han vapnet i höger hand.
-Är du vänster eller högerhänt?
-Jag är högerhänt.
-Såg du att han hanterade vapen på något sätt innan själva brottet?
-Jag tror det, men jag minns inte exakt men det kan mycket väl vara så.
-Såg du vapnet med ljuddämparen på vid något tillfälle?
-Jag tror det, när han skulle visa ett av vapnet så satte han på ljuddämparen.
-När var det?
-Det kan ha varit precis efter att vi möttes upp eller något sånt.
-Förhöret avslutas.
-I tjänsten,
-/PA Charlotte Backlund.
-{pageend nr 67}{pagestart nr 68}14
-Tank på att utskrivet materialkan omfattas sekretess
-Kvarnkullsvägen
-12
-2B
-3 5
-Brillingevägen
-sgatan
-Osterle
-20
-17
-18
-16
-15
-14
-Koordinatsystem: SWEREF99 TM
-18
-9
-9
-18
-11
-2022
-16
-14
-78
-12
-10
-24.26
-13
-7A
-58
-6
-höjden)
-N
-19
-32
-6
-Smedjevägen
-13
-Storkällsvägen
-100
-4B
-5
-20
-3
-1A 1B 1C
-2A
-2C 28
-4G
-4B
-S
-Öster
-Smedjevägen
-1:1,890
-3
-Brillingevägen
-(R)
-Vaksalagatan
-34
-Ms
-Karta, 2024-02-12 10:34 diarienr: 5000-K1113302-23
-Meter
-0 10 20
-40
-60
-80
-68
-HEMLIG
-{pageend nr 68}{pagestart nr 69}Bilaga - Skäligen misstänkt
+Tanja delges misstanke om ringa stöld genom att gemensamt och i samförstånd med
+Kati tillgripit varor till ett värde om 488,60kr och därefter passerat sista
+betalningsmöjlighet utan att betala för varorna. Detta på Ica Värnhem, Östra
+Förstadsgatan 50, 2023-03-10 t.o.m. kl. 12:10.
+Tanja förstår brottsmisstanken.
+Tanja är informerad i enlighet med FUK 12 §.
+Tanja informeras om rätten till försvarare och godtar att förhöret hålls utan försvarare
+närvarande. Vid eventuella kommande förhör önskar Tanja Eleonora Johansson som
+försvarare.
+Tanja ombeds berätta fritt utifrån misstanken.
+Tanja säger att hon scannade och erkänner att hon inte scannade alla saker. Tanja säger att det
+var dumt.
+Tanja tillfrågas hur de valde ut varorna de inte scannade.
+Tanja säger att det var en slump.
+Tanja tillfrågas om de bestämt sig att inte betala för alla varorna redan innan de gick in i
+{pageend nr 28}{pagestart nr 29}Förhör med Friman, Tanja Tamara; 2023-03-10 12:45 diarienr: 5000-K284928-23
+butiken.
+Tanja säger nej, hon stjäl inte. Det var något som bara flög i henne, Tanja handlar alltid i
+denna butik.
+Tanja tillfrågas om hon eller Kati har pengar att betala för varorna.
+Tanja säger att hon själv inte har pengar men hon tror att Kati har. Tanja betalade 73,95kr för
+de varorna de scannade.
+Tanja tillfrågas hur de gick till vid kassan.
+Tanja säger att Kati scannade och Tanja la i påsen. Tanja säger att hon trodde att Kati hade
+scannat varorna. På fråga vad hon menar med detta så kan inte Tanja specificera mer.
+Tanja kan heller inte svara på frågan om hon trodde att Kati scannade för alla varorna.
+Tanja tillfrågas vad som hände efter att de lämnat kassan.
+Tanja säger att de gick ut utanför butiken och sen kom en kille som sa att de skulle gå tillbaka
+in i butiken.
+Tanja ERKÄNNER brott.
+Tanja är informerad om och införstådd med innebörden av strafföreläggande. Tanja skulle
+godta ett eventuellt strafföreläggande.
+Tanja är informerad om och införstådd med innebörden av förenklad delgivning. Tanja anger
+finns folkbokföringsadress som sin delgivningsadress.
+Uppläst utan invändningar.
+29
+{pageend nr 29}{pagestart nr 30}Bilaga - Skäligen misstänkt
 Polisen
 Enhet
-Region Mitt, Grova brott 2 PO Uppsala
+Region Syd, Utredningsjour 7 PO Malmö
 Skäligen misstänkt person
-Hietamies Sahlström, Magnus Sebastian
+Friman, Kati Marjan Gina Danica
 Identifierad
 Ja
 Kontrollsätt
-Annat
+Dataslagning
 Personnr
-19940611-7110
+19950822-3584
 Kommentar
-Sitter häktad iannat ärende
-HEMLIG
-69
+RES
+Misstankeuppgift
+Rubricering
+Ringa stöld
+Händelse inträffad
+Brottsplatsadress
+Ica Supermarket Värnhem, Östra Förstadsgatan 50
+Brottsmisstankenr
+POD50-BM2023-1668210010-84
+:
 Diarienr
-5000-K1113302-23
-{pageend nr 69}{pagestart nr 70}Polisen
+5000-K284928-23
+Brottskod(Misstanke)
+-2023-03-10 12:10
+Områdeskod
+05020100800074
+Diarienr
+5000-K284928-23
+Status
+FU/Utredning pågår
+Brottskod
+0853
+Brottsbeskrivning
+Ringa stöld
+Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
+2023-03-10
+Information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt är överlämnad vid ett personligt sammanträffande
+Underrättelse om misstanke
+2023-03-10
+Beslutsdatum misstankebeslut
+2023-03-10
+Informerad om möjlighet till strafflindring (FUK 12c)
+Beslutsfattare misstankebeslut
+Isaksson, Amelia
+30
+30
+{pageend nr 30}{pagestart nr 31}Polisen
 Personalia och dagsbotsuppgift
+Kallas för
+Öknamn
 Namn
-Hietamies Sahlström, Magnus Sebastian
+Friman, Kati Marjan Gina Danica
 Tilltalsnamn
-Sebastian
+Kati
 Födelseförsamling
-Västerhan.
+Hyllie
 Medborgarskap
 Sverige
 Postadress
-Bösebo Dalbo
-577 95 Virserum
+Garagegatan 14A
+212 51 Malmö
+Födelselän
+Födelseort utland
+Utskriftsdatum
+2023-03-24
+Personnummer
+19950822-3584
+Kön
+Kvinna
+Hemvistland
+Telefonnr
+0704424154: Mobiltelefon
+Folkbokföringsort
+Malmö
+Föräldrars/Vårdnadshavares namn och adress (beträffande den som inte fyllt 20 år)
+Utbildning
+Yrke / Titel
+Arbetsgivare
+Anställning (nuvarande och tidigare)
+Uppgav att hon jobbar på Kastrup
+Arbetsförhet och hälsotillstånd
+Kompletterande uppgifter
+Uppgiven inkomst
+264000
+Försörjningsplikt
+Förmögenhet
+0
+Bidrag
+Kontroll utförd
+Taxerad inkomst
+0
+Taxeringskontroll utförd av
+Pa L. Lundgren
+Taxeringsår
+2021
+Datum
+2023-03-10
+Telefonnr
+Hemmavarande barn under 18 år
+0
+Skulder
+0
+31
+{pageend nr 31}{pagestart nr 32}Bilaga - Skäligen misstänkt
+Polisen
+Enhet
+Region Syd, Utredningsjour 7 PO Malmö
+Skäligen misstänkt person
+Friman, Tanja Tamara
+Identifierad
+Kontrollsätt
+Personnr
+19640510-0287
+Kommentar
+Ja
+Pass (svenskt)
+Misstankeuppgift
+Rubricering
+Ringa stöld
+Brottsplatsadress
+Ica Supermarket Värnhem, Östra Förstadsgatan 50
+Brottsmisstankenr
+POD50-BM2023-1668226169-81
+Diarienr
+5000-K284928-23
+Händelse inträffad
+Brottskod(Misstanke)
+:
+-2023-03-10 12:10
+Områdeskod
+05020100800074
+Diarienr
+5000-K284928-23
+Status
+FU/Utredning pågår
+Brottskod
+0853
+Brottsbeskrivning
+Ringa stöld
+Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
+Information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt är överlämnad vid ett personligt sammanträffande
+Underrättelse om misstanke
+Informerad om möjlighet till strafflindring (FUK 12c)
+2023-03-10
+Beslutsdatum misstankebeslut
+2023-03-10
+Beslutsfattare misstankebeslut
+Isaksson, Amelia
+32
+32
+{pageend nr 32}{pagestart nr 33}Polisen
+Personalia och dagsbotsuppgift
+Namn
+Friman, Tanja Tamara
+Tilltalsnamn
+Tanja
+Födelseförsamling
+Finska Förs.
+Medborgarskap
+Sverige
+Postadress
+Garagegatan 14A
+212 51 Malmö
 Kallas för
+Öknamn
+Utskriftsdatum
+2023-03-24
+Personnummer
+19640510-0287
+Kön
+Kvinna
 Födelselän
 Stockholms län
 Hemvistland
+Födelseort utland
+Telefonnr
+0733408185: Mobiltelefon
 Folkbokföringsort
-Virserum
+Malmö
 Föräldrars/Vårdnadshavares namn och adress (beträffande den som inte fyllt 20 år)
 Utbildning
 Yrke / Titel
-Studerande På Komvux
 Arbetsgivare
 Anställning (nuvarande och tidigare)
 Arbetsförhet och hälsotillstånd
 Kompletterande uppgifter
 Uppgiven inkomst
-108000
-Bidrag
 0
 Försörjningsplikt
+Telefonnr
+Bidrag
+Sjukersättning 5500kr/mån
+Bostadsbidrag 5300kr/mån
+Hemmavarande barn under 18 år
 0
+Skulder
+200000
 Förmögenhet
 0
 Kontroll utförd
 Taxerad inkomst
-0
+120400
 Taxeringskontroll utförd av
-Pa J. Thuresson
+Pa L. Lundgren
 Taxeringsår
 2021
 Datum
-2022-12-30
-Öknamn
-Födelseort utland
-Telefonnr
-HEMLIG
-70
-Utskriftsdatum
-2024-02-14
-Personnummer
-19940611-7110
-Kön
-0732554462: Mobiltelefon
-Telefonnr
-Hemmavarande barn under 18 år
-0
-Skulder
-1300000
-Man
-{pageend nr 70}{pagestart nr 71}Bilaga - Skäligen misstänkt
+2023-03-10
+33
+33
+{pageend nr 33}{pagestart nr 34}Underrättelse/Delgivning jml RB 23:18a
 Polisen
 Enhet
-***
-Skyddad personuppgift
-***
-Region Mitt, Grova brott 2 PO Uppsala
-Skäligen misstänkt person
-Ibrahim, Yahya Ali
-Identifierad
-Ja
-Kontrollsätt
-Dataslagning
-Personnr
-20040104-3930
-Kommentar
-Diarienr
-HEMLIG
-5000-K1113302-23
-{pageend nr 71}{pagestart nr 72}Polisen
-Namn
-Ibrahim, Yahya Ali
-Tilltalsnamn
-Födelseförsamling
-Tidigare efternamn
-Medborgarskap
-Postadress
-Folkbokföringsort
-Personalia och dagsbotsuppgift
-***
-Skyddad personuppgift
-***
-Kallas för
-Öknamn
-Födelselän
-Födelseort utland
-Hemvistland
-Telefonnr
-Föräldrars/Vårdnadshavares namn och adress (beträffande den som inte fyllt 20 år)
-Utbildning
-Yrke / Titel
-Arbetsgivare
-Anställning (nuvarande och tidigare)
-Arbetsförhet och hälsotillstånd
-Kompletterande uppgifter
-Uppgiven inkomst
-0
-Försörjningsplikt
-0
-Förmögenhet
-0
-Bidrag
-1250.
-Kontroll utförd
-Taxerad inkomst
-0
-Taxeringskontroll utförd av
-Pa Aigner
-Taxeringsår
-2022
-Datum
-2023-05-13
-Telefonnr
-HEMLIG
-Utskriftsdatum
-2024-02-14
-Personnummer
-20040104-3930
-Kön
-Hemmavarande barn under 18 år
-0
-Skulder
-0
-{pageend nr 72}{pagestart nr 73}Bilaga - Skäligen misstänkt
-Polisen
-Enhet
-Region Mitt, Grova brott 2 PO Uppsala
-Skäligen misstänkt person
-Isaksson, Tilda Amanda
-Identifierad
-Ja
-Kontrollsätt
-Annat
-Personnr
-20000901-1040
-Kommentar
-Genom utredare i region Väst
-HEMLIG
-Diarienr
-5000-K1113302-23
-{pageend nr 73}{pagestart nr 74}Polisen
-Personalia och dagsbotsuppgift
-Öknamn
-HEMLIG
-Utskriftsdatum
-2024-02-14
-Personnummer
-20000901-1040
-Kön
-Födelselän
-Födelseort utland
-Västra Götalands län
-Hemvistland
-Telefonnr
-0737079164: Mobiltelefon
-Namn
-Isaksson, Tilda Amanda
-Tilltalsnamn
-Tilda
-Födelseförsamling
-Uddevalla
-Medborgarskap
-Sverige
-Postadress
-c/o Kriminalvården
-Box 216
-401 23 Göteborg
-Folkbokföringsort
-Kallas för
-Föräldrars/Vårdnadshavares namn och adress (beträffande den som inte fyllt 20 år)
-Utbildning
-gymnasieutb. Handel - 3 år
-Yrke / Titel
-Arbetsgivare
-Sykes AB
-Göteborg
-Anställning (nuvarande och tidigare)
-Teknisk support på Sykes sedan januari 2020
-Arbetsförhet och hälsotillstånd
-Sjukskriven 50 % f.n.
-Kompletterande uppgifter
-Uppgiven inkomst
-250000
-Försörjningsplikt
-Förmögenhet
-0
-Bidrag
-Kontroll utförd
-Taxerad inkomst
-281900
-Taxeringskontroll utförd av
-Pa Andersson
-Taxeringsår
-2021
-Datum
-2023-04-07
-Telefonnr
-Hemmavarande barn under 18 år
-Skulder
-0
-Kvinna
-{pageend nr 74}{pagestart nr 75}Bilaga - Skäligen misstänkt
-Polisen
-Enhet
-***
-Skyddad personuppgift
-***
-Region Mitt, Grova brott 2 PO Uppsala
-Skäligen misstänkt person
-Karlsson, Edison
-Identifierad
-Ja
-Kontrollsätt
-Dataslagning
-Personnr
-20080323-6454
-Kommentar
-Diarienr
-HEMLIG
-5000-K1113302-23
-{pageend nr 75}{pagestart nr 76}Polisen
-Namn
-Karlsson, Edison
-Tilltalsnamn
-Födelseförsamling
-Tidigare efternamn
-Medborgarskap
-Postadress
-Folkbokföringsort
-Personalia och dagsbotsuppgift
-***
-Skyddad personuppgift
-***
-Kallas för
-Öknamn
-Födelselän
-Födelseort utland
-Hemvistland
-Telefonnr
-Föräldrars/Vårdnadshavares namn och adress (beträffande den som inte fyllt 20 år)
-Utbildning
-Yrke / Titel
-Arbetsgivare
-Anställning (nuvarande och tidigare)
-Arbetsförhet och hälsotillstånd
-Telefonnr
-Kompletterande uppgifter
-LuL 33,34§ skickat (K1509326-20 och K1509325-20) 201210/NE
-LuL 33,34§ (K624250-21) skickat 210603/NE
-Uppgiven inkomst
-Försörjningsplikt
-Förmögenhet
-Kontroll utförd
-Taxerad inkomst
-Taxeringskontroll utförd av
-Bidrag
-Taxeringsår
-Datum
-HEMLIG
-76
-Utskriftsdatum
-2024-02-14
-Personnummer
-20080323-6454
-Kön
-Hemmavarande barn under 18 år
-Skulder
-{pageend nr 76}{pagestart nr 77}Polisen
-Enhet
-Bilaga - Skäligen misstänkt
-***
-Skyddad personuppgift
-Region Mitt, Grova brott 2 PO Uppsala
-Skäligen misstänkt person
-Ramadani, Ruzdi
-Identifierad
-Ja
-Kontrollsätt
-Annat
-Personnr
-20020221-5075
-Kommentar
-Genom utredning
-***
-Diarienr
-HEMLIG
-5000-K1113302-23
-{pageend nr 77}{pagestart nr 78}Polisen
-Namn
-Ramadani, Ruzdi
-Tilltalsnamn
-Födelseförsamling
-Tidigare efternamn
-Medborgarskap
-Postadress
-Folkbokföringsort
-Personalia och dagsbotsuppgift
-***
-Skyddad personuppgift
-***
-Kallas för
-Öknamn
-Födelselän
-Födelseort utland
-Hemvistland
-Telefonnr
-Föräldrars/Vårdnadshavares namn och adress (beträffande den som inte fyllt 20 år)
-Utbildning
-Yrke / Titel
-Arbetsgivare
-Anställning (nuvarande och tidigare)
-Arbetsförhet och hälsotillstånd
-Kompletterande uppgifter
-Uppgiven inkomst
-0
-Bidrag
-0
-Försörjningsplikt
-Förmögenhet
-0
-Kontroll utförd
-Taxerad inkomst
-256900
-Taxeringskontroll utförd av
-Insp Rickard Stucki
-Taxeringsår
-2021
-Datum
-2022-11-18
-Telefonnr
-HEMLIG
-78
-Utskriftsdatum
-2024-02-14
-Personnummer
-20020221-5075
-Kön
-Hemmavarande barn under 18 år
-0
-Skulder
-150000
-{pageend nr 78}{pagestart nr 79}Underrättelse/Delgivning jml RB 23:18a
-Polisen
-Enhet
-Region Mitt, Grova brott 2 PO Uppsala
+Region Syd, Utredningsjour 7 PO Malmö
 Ärende
 Diarienr
-5000-K1113302-23
+5000-K284928-23
 Gärning
 Underrättad av
-Backlund, Charlotte
-HEMLIG
-Grovt vapenbrott Fullbordat, Uppsala Uppsala, mellan 2023-09-05 och 2023-09-07
-Mord Fullbordat, Storkällsvägen 19 Uppsala, mellan 2023-09-06 18:00 och 2023-09-07 01:00
+Isaksson, Amelia
+Ringa stöld Fullbordat, Ica Supermarket Värnhem Östra Förstadsgatan 50 Malmö, mellan - och
+2023-03-10 12:10
 Berörd person
 Personnr
-20080323-6454
-Efternamn
-Karlsson
-Förnamn
-Edison
-Underrättelsesätt
-Underrättelse genom vanlig delgivning
-Datum utsänd
-2024-02-12
-Notering
-Yttrande senast (rådrum)
-Misstänkts försvarare har tagit del av tilläggen och är ombedd att delge sin klient.
-Misstänkt har getts möjlighet att ta del av materialet från den slutförda utredningen (RB 23:18a § / FUK
-12 §)
-Resultat av slutunderrättelse
-Ingen erinran
-Information gällande erinran
-Försvarare
-Namn
-Karlsson, Bo
-Underrättelsesätt
-Skriftlig underrättelse
-Datum utsänd
-2024-02-12
-Notering
-Yttrande senast (rådrum)
-Resultat av slutunderrättelse
-Ingen erinran
-Information gällande erinran
-{pageend nr 79}{pagestart nr 80}Underrättelse/Delgivning jml RB 23:18a
-Polisen
-Enhet
-Region Mitt, Grova brott 2 PO Uppsala
-Ärende
-Diarienr
-5000-K1113302-23
-Underrättad av
-Backlund, Charlotte
-Gärning
-Grovt vapenbrott Fullbordat, Uppsala Uppsala, mellan 2023-09-05 och 2023-09-07
-HEMLIG
-Berörd person
-Personnr
-20020221-5075
+19950822-3584
 Underrättelsesätt
 Efternamn
-Ramadani
-Underrättelse genom vanlig delgivning
+Friman
+Skriftlig underrättelse genom lösbrev
 Datum utsänd
-2024-02-12
+2023-03-13
 Notering
 Förnamn
-Ruzdi
+Kati Marjan Gina Danica
+Delgiven info. om ev. förenklad delgivning
+2023-03-10
 Yttrande senast (rådrum)
-Misstänkts försvarare har tagit del av tillägget och är ombedd att delge sin klient.
-Misstänkt har getts möjlighet att ta del av materialet från den slutförda utredningen (RB 23:18a § / FUK
-12 §)
-Resultat av slutunderrättelse
-Ingen erinran
-Information gällande erinran
-Försvarare
-Namn
-Awrohum, Kinora
-Underrättelsesätt
-Skriftlig underrättelse
-Datum utsänd
-2024-02-12
-Notering
-Yttrande senast (rådrum)
-Resultat av slutunderrättelse
-Ingen erinran
-Information gällande erinran
-{pageend nr 80}{pagestart nr 81}Underrättelse/Delgivning jml RB 23:18a
-Polisen
-Enhet
-Region Mitt, Grova brott 2 PO Uppsala
-Ärende
-Diarienr
-5000-K1113302-23
-Gärning
-Underrättad av
-Backlund, Charlotte
-HEMLIG
-Grovt vapenbrott Fullbordat, Uppsala Uppsala, mellan 2023-09-05 och 2023-09-07
-Mord Fullbordat, Storkällsvägen 19 Uppsala, mellan 2023-09-06 18:00 och 2023-09-07 01:00
-Berörd person
-Personnr
-20040104-3930
-Underrättelsesätt
-Efternamn
-Ibrahim
-Underrättelse genom vanlig delgivning
-Datum utsänd
-2024-01-30
-Notering
-Förnamn
-Yahya Ali
-Yttrande senast (rådrum)
-Misstänkts försvarare har tagit del av tillägget och är ombedd att delge sin klient.
+2023-03-22
 Misstänkt har getts möjlighet att ta del av materialet från den slutförda utredningen (RB 23:18a § / FUK
 12 §)
 Resultat av slutunderrättelse
@@ -3314,99 +1104,48 @@ Har inte avhörts
 Information gällande erinran
 Försvarare
 Namn
-Olsson, Thomas
 Underrättelsesätt
-Skriftlig underrättelse
 Datum utsänd
-2024-01-30
 Notering
+Resultat av slutunderrättelse
+Information gällande erinran
 Yttrande senast (rådrum)
+{pageend nr 34}{pagestart nr 35}Underrättelse/Delgivning jml RB 23:18a
+Polisen
+Enhet
+Region Syd, Utredningsjour 7 PO Malmö
+Ärende
+Diarienr
+5000-K284928-23
+Gärning
+Underrättad av
+Isaksson, Amelia
+Ringa stöld Fullbordat, Ica Supermarket Värnhem Östra Förstadsgatan 50 Malmö, mellan - och
+2023-03-10 12:10
+Berörd person
+Personnr
+19640510-0287
+Underrättelsesätt
+Efternamn
+Friman
+Skriftlig underrättelse genom lösbrev
+Datum utsänd
+2023-03-13
+Notering
+Förnamn
+Tanja Tamara
+Yttrande senast (rådrum)
+2023-03-22
 Resultat av slutunderrättelse
 Har inte avhörts
 Information gällande erinran
-{pageend nr 81}{pagestart nr 82}Underrättelse/Delgivning jml RB 23:18a
-Polisen
-Enhet
-Region Mitt, Grova brott 2 PO Uppsala
-Ärende
-Diarienr
-5000-K1113302-23
-Gärning
-Underrättad av
-Backlund, Charlotte
-Grovt vapenbrott Fullbordat, Okänd Okänd, 2023-09-04
-HEMLIG
-Berörd person
-Personnr
-20000901-1040
-Underrättelsesätt
-Efternamn
-Isaksson
-Underrättelse genom vanlig delgivning
-Datum utsänd
-2024-02-12
-Notering
-Förnamn
-Tilda Amanda
-Yttrande senast (rådrum)
-Misstänkts försvarare har tagit del av tillägget och är ombedd att delge sin klient.
-Misstänkt har getts möjlighet att ta del av materialet från den slutförda utredningen (RB 23:18a § / FUK
-12 §)
-Resultat av slutunderrättelse
-Ingen erinran
-Information gällande erinran
 Försvarare
 Namn
-Zeito, Elias
 Underrättelsesätt
 Datum utsänd
-2024-02-12
 Notering
+Önskar advokat Eleonora Johansson
 Resultat av slutunderrättelse
-Ingen erinran
 Information gällande erinran
 Yttrande senast (rådrum)
-{pageend nr 82}{pagestart nr 83}Underrättelse/Delgivning jml RB 23:18a
-Polisen
-Enhet
-Region Mitt, Grova brott 2 PO Uppsala
-Ärende
-HEMLIG
-Diarienr
-5000-K1113302-23
-Gärning
-Underrättad av
-Backlund, Charlotte
-Mord Fullbordat, Storkällsvägen 19 Uppsala, mellan 2023-09-06 18:00 och 2023-09-07 01:00
-Berörd person
-Personnr
-19940611-7110
-Efternamn
-Hietamies Sahlström
-Förnamn
-Magnus Sebastian
-Underrättelsesätt
-Underrättelse genom vanlig delgivning
-Datum utsänd
-2024-02-12
-Notering
-Yttrande senast (rådrum)
-Misstänkts försvarare har tagit del av tillägget och är ombedd att delge sin klient.
-Misstänkt har getts möjlighet att ta del av materialet från den slutförda utredningen (RB 23:18a § / FUK
-12 §)
-Resultat av slutunderrättelse
-Ingen erinran
-Information gällande erinran
-Försvarare
-Namn
-Liljeblad, Fredrik
-Underrättelsesätt
-Skriftlig underrättelse
-Datum utsänd
-2024-02-12
-Notering
-Yttrande senast (rådrum)
-Resultat av slutunderrättelse
-Ingen erinran
-Information gällande erinran
-{pageend nr 83}
+{pageend nr 35}
