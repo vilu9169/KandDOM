@@ -17,8 +17,8 @@ const AuthContextProvider = ({children}) => {
     const [files, setFiles] = useState(localStorage.getItem('files') ? JSON.parse(localStorage.getItem('files')) : []);
     const [currentFile, setCurrentFile] = useState(localStorage.getItem('currentFile') ? localStorage.getItem('currentFile') : null);
     const [timeLine, setTimeLine] = useState([]);
-    const [ docGroups, setDocGroups ] = useState([]);
-    const [ currentGroup, setCurrentGroup ] = useState(null)
+    const [ docGroups, setDocGroups ] = useState(() => (localStorage.getItem('docGroups') ? JSON.parse(localStorage.getItem('docGroups')) : []));
+    const [ currentGroup, setCurrentGroup ] = useState(() => (localStorage.getItem('currentGroup') ? localStorage.getItem('currentGroup') : null));
 
     const baseURL = process.env.REACT_APP_API_URL
 

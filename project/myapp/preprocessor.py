@@ -173,6 +173,7 @@ def mainfunk(pdf_file, new_index_name):
     #Res contains a dictioary with the timeline, 
     #Objects in the dictonary have "time", "pages" and "information" fields and are sorted by time
     # print(res)
+    return res
 
 # print("Name of the file to be converted to RAG: ")
 # pdf_file = input()

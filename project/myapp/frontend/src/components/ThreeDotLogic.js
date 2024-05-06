@@ -24,12 +24,11 @@ export default function SimplePopup({ file }) {
     console.log(resp);
     getFiles();
   };
-  const handleRename = async () => {
+  const handleRename = async (event) => {
+    event.stopPropagation();
     if (!editing) {
-      // If not already editing, start editing
       setEditing(true);
     } else {
-      // If already editing, submit the changes
       try {
         const resp = await axios.post(baseURL + "api/renamefile/", {
           fileid: file.id,
@@ -84,16 +83,19 @@ export default function SimplePopup({ file }) {
         {editing ? (
             <input
               type="text"
-              className="m-auto my-2 bg-3s w-90 pop-up-button"
-              placeholder="Enter new chat name"
+              className="m-auto my-2 bg-3s w-90 pop-up-button d-flex justify-content-center align-items-center p-0"
+              placeholder="Enter new name"
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
               onKeyDown={handleInputKeyDown}
+              onClick={(event) => {
+                event.stopPropagation();
+              }}
             />
           ) : (
             <Button
             onClick={(event) => {
-              handleClick(event);
+              event.stopPropagation();
               handleRename();
             }}
               className="m-auto my-2 bg-3s w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
@@ -107,8 +109,9 @@ export default function SimplePopup({ file }) {
             </Button>
           )}
           <Button
-            onClick={(event) => {deleteDocument(file.id)
-              handleClick(event);
+            onClick={(event) => {
+              event.stopPropagation();
+              deleteDocument(file.id);
             }}
             className="m-auto my-2 bg-danger w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
           >
