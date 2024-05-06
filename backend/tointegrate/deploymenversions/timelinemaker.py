@@ -7,6 +7,7 @@ from time import sleep
 import vertexai
 from pinecone import Pinecone
 from groq import Groq
+from anthropic import AnthropicVertex
 import json
 from vertexai.preview.generative_models import (
     HarmCategory, 
@@ -74,6 +75,43 @@ from langchain_pinecone import PineconeVectorStore
 vectorstore = PineconeVectorStore(  
     index, embeddings  
 )  
+
+#Summarise the content in some documents
+def summarise_claud(input, index, res):
+    global loc_haiku, optind_haiku, options_haiku, model_haiku
+    global loc_sonnet, optind_sonnet, options_sonnet, model_sonnet
+    # model = model_haiku
+    # loc = loc_haiku
+    # optind = optind_haiku
+    # options = options_haiku
+    model = model_sonnet
+    loc = loc_sonnet
+    optind = optind_sonnet
+    options = options_sonnet
+    print("loc: ", loc)
+    # Set the endpoint URL
+    # context = "Skapa en tidslinje baserad på följande dokument. Använd bara information från detta dokument i dina svar och upprepa dig inte. Dethär är en sammanfattning av vad som skett "+ sammanf  
+    context = """Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem.
+    Alla dina svar måste vara på svenska. Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och datum samt tidpunkten när den skede.
+    Tidpunkter ska vara på formatet DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska. Du måste alltid inkludera vilka sidor du hittade informationen, sidnummer finns efter \"pagestart page\" och \"pageend page\".
+    Namnet på dokumentet finns efter texten \"in document\" och ska finnas med. Här är materialet du ska behandla  :""" + input 
+    #Create a json struct for previous messages and the current message
+    client = AnthropicVertex(region=loc, project_id="sunlit-inn-417922")
+    while True:
+        try:
+            message = client.messages.create(
+            max_tokens=1500,
+            model=model,
+            messages = [{"content": ("Dokumentera alla händelser du identifierar i texten och inkludera tidpunkten när de sker. Alla relevanta händelser ska dokumenteras. Alla svar skall vara på svenska. Här är materialet du ska behandla  :" + input), "role": "user"}],
+            system = context,
+            )
+            res[index] =  message.content[0].text
+        except Exception as e:
+            print("Error: ", e)
+            optind+=1
+            if(optind==len(options)):
+                optind = 0
+            loc = options[optind]
 
 def summarise_gemeni_par(input, index, res):
     cont = """Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem.
@@ -223,6 +261,7 @@ def analyzefromstr(input):
     #Summarise parts of the text
     for elem in splits:
         t = threading.Thread(target=summarise_gemeni_par, args=(elem.page_content, index, timelines))
+        # t = threading.Thread(target=summarise_claud, args=(elem.page_content, index, timelines))
         index += 1
         threads.append(t)
         t.start()
