@@ -71,6 +71,7 @@ const Chatbot = () => {
       console.log("Error setting pinned");
     }
   };
+
   let pinnedIndex = 0;
   return (
     <Container className="chatbot-container" ref={chatWindowRef}>
@@ -120,7 +121,8 @@ const Chatbot = () => {
                       transform: `rotate(${message.pinned ? "-45deg" : "0"})`,
                     }}
                   />
-                  <IoIosCopy className="m-2 size-20" />
+                  <IoIosCopy 
+                  className="m-2 size-20" />
                   <MdChangeCircle className="m-2 size-20" />
                 </Container>
               )}
