@@ -53,6 +53,7 @@ const ResponseContextProvider = ({ children }) => {
         return;
       }
       else  {
+        console.log("body", body);
         data = await axios.post(baseURL + "api/getchat/", body);
         setMessages(data.messages);
         console.log("data.pinned", data.pinned);
