@@ -10,13 +10,14 @@ urlpatterns = [
     re_path(r'^$', TemplateView.as_view(template_name='index.html')),
     re_path(r'^login$', TemplateView.as_view(template_name='index.html')),
     # path('pdf-view/<str:pdf_filename>/<str:section>/', pdf_view, name='display_pdf_with_section'),
-    path('pdf-view/<str:pdf_filename>/', pdf_view, name='display_pdf'),
+    # path('pdf-view/<str:pdf_filename>/', pdf_view, name='display_pdf'),
     
 
 
     path('upload/', upload_document, name='upload'),
-    # path('api/token/', MyTokenObtainPairView.as_view(), name ="token_obtain_pair"),
+    path('api/token/', MyTokenObtainPairView.as_view(), name ="token_obtain_pair"),
 
+    path('api/openpdf/', openpdf, name='openpdf'),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name="token_refresh"),
     path('api/signup/', RegisterView.as_view(), name='register'),
     path('api/documents/', get_documents, name='documents'),
