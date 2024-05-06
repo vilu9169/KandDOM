@@ -240,6 +240,13 @@ button {
   height: 40px !important;
   transition: background-color 0.3s ease;
 }
+.rename-input{
+  color: var(--text-color-main) !important;
+  border: 2px solid var(--color-1) !important;
+  border-radius: 5px;
+  height: 40px !important;
+  transition: background-color 0.3s ease;
+}
 
 .pop-up-button:hover {
   background-color: var(--color-2) !important;
