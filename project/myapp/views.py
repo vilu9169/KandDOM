@@ -674,6 +674,7 @@ from .models import DocumentGroup
 def createDocumentGroup(request):
     name = request.data.get('name')
     userID = request.data.get('user')
+    current_doc = request.get('current')
     new_doc = request.data.get('new_doc')
     current = request.data.get('current')
     document_group = DocumentGroup.objects.create(
