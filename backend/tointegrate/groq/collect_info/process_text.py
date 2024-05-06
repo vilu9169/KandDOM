@@ -3,7 +3,7 @@ from util import extract_args, print_tool_call
 from modify_people import Personhandler
 import threading
 
-def treat_tool_call(tool_call, handler):
+def treat_tool_call(tool_call, handler: Personhandler):
     print_tool_call(tool_call)
     function = tool_call.function
     if function.name == "ny_information_om_person":
@@ -16,7 +16,7 @@ def treat_tool_call(tool_call, handler):
         person1 = args["person1"]
         person2 = args["person2"]
         relation = args["beskrivning_av_relation"]
-        handler.ny_information_om_relation(person1, person2, relation)
+        #handler.ny_information_om_relation(person1, person2, relation)
     elif function.name == "ny_information_om_gruppering":
         args = extract_args(tool_call)
         name = args.get("beskrivande_namn")
