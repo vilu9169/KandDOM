@@ -22,6 +22,7 @@ function UploadFileWindow() {
     const body = {
       user: userID,
       new_doc: fileid,
+      current: currentFile,
       name: "Group " + docGroups.length,
     };
     try {
@@ -74,7 +75,6 @@ function UploadFileWindow() {
         const data = await response.json();
         getFiles()
           .then(() => {
-            setCurrentFile(data.document_id)
             localStorage.setItem('currentFile', data.document_id)
             alert(`File uploaded successfully. Document ID: ${data.document_id}`);
             if (value === 2 && !currentGroup){
@@ -83,6 +83,7 @@ function UploadFileWindow() {
             else if (value === 2 && currentGroup){
               updateDocgroup(data.document_id)
             }
+            setCurrentFile(data.document_id)
           });
 
     } catch (error) {
