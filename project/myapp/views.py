@@ -635,3 +635,46 @@ def getTimeLine(request):
         timeline = document.timeline
     print(timeline)
     return Response({'timeline': timeline})
+
+from .models import DocumentGroup
+
+@api_view(['POST'])
+def createDocumentGroup(request):
+    name = request.data.get('name')
+    userID = request.data.get('user')
+    new_doc = request.data.get('new_doc')
+    document_group = DocumentGroup.objects.create(
+        name=name,
+    )
+    doc = UserDocument.objects.get(_id=ObjectId(new_doc))
+    document_group.documents.add(doc)
+    document_group.save()
+    try:
+        user = User.objects.get(id=userID)
+        user.document_groups.add(document_group)
+    except User.DoesNotExist:
+        raise ValueError({'error': 'User not found'})
+    return Response({'message': 'Document group created successfully', 'docID': document_group.__id__()})
+
+@api_view(['POST'])
+def updateDocumentGroup(request):
+    groupID = request.data.get('docgroup')
+    new_doc = request.data.get('new_doc')
+    upload_document(new_doc)
+    document_group = DocumentGroup.objects.get(_id=ObjectId(groupID))
+    document_group.documents.add(new_doc)
+    document_group.save()
+    return Response({'message': 'Document group updated successfully'})
+
+@api_view(['POST'])
+def getDocumentGroups(request):
+    user = request.data.get('user')
+    document_groups = User.objects.get(id=user).document_groups.all()
+    resp = []
+    for group in document_groups:
+        resp.append({
+            "id": group.__id__(),
+            "name": group.name,
+            "documents": [doc.__id__() for doc in group.documents.all()]
+        })
+    return Response({'data': resp})

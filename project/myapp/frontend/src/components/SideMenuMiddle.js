@@ -20,7 +20,8 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   const { timeLine, setTimeline, getTimeLine } = useContext(AuthContext);
   const baseURL = process.env.REACT_APP_API_URL;
   const { pinRef } = useContext(ResponseContext);
-
+  const { docGroups } = useContext(AuthContext);
+  const { currentGroup, setCurrentGroup } = useContext(AuthContext);
 
   const chooseDocument = (fileid) => {
     setCurrentFile(fileid);
@@ -29,10 +30,19 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
     getTimeLine(fileid);
     setClickedDocument(true);
   };
+  const chooseGroup = (groupid) => {
+    setCurrentFile(null);
+    setCurrentGroup(groupid);
+    localStorage.setItem("currentFile", null);
+    getChatHistory(groupid);
+    getTimeLine(groupid);
+    setClickedDocument(true);
+  };
 
   return (
     <Container className="p-0">
       {clickedDocument ? (
+        
         pinnedMessages.map((pin) => (
           <Row key={pin.index} className="my-4 m-auto br-5 w-100">
             <Button
@@ -44,10 +54,41 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
               </Button>
           </Row>
         ))
+        
       ) : (
         <>
           <hr className="w-90 m-auto" />
           <PerfectScrollbar>
+            Document Groups
+            {docGroups.map((docGroup) => (
+              <Row key={docGroup.id} className="my-3 m-auto br-5 w-100">
+              <Button
+                onClick={() => chooseGroup(docGroup.id)}
+                value={docGroup.id}
+                className={`small m-auto bg-2 w-90 document-button d-flex justify-content-start align-items-center p-2 text-start position-relative ${
+                  docGroup.id === currentGroup ? "highlighted" : ""
+                }`}
+              >
+                {docGroup.name}
+                <Container
+                  className={`p-1 w-80px h-100 d-flex justify-content-center align-items-center ${
+                    docGroup.id === currentFile
+                      ? "highlighted-iconbox"
+                      : "icons-container"
+                  }`}
+                >
+                  <SimplePopup file={docGroup} 
+                  />
+                  <IoIosArchive
+                    className="m-2 archive-icon"
+                    onClick={() => console.log("Edit document")}
+                  />
+                </Container>
+              </Button>
+            </Row>
+            ))
+            }
+            Documents
             {files.map((file) => (
               <Row key={file.id} className="my-3 m-auto br-5 w-100">
                 <Button

@@ -8,14 +8,49 @@ import { AuthContext } from "./AuthContextProvider";
 import FileDropZone from "./FileDropZone";
 import { useContext, useEffect, useState } from "react";
 import { UploadWindowContext } from "./UploadWindowContextProvider";
-
 function UploadFileWindow() {
   const { value } = useContext(UploadWindowContext);
   const { userID, getFiles } = useContext(AuthContext);
-  const { setCurrentFile } = useContext(AuthContext);
+  const { currentFile, setCurrentFile } = useContext(AuthContext);
   const [title, setTitle] = useState("Upload document to start!");
-
+  const { docGroup,  getDocumentGroups } = useContext(AuthContext);
   const baseURL = process.env.REACT_APP_API_URL;
+  const { currentGroup, setCurrentGroup } = useContext(AuthContext);
+
+  const createDocGroup = async (fileid) => {
+    const body = {
+      user: userID,
+      new_doc: fileid,
+      name: "Group " + docGroup.length,
+    };
+    try {
+      const { data } = await axios.post(baseURL + "api/createDocgroup/", body);
+      console.log(data);
+      getDocumentGroups();
+      setCurrentGroup(data.docID);
+      return data;
+    } catch (error) {
+      console.error("Error creating document group:", error);
+    }
+  }
+
+  const updateDocgroup = async (fileid) => {
+    const body = {
+      user: userID,
+      new_doc: fileid,
+      docgroup: currentGroup,
+    };
+    try {
+      const { data } = await axios.post(baseURL + "api/updateDocgroup/", body);
+      console.log(data);
+      getDocumentGroups();
+      setCurrentGroup(data.docID);
+      return data;
+    } catch (error) {
+      console.error("Error updating document group:", error);
+    }
+  }
+
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     // Check if the selected file is a PDF
@@ -37,9 +72,18 @@ function UploadFileWindow() {
         });
         const data = await response.json();
         getFiles()
-        setCurrentFile(data.document_id)
-        localStorage.setItem('currentFile', data.document_id)
-        alert(`File uploaded successfully. Document ID: ${data.document_id}`);
+          .then(() => {
+            setCurrentFile(data.document_id)
+            localStorage.setItem('currentFile', data.document_id)
+            alert(`File uploaded successfully. Document ID: ${data.document_id}`);
+            if (value === 2 && !currentGroup){
+              createDocGroup(data.document_id)
+            }
+            else if (value === 2 && currentGroup){
+              updateDocgroup(data.document_id)
+            }
+          });
+
     } catch (error) {
       console.error("Error uploading file:", error);
       alert("An error occurred while uploading the file.");
