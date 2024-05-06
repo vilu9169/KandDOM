@@ -9,7 +9,7 @@ from langchain.schema.document import Document
 from pinecone import Pinecone, ServerlessSpec
 #from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_text_splitters import CharacterTextSplitter
-from timelinemaker import analyzefromstr
+from . timelinemaker import analyzefromstr
 
 from google.cloud import documentai
 import io
