@@ -37,7 +37,7 @@ export default function SimplePopup({ file }) {
         });
         console.log(resp);
         getFiles();
-        setEditing(false); // Stop editing after renaming
+        setEditing(false);
       } catch (error) {
         console.error("Error renaming chat:", error);
       }
@@ -95,7 +95,6 @@ export default function SimplePopup({ file }) {
           ) : (
             <Button
             onClick={(event) => {
-              event.stopPropagation();
               handleRename();
             }}
               className="m-auto my-2 bg-3s w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
