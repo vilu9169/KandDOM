@@ -27,8 +27,12 @@ tools = {
                         "description": "Datum och tid då händelsen inträffade. Skall endast vara en tid per händelse. Tider kan vara på formatet år-månad-dag eller dag-månad år, du måste avgöra vilket utifrån kontexten. Tider måste alltid sparas på formatet DD/MM/YY HH:MM.",
                     },
                     "pages": {
+                        # "type": "array",
+                        # "items": {
+                        #     "type": "int"
+                        # },
                         "type": "string",
-                        "description": "Sidnummer till sidorna där information om händelsen finns. Varje sidanummer skall bara förekomma en gång.",
+                        "description": "Sidnummer till där information om händelsen finns. Varje sidnummer skall bara förekomma en gång.",
                     },
                     "information": {
                         "type": "string",
@@ -100,7 +104,6 @@ def summarise_claud(input, index, res):
     while True:
         try:
             message = client.messages.create(
-            max_tokens=1500,
             model=model,
             messages = [{"content": ("Dokumentera alla händelser du identifierar i texten och inkludera tidpunkten när de sker. Alla relevanta händelser ska dokumenteras. Alla svar skall vara på svenska. Här är materialet du ska behandla  :" + input), "role": "user"}],
             system = context,
@@ -116,7 +119,7 @@ def summarise_claud(input, index, res):
 def summarise_gemeni_par(input, index, res):
     cont = """Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem.
     Alla dina svar måste vara på svenska. Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och datum samt tidpunkten när den skede.
-    Tidpunkter ska vara på formatet DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska. Du måste alltid inkludera vilka sidor du hittade informationen, sidnummer finns efter \"pagestart page\" och \"pageend page\".
+    Tidpunkter ska vara på formatet DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska. Du måste alltid inkludera vilka sidor du hittade informationen, korrekt sidnummer finns efter \"pagestart page\" och \"pageend page\". Andra sidnummer ska ignoreras.
     Namnet på dokumentet finns efter texten \"in document\" och ska finnas med. Här är materialet du ska behandla  :""" + input 
     generation_config = {
     #"max_output_tokens": 4400,
@@ -125,10 +128,10 @@ def summarise_gemeni_par(input, index, res):
     }
 
     safety_settings = {
-        generative_models.HarmCategory.HARM_CATEGORY_HATE_SPEECH: generative_models.HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        generative_models.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: generative_models.HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        generative_models.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: generative_models.HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        generative_models.HarmCategory.HARM_CATEGORY_HARASSMENT: generative_models.HarmBlockThreshold.BLOCK_ONLY_HIGH,
+        generative_models.HarmCategory.HARM_CATEGORY_HATE_SPEECH: generative_models.HarmBlockThreshold.BLOCK_NONE,
+        generative_models.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: generative_models.HarmBlockThreshold.BLOCK_NONE ,
+        generative_models.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: generative_models.HarmBlockThreshold.BLOCK_NONE ,
+        generative_models.HarmCategory.HARM_CATEGORY_HARASSMENT: generative_models.HarmBlockThreshold.BLOCK_NONE ,
     }
     # safety_settings = [
     #  SafetySetting(
@@ -246,7 +249,7 @@ def analyzefromstr(input):
     doc =  Document(page_content=input, metadata={"source": "local"})
     #Load inputstring as a document
     # Split documents
-    maxclaudin = 40000
+    maxclaudin = 20000
     from langchain.text_splitter import RecursiveCharacterTextSplitter
     text_splitter = RecursiveCharacterTextSplitter(chunk_size = maxclaudin, chunk_overlap = 0)
     splits = text_splitter.split_documents([doc])
