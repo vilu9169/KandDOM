@@ -10,13 +10,20 @@ from pinecone import Pinecone, ServerlessSpec
 #from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_text_splitters import CharacterTextSplitter
 from timelinemaker import analyzefromstr
+from time import sleep
 
 from google.cloud import documentai
 import io
 import threading
 
 def async_handle_chunk(chunk_num, chunk_size, num_pages, pdf_file, client, name, resstrings):
-    reader = PyPDF2.PdfReader(pdf_file)
+    while True:
+        try:
+            reader = PyPDF2.PdfReader(pdf_file)
+            break
+        except Exception as e:
+            print(e)
+            sleep(5)
     pagenr = chunk_num * chunk_size
     start_page = chunk_num * chunk_size
     end_page = min((chunk_num + 1) * chunk_size, num_pages)
