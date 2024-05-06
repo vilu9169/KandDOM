@@ -14,7 +14,7 @@ function UploadFileWindow() {
   const { userID, getFiles } = useContext(AuthContext);
   const { currentFile, setCurrentFile } = useContext(AuthContext);
   const [title, setTitle] = useState("Upload document to start!");
-  const { docGroup,  getDocumentGroups } = useContext(AuthContext);
+  const { docGroups,  getDocumentGroups } = useContext(AuthContext);
   const baseURL = process.env.REACT_APP_API_URL;
   const { currentGroup, setCurrentGroup } = useContext(AuthContext);
 
@@ -22,7 +22,7 @@ function UploadFileWindow() {
     const body = {
       user: userID,
       new_doc: fileid,
-      name: "Group " + docGroup.length,
+      name: "Group " + docGroups.length,
     };
     try {
       const { data } = await axios.post(baseURL + "api/createDocgroup/", body);
