@@ -42,15 +42,54 @@ export default function SimplePopup({ file }) {
   const id = open ? "simple-popper" : undefined;
 
 
-  const openPdfInNewWindow = (pdfFilename, section) => {
-    let url = `http://127.0.0.1:8000/pdf-view/${pdfFilename}/`;
-    
-    if (section) {
-      url += `#page=${section}`;
+  const openPdf = async (fileid) => {
+    try {
+      console.log('fileid:', fileid);
+      const resp = await axios.post(baseURL + 'api/openpdf/', { fileid: fileid }, { responseType: 'blob' });
+
+      // Check if the response contains the PDF file
+      if (resp.status === 200 && resp.data) {
+        // Create a Blob object from the response data
+        const blob = resp.data;
+        
+        // Create a URL for the Blob object 
+        const url = URL.createObjectURL(blob);
+
+        // url = "C:/Users/Jakob/Skola/KandDOM/project/pdf/assignment_-_Jakob Österlund.pdf"
+        
+        // Open the PDF file in a new window or tab
+        window.open(url, '_blank');
+      } else {
+        // Handle the case where the PDF file is not found or response is empty
+        console.error('Failed to open PDF: File not found or response is empty');
+      }
+    }catch (error) {
+      // Handle any errors that occur during the request
+      console.error('Error opening PDF:', error);
     }
-    
-    window.open(url, '_blank');
   };
+
+  const openPdfInNewWindow = async (section) => {
+    try {
+        const response = await axios.get(`/api/openpdf/${section}/`);
+        const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
+        const pdfUrl = URL.createObjectURL(pdfBlob);
+        window.open(pdfUrl, '_blank');
+    } catch (error) {
+        console.error('Error opening PDF:', error);
+    }
+  };
+
+  // const openPdfInNewWindow = async (fileid) => {
+  //   console.log('fileid:', fileid);
+  //   const resp = await axios.post(baseURL + 'api/openpdf/', { fileid: fileid });
+  //   console.log(resp);
+
+
+  //   let url = `http://127.0.0.1:8000/pdf-view/${fileid}/`;
+
+  //   window.open(url, '_blank');
+  // };
 
   return (
     <div className="m-2">
@@ -76,7 +115,8 @@ export default function SimplePopup({ file }) {
           </Button>
           <Button
             className="m-auto my-2 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
-            onClick={() => openPdfInNewWindow("komp.pdf", "5")}
+            onClick={() => openPdf(file.id)}
+            value={file.id}
           >
             <span className="small text-center justify-content-center d-flex align-items-center w-75">
               View pdf
