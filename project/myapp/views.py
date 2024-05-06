@@ -674,7 +674,7 @@ from .models import DocumentGroup
 def createDocumentGroup(request):
     name = request.data.get('name')
     userID = request.data.get('user')
-    current_doc = request.get('current')
+    current_doc = request.data.get('current')
     new_doc = request.data.get('new_doc')
     current = request.data.get('current')
     document_group = DocumentGroup.objects.create(
@@ -682,9 +682,9 @@ def createDocumentGroup(request):
     )
     doc = UserDocument.objects.get(_id=ObjectId(new_doc))
     currentDoc = UserDocument.objects.get(_id=ObjectId(current))
+    doc2 = UserDocument.objects.get(_id=ObjectId(current_doc))
     document_group.documents.add(doc)
-    document_group.documents.add(currentDoc)
-    handle_multi_pdfs([str(doc.file), str(currentDoc.file)], str(document_group.__id__()))
+    document_group.documents.add(doc2)
     document_group.save()
     try:
         user = User.objects.get(id=userID)
