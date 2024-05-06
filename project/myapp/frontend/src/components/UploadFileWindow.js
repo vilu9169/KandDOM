@@ -8,6 +8,7 @@ import { AuthContext } from "./AuthContextProvider";
 import FileDropZone from "./FileDropZone";
 import { useContext, useEffect, useState } from "react";
 import { UploadWindowContext } from "./UploadWindowContextProvider";
+import axios from "axios";
 function UploadFileWindow() {
   const { value } = useContext(UploadWindowContext);
   const { userID, getFiles } = useContext(AuthContext);
