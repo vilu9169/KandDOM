@@ -681,7 +681,7 @@ def createDocumentGroup(request):
         user.document_groups.add(document_group)
     except User.DoesNotExist:
         raise ValueError({'error': 'User not found'})
-    return Response({'message': 'Document group created successfully', 'docID': document_group.__id__()})
+    return Response({'message': 'Document group created successfully', 'docID': str(document_group.__id__())})
 
 @api_view(['POST'])
 def updateDocumentGroup(request):
@@ -700,8 +700,17 @@ def getDocumentGroups(request):
     resp = []
     for group in document_groups:
         resp.append({
-            "id": group.__id__(),
+            "id": str(group.__id__()),
             "name": group.name,
-            "documents": [doc.__id__() for doc in group.documents.all()]
+            "documents": [str(doc.__id__()) for doc in group.documents.all()]
         })
     return Response({'data': resp})
+
+@api_view(['POST'])
+def deleteDocgroup(request):
+    user = request.data.get('user')
+    docGroup = request.data.get('docGroup')
+    documet_group = DocumentGroup.objects.get(_id=ObjectId(docGroup))
+    user = User.objects.get(id=user)
+    user.document_groups.remove(documet_group)
+    documet_group.delete()
