@@ -386,6 +386,7 @@ def start_chat(request):
     print(request.data.get('index_name'))
     index_name = request.data.get('index_name')
     index = pc.Index(index_name)
+    group = request.data.get('group')
     vectorstore = PineconeVectorStore(  
         index, embeddings  
     )
