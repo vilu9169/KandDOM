@@ -161,15 +161,38 @@ def text_to_rag(new_index_name, text):
     # Vertex AI embedding model  uses 768 dimensions`
     vectorstore = vectorstore.from_documents(splits, embeddings, index_name=new_index_name)
     
+# def handle_multi_pdfs(pdf_files, new_index_name):
+#     alltexts  = ""
+#     for pdf_file in pdf_files:
+#         text = ocr_pdf(pdf_file, "sunlit-inn-417922", "eu", "54cf154d8c525451")
+#         text_to_rag(new_index_name, text)
+#         #After text to rag run timelinemaker
+#         alltexts += text
+#     res = analyzefromstr(alltexts)
+#     print(res)
+def bettersort(theevents):
+    if(type(theevents["title"]) == str):
+        return 0
+    else:
+        return theevents["title"].timestamp()
+
 def handle_multi_pdfs(pdf_files, new_index_name):
     alltexts  = ""
+    retarr = []
     for pdf_file in pdf_files:
         text = ocr_pdf(pdf_file, "sunlit-inn-417922", "eu", "54cf154d8c525451")
         text_to_rag(new_index_name, text)
         #After text to rag run timelinemaker
-        alltexts += text
-    res = analyzefromstr(alltexts)
-    print(res)
+        # alltexts += text
+        retarr += analyzefromstr(text)
+    retarr = sorted(retarr, key = lambda x: bettersort(x))
+    
+    for elem in retarr:
+        try:
+            elem["title"] = str(elem["title"].strftime("%d/%m/%Y %H:%M"))
+        except Exception as e:
+            print("Error parsing time: ", e)
+    print(retarr)
 #Takes a pdf file path and a new index name as input
 #Extracts text from the pdf file and converts it to RAG which is stored in the new index
 def mainfunk(pdf_file, new_index_name):
