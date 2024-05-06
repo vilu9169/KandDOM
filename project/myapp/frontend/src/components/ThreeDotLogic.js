@@ -24,8 +24,7 @@ export default function SimplePopup({ file }) {
     console.log(resp);
     getFiles();
   };
-  const handleRename = async (event) => {
-    event.stopPropagation();
+  const handleRename = async () => {
     if (!editing) {
       setEditing(true);
     } else {
@@ -95,6 +94,7 @@ export default function SimplePopup({ file }) {
           ) : (
             <Button
             onClick={(event) => {
+              event.stopPropagation(); 
               handleRename();
             }}
               className="m-auto my-2 bg-3s w-90 pop-up-button d-flex justify-content-center align-items-center p-1"

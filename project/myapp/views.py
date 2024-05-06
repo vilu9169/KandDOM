@@ -326,9 +326,8 @@ def upload_document(request):
         print("Before document.save")
         print(document.file)
         document.save()
-        document.timeline = mainfunk2(str(document.file))
+        document.timeline = mainfunk(str(document.file), str(document.__id__()))
         document.save()
-        mainfunk(str(document.file), str(document.__id__()))
         print("document.save complete")
         user = User.objects.get(id=request.data['userID'])
         print("User.objects.get(id=request.data['ObjectId']) COMPLETE")
@@ -641,12 +640,8 @@ def text_to_rag(new_index_name, text):
     # Vertex AI embedding model  uses 768 dimensions`
     vectorstore = vectorstore.from_documents(splits, embeddings, index_name=new_index_name)
     
-def mainfunk(pdf_file, new_index_name):
-    text = extract_text_from_pdf(pdf_file)
-    #print(text)
-    text_to_rag(new_index_name, text)
 
-from . preprocessor import mainfunk as mainfunk2
+from . preprocessor import mainfunk
 from . preprocessor import handle_multi_pdfs
 @api_view(['POST'])
 def getTimeLine(request):
