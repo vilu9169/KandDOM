@@ -10,6 +10,10 @@ from groq import Groq
 from collection_tools import tools
 import traceback
 from typing import List
+from langchain_core.vectorstores import VectorStore
+from anthropic import AnthropicVertex
+
+
 
 from util import print_tool_call, extract_args, gemini_unfiltered
 
@@ -82,8 +86,9 @@ class Relation:
 
 
 class Personhandler:
-    def __init__(self, embedder):
+    def __init__(self, embedder, rag_vector_store : VectorStore):
         self.embedder = embedder
+        self.rag_store = rag_vector_store
         self.people_collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["people"]
         self.relations_collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["relations"]
         self.groups_collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["groups"]
@@ -96,6 +101,7 @@ class Personhandler:
         self.info_model = GenerativeModel("gemini-1.0-pro", system_instruction=[info_instructions], safety_settings=gemini_unfiltered, generation_config=config)
         self.groq = Groq(api_key=os.environ.get("GROQ_API_KEY")).chat.completions
         self.description_model = GenerativeModel("gemini-1.0-pro", system_instruction=[create_description_instructions], safety_settings=gemini_unfiltered, generation_config=config)
+        self.anthropic = AnthropicVertex(region="europe-west4", project_id="robust-summit-417910")
 
     def ny_info_person(self, alias, new_info):
         person = self._get_current_info(alias, new_info)
@@ -115,13 +121,6 @@ class Personhandler:
         else:
             corrected_name = self._check_if_new_person(name, new_info, search_result)
             return self.people_dict[corrected_name]
-        
-    def _update_info(self, new_info):
-        self.people_dict
-        response = chat.send_message(message).candidates[0].content.text
-        print("Updated info: \n"+response)
-        self.people_collection.update_one({"info": old_info}, {"$set": {"info": response}})
-        return response
     
     # def _update_description(self, current_description, new_info, name, info):
     #     message = "Nuvarande namn: "+name+"\n"+"**Nuvarande beskrivning**\n "+current_description+"\n\n **Ny information**\n "+new_info
@@ -172,6 +171,50 @@ class Personhandler:
             print("ERROR: no deletion during update")
         self.people_store.add_documents([new_person], ids=[name])
         self.people_dict.update({name : new_person})
+
+    def _generate_description(self, person : Document):
+        instructions = """
+        Du är en assistent som skapar en kort sammanfattning av en person för att identifiera personen. Du får frågor om en personer samt utdrag ur ett förundersökningprotokoll
+        som innehåller information om personen. Du ska skapa en kort sammanfattning av personen som fokuserar på personens inblandning i rättsfallet samt relationer 
+        till andra personer och grupper. Frågan ställs av en användare som bara har tillgång till en liten del av dokumentet och behöver hjälp att identifiera personen.
+        I frågan får du personens "namn" (kan vara ett alias eller annan beskrivning som 'bror till den åtalade') samt information om personen som stod i delen av dokumentet som 
+        användaren har tillgång till.
+
+        Svara endast med sammanfattningen, inga övriga kommentarer. Du behöver häller inte förklara att informationen kommer från ett förundersökningsprotokoll, det är underförstått.
+        """
+        prompt = "Vem är "+person.metadata["name"]+"? Här är lite information om personen"+person.metadata["info"]
+        description = self.prompt_with_rag(prompt, instructions)
+        metadata = {"name": person.metadata["name"], "info": person.metadata["info"]}
+        new_person = Document(page_content=description, metadata=metadata)
+        self.people_store.add_documents([new_person], ids=[person.metadata["name"]])
+
+    def prompt_with_rag(self, prompt, instructions):
+        context = instructions
+        index = 0
+        prepend = ""
+        append = ""
+        for rag in self.rag_store.as_retriever(search_kwargs = ({"k" : 40, })).invoke(prompt):
+        #The first 10 documents are prepended to the context
+        #The last 10 documents are appended to append
+            if index < 10:
+                prepend += rag.page_content
+            elif index >10 and index < 20:
+                append = rag.page_content + append
+            else:
+                prepend += rag.page_content
+            index += 1
+
+        context += prepend + append
+
+
+        messages = [{"role" : "user", "content" : prompt}]
+        response = self.anthropic.messages.create(
+        max_tokens=200,
+        messages=messages,
+        model="claude-3-haiku@20240307",
+        system = context,
+        )
+        return response.content[0].text
 
 
     tell_if_new_instructions = """
