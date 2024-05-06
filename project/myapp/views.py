@@ -544,6 +544,29 @@ def delete_document(request):
 
     return Response({'message': 'Document deleted successfully'})
 
+@api_view(['POST'])
+def renameDocument(request):
+    document_id = request.data.get('document_id')
+    new_name = request.data.get('new_name')
+
+    # Check if both document ID and new name are provided
+    if not document_id or not new_name:
+        return Response({'error': 'Both document ID and new name are required'}, status=status.HTTP_400_BAD_REQUEST)
+
+    try:
+        # Retrieve the document from the database
+        document = UserDocument.objects.get(_id=ObjectId(document_id))
+    except UserDocument.DoesNotExist:
+        return Response({'error': 'Document not found'}, status=status.HTTP_404_NOT_FOUND)
+
+    # Update the document's name
+    document.filename = new_name
+
+    # Save the document to persist the changes
+    document.save()
+
+    return Response({'message': 'Document renamed successfully'})
+
 # Call the function with your project ID and location
 # prevmessages = []
 # while(True):

@@ -19,9 +19,10 @@ urlpatterns = [
     path('api/documents/', get_documents, name='documents'),
     path('api/getchat/', get_chat_history, name='chat_history'),
     path('api/deletefile/', delete_document, name='delete_file'),
+    path('api/renameDocument/', renameDocument, name='rename_doc'),
     path('api/set_pinned/', set_pinned, name='set_pinned'),
     path('api/get_timeline/', getTimeLine, name='get_timeline'),
     path('api/createDocGroup/', createDocumentGroup, name='create_doc_group'),
     path('api/updateDocGroup/', updateDocumentGroup, name='update_doc_group'),
-    path('api/getDocGroups/', getDocumentGroups, name='get_doc_groups'),
+    path('api/getDocGroup/', getDocumentGroups, name='get_doc_groups'),
 ]
