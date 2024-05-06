@@ -37,12 +37,14 @@ const AuthContextProvider = ({children}) => {
         setFiles(fileArr);
         localStorage.setItem('files', JSON.stringify(fileArr));
         console.log("Files:", files);
+        getDocumentGroups();
         return data;
       }
       catch (error) {
         console.error("Error fetching files:", error);
       }
     };
+
     axios.defaults.xsrfCookieName = 'csrftoken'
     axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN'   
 
