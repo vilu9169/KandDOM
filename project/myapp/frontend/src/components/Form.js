@@ -28,7 +28,7 @@ function MyForm() {
     // Extract only the text content from messages
     const messageTexts = messages.map(msg => ({ text: msg.text }));
     console.log('currentFile: ',currentFile)
-    const data = {};
+    let data = {};
     if (currentFile !== null) {
       data = {
         message: message,

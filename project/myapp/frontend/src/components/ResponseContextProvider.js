@@ -46,7 +46,7 @@ const ResponseContextProvider = ({ children }) => {
       embedding_id: fileid ? fileid : currentFile,
       group: currentGroup ? true : false,
     };
-    const {data} = {};
+    let {data} = {};
     try {
       if (!currentGroup && !currentFile) {
         console.error("No file ID provided for fetching chat history");
