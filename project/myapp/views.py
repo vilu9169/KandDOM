@@ -550,78 +550,23 @@ from django.http import HttpResponse
 
 @api_view(['POST'])
 def openpdf(request):
-    pdfid = request.data.get('fileid') #denna
-    current_directory = os.getcwd()
+    pdfid = request.data.get('fileid')
+    page = request.data.get('page')
     try:
-        # Convert the provided string ID to ObjectId
         pdf_object_id = ObjectId(pdfid)
-        
-        # Query the Document model to get the document object
         document = Document.objects.get(_id=pdf_object_id)
-        
-        # Now you can access the document name using document.filename
         pdf_path = str(document.file)
-        # pdf_path = f'{current_directory}\pdf\{pdf_name}'
-        # pdf_path = os.path.join('pdf', f'{pdf_name}')
-        print(str(pdf_path)+'\n\n')
+        
         if os.path.exists(pdf_path):
-            # Open the PDF file
-            print("hej\n\n\n")
             with open(pdf_path, 'rb') as pdf_file:
-                # Return the PDF file as a response
-                print("okok\n")
                 response = HttpResponse(pdf_file.read(), content_type='application/pdf')
-                # response = FileResponse(pdf_path, content_type='application/pdf')
-                # Set the content disposition header to 'inline' to open in the browser
-                response['Content-Disposition'] = 'inline; filename="'+ os.path.basename(pdf_path) + '"'
+                response['Content-Disposition'] = f'inline; filename="{os.path.basename(pdf_path)}"'
+                
                 return response
         else:
-            return Response({'error': 'PDF file not found'})
+            return Response('PDF file not found')
     except Exception as e:
-        return Response({'errorhehe': str(e)})
-    # try:
-    #     # Open the PDF file
-
-    #     pdf_file = open(pdfname, 'rb')
-        
-    #     # Check if a section query parameter is provided
-    #     # section = request.GET.get('section')
-        
-    #     # if section:
-    #     #     # If section is provided, construct the URL with the hash fragment
-    #     #     pdf_url = f'/pdf-view/#page={section}'
-    #     # else:
-    #     #     # If no section is provided, just use the regular URL
-    #     #     pdf_url = '/pdf-view/'
-        
-    #     # Close the PDF file after constructing the response
-    #     response = FileResponse(pdf_file, content_type='application/pdf')
-    #     response['Content-Disposition'] = 'inline; filename="'+ pdfname +'"'       
-    #     return response
-    # except FileNotFoundError:
-    #     raise Http404()
-
-# def pdf_view(request, pdf_filename, section=None):
-#     try:
-#         # Open the PDF file
-#         pdf_file = open('project\pdf\exam_20220608_updated_1.pdf', 'rb')
-        
-#         # Check if a section query parameter is provided
-#         section = request.GET.get('section')
-        
-#         if section:
-#             # If section is provided, construct the URL with the hash fragment
-#             pdf_url = f'/pdf-view/#page={section}'
-#         else:
-#             # If no section is provided, just use the regular URL
-#             pdf_url = '/pdf-view/'
-        
-#         # Close the PDF file after constructing the response
-#         response = FileResponse(pdf_file, content_type='application/pdf')
-#         response['Content-Disposition'] = 'inline; filename="'+ pdf_filename +'"'       
-#         return response
-#     except FileNotFoundError:
-#         raise Http404()
+        return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 # Call the function with your project ID and location
 # prevmessages = []
