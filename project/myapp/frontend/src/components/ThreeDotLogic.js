@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import { Unstable_Popup as BasePopup } from "@mui/base/Unstable_Popup";
 import { BsThreeDots } from "react-icons/bs";
 import { IoMdCreate } from "react-icons/io";
@@ -7,17 +7,23 @@ import { IoMdTrash } from "react-icons/io";
 import axios from "axios";
 import { AuthContext } from "./AuthContextProvider";
 
+
 export default function SimplePopup({ file }) {
   const [anchor, setAnchor] = React.useState(null);
+  
   const [newName, setNewName] = useState("");
   const { user, getFiles } = useContext(AuthContext);
   const baseURL = process.env.REACT_APP_API_URL;
-
   const handleClick = (event) => {
-    event.stopPropagation(); // Stop propagation to prevent document-button click
+    event.stopPropagation();
     setAnchor(anchor ? null : event.currentTarget);
   };
-
+  const deleteDocument = async (fileid) => {
+    console.log('fileid:', fileid);
+    const resp = await axios.post(baseURL + 'api/deletefile/', { fileid: fileid, user: user.id });
+    console.log(resp);
+    getFiles();
+  };
   const handleRename = async () => {
     try {
       const resp = await axios.post(baseURL + "api/renamefile/", {
@@ -31,21 +37,6 @@ export default function SimplePopup({ file }) {
       console.error("Error renaming chat:", error);
     }
   };
-
-  const deleteDocument = async (fileid) => {
-    try {
-      console.log("fileid:", fileid);
-      const resp = await axios.post(baseURL + "api/deletefile/", {
-        fileid: fileid,
-        user: user.id,
-      });
-      console.log(resp);
-      getFiles();
-    } catch (error) {
-      console.error("Error deleting chat:", error);
-    }
-  };
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (anchor && !anchor.contains(event.target)) {
@@ -63,6 +54,7 @@ export default function SimplePopup({ file }) {
   const open = Boolean(anchor);
   const id = open ? "simple-popper" : undefined;
 
+
   return (
     <div className="m-2">
       <button
@@ -75,7 +67,7 @@ export default function SimplePopup({ file }) {
       </button>
       <BasePopup id={id} open={open} anchor={anchor}>
         <div className="p-2 popupBody">
-          <div className="form-group">
+        <div className="form-group">
             <input
               type="text"
               className="form-control"
@@ -85,8 +77,8 @@ export default function SimplePopup({ file }) {
             />
           </div>
           <Button
-            onClick={handleRename}
-            className="m-auto my-2 bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
+          onClick={handleRename}
+            className="m-auto my-2 bg-3s w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
           >
             <span className="small text-center justify-content-center d-flex align-items-center w-75">
               Rename Chat
