@@ -9,15 +9,14 @@ from langchain.schema.document import Document
 from pinecone import Pinecone, ServerlessSpec
 #from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_text_splitters import CharacterTextSplitter
+from timelinemaker import analyzefromstr
 
 from google.cloud import documentai
 import io
 import threading
 
 def async_handle_chunk(chunk_num, chunk_size, num_pages, pdf_file, client, name, resstrings):
-    print("start reading: ", pdf_file)
     reader = PyPDF2.PdfReader(pdf_file)
-    print("done reading file")
     pagenr = chunk_num * chunk_size
     start_page = chunk_num * chunk_size
     end_page = min((chunk_num + 1) * chunk_size, num_pages)
@@ -25,7 +24,6 @@ def async_handle_chunk(chunk_num, chunk_size, num_pages, pdf_file, client, name,
     writer = PyPDF2.PdfWriter()
     for page_num in range(start_page, end_page):
         writer.add_page(reader.pages[page_num])
-        print(reader.pages[page_num])
     response_bytes_stream = io.BytesIO()
     writer.write(response_bytes_stream)
     #Seek 0 to start reading
@@ -47,7 +45,7 @@ def async_handle_chunk(chunk_num, chunk_size, num_pages, pdf_file, client, name,
     # Read the text recognition output from the processor
     resstring = ""
     for page in document.pages:
-        resstring += "{pagestart nr "+ str(pagenr+1) +"}"
+        resstring += "{pagestart page "+ str(page_num+1) + " in document "+pdf_file +" }"
         temp = ""
         for block in page.blocks:
             split = str(block.layout.text_anchor.text_segments).split("\n")
@@ -57,41 +55,39 @@ def async_handle_chunk(chunk_num, chunk_size, num_pages, pdf_file, client, name,
                 temp += document.text[0: int(split[0][split[0].find(":") +2:])]                
         resstring += temp
         #resstring += page.layout.text_anchor.content
-        resstring +="{pageend nr "+ str(pagenr+1) +"}"+str(chr(28))
+        resstring +="{pageend page "+ str(page_num+1)+ " in document "+pdf_file +"}"+str(chr(28))
+
         pagenr += 1
     resstrings[chunk_num] = resstring
     pass
 
 def ocr_pdf(pdf_file, project_id, location, processor_id):
-    print("ocr_pdf")
+    
     # You must set the api_endpoint if you use a location other than 'us'.
     opts = {"api_endpoint": "eu-documentai.googleapis.com"}
 
     client = documentai.DocumentProcessorServiceClient(client_options=opts)
-    print("connected to client")
+
     # The full resource name of the processor, e.g.:
     # projects/project_id/locations/location/processor/processor_id
     # You must create new processors in the Cloud Console first
     name = client.processor_path(project_id, location, processor_id)
     # Create a working directory
-    print("created name")
+
     # Split the document into chunks of 20 pages
-    print("splitting doc into chunks of 15")
     chunk_size = 15
     reader = PyPDF2.PdfReader(pdf_file)
     num_pages = len(reader.pages)
-    print("pages: ", num_pages)
     if(num_pages%chunk_size == 0):
         num_chunks = num_pages//chunk_size
     else:
         num_chunks = num_pages//chunk_size + 1
-    print("num cunks: ", num_chunks)
     #resstring = ""
     resstrings = []
     #Add a new string for each chunk
     for i in range(num_chunks):
         resstrings.append("")
-    print("Creating threads")
+        
     threads = []
     # Create and start threads
     for i in range(num_chunks):
@@ -103,16 +99,14 @@ def ocr_pdf(pdf_file, project_id, location, processor_id):
     for thread in threads:
         thread.join()
 
-    print("threads finished")
+    
     resstring = ""
     for res in resstrings:
         resstring += res
     #Print to .txt file
-    print("printing to txr file")
     with open("output.txt", 'w', encoding='utf-8') as file:
         file.write(resstring)
-    print("Resstring",resstring)
-    print("ocr done")
+    #print("Resstring",resstring)
     return resstring
 
 def extract_text_from_pdf(pdf_file) -> str:
@@ -123,10 +117,10 @@ def extract_text_from_pdf(pdf_file) -> str:
             text = ""
             #Separate pages so they start with { and end with }
             for page_num in range(num_pages):
-                text += "{pagestart nr "+ str(page_num+1) +"}"
+                text += "{pagestart page "+ str(page_num+1) + " in document "+pdf_file +" }"
                 page = reader.pages[page_num]
                 text += page.extract_text()
-                text +="{pageend nr "+ str(page_num+1) +"}"+str(chr(28))
+                text +="{pageend page "+ str(page_num+1)+ " in document "+pdf_file +"}"+str(chr(28))
 
             return text
     except FileNotFoundError:
@@ -137,18 +131,20 @@ def text_to_rag(new_index_name, text):
     os.environ["PINECONE_API_KEY"] = "2e669c83-1a4f-4f19-a06a-42aaf6ea7e06"
     os.environ["PINECONE_ENV"] = "default"
     pc = Pinecone(api_key="2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
-    pc.create_index(
-        name=new_index_name,
-        dimension=768,
-        metric="cosine",
-        spec=ServerlessSpec(
-            cloud='aws', 
-            region='us-west-2'
+    #Try to create the index, if it already exists do nothing
+    try:
+        pc.create_index(
+            name=new_index_name,
+            dimension=768,
+            metric="cosine",
+            spec=ServerlessSpec(
+                cloud='aws', 
+                region='eu-west-1'
+            ) 
         ) 
-    ) 
+    except Exception as e:
+        print("Index already exists")
     # Split documents
-    #text_splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=0)
-    #splits = [Document(page_content=x) for x in text_splitter.split_text(text)]
     text_splitter = CharacterTextSplitter(chunk_size=2, chunk_overlap =1,separator=str(chr(28)))
     splits = [Document(page_content=x) for x in text_splitter.split_text(text)]
     #splits = text_splitter.split_text(text)    
@@ -157,25 +153,42 @@ def text_to_rag(new_index_name, text):
     vectorstore = PineconeVectorStore(new_index_name, embeddings.embed_query, splits)
     # Vertex AI embedding model  uses 768 dimensions`
     vectorstore = vectorstore.from_documents(splits, embeddings, index_name=new_index_name)
-
-from . timelinemaker import analyzefromstr
+    
+def handle_multi_pdfs(pdf_files, new_index_name):
+    alltexts  = ""
+    for pdf_file in pdf_files:
+        text = ocr_pdf(pdf_file, "sunlit-inn-417922", "eu", "54cf154d8c525451")
+        text_to_rag(new_index_name, text)
+        #After text to rag run timelinemaker
+        alltexts += text
+    res = analyzefromstr(alltexts)
+    print(res)
 #Takes a pdf file path and a new index name as input
 #Extracts text from the pdf file and converts it to RAG which is stored in the new index
-def mainfunk(pdf_file):
-    print("start mainfunk")
-    print("pdf : ", pdf_file )
+def mainfunk(pdf_file, new_index_name):
     text = ocr_pdf(pdf_file, "sunlit-inn-417922", "eu", "54cf154d8c525451")
-    print(text)
-    #text_to_rag(new_index_name, text)
+    text_to_rag(new_index_name, text)
     #After text to rag run timelinemaker
     res = analyzefromstr(text)
     #Res contains a dictioary with the timeline, 
     #Objects in the dictonary have "time", "pages" and "information" fields and are sorted by time
-    print(res)
-    return res
+    # print(res)
 
 # print("Name of the file to be converted to RAG: ")
 # pdf_file = input()
 # print("Name of the new index: ")
 # new_index_name = input()
 # mainfunk(pdf_file, new_index_name)
+
+
+# pdf_files = []
+# while True:
+#     print("Name of the files to be processed using RAG(write \"end\" to end input): ")
+#     pdf_file = input()
+#     if(pdf_file == "end"):
+#         break
+#     else:
+#         pdf_files.append(pdf_file)
+# print("Name of the new index: ")
+# new_index_name = input()
+# handle_multi_pdfs(pdf_files, new_index_name)

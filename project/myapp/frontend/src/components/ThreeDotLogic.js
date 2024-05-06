@@ -10,7 +10,7 @@ import { AuthContext } from "./AuthContextProvider";
 
 export default function SimplePopup({ file }) {
   const [anchor, setAnchor] = React.useState(null);
-  
+  const [editing, setEditing] = useState(false);
   const [newName, setNewName] = useState("");
   const { user, getFiles } = useContext(AuthContext);
   const baseURL = process.env.REACT_APP_API_URL;
@@ -18,29 +18,39 @@ export default function SimplePopup({ file }) {
     event.stopPropagation();
     setAnchor(anchor ? null : event.currentTarget);
   };
-  const deleteDocument = async (fileid) => {
-    event.stopPropagation();
-    setAnchor(anchor ? null : event.currentTarget);
+  const deleteDocument = async (fileid, event) => {
     console.log('fileid:', fileid);
     const resp = await axios.post(baseURL + 'api/deletefile/', { fileid: fileid, user: user.id });
     console.log(resp);
     getFiles();
   };
   const handleRename = async () => {
-    event.stopPropagation();
-    setAnchor(anchor ? null : event.currentTarget);
-    try {
-      const resp = await axios.post(baseURL + "api/renamefile/", {
-        fileid: file.id,
-        user: user.id,
-        new_name: newName,
-      });
-      console.log(resp);
-      getFiles();
-    } catch (error) {
-      console.error("Error renaming chat:", error);
+    if (!editing) {
+      // If not already editing, start editing
+      setEditing(true);
+    } else {
+      // If already editing, submit the changes
+      try {
+        const resp = await axios.post(baseURL + "api/renamefile/", {
+          fileid: file.id,
+          user: user.id,
+          new_name: newName,
+        });
+        console.log(resp);
+        getFiles();
+        setEditing(false); // Stop editing after renaming
+      } catch (error) {
+        console.error("Error renaming chat:", error);
+      }
     }
   };
+  const handleInputKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleRename();
+    }
+  };
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (anchor && !anchor.contains(event.target)) {
@@ -71,28 +81,35 @@ export default function SimplePopup({ file }) {
       </button>
       <BasePopup id={id} open={open} anchor={anchor}>
         <div className="p-2 popupBody">
-        <div className="form-group">
+        {editing ? (
             <input
               type="text"
-              className="form-control"
+              className="m-auto my-2 bg-3s w-90 pop-up-button"
               placeholder="Enter new chat name"
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
+              onKeyDown={handleInputKeyDown}
             />
-          </div>
+          ) : (
+            <Button
+            onClick={(event) => {
+              handleClick(event);
+              handleRename();
+            }}
+              className="m-auto my-2 bg-3s w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
+            >
+              <span className="small text-center justify-content-center d-flex align-items-center w-75">
+                Rename Chat
+              </span>
+              <span className="w-25 justify-content-center d-flex align-items-center">
+                <IoMdCreate className="size-20" />
+              </span>
+            </Button>
+          )}
           <Button
-          onClick={handleRename}
-            className="m-auto my-2 bg-3s w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
-          >
-            <span className="small text-center justify-content-center d-flex align-items-center w-75">
-              Rename Chat
-            </span>
-            <span className="w-25 justify-content-center d-flex align-items-center">
-              <IoMdCreate className="size-20" />
-            </span>
-          </Button>
-          <Button
-            onClick={() => deleteDocument(file.id)}
+            onClick={(event) => {deleteDocument(file.id)
+              handleClick(event);
+            }}
             className="m-auto my-2 bg-danger w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
           >
             <span className="small text-center justify-content-center d-flex align-items-center w-75">
