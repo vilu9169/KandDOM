@@ -19,12 +19,16 @@ export default function SimplePopup({ file }) {
     setAnchor(anchor ? null : event.currentTarget);
   };
   const deleteDocument = async (fileid) => {
+    event.stopPropagation();
+    setAnchor(anchor ? null : event.currentTarget);
     console.log('fileid:', fileid);
     const resp = await axios.post(baseURL + 'api/deletefile/', { fileid: fileid, user: user.id });
     console.log(resp);
     getFiles();
   };
   const handleRename = async () => {
+    event.stopPropagation();
+    setAnchor(anchor ? null : event.currentTarget);
     try {
       const resp = await axios.post(baseURL + "api/renamefile/", {
         fileid: file.id,
