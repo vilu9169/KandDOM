@@ -17,6 +17,7 @@ function MyForm() {
   const {messages, setMessages} = useContext(ResponseContext);
   const {showUploadWindow } = useContext(UploadWindowContext);
   const { currentFile } = useContext(AuthContext);
+  const {currentGroup} = useContext(AuthContext);
   const baseURL = process.env.REACT_APP_API_URL;
   const chatWithGPT3 = async () => {
     const apiEndpoint = baseURL+'chat/';
@@ -27,13 +28,23 @@ function MyForm() {
     // Extract only the text content from messages
     const messageTexts = messages.map(msg => ({ text: msg.text }));
     console.log('currentFile: ',currentFile)
-    const data = {
-      message: message,
-      messages: messageTexts, // Stringify the array of message objects
-      index_name: currentFile,
-      userid: userID,
-    };
-    
+    const data = {};
+    if (currentFile !== null) {
+      data = {
+        message: message,
+        messages: messageTexts, // Stringify the array of message objects
+        index_name: currentFile,
+        userid: userID,
+      };
+    }
+    else {
+      data = {
+        message: message,
+        messages: messageTexts, // Stringify the array of message objects
+        index_name: currentGroup,
+        userid: userID,
+      };
+    }
     console.log("Message texts:", messageTexts);
     console.log("Data sent to backend:", data); 
     

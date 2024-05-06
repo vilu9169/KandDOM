@@ -463,11 +463,16 @@ def start_chat(request):
     history.inputoutput.add(inputoutput)
     return Response({"message" : message.content[0].text})
 
+from . models import GroupChatHistory
 @api_view(['POST'])
 def get_chat_history(request):
+    group = request.data.get('group')
     embedding_id = request.data.get('embedding_id')
     try:
-        history = ChatHistory.objects.get(embedding_id=embedding_id)
+        if group:
+            history = GroupChatHistory.objects.get(embedding_id=embedding_id)
+        else:
+            history = ChatHistory.objects.get(embedding_id=embedding_id)
     except ChatHistory.DoesNotExist:
         raise ValueError({'error': 'Chat history not found'})
     inputoutput = history.inputoutput.all()
@@ -642,7 +647,7 @@ def mainfunk(pdf_file, new_index_name):
     text_to_rag(new_index_name, text)
 
 from . preprocessor import mainfunk as mainfunk2
-
+from . preprocessor import handle_multi_pdfs
 @api_view(['POST'])
 def getTimeLine(request):
     documentID = request.data.get('documentID')
@@ -670,11 +675,15 @@ def createDocumentGroup(request):
     name = request.data.get('name')
     userID = request.data.get('user')
     new_doc = request.data.get('new_doc')
+    current = request.data.get('current')
     document_group = DocumentGroup.objects.create(
         name=name,
     )
     doc = UserDocument.objects.get(_id=ObjectId(new_doc))
+    currentDoc = UserDocument.objects.get(_id=ObjectId(current))
     document_group.documents.add(doc)
+    document_group.documents.add(currentDoc)
+    handle_multi_pdfs([str(doc.file), str(currentDoc.file)], str(document_group.__id__()))
     document_group.save()
     try:
         user = User.objects.get(id=userID)
@@ -687,10 +696,14 @@ def createDocumentGroup(request):
 def updateDocumentGroup(request):
     groupID = request.data.get('docgroup')
     new_doc = request.data.get('new_doc')
-    upload_document(new_doc)
     document_group = DocumentGroup.objects.get(_id=ObjectId(groupID))
     document_group.documents.add(new_doc)
+    alldocs = document_group.documents.all()
+    documents = []
+    for doc in alldocs:
+        documents.append(str(doc.file))
     document_group.save()
+    handle_multi_pdfs(documents, str(document_group.__id__()))
     return Response({'message': 'Document group updated successfully'})
 
 @api_view(['POST'])

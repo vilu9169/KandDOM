@@ -25,7 +25,9 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
 
   const chooseDocument = (fileid) => {
     setCurrentFile(fileid);
+    setCurrentGroup(null);
     localStorage.setItem("currentFile", fileid);
+    localStorage.setItem("currentGroup", null);
     getChatHistory(fileid);
     getTimeLine(fileid);
     setClickedDocument(true);
@@ -34,6 +36,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
     setCurrentFile(null);
     setCurrentGroup(groupid);
     localStorage.setItem("currentFile", null);
+    localStorage.setItem("currentGroup", groupid);
     getChatHistory(groupid);
     getTimeLine(groupid);
     setClickedDocument(true);
@@ -72,7 +75,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
                 {docGroup.name}
                 <Container
                   className={`p-1 w-80px h-100 d-flex justify-content-center align-items-center ${
-                    docGroup.id === currentFile
+                    docGroup.id === currentGroup
                       ? "highlighted-iconbox"
                       : "icons-container"
                   }`}
