@@ -19,11 +19,11 @@ tools = {
                 "properties": {
                     "time": {
                         "type": "string",
-                        "description": "Datum och tid då händelsen inträffade. Skall endast vara en tid per händelse. Tider måste alltid anges på formatet DD/MM/YY HH:MM.",
+                        "description": "Datum och tid då händelsen inträffade. Skall endast vara en tid per händelse. Tider kan vara på formatet år-månad-dag eller dag-månad år, du måste avgöra vilket utifrån kontexten. Tider måste alltid sparas på formatet DD/MM/YY HH:MM.",
                     },
                     "pages": {
                         "type": "string",
-                        "description": "Sidnummer till sidorna där information om händelsen finns.",
+                        "description": "Sidnummer till sidorna där information om händelsen finns. Varje sidanummer skall bara förekomma en gång.",
                     },
                     "information": {
                         "type": "string",
@@ -31,7 +31,7 @@ tools = {
                     },
                     "document": {
                         "type": "string",
-                        "description": "Namnet på dokumentet som händelsen hämtades ifrån. Namnet på dokumentet finns på samma plats som sidnumret.",
+                        "description": "Namnet på dokumentet som händelsen hämtades ifrån.",
                     }
                 },
                 "required": ["time","pages","information", "document"],
@@ -72,7 +72,7 @@ vectorstore = PineconeVectorStore(
 )  
 
 def summarise_gemeni_par(input, index, res):
-    cont = "Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem. Alla dina svar måste vara på svenska. Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och datum samt tidpunkten när den skede. Tidpunkter ska vara på formatet DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska. Du måste alltid inkludera vilka sidor du hittade informationen. Här är materialet du ska behandla  :" + input 
+    cont = "Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem. Alla dina svar måste vara på svenska. Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och datum samt tidpunkten när den skede. Tidpunkter får aldrig vara fel och ska vara på formatet DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska. Du måste alltid inkludera vilka sidor du hittade informationen, sidnummer finns angivet vid \"pagestart page\" . Namnet på dokumentet finns vid texten \"in document\" och ska finnas med i summeringen. Här är materialet du ska behandla  :" + input 
     generation_config = {
     "max_output_tokens": 4400,
     "temperature": 0.1,
