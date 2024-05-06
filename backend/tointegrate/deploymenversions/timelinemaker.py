@@ -72,9 +72,12 @@ vectorstore = PineconeVectorStore(
 )  
 
 def summarise_gemeni_par(input, index, res):
-    cont = "Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem. Alla dina svar måste vara på svenska. Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och datum samt tidpunkten när den skede. Tidpunkter får aldrig vara fel och ska vara på formatet DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska. Du måste alltid inkludera vilka sidor du hittade informationen, sidnummer finns angivet vid \"pagestart page\" . Namnet på dokumentet finns vid texten \"in document\" och ska finnas med i summeringen. Här är materialet du ska behandla  :" + input 
+    cont = """Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem.
+    Alla dina svar måste vara på svenska. Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och datum samt tidpunkten när den skede.
+    Tidpunkter ska vara på formatet DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska. Du måste alltid inkludera vilka sidor du hittade informationen.
+    Namnet på dokumentet finns vid texten \"in document\" och ska finnas med. Här är materialet du ska behandla  :""" + input 
     generation_config = {
-    "max_output_tokens": 4400,
+    #"max_output_tokens": 4400,
     "temperature": 0.1,
     "top_p": 1,
     }
