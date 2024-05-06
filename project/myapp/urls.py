@@ -21,4 +21,7 @@ urlpatterns = [
     path('api/deletefile/', delete_document, name='delete_file'),
     path('api/set_pinned/', set_pinned, name='set_pinned'),
     path('api/get_timeline/', getTimeLine, name='get_timeline'),
+    path('api/createDocGroup/', createDocumentGroup, name='create_doc_group'),
+    path('api/updateDocGroup/', updateDocumentGroup, name='update_doc_group'),
+    path('api/getDocGroups/', getDocumentGroups, name='get_doc_groups'),
 ]

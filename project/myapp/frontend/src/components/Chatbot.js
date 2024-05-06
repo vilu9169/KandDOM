@@ -113,11 +113,11 @@ const Chatbot = () => {
                 <Container className="h-100 d-flex align-items-center justify-content-start p-0 m-0">
                   <TiPin
                     onClick={() => setPinned(message.id)}
-                    className={`m-2 size-20 p-0 ${
+                    className={`m-2 pointer size-20 p-0 ${
                       message.pinned ? "c-secondary" : ""
                     }`}
                     style={{
-                      transform: `rotate(${message.pinned ? "-30deg" : "0"})`,
+                      transform: `rotate(${message.pinned ? "-45deg" : "0"})`,
                     }}
                   />
                   <IoIosCopy className="m-2 size-20" />

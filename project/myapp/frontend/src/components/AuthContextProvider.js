@@ -17,6 +17,8 @@ const AuthContextProvider = ({children}) => {
     const [files, setFiles] = useState(localStorage.getItem('files') ? JSON.parse(localStorage.getItem('files')) : []);
     const [currentFile, setCurrentFile] = useState(localStorage.getItem('currentFile') ? localStorage.getItem('currentFile') : null);
     const [timeLine, setTimeLine] = useState([]);
+    const [ docGroups, setDocGroups ] = useState([]);
+    const [ currentGroup, setCurrentGroup ] = useState(null)
 
     const baseURL = process.env.REACT_APP_API_URL
 
@@ -107,6 +109,27 @@ const AuthContextProvider = ({children}) => {
         }
     }
 
+    let getDocumentGroups = async () => {
+        const body = {
+            user: userID
+        }
+        try {
+            const {data} = await axios.post(baseURL+"api/getDocGroups/", body);
+            console.log(data.data);
+            let fileArr = []
+            for (const doc of data.data) {
+              console.log(doc);
+              fileArr.push(doc);
+            }
+            setDocGroups(fileArr);
+            localStorage.setItem('docGroups', JSON.stringify(fileArr));
+            console.log("docgroups:", files);
+            return data;
+          }
+          catch (error) {
+            console.error("Error fetching files:", error);
+          }
+    }
 
     let logoutUser = (e) => {
         e.preventDefault()
@@ -154,6 +177,10 @@ const AuthContextProvider = ({children}) => {
         signupError:signupError,
         currentFile:currentFile,
         timeLine:timeLine,
+        docGroups:docGroups,
+        currentGroup:currentGroup,
+        setCurrentGroup:setCurrentGroup,
+        getDocumentGroups:getDocumentGroups,
         setTimeLine:setTimeLine,
         setCurrentFile:setCurrentFile,
         getTimeLine:getTimeLine,
