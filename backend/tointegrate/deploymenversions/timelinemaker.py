@@ -8,6 +8,10 @@ import vertexai
 from pinecone import Pinecone
 from groq import Groq
 import json
+from vertexai.preview.generative_models import (
+    HarmCategory, 
+    HarmBlockThreshold )
+from google.cloud.aiplatform_v1beta1.types.content import SafetySetting
 tools = {
     "timelinemaker": {
         "type": "function",
@@ -74,11 +78,11 @@ vectorstore = PineconeVectorStore(
 def summarise_gemeni_par(input, index, res):
     cont = """Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem.
     Alla dina svar måste vara på svenska. Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och datum samt tidpunkten när den skede.
-    Tidpunkter ska vara på formatet DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska. Du måste alltid inkludera vilka sidor du hittade informationen.
-    Namnet på dokumentet finns vid texten \"in document\" och ska finnas med. Här är materialet du ska behandla  :""" + input 
+    Tidpunkter ska vara på formatet DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska. Du måste alltid inkludera vilka sidor du hittade informationen, sidnummer finns efter \"pagestart page\" och \"pageend page\".
+    Namnet på dokumentet finns efter texten \"in document\" och ska finnas med. Här är materialet du ska behandla  :""" + input 
     generation_config = {
     #"max_output_tokens": 4400,
-    "temperature": 0.1,
+    "temperature": 0, # 0.1,
     "top_p": 1,
     }
 
@@ -88,6 +92,24 @@ def summarise_gemeni_par(input, index, res):
         generative_models.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: generative_models.HarmBlockThreshold.BLOCK_ONLY_HIGH,
         generative_models.HarmCategory.HARM_CATEGORY_HARASSMENT: generative_models.HarmBlockThreshold.BLOCK_ONLY_HIGH,
     }
+    # safety_settings = [
+    #  SafetySetting(
+    #      category=HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+    #      threshold=HarmBlockThreshold.BLOCK_ONLY_HIGH,
+    #  ),
+    #  SafetySetting(
+    #      category=HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+    #      threshold=HarmBlockThreshold.BLOCK_ONLY_HIGH,
+    #  ),
+    #  SafetySetting(
+    #      category=HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+    #      threshold=HarmBlockThreshold.BLOCK_ONLY_HIGH,
+    #  ),
+    #  SafetySetting(
+    #      category=HarmCategory.HARM_CATEGORY_HARASSMENT,
+    #      threshold=HarmBlockThreshold.BLOCK_ONLY_HIGH,
+    #  ),
+    # ]
     vertexai.init(project="sunlit-inn-417922", location="us-central1")
     model = GenerativeModel("gemini-1.5-pro-preview-0409")
     #model = GenerativeModel("gemini-1.0-pro")
@@ -105,6 +127,7 @@ def summarise_gemeni_par(input, index, res):
                 res[index]= response.text
                 return
             except Exception as e:
+                print("Response: ", response)
                 print("Error likely due to block_reason for: ", e)
                 return
         except Exception as e:
@@ -144,7 +167,7 @@ def handlesplit(split, retvals, i):
                 ],
                 tools = [tools["timelinemaker"]],
                 model="llama3-70b-8192",
-                temperature=0.1,
+                #temperature=0.1,
             )
             break
         except Exception as e:
@@ -162,10 +185,10 @@ def handlesplit(split, retvals, i):
             args = json.loads(tool_call.function.arguments)
             #Add to dict
             try :
-                ret.append({"time": parser.parse(args["time"], dayfirst=True),"pages": args["pages"] , "information": args["information"],"document": args["document"]})
+                ret.append({"title": parser.parse(args["time"], dayfirst=True),"pages": args["pages"] , "cardTitle": args["information"],"document": args["document"]})
             except Exception as e:
                 #Append time anyways
-                ret.append({"time": args["time"],"pages": args["pages"] , "information": args["information"], "document": args["document"]})
+                ret.append({"title": args["time"],"pages": args["pages"] , "cardTitle": args["information"], "document": args["document"]})
         retvals[i] = ret
         pass
     except Exception as e:
@@ -174,17 +197,18 @@ def handlesplit(split, retvals, i):
         pass
     
 def bettersort(theevents):
-    if(type(theevents["time"]) == str):
+    if(type(theevents["title"]) == str):
         return 0
     else:
-        return theevents["time"].timestamp()
+        return theevents["title"].timestamp()
+
 def analyzefromstr(input):
     from langchain.docstore.document import Document
 
     doc =  Document(page_content=input, metadata={"source": "local"})
     #Load inputstring as a document
     # Split documents
-    maxclaudin = 50000
+    maxclaudin = 40000
     from langchain.text_splitter import RecursiveCharacterTextSplitter
     text_splitter = RecursiveCharacterTextSplitter(chunk_size = maxclaudin, chunk_overlap = 0)
     splits = text_splitter.split_documents([doc])
@@ -223,11 +247,11 @@ def analyzefromstr(input):
         struct += elem
 
     struct = sorted(struct, key = lambda x: bettersort(x))
-    for elem in struct:
-        try:
-            elem["time"] = str(elem["time"].strftime("%d/%m/%Y %H:%M"))
-        except Exception as e:
-            print("Error parsing time: ", e)
+    # for elem in struct:
+    #     try:
+    #         elem["title"] = str(elem["title"].strftime("%d/%m/%Y %H:%M"))
+    #     except Exception as e:
+    #         print("Error parsing time: ", e)
     return struct
 
 # timerstart = time()
