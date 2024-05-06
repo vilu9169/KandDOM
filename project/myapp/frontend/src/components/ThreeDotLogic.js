@@ -83,7 +83,7 @@ export default function SimplePopup({ file }) {
         {editing ? (
             <input
               type="text"
-              className="m-auto my-2 bg-3s w-90 rename d-flex justify-content-center align-items-center p-0"
+              className="m-auto my-2 bg-1 w-90 rename-input d-flex justify-content-center align-items-center p-0"
               placeholder="Enter new name"
               value={newName}
               onChange={(e) => setNewName(e.target.value)}

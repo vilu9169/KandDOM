@@ -44,7 +44,7 @@ const ResponseContextProvider = ({ children }) => {
   const getChatHistory = async (fileid) => {
     const body = {
       embedding_id: fileid ? fileid : currentFile,
-      group: currentGroup ? true : false,
+      group: (currentGroup !== null ) ? true : false,
     };
     let {data} = {};
     try {
