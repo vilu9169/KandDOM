@@ -19,7 +19,7 @@ to_process = pages[0]
 
 embedder = VertexAIEmbeddings("textembedding-gecko-multilingual")
 
-person_handler = Personhandler(embedder)
+person_handler = Personhandler(embedder, "REPLACE")
 
 
 summary = """
@@ -32,16 +32,16 @@ Bandidos är en kriminell organisation med 7000 medlemmar i Sverige, däribland 
 
 people, relations, groups = process_text(to_process, person_handler)
 
-person_handler.move_to_db()
+# person_handler.move_to_db()
 
 
-print_FAISS(people)
+# print_FAISS(people)
 
-print_FAISS(groups)
+# print_FAISS(groups)
 
-for relation in relations.values():
-    print()
-    print(relation.person1)
-    print(relation.person2)
-    print("info:")
-    print(relation.info)
+# for relation in relations.values():
+#     print()
+#     print(relation.person1)
+#     print(relation.person2)
+#     print("info:")
+#     print(relation.info)

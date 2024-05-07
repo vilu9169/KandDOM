@@ -12,8 +12,8 @@ import traceback
 from typing import List
 from langchain_core.vectorstores import VectorStore
 from anthropic import AnthropicVertex
-
-
+from openai import OpenAI
+from openai.types.chat import ChatCompletion
 
 from util import print_tool_call, extract_args, gemini_unfiltered
 
@@ -83,6 +83,9 @@ class Relation:
         self.person1 = person1
         self.person2 = person2
         self.info = info
+
+
+
 
 
 class Personhandler:

@@ -39,7 +39,7 @@ def process_text(text : str, handler : Personhandler, parallel=False):
         print_tool_call(tool_call)
     threads = []
     for tool_call in tool_calls:
-       threads.append(threading.Thread(target=treat_tool_call, args=(tool_call, handler)))
+       pass#threads.append(threading.Thread(target=treat_tool_call, args=(tool_call, handler)))
     for thread in threads:
         thread.start()
     for thread in threads:
