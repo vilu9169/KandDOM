@@ -29,7 +29,7 @@ export default function SimplePopup({ file }) {
       setEditing(true);
     } else {
       try {
-        const resp = await axios.post(baseURL + "api/renamefile/", {
+        const resp = await axios.post(baseURL + 'api/renamefile/', {
           fileid: file.id,
           user: user.id,
           new_name: newName,

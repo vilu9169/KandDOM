@@ -22,7 +22,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   const { pinRef } = useContext(ResponseContext);
   const { docGroups } = useContext(AuthContext);
   const { currentGroup, setCurrentGroup } = useContext(AuthContext);
-
+  const { docsInGroup, setDocsInGroup } = useState([]);
   const chooseDocument = (fileid) => {
     setCurrentFile(fileid);
     setCurrentGroup(null);
@@ -42,22 +42,42 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
     setClickedDocument(true);
   };
 
+  const getDocsInGroup = async () => {
+    const body = {
+      group: currentGroup,
+    };
+    try {
+      const { data } = await axios.post(baseURL + "api/getdocsingroup/", body);
+      console.log(data);
+      setDocsInGroup(data.resp);
+      return data;
+    } catch (error) {
+      console.error("Error getting documents in group:", error);
+    }
+  };
   return (
     <Container className="p-0">
       {clickedDocument ? (
-        
-        pinnedMessages.map((pin) => (
-          <Row key={pin.index} className="my-4 m-auto br-5 w-100">
-            <Button
-              className="m-auto bg-3 w-90 document-button d-flex justify-content-start align-items-center p-2 text-start"
-              
-              onClick={() => {console.log(pin.index); return scrollToPin(pinRef , pin.index)}}
+        <>
+          {pinnedMessages.map((pin) => (
+            <Row key={pin.index} className="my-4 m-auto br-5 w-100">
+              <Button
+                className="m-auto bg-3 w-90 document-button d-flex justify-content-start align-items-center p-2 text-start"
+                onClick={() => {console.log(pin.index); return scrollToPin(pinRef , pin.index)}}
               >
                 {pin.id}
               </Button>
-          </Row>
-        ))
-        
+            </Row>
+          ))}
+          {currentGroup && (
+            <Row className="my-4 m-auto br-5 w-100">
+              {docsInGroup.map((doc) => (
+                // Code for rendering each document in the group
+                <div>{doc.filename}</div> // Replace with appropriate rendering logic
+              ))}
+            </Row>
+          )}
+        </>
       ) : (
         <>
           <hr className="w-90 m-auto" />
