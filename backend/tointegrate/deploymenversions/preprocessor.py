@@ -63,21 +63,101 @@ def async_handle_chunk(chunk_num, chunk_size, num_pages, pdf_file, client, name,
         resstring += temp
         #resstring += page.layout.text_anchor.content
         resstring +="{pageend page "+ str(pagenr+1)+ " in document "+pdf_file +"}"+str(chr(28))
-
         pagenr += 1
     resstrings[chunk_num] = resstring
     pass
 
+def getraw(chunk_num, chunk_size, num_pages, pdf_file, num_chunks):
+    reader = PyPDF2.PdfReader(pdf_file)
+    start_page = chunk_num * chunk_size
+    end_page = min((chunk_num + 1) * chunk_size, num_pages)
+    docs = []
+    writer = PyPDF2.PdfWriter()
+    for page_num in range(start_page, end_page):
+        writer.add_page(reader.pages[page_num])
+    response_bytes_stream = io.BytesIO()
+    writer.write(response_bytes_stream)
+    #Seek 0 to start reading
+    response_bytes_stream.seek(0)
+    # Read the file into memory
+    with response_bytes_stream as image:
+        image_content = image.read()
+    # Load Binary Data into Document AI RawDocument Object
+    return image_content
+
+def swifthandle(chunk, resind, client, name, resstrings, chunksize):
+    raw_document = documentai.RawDocument(content=chunk, mime_type="application/pdf")
+    # Configure the process request
+    request = documentai.ProcessRequest(name=name, raw_document=raw_document)
+    result = client.process_document(request=request, )
+    #print("Result looks like ", result)
+    # For a full list of Document object attributes,
+    # please reference this page: https://googleapis.dev/python/documentai/latest/gapic/v1beta3/types.html#google.cloud.documentai.v1beta3.Document
+    document = result.document
+    # Read the text recognition output from the processor
+    pagenr = chunksize*resind
+    resstring = ""
+    for page in document.pages:
+        resstring += "{pagestart page "+ str(pagenr+1) + " in document "+pdf_file +" }"
+        temp = ""
+        for block in page.blocks:
+            split = str(block.layout.text_anchor.text_segments).split("\n")
+            if(len(split) > 2):
+                temp += document.text[int(split[0][split[0].find(":") +2:]) : int(split[1][split[1].find(":") +2:])]
+            else:
+                temp += document.text[0: int(split[0][split[0].find(":") +2:])]                
+        resstring += temp
+        #resstring += page.layout.text_anchor.content
+        resstring +="{pageend page "+ str(pagenr+1)+ " in document "+pdf_file +"}"+str(chr(28))
+
+        pagenr += 1
+    resstrings[resind] = resstring
+    pass
+
+#Same as before but no threads with pdf reader
+def ocr_pdf2(pdf_file, project_id, location, processor_id):
+    
+    # You must set the api_endpoint if you use a location other than 'us'.
+    opts = {"api_endpoint": "eu-documentai.googleapis.com"}
+
+    client = documentai.DocumentProcessorServiceClient(client_options=opts)
+    name = client.processor_path(project_id, location, processor_id)
+    # Create a working directory
+
+    # Split the document into chunks of 20 pages
+    chunk_size = 15
+    reader = PyPDF2.PdfReader(pdf_file)
+    num_pages = len(reader.pages)
+    if(num_pages%chunk_size == 0):
+        num_chunks = num_pages//chunk_size
+    else:
+        num_chunks = num_pages//chunk_size + 1
+        
+    threads = []
+    rawdata = []
+    # Get the raw data
+    #getraw 
+    for chunkid in range(num_chunks):
+        rawdata.append(getraw(chunkid, chunk_size, num_pages, pdf_file, num_chunks))
+    resstrings = []
+    for i in range(num_chunks):
+        resstrings.append("")
+        t = threading.Thread(target=swifthandle, args=(rawdata[i], i,  client, name, resstrings, chunk_size))
+        threads.append(t)
+        t.start()
+    # Wait for all threads to finish
+    for thread in threads:
+        thread.join()
+    resstring = ""
+    for res in resstrings:
+        resstring += res
+    return resstring
 def ocr_pdf(pdf_file, project_id, location, processor_id):
     
     # You must set the api_endpoint if you use a location other than 'us'.
     opts = {"api_endpoint": "eu-documentai.googleapis.com"}
 
     client = documentai.DocumentProcessorServiceClient(client_options=opts)
-
-    # The full resource name of the processor, e.g.:
-    # projects/project_id/locations/location/processor/processor_id
-    # You must create new processors in the Cloud Console first
     name = client.processor_path(project_id, location, processor_id)
     # Create a working directory
 
@@ -156,16 +236,7 @@ def text_to_rag(new_index_name, text):
     vectorstore = PineconeVectorStore(new_index_name, embeddings.embed_query, splits)
     # Vertex AI embedding model  uses 768 dimensions`
     vectorstore = vectorstore.from_documents(splits, embeddings, index_name=new_index_name)
-    
-# def handle_multi_pdfs(pdf_files, new_index_name):
-#     alltexts  = ""
-#     for pdf_file in pdf_files:
-#         text = ocr_pdf(pdf_file, "sunlit-inn-417922", "eu", "54cf154d8c525451")
-#         text_to_rag(new_index_name, text)
-#         #After text to rag run timelinemaker
-#         alltexts += text
-#     res = analyzefromstr(alltexts)
-#     print(res)
+
 def bettersort(theevents):
     if(type(theevents["title"]) == str):
         return 0
@@ -176,11 +247,12 @@ def handle_multi_pdfs(pdf_files, new_index_name):
     alltexts  = ""
     retarr = []
     for pdf_file in pdf_files:
-        text = ocr_pdf(pdf_file, "sunlit-inn-417922", "eu", "54cf154d8c525451")
+        #text = ocr_pdf(pdf_file, "sunlit-inn-417922", "eu", "54cf154d8c525451")
+        text = ocr_pdf2(pdf_file, "sunlit-inn-417922", "eu", "54cf154d8c525451")
         text_to_rag(new_index_name, text)
         #After text to rag run timelinemaker
         # alltexts += text
-        retarr += analyzefromstr(text)
+        retarr += analyzefromstr(text, pdf_file)
     retarr = sorted(retarr, key = lambda x: bettersort(x))
     
     for elem in retarr:
