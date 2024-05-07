@@ -46,7 +46,7 @@ const ResponseContextProvider = ({ children }) => {
       embedding_id: fileid ? fileid : currentFile,
       group: (currentGroup !== null ) ? true : false,
     };
-    let {data} = {};
+
     try {
       if (!currentGroup && !currentFile) {
         console.error("No file ID provided for fetching chat history");
@@ -54,10 +54,10 @@ const ResponseContextProvider = ({ children }) => {
       }
       else  {
         console.log("body", body);
-        data = await axios.post(baseURL + "api/getchat/", body);
+        const {data} = await axios.post(baseURL + "api/getchat/", body);
         setMessages(data.messages);
         console.log("data.pinned", data.pinned);
-      }
+      
   
       if (Array.isArray(data.pinned)) {
         const pins = data.pinned.map((pin, index) => ({ ...pin, index }));
@@ -68,6 +68,7 @@ const ResponseContextProvider = ({ children }) => {
         console.error('Unexpected data format for pinned messages:', data.pinned);
         setPinnedMessages([]);
       }
+    }
     } catch (error) {
       console.error("Error fetching chat history:", error);
       setMessages([]);
