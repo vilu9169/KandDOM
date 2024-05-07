@@ -33,6 +33,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
       const { data } = await axios.post(baseURL + "api/getdocsingroup/", body);
       console.log(data);
       setDocsInGroup(data);
+      console.log('docs In Group', docsInGroup);
       return data;
     } catch (error) {
       console.error("Error getting documents in group:", error);
