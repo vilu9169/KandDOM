@@ -32,7 +32,11 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
     try {
       const { data } = await axios.post(baseURL + "api/getdocsingroup/", body);
       console.log(data);
-      setDocsInGroup(data);
+      let fileArray = [];
+      for (const file of data) {
+        fileArray.push(file);
+      }
+      setDocsInGroup(fileArray);
       console.log('docs In Group', docsInGroup);
       return data;
     } catch (error) {
