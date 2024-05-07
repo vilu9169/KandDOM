@@ -537,6 +537,14 @@ def delete_document(request):
         raise ValueError({'error': 'Error no user found'})
     user.documents.remove(document)
     user.save()
+    try:
+        doc_group = User.document_groups
+        for group in doc_group:
+            if document in group.documents:
+                group.documents.remove(document)
+                group.save()
+    except:
+        pass
     if os.path.exists(str(document.file)):
         os.remove(str(document.file))
     else:
