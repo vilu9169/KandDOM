@@ -25,5 +25,5 @@ urlpatterns = [
     path('api/createDocgroup/', createDocumentGroup, name='create_doc_group'),
     path('api/updateDocgroup/', updateDocumentGroup, name='update_doc_group'),
     path('api/getDocGroups/', getDocumentGroups, name='get_doc_groups'),
-    path('api/getDocsInGroup/', getDocumentsInGroup, name='get_docs_in_group'),
+    path('api/getdocsingroup/', getDocumentsInGroup, name='get_docs_in_group'),
 ]
