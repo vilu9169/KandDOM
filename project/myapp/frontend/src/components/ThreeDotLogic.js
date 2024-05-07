@@ -42,14 +42,13 @@ export default function SimplePopup({ file }) {
       }
     }
   };
-  const handleInputKeyDown = (event) => {
+  const handleInputKeyDown = async (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
-      console.log("Enter pressed");
-      handleRename();
+      await handleRename();
+      setEditing(false);
     }
   };
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (anchor && !anchor.contains(event.target)) {
@@ -82,16 +81,16 @@ export default function SimplePopup({ file }) {
         <div className="p-2 popupBody">
         {editing ? (
             <input
-              type="text"
-              className="m-auto my-2 bg-1 w-90 rename-input d-flex justify-content-center align-items-center p-0"
-              placeholder="Enter new name"
-              value={newName}
-              onChange={(e) => setNewName(e.target.value)}
-              onKeyDown={handleInputKeyDown}
-              onClick={(event) => {
-                event.stopPropagation();
-              }}
-            />
+            type="text"
+            className="m-auto my-2 bg-1 w-90 rename-input d-flex justify-content-center align-items-center p-0"
+            placeholder="Enter new name"
+            value={newName}
+            onChange={(e) => setNewName(e.target.value)}
+            onKeyDown={handleInputKeyDown}
+            onClick={(event) => {
+              event.stopPropagation();
+            }}
+          />
           ) : (
             <Button
             onClick={(event) => {
