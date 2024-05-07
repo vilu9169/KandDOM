@@ -8,6 +8,8 @@ from vertexai.generative_models import GenerativeModel, GenerationConfig
 from collection_tools import tools
 from util import print_tool_call, gemini_unfiltered
 
+from openai import OpenAI
+
 
 instructions = """
 Ditt jobb är att sammanställa information om personer från en text. Sammanställningen sak ha tre delar.\n
@@ -93,6 +95,7 @@ def use_tools_on_summary(summary):
     client = Groq(
     api_key=os.environ.get("GROQ_API_KEY"),
 )
+    client = OpenAI()
     start = time()
     log_people_info = client.chat.completions.create(
         messages=[
@@ -107,8 +110,23 @@ def use_tools_on_summary(summary):
         ],
         tools = [tools["ny_information_om_person"], tools["ny_information_om_relation"], 
                 tools["ny_information_om_gruppering"]],
-        model="llama3-70b-8192",
+        model="gpt-3.5-turbo-0125",
     )
+    # log_people_info = client.chat.completions.create(
+    #     messages=[
+    #         {
+    #             "role": "system",
+    #             "content": tool_instructions,
+    #         },
+    #         {
+    #             "role": "user",
+    #             "content": summary,
+    #         }
+    #     ],
+    #     tools = [tools["ny_information_om_person"], tools["ny_information_om_relation"], 
+    #             tools["ny_information_om_gruppering"]],
+    #     model="llama3-70b-8192",
+    # )
 
     try:
         print("\n")
