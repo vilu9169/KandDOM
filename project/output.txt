@@ -1,204 +1,1151 @@
-{pagestart page 2 in document pdf/Hyrkont.pdf }GÄSTRIKE
-HÄLSINGE
-NATION
-Hyresvärd
-Namn
-HYRESKONTRAKT
-STUDENTBOSTAD
-Hyresgäst
-Stiftelsen Gästrike-Hälsinge studentbostäder
-Adress
-Studentvägen 2C
-752 34 Uppsala
-Namn
-Viktor Lundin
-E-post
-viktor.lundin3@gmail.com
-Hyresobjekt
-Adress
-Till Bostaden hör
-|Rackarbergsgatan 15, 752 35 Uppsala
-Lägenhetsnr Folkbokföring
-1103
-Gemensamt förråd
-Typ
-Hyrestid
-Uppsägning
-Lägenhetstyp
-Avtalsnummer
-1301206
-Objektsnummer
-GH15203
-Org/personnummer
-817600-3997
-Telefon
-018-518510
+{pagestart page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }1
+Polisen
+Enhet
+Förundersökningsprotokoll
+Region Syd, Utredningsjour 7 PO Malmö
+Handläggare (Protokollförare)
+Amelia Isaksson
+Undersökningsledare
+Amelia Isaksson
+Polisens diarienummer
+5000-K284928-23
+Personer i ärendet
+Målsägande
+Matbutiken I Värnhem Ab
+Förtursmål
+Nej
+Ersättningsyrkanden
+Finns ej
+Misstänkt (Efternamn och förnamn)
+Friman, Kati Marjan Gina Danica
+Brott
+Ringa stöld
+Arkiv/Åkl. ex
+Beslag
+Företrädare
+Åklnr
+Signerat av
+Amelia Isaksson
+Signerat datum GSRÄTT
+2023-03-24 17:11
+INKOM: 2023-04-06
+Datu LNR: B 3972-23
+2023+03-212
+Målsägande vill bli underrättad om tidpunkt för huvudförhandlingen
+Nej
+Tolk krävs
 Personnummer
-010709-6216
-Telefon
-0761860998
-Fastighetsbeteckning
-Luthagen 62:10
-Objektsnummer
-GH15203
-Yta, ca
-30 m²
-Eget förråd
-☑
-1 rum kök, öppen planlösning
-2023-06-01 och tills vidare
-Uppsägning av detta avtal kan ske tidigast till det månadsskifte som inträffar närmast efter
-månad/er från uppsägning.
-Hyra
-Arshyra kronor
-53 232
-hyran ingår
-Hushållsel
-Varmvatten
-Avtalsvillkor
-Underskrifter
-Uppsägning
-Underskrift
+19950822-3584
+Förhandsgodkännande enligt RB 48:10
+Nej
+Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
+2023-03-10
+Information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt är överlämnad vid ett personligt sammanträffande
+Underrättad om slutförd förundersökning / utredning enligt RB 23:18a
+2023-03-13, skriftlig underrättelse genom lösbrev
+Yttrande senast (rådrum)
+2023-03-22
+Resultat av slutunderrättelse
+Har inte avhörts
+Försvarare
+Önskas ej
+Underrättad om slutförd förundersökning / utredning
+Yttrande senast (rådrum)
+Resultat av slutunderrättelse
+Misstänkt (Efternamn och förnamn)
+Friman, Tanja Tamara
+Brott
+Ringa stöld
+Personnummer
+19640510-0287
+Förhandsgodkännande enligt RB 48:10
+Nej
+Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
+Information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt är överlämnad vid ett personligt sammanträffande
+Underrättad om slutförd förundersökning / utredning enligt RB 23:18a
+2023-03-13, skriftlig underrättelse genom lösbrev
+Yttrande senast (rådrum)
+2023-03-22
+Resultat av slutunderrättelse
+Har inte avhörts
+Försvarare
+Begärd, namnges senare
+Underrättad om slutförd förundersökning / utredning
+Yttrande senast (rådrum)
+Resultat av slutunderrättelse
+{pageend page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Brott i ärendet
+Brottsbeskrivning
+Ringa stöld
+Brottsplatsadress
+Ica Supermarket Värnhem, Östra Förstadsgatan
+50, Malmö
+Aktör
+Friman, Kati Marjan Gina Danica
+Friman, Tanja Tamara
+Matbutiken I Värnhem Ab
+Tullgren, Anna Seema
+Notering
+Övervaknings film finns.
+Händelse inträffad
+Händelse inträffad mellan
+2023-03-10
+Roll
+Misstänkt
+Misstänkt
+Målsägande
+Vittne
+2
+{pageend page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Diarienr
+Uppgiftstyp
+Anmälan
+5000-K284928-23
+Anmälan
 3
-Kallvatten
-Värme X
-Bredband ☑
-Enligt denna sida och andra sidan av kontraktet
-Detta hyreskontrakt är upprättat i två likalydande exemplar. Hyresvärden och hyresgästen har erhållit
-var sitt.
-Ort och datum
-Ort och datum
-Uppsala,
-Hyresvärd
-Hyresgäst
-På grund av idag träffad överenskommelse upphör kontraktet att gälla fr o m
-till vilken dag hyresgästen förbinder sig att avflytta.
-Ort och datum
-Hyresgästens underskrift
-1 (2)
-Namnförtydligande
-{pageend page 2 in document pdf/Hyrkont.pdf}{pagestart page 2 in document pdf/Hyrkont.pdf }Villkor studentbostad
-1. Upplåtelseändamål
-Detta hyreskontrakt avser uthyrning av bostadslägenhet till student
-under studietiden. Hyresobjektet anges på sidan 1 med bostads- och
-lägenhetsnummer och benämns nedan "Bostaden". Bostaden upplåts
-som s.k. genomgångsbostad. Som förutsättning för upplåtelsen gäller
-att hyresgästen bedriver aktiva, studiemedelsberättigade studier vid
-universitet i Uppsala samt är betalande medlem i Gästrike-Hälsinge
-nation. Med "Student" enligt detta kontrakt avses studerande som
-uppfyller samtliga krav och förutsättningar för att få hyra Bostaden enligt
-detta hyreskontrakt.
-2. Hyrestid
-Hyrestiden framgår av sida 1. Hyresförhållandet kan längst vara i sex
-(6) år. Dispens kan ges till forskarstuderande efter särskild prövning
-3. Begränsat besittningsskydd
-Med anledning av att upplåtelsen avser en s.k. genomgångsbostad för
-Student har hyresgästen inte någon rätt till förlängning av
-hyreskontraktet om hyresgästen inte längre uppfyller de krav på
-studieaktivitet m.m. som är en förutsättning för att hyra Bostaden enligt
-detta hyreskontrakt.
-4. Skötsel av Bostaden m.m.
-Hyresgästen skall iaktta allt som fordras för att bevara sundhet, ordning
-och skick inom Bostaden och fastigheten i övrigt. Hyresgästen åtar sig
-att väl vårda Bostaden samt att utan dröjsmål underrätta hyresvärden
-om inträffade skador eller brister i Bostaden, vilka kräver omedelbart
-avhjälpande för att skada inte skall uppstå eller förvärras. Hyresgästen
-skall ersätta eventuella av hyresgästen orsakade skador på Bostaden,
-inredning och fastigheten i övrigt.
-Hyresvärden har rätt att utan uppskov få tillträde till Bostaden för att
-utöva nödvändig tillsyn eller utföra förbättringsarbeten som inte kan
-uppskjutas utan risk för skada.
-Bostaden är avsedd för en person. Gäller bara 10 och 11 månaders
-kontrakt.
-5. Upplåtelse i andra hand samt överlåtelse
-Hyresgästen har inte rätt att hyra ut Bostaden i andra hand utan
-hyresvärdens skriftliga medgivande. Andrahandsuthyrning medges
-endast till annan Student.
-Hyresgästen har inte rätt att överlåta hyresrätten till Bostaden.
-6. Hyresbetalning
-Hyran skall, utan anmaning, betalas senast sista vardagen före varje
-kalendermånads början till bankgiro 5349-7087. Vid utebliven
-hyresbetalning utgår dröjsmålsränta enligt räntelagen. Hyresvärden har
-rätt till ersättning för påminnelseavgift, inkassokostnader m.m. enligt vad
-som gäller enligt lag om ersättning för inkassokostnader m.m.
-Hyresgästen är medveten om att hyresvärden kommer att överlämna
-varje försenad betalning till inkasso utan någon förvarning.
-7. Nedsättning av hyran
-Hyresgästen har inte rätt till nedsättning av hyran för tid när hyresvärden
-låter utföra arbete för att sätta Bostaden i avtalat skick eller för
-sedvanligt underhåll av Bostaden eller fastigheten i övrigt. Hyresgästen
-har inte heller rätt till nedsättning av hyra under tid som hyresvärden
-utför planerade ombyggnationer av fastigheten. Arbete skall dock ske
-utan onödig tidsspillan och hyresvärden skall, vid mer ingripande
-arbeten, informera hyresgästen i förväg.
-8. Värme, varmvatten
-Hyresvärden tillhandahåller värme och varmvatten med undantag för
-den tid då nödvändig översyn eller reparation av panna eller annan
-värmekälla, värmeväxlare, tekniska installationer och därtill hörande
-ledningar utförs. Arbeten skall dock ske utan onödig tidsspillan.
-9. TV
-TV-licens betalas av hyresgästen. Tv-kanaler ingår i hyran med det
-grundutbud som gäller för fastigheten.
-10. Huvudnyckel
-Hyresvärden har rätt att inneha huvudnyckel till Bostaden.
-11. Uppsägning
-Uppsägning av hyreskontraktet skall ske skriftligt eller via Mina
-sidor. Uppsägningstiden är, om hyresgästen vill säga upp
-kontraktet 3 månader. Vill hyresvärden säga upp kontraktet är
-uppsägningstiden tre (3) månader. Uppsägningen skall alltid ske till
-ett månadsskifte.
-12. Bekräftelse av uppsägning m.m.
-Uppsägningen bekräftas alltid skriftligt av hyresvärden. Har
-uppsägningen inte bekräftats av hyresvärden skall hyresgästen
-kontakta hyresvärden. Bekräftelsen skickas med e-post.
-Hyresgästen är skyldig att under uppsägningstiden låta visa
-Bostaden på lämplig tid för annan Student som anvisats av
-hyresvärden.
-13. Tid för inflyttning och utflyttning
-Infaller inflyttnings- eller avflyttningsdagen på en lördag, söndag,
-annan helgdag, midsommarafton, julafton eller nyårsafton skall
-inflyttning eller avflyttning istället ske närmast efterföljande vardag.
-14. Villkorsändringar
-Hyran utgår med av Stiftelsen Gästrike-Hälsinge nations
-studentbostäder fastställt belopp som insättes på Bg 5349-7087.
-Hyresgästen förbinder sig att under hyrestiden utan föregående
-uppsägning godta den hyra och de villkor i övrigt, varom
-överenskommelse träffas mellan Stiftelsen och Gästrike-Hälsinge
-nation i Uppsala på grundval av gällande förhandlingsordning
-15. Boendeprövning
-Under hyrestiden prövas hyresgästens behov av Bostaden varje
-termin. Hyresgästen är medveten om och accepterar att för fortsatt
-förhyrning av Bostaden gäller att hyresgästen per termin presterar
-minst 22,5 högskolepoäng. Hyresgästen accepterar att hyresvärden
-genomför kontroller av hyresgästens studieprestationer samt
-nationsmedlemsskap. Hyresgästen är vidare medveten om och
-accepterar att hyresvärden har rätt att säga upp hyresavtalet om
-hyresgästen avbryter sina studier. Anledningen till detta är att
-Bostaden behövs till annan Student.
-16. Allmänna anvisningar och ordningsföreskrifter
-Hyresgästen förbinder sig att följa de ordningsföreskrifter som vid
-var tid fastställs av hyresvärden. Gällande ordningsföreskrifter
-framgår av Bilaga 1.
-Rökning är absolut förbjudet inom Stiftelsens fastigheter.
-Det är förbjudet att ha husdjur i Bostaden.
-17. Vid avflyttning
-Hyresgästen förbinder sig att vid hyrestidens utgång lämna
-Bostaden, inventarier och till denna, hörande gemensamma
-utrymmen och förråd väl rengjorda och Bostaden befriad från alla
-personliga tillhörigheter. Bostaden och inventarier skall därvid
-befinna sig i ett sådant skick, som kan anses svara mot normalt
-slitage, med hänsyn till hyrestidens längd och med utgångspunkt
-från den besiktningsblankett som upprättades vid inflyttning.
-Hyresgästen skall ersätta kostnader för städning pga. att Bostaden
-och inredning inte är rengjorda samt i förekommande fall ersätta
-eventuellt förkomna inventarier.
-Hyresgästen skall vid hyrestidens slut återlämna samtliga
-utkvitterade nycklar och passerkort som tillhör Bostaden och
-allmänna utrymmen. Återlämnas inte samtliga utkvitterade nycklar
-skall hyresgästen ersätta hyresvärden dennes kostnader för utbyte
-av lås till Bostaden.
-2(2)
-Hyresvärdens signatur
-Stiftelsen Gästrike-Hälsinge studentbostäder
-2023-03-29 09:10:01
-{pageend page 2 in document pdf/Hyrkont.pdf}
+Innehållsförteckning
+Sida
+Bilaga: Ursprunglig anmälan
+Fotografier
+Fotografi(er) Kvitto samt tillgripet gods......
+Fotografi(er) Kvitto på betalda varor..
+Fotografi(er) Tanja Friman.……………………
+Fotografi(er) Kati Friman.………………..
+Förhör vittne
+Förhör med vittne, Tullgren, Anna Seema
+4
+6
+14
+15
+19
+25
+Förhör misstänkt
+Förhör med misstänkt, Friman, Kati Marjan Gina Danica
+Förhör med misstänkt, Friman, Tanja Tamara
+26
+28
+Personalia
+Bilaga skäligen misstänkt, Friman, Kati Marjan Gina Danica………......
+30
+Personalia, Friman, Kati Marjan Gina Danica………………………..
+31
+Bilaga skäligen misstänkt, Friman, Tanja Tamara....
+32
+Personalia, Friman, Tanja Tamara……....
+33
+{pageend page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Polisen
+Huvudanmälan
+5000-K284928-23
+Anmälningsuppgifter
+Anmälningsdatum: 2023-03-10 14:24
+Anmälningssätt: Telefon
+Enhet: 561520IG6, BF-IGV 6 LPO Malmö Söder
+Anmälningsansvarig: Lundgren, Lina
+Brott/Händelse
+Brott/Benämning: Ringa stöld
+Variant: Ringa stöld
+Brottsform: Fullbordat
+Rubricering: Ringa stöld
+Ica Supermarket Värnhem, Östra Förstadsgatan 50, Malmö
+t.o.m Fredag 2023-03-10 12:10
+Misstänkta personer:
+Friman, Kati Marjan Gina Danica
+Medverkansform: Gärningsman
+Friman, Tanja Tamara
+Medverkansform: Gärningsman
+Övriga aktörer:
+Matbutiken I Värnhem Ab
+Tullgren, Anna Seema
+Fritext
+INLEDNING
+Målsägande
+Vittne
+Patrull 65-3650 blev beordrade till Ica Supermarket med anledning av en ringa stöld. .
+BROTTET
+Kati och Tanja har tillsammans och i samförstånd tillgripit varor till ett värde av 488,6kr och sedan
+passerat sista betalningsmöjligheten utan att betala.
+ÖVERVAKNINGSKAMEROR
+Finns, avfilmat. Se Filip.
+TILLGRIPET GODS
+Se kvitto i FILIP.
+{pageend page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }TVÅNGSMEDEL
+Butikspersonal August envarsgrep Kati och Tanja 2023-03-10 kl. 12:10. Prövat och hävt kl 12:35 av
+Pa Hansen.
+ERSÄTTNINGSANSPRÅK
+Finns ej, varorna återlämnade till butiken.
+ÖVRIGT
+Bilder i Filip.
+5
+{pageend page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+Polisen
+Datum
+ANTECKNINGAR
+2023-03-10
+Diarienummer
+5000-K284928-23
+Bildbilaga
+Kvitto på tillgripet gods samt bilder på det tillgripna godset.
+6
+Sida 1 (8)
+{pageend page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+1. Kvitto över tillgripna varor.
+Värnhem
+ICA
+Supermarket
+Östra Förstadsgatan 50
+212 12 Malmö
+Tel.nr. 040-101230
+Org.nr. 559027-0723
+Säljare: 
+134
+Datum: 2023-03-10
+Kassa: 01 Nr: 8345
+Tid: 12:27
+Ref. 4401597601001285500310237
+PARKERAT KVITTO
+Blåbär
+Burrata
+Caesarsallad
+Frukostknäckebröd
+Gräddost mild
+Majskorn
+Mat&Bak
+Pesto solt. tomat
+Plommontomat
+Rökt Prickig Korv
+Stjärnor Cheese
+Tonfisk i olja
+Tulpan 15p
+5,00
+36,95
+54,95
+20,00
+29,95
+19,95
+21,95
+15,00
+39,95
+10,00
+20,95
+15,95
+198,00
+2st*99,00
+Registrerade artiklar för 488,60
+Alla registrerade kuponger och
+pant returkvitton ska återlämnas
+till kunden.
+Vid återtag av kvitto kan ev.
+kombinationsrabatter påverkas.
+TACK FÖR BESÖKET!
+VÄLKOMMEN ATER
+E-presentkort bytes ej.
+E- presentkort reklameras hos utgivaren
+בי
+7
+Sida 2 (8)
+{pageend page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }NYB
+Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+ti papper
+ba
+120
+стрид
+04-06-2923
+13 neagr
+EKSTRÖMS
+01-05-2022
+613 16307
+EKSTRÖMS
+MSKAKAS!
+EKSTRÖMS
+NIUTNING SEDAN 1848
+OMSKAKAS
+EKSTRÖMS
+NJUTNING SEDAN 1848
+R KLASSISKA
+SAFT
+OPPA
+IN PAC-VITAMIN
+Cod smak
+VÅR KLASSISKA
+SAFT
+SOPPA
+RIK PA C-VITAMIN
+God smak
+g ur tiden
+ICA
+Ägg 10st
+Från frigående höns inomhus
+*A*A
+FRÅN SVENSKA GARDAR
+SVERIGE
+SVERIGE
+Storlek
+M-L
+OMPENSERADE AGG 997 OVERS
+2. Varor som de misstänkta betalade för.
+OMSKAKAS!
+CA
+SÖTA & VITKÖTTIGA
+BLÅBÄR
+125g
+ICA AB. Box 4075. 169 04 Solna, Sverige.
+Kundkontakt: 020-83 33 33 eller 
+ICA.se
+Sorteras som plastförpackning
+.
+KLASS 1. Packade för
+Sort: Legacy
+Ursprung: Chile
+NL72794
+Batch:L0803
+7 318693 254055
+L003S
+NA LANDSKAP
+Sida 3 (8)
+8
+{pageend page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }3. Tillgripet gods.
+Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+wasa
+KIVIKS
+37
+Ett et
+B
+Sida 4 (8)
+9
+{pageend page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+a.
+Was
+4.
+wasa
+94291
+10
+Sida 5 (8)
+{pageend page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+Blomsterboda
+15 tulpaner
+HALIBARA B cre
+TRAN LOKALA COUN
+DACARS
+CARMITI
+SACTSUND
+$15808 91686
+5. Tillgripet gods.
+Blomsterboda
+15 tulpaner
+ww
+DACARS
+CARANTY
+WELCKE
+LOKA
+HAV
+11
+FRUK
+Estre
+1434
+wasa
+iveco
+EKOLOGISK
+PLOMMONTOMATER
+400 g
+SINCE 1919
+FRU
+/VETEKNACH
+RIK PA 
+FIB
+Cheese
+& ONION
+Fantastiskt,
+sproda
+iveco
+1,5 KG
+01
+188/0
+33
+45100
+0950119
+373010050950113116
+Supe
+Värnh
+måndag-söndag.
+Vi ses!
+speciellt utvalda för dig (och alla andra
+Välkommen! Denna vecka har vi ett helt ging n
+Telefon 040-101230
+DRYIN
+Ica.se/supermarket/varnhem
+Inspireras på
+85g
+CA Hemm
+Felj oss på f
+BREDBAR
+Lönneberga
+LEVERPASTEJ
+ORIGINAL
+Sida 6 (8)
+{pageend page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+12
+nad forpocke
+% Off (Dup
+21.12.22 - 21.04.23 0
+FORVARING & MALL
+7 318690 07171
+FISK
+INFORM
+butatun
+50/70
+ICA
+Sart Brightwe
+BLÅBÄR
+SOTA & VITKÖTTIGA
+125g
+S
+SVEDRAN
+Petters
+LLA
+A KORV
+OVER BOKSPAN
+106
+6. Tillgripet gods.
+Sida 7 (8)
+{pageend page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
+MARIER
+ASSVER
+113
+ଧy8y78
+ขยาย
+FOLLOW
+7. Tillgripet gods.
+KOTT FRAN
+SVERIGE
+Petters
+A
+KORV
+OVER BOKSPAN
+FEAN GEBORG SEDAN 1936
+ICA
+CAESARSALLAD
+MED KYCKLING,
+GRANA 
+PADANO
+, BACON
+OCH 
+CAESARDRESSING
+SVENSK KYCKLING
+270g
+13
+Sida 8 (8)
+{pageend page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Fotografi(er)
+Kvitto på betalda varor
+Signerat av
+Signerat datum
+Polisen
+Enhet
+Region Syd, BF-IGV 6 LPO Malmö Söder
+Originalhandlingens förvaringsplats
+Involverad personal
+Amelia Isaksson
+Datum
+2023-03-10
+Funktion
+Diarienr
+5000-K284928-23
+Tid
+15:35
+Uppgiftslämnare
+14
+{pageend page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Fotografi(er) Tanja Friman, 2023-03-10 17:24 diarienr: 5000-K284928-23
+Polisen
+Datum
+2023-03-10
+ANTECKNINGAR
+Tanja Friman, 640510-0287.
+Bildbilaga
+Diarienummer
+5000-K284928-23
+15
+Sida 1 (4)
+{pageend page 15 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Fotografi(er) Tanja Friman, 2023-03-10 17:24 diarienr: 5000-K284928-23
+11/0
+Estrella
+45100
+HET! NYHET
+UGNS
+AKAD
+CHIPS-
+Estrella
+ella L
+Estrella
+Estrella
+15%
+Estrella
+95%
+wasa
+Sohrrec
+Estrella
+Estrella
+Estrella
+Eua
+wasa
+Ägg
+EAT NAT
+a bar of nuts and
+...and nothing d
+Simple...ism
+NATURAL
+alhes
+Simple... Isn't it?
+wasaZ
+EAT NATUR
+a bar of nuts and fruit
+...and nothing dodgy.
+Simple...isn't it?
+www.eatnatural.co.uk
+1. Bild på misstänkt Tanja. Beslut fotografering JFUL J. Bladh.
+16
+PR
+EAT
+ab
+Simp
+TEI
+Sida 2 (4)
+{pageend page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Fotografi(er) Tanja Friman, 2023-03-10 17:24 diarienr: 5000-K284928-23
+11/3
+45100
+Estrella
+NYHET! NYHET!
+UGNS
+AKAD
+Estrella
+Estrella
+Condi
+Estrella
+M
+Boercream
+Estrella
+13%
+15%
+Estrella
+Estrella
+Estrella
+ula
+O'Pate
+2. Bild på misstänkt Tanja. Beslut fotografering JFUL J. Bladh.
+-
+17
+EAT NATU
+a bar of nuts and
+...and nothing de
+Simple...isn
+EAT
+TURAL
+be of sand
+doties tot
+Simple...Isn't it?
+EAT NATU
+a bar of nuts and fruit
+...and nothing dodgy.
+Simple...isn't it
+www.eatnatural.co.uk
+Sida 3 (4)
+{pageend page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Fotografi(er) Tanja Friman, 2023-03-10 17:24 diarienr: 5000-K284928-23
+45100
+Estrella
+NYHET! NYHET
+UGNS
+AKAL
+Estrella
+Estrella
+Estrella
+18
+Simple....isn
+Estrella
+13%
+93%
+EAT NAT
+a bar of nuts and
+...and nothing de
+Simple...isn
+EAT N
+Estrella
+Estrella
+Estrella
+Eula
+3. Bild på misstänkt Tanja. Beslut fotografering JFUL J. Bladh.
+EAT N
+a bar of nut
+...and nothi
+Simple...
+wwwwww.eatnatura
+EAT
+HATURAL
+EIN
+Sida 4 (4)
+{pageend page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
+Polisen
+Datum
+2023-03-10
+ANTECKNINGAR
+Kati Friman, 950822-3584
+Bildbilaga
+Diarienummer
+5000-K284928-23
+19
+Sida 1 (6)
+{pageend page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
+20
+1. Misstänkt Kati. Beslut foto jful Bladh.
+Sida 2 (6)
+{pageend page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
+21
+#0
+2. Misstänkt Kati. Beslut foto jful Bladh.
+Sida 3 (6)
+{pageend page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
+22
+3. Misstänkt Kati. Beslut foto jful Bladh.
+Sida 4 (6)
+{pageend page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
+23
+4. Misstänkt Kati. Beslut foto jful Bladh.
+Sida 5 (6)
+{pageend page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
+24
+5. Misstänkt Kati. Beslut foto jful Bladh.
+Sida 6 (6)
+{pageend page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Polisen
+Enhet
+Region Syd, BF-IGV 6 LPO Malmö Söder
+Hörd person
+Tullgren, Anna
+Den hörde är
+Vittne
+Tolk
+ID Styrkt
+Ja
+Sätt
+MPMF
+Förhör
+Signerat av
+Signerat datum
+25
+25
+Diarienr
+5000-K284928-23
+Personnummer
+Ställning till misstänkt - målsägande - vittne
+Anledning till förhör / Misstankar som misstänkt har underrättats om
+Ringa stöld, Fullbordat
+Ytterligare information om anledning till förhör
+Anna informeras att hon hörs som vittne gällande ringa stöld.
+Anna jobbade i kassan vid aktuellt tidpunkt.
+Språk
+Underrättad om rätt till försvarare Godtar den försvarare som rätten förordnar
+Försvarare/ombud önskas
+Förhörsledare
+Lina Lundgren
+Förhörsplats
+Ica, Östra förstadsgatan 50
+Förhörsvittne
+Berättelse
+Underrättad om misstanke
+Försvarare/ombud närvarande
+Förhörsdatum
+2023-03-10
+Typ av förhör
+RB 23:6
+Utskrivet av
+LL
+Förhör påbörjat
+13:07
+Förhör avslutat
+13:13
+Förhörssätt
+Anna ombeds berätta fritt om händelsen.
+Anna berättar att kvinnorna hade en korg eller vagn. Anna stod vid kassan närmst
+självscanningen och kvinnorna stod vid självscanningskassan närmst Anna. Kvinnorna hade
+lagt upp alla sina varor på bänken, det var mycket saker.
+Anna berättar att personalen har en iPad vid sidan om kassan där man ser aktiviteten vid
+självscanningskassorna. Anna tror hon såg att tre saker var inscannade, det senaste hon såg
+tror hon var blåbär. När hon tittade på kvinnorna så såg hon att den ena kvinnan tog en
+burrata och la ner denna i påsen. Burratan kom inte upp som scannad på personalens iPad. Då
+ringde Anna kollegan August som sprang ut och grep kvinnorna. Anna berättar att allting
+gick snabbt från det att hon såg burratan till att Anna hade ringt August och plötsligt var
+kvinnornas påse full. Anna förstod då att kvinnorna hade tagit många varor.
+Kollegan August kom och grep kvinnorna utanför butiken.
+Anna tillfrågas om hon uppfattade om båda kvinnorna var delaktiga i stölden.
+Den ena höll scannern och den andra packade ner.
+Uppläst utan invändningar.
+{pageend page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Polisen
+Enhet
+Region Syd, BF-IGV 6 LPO Malmö Söder
+Hörd person
+Friman, Kati Marjan Gina Danica
+Den hörde är
+Misstänkt
+ID Styrkt
+Ja
+Sätt
+RES
+Förhör
+Signerat av
+Signerat datum
+26
+26
+Diarienr
+5000-K284928-23
+Personnummer
+19950822-3584
+Ställning till misstänkt - målsägande - vittne
+Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
+2023-03-10 Mikael Hansen
+Tolk
+Språk
+Anledning till förhör / Misstankar som misstänkt har underrättats om
+Ringa stöld, Fullbordat, Gärningsman
+Ytterligare information om anledning till förhör
+Underrättad om misstanke
+2023-03-10
+Kati delges misstanke gällande ringa stöld gemensamt och i samförstånd med hennes mamma Tanja.
+Detta genom att uppsåtligen och olovligen tillgripit gods ett värde av 488,60 kr och därefter passerat
+sista betalningsmöjlighet utan att betala, detta på Ica Supermarket på Östra Förstadsgatan 50 i Malmö
+2023-03-10 t.o.m kl 12:10.
+Underrättad om rätt till försvarare Godtar den försvarare som rätten förordnar
+Ja
+Försvarare/ombud önskas
+Önskar ej försvarare vid
+detta förhör, vid kommande
+förhör eller vid en eventuell
+rättegång.
+Förhörsledare
+Mikael Hansen
+Förhörsplats
+I affären
+Förhörsvittne
+Försvarare/ombud närvarande
+Förhörsdatum
+2023-03-10
+Typ av förhör
+RB 23:6
+Förhör påbörjat
+12:46
+Förhörssätt
+Utskrivet av
+Förhör avslutat
+13:01
+Berättelse
+Förhörsledarens kommentarer och anteckningar skrivs i kursiv stil.
+Kati underrättas om att detta är ett förhör.
+Kati underrättas om sin rätt att ej behöva yttra sig över misstanken och inte heller i övrigt
+behöva medverka till utredningen av sin egen skuld.
+Kati delges misstanke gällande ringa stöld gemensamt och i samförstånd med hennes mamma
+Tanja. Detta genom att uppsåtligen och olovligen tillgripit gods ett värde av 488,60 kr och
+därefter passerat sista betalningsmöjlighet utan att betala, detta på Ica Supermarket på
+Östra Förstadsgatan i Malmö 2023-03-10 t.o.m kl 12:10.
+Kati förstår misstanken.
+{pageend page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Förhör med Friman, Kati Marjan Gina Danica; 2023-03-10 12:46 diarienr: 5000-K284928-23
+Kati underrättas om rätten till försvarare och Kati godtar att förhöret hålls utan försvarare
+närvarande.
+Vid kommande förhör eller vid en eventuell rättegång begär inte Kati att biträdas av en
+offentlig försvarare.
+Kati informeras om att staten betalar kostanden för en offentlig försvarare men att den som
+döms kan bli skyldig att betala tillbaka hela eller delar av kostnaden.
+Kati berättar att hon och Tanja var på Ica och handlade. När de skulle gå till kassorna var de
+lång kö och Kati och Tanja gick då till snabbkassan.
+Kati började skanna varorna och det blev något problem med skanningen då både Kati och
+Tanja höll på med varorna. Kati hade ingen aning vad som skannats och inte av de varor som
+låg på bänken och i påsen.
+Kati berättar att hon visste att hennes mamma stoppade ner saker i påsen som inte var
+skannade. Kati minns inte vilka saker det var men måste varit flera då det var mer saker i
+påsen än de som Kati skannat. Kati tror att hon själv la ner något i påsen som inte var skannat
+men vet inte vad det var för något.
+Kati berättar att hon märkte att det var mer i påsen än hon hade skannat direkt när hon kom ut
+då påsen var tung. Kati vet inte varför hon inte gjorde någonting åt det.
+Kati berättar att hon hade pengar med sig i butiken och hade kunnat betala för alla varor om
+hennes mamma inte stoppat ner andra saker i påsen.
+Kati berättar att om hon hade planerat att stjäla innan hon gick in i butiken hade hon inte
+stannat när personalen kom efter henne.
+Kati berättar att hon aldrig tidigare stulit någonting.
+Kati ERKÄNNER brottet ringa stöld.
+Kati GODTAR ett eventuellt strafföreläggande.
+Uppläst utan invändning.
+27
+{pageend page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Förhör
+Signerat av
+Signerat datum
+28
+28
+Polisen
+Enhet
+Region Syd, BF-IGV 6 LPO Malmö Söder
+Hörd person
+Friman, Tanja Tamara
+Den hörde är
+Misstänkt
+Tolk
+ID Styrkt
+Ja
+Sätt
+Svenskt pass
+Språk
+Diarienr
+5000-K284928-23
+Personnummer
+19640510-0287
+Ställning till misstänkt - målsägande - vittne
+Anledning till förhör / Misstankar som misstänkt har underrättats om
+Ringa stöld, Fullbordat, Gärningsman
+Ytterligare information om anledning till förhör
+Underrättad om misstanke
+2023-03-10
+Tanja delges misstanke om ringa stöld genom att gemensamt och i samförstånd med Kati tillgripit varor
+till ett värde om 488,60kr och därefter passerat sista betalningsmöjlighet utan att betala för varorna.
+Detta på Ica Värnhem, Östra Förstadsgatan 50, 2023-03-10 t.o.m. kl. 12:10.
+Underrättad om rätt till försvarare Godtar den försvarare som rätten förordnar
+Ja
+Förhörsledare
+Lina Lundgren
+Förhörsplats
+Ica, Östra förstadsgatan 50
+Förhörsvittne
+Försvarare/ombud önskas
+Eleonora Johansson
+Försvarare/ombud närvarande
+Förhörsdatum
+2023-03-10
+Typ av förhör
+RB 23:6
+Förhör påbörjat
+12:45
+Förhör avslutat
+12:56
+Förhörssätt
+Utskrivet av
+LL
+Berättelse
+Tanja delges misstanke om ringa stöld genom att gemensamt och i samförstånd med
+Kati tillgripit varor till ett värde om 488,60kr och därefter passerat sista
+betalningsmöjlighet utan att betala för varorna. Detta på Ica Värnhem, Östra
+Förstadsgatan 50, 2023-03-10 t.o.m. kl. 12:10.
+Tanja förstår brottsmisstanken.
+Tanja är informerad i enlighet med FUK 12 §.
+Tanja informeras om rätten till försvarare och godtar att förhöret hålls utan försvarare
+närvarande. Vid eventuella kommande förhör önskar Tanja Eleonora Johansson som
+försvarare.
+Tanja ombeds berätta fritt utifrån misstanken.
+Tanja säger att hon scannade och erkänner att hon inte scannade alla saker. Tanja säger att det
+var dumt.
+Tanja tillfrågas hur de valde ut varorna de inte scannade.
+Tanja säger att det var en slump.
+Tanja tillfrågas om de bestämt sig att inte betala för alla varorna redan innan de gick in i
+{pageend page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Förhör med Friman, Tanja Tamara; 2023-03-10 12:45 diarienr: 5000-K284928-23
+butiken.
+Tanja säger nej, hon stjäl inte. Det var något som bara flög i henne, Tanja handlar alltid i
+denna butik.
+Tanja tillfrågas om hon eller Kati har pengar att betala för varorna.
+Tanja säger att hon själv inte har pengar men hon tror att Kati har. Tanja betalade 73,95kr för
+de varorna de scannade.
+Tanja tillfrågas hur de gick till vid kassan.
+Tanja säger att Kati scannade och Tanja la i påsen. Tanja säger att hon trodde att Kati hade
+scannat varorna. På fråga vad hon menar med detta så kan inte Tanja specificera mer.
+Tanja kan heller inte svara på frågan om hon trodde att Kati scannade för alla varorna.
+Tanja tillfrågas vad som hände efter att de lämnat kassan.
+Tanja säger att de gick ut utanför butiken och sen kom en kille som sa att de skulle gå tillbaka
+in i butiken.
+Tanja ERKÄNNER brott.
+Tanja är informerad om och införstådd med innebörden av strafföreläggande. Tanja skulle
+godta ett eventuellt strafföreläggande.
+Tanja är informerad om och införstådd med innebörden av förenklad delgivning. Tanja anger
+finns folkbokföringsadress som sin delgivningsadress.
+Uppläst utan invändningar.
+29
+{pageend page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Bilaga - Skäligen misstänkt
+Polisen
+Enhet
+Region Syd, Utredningsjour 7 PO Malmö
+Skäligen misstänkt person
+Friman, Kati Marjan Gina Danica
+Identifierad
+Ja
+Kontrollsätt
+Dataslagning
+Personnr
+19950822-3584
+Kommentar
+RES
+Misstankeuppgift
+Rubricering
+Ringa stöld
+Händelse inträffad
+Brottsplatsadress
+Ica Supermarket Värnhem, Östra Förstadsgatan 50
+Brottsmisstankenr
+POD50-BM2023-1668210010-84
+:
+Diarienr
+5000-K284928-23
+Brottskod(Misstanke)
+-2023-03-10 12:10
+Områdeskod
+05020100800074
+Diarienr
+5000-K284928-23
+Status
+FU/Utredning pågår
+Brottskod
+0853
+Brottsbeskrivning
+Ringa stöld
+Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
+2023-03-10
+Information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt är överlämnad vid ett personligt sammanträffande
+Underrättelse om misstanke
+2023-03-10
+Beslutsdatum misstankebeslut
+2023-03-10
+Informerad om möjlighet till strafflindring (FUK 12c)
+Beslutsfattare misstankebeslut
+Isaksson, Amelia
+30
+30
+{pageend page 30 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 35 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Polisen
+Personalia och dagsbotsuppgift
+Kallas för
+Öknamn
+Namn
+Friman, Kati Marjan Gina Danica
+Tilltalsnamn
+Kati
+Födelseförsamling
+Hyllie
+Medborgarskap
+Sverige
+Postadress
+Garagegatan 14A
+212 51 Malmö
+Födelselän
+Födelseort utland
+Utskriftsdatum
+2023-03-24
+Personnummer
+19950822-3584
+Kön
+Kvinna
+Hemvistland
+Telefonnr
+0704424154: Mobiltelefon
+Folkbokföringsort
+Malmö
+Föräldrars/Vårdnadshavares namn och adress (beträffande den som inte fyllt 20 år)
+Utbildning
+Yrke / Titel
+Arbetsgivare
+Anställning (nuvarande och tidigare)
+Uppgav att hon jobbar på Kastrup
+Arbetsförhet och hälsotillstånd
+Kompletterande uppgifter
+Uppgiven inkomst
+264000
+Försörjningsplikt
+Förmögenhet
+0
+Bidrag
+Kontroll utförd
+Taxerad inkomst
+0
+Taxeringskontroll utförd av
+Pa L. Lundgren
+Taxeringsår
+2021
+Datum
+2023-03-10
+Telefonnr
+Hemmavarande barn under 18 år
+0
+Skulder
+0
+31
+{pageend page 35 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 35 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Bilaga - Skäligen misstänkt
+Polisen
+Enhet
+Region Syd, Utredningsjour 7 PO Malmö
+Skäligen misstänkt person
+Friman, Tanja Tamara
+Identifierad
+Kontrollsätt
+Personnr
+19640510-0287
+Kommentar
+Ja
+Pass (svenskt)
+Misstankeuppgift
+Rubricering
+Ringa stöld
+Brottsplatsadress
+Ica Supermarket Värnhem, Östra Förstadsgatan 50
+Brottsmisstankenr
+POD50-BM2023-1668226169-81
+Diarienr
+5000-K284928-23
+Händelse inträffad
+Brottskod(Misstanke)
+:
+-2023-03-10 12:10
+Områdeskod
+05020100800074
+Diarienr
+5000-K284928-23
+Status
+FU/Utredning pågår
+Brottskod
+0853
+Brottsbeskrivning
+Ringa stöld
+Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
+Information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt är överlämnad vid ett personligt sammanträffande
+Underrättelse om misstanke
+Informerad om möjlighet till strafflindring (FUK 12c)
+2023-03-10
+Beslutsdatum misstankebeslut
+2023-03-10
+Beslutsfattare misstankebeslut
+Isaksson, Amelia
+32
+32
+{pageend page 35 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 35 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Polisen
+Personalia och dagsbotsuppgift
+Namn
+Friman, Tanja Tamara
+Tilltalsnamn
+Tanja
+Födelseförsamling
+Finska Förs.
+Medborgarskap
+Sverige
+Postadress
+Garagegatan 14A
+212 51 Malmö
+Kallas för
+Öknamn
+Utskriftsdatum
+2023-03-24
+Personnummer
+19640510-0287
+Kön
+Kvinna
+Födelselän
+Stockholms län
+Hemvistland
+Födelseort utland
+Telefonnr
+0733408185: Mobiltelefon
+Folkbokföringsort
+Malmö
+Föräldrars/Vårdnadshavares namn och adress (beträffande den som inte fyllt 20 år)
+Utbildning
+Yrke / Titel
+Arbetsgivare
+Anställning (nuvarande och tidigare)
+Arbetsförhet och hälsotillstånd
+Kompletterande uppgifter
+Uppgiven inkomst
+0
+Försörjningsplikt
+Telefonnr
+Bidrag
+Sjukersättning 5500kr/mån
+Bostadsbidrag 5300kr/mån
+Hemmavarande barn under 18 år
+0
+Skulder
+200000
+Förmögenhet
+0
+Kontroll utförd
+Taxerad inkomst
+120400
+Taxeringskontroll utförd av
+Pa L. Lundgren
+Taxeringsår
+2021
+Datum
+2023-03-10
+33
+33
+{pageend page 35 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 35 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Underrättelse/Delgivning jml RB 23:18a
+Polisen
+Enhet
+Region Syd, Utredningsjour 7 PO Malmö
+Ärende
+Diarienr
+5000-K284928-23
+Gärning
+Underrättad av
+Isaksson, Amelia
+Ringa stöld Fullbordat, Ica Supermarket Värnhem Östra Förstadsgatan 50 Malmö, mellan - och
+2023-03-10 12:10
+Berörd person
+Personnr
+19950822-3584
+Underrättelsesätt
+Efternamn
+Friman
+Skriftlig underrättelse genom lösbrev
+Datum utsänd
+2023-03-13
+Notering
+Förnamn
+Kati Marjan Gina Danica
+Delgiven info. om ev. förenklad delgivning
+2023-03-10
+Yttrande senast (rådrum)
+2023-03-22
+Misstänkt har getts möjlighet att ta del av materialet från den slutförda utredningen (RB 23:18a § / FUK
+12 §)
+Resultat av slutunderrättelse
+Har inte avhörts
+Information gällande erinran
+Försvarare
+Namn
+Underrättelsesätt
+Datum utsänd
+Notering
+Resultat av slutunderrättelse
+Information gällande erinran
+Yttrande senast (rådrum)
+{pageend page 35 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}{pagestart page 35 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf }Underrättelse/Delgivning jml RB 23:18a
+Polisen
+Enhet
+Region Syd, Utredningsjour 7 PO Malmö
+Ärende
+Diarienr
+5000-K284928-23
+Gärning
+Underrättad av
+Isaksson, Amelia
+Ringa stöld Fullbordat, Ica Supermarket Värnhem Östra Förstadsgatan 50 Malmö, mellan - och
+2023-03-10 12:10
+Berörd person
+Personnr
+19640510-0287
+Underrättelsesätt
+Efternamn
+Friman
+Skriftlig underrättelse genom lösbrev
+Datum utsänd
+2023-03-13
+Notering
+Förnamn
+Tanja Tamara
+Yttrande senast (rådrum)
+2023-03-22
+Resultat av slutunderrättelse
+Har inte avhörts
+Information gällande erinran
+Försvarare
+Namn
+Underrättelsesätt
+Datum utsänd
+Notering
+Önskar advokat Eleonora Johansson
+Resultat av slutunderrättelse
+Information gällande erinran
+Yttrande senast (rådrum)
+{pageend page 35 in document pdf/malmtrb3972-23aktbil2-240403171444-f7cd1dfa_WzZD740.pdf}
