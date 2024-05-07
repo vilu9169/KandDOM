@@ -729,6 +729,7 @@ def deleteDocgroup(request):
 @api_view(['POST'])
 def getDocumentsInGroup(request):
     group = request.data.get('group')
+    print('group: ', group)
     documents = DocumentGroup.objects.get(_id=ObjectId(group)).documents.all()
     resp = []
     for doc in documents:

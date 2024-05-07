@@ -24,9 +24,9 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   const { currentGroup, setCurrentGroup } = useContext(AuthContext);
   const { docsInGroup, setDocsInGroup } = useState([]);
 
-  const getDocsInGroup = async () => {
+  const getDocsInGroup = async (groupid) => {
     const body = {
-      group: currentGroup,
+      group: groupid,
     };
     console.log(body)
     try {
@@ -54,7 +54,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
     localStorage.setItem("currentFile", null);
     localStorage.setItem("currentGroup", groupid);
     getChatHistory(groupid);
-    getDocsInGroup();
+    getDocsInGroup(groupid);
     setClickedDocument(true);
   };
 
