@@ -1,1151 +1,333 @@
-{pagestart nr 1}1
-Polisen
-Enhet
-Förundersökningsprotokoll
-Region Syd, Utredningsjour 7 PO Malmö
-Handläggare (Protokollförare)
-Amelia Isaksson
-Undersökningsledare
-Amelia Isaksson
-Polisens diarienummer
-5000-K284928-23
-Personer i ärendet
-Målsägande
-Matbutiken I Värnhem Ab
-Förtursmål
-Nej
-Ersättningsyrkanden
-Finns ej
-Misstänkt (Efternamn och förnamn)
-Friman, Kati Marjan Gina Danica
-Brott
-Ringa stöld
-Arkiv/Åkl. ex
-Beslag
-Företrädare
-Åklnr
-Signerat av
-Amelia Isaksson
-Signerat datum GSRÄTT
-2023-03-24 17:11
-INKOM: 2023-04-06
-Datu LNR: B 3972-23
-2023+03-212
-Målsägande vill bli underrättad om tidpunkt för huvudförhandlingen
-Nej
-Tolk krävs
-Personnummer
-19950822-3584
-Förhandsgodkännande enligt RB 48:10
-Nej
-Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
-2023-03-10
-Information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt är överlämnad vid ett personligt sammanträffande
-Underrättad om slutförd förundersökning / utredning enligt RB 23:18a
-2023-03-13, skriftlig underrättelse genom lösbrev
-Yttrande senast (rådrum)
-2023-03-22
-Resultat av slutunderrättelse
-Har inte avhörts
-Försvarare
-Önskas ej
-Underrättad om slutförd förundersökning / utredning
-Yttrande senast (rådrum)
-Resultat av slutunderrättelse
-Misstänkt (Efternamn och förnamn)
-Friman, Tanja Tamara
-Brott
-Ringa stöld
-Personnummer
-19640510-0287
-Förhandsgodkännande enligt RB 48:10
-Nej
-Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
-Information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt är överlämnad vid ett personligt sammanträffande
-Underrättad om slutförd förundersökning / utredning enligt RB 23:18a
-2023-03-13, skriftlig underrättelse genom lösbrev
-Yttrande senast (rådrum)
-2023-03-22
-Resultat av slutunderrättelse
-Har inte avhörts
-Försvarare
-Begärd, namnges senare
-Underrättad om slutförd förundersökning / utredning
-Yttrande senast (rådrum)
-Resultat av slutunderrättelse
-{pageend nr 1}{pagestart nr 2}Brott i ärendet
-Brottsbeskrivning
-Ringa stöld
-Brottsplatsadress
-Ica Supermarket Värnhem, Östra Förstadsgatan
-50, Malmö
-Aktör
-Friman, Kati Marjan Gina Danica
-Friman, Tanja Tamara
-Matbutiken I Värnhem Ab
-Tullgren, Anna Seema
-Notering
-Övervaknings film finns.
-Händelse inträffad
-Händelse inträffad mellan
-2023-03-10
-Roll
-Misstänkt
-Misstänkt
-Målsägande
-Vittne
-2
-{pageend nr 2}{pagestart nr 3}Diarienr
-Uppgiftstyp
-Anmälan
-5000-K284928-23
-Anmälan
-3
-Innehållsförteckning
-Sida
-Bilaga: Ursprunglig anmälan
-Fotografier
-Fotografi(er) Kvitto samt tillgripet gods......
-Fotografi(er) Kvitto på betalda varor..
-Fotografi(er) Tanja Friman.……………………
-Fotografi(er) Kati Friman.………………..
-Förhör vittne
-Förhör med vittne, Tullgren, Anna Seema
-4
-6
-14
-15
-19
-25
-Förhör misstänkt
-Förhör med misstänkt, Friman, Kati Marjan Gina Danica
-Förhör med misstänkt, Friman, Tanja Tamara
-26
-28
-Personalia
-Bilaga skäligen misstänkt, Friman, Kati Marjan Gina Danica………......
-30
-Personalia, Friman, Kati Marjan Gina Danica………………………..
-31
-Bilaga skäligen misstänkt, Friman, Tanja Tamara....
-32
-Personalia, Friman, Tanja Tamara……....
-33
-{pageend nr 3}{pagestart nr 4}Polisen
-Huvudanmälan
-5000-K284928-23
-Anmälningsuppgifter
-Anmälningsdatum: 2023-03-10 14:24
-Anmälningssätt: Telefon
-Enhet: 561520IG6, BF-IGV 6 LPO Malmö Söder
-Anmälningsansvarig: Lundgren, Lina
-Brott/Händelse
-Brott/Benämning: Ringa stöld
-Variant: Ringa stöld
-Brottsform: Fullbordat
-Rubricering: Ringa stöld
-Ica Supermarket Värnhem, Östra Förstadsgatan 50, Malmö
-t.o.m Fredag 2023-03-10 12:10
-Misstänkta personer:
-Friman, Kati Marjan Gina Danica
-Medverkansform: Gärningsman
-Friman, Tanja Tamara
-Medverkansform: Gärningsman
-Övriga aktörer:
-Matbutiken I Värnhem Ab
-Tullgren, Anna Seema
-Fritext
-INLEDNING
-Målsägande
-Vittne
-Patrull 65-3650 blev beordrade till Ica Supermarket med anledning av en ringa stöld. .
-BROTTET
-Kati och Tanja har tillsammans och i samförstånd tillgripit varor till ett värde av 488,6kr och sedan
-passerat sista betalningsmöjligheten utan att betala.
-ÖVERVAKNINGSKAMEROR
-Finns, avfilmat. Se Filip.
-TILLGRIPET GODS
-Se kvitto i FILIP.
-{pageend nr 4}{pagestart nr 5}TVÅNGSMEDEL
-Butikspersonal August envarsgrep Kati och Tanja 2023-03-10 kl. 12:10. Prövat och hävt kl 12:35 av
-Pa Hansen.
-ERSÄTTNINGSANSPRÅK
-Finns ej, varorna återlämnade till butiken.
-ÖVRIGT
-Bilder i Filip.
-5
-{pageend nr 5}{pagestart nr 6}Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
-Polisen
-Datum
-ANTECKNINGAR
-2023-03-10
-Diarienummer
-5000-K284928-23
-Bildbilaga
-Kvitto på tillgripet gods samt bilder på det tillgripna godset.
-6
-Sida 1 (8)
-{pageend nr 6}{pagestart nr 7}Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
-1. Kvitto över tillgripna varor.
-Värnhem
-ICA
-Supermarket
-Östra Förstadsgatan 50
-212 12 Malmö
-Tel.nr. 040-101230
-Org.nr. 559027-0723
-Säljare: 
-134
-Datum: 2023-03-10
-Kassa: 01 Nr: 8345
-Tid: 12:27
-Ref. 4401597601001285500310237
-PARKERAT KVITTO
-Blåbär
-Burrata
-Caesarsallad
-Frukostknäckebröd
-Gräddost mild
-Majskorn
-Mat&Bak
-Pesto solt. tomat
-Plommontomat
-Rökt Prickig Korv
-Stjärnor Cheese
-Tonfisk i olja
-Tulpan 15p
-5,00
-36,95
-54,95
-20,00
-29,95
-19,95
-21,95
-15,00
-39,95
-10,00
-20,95
-15,95
-198,00
-2st*99,00
-Registrerade artiklar för 488,60
-Alla registrerade kuponger och
-pant returkvitton ska återlämnas
-till kunden.
-Vid återtag av kvitto kan ev.
-kombinationsrabatter påverkas.
-TACK FÖR BESÖKET!
-VÄLKOMMEN ATER
-E-presentkort bytes ej.
-E- presentkort reklameras hos utgivaren
-בי
-7
-Sida 2 (8)
-{pageend nr 7}{pagestart nr 8}NYB
-Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
-ti papper
-ba
-120
-стрид
-04-06-2923
-13 neagr
-EKSTRÖMS
-01-05-2022
-613 16307
-EKSTRÖMS
-MSKAKAS!
-EKSTRÖMS
-NIUTNING SEDAN 1848
-OMSKAKAS
-EKSTRÖMS
-NJUTNING SEDAN 1848
-R KLASSISKA
-SAFT
-OPPA
-IN PAC-VITAMIN
-Cod smak
-VÅR KLASSISKA
-SAFT
-SOPPA
-RIK PA C-VITAMIN
-God smak
-g ur tiden
-ICA
-Ägg 10st
-Från frigående höns inomhus
-*A*A
-FRÅN SVENSKA GARDAR
-SVERIGE
-SVERIGE
-Storlek
-M-L
-OMPENSERADE AGG 997 OVERS
-2. Varor som de misstänkta betalade för.
-OMSKAKAS!
-CA
-SÖTA & VITKÖTTIGA
-BLÅBÄR
-125g
-ICA AB. Box 4075. 169 04 Solna, Sverige.
-Kundkontakt: 020-83 33 33 eller 
-ICA.se
-Sorteras som plastförpackning
-.
-KLASS 1. Packade för
-Sort: Legacy
-Ursprung: Chile
-NL72794
-Batch:L0803
-7 318693 254055
-L003S
-NA LANDSKAP
-Sida 3 (8)
-8
-{pageend nr 8}{pagestart nr 9}3. Tillgripet gods.
-Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
-wasa
-KIVIKS
-37
-Ett et
-B
-Sida 4 (8)
-9
-{pageend nr 9}{pagestart nr 10}Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
-a.
-Was
-4.
-wasa
-94291
-10
-Sida 5 (8)
-{pageend nr 10}{pagestart nr 11}Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
-Blomsterboda
-15 tulpaner
-HALIBARA B cre
-TRAN LOKALA COUN
-DACARS
-CARMITI
-SACTSUND
-$15808 91686
-5. Tillgripet gods.
-Blomsterboda
-15 tulpaner
-ww
-DACARS
-CARANTY
-WELCKE
-LOKA
-HAV
-11
-FRUK
-Estre
-1434
-wasa
-iveco
-EKOLOGISK
-PLOMMONTOMATER
-400 g
-SINCE 1919
-FRU
-/VETEKNACH
-RIK PA 
-FIB
-Cheese
-& ONION
-Fantastiskt,
-sproda
-iveco
-1,5 KG
-01
-188/0
-33
-45100
-0950119
-373010050950113116
-Supe
-Värnh
-måndag-söndag.
-Vi ses!
-Välkommen! Denna vecka har vi ett helt ging n
-speciellt utvalda för dig (och alla andra
-CA Hemm
-Telefon 040-101230
-DRYIN
-Ica.se/supermarket/varnhem
-Inspireras på
-85g
-Felj oss på f
-BREDBAR
-Lönneberga
-LEVERPASTEJ
-ORIGINAL
-Sida 6 (8)
-{pageend nr 11}{pagestart nr 12}Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
-12
-nad forpocke
-% Off (Dup
-21.12.22 - 21.04.23 0
-FORVARING & MALL
-7 318690 07171
-FISK
-INFORM
-butatun
-50/70
-ICA
-Sart Brightwe
-BLÅBÄR
-SOTA & VITKÖTTIGA
-125g
-S
-SVEDRAN
-Petters
-LLA
-A KORV
-OVER BOKSPAN
-106
-6. Tillgripet gods.
-Sida 7 (8)
-{pageend nr 12}{pagestart nr 13}Fotografi(er) Kvitto samt tillgripet gods, 2023-03-10 15:32 diarienr: 5000-K284928-23
-MARIER
-ASSVER
-113
-ଧy8y78
-ขยาย
-FOLLOW
-7. Tillgripet gods.
-KOTT FRAN
-SVERIGE
-Petters
-A
-KORV
-OVER BOKSPAN
-FEAN GEBORG SEDAN 1936
-ICA
-CAESARSALLAD
-MED KYCKLING,
-GRANA 
-PADANO
-, BACON
-OCH 
-CAESARDRESSING
-SVENSK KYCKLING
-270g
-13
-Sida 8 (8)
-{pageend nr 13}{pagestart nr 14}Fotografi(er)
-Kvitto på betalda varor
-Signerat av
-Signerat datum
-Polisen
-Enhet
-Region Syd, BF-IGV 6 LPO Malmö Söder
-Originalhandlingens förvaringsplats
-Involverad personal
-Amelia Isaksson
-Datum
-2023-03-10
-Funktion
-Diarienr
-5000-K284928-23
-Tid
-15:35
-Uppgiftslämnare
-14
-{pageend nr 14}{pagestart nr 15}Fotografi(er) Tanja Friman, 2023-03-10 17:24 diarienr: 5000-K284928-23
-Polisen
-Datum
-2023-03-10
-ANTECKNINGAR
-Tanja Friman, 640510-0287.
-Bildbilaga
-Diarienummer
-5000-K284928-23
-15
+{pagestart page 10 in document pdf/Byte_av_namn.pdf }VALL
+KAMMAR
+KAMMARRÄTTEN
+I SUNDSVALL
+DOM
+2019-12-04
+Meddelad i Sundsvall
+Dok.Id 184491
+Postadress
+Box 714
+851 21 Sundsvall
+KLAGANDE
+Håkan Kinnonen, 19650328-7150
+Bäckan 17
+785 62 Djurmo
+MOTPART
+Sida 1 (3)
+Mål nr 709-19
+Skatteverket
+ÖVERKLAGAT AVGÖRANDE
+Förvaltningsrätten i Faluns dom den 27 februari 2019 i mål nr 457-19,
+se bilaga A
+SAKEN
+Ändrad stavning av efternamn
+KAMMARRÄTTENS AVGÖRANDE
+Kammarrätten avslår överklagandet.
+Besöksadress
+Södra Tjärngatan 2
+Telefon
+060-18 66 00
+Telefax
+Expeditionstid
+måndag - fredag
+08:00-16:00
+E-post: kammarrattenisundsvall@dom.se
+www.kammarrattenisundsvall.se
+{pageend page 10 in document pdf/Byte_av_namn.pdf}{pagestart page 10 in document pdf/Byte_av_namn.pdf }KAMMARRÄTTEN
+I SUNDSVALL
+DOM
+YRKANDEN M.M.
+Sida 2
+Mål nr 709-19
+Håkan Kinnonen vidhåller sitt yrkande om att få ändra stavningen av
+efternamnet till Kinnunen. Han anför i huvudsak följande. Enligt en sökning
+på Eniro finns det tio personer i Sverige som heter Kinnonen. Åtta av dessa
+tillhör hans släkt. Samtidigt finns det 750 personer som heter Kinnunen.
+Han lyckades inte med motsvarande sökning i Finland, men är ganska
+övertygad om att ingen heter Kinnonen där. Den ändring han ansökt om har
+godkänts i minst två fall, troligtvis fler eftersom han saknade några
+släktingar när han sökte på Kinnonen. U uttalas alltid, eller i alla fall oftast,
+o på finska. Han och hans familj har alltid uttalat sitt efternamn med u
+eftersom de talar svenska. Han bifogar ett fotografi av sina farföräldrars
+gravsten som bevis för att släkten stavade efternamnet med u för två
+generationer sedan.
+Skatteverket anser att överklagandet ska avslås och anför i huvudsak att
+den begärda stavningsändringen påverkar namnets uttal och visuella intryck
+och att det därför inte kan anses vara samma efternamn.
+SKÄLEN FÖR KAMMARRÄTTENS AVGÖRANDE
+För att en namnändring inte ska anses som byte till ett annat efternamn
+krävs enligt 13 § andra stycket punkten 1 lagen (2016:1013) om
+personnamn att det är fråga om en enkel stavningsändring som inte
+förändrar namnets uttal. Enligt förarbetena till lagen (prop. 2015/16:180
+s.104) får stavningsändringen, för att det ska röra sig om en enkel ändring,
+inte innebära att namnet uppfattas som ett nytt namn, som t.ex. när namnen
+trots stor språklig likhet uppfattas olika visuellt.
+{pageend page 10 in document pdf/Byte_av_namn.pdf}{pagestart page 10 in document pdf/Byte_av_namn.pdf }KAMMARRÄTTEN
+I SUNDSVALL
+DOM
+Sida 3
+Mål nr 709-19
+Den begärda ändringen, som innebär att ett o byts mot ett u, medför inte att
+det visuella intrycket av namnet ändras på ett sådant sätt att det uppfattas
+som ett nytt namn. Det finns inte heller något annat som talar för att det inte
+skulle vara fråga om en enkel stavningsändring i den mening som avses i
+lagen om personnamn.
+Den finns dock en uttalsmässig skillnad mellan o och u, vilket även
+bekräftas av vad Håkan Kinnonen själv uppger i sitt överklagande. En
+ändring av stavningen från Kinnonen till Kinnunen skulle därmed förändra
+namnets uttal, varför ändringen inte kan beviljas med stöd av 13 § andra
+stycket punkten 1 lagen om personnamn. Överklagandet ska därför avslås.
+HUR MAN ÖVERKLAGAR, se bilaga B (formulär 1).
+Anders Odmark
+kammarrättsråd
+ordförande
+Petra Ebbing
+kammarrättsråd
+referent
+Sara Poulsen
+tf. kammarrättsassessor
+{pageend page 10 in document pdf/Byte_av_namn.pdf}{pagestart page 10 in document pdf/Byte_av_namn.pdf }Bilaga A
 Sida 1 (4)
-{pageend nr 15}{pagestart nr 16}Fotografi(er) Tanja Friman, 2023-03-10 17:24 diarienr: 5000-K284928-23
-11/0
-Estrella
-45100
-HET! NYHET
-UGNS
-AKAD
-CHIPS-
-Estrella
-ella L
-Estrella
-Estrella
-15%
-Estrella
-95%
-wasa
-Sohrrec
-Estrella
-Estrella
-Estrella
-Eua
-wasa
-Ägg
-EAT NAT
-a bar of nuts and
-...and nothing d
-Simple...ism
-NATURAL
-alhes
-Simple... Isn't it?
-wasaZ
-EAT NATUR
-a bar of nuts and fruit
-...and nothing dodgy.
-Simple...isn't it?
-www.eatnatural.co.uk
-1. Bild på misstänkt Tanja. Beslut fotografering JFUL J. Bladh.
-16
-PR
-EAT
-ab
-Simp
-TEI
-Sida 2 (4)
-{pageend nr 16}{pagestart nr 17}Fotografi(er) Tanja Friman, 2023-03-10 17:24 diarienr: 5000-K284928-23
-11/3
-45100
-Estrella
-NYHET! NYHET!
-UGNS
-AKAD
-Estrella
-Estrella
-Condi
-Estrella
-M
-Boercream
-Estrella
-13%
-15%
-Estrella
-Estrella
-Estrella
-ula
-O'Pate
-2. Bild på misstänkt Tanja. Beslut fotografering JFUL J. Bladh.
--
-17
-EAT NATU
-a bar of nuts and
-...and nothing de
-Simple...isn
-EAT
-TURAL
-be of sand
-doties tot
-Simple...Isn't it?
-EAT NATU
-a bar of nuts and fruit
-...and nothing dodgy.
-Simple...isn't it
-www.eatnatural.co.uk
-Sida 3 (4)
-{pageend nr 17}{pagestart nr 18}Fotografi(er) Tanja Friman, 2023-03-10 17:24 diarienr: 5000-K284928-23
-45100
-Estrella
-NYHET! NYHET
-UGNS
-AKAL
-Estrella
-Estrella
-Estrella
-18
-Simple....isn
-Estrella
-13%
-93%
-EAT NAT
-a bar of nuts and
-...and nothing de
-Simple...isn
-EAT N
-Estrella
-Estrella
-Estrella
-Eula
-3. Bild på misstänkt Tanja. Beslut fotografering JFUL J. Bladh.
-EAT N
-a bar of nut
-...and nothi
-Simple...
-wwwwww.eatnatura
-EAT
-HATURAL
-EIN
-Sida 4 (4)
-{pageend nr 18}{pagestart nr 19}Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
-Polisen
-Datum
-2023-03-10
-ANTECKNINGAR
-Kati Friman, 950822-3584
-Bildbilaga
-Diarienummer
-5000-K284928-23
-19
-Sida 1 (6)
-{pageend nr 19}{pagestart nr 20}Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
-20
-1. Misstänkt Kati. Beslut foto jful Bladh.
-Sida 2 (6)
-{pageend nr 20}{pagestart nr 21}Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
-21
-#0
-2. Misstänkt Kati. Beslut foto jful Bladh.
-Sida 3 (6)
-{pageend nr 21}{pagestart nr 22}Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
-22
-3. Misstänkt Kati. Beslut foto jful Bladh.
-Sida 4 (6)
-{pageend nr 22}{pagestart nr 23}Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
-23
-4. Misstänkt Kati. Beslut foto jful Bladh.
-Sida 5 (6)
-{pageend nr 23}{pagestart nr 24}Fotografi(er) Kati Friman, 2023-03-10 17:26 diarienr: 5000-K284928-23
-24
-5. Misstänkt Kati. Beslut foto jful Bladh.
-Sida 6 (6)
-{pageend nr 24}{pagestart nr 25}Polisen
-Enhet
-Region Syd, BF-IGV 6 LPO Malmö Söder
-Hörd person
-Tullgren, Anna
-Den hörde är
-Vittne
-Tolk
-ID Styrkt
-Ja
-Sätt
-MPMF
-Förhör
-Signerat av
-Signerat datum
-25
-25
-Diarienr
-5000-K284928-23
-Personnummer
-Ställning till misstänkt - målsägande - vittne
-Anledning till förhör / Misstankar som misstänkt har underrättats om
-Ringa stöld, Fullbordat
-Ytterligare information om anledning till förhör
-Anna informeras att hon hörs som vittne gällande ringa stöld.
-Anna jobbade i kassan vid aktuellt tidpunkt.
-Språk
-Underrättad om rätt till försvarare Godtar den försvarare som rätten förordnar
-Försvarare/ombud önskas
-Förhörsledare
-Lina Lundgren
-Förhörsplats
-Ica, Östra förstadsgatan 50
-Förhörsvittne
-Berättelse
-Underrättad om misstanke
-Försvarare/ombud närvarande
-Förhörsdatum
-2023-03-10
-Typ av förhör
-RB 23:6
-Utskrivet av
-LL
-Förhör påbörjat
-13:07
-Förhör avslutat
-13:13
-Förhörssätt
-Anna ombeds berätta fritt om händelsen.
-Anna berättar att kvinnorna hade en korg eller vagn. Anna stod vid kassan närmst
-självscanningen och kvinnorna stod vid självscanningskassan närmst Anna. Kvinnorna hade
-lagt upp alla sina varor på bänken, det var mycket saker.
-Anna berättar att personalen har en iPad vid sidan om kassan där man ser aktiviteten vid
-självscanningskassorna. Anna tror hon såg att tre saker var inscannade, det senaste hon såg
-tror hon var blåbär. När hon tittade på kvinnorna så såg hon att den ena kvinnan tog en
-burrata och la ner denna i påsen. Burratan kom inte upp som scannad på personalens iPad. Då
-ringde Anna kollegan August som sprang ut och grep kvinnorna. Anna berättar att allting
-gick snabbt från det att hon såg burratan till att Anna hade ringt August och plötsligt var
-kvinnornas påse full. Anna förstod då att kvinnorna hade tagit många varor.
-Kollegan August kom och grep kvinnorna utanför butiken.
-Anna tillfrågas om hon uppfattade om båda kvinnorna var delaktiga i stölden.
-Den ena höll scannern och den andra packade ner.
-Uppläst utan invändningar.
-{pageend nr 25}{pagestart nr 26}Polisen
-Enhet
-Region Syd, BF-IGV 6 LPO Malmö Söder
-Hörd person
-Friman, Kati Marjan Gina Danica
-Den hörde är
-Misstänkt
-ID Styrkt
-Ja
-Sätt
-RES
-Förhör
-Signerat av
-Signerat datum
-26
-26
-Diarienr
-5000-K284928-23
-Personnummer
-19950822-3584
-Ställning till misstänkt - målsägande - vittne
-Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
-2023-03-10 Mikael Hansen
-Tolk
-Språk
-Anledning till förhör / Misstankar som misstänkt har underrättats om
-Ringa stöld, Fullbordat, Gärningsman
-Ytterligare information om anledning till förhör
-Underrättad om misstanke
-2023-03-10
-Kati delges misstanke gällande ringa stöld gemensamt och i samförstånd med hennes mamma Tanja.
-Detta genom att uppsåtligen och olovligen tillgripit gods ett värde av 488,60 kr och därefter passerat
-sista betalningsmöjlighet utan att betala, detta på Ica Supermarket på Östra Förstadsgatan 50 i Malmö
-2023-03-10 t.o.m kl 12:10.
-Underrättad om rätt till försvarare Godtar den försvarare som rätten förordnar
-Ja
-Försvarare/ombud önskas
-Önskar ej försvarare vid
-detta förhör, vid kommande
-förhör eller vid en eventuell
-rättegång.
-Förhörsledare
-Mikael Hansen
-Förhörsplats
-I affären
-Förhörsvittne
-Försvarare/ombud närvarande
-Förhörsdatum
-2023-03-10
-Typ av förhör
-RB 23:6
-Förhör påbörjat
-12:46
-Förhörssätt
-Utskrivet av
-Förhör avslutat
-13:01
-Berättelse
-Förhörsledarens kommentarer och anteckningar skrivs i kursiv stil.
-Kati underrättas om att detta är ett förhör.
-Kati underrättas om sin rätt att ej behöva yttra sig över misstanken och inte heller i övrigt
-behöva medverka till utredningen av sin egen skuld.
-Kati delges misstanke gällande ringa stöld gemensamt och i samförstånd med hennes mamma
-Tanja. Detta genom att uppsåtligen och olovligen tillgripit gods ett värde av 488,60 kr och
-därefter passerat sista betalningsmöjlighet utan att betala, detta på Ica Supermarket på
-Östra Förstadsgatan i Malmö 2023-03-10 t.o.m kl 12:10.
-Kati förstår misstanken.
-{pageend nr 26}{pagestart nr 27}Förhör med Friman, Kati Marjan Gina Danica; 2023-03-10 12:46 diarienr: 5000-K284928-23
-Kati underrättas om rätten till försvarare och Kati godtar att förhöret hålls utan försvarare
-närvarande.
-Vid kommande förhör eller vid en eventuell rättegång begär inte Kati att biträdas av en
-offentlig försvarare.
-Kati informeras om att staten betalar kostanden för en offentlig försvarare men att den som
-döms kan bli skyldig att betala tillbaka hela eller delar av kostnaden.
-Kati berättar att hon och Tanja var på Ica och handlade. När de skulle gå till kassorna var de
-lång kö och Kati och Tanja gick då till snabbkassan.
-Kati började skanna varorna och det blev något problem med skanningen då både Kati och
-Tanja höll på med varorna. Kati hade ingen aning vad som skannats och inte av de varor som
-låg på bänken och i påsen.
-Kati berättar att hon visste att hennes mamma stoppade ner saker i påsen som inte var
-skannade. Kati minns inte vilka saker det var men måste varit flera då det var mer saker i
-påsen än de som Kati skannat. Kati tror att hon själv la ner något i påsen som inte var skannat
-men vet inte vad det var för något.
-Kati berättar att hon märkte att det var mer i påsen än hon hade skannat direkt när hon kom ut
-då påsen var tung. Kati vet inte varför hon inte gjorde någonting åt det.
-Kati berättar att hon hade pengar med sig i butiken och hade kunnat betala för alla varor om
-hennes mamma inte stoppat ner andra saker i påsen.
-Kati berättar att om hon hade planerat att stjäla innan hon gick in i butiken hade hon inte
-stannat när personalen kom efter henne.
-Kati berättar att hon aldrig tidigare stulit någonting.
-Kati ERKÄNNER brottet ringa stöld.
-Kati GODTAR ett eventuellt strafföreläggande.
-Uppläst utan invändning.
-27
-{pageend nr 27}{pagestart nr 28}Förhör
-Signerat av
-Signerat datum
-28
-28
-Polisen
-Enhet
-Region Syd, BF-IGV 6 LPO Malmö Söder
-Hörd person
-Friman, Tanja Tamara
-Den hörde är
-Misstänkt
-Tolk
-ID Styrkt
-Ja
-Sätt
-Svenskt pass
-Språk
-Diarienr
-5000-K284928-23
-Personnummer
-19640510-0287
-Ställning till misstänkt - målsägande - vittne
-Anledning till förhör / Misstankar som misstänkt har underrättats om
-Ringa stöld, Fullbordat, Gärningsman
-Ytterligare information om anledning till förhör
-Underrättad om misstanke
-2023-03-10
-Tanja delges misstanke om ringa stöld genom att gemensamt och i samförstånd med Kati tillgripit varor
-till ett värde om 488,60kr och därefter passerat sista betalningsmöjlighet utan att betala för varorna.
-Detta på Ica Värnhem, Östra Förstadsgatan 50, 2023-03-10 t.o.m. kl. 12:10.
-Underrättad om rätt till försvarare Godtar den försvarare som rätten förordnar
-Ja
-Förhörsledare
-Lina Lundgren
-Förhörsplats
-Ica, Östra förstadsgatan 50
-Förhörsvittne
-Försvarare/ombud önskas
-Eleonora Johansson
-Försvarare/ombud närvarande
-Förhörsdatum
-2023-03-10
-Typ av förhör
-RB 23:6
-Förhör påbörjat
-12:45
-Förhör avslutat
-12:56
-Förhörssätt
-Utskrivet av
-LL
-Berättelse
-Tanja delges misstanke om ringa stöld genom att gemensamt och i samförstånd med
-Kati tillgripit varor till ett värde om 488,60kr och därefter passerat sista
-betalningsmöjlighet utan att betala för varorna. Detta på Ica Värnhem, Östra
-Förstadsgatan 50, 2023-03-10 t.o.m. kl. 12:10.
-Tanja förstår brottsmisstanken.
-Tanja är informerad i enlighet med FUK 12 §.
-Tanja informeras om rätten till försvarare och godtar att förhöret hålls utan försvarare
-närvarande. Vid eventuella kommande förhör önskar Tanja Eleonora Johansson som
-försvarare.
-Tanja ombeds berätta fritt utifrån misstanken.
-Tanja säger att hon scannade och erkänner att hon inte scannade alla saker. Tanja säger att det
-var dumt.
-Tanja tillfrågas hur de valde ut varorna de inte scannade.
-Tanja säger att det var en slump.
-Tanja tillfrågas om de bestämt sig att inte betala för alla varorna redan innan de gick in i
-{pageend nr 28}{pagestart nr 29}Förhör med Friman, Tanja Tamara; 2023-03-10 12:45 diarienr: 5000-K284928-23
-butiken.
-Tanja säger nej, hon stjäl inte. Det var något som bara flög i henne, Tanja handlar alltid i
-denna butik.
-Tanja tillfrågas om hon eller Kati har pengar att betala för varorna.
-Tanja säger att hon själv inte har pengar men hon tror att Kati har. Tanja betalade 73,95kr för
-de varorna de scannade.
-Tanja tillfrågas hur de gick till vid kassan.
-Tanja säger att Kati scannade och Tanja la i påsen. Tanja säger att hon trodde att Kati hade
-scannat varorna. På fråga vad hon menar med detta så kan inte Tanja specificera mer.
-Tanja kan heller inte svara på frågan om hon trodde att Kati scannade för alla varorna.
-Tanja tillfrågas vad som hände efter att de lämnat kassan.
-Tanja säger att de gick ut utanför butiken och sen kom en kille som sa att de skulle gå tillbaka
-in i butiken.
-Tanja ERKÄNNER brott.
-Tanja är informerad om och införstådd med innebörden av strafföreläggande. Tanja skulle
-godta ett eventuellt strafföreläggande.
-Tanja är informerad om och införstådd med innebörden av förenklad delgivning. Tanja anger
-finns folkbokföringsadress som sin delgivningsadress.
-Uppläst utan invändningar.
-29
-{pageend nr 29}{pagestart nr 30}Bilaga - Skäligen misstänkt
-Polisen
-Enhet
-Region Syd, Utredningsjour 7 PO Malmö
-Skäligen misstänkt person
-Friman, Kati Marjan Gina Danica
-Identifierad
-Ja
-Kontrollsätt
-Dataslagning
-Personnr
-19950822-3584
-Kommentar
-RES
-Misstankeuppgift
-Rubricering
-Ringa stöld
-Händelse inträffad
-Brottsplatsadress
-Ica Supermarket Värnhem, Östra Förstadsgatan 50
-Brottsmisstankenr
-POD50-BM2023-1668210010-84
-:
-Diarienr
-5000-K284928-23
-Brottskod(Misstanke)
--2023-03-10 12:10
-Områdeskod
-05020100800074
-Diarienr
-5000-K284928-23
-Status
-FU/Utredning pågår
-Brottskod
-0853
-Brottsbeskrivning
-Ringa stöld
-Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
-2023-03-10
-Information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt är överlämnad vid ett personligt sammanträffande
-Underrättelse om misstanke
-2023-03-10
-Beslutsdatum misstankebeslut
-2023-03-10
-Informerad om möjlighet till strafflindring (FUK 12c)
-Beslutsfattare misstankebeslut
-Isaksson, Amelia
-30
-30
-{pageend nr 30}{pagestart nr 31}Polisen
-Personalia och dagsbotsuppgift
-Kallas för
-Öknamn
-Namn
-Friman, Kati Marjan Gina Danica
-Tilltalsnamn
-Kati
-Födelseförsamling
-Hyllie
-Medborgarskap
-Sverige
+Mål nr
+2019-02-27
+457-19
+Meddelad i Falun
+FÖRVALTNINGSRÄTTEN DOM
+I FALUN
+KLAGANDE
+1. Håkan Kinnonen, 19650328-7150
+2. Camilla Kinnonen, 19670127-7227
+3. Sara Kinnonen, 19900320-1168
+4. Robin Kinnonen, 19880129-7170
+MOTPART
+Skatteverket
+ÖVERKLAGADE BESLUT
+Skatteverkets beslut (fyra stycken) 2018-12-17, dnr 18 51719572,
+18 51719581, 18 51719557 och 18 51719560
+SAKEN
+Ändrad stavning av efternamn
+FÖRVALTNINGSRÄTTENS AVGÖRANDE
+Förvaltningsrätten avslår överklagandet.
+Dok.Id 244015
 Postadress
-Garagegatan 14A
-212 51 Malmö
-Födelselän
-Födelseort utland
-Utskriftsdatum
-2023-03-24
-Personnummer
-19950822-3584
-Kön
-Kvinna
-Hemvistland
-Telefonnr
-0704424154: Mobiltelefon
-Folkbokföringsort
-Malmö
-Föräldrars/Vårdnadshavares namn och adress (beträffande den som inte fyllt 20 år)
-Utbildning
-Yrke / Titel
-Arbetsgivare
-Anställning (nuvarande och tidigare)
-Uppgav att hon jobbar på Kastrup
-Arbetsförhet och hälsotillstånd
-Kompletterande uppgifter
-Uppgiven inkomst
-264000
-Försörjningsplikt
-Förmögenhet
-0
-Bidrag
-Kontroll utförd
-Taxerad inkomst
-0
-Taxeringskontroll utförd av
-Pa L. Lundgren
-Taxeringsår
-2021
-Datum
-2023-03-10
-Telefonnr
-Hemmavarande barn under 18 år
-0
-Skulder
-0
-31
-{pageend nr 31}{pagestart nr 32}Bilaga - Skäligen misstänkt
-Polisen
-Enhet
-Region Syd, Utredningsjour 7 PO Malmö
-Skäligen misstänkt person
-Friman, Tanja Tamara
-Identifierad
-Kontrollsätt
-Personnr
-19640510-0287
-Kommentar
-Ja
-Pass (svenskt)
-Misstankeuppgift
-Rubricering
-Ringa stöld
-Brottsplatsadress
-Ica Supermarket Värnhem, Östra Förstadsgatan 50
-Brottsmisstankenr
-POD50-BM2023-1668226169-81
-Diarienr
-5000-K284928-23
-Händelse inträffad
-Brottskod(Misstanke)
-:
--2023-03-10 12:10
-Områdeskod
-05020100800074
-Diarienr
-5000-K284928-23
-Status
-FU/Utredning pågår
-Brottskod
-0853
-Brottsbeskrivning
-Ringa stöld
-Information om att förenklad delgivning kan komma att användas av polis och tingsrätt är överlämnad vid ett personligt sammanträffande
-Information om att tillgänglighetsdelgivning kan komma att användas av tingsrätt är överlämnad vid ett personligt sammanträffande
-Underrättelse om misstanke
-Informerad om möjlighet till strafflindring (FUK 12c)
-2023-03-10
-Beslutsdatum misstankebeslut
-2023-03-10
-Beslutsfattare misstankebeslut
-Isaksson, Amelia
-32
-32
-{pageend nr 32}{pagestart nr 33}Polisen
-Personalia och dagsbotsuppgift
-Namn
-Friman, Tanja Tamara
-Tilltalsnamn
-Tanja
-Födelseförsamling
-Finska Förs.
-Medborgarskap
-Sverige
-Postadress
-Garagegatan 14A
-212 51 Malmö
-Kallas för
-Öknamn
-Utskriftsdatum
-2023-03-24
-Personnummer
-19640510-0287
-Kön
-Kvinna
-Födelselän
-Stockholms län
-Hemvistland
-Födelseort utland
-Telefonnr
-0733408185: Mobiltelefon
-Folkbokföringsort
-Malmö
-Föräldrars/Vårdnadshavares namn och adress (beträffande den som inte fyllt 20 år)
-Utbildning
-Yrke / Titel
-Arbetsgivare
-Anställning (nuvarande och tidigare)
-Arbetsförhet och hälsotillstånd
-Kompletterande uppgifter
-Uppgiven inkomst
-0
-Försörjningsplikt
-Telefonnr
-Bidrag
-Sjukersättning 5500kr/mån
-Bostadsbidrag 5300kr/mån
-Hemmavarande barn under 18 år
-0
-Skulder
-200000
-Förmögenhet
-0
-Kontroll utförd
-Taxerad inkomst
-120400
-Taxeringskontroll utförd av
-Pa L. Lundgren
-Taxeringsår
-2021
-Datum
-2023-03-10
-33
-33
-{pageend nr 33}{pagestart nr 34}Underrättelse/Delgivning jml RB 23:18a
-Polisen
-Enhet
-Region Syd, Utredningsjour 7 PO Malmö
-Ärende
-Diarienr
-5000-K284928-23
-Gärning
-Underrättad av
-Isaksson, Amelia
-Ringa stöld Fullbordat, Ica Supermarket Värnhem Östra Förstadsgatan 50 Malmö, mellan - och
-2023-03-10 12:10
-Berörd person
-Personnr
-19950822-3584
-Underrättelsesätt
-Efternamn
-Friman
-Skriftlig underrättelse genom lösbrev
-Datum utsänd
-2023-03-13
-Notering
-Förnamn
-Kati Marjan Gina Danica
-Delgiven info. om ev. förenklad delgivning
-2023-03-10
-Yttrande senast (rådrum)
-2023-03-22
-Misstänkt har getts möjlighet att ta del av materialet från den slutförda utredningen (RB 23:18a § / FUK
-12 §)
-Resultat av slutunderrättelse
-Har inte avhörts
-Information gällande erinran
-Försvarare
-Namn
-Underrättelsesätt
-Datum utsänd
-Notering
-Resultat av slutunderrättelse
-Information gällande erinran
-Yttrande senast (rådrum)
-{pageend nr 34}{pagestart nr 35}Underrättelse/Delgivning jml RB 23:18a
-Polisen
-Enhet
-Region Syd, Utredningsjour 7 PO Malmö
-Ärende
-Diarienr
-5000-K284928-23
-Gärning
-Underrättad av
-Isaksson, Amelia
-Ringa stöld Fullbordat, Ica Supermarket Värnhem Östra Förstadsgatan 50 Malmö, mellan - och
-2023-03-10 12:10
-Berörd person
-Personnr
-19640510-0287
-Underrättelsesätt
-Efternamn
-Friman
-Skriftlig underrättelse genom lösbrev
-Datum utsänd
-2023-03-13
-Notering
-Förnamn
-Tanja Tamara
-Yttrande senast (rådrum)
-2023-03-22
-Resultat av slutunderrättelse
-Har inte avhörts
-Information gällande erinran
-Försvarare
-Namn
-Underrättelsesätt
-Datum utsänd
-Notering
-Önskar advokat Eleonora Johansson
-Resultat av slutunderrättelse
-Information gällande erinran
-Yttrande senast (rådrum)
-{pageend nr 35}
+Box 45
+Besöksadress
+Kullen 4
+Telefon
+023-383 00 00
+S-791 21 Falun
+Telefax
+023-383 00 80
+Expeditionstid
+måndag-fredag
+E-post: forvaltningsratteni falun@dom.se
+www.forvaltningsrattenifalun.domstol.se
+08:00-12:00
+13:00-16:00
+{pageend page 10 in document pdf/Byte_av_namn.pdf}{pagestart page 10 in document pdf/Byte_av_namn.pdf }FÖRVALTNINGSRÄTTEN
+DOM
+I FALUN
+BAKGRUND
+Håkan, Camilla, Sara och Robin Kinnonen ansökte om ändrad stavning av
+sitt efternamn från Kinnonen till Kinnunen. De anförde att den nuvarande
+stavningen blev fel i samband med att Håkan Kinnonens far kom till Sverige
+och att de redan alltid stavar enligt ansökan i alla sammanhang som inte har
+med folkbokföringen att göra.
+Skatteverket menade att den begärda namnändringen inte kunde godtas som
+en enkel stavningsändring och avslog därför ansökningarna. En ändring från
+Kinnonen till Kinnunen påverkade enligt Skatteverket namnets uttal och vi-
+suella intryck. Det kunde därför inte anses vara fråga om samma efternamn.
+YRKANDEN M.M.
+Håkan, Camilla, Sara och Robin Kinnonen vidhåller sin ansökan och
+anför. Uttalet kommer inte att ändras eftersom de alltid har uttalat sitt namn
+Kinnunen. Det är vanligare att de får frågan om namnet verkligen stavas
+med o än att någon uttalar deras namn med o. Stavningsändringen är av
+enkel beskaffenhet. Det kan inte bli enklare än att byta ett o mot ett u.
+Två släktingar har gjort samma stavningsändring. De angav samma orsak
+och ändringen gick igenom. Av inlämnade handlingar (certifikat m.m.)
+framgår att stavningen med u används redan nu. Det är bara när det gäller
+sådant som kommer från folkbokföringen som efternamnet stavas med o.
+Skatteverket vidhåller sina beslut och lämnar följande upplysning. Om kla-
+gandena kan visa att det önskade efternamnet har funnits i deras släkt i rakt
+uppstigande led i minst två generationer och det inte var mer än fyra gene-
+rationer tillbaka som någon i släkten bar namnet, räknat fr.o.m. personens
+föräldrar, finns möjlighet att komma in med en ny ansökan till Skatteverket
+för att få saken prövad.
+Sida 2
+457-19
+{pageend page 10 in document pdf/Byte_av_namn.pdf}{pagestart page 10 in document pdf/Byte_av_namn.pdf }FÖRVALTNINGSRÄTTEN
+DOM
+Sida 3
+457-19
+I FALUN
+SKÄLEN FÖR AVGÖRANDET
+Rättsliga utgångspunkter
+Av 13 § andra stycket lagen (2016:1013) om personnamn framgår att en
+person får ändra sitt efternamn, utan att det anses som byte till ett annat
+efternamn, bl.a. genom en enkel stavningsändring som inte ändrar namnets
+uttal.
+I lagens förarbeten anges bl.a. följande. Stavningsändringar kan vara av
+olika karaktär. En stavningsändring kan vara sådan att den påverkar efter-
+namnets uttal, t.ex. en ändring från Lövdal till Lovdal. En stavningsändring
+kan dock även vara sådan att den inte alls ändrar efternamnets uttal, t.ex.
+en ändring från Lövdal till Löwdal eller Lövdahl. Att det ska vara fråga
+om en enkel ändring innebär att utrymmet att ändra namnets stavning är
+begränsat även om ändringen inte påverkar namnets uttal. I första hand
+avses byte eller tillägg av någon bokstav eller strykning eller tillägg av ett
+bindestreck mellan namnen i ett dubbelt efternamn. Exempelvis kan en
+sökande ändra sitt namn från Jansson till Janson, Janzon eller Jahnsson.
+En sökande kan även ändra sitt namn från Andersson-Lind till Andersson
+Lind. Om det är fråga om en mer omfattande eller komplicerad stavnings-
+ändring, är det ett byte till ett annat efternamn. För att det ska röra sig om
+en enkel ändring får ändringen inte innebära att namnet uppfattas som ett
+nytt namn. Det kan vara fallet om namnen trots stor språklig likhet uppfattas
+olika visuellt. En stavningsändring får inte heller innebära en mer betydande
+avvikelse från gängse stavningsbruk (prop. 2015/16:180 s. 104).
+Förvaltningsrättens bedömning
+Ett finskspråkigt uttal av Kinnunen har stora likheter med ett svenskspråkigt
+sätt att läsa Kinnonen. Inte i något av språken uttalas dock Kinnunen och
+Kinnonen på samma sätt av personer som eftersträvar ett uttal som överens-
+stämmer med det skrivna. Den begärda ändringen bedöms därför innebära
+{pageend page 10 in document pdf/Byte_av_namn.pdf}{pagestart page 10 in document pdf/Byte_av_namn.pdf }FÖRVALTNINGSRÄTTEN
+DOM
+I FALUN
+ett ändrat uttal. Det är då inte fråga om en sådan stavningsändring som kan
+beviljas med stöd av 13 § andra stycket lagen om personnamn. Skattever-
+kets beslut ska därför stå fast.
+Upplysningsvis vill förvaltningsrätten tillägga att domstolen i detta mål inte
+kan pröva om den begärda ändringen är genomförbar med stöd av någon an-
+nan bestämmelse i lagen.
+HUR MAN ÖVERKLAGAR, se bilaga (FR-03).
+Lennart Andersson
+rådman
+Sida 4
+457-19
+{pageend page 10 in document pdf/Byte_av_namn.pdf}{pagestart page 10 in document pdf/Byte_av_namn.pdf }✓ SVERIGES DOMSTOLAR
+Bilaga 1
+Hur man överklagar
+FR-03
+Vill du att beslutet ska ändras i någon del kan
+du överklaga. Här får du veta hur det går till.
+Överklaga skriftligt inom 3 veckor
+Tiden räknas oftast från den dag som du fick
+del av det skriftliga beslutet. I vissa fall räknas
+tiden i stället från beslutets datum. Det gäller
+om beslutet avkunnades vid en muntlig
+förhandling, eller om rätten vid förhandlingen
+gav besked om datum för beslutet.
+För part som företräder det allmänna (till
+exempel myndigheter) räknas tiden alltid från
+beslutets datum.
+Observera att överklagandet måste ha kommit
+in till domstolen när tiden går ut.
+Vilken dag går tiden ut?
+Sista dagen för överklagande är samma veckodag
+som tiden börjar räknas. Om du exempelvis fick
+del av beslutet måndagen den 2 mars går tiden ut
+måndagen den 23 mars.
+Om sista dagen infaller på en lördag, söndag eller
+helgdag, midsommarafton, julafton eller nyårs-
+afton, räcker det att överklagandet kommer in
+nästa vardag.
+Så här gör du
+1. Skriv förvaltningsrättens namn och
+målnummer.
+2. Förklara varför du tycker att beslutet ska
+ändras. Tala om vilken ändring du vill ha
+och varför du tycker att kammarrätten ska
+ta upp ditt överklagande (läs mer om
+prövningstillstånd längre ner).
+3. Tala om vilka bevis du vill hänvisa till.
+Förklara vad du vill visa med varje bevis.
+Skicka med skriftliga bevis som inte redan
+finns i målet.
+4. Lämna namn och personnummer eller
+organisationsnummer.
+Lämna aktuella och fullständiga uppgifter
+om var domstolen kan nå dig: postadresser,
+e-postadresser och telefonnummer.
+Om du har ett ombud, lämna också
+ombudets kontaktuppgifter.
+5. Skicka eller lämna in överklagandet till
+förvaltningsrätten. Du hittar adressen i
+beslutet.
+Vad händer sedan?
+Förvaltningsrätten kontrollerar att överklagan-
+det kommit in i rätt tid. Har det kommit in för
+sent avvisar domstolen överklagandet. Det
+innebär att beslutet gäller.
+Om överklagandet kommit in i tid, skickar
+förvaltningsrätten överklagandet och alla
+handlingar i målet vidare till kammarrätten.
+Har du tidigare fått brev genom förenklad
+delgivning kan även kammarrätten skicka brev
+på detta sätt.
+Anvisningar för överklagande FR-03 - Överklagandetid 3 v - PT Producerat av Domstolsverket, Avd. för domstolsutveckling ⚫ 2018-11
+www.domstol.se
+Sida 1 av 2
+{pageend page 10 in document pdf/Byte_av_namn.pdf}{pagestart page 10 in document pdf/Byte_av_namn.pdf }Anvisningar för överklagande FR-03 - Överklagandetid 3 v - PT Producerat av Domstolsverket, Avd. för domstolsutveckling 2018-11
+Prövningstillstånd i kammarrätten
+När överklagandet kommer in till kammar-
+rätten tar domstolen först ställning till om
+målet ska tas upp till prövning.
+Kammarrätten ger prövningstillstånd i fyra
+olika fall.
+• Domstolen bedömer att det finns
+anledning att tvivla på att förvaltnings-
+rätten dömt rätt.
+• Domstolen anser att det inte går att
+bedöma om förvaltningsrätten dömt rätt
+utan att ta upp målet.
+• Domstolen behöver ta upp målet för att
+ge andra domstolar vägledning i rätts-
+tillämpningen.
+• Domstolen bedömer att det finns
+synnerliga skäl att ta upp målet av någon
+annan anledning.
+Om du inte får prövningstillstånd gäller det
+överklagade beslutet. Därför är det viktigt att i
+överklagandet ta med allt du vill föra fram.
+Vill du veta mer?
+Ta kontakt med förvaltningsrätten om du har
+frågor. Adress och telefonnummer hittar du på
+första sidan i beslutet.
+Mer information finns på www.domstol.se.
+www.domstol.se
+Sida 2 av 2
+{pageend page 10 in document pdf/Byte_av_namn.pdf}{pagestart page 10 in document pdf/Byte_av_namn.pdf }Bilaga B
+Bilaga
+HUR MAN ÖVERKLAGAR
+Den som vill överklaga kammarrättens avgörande ska skriva till Högsta
+förvaltningsdomstolen. Skrivelsen ställs alltså till Högsta förvaltningsdomstolen men
+ska skickas eller lämnas till kammarrätten.
+Överklagandet ska ha kommit in till kammarrätten inom tre veckor från den dag då
+klaganden fick del av beslutet. Om beslutet har meddelats vid en muntlig förhandling,
+eller det vid en sådan förhandling har angetts när beslutet kommer att meddelas, ska
+dock överklagandet ha kommit in inom tre veckor från den dag domstolens beslut
+meddelades. Tiden för överklagande för det allmänna räknas dock från den dag
+beslutet meddelades.
+Om sista dagen för överklagande infaller på en lördag, söndag eller helgdag, midsommar-,
+jul- eller nyårsafton, räcker det att skrivelsen kommer in nästa vardag.
+För att ett överklagande ska kunna tas upp i Högsta förvaltningsdomstolen krävs att
+prövningstillstånd meddelas. Högsta förvaltningsdomstolen lämnar prövningstillstånd om
+det är av vikt för ledning av rättstillämpningen att överklagandet prövas eller om det finns
+synnerliga skäl till sådan prövning, såsom att det finns grund för resning eller att målets
+utgång i kammarrätten uppenbarligen beror på grovt förbiseende eller grovt misstag.
+Om prövningstillstånd inte meddelas står kammarrättens beslut fast. Det är därför viktigt att
+det klart och tydligt framgår av överklagandet till Högsta förvaltningsdomstolen varför man
+anser att prövningstillstånd bör meddelas.
+Skrivelsen med överklagande ska innehålla följande uppgifter;
+1. den klagandes namn, person-/organisationsnummer, postadress, e-postadress och telefonnummer till
+bostaden och mobiltelefon. Dessutom ska adress och telefonnummer till arbetsplatsen och eventuell annan
+plats där klaganden kan nås för delgivning lämnas om dessa uppgifter inte tidigare uppgetts i målet. Om
+klaganden anlitar ombud, ska ombudets namn, postadress, e-postadress, telefonnummer till arbetsplatsen
+och mobiltelefonnummer anges. Om någon person- eller adressuppgift ändras är det viktigt att anmälan
+snarast görs till Högsta förvaltningsdomstolen
+2. det beslut som överklagas med uppgift om kammarrättens namn, målnummer samt dagen för beslutet
+3. de skäl som klaganden vill åberopa för sin begäran om att få prövningstillstånd
+4. den ändring av kammarrättens beslut som klaganden vill få till stånd och skälen för detta
+5. de bevis som klaganden vill åberopa och vad han/hon vill styrka med varje särskilt bevis.
+DV 681
+Formulär 1
+{pageend page 10 in document pdf/Byte_av_namn.pdf}
