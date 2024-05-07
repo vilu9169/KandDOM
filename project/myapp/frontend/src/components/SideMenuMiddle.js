@@ -28,6 +28,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
     const body = {
       group: currentGroup,
     };
+    console.log(body)
     try {
       const { data } = await axios.post(baseURL + "api/getdocsingroup/", body);
       console.log(data);
@@ -53,7 +54,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
     localStorage.setItem("currentFile", null);
     localStorage.setItem("currentGroup", groupid);
     getChatHistory(groupid);
-    getDocsInGroup()
+    getDocsInGroup();
     setClickedDocument(true);
   };
 
