@@ -1,11 +1,8 @@
 #A summarizer utilising claud
-from langchain_community.document_loaders import TextLoader
-from langchain_community.document_loaders import TextLoader
 from langchain_google_vertexai import VertexAIEmbeddings
 from dateutil import parser
 from vertexai.generative_models import GenerativeModel, Part, FinishReason
 import vertexai.preview.generative_models as generative_models
-from time import time
 from time import sleep
 import vertexai
 from pinecone import Pinecone
@@ -16,13 +13,13 @@ tools = {
         "type": "function",
         "function": {
             "name": "skapa_händelse",
-            "description": "Använd för att spara information, tid och sidreferenser till en händelse. Skriv in datum och tid för händelsen, sidor där informationen finns och information om händelsen. Var noga med att skriva på svenska.",
+            "description": "Använd för att spara information, tid och sidreferenser till en händelse från ett visst dokument. Skriv in datum och tid för händelsen, sidor där informationen finns och information om händelsen. Var noga med att skriva på svenska.",
             "parameters": {
                 "type": "object",
                 "properties": {
                     "time": {
                         "type": "string",
-                        "description": "Datum och tid då händelsen inträffade. Skall endast vara en tid per händelse. Tider ska anges på formatet DD/MM/YY HH:MM",
+                        "description": "Datum och tid då händelsen inträffade. Skall endast vara en tid per händelse. Tider måste alltid anges på formatet DD/MM/YY HH:MM.",
                     },
                     "pages": {
                         "type": "string",
@@ -32,8 +29,12 @@ tools = {
                         "type": "string",
                         "description": "Information om händelsen.",
                     },
+                    "document": {
+                        "type": "string",
+                        "description": "Namnet på dokumentet som händelsen hämtades ifrån. Namnet på dokumentet finns på samma plats som sidnumret.",
+                    }
                 },
-                "required": ["time","pages","information"],
+                "required": ["time","pages","information", "document"],
             },
         },
     },
@@ -71,8 +72,7 @@ vectorstore = PineconeVectorStore(
 )  
 
 def summarise_gemeni_par(input, index, res):
-
-    cont = "Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem. Alla dina svar måste vara på svenska. Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och datum samt tidpunkten när den skede. Tidpunkter ska vara på formatet Tider ska anges på formen DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska och . Du måste alltid inkludera vilka sidor du hittade informationen. Här är materialet du ska behandla  :" + input 
+    cont = "Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem. Alla dina svar måste vara på svenska. Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och datum samt tidpunkten när den skede. Tidpunkter ska vara på formatet DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska. Du måste alltid inkludera vilka sidor du hittade informationen. Här är materialet du ska behandla  :" + input 
     generation_config = {
     "max_output_tokens": 4400,
     "temperature": 0.1,
@@ -122,7 +122,7 @@ def handlesplit(split, retvals, i):
         return
     instructions = """
     Du är en funktionsanropande LLM.
-    Ditt jobb är att skapa händelser utifrån en text. Läs texten och skapa händelser med hjälp ett verktyg som sparar en händelsebeskrivning tillsammans med händelsens tid och vilka sidor man kan läsa om händelsen på, . Det ska vara exakt en tid per händelse.
+    Ditt jobb är att skapa händelser utifrån en text. Läs texten och skapa händelser med hjälp ett verktyg som sparar en händelsebeskrivning tillsammans med händelsens tid och vilka sidor man kan läsa om händelsen på . Det ska vara exakt en tid per händelse.
     Du sak använda verktyget \"skapa_händelse\" och ange tider på formen DD/MM/YY HH:MM. Det är absolut förbjudet att inte ange en tid på detta format.
     VIKTIGT: Använd ett av verktygen per händelse.
     """
@@ -159,23 +159,22 @@ def handlesplit(split, retvals, i):
             args = json.loads(tool_call.function.arguments)
             #Add to dict
             try :
-                ret.append({"title": parser.parse(args["time"], dayfirst=True),"pages": args["pages"] , "cardTitle": args["information"]})
+                ret.append({"time": parser.parse(args["time"], dayfirst=True),"pages": args["pages"] , "information": args["information"],"document": args["document"]})
             except Exception as e:
                 #Append time anyways
-                ret.append({"title": args["time"],"pages": args["pages"] , "cardTitle": args["information"]})
+                ret.append({"time": args["time"],"pages": args["pages"] , "information": args["information"], "document": args["document"]})
         retvals[i] = ret
         pass
     except Exception as e:
         print(e)
         print("No tool calls")
         pass
-
-from datetime import datetime
+    
 def bettersort(theevents):
-    if(type(theevents["title"]) == str):
+    if(type(theevents["time"]) == str):
         return 0
     else:
-        return theevents["title"].timestamp()
+        return theevents["time"].timestamp()
 def analyzefromstr(input):
     from langchain.docstore.document import Document
 
@@ -218,14 +217,12 @@ def analyzefromstr(input):
 
     struct = []
     for elem in retvals:
-        print(elem)
         struct += elem
 
     struct = sorted(struct, key = lambda x: bettersort(x))
     for elem in struct:
         try:
-            print(elem["title"])
-            elem["title"] = str(elem["title"].strftime("%d/%m/%Y %H:%M"))
+            elem["time"] = str(elem["time"].strftime("%d/%m/%Y %H:%M"))
         except Exception as e:
             print("Error parsing time: ", e)
     return struct
