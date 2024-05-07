@@ -8,7 +8,7 @@ import { IoMdHelp } from "react-icons/io";
 import SideMenuBottom from "./SideMenuBottom";
 import SettingsMenu from "./SettingsMenu";
 import { showInfoWindowContext } from "./ShowInfoWindowContextProvider.js";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from "./ShowSettingsHandler";
 import SideMenuTop from "./SideMenuTop";
 import SideMenuMiddle from "./SideMenuMiddle";
@@ -24,7 +24,7 @@ function Start() {
   const { showInfoWindow, handleShowInfo } = useContext(showInfoWindowContext);
   const { user } = useContext(AuthContext);
   const { showUploadWindow } = useContext(UploadWindowContext);
-
+  const { getFiles } = useContext(AuthContext);
   const [clickedDocument, setClickedDocument] = useState(false);
 
   const [showTimeline, setShowTimeline] = useState(false);
@@ -32,6 +32,10 @@ function Start() {
   const closeTimeline = () => {
     setShowTimeline(false);
   };
+
+  useEffect(() => {
+    getFiles();
+  });
 
   const handleDocumentButtonClick = (fileId) => {
     // Set clickedDocument state to true when a document button is clicked
