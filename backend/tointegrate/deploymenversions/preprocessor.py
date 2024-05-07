@@ -85,7 +85,7 @@ def getraw(chunk_num, chunk_size, num_pages, pdf_file, num_chunks):
     # Load Binary Data into Document AI RawDocument Object
     return image_content
 
-def swifthandle(chunk, resind, client, name, resstrings, chunksize):
+def swifthandle(pdf_file, chunk, resind, client, name, resstrings, chunksize):
     raw_document = documentai.RawDocument(content=chunk, mime_type="application/pdf")
     # Configure the process request
     request = documentai.ProcessRequest(name=name, raw_document=raw_document)
@@ -142,7 +142,7 @@ def ocr_pdf2(pdf_file, project_id, location, processor_id):
     resstrings = []
     for i in range(num_chunks):
         resstrings.append("")
-        t = threading.Thread(target=swifthandle, args=(rawdata[i], i,  client, name, resstrings, chunk_size))
+        t = threading.Thread(target=swifthandle, args=(pdf_file, rawdata[i], i,  client, name, resstrings, chunk_size))
         threads.append(t)
         t.start()
     # Wait for all threads to finish
@@ -261,22 +261,6 @@ def handle_multi_pdfs(pdf_files, new_index_name):
         except Exception as e:
             print("Error parsing time: ", e)
     print(retarr)
-#Takes a pdf file path and a new index name as input
-#Extracts text from the pdf file and converts it to RAG which is stored in the new index
-def mainfunk(pdf_file, new_index_name):
-    text = ocr_pdf(pdf_file, "sunlit-inn-417922", "eu", "54cf154d8c525451")
-    text_to_rag(new_index_name, text)
-    #After text to rag run timelinemaker
-    res = analyzefromstr(text)
-    #Res contains a dictioary with the timeline, 
-    #Objects in the dictonary have "time", "pages" and "information" fields and are sorted by time
-    # print(res)
-
-# print("Name of the file to be converted to RAG: ")
-# pdf_file = input()
-# print("Name of the new index: ")
-# new_index_name = input()
-# mainfunk(pdf_file, new_index_name)
 
 
 pdf_files = []
