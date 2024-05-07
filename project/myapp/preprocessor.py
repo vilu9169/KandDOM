@@ -9,7 +9,7 @@ from langchain.schema.document import Document
 from pinecone import Pinecone, ServerlessSpec
 #from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_text_splitters import CharacterTextSplitter
-from . timelinemaker import analyzefromstr
+from timelinemaker import analyzefromstr
 
 from google.cloud import documentai
 import io
@@ -173,7 +173,6 @@ def mainfunk(pdf_file, new_index_name):
     #Res contains a dictioary with the timeline, 
     #Objects in the dictonary have "time", "pages" and "information" fields and are sorted by time
     # print(res)
-    return res
 
 # print("Name of the file to be converted to RAG: ")
 # pdf_file = input()
