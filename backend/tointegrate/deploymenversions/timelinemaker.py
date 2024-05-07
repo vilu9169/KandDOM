@@ -37,13 +37,9 @@ tools = {
                     "information": {
                         "type": "string",
                         "description": "Information om händelsen.",
-                    },
-                    "document": {
-                        "type": "string",
-                        "description": "Namnet på dokumentet som händelsen hämtades ifrån.",
                     }
                 },
-                "required": ["time","pages","information", "document"],
+                "required": ["time","pages","information"],
             },
         },
     },
@@ -92,23 +88,25 @@ def summarise_claud(input, index, res):
     loc = loc_sonnet
     optind = optind_sonnet
     options = options_sonnet
-    print("loc: ", loc)
     # Set the endpoint URL
     # context = "Skapa en tidslinje baserad på följande dokument. Använd bara information från detta dokument i dina svar och upprepa dig inte. Dethär är en sammanfattning av vad som skett "+ sammanf  
     context = """Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem.
-    Alla dina svar måste vara på svenska. Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och datum samt tidpunkten när den skede.
-    Tidpunkter ska vara på formatet DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska. Du måste alltid inkludera vilka sidor du hittade informationen, sidnummer finns efter \"pagestart page\" och \"pageend page\".
-    Namnet på dokumentet finns efter texten \"in document\" och ska finnas med. Här är materialet du ska behandla  :""" + input 
+    Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och när den skede.
+    Tidpunkter ska vara på formatet DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna. Sidnummer finns efter \"pagestart page\" och \"pageend page\" andra sidnummer ignoreras.
+    Namnet på dokumentet finns efter texten \"in document\", andra namn ignoreras. Här är materialet du ska behandla  :""" + input 
     #Create a json struct for previous messages and the current message
     client = AnthropicVertex(region=loc, project_id="sunlit-inn-417922")
     while True:
         try:
+            print("loc: ", loc)
             message = client.messages.create(
             model=model,
             messages = [{"content": ("Dokumentera alla händelser du identifierar i texten och inkludera tidpunkten när de sker. Alla relevanta händelser ska dokumenteras. Alla svar skall vara på svenska. Här är materialet du ska behandla  :" + input), "role": "user"}],
             system = context,
+            max_tokens = 3000
             )
             res[index] =  message.content[0].text
+            return
         except Exception as e:
             print("Error: ", e)
             optind+=1
@@ -116,68 +114,50 @@ def summarise_claud(input, index, res):
                 optind = 0
             loc = options[optind]
 
-def summarise_gemeni_par(input, index, res):
-    cont = """Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem.
-    Alla dina svar måste vara på svenska. Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och datum samt tidpunkten när den skede.
-    Tidpunkter ska vara på formatet DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska. Du måste alltid inkludera vilka sidor du hittade informationen, korrekt sidnummer finns efter \"pagestart page\" och \"pageend page\". Andra sidnummer ska ignoreras.
-    Namnet på dokumentet finns efter texten \"in document\" och ska finnas med. Här är materialet du ska behandla  :""" + input 
-    generation_config = {
-    #"max_output_tokens": 4400,
-    "temperature": 0, # 0.1,
-    "top_p": 1,
-    }
+# def summarise_gemeni_par(input, index, res):
+#     cont = """Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem.
+#     Alla dina svar måste vara på svenska. Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och datum samt tidpunkten när den skede.
+#     Tidpunkter ska vara på formatet DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna och tillse att de är på svenska. Du måste alltid inkludera vilka sidor du hittade informationen, korrekt sidnummer finns efter \"pagestart page\" och \"pageend page\". Andra sidnummer ska ignoreras.
+#     Namnet på dokumentet finns efter texten \"in document\" och ska finnas med. Här är materialet du ska behandla  :""" + input 
+#     generation_config = {
+#     #"max_output_tokens": 4400,
+#     "temperature": 0, # 0.1,
+#     "top_p": 1,
+#     }
 
-    safety_settings = {
-        generative_models.HarmCategory.HARM_CATEGORY_HATE_SPEECH: generative_models.HarmBlockThreshold.BLOCK_NONE,
-        generative_models.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: generative_models.HarmBlockThreshold.BLOCK_NONE ,
-        generative_models.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: generative_models.HarmBlockThreshold.BLOCK_NONE ,
-        generative_models.HarmCategory.HARM_CATEGORY_HARASSMENT: generative_models.HarmBlockThreshold.BLOCK_NONE ,
-    }
-    # safety_settings = [
-    #  SafetySetting(
-    #      category=HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-    #      threshold=HarmBlockThreshold.BLOCK_ONLY_HIGH,
-    #  ),
-    #  SafetySetting(
-    #      category=HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-    #      threshold=HarmBlockThreshold.BLOCK_ONLY_HIGH,
-    #  ),
-    #  SafetySetting(
-    #      category=HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-    #      threshold=HarmBlockThreshold.BLOCK_ONLY_HIGH,
-    #  ),
-    #  SafetySetting(
-    #      category=HarmCategory.HARM_CATEGORY_HARASSMENT,
-    #      threshold=HarmBlockThreshold.BLOCK_ONLY_HIGH,
-    #  ),
-    # ]
-    vertexai.init(project="sunlit-inn-417922", location="us-central1")
-    model = GenerativeModel("gemini-1.5-pro-preview-0409")
-    #model = GenerativeModel("gemini-1.0-pro")
+#     safety_settings = {
+#         generative_models.HarmCategory.HARM_CATEGORY_HATE_SPEECH: generative_models.HarmBlockThreshold.BLOCK_NONE,
+#         generative_models.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: generative_models.HarmBlockThreshold.BLOCK_NONE ,
+#         generative_models.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: generative_models.HarmBlockThreshold.BLOCK_NONE ,
+#         generative_models.HarmCategory.HARM_CATEGORY_HARASSMENT: generative_models.HarmBlockThreshold.BLOCK_NONE ,
+#     }
+#     vertexai.init(project="sunlit-inn-417922", location="us-central1")
+#     model = GenerativeModel("gemini-1.5-pro-preview-0409")
+#     #model = GenerativeModel("gemini-1.0-pro")
     
-    while True:
-        try:
-            response = model.generate_content(
-                [cont],
-                generation_config=generation_config,
-                safety_settings=safety_settings,
-            )
-            #print("Response: ", response)
+#     while True:
+#         try:
+#             response = model.generate_content(
+#                 [cont],
+#                 generation_config=generation_config,
+#                 safety_settings=safety_settings,
+#             )
+#             #print("Response: ", response)
 
-            try :
-                res[index]= response.text
-                return
-            except Exception as e:
-                print("Response: ", response)
-                print("Error likely due to block_reason for: ", e)
-                return
-        except Exception as e:
-            print("Error: ", e)
-            #Sleep for 20 seconds
-            sleep(20)
-     
+#             try :
+#                 res[index]= response.text
+#                 return
+#             except Exception as e:
+#                 print("Response: ", response)
+#                 print("Error likely due to block_reason for: ", e)
+#                 return
+#         except Exception as e:
+#             print("Error: ", e)
+#             #Sleep for 20 seconds
+#             sleep(20)
+                 
 #Handles parsing a split using functions in LLAMA3 hosted on Groq
-def handlesplit(split, retvals, i):
+def handlesplit(split, retvals, i, docname):
     global groqind, groqalts
     gind = groqind
     galts = groqalts
@@ -226,10 +206,10 @@ def handlesplit(split, retvals, i):
             args = json.loads(tool_call.function.arguments)
             #Add to dict
             try :
-                ret.append({"title": parser.parse(args["time"], dayfirst=True),"pages": args["pages"] , "cardTitle": args["information"],"document": args["document"]})
+                ret.append({"title": parser.parse(args["time"], dayfirst=True),"pages": args["pages"] , "cardTitle": args["information"],"document": docname})
             except Exception as e:
                 #Append time anyways
-                ret.append({"title": args["time"],"pages": args["pages"] , "cardTitle": args["information"], "document": args["document"]})
+                ret.append({"title": args["time"],"pages": args["pages"] , "cardTitle": args["information"], "document": docname})
         retvals[i] = ret
         pass
     except Exception as e:
@@ -243,15 +223,17 @@ def bettersort(theevents):
     else:
         return theevents["title"].timestamp()
 
-def analyzefromstr(input):
+def analyzefromstr(input, docname):
     from langchain.docstore.document import Document
 
     doc =  Document(page_content=input, metadata={"source": "local"})
     #Load inputstring as a document
     # Split documents
-    maxclaudin = 20000
-    from langchain.text_splitter import RecursiveCharacterTextSplitter
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size = maxclaudin, chunk_overlap = 0)
+    maxclaudin = 10000
+    #maxclaudin = 2000
+    from langchain.text_splitter import CharacterTextSplitter
+    text_splitter = CharacterTextSplitter(chunk_size = maxclaudin, chunk_overlap = 0, separator=str(chr(28)))
+    # text_splitter = RecursiveCharacterTextSplitter(chunk_size = maxclaudin, chunk_overlap = 0)
     splits = text_splitter.split_documents([doc])
     print("number of splits: ", len(splits))
     timelines = []
@@ -263,8 +245,8 @@ def analyzefromstr(input):
     print("Timeline length: ", len(timelines))
     #Summarise parts of the text
     for elem in splits:
-        t = threading.Thread(target=summarise_gemeni_par, args=(elem.page_content, index, timelines))
-        # t = threading.Thread(target=summarise_claud, args=(elem.page_content, index, timelines))
+        #t = threading.Thread(target=summarise_gemeni_par, args=(elem.page_content, index, timelines))
+        t = threading.Thread(target=summarise_claud, args=(elem.page_content, index, timelines))
         index += 1
         threads.append(t)
         t.start()
@@ -277,7 +259,7 @@ def analyzefromstr(input):
     retvals = []
     for i in range(len(timelines)):
         retvals.append([])
-        t = threading.Thread(target=handlesplit, args=(timelines[i], retvals, i))
+        t = threading.Thread(target=handlesplit, args=(timelines[i], retvals, i, docname))
         threads.append(t)
         t.start()
 
