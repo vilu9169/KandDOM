@@ -677,6 +677,7 @@ def createDocumentGroup(request):
         name=name,
     )
     doc = UserDocument.objects.get(_id=ObjectId(new_doc))
+    currentDoc = UserDocument.objects.get(_id=ObjectId(current))
     doc2 = UserDocument.objects.get(_id=ObjectId(current_doc))
     document_group.documents.add(doc)
     document_group.documents.add(doc2)
