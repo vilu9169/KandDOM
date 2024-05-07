@@ -682,7 +682,6 @@ def text_to_rag(new_index_name, text):
     vectorstore = vectorstore.from_documents(splits, embeddings, index_name=new_index_name)
     
 
-from . preprocessor import mainfunk
 from . preprocessor import handle_multi_pdfs
 @api_view(['POST'])
 def getTimeLine(request):

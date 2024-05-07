@@ -209,7 +209,8 @@ def handlesplit(split, retvals, i, docname):
                 ret.append({"title": parser.parse(args["time"], dayfirst=True),"pages": args["pages"] , "cardTitle": args["information"],"document": docname})
             except Exception as e:
                 #Append time anyways
-                ret.append({"title": args["time"],"pages": args["pages"] , "cardTitle": args["information"], "document": docname})
+                #ret.append({"title": args["time"],"pages": args["pages"] , "cardTitle": args["information"], "document": docname})
+                continue
         retvals[i] = ret
         pass
     except Exception as e:

@@ -120,14 +120,17 @@ def ocr_pdf2(pdf_file, project_id, location, processor_id, doc_name):
     
     # You must set the api_endpoint if you use a location other than 'us'.
     opts = {"api_endpoint": "eu-documentai.googleapis.com"}
-
+    print('bfore client thing')
     client = documentai.DocumentProcessorServiceClient(client_options=opts)
+    print('before thing')
     name = client.processor_path(project_id, location, processor_id)
     # Create a working directory
 
     # Split the document into chunks of 20 pages
     chunk_size = 15
+    print('before read')
     reader = PyPDF2.PdfReader(pdf_file)
+    print('after read')
     num_pages = len(reader.pages)
     if(num_pages%chunk_size == 0):
         num_chunks = num_pages//chunk_size
@@ -139,6 +142,7 @@ def ocr_pdf2(pdf_file, project_id, location, processor_id, doc_name):
     # Get the raw data
     #getraw 
     for chunkid in range(num_chunks):
+        print(chunkid)
         rawdata.append(getraw(chunkid, chunk_size, num_pages, pdf_file, num_chunks))
     resstrings = []
     for i in range(num_chunks):
