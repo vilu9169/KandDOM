@@ -24,7 +24,6 @@ function Start() {
   const { showInfoWindow, handleShowInfo } = useContext(showInfoWindowContext);
   const { user } = useContext(AuthContext);
   const { showUploadWindow } = useContext(UploadWindowContext);
-  const { getFiles } = useContext(AuthContext);
   const [clickedDocument, setClickedDocument] = useState(false);
 
   const [showTimeline, setShowTimeline] = useState(false);
@@ -32,10 +31,6 @@ function Start() {
   const closeTimeline = () => {
     setShowTimeline(false);
   };
-
-  useEffect(() => {
-    getFiles();
-  });
 
   const handleDocumentButtonClick = (fileId) => {
     // Set clickedDocument state to true when a document button is clicked
