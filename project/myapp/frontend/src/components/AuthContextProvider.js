@@ -83,10 +83,10 @@ const AuthContextProvider = ({children}) => {
                     localStorage.setItem('currentFile', null)
                     localStorage.setItem('currentGroup', null)
                     console.log("decoded: ", jwtDecode(data.access).user)
-                    getFiles()
                     navigate("/");
                     setLoginError(null)
                     setSignupError(null)
+                    getFiles()
                 } catch (error) {
                     setLoginError(error.response.data.detail)
                     console.log(error.response.data.detail)
