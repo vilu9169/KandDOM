@@ -23,6 +23,21 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   const { docGroups } = useContext(AuthContext);
   const { currentGroup, setCurrentGroup } = useContext(AuthContext);
   const { docsInGroup, setDocsInGroup } = useState([]);
+
+  const getDocsInGroup = async () => {
+    const body = {
+      group: currentGroup,
+    };
+    try {
+      const { data } = await axios.post(baseURL + "api/getdocsingroup/", body);
+      console.log(data);
+      setDocsInGroup(data.resp);
+      return data;
+    } catch (error) {
+      console.error("Error getting documents in group:", error);
+    }
+  };
+  
   const chooseDocument = (fileid) => {
     setCurrentFile(fileid);
     setCurrentGroup(null);
@@ -38,23 +53,11 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
     localStorage.setItem("currentFile", null);
     localStorage.setItem("currentGroup", groupid);
     getChatHistory(groupid);
-    getTimeLine(groupid);
+    getDocsInGroup()
     setClickedDocument(true);
   };
 
-  const getDocsInGroup = async () => {
-    const body = {
-      group: currentGroup,
-    };
-    try {
-      const { data } = await axios.post(baseURL + "api/getdocsingroup/", body);
-      console.log(data);
-      setDocsInGroup(data.resp);
-      return data;
-    } catch (error) {
-      console.error("Error getting documents in group:", error);
-    }
-  };
+
   return (
     <Container className="p-0">
       {clickedDocument ? (
