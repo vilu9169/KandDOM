@@ -535,16 +535,18 @@ def delete_document(request):
         user = User.objects.get(id=user)
     except User.DoesNotExist:
         raise ValueError({'error': 'Error no user found'})
-    user.documents.remove(document)
-    user.save()
     try:
         doc_group = User.document_groups
         for group in doc_group:
             if document in group.documents:
+                print(group)
+                print(group.documents)
                 group.documents.remove(document)
-                group.save()
     except:
         pass
+    user.documents.remove(document)
+    user.save()
+
     if os.path.exists(str(document.file)):
         os.remove(str(document.file))
     else:
