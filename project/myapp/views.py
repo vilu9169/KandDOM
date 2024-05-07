@@ -677,11 +677,11 @@ def createDocumentGroup(request):
         name=name,
     )
     doc = UserDocument.objects.get(_id=ObjectId(new_doc))
-    currentDoc = UserDocument.objects.get(_id=ObjectId(current))
     doc2 = UserDocument.objects.get(_id=ObjectId(current_doc))
     document_group.documents.add(doc)
     document_group.documents.add(doc2)
     document_group.save()
+    handle_multi_pdfs([str(doc.file), str(doc2.file)], str(document_group.__id__()))
     try:
         user = User.objects.get(id=userID)
         user.document_groups.add(document_group)
@@ -693,8 +693,9 @@ def createDocumentGroup(request):
 def updateDocumentGroup(request):
     groupID = request.data.get('docgroup')
     new_doc = request.data.get('new_doc')
+    new_doc_obj = UserDocument.objects.get(_id=ObjectId(new_doc))
     document_group = DocumentGroup.objects.get(_id=ObjectId(groupID))
-    document_group.documents.add(new_doc)
+    document_group.documents.add(new_doc_obj)
     alldocs = document_group.documents.all()
     documents = []
     for doc in alldocs:
