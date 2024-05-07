@@ -43,6 +43,7 @@ function MyForm() {
         messages: messageTexts, // Stringify the array of message objects
         index_name: currentGroup,
         userid: userID,
+        group: (currentGroup !== null ) ? true : false,
       };
     }
     console.log("Message texts:", messageTexts);
