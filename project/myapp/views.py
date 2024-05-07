@@ -724,3 +724,18 @@ def deleteDocgroup(request):
     user = User.objects.get(id=user)
     user.document_groups.remove(documet_group)
     documet_group.delete()
+
+@api_view(['POST'])
+def getDocumentsInGroup(request):
+    group = request.data.get('group')
+    documents = DocumentGroup.objects.get(_id=ObjectId(group)).documents.all()
+    resp = []
+    for doc in documents:
+        resp.append({
+            "id": str(doc.__id__()),
+            "filename": doc.filename,
+            "content_type": doc.content_type,
+            "size": doc.size,
+            "uploaded_at": doc.uploaded_at
+        })
+    return Response({'data': resp})
