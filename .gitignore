@@ -1,9 +1,6 @@
-<<<<<<< HEAD
+
 project/pdf/
 /home/viktor/KandDOM/project/pdf/
-=======
-
->>>>>>> ed944d8 (server)
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
