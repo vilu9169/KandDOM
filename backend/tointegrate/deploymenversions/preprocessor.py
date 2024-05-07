@@ -52,7 +52,7 @@ def async_handle_chunk(chunk_num, chunk_size, num_pages, pdf_file, client, name,
     # Read the text recognition output from the processor
     resstring = ""
     for page in document.pages:
-        resstring += "{pagestart page "+ str(page_num+1) + " in document "+pdf_file +" }"
+        resstring += "{pagestart page "+ str(pagenr+1) + " in document "+pdf_file +" }"
         temp = ""
         for block in page.blocks:
             split = str(block.layout.text_anchor.text_segments).split("\n")
@@ -62,7 +62,7 @@ def async_handle_chunk(chunk_num, chunk_size, num_pages, pdf_file, client, name,
                 temp += document.text[0: int(split[0][split[0].find(":") +2:])]                
         resstring += temp
         #resstring += page.layout.text_anchor.content
-        resstring +="{pageend page "+ str(page_num+1)+ " in document "+pdf_file +"}"+str(chr(28))
+        resstring +="{pageend page "+ str(pagenr+1)+ " in document "+pdf_file +"}"+str(chr(28))
 
         pagenr += 1
     resstrings[chunk_num] = resstring
@@ -110,10 +110,6 @@ def ocr_pdf(pdf_file, project_id, location, processor_id):
     resstring = ""
     for res in resstrings:
         resstring += res
-    #Print to .txt file
-    with open("output.txt", 'w', encoding='utf-8') as file:
-        file.write(resstring)
-    #print("Resstring",resstring)
     return resstring
 
 def extract_text_from_pdf(pdf_file) -> str:
@@ -152,7 +148,7 @@ def text_to_rag(new_index_name, text):
     except Exception as e:
         print("Index already exists")
     # Split documents
-    text_splitter = CharacterTextSplitter(chunk_size=2, chunk_overlap =1,separator=str(chr(28)))
+    text_splitter = CharacterTextSplitter(chunk_size=2, chunk_overlap =0,separator=str(chr(28)))
     splits = [Document(page_content=x) for x in text_splitter.split_text(text)]
     #splits = text_splitter.split_text(text)    
     embeddings = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001")
