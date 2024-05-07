@@ -22,7 +22,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   const { pinRef } = useContext(ResponseContext);
   const { docGroups } = useContext(AuthContext);
   const { currentGroup, setCurrentGroup } = useContext(AuthContext);
-  const { docsInGroup, setDocsInGroup } = useState([]);
+  const  [ docsInGroup, setDocsInGroup ]  = useState([]);
 
   const getDocsInGroup = async (groupid) => {
     const body = {
