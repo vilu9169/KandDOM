@@ -8,6 +8,7 @@ import { AuthContext } from "./AuthContextProvider";
 import FileDropZone from "./FileDropZone";
 import { useContext, useEffect, useState } from "react";
 import { UploadWindowContext } from "./UploadWindowContextProvider";
+import LoadingScreen  from "./LoadingScreen";
 import axios from "axios";
 function UploadFileWindow() {
   const { value } = useContext(UploadWindowContext);
@@ -17,7 +18,8 @@ function UploadFileWindow() {
   const { docGroups,  getDocumentGroups } = useContext(AuthContext);
   const baseURL = process.env.REACT_APP_API_URL;
   const { currentGroup, setCurrentGroup } = useContext(AuthContext);
-
+  const [ loading, setLoading ] = useState(false);
+  const  [ loadingText, setLoadingText ] = useState("");
   const createDocGroup = async (fileid) => {
     const body = {
       user: userID,
@@ -67,6 +69,8 @@ function UploadFileWindow() {
     formData.append('userID', userID);
     console.log(baseURL+'upload/')
     try {
+        setLoading(true);
+        setLoadingText('Uploading file...')
         const response = await fetch(baseURL+'upload/', {
 
             method: 'POST',
@@ -79,16 +83,20 @@ function UploadFileWindow() {
             alert(`File uploaded successfully. Document ID: ${data.document_id}`);
             if (value === 2 && !currentGroup){
               createDocGroup(data.document_id)
+              setLoadingText('Creating new group...')
             }
             else if (value === 2 && currentGroup){
               updateDocgroup(data.document_id)
+              setLoadingText('Updating group...')
             }
             setCurrentFile(data.document_id)
+            setLoading(false);
           });
 
     } catch (error) {
       console.error("Error uploading file:", error);
       alert("An error occurred while uploading the file.");
+      setLoading(false)
     }
   };
   
@@ -103,6 +111,10 @@ function UploadFileWindow() {
   }, [value]);
 
   return (
+    <>
+    {loading ? (
+      <LoadingScreen loadingText={loadingText}/>
+    ) : (
     <Container className="m-auto p-2 h-75 bg-2 uploadfile-container">
       <Row className="h-10 w-100 bg-2 m-0 align-items-center d-flex justify-content-center">
         <h4 className="m-0">{title}</h4>
@@ -151,6 +163,8 @@ function UploadFileWindow() {
         </Col>
       </Row>
     </Container>
+  )};
+  </>
   );
 }
 export default UploadFileWindow;
