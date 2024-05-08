@@ -586,7 +586,7 @@ def renameDocument(request):
 
     return Response({'message': 'Document renamed successfully'})
 
-from .models import Document
+
 from django.http import HttpResponse
 
 @api_view(['POST'])
@@ -594,7 +594,7 @@ def openpdf(request):
     pdfid = request.data.get('fileid')
     try:
         pdf_object_id = ObjectId(pdfid)
-        document = Document.objects.get(_id=pdf_object_id)
+        document = UserDocument.objects.get(_id=pdf_object_id)
         pdf_path = str(document.file)
         
         if os.path.exists(pdf_path):
