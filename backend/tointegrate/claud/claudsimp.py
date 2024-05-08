@@ -4,7 +4,7 @@ from time import time
 start = time()
 
 
-LOCATION="us-east5" # or "europe-west4"
+LOCATION="europe-west4"
 PROJECT = "robust-summit-417910"
 
 client = AnthropicVertex(region=LOCATION, project_id=PROJECT)
@@ -17,8 +17,11 @@ message = client.messages.create(
       "content": "Send me a recipe for banana bread.",
     }
   ],
-  model="claude-3-opus",
+  model="claude-3-haiku@20240307",
 )
+
+print(message.content[0].text)
+
 print(message.model_dump_json(indent=2))
 
 print("done in", time() - start, "seconds")

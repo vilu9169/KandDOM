@@ -18,6 +18,7 @@ from openai.types.chat import ChatCompletion
 from util import print_tool_call, extract_args, gemini_unfiltered
 
 from langchain_community.vectorstores import FAISS, DistanceStrategy
+from get_predictions import get_openai_prediction, get_groq_prediction, get_claude_prediction_string
 
 load_dotenv()
 
@@ -208,16 +209,7 @@ class Personhandler:
             index += 1
 
         context += prepend + append
-
-
-        messages = [{"role" : "user", "content" : prompt}]
-        response = self.anthropic.messages.create(
-        max_tokens=200,
-        messages=messages,
-        model="claude-3-haiku@20240307",
-        system = context,
-        )
-        return response.content[0].text
+        return get_claude_prediction_string(prompt, context)
 
 
     tell_if_new_instructions = """
@@ -254,44 +246,18 @@ class Personhandler:
             else:
                 prompt += " "+nearest[0].metadata["name"]
         print(prompt)
-        model = GenerativeModel("gemini-1.5-pro-preview-0409", system_instruction=[self.tell_if_new_instructions], safety_settings=gemini_unfiltered, generation_config=GenerationConfig(temperature=0.0, candidate_count=1))
-        response = model.generate_content(prompt).candidates[0].content.text
-        # response = self.groq.create(
-        #     messages=[
-        #         {
-        #             "role": "system",
-        #             "content": self.tell_if_new_instructions,
-        #         },
-        #         {
-        #             "role": "user",
-        #             "content": prompt,
-        #         }
-        #     ],
-        #     max_tokens=300,
-        #     model="llama3-70b-8192",
-        # ).choices[0].message.content
+
+        response = get_claude_prediction_string(prompt, self.tell_if_new_person_instructions)
         
         print("Model response: ")
         print(response)
 
-        tool_use = self.groq.create(
-            messages=[
-                {
-                    "role": "system",
-                    "content": self.tell_if_new_person_instructions,
-                },
-                {
-                    "role": "user",
-                    "content": response,
-                }
-            ],
-            tools=[tools["identifiera_person"]],
-            model="llama3-70b-8192",
-        )
+        tools=[tools["identifiera_person"]]
+        tool_use = get_openai_prediction(prompt, self.tell_if_new_person_instructions,tools=tools)
         try:
             args = extract_args(tool_use.choices[0].message.tool_calls[0])
             print_tool_call(tool_use.choices[0].message.tool_calls[0])
-            if args["Siffra_på_alternativ"] == len(nearest)+1: #args["finns_sedan_tidigare"]:
+            if args["Siffra_på_alternativ"] == len(nearest)+1:
                 print("User was not found before")
                 metadata = {"name": name, "info": ""}
                 new_person = Document(page_content="init", metadata=metadata)
@@ -342,20 +308,12 @@ class Personhandler:
         prompt = "Sökning: "+group_string+"\nAlternativ: "
         for i, option in enumerate(options):
             prompt += str(i+1)+". Grupp: "+option.metadata["name"]+"Medlemmar: "+option.page_content+"\n"
-        response = self.groq.create(
-            messages=[
-                {
-                    "role": "system",
-                    "content": tell_if_new_group_instructions,
-                },
-                {
-                    "role": "user",
-                    "content": prompt,
-                }
-            ],
-            tools=[tools["lägg_till_info_om_existerande_gruppering"], tools["skapa_gruppering"]],
-            model="mixtral-8x7b-32768",
-        )
+
+        tools = [tools["lägg_till_info_om_existerande_gruppering"], tools["skapa_gruppering"]]
+        model = "mixtral-8x7b-32768"
+        system = tell_if_new_group_instructions
+        prompt = prompt
+        response = get_openai_prediction(prompt, tools, model, system)
         try:
             name = response.choices[0].message.tool_calls[0].function.name
             if name == "skapa_gruppering":

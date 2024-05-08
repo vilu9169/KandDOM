@@ -1,4 +1,4 @@
-from people import summarize_people_gemini, use_tools_on_summary
+from people import summarize_people, use_tools_on_summary, summarize_people
 from util import extract_args, print_tool_call
 from modify_people import Personhandler
 import threading
@@ -31,7 +31,7 @@ def treat_tool_call(tool_call, handler: Personhandler):
         print(f'{function.name} not implemented yet')
 
 def process_text(text : str, handler : Personhandler, parallel=False):
-    summary = summarize_people_gemini(text)
+    summary = summarize_people(text)
 
     tool_calls = use_tools_on_summary(summary)
 
