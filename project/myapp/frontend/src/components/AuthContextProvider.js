@@ -149,6 +149,12 @@ const AuthContextProvider = ({children}) => {
         localStorage.removeItem('timeLine')
         setAuthTokens(null)
         setUser(null)
+        setUserID(null)
+        setFiles([])
+        setCurrentFile(null)
+        setTimeLine([])
+        setDocGroups([])
+        setCurrentGroup(null)
         navigate('/login')
     }
 
