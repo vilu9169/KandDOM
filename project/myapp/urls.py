@@ -14,6 +14,7 @@ urlpatterns = [
     path('upload/', upload_document, name='upload'),
     path('api/token/', MyTokenObtainPairView.as_view(), name ="token_obtain_pair"),
 
+    path('api/openpdf/', openpdf, name='openpdf'),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name="token_refresh"),
     path('api/signup/', RegisterView.as_view(), name='register'),
     path('api/documents/', get_documents, name='documents'),

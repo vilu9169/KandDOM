@@ -6,6 +6,7 @@ import { Container, Button } from "react-bootstrap";
 import { IoMdTrash } from "react-icons/io";
 import axios from "axios";
 import { AuthContext } from "./AuthContextProvider";
+import { MdOutlineOpenInNew } from "react-icons/md";
 
 
 export default function SimplePopup({ file }) {
@@ -67,6 +68,35 @@ export default function SimplePopup({ file }) {
   const id = open ? "simple-popper" : undefined;
 
 
+  const openPdf = async (fileid, page) => {
+    try {
+      console.log('fileid:', fileid);
+      console.log('page', page);
+      
+      const resp = await axios.post(baseURL + 'api/openpdf/', { fileid: fileid, page: page }, { responseType: 'blob' });
+
+      // Check if the response contains the PDF file
+      if (resp.status === 200 && resp.data) {
+        // Create a Blob object from the response data
+        const blob = new Blob([resp.data], { type: 'application/pdf' });
+        
+        // Create a URL for the Blob object 
+        const url = URL.createObjectURL(blob);
+
+        const pageURL = page ? `${url}#page=${page}` : url;
+        
+        // Open the PDF file in a new window or tab
+        window.open(pageURL, '_blank');
+      } else {
+        // Handle the case where the PDF file is not found or response is empty
+        console.error('Failed to open PDF: File not found or response is empty');
+      }
+    }catch (error) {
+      // Handle any errors that occur during the request
+      console.error('Error opening PDF:', error);
+    }
+  };
+
   return (
     <div className="m-2">
       <button
@@ -107,6 +137,18 @@ export default function SimplePopup({ file }) {
               </span>
             </Button>
           )}
+          <Button
+            className="m-auto my-2 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
+            onClick={() => openPdf(file.id, 0)}
+            value={file.id}
+          >
+            <span className="small text-center justify-content-center d-flex align-items-center w-75">
+              View pdf
+            </span>
+            <span className="w-25 justify-content-center d-flex align-items-center">
+              <MdOutlineOpenInNew className="size-20" />
+            </span>
+          </Button>
           <Button
             onClick={(event) => {
               event.stopPropagation();
