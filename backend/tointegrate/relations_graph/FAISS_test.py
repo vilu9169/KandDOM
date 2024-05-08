@@ -2,6 +2,7 @@ from langchain_community.vectorstores import FAISS, DistanceStrategy
 from langchain_google_vertexai import VertexAIEmbeddings
 from langchain_core.documents import Document
 from langchain_text_splitters import CharacterTextSplitter
+from langchain_openai import OpenAIEmbeddings
 
 text = "hej, jag är glad"
 
@@ -23,6 +24,9 @@ texts = [text, text1, text3, text4, text5]
 print(texts)
 
 embedder = VertexAIEmbeddings("textembedding-gecko-multilingual")
+
+embeddings_model = OpenAIEmbeddings()
+
 
 db = FAISS.from_texts(["init"], embedder, distance_strategy=DistanceStrategy.COSINE, ids=["init"])
 

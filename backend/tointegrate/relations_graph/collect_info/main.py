@@ -3,6 +3,10 @@ from modify_people import Personhandler
 from langchain_google_vertexai import VertexAIEmbeddings
 from util import print_FAISS
 from people import use_tools_on_summary
+from openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
 
 text : str
 
@@ -17,7 +21,9 @@ pages = text.split(chr(28))
 to_process = pages[0]
 
 
-embedder = VertexAIEmbeddings("textembedding-gecko-multilingual")
+#embedder = VertexAIEmbeddings("textembedding-gecko-multilingual")
+embedder = "hi"
+
 
 person_handler = Personhandler(embedder, "REPLACE")
 

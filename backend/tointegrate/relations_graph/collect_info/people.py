@@ -25,14 +25,22 @@ Det är viktigt att du alltid svarar på svenska. Skriv all information med full
 """
 
 tool_instructions = """
-Ditt jobb är spara information om personer. Du får en sammanställning av informationen som samlats in. Till'
+Ditt jobb är spara information om personer. Du får en sammanställning av informationen som samlats in. Till
 din hjälp har du tre verktyg. Det första verktyget används för att lägga till information om en person. 
 Det andra vertyget registrerar information om relationen mellan två personer.
 Det tredje verktyget används för att registrera information om en gruppering av personer, t. ex. en familj, företag, organisation etc.
-Informationen som skickas in ska alltid vara på svenska. Om texten är på engelska, översätt det till svenska. \n
 
-VIKTIGT: Använd verktyget en gång för varje person, varje relation och varje grupp som nämns i sammanställnignen och registrera all information.
+Använd verktygen flera gånger, en gång per person, relation eller gruppering.
 """
+
+tool_instructions2 = """
+Ditt jobb är spara information om personer. Du får en sammanställning av informationen som samlats in. Du ska
+sedan spara informationen genom att använda ett verktyg där du anger namn och information om alla personer,
+ordnade i en lista.
+
+Viktigt: Se till att alla personer som nämns är med i listan.
+"""
+
 
 
 
@@ -69,9 +77,11 @@ def use_tools_on_summary(summary):
                 "content": summary,
             }
         ],
-        tools = [tools["ny_information_om_person"], tools["ny_information_om_relation"], 
-                tools["ny_information_om_gruppering"]],
-        model="gpt-3.5-turbo-0125",
+        tools = [tools["ny_information_om_personer"],
+                 #tools["ny_information_om_relation"], tools["ny_information_om_gruppering"]],
+        ],
+        #model="gpt-4-turbo-2024-04-09",
+        model="gpt-3.5-turbo-0125"
     )
     # log_people_info = client.chat.completions.create(
     #     messages=[

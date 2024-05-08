@@ -91,13 +91,16 @@ def get_claude_prediction_tools(prompt,
 def get_claude_prediction_string(
     prompt,
     system,
-    model="claude-3-haiku@20240307",
+    model="haiku",
     use_aws=False,
+    use_vertex=False,
     max_tokens=512,
 ):
     try:
+        if not use_vertex:
+            raise Exception("Skipping vertex")
         result =  _get_vertex_claude_prediction(
-            prompt, system, mode, max_tokens=max_tokens
+            prompt, system, max_tokens=max_tokens
         )
         return result.content[0].text
     except Exception as vertex_e:
@@ -105,9 +108,10 @@ def get_claude_prediction_string(
         print("Switching to anthropic")
         try:
             result =  _get_anthropic_prediction(
-            prompt, system, model, tools, max_tokens
+            prompt, system, max_tokens=max_tokens
         ).content[0].text
         except Exception as anthro_e:
+            print(anthro_e)
             if use_aws:
                 print(anthro_e)
                 print("Switching to AWS")
@@ -117,9 +121,9 @@ def get_claude_prediction_string(
             else:
                 time.sleep(1)
                 print("trying to use claude again")
-                result = get_claude_prediction_string(
-                    prompt, system, model, use_aws, max_tokens
-                )
+                # result = get_claude_prediction_string(
+                #     prompt, system, use_aws, max_tokens
+                # )
     return result
 
 def get_gemini_prediction(
@@ -143,8 +147,7 @@ def get_gemini_prediction(
 
 def _get_anthropic_prediction(prompt,
     system,
-    model="claude-3-haiku@20240307",
-    tools=[],
+    model="claude-3-haiku-20240307",
     max_tokens=512):
     client = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
     user_message = {"role": "user", "content": prompt}
