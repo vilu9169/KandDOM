@@ -20,6 +20,36 @@ tools = {
             },
         },
     },
+    "ny_information_om_personer": {
+        "type": "function",
+        "function": {
+            "name": "ny_information_om_person",
+            "description": "Använd för att lägga till information om personer genom att lägga in alla i en lista.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "list_med_personer": {
+                        "type": "array",
+                        "items" :{
+                            "type": "object",
+                            "properties": {
+                                "namn": {
+                                    "type": "string",
+                                    "description": "Namnet på personen",
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "description": "En text som innehåller informationen om personen",
+                                },
+                            },
+                            "description" : "En lista med namn och information om personer",
+                        }
+                    },
+                },
+                #"required": ["namn", "information"],
+            },
+        },
+    },
     "ny_information_om_relation": {
         "type": "function",
         "function": {

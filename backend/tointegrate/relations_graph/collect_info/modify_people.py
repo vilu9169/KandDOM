@@ -96,9 +96,9 @@ class Personhandler:
         self.people_collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["people"]
         self.relations_collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["relations"]
         self.groups_collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["groups"]
-        self.people_store = init_FAISS(self.embedder)#MongoDBAtlasVectorSearch(embedding=embedder, collection=self.people_collection, index_name="vector_cosine_index")
+        #self.people_store = init_FAISS(self.embedder)#MongoDBAtlasVectorSearch(embedding=embedder, collection=self.people_collection, index_name="vector_cosine_index")
         self.people_dict : dict[str, Document] = {}
-        self.groups_store = init_FAISS(self.embedder)#MongoDBAtlasVectorSearch(embedding=embedder, collection=self.groups_collection, index_name="vector_cosine_index")
+        #self.groups_store = init_FAISS(self.embedder)#MongoDBAtlasVectorSearch(embedding=embedder, collection=self.groups_collection, index_name="vector_cosine_index")
         self.groups_dict : dict[str, Document] = {}
         self.relations_struct : dict[str, Relation] = {}
         config=GenerationConfig(temperature=0.0, candidate_count=1)
