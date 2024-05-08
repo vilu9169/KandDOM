@@ -7,7 +7,6 @@ import { IoMdTrash } from "react-icons/io";
 import axios from "axios";
 import { AuthContext } from "./AuthContextProvider";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import { MdOutlineOpenInNew } from "react-icons/md";
 
 
 export default function SimplePopup({ file }) {
@@ -144,7 +143,7 @@ export default function SimplePopup({ file }) {
             value={file.id}
           >
             <span className="small text-center justify-content-center d-flex align-items-center w-75">
-              View PDF
+              View pdf
             </span>
             <span className="w-25 justify-content-center d-flex align-items-center">
               <MdOutlineOpenInNew className="size-20" />
