@@ -586,6 +586,28 @@ def renameDocument(request):
 
     return Response({'message': 'Document renamed successfully'})
 
+from .models import Document
+from django.http import HttpResponse
+
+@api_view(['POST'])
+def openpdf(request):
+    pdfid = request.data.get('fileid')
+    try:
+        pdf_object_id = ObjectId(pdfid)
+        document = Document.objects.get(_id=pdf_object_id)
+        pdf_path = str(document.file)
+        
+        if os.path.exists(pdf_path):
+            with open(pdf_path, 'rb') as pdf_file:
+                response = HttpResponse(pdf_file.read(), content_type='application/pdf')
+                response['Content-Disposition'] = f'inline; filename="{os.path.basename(pdf_path)}"'
+                
+                return response
+        else:
+            return Response('PDF file not found')
+    except Exception as e:
+        return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 # Call the function with your project ID and location
 # prevmessages = []
 # while(True):
