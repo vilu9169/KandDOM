@@ -86,7 +86,7 @@ def getraw(chunk_num, chunk_size, num_pages, pdf_file, num_chunks):
     # Load Binary Data into Document AI RawDocument Object
     return image_content
 
-def swifthandle(chunk, resind, client, name, resstrings, chunksize):
+def swifthandle(pdf_file, chunk, resind, client, name, resstrings, chunksize):
     raw_document = documentai.RawDocument(content=chunk, mime_type="application/pdf")
     # Configure the process request
     request = documentai.ProcessRequest(name=name, raw_document=raw_document)
@@ -120,14 +120,17 @@ def ocr_pdf2(pdf_file, project_id, location, processor_id):
     
     # You must set the api_endpoint if you use a location other than 'us'.
     opts = {"api_endpoint": "eu-documentai.googleapis.com"}
-
+    print('bfore client thing')
     client = documentai.DocumentProcessorServiceClient(client_options=opts)
+    print('before thing')
     name = client.processor_path(project_id, location, processor_id)
     # Create a working directory
 
     # Split the document into chunks of 20 pages
     chunk_size = 15
+    print('before read')
     reader = PyPDF2.PdfReader(pdf_file)
+    print('after read')
     num_pages = len(reader.pages)
     if(num_pages%chunk_size == 0):
         num_chunks = num_pages//chunk_size
@@ -139,11 +142,12 @@ def ocr_pdf2(pdf_file, project_id, location, processor_id):
     # Get the raw data
     #getraw 
     for chunkid in range(num_chunks):
+        print(chunkid)
         rawdata.append(getraw(chunkid, chunk_size, num_pages, pdf_file, num_chunks))
     resstrings = []
     for i in range(num_chunks):
         resstrings.append("")
-        t = threading.Thread(target=swifthandle, args=(rawdata[i], i,  client, name, resstrings, chunk_size))
+        t = threading.Thread(target=swifthandle, args=(pdf_file, rawdata[i], i,  client, name, resstrings, chunk_size))
         threads.append(t)
         t.start()
     # Wait for all threads to finish
@@ -262,6 +266,7 @@ def handle_multi_pdfs(pdf_files, new_index_name):
         except Exception as e:
             print("Error parsing time: ", e)
     print(retarr)
+    return retarr
 #Takes a pdf file path and a new index name as input
 #Extracts text from the pdf file and converts it to RAG which is stored in the new index
 def mainfunk(pdf_file, new_index_name):
@@ -280,14 +285,14 @@ def mainfunk(pdf_file, new_index_name):
 # mainfunk(pdf_file, new_index_name)
 
 
-pdf_files = []
-while True:
-    print("Name of the files to be processed using RAG(write \"end\" to end input): ")
-    pdf_file = input()
-    if(pdf_file == "end"):
-        break
-    else:
-        pdf_files.append(pdf_file)
-print("Name of the new index: ")
-new_index_name = input()
-handle_multi_pdfs(pdf_files, new_index_name)
+# pdf_files = []
+# while True:
+#     print("Name of the files to be processed using RAG(write \"end\" to end input): ")
+#     pdf_file = input()
+#     if(pdf_file == "end"):
+#         break
+#     else:
+#         pdf_files.append(pdf_file)
+# print("Name of the new index: ")
+# new_index_name = input()
+# handle_multi_pdfs(pdf_files, new_index_name)

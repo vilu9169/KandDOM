@@ -547,7 +547,14 @@ button {
   font-weight: bold;
 }
 .document-button{
-  color: var(--text-color-main) !important;
+  color: var(--color-2) !important;
+  border: none !important;
+  border-radius: 5px;
+  overflow: hidden;
+  min-height: 40px;
+}
+.document-button2{
+  color: var(--color-2) !important;
   border: none !important;
   border-radius: 5px;
   overflow: hidden;

@@ -22,9 +22,9 @@ const AuthContextProvider = ({children}) => {
 
     const baseURL = process.env.REACT_APP_API_URL
 
-    let getFiles = async () => {
+    let getFiles = async (uID = null) => {
         const body = {
-            user: userID
+            user: uID ? uID : userID
         }
       try {
         const {data} = await axios.post(baseURL+"api/documents/", body);
@@ -83,10 +83,10 @@ const AuthContextProvider = ({children}) => {
                     localStorage.setItem('currentFile', null)
                     localStorage.setItem('currentGroup', null)
                     console.log("decoded: ", jwtDecode(data.access).user)
-                    getFiles()
                     navigate("/");
                     setLoginError(null)
                     setSignupError(null)
+                    getFiles(jwtDecode(data.access).user_id)
                 } catch (error) {
                     setLoginError(error.response.data.detail)
                     console.log(error.response.data.detail)
@@ -149,6 +149,12 @@ const AuthContextProvider = ({children}) => {
         localStorage.removeItem('timeLine')
         setAuthTokens(null)
         setUser(null)
+        setUserID(null)
+        setFiles([])
+        setCurrentFile(null)
+        setTimeLine([])
+        setDocGroups([])
+        setCurrentGroup(null)
         navigate('/login')
     }
 

@@ -326,7 +326,7 @@ def upload_document(request):
         print("Before document.save")
         print(document.file)
         document.save()
-        document.timeline = mainfunk(str(document.file), str(document.__id__()))
+        document.timeline = handle_multi_pdfs([str(document.file)], str(document.__id__()))
         document.save()
         print("document.save complete")
         user = User.objects.get(id=request.data['userID'])
@@ -674,7 +674,6 @@ def text_to_rag(new_index_name, text):
     vectorstore = vectorstore.from_documents(splits, embeddings, index_name=new_index_name)
     
 
-from . preprocessor import mainfunk
 from . preprocessor import handle_multi_pdfs
 @api_view(['POST'])
 def getTimeLine(request):
@@ -687,7 +686,7 @@ def getTimeLine(request):
         raise ValueError({'error': 'Document not found'})
     if document.timeline is None:
         print("start make timeline")
-        timeline = mainfunk2(str(document.file))
+        timeline = handle_multi_pdfs([str(document.file)], str(document.__id__()))
         document.timeline = timeline
         document.save()
         print("done timeline")
