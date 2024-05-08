@@ -144,7 +144,7 @@ export default function SimplePopup({ file }) {
             value={file.id}
           >
             <span className="small text-center justify-content-center d-flex align-items-center w-75">
-              View pdf
+              View PDF
             </span>
             <span className="w-25 justify-content-center d-flex align-items-center">
               <MdOutlineOpenInNew className="size-20" />
