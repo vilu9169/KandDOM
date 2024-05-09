@@ -67,8 +67,11 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
     console.log('userID:', userID)
     let formData = new FormData();
 
+    let group = (currentGroup !== null) ? true : false
+
     formData.append('file', file); // Append the file to FormData
     formData.append('userID', userID);
+    formData.append('group', group);
     console.log(baseURL+'upload/')
     try {
         setLoading(true);
