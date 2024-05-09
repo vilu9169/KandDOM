@@ -9,7 +9,7 @@ const ResponseContextProvider = ({ children }) => {
   const { currentFile } = useContext(AuthContext);
   const pinRef = useRef([]);
   const arrLength = pinnedMessages.length;
-  
+  const { currentGroup } = useContext(AuthContext);
   useEffect(() => {
     // Ensure pinRef is properly populated when pinnedMessages change
     pinRef.current = Array(arrLength)
@@ -43,12 +43,21 @@ const ResponseContextProvider = ({ children }) => {
 
   const getChatHistory = async (fileid) => {
     const body = {
-      embedding_id: fileid ? fileid : currentFile
+      embedding_id: fileid ? fileid : currentFile,
+      group: (currentGroup !== null ) ? true : false,
     };
+
     try {
-      const { data } = await axios.post(baseURL + "api/getchat/", body);
-      setMessages(data.messages);
-      console.log("data.pinned", data.pinned);
+      if (!currentGroup && !currentFile) {
+        console.error("No file ID provided for fetching chat history");
+        return;
+      }
+      else  {
+        console.log("body", body);
+        const {data} = await axios.post(baseURL + "api/getchat/", body);
+        setMessages(data.messages);
+        console.log("data.pinned", data.pinned);
+      
   
       if (Array.isArray(data.pinned)) {
         const pins = data.pinned.map((pin, index) => ({ ...pin, index }));
@@ -59,6 +68,7 @@ const ResponseContextProvider = ({ children }) => {
         console.error('Unexpected data format for pinned messages:', data.pinned);
         setPinnedMessages([]);
       }
+    }
     } catch (error) {
       console.error("Error fetching chat history:", error);
       setMessages([]);

@@ -6,11 +6,11 @@ import { AppContext } from "./ShowSettingsHandler";
 import { useNavigate } from "react-router-dom";
 import { FaLayerGroup } from "react-icons/fa";
 import Fade from "react-bootstrap/Fade";
-
 import { IoReturnUpBack } from "react-icons/io5";
-
 import { AuthContext } from "./AuthContextProvider";
 import { showInfoWindowContext } from "./ShowInfoWindowContextProvider";
+import { ResponseContext } from "./ResponseContextProvider";
+import { MessageContext } from "./MessageContextProvider";
 
 function SideMenuTop({ clickedDocument, setClickedDocument }) {
   const { handleShowUploadWindow } = useContext(UploadWindowContext);
@@ -18,8 +18,12 @@ function SideMenuTop({ clickedDocument, setClickedDocument }) {
   const { handleButtonClick } = useContext(AppContext);
   const innerContainerRef = useRef(null);
   const personRef = useRef(null);
+  const { setMessages } = useContext(ResponseContext);
+  const { setMessage } = useContext(MessageContext);
+  const { currentFile, setCurrentFile } = useContext(AuthContext);
   const navigate = useNavigate();
   const { logoutUser } = useContext(AuthContext);
+  const { setCurrentGroup } = useContext(AuthContext);
   const { handleShowInfo } = useContext(showInfoWindowContext)
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
@@ -44,13 +48,23 @@ function SideMenuTop({ clickedDocument, setClickedDocument }) {
     };
   }, [toggleVisibility]);
 
+  const backeToFiles = () => {
+    setClickedDocument(false)
+    setMessages([])
+    setMessage('')
+    setCurrentFile(null)
+    setCurrentGroup(null)
+  };
+
   return (
     <Container className="p-0">
       {clickedDocument ? (
         <Row className="w-90 m-auto h-80px d-flex justify-content-center">
           <Col className="col-3 align-items-center d-flex justify-content-start">
             <Button
-              onClick={() => setClickedDocument(false)}
+              onClick={() => 
+                backeToFiles()
+              }
               className="bg-3 rect-button align-items-center d-flex justify-content-center p-0"
             >
               <IoReturnUpBack className="size-20" />
@@ -87,7 +101,9 @@ function SideMenuTop({ clickedDocument, setClickedDocument }) {
               ref={innerContainerRef}
             >
               <Row className="p-0 m-0 h-50 w-100 ">
-                <Button className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1">
+                <Button 
+                onClick={() => handleShowUploadWindow(1)}
+                className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1">
                   <span className="text-center justify-content-center d-flex align-items-center w-75">
                     Add to new chat
                   </span>
@@ -99,7 +115,7 @@ function SideMenuTop({ clickedDocument, setClickedDocument }) {
               <Row className="p-0 m-0 h-50 w-100">
                 {" "}
                 <Button
-                  onClick={handleShowUploadWindow}
+                  onClick={() => handleShowUploadWindow(2)}
                   className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
                 >
                   <span className="text-center justify-content-center d-flex align-items-center w-75">

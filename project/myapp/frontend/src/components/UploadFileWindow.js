@@ -5,13 +5,58 @@ import Button from "react-bootstrap/Button";
 import { IoIosDocument } from "react-icons/io";
 import { IoIosCopy } from "react-icons/io";
 import { AuthContext } from "./AuthContextProvider";
+import PerfectScrollbar from "react-perfect-scrollbar";
 import FileDropZone from "./FileDropZone";
-import { useContext } from "react";
-
-function UploadFileWindow() {
+import { useContext, useEffect, useState } from "react";
+import { UploadWindowContext } from "./UploadWindowContextProvider";
+import LoadingScreen  from "./LoadingScreen";
+import axios from "axios";
+function UploadFileWindow({clickedDocument, setClickedDocument}) {
+  const { value } = useContext(UploadWindowContext);
   const { userID, getFiles } = useContext(AuthContext);
-  const { setCurrentFile } = useContext(AuthContext);
+  const { currentFile, setCurrentFile } = useContext(AuthContext);
+  const [title, setTitle] = useState("Upload document to start!");
+  const { docGroups,  getDocumentGroups } = useContext(AuthContext);
   const baseURL = process.env.REACT_APP_API_URL;
+  const { currentGroup, setCurrentGroup } = useContext(AuthContext);
+  const [ loading, setLoading ] = useState(false);
+  const  [ loadingText, setLoadingText ] = useState("");
+  const { files } = useContext(AuthContext);
+  const createDocGroup = async (fileid) => {
+    const body = {
+      user: userID,
+      new_doc: fileid,
+      current: currentFile,
+      name: "Group " + docGroups.length,
+    };
+    try {
+      const { data } = await axios.post(baseURL + "api/createDocgroup/", body);
+      console.log(data);
+      getDocumentGroups();
+      setCurrentGroup(data.docID);
+      return data;
+    } catch (error) {
+      console.error("Error creating document group:", error);
+    }
+  }
+
+  const updateDocgroup = async (fileid) => {
+    const body = {
+      user: userID,
+      new_doc: fileid,
+      docgroup: currentGroup,
+    };
+    try {
+      const { data } = await axios.post(baseURL + "api/updateDocgroup/", body);
+      console.log(data);
+      getDocumentGroups();
+      setCurrentGroup(data.docID);
+      return data;
+    } catch (error) {
+      console.error("Error updating document group:", error);
+    }
+  }
+
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     // Check if the selected file is a PDF
@@ -22,11 +67,12 @@ function UploadFileWindow() {
     console.log('userID:', userID)
     let formData = new FormData();
 
-
     formData.append('file', file); // Append the file to FormData
     formData.append('userID', userID);
     console.log(baseURL+'upload/')
     try {
+        setLoading(true);
+        setLoadingText('Uploading file...')
         const response = await fetch(baseURL+'upload/', {
 
             method: 'POST',
@@ -34,23 +80,114 @@ function UploadFileWindow() {
         });
         const data = await response.json();
         getFiles()
-        setCurrentFile(data.document_id)
-        localStorage.setItem('currentFile', data.document_id)
-        alert(`File uploaded successfully. Document ID: ${data.document_id}`);
+          .then(() => {
+            alert(`File uploaded successfully. Document ID: ${data.document_id}`);
+            if (value === 2 && !currentGroup){
+              createDocGroup(data.document_id)
+              setLoadingText('Creating new group...')
+            }
+            else if (value === 2 && currentGroup){
+              updateDocgroup(data.document_id)
+              setLoadingText('Updating group...')
+            }
+            setLoading(false);
+          });
+
     } catch (error) {
       console.error("Error uploading file:", error);
       alert("An error occurred while uploading the file.");
+      setLoading(false)
     }
+  };
+  
+  useEffect(() => {
+    if (value === 1) {
+      setTitle("Upload document to a new chat.");
+    } else if (value === 2) {
+      setTitle("Upload document to current existing chat.");
+    } else {
+      setTitle("Upload document to start!");
+    }
+  }, [value]);
+
+  const chooseDocument = (fileid) => {
+    setCurrentFile(fileid);
+    setCurrentGroup(null);
+    localStorage.setItem("currentFile", fileid);
+    localStorage.setItem("currentGroup", null);
+    setClickedDocument(true);
+  };
+  const chooseGroup = (groupid) => {
+    setCurrentFile(null);
+    setCurrentGroup(groupid);
+    localStorage.setItem("currentFile", null);
+    localStorage.setItem("currentGroup", groupid);
+    setClickedDocument(true);
   };
 
   return (
+    <>
+    {loading ? (
+      <LoadingScreen loadingText={loadingText}/>
+    ) : (
     <Container className="m-auto p-2 h-75 bg-2 uploadfile-container">
       <Row className="h-10 w-100 bg-2 m-0 align-items-center d-flex justify-content-center">
-        <h4 className="m-0">Upload document to start!</h4>
+        <h4 className="m-0">{title}</h4>
       </Row>
       <Row className="p-0 h-90 w-100 bg-2  m-0">
         <Col className="col-5 p-0 bg-2 d-flex align-items-center justify-content-center">
-          <FileDropZone></FileDropZone>
+        <PerfectScrollbar>
+        {value === 2 ? (
+          <>
+            Document Groups
+            {docGroups.map((docGroup) => (
+              <Row key={docGroup.id} className="my-3 m-auto br-5 w-100">
+                <Button
+                  onClick={() => chooseGroup(docGroup.id)}
+                  value={docGroup.id}
+                  className={`small m-auto bg-2 w-90 document-button2 d-flex justify-content-start align-items-center p-2 text-start position-relative ${
+                    docGroup.id === currentGroup ? "highlighted" : ""
+                  }`}
+                >
+                  {docGroup.name}
+                  <Container
+                    className={`p-1 w-80px h-100 d-flex justify-content-center align-items-center ${
+                      docGroup.id === currentGroup
+                        ? "highlighted-iconbox"
+                        : "icons-container"
+                    }`}
+                  >
+                  </Container>
+                </Button>
+              </Row>
+            ))}
+            {files.map((file) => (
+              <Row key={file.id} className="my-3 m-auto br-5 w-100">
+                <Button
+                  onClick={() => chooseDocument(file.id)}
+                  value={file.id}
+                  className={`small m-auto bg-2 w-90 document-button2 d-flex justify-content-start align-items-center p-2 text-start position-relative ${
+                    file.id === currentFile ? "highlighted" : ""
+                  }`}
+                >
+                  {file.filename}
+                  <Container
+                    className={`p-1 w-80px h-100 d-flex justify-content-center align-items-center ${
+                      file.id === currentFile
+                        ? "highlighted-iconbox"
+                        : "icons-container"
+                    }`}
+                  >
+                  </Container>
+                </Button>
+              </Row>
+            ))}
+          </>
+        ) : (
+          <FileDropZone />
+        )}
+        </PerfectScrollbar>
+
         </Col>
         <Col className="col-2 p-0 bg-2 d-flex align-items-center justify-content-center position-relative">
           <div className="vertical-line"></div>
@@ -92,6 +229,8 @@ function UploadFileWindow() {
         </Col>
       </Row>
     </Container>
+  )};
+  </>
   );
 }
 export default UploadFileWindow;

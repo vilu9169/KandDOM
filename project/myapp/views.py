@@ -326,9 +326,8 @@ def upload_document(request):
         print("Before document.save")
         print(document.file)
         document.save()
-        document.timeline = mainfunk2(str(document.file))
+        document.timeline = handle_multi_pdfs([str(document.file)], str(document.__id__()))
         document.save()
-        mainfunk(str(document.file), str(document.__id__()))
         print("document.save complete")
         user = User.objects.get(id=request.data['userID'])
         print("User.objects.get(id=request.data['ObjectId']) COMPLETE")
@@ -387,6 +386,7 @@ def start_chat(request):
     print(request.data.get('index_name'))
     index_name = request.data.get('index_name')
     index = pc.Index(index_name)
+    group = request.data.get('group')
     vectorstore = PineconeVectorStore(  
         index, embeddings  
     )
@@ -463,11 +463,16 @@ def start_chat(request):
     history.inputoutput.add(inputoutput)
     return Response({"message" : message.content[0].text})
 
+from . models import GroupChatHistory
 @api_view(['POST'])
 def get_chat_history(request):
+    group = request.data.get('group')
     embedding_id = request.data.get('embedding_id')
     try:
-        history = ChatHistory.objects.get(embedding_id=embedding_id)
+        if group:
+            history = GroupChatHistory.objects.get(embedding_id=embedding_id)
+        else:
+            history = ChatHistory.objects.get(embedding_id=embedding_id)
     except ChatHistory.DoesNotExist:
         raise ValueError({'error': 'Chat history not found'})
     inputoutput = history.inputoutput.all()
@@ -516,7 +521,7 @@ def set_pinned(request):
         return Response({'error': str(e)}, status=500)
 
 from bson import ObjectId
-
+import os
 @api_view(['POST'])
 def delete_document(request):
     document_id = request.data.get('fileid')
@@ -530,10 +535,24 @@ def delete_document(request):
         user = User.objects.get(id=user)
     except User.DoesNotExist:
         raise ValueError({'error': 'Error no user found'})
+    try:
+        doc_group = User.document_groups
+        for group in doc_group:
+            if document in group.documents:
+                print(group)
+                print(group.documents)
+                group.documents.remove(document)
+    except:
+        pass
     user.documents.remove(document)
     user.save()
-    document.delete()
+
+    if os.path.exists(str(document.file)):
+        os.remove(str(document.file))
+    else:
+        print("The file does not exist")
     pc.delete_index(document_id)
+    document.delete()
     try:
         chat = ChatHistory.objects.get(embedding_id=document_id)
     except ChatHistory.DoesNotExist:
@@ -543,6 +562,51 @@ def delete_document(request):
     chat.delete()
 
     return Response({'message': 'Document deleted successfully'})
+
+@api_view(['POST'])
+def renameDocument(request):
+    document_id = request.data.get('document_id')
+    new_name = request.data.get('new_name')
+
+    # Check if both document ID and new name are provided
+    if not document_id or not new_name:
+        return Response({'error': 'Both document ID and new name are required'}, status=status.HTTP_400_BAD_REQUEST)
+
+    try:
+        # Retrieve the document from the database
+        document = UserDocument.objects.get(_id=ObjectId(document_id))
+    except UserDocument.DoesNotExist:
+        return Response({'error': 'Document not found'}, status=status.HTTP_404_NOT_FOUND)
+
+    # Update the document's name
+    document.filename = new_name
+
+    # Save the document to persist the changes
+    document.save()
+
+    return Response({'message': 'Document renamed successfully'})
+
+
+from django.http import HttpResponse
+
+@api_view(['POST'])
+def openpdf(request):
+    pdfid = request.data.get('fileid')
+    try:
+        pdf_object_id = ObjectId(pdfid)
+        document = UserDocument.objects.get(_id=pdf_object_id)
+        pdf_path = str(document.file)
+        
+        if os.path.exists(pdf_path):
+            with open(pdf_path, 'rb') as pdf_file:
+                response = HttpResponse(pdf_file.read(), content_type='application/pdf')
+                response['Content-Disposition'] = f'inline; filename="{os.path.basename(pdf_path)}"'
+                
+                return response
+        else:
+            return Response('PDF file not found')
+    except Exception as e:
+        return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 # Call the function with your project ID and location
 # prevmessages = []
@@ -609,13 +673,8 @@ def text_to_rag(new_index_name, text):
     # Vertex AI embedding model  uses 768 dimensions`
     vectorstore = vectorstore.from_documents(splits, embeddings, index_name=new_index_name)
     
-def mainfunk(pdf_file, new_index_name):
-    text = extract_text_from_pdf(pdf_file)
-    #print(text)
-    text_to_rag(new_index_name, text)
 
-from . preprocessor import mainfunk as mainfunk2
-
+from . preprocessor import handle_multi_pdfs
 @api_view(['POST'])
 def getTimeLine(request):
     documentID = request.data.get('documentID')
@@ -627,7 +686,7 @@ def getTimeLine(request):
         raise ValueError({'error': 'Document not found'})
     if document.timeline is None:
         print("start make timeline")
-        timeline = mainfunk2(str(document.file))
+        timeline = handle_multi_pdfs([str(document.file)], str(document.__id__()))
         document.timeline = timeline
         document.save()
         print("done timeline")
@@ -635,3 +694,81 @@ def getTimeLine(request):
         timeline = document.timeline
     print(timeline)
     return Response({'timeline': timeline})
+
+from .models import DocumentGroup
+
+@api_view(['POST'])
+def createDocumentGroup(request):
+    name = request.data.get('name')
+    userID = request.data.get('user')
+    current_doc = request.data.get('current')
+    new_doc = request.data.get('new_doc')
+    current = request.data.get('current')
+    document_group = DocumentGroup.objects.create(
+        name=name,
+    )
+    doc = UserDocument.objects.get(_id=ObjectId(new_doc))
+    doc2 = UserDocument.objects.get(_id=ObjectId(current_doc))
+    document_group.documents.add(doc)
+    document_group.documents.add(doc2)
+    document_group.save()
+    handle_multi_pdfs([str(doc.file), str(doc2.file)], str(document_group.__id__()))
+    try:
+        user = User.objects.get(id=userID)
+        user.document_groups.add(document_group)
+    except User.DoesNotExist:
+        raise ValueError({'error': 'User not found'})
+    return Response({'message': 'Document group created successfully', 'docID': str(document_group.__id__())})
+
+@api_view(['POST'])
+def updateDocumentGroup(request):
+    groupID = request.data.get('docgroup')
+    new_doc = request.data.get('new_doc')
+    new_doc_obj = UserDocument.objects.get(_id=ObjectId(new_doc))
+    document_group = DocumentGroup.objects.get(_id=ObjectId(groupID))
+    document_group.documents.add(new_doc_obj)
+    alldocs = document_group.documents.all()
+    documents = []
+    for doc in alldocs:
+        documents.append(str(doc.file))
+    document_group.save()
+    handle_multi_pdfs(documents, str(document_group.__id__()))
+    return Response({'message': 'Document group updated successfully'})
+
+@api_view(['POST'])
+def getDocumentGroups(request):
+    user = request.data.get('user')
+    document_groups = User.objects.get(id=user).document_groups.all()
+    resp = []
+    for group in document_groups:
+        resp.append({
+            "id": str(group.__id__()),
+            "name": group.name,
+            "documents": [str(doc.__id__()) for doc in group.documents.all()]
+        })
+    return Response({'data': resp})
+
+@api_view(['POST'])
+def deleteDocgroup(request):
+    user = request.data.get('user')
+    docGroup = request.data.get('docGroup')
+    documet_group = DocumentGroup.objects.get(_id=ObjectId(docGroup))
+    user = User.objects.get(id=user)
+    user.document_groups.remove(documet_group)
+    documet_group.delete()
+
+@api_view(['POST'])
+def getDocumentsInGroup(request):
+    group = request.data.get('group')
+    print('group: ', group)
+    documents = DocumentGroup.objects.get(_id=ObjectId(group)).documents.all()
+    resp = []
+    for doc in documents:
+        resp.append({
+            "id": str(doc.__id__()),
+            "filename": doc.filename,
+            "content_type": doc.content_type,
+            "size": doc.size,
+            "uploaded_at": doc.uploaded_at
+        })
+    return Response({'data': resp})

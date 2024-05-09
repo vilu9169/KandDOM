@@ -29,7 +29,19 @@ class Document(models.Model):
     def save(self, *args, **kwargs):
         self.id = self._id
         super(Document, self).save(*args, **kwargs)
-    
+
+class DocumentGroup(models.Model):
+    _id = djmodels.ObjectIdField()
+    name = models.CharField(max_length=255)
+    documents = ArrayReferenceField(to=Document, on_delete=models.CASCADE)
+
+    def __getattribute__(self, attr):
+        return super().__getattribute__(attr)
+    def __id__(self):
+        return self._id
+    def __str__(self):
+        return self.name
+
 class File(models.Model):
     #id = models.BigAutoField( primary_key=True, editable=False, db_column='_id')
     #file_id = models.BigAutoField(unique=True) removes in order for migrate to work
@@ -72,6 +84,7 @@ class User(AbstractUser):
     password = models.CharField(max_length=250)
     username = None
     documents = ArrayReferenceField(to=Document, on_delete=models.CASCADE)
+    document_groups = ArrayReferenceField(to=DocumentGroup, on_delete=models.CASCADE)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()
@@ -100,6 +113,13 @@ class ChatHistory(models.Model):
     _id = djmodels.ObjectIdField()
     user_id = models.IntegerField()
     inputoutput = ArrayReferenceField(to=InputOutput, on_delete=models.CASCADE)
+    pinned_indices = models.ManyToManyField(to=Index, blank=True)
+    embedding_id = models.CharField(max_length=250)
+
+class GroupChatHistory(models.Model):
+    _id = djmodels.ObjectIdField()
+    user_id = models.IntegerField()
+    chat_histories = ArrayReferenceField(to=DocumentGroup, on_delete=models.CASCADE)
     pinned_indices = models.ManyToManyField(to=Index, blank=True)
     embedding_id = models.CharField(max_length=250)
 

@@ -14,11 +14,17 @@ urlpatterns = [
     path('upload/', upload_document, name='upload'),
     path('api/token/', MyTokenObtainPairView.as_view(), name ="token_obtain_pair"),
 
+    path('api/openpdf/', openpdf, name='openpdf'),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name="token_refresh"),
     path('api/signup/', RegisterView.as_view(), name='register'),
     path('api/documents/', get_documents, name='documents'),
     path('api/getchat/', get_chat_history, name='chat_history'),
     path('api/deletefile/', delete_document, name='delete_file'),
+    path('api/renamefile/', renameDocument, name='rename_file'),
     path('api/set_pinned/', set_pinned, name='set_pinned'),
     path('api/get_timeline/', getTimeLine, name='get_timeline'),
+    path('api/createDocgroup/', createDocumentGroup, name='create_doc_group'),
+    path('api/updateDocgroup/', updateDocumentGroup, name='update_doc_group'),
+    path('api/getDocGroups/', getDocumentGroups, name='get_doc_groups'),
+    path('api/getdocsingroup/', getDocumentsInGroup, name='get_docs_in_group'),
 ]

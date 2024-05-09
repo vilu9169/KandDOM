@@ -74,6 +74,9 @@ button {
 .c-2{
   color: var(--color-1) !important;
 }
+.c-secondary{
+  color: var(--text-color-second) !important;
+}
 
 .h-15 {
   height: 15%;
@@ -103,6 +106,10 @@ button {
   position: relative;
   height: 20px;
 }
+.h-25px{
+  position: relative;
+  height: 25px;
+}
 .h-90 {
   height: 90%;
 }
@@ -126,6 +133,12 @@ button {
 }
 .w-50px{
   flex: 0 0 50px !important;
+}
+.xd{
+  padding-left: 10px !important;
+}
+.w-30px{
+  width: 30px !important;
 }
 .w-80px{
  width: 80px !important;
@@ -227,6 +240,13 @@ button {
   height: 40px !important;
   transition: background-color 0.3s ease;
 }
+.rename-input{
+  color: var(--text-color-main) !important;
+  border: 2px solid var(--color-3) !important;
+  border-radius: 5px;
+  height: 40px !important;
+  transition: background-color 0.3s ease;
+}
 
 .pop-up-button:hover {
   background-color: var(--color-2) !important;
@@ -284,6 +304,8 @@ button {
 }
 .uploadfile-container {
   z-index: 999;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-3) !important;
   width: 80% !important;
   border-radius: 5px;
 }
@@ -330,6 +352,8 @@ button {
   top: -5px;
   height: 120px;
   border-radius: 5px;
+  border: 1px solid var(--color-3) !important;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 .settings-icon {
   margin-right: 10px;
@@ -430,6 +454,9 @@ button {
   border-bottom: thin solid black !important;
   border-radius: 0 !important;
 }
+.pointer{
+  cursor: pointer !important;
+}
 .login-form:active,
 .login-form:focus,
 .login-form:active,
@@ -480,7 +507,6 @@ button {
 
 .message-text {
   font-size: 14px;
-  margin-left: 10px;
 }
 
 /* InfoWindow CSS */
@@ -521,7 +547,14 @@ button {
   font-weight: bold;
 }
 .document-button{
-  color: var(--text-color-main) !important;
+  color: var(--color-2) !important;
+  border: none !important;
+  border-radius: 5px;
+  overflow: hidden;
+  min-height: 40px;
+}
+.document-button2{
+  color: var(--color-2) !important;
   border: none !important;
   border-radius: 5px;
   overflow: hidden;
@@ -592,9 +625,31 @@ button {
 .popupBody {
   width: 200px !important;
   margin: 8px;
-  border-radius: 8px;
-  border: 1px solid var(--color-2);
+  border-radius: 5px;
+  border: 1px solid var(--color-3) !important;
   background-color: var(--color-1);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1;
+}
+
+.spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #ccc;
+  border-top-color: #333;
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
