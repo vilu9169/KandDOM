@@ -6,16 +6,19 @@ import { IoIosDocument } from "react-icons/io";
 import { IoIosCopy } from "react-icons/io";
 import { AuthContext } from "./AuthContextProvider";
 import FileDropZone from "./FileDropZone";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { UploadWindowContext } from "./UploadWindowContextProvider";
 
-function UploadFileWindow() {
-  const { value } = useContext(UploadWindowContext);
+function UploadFileWindow({ uploadRef, handleClickOutsideUploadWindow }) {
+  const { value, setShowUploadWindow } = useContext(UploadWindowContext);
   const { userID, getFiles } = useContext(AuthContext);
   const { setCurrentFile } = useContext(AuthContext);
   const [title, setTitle] = useState("Upload document to start!");
+  
+
 
   const baseURL = process.env.REACT_APP_API_URL;
+
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     // Check if the selected file is a PDF
@@ -23,23 +26,22 @@ function UploadFileWindow() {
       alert("Please select a PDF file.");
       return;
     }
-    console.log('userID:', userID)
+    console.log("userID:", userID);
     let formData = new FormData();
 
-    formData.append('file', file); // Append the file to FormData
-    formData.append('userID', userID);
-    console.log(baseURL+'upload/')
+    formData.append("file", file); // Append the file to FormData
+    formData.append("userID", userID);
+    console.log(baseURL + "upload/");
     try {
-        const response = await fetch(baseURL+'upload/', {
-
-            method: 'POST',
-            body: formData
-        });
-        const data = await response.json();
-        getFiles()
-        setCurrentFile(data.document_id)
-        localStorage.setItem('currentFile', data.document_id)
-        alert(`File uploaded successfully. Document ID: ${data.document_id}`);
+      const response = await fetch(baseURL + "upload/", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+      getFiles();
+      setCurrentFile(data.document_id);
+      localStorage.setItem("currentFile", data.document_id);
+      alert(`File uploaded successfully. Document ID: ${data.document_id}`);
     } catch (error) {
       console.error("Error uploading file:", error);
       alert("An error occurred while uploading the file.");
@@ -52,12 +54,19 @@ function UploadFileWindow() {
     } else if (value === 2) {
       setTitle("Upload document to current existing chat.");
     } else {
-      setTitle("Upload document to start!");
+      setTitle("Upload document to start!"); 
     }
+    document.addEventListener("mousedown", handleClickOutsideUploadWindow);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutsideUploadWindow);
+    };
   }, [value]);
 
   return (
-    <Container className="m-auto p-2 h-75 bg-2 uploadfile-container">
+    <Container
+      ref={uploadRef}
+      className="m-auto p-2 h-75 bg-2 uploadfile-container"
+    >
       <Row className="h-10 w-100 bg-2 m-0 align-items-center d-flex justify-content-center">
         <h4 className="m-0">{title}</h4>
       </Row>
@@ -78,7 +87,7 @@ function UploadFileWindow() {
               htmlFor="file-upload"
               className="m-auto bg-3 w-75 wide-button d-flex justify-content-center align-items-center p-0"
             >
-              <span className="text-center justify-content-center d-flex align-items-center w-75">
+              <span className="text-center pointer justify-content-center d-flex align-items-center w-75">
                 Choose file
               </span>
               <span className="w-25 justify-content-center d-flex align-items-center">
