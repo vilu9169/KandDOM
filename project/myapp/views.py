@@ -714,6 +714,7 @@ def createDocumentGroup(request):
     current = request.data.get('current')
     document_group = DocumentGroup.objects.create(
         name=name,
+        timeline = [],
     )
     doc = UserDocument.objects.get(_id=ObjectId(new_doc))
     doc.in_group = True
