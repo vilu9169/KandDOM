@@ -17,7 +17,7 @@ const UploadWindowContextProvider = ({ children }) => {
   };
 
   return (
-    <UploadWindowContext.Provider value={{ showUploadWindow, handleShowUploadWindow, setFile, value }}>
+    <UploadWindowContext.Provider value={{ showUploadWindow, setShowUploadWindow, handleShowUploadWindow, setFile, value }}>
       {children}
     </UploadWindowContext.Provider>
   );
