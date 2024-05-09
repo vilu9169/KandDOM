@@ -307,6 +307,7 @@ embeddings = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001
 @api_view(['POST'])
 def upload_document(request):
     file_obj = request.FILES.get('file')
+    group = request.data('group')
     print(request.data['userID'])
     
     """print("All documents in the database:")
@@ -326,7 +327,8 @@ def upload_document(request):
         print("Before document.save")
         print(document.file)
         document.save()
-        document.timeline = mainfunk(str(document.file), str(document.__id__()))
+        if group:
+            document.timeline = handle_multi_pdfs([str(document.file)], str(document.__id__()), document.filename)
         document.save()
         print("document.save complete")
         user = User.objects.get(id=request.data['userID'])
@@ -355,13 +357,14 @@ def get_documents(request):
     for document in documents:
         print(document, document.__id__())
         id = str(document.__id__())
-        resp.append({
-            "id": id,
-            "filename": document.filename,
-            "content_type": document.content_type,
-            "size": document.size,
-            "uploaded_at": document.uploaded_at
-        })
+        if not document.in_group:
+            resp.append({
+                "id": id,
+                "filename": document.filename,
+                "content_type": document.content_type,
+                "size": document.size,
+                "uploaded_at": document.uploaded_at
+            })
 
     return Response({'data' : resp})
 
@@ -522,6 +525,11 @@ def set_pinned(request):
 
 from bson import ObjectId
 import os
+
+pc = Pinecone(api_key="2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
+def delind(indexname):
+    pc.delete_index(indexname)
+
 @api_view(['POST'])
 def delete_document(request):
     document_id = request.data.get('fileid')
@@ -551,7 +559,7 @@ def delete_document(request):
         os.remove(str(document.file))
     else:
         print("The file does not exist")
-    pc.delete_index(document_id)
+    delind(document_id)
     document.delete()
     try:
         chat = ChatHistory.objects.get(embedding_id=document_id)
@@ -665,7 +673,7 @@ def getTimeLine(request):
         raise ValueError({'error': 'Document not found'})
     if document.timeline is None:
         print("start make timeline")
-        timeline = mainfunk2(str(document.file))
+        timeline = handle_multi_pdfs([str(document.file)], documentID, document.filename)
         document.timeline = timeline
         document.save()
         print("done timeline")
@@ -687,11 +695,13 @@ def createDocumentGroup(request):
         name=name,
     )
     doc = UserDocument.objects.get(_id=ObjectId(new_doc))
+    doc.in_group = True
     doc2 = UserDocument.objects.get(_id=ObjectId(current_doc))
+    doc2.in_group = True
     document_group.documents.add(doc)
     document_group.documents.add(doc2)
     document_group.save()
-    handle_multi_pdfs([str(doc.file), str(doc2.file)], str(document_group.__id__()))
+    handle_multi_pdfs([str(doc.file), str(doc2.file)], str(document_group.__id__()), document.filename)
     try:
         user = User.objects.get(id=userID)
         user.document_groups.add(document_group)
@@ -706,6 +716,7 @@ def updateDocumentGroup(request):
     new_doc_obj = UserDocument.objects.get(_id=ObjectId(new_doc))
     document_group = DocumentGroup.objects.get(_id=ObjectId(groupID))
     document_group.documents.add(new_doc_obj)
+    new_doc_obj.in_group = True
     alldocs = document_group.documents.all()
     documents = []
     for doc in alldocs:

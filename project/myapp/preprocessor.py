@@ -86,7 +86,7 @@ def getraw(chunk_num, chunk_size, num_pages, pdf_file, num_chunks):
     # Load Binary Data into Document AI RawDocument Object
     return image_content
 
-def swifthandle(chunk, resind, client, name, resstrings, chunksize):
+def swifthandle(chunk, resind, client, name, resstrings, chunksize, pdf_file):
     raw_document = documentai.RawDocument(content=chunk, mime_type="application/pdf")
     # Configure the process request
     request = documentai.ProcessRequest(name=name, raw_document=raw_document)
@@ -116,7 +116,7 @@ def swifthandle(chunk, resind, client, name, resstrings, chunksize):
     pass
 
 #Same as before but no threads with pdf reader
-def ocr_pdf2(pdf_file, project_id, location, processor_id):
+def ocr_pdf2(pdf_file, project_id, location, processor_id, doc_name):
     
     # You must set the api_endpoint if you use a location other than 'us'.
     opts = {"api_endpoint": "eu-documentai.googleapis.com"}
@@ -143,7 +143,7 @@ def ocr_pdf2(pdf_file, project_id, location, processor_id):
     resstrings = []
     for i in range(num_chunks):
         resstrings.append("")
-        t = threading.Thread(target=swifthandle, args=(rawdata[i], i,  client, name, resstrings, chunk_size))
+        t = threading.Thread(target=swifthandle, args=(rawdata[i], i,  client, name, resstrings, chunk_size, doc_name))
         threads.append(t)
         t.start()
     # Wait for all threads to finish
@@ -244,16 +244,16 @@ def bettersort(theevents):
     else:
         return theevents["title"].timestamp()
 
-def handle_multi_pdfs(pdf_files, new_index_name):
+def handle_multi_pdfs(pdf_files, new_index_name, doc_name):
     alltexts  = ""
     retarr = []
     for pdf_file in pdf_files:
         #text = ocr_pdf(pdf_file, "sunlit-inn-417922", "eu", "54cf154d8c525451")
-        text = ocr_pdf2(pdf_file, "sunlit-inn-417922", "eu", "54cf154d8c525451")
+        text = ocr_pdf2(pdf_file, "sunlit-inn-417922", "eu", "54cf154d8c525451", doc_name)
         text_to_rag(new_index_name, text)
         #After text to rag run timelinemaker
         # alltexts += text
-        retarr += analyzefromstr(text, pdf_file)
+        retarr += analyzefromstr(text, doc_name)
     retarr = sorted(retarr, key = lambda x: bettersort(x))
     
     for elem in retarr:
@@ -262,6 +262,7 @@ def handle_multi_pdfs(pdf_files, new_index_name):
         except Exception as e:
             print("Error parsing time: ", e)
     print(retarr)
+    return retarr
 #Takes a pdf file path and a new index name as input
 #Extracts text from the pdf file and converts it to RAG which is stored in the new index
 def mainfunk(pdf_file, new_index_name):
