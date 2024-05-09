@@ -9,6 +9,7 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 import FileDropZone from "./FileDropZone";
 import { useContext, useEffect, useState, useRef } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { UploadWindowContext } from "./UploadWindowContextProvider";
 import LoadingScreen  from "./LoadingScreen";
 import axios from "axios";
@@ -65,7 +66,7 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
       alert("Please select a PDF file.");
       return;
     }
-    console.log('userID:', userID)
+    console.log("userID:", userID);
     let formData = new FormData();
 
     const group = (currentGroup != null) ? true : false;
@@ -119,8 +120,12 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
     } else if (value === 2) {
       setTitle("Upload document to current existing chat.");
     } else {
-      setTitle("Upload document to start!");
+      setTitle("Upload document to start!"); 
     }
+    document.addEventListener("mousedown", handleClickOutsideUploadWindow);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutsideUploadWindow);
+    };
   }, [value]);
 
   const chooseDocument = (fileid) => {
@@ -218,7 +223,7 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
               htmlFor="file-upload"
               className="m-auto bg-3 w-75 wide-button d-flex justify-content-center align-items-center p-0"
             >
-              <span className="text-center justify-content-center d-flex align-items-center w-75">
+              <span className="text-center pointer justify-content-center d-flex align-items-center w-75">
                 Choose file
               </span>
               <span className="w-25 justify-content-center d-flex align-items-center">
