@@ -12,7 +12,7 @@ import { showInfoWindowContext } from "./ShowInfoWindowContextProvider";
 import { ResponseContext } from "./ResponseContextProvider";
 import { MessageContext } from "./MessageContextProvider";
 
-function SideMenuTop({ clickedDocument, setClickedDocument }) {
+function SideMenuTop({ uploadRef, clickedDocument, setClickedDocument }) {
   const { handleShowUploadWindow } = useContext(UploadWindowContext);
   const [isVisible, setIsVisible] = useState(false);
   const { handleButtonClick } = useContext(AppContext);
@@ -23,12 +23,13 @@ function SideMenuTop({ clickedDocument, setClickedDocument }) {
   const { currentFile, setCurrentFile } = useContext(AuthContext);
   const navigate = useNavigate();
   const { logoutUser } = useContext(AuthContext);
+
   const { setCurrentGroup } = useContext(AuthContext);
   const { handleShowInfo } = useContext(showInfoWindowContext)
+
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -59,7 +60,7 @@ function SideMenuTop({ clickedDocument, setClickedDocument }) {
   return (
     <Container className="p-0">
       {clickedDocument ? (
-        <Row className="w-90 m-auto h-80px d-flex justify-content-center">
+        <Row className="w-90 m-sauto h-80px d-flex justify-content-center">
           <Col className="col-3 align-items-center d-flex justify-content-start">
             <Button
               onClick={() => 
@@ -101,9 +102,10 @@ function SideMenuTop({ clickedDocument, setClickedDocument }) {
               ref={innerContainerRef}
             >
               <Row className="p-0 m-0 h-50 w-100 ">
-                <Button 
-                onClick={() => handleShowUploadWindow(1)}
-                className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1">
+                <Button
+                  onClick={() => handleShowUploadWindow(1)}
+                  className="m-auto bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
+                >
                   <span className="text-center justify-content-center d-flex align-items-center w-75">
                     Add to new chat
                   </span>
