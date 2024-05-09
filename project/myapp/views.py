@@ -303,7 +303,11 @@ def ragadapt(new_message, previous_messages) -> str:
             odd = True
     messages.append({
         "role": "user",
+<<<<<<< HEAD
         "content": "Expand this question \" " +new_message + "\" and only answer with expansions of the question. Other text in the answer is strictly forbidden."
+=======
+        "content": "Expand this question \ " + new_message + " \ and only answer with expansions of the question. Other text in the answer is strictly forbidden."
+>>>>>>> 1ae5674 (server)
     })
 
     while True:
@@ -315,6 +319,8 @@ def ragadapt(new_message, previous_messages) -> str:
             model="claude-3-haiku@20240307",
             system = context,
             )
+            print("ragadapt: "+ str(message))
+
             return message.content[0].text
         except Exception as e:
             print("Error: ", e)
@@ -399,6 +405,7 @@ def start_chat(request):
             model=MODEL,
             system = context,
             )
+            print("mainchat: "+ str(message.content))
             cont = message.content[0].text
             break
         except Exception as e:
