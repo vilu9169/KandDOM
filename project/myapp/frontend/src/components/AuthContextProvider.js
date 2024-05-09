@@ -25,7 +25,6 @@ const AuthContextProvider = ({children}) => {
     let getFiles = async (uID = null) => {
         const body = {
             user: uID ? uID : userID,
-            group: (currentGroup !== null) ? true : false
         }
       try {
         const {data} = await axios.post(baseURL+"api/documents/", body);
