@@ -278,8 +278,54 @@ llm = VertexAI()
 import subprocess
 import requests
 
+def ragadapt(input, previous_messages, project_id) -> str:
+    # Set the endpoint URL
+    # global loc, optind, options
+    options = ["us-central1", "europe-west4"]
+    optind = 0
+    loc = options[optind]
+    context = "Your purpose is to expand the users latest question. Short questions should be reasked in multiple ways and if there is relevant context available from previous messages use that context to expand the question. If you cant do anything relevant with the question just send it back as is" 
+    #Create a json struct for previous messages and the current message
+    messages = []
+    odd = True
+    for message in previous_messages:
+        if odd:
+            messages.append({
+                "role": "user",
+                "content": message
+            })
+            odd = False
+        else:
+            messages.append({
+                "role": "assistant",
+                "content": message
+            })
+            odd = True
+    messages.append({
+        "role": "user",
+        "content": "Expand this question \" " +input + "\" and only answer with expansions of the question. Other text in the answer is strictly forbidden."
+    })
+
+    while True:
+        try:
+            client = AnthropicVertex(region=loc, project_id="sunlit-inn-417922")
+            message = client.messages.create(
+            max_tokens=300,
+            messages=messages,
+            model="claude-3-haiku@20240307",
+            system = context,
+            )
+            return message.content[0].text
+        except Exception as e:
+            print("Error: ", e)
+            optind+=1
+            if(optind==len(options)):
+                optind = 0
+            loc = options[optind]
+
 @api_view(['POST'])
 def start_chat(request):
+    project_id = "sunlit-inn-417922"
     print("Starting chat")
     print(request.data.get('index_name'))
     index_name = request.data.get('index_name')
@@ -291,7 +337,7 @@ def start_chat(request):
     
     print("Vectorstore created")
     new_message = request.data.get('message')
-    messages_json = request.data.get('messages')
+    previous_messages = request.data.get('messages')
         # global loc, optind, options
     optind = 0
     options = ["us-central1", "asia-southeast1"]
