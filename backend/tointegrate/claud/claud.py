@@ -36,7 +36,10 @@ loc = options[optind]
 
 def ragadapt(input, previous_messages, project_id) -> str:
     # Set the endpoint URL
-    global loc, optind, options
+    # global loc, optind, options
+    options = ["us-central1", "europe-west4"]
+    optind = 0
+    loc = options[optind]
     context = "Your purpose is to expand the users latest question. Short questions should be reasked in multiple ways and if there is relevant context available from previous messages use that context to expand the question. If you cant do anything relevant with the question just send it back as is" 
     #Create a json struct for previous messages and the current message
     messages = []
@@ -59,23 +62,22 @@ def ragadapt(input, previous_messages, project_id) -> str:
         "content": "Expand this question \" " +input + "\" and only answer with expansions of the question. Other text in the answer is strictly forbidden."
     })
 
-
-    client = AnthropicVertex(region=loc, project_id="sunlit-inn-417922")
-    try:
-        message = client.messages.create(
-        max_tokens=300,
-        messages=messages,
-        model="claude-3-haiku@20240307",
-        system = context,
-        )
-        return message.content[0].text
-    except Exception as e:
-        print("Error: ", e)
-        optind+=1
-        if(optind==len(options)):
-            optind = 0
-        loc = options[optind]
-        return(ragadapt(input,previous_messages))
+    while True:
+        try:
+            client = AnthropicVertex(region=loc, project_id="sunlit-inn-417922")
+            message = client.messages.create(
+            max_tokens=300,
+            messages=messages,
+            model="claude-3-haiku@20240307",
+            system = context,
+            )
+            return message.content[0].text
+        except Exception as e:
+            print("Error: ", e)
+            optind+=1
+            if(optind==len(options)):
+                optind = 0
+            loc = options[optind]
 
 
 
@@ -84,13 +86,14 @@ def ragadapt(input, previous_messages, project_id) -> str:
 
 
 def start_chat(input, previous_messages, project_id) -> str:
-    print("Starting chat")
-    global loc, optind, options
+    # global loc, optind, options
+    optind = 0
+    options = ["us-central1", "asia-southeast1"]
+    loc = options[optind]
     # Set the endpoint URL
     #MODEL="claude-3-haiku@20240307"
     MODEL = "claude-3-sonnet@20240229"
-    #MODEL = "claude-3-opus@20240229"
-    endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/europe-west4/publishers/anthropic/models/"+MODEL+":predict"
+    # MODEL = "claude-3-opus@20240229"
     context = """Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. 
     Var konsis om möjligt. Till ditt förfogande har du endast vissa delar av dokumentet, de delar som anses mest relevanta för frågan som ställts.
     Bryt gärna ner information i mindre punkter och hänvisa alltid till sidan i dokumentet där du hittade informationen. Hänvisa alltid till sidan direkt efter påståendet
@@ -113,8 +116,7 @@ def start_chat(input, previous_messages, project_id) -> str:
         index += 1
         #Extract text from document
     context += prepend + append + "Tänk på att alltid hänvisa till de sidor du hittat informationen på. formatera på följade vis [sidnummer]. Kom ihåg att din uppgift är att hitta relevant information, inte att dra slutsatser som inte står i dokumentet. Om användare ber om din åsikt bör du förklara detta att du bara är en assistent som inte kan eller bör ge åsikter i juridiska frågor."
-    #print("Context: ", context)
-    print("Rag done")
+
     #Create a json struct for previous messages and the current message
     messages = []
     odd = True
@@ -135,26 +137,22 @@ def start_chat(input, previous_messages, project_id) -> str:
         "role": "user",
         "content": input
     })
-
-    #LOCATION="europe-west4"
-
-    client = AnthropicVertex(region=loc, project_id="sunlit-inn-417922")
-    try:
-        message = client.messages.create(
-        max_tokens=1500,
-        messages=messages,
-        model=MODEL,
-        system = context,
-        )
-        return message.content[0].text
-    except Exception as e:
-        print("Error: ", e)
-        optind+=1
-        if(optind==len(options)):
-            optind = 0
-        loc = options[optind]
-        return(start_chat(input,previous_messages))
-
+    while True:
+        try:
+            client = AnthropicVertex(region=loc, project_id="sunlit-inn-417922")
+            message = client.messages.create(
+            max_tokens=1500,
+            messages=messages,
+            model=MODEL,
+            system = context,
+            )
+            return message.content[0].text
+        except Exception as e:
+            print("Error: ", e)
+            optind+=1
+            if(optind==len(options)):
+                optind = 0
+            loc = options[optind]
 
 # Call the function with your project ID and location
 prevmessages = []
@@ -162,6 +160,7 @@ while(True):
     #Prompt user for input
     print("Enter your message: ")
     message = input()
+    project_id = "sunlit-inn-417922"
     res = start_chat(message, prevmessages, project_id)
     prevmessages.append(message)
     prevmessages.append(res)
