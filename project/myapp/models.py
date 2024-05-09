@@ -20,6 +20,7 @@ class Document(models.Model):
     size = djmodels.IntegerField()
     uploaded_at = djmodels.DateTimeField(auto_now_add=True)
     timeline = djmodels.JSONField()
+    map_of_relations = djmodels.JSONField()
     def __getattribute__(self, attr):
         return super().__getattribute__(attr)
     def __id__(self):
