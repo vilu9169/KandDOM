@@ -343,10 +343,10 @@ def start_chat(request):
         "role": "user",
         "content": input
     })
-    client = AnthropicVertex(region=loc, project_id="sunlit-inn-417922")
     cont = ""
     while True:
         try:
+            client = AnthropicVertex(region=loc, project_id="sunlit-inn-417922")
             message = client.messages.create(
             max_tokens=1500,
             messages=messages,
