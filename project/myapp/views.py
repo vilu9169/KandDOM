@@ -664,6 +664,22 @@ def getTimeLine(request):
     print(timeline)
     return Response({'timeline': timeline})
 
+
+@api_view(['POST'])
+def getMapOfRelations(request):
+    documentID = request.data.get('documentID')
+    try:
+        document = UserDocument.objects.get(_id=ObjectId(documentID))
+    except UserDocument.DoesNotExist:
+        raise ValueError({'error': 'Document not found'})
+    if document.map_of_relations is None:
+        map_of_relations = ...
+        document.map_of_relations = map_of_relations
+        document.save()
+    else:
+        map_of_relations = document.map_of_relations
+    return Response({'map_of_relations': map_of_relations})
+
 from .models import DocumentGroup
 
 @api_view(['POST'])

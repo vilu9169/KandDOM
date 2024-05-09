@@ -18,6 +18,7 @@ import { AuthContext } from "./AuthContextProvider";
 import { UploadWindowContext } from "./UploadWindowContextProvider";
 import apolloLogo from "../assets/apollo.png";
 import TimeLine from "./TimeLine";
+import MapOfRelations from "./MapOfRelations";
 
 function Start() {
   const { buttonClicked } = useContext(AppContext);
@@ -85,6 +86,7 @@ function Start() {
               </Row>
             </Row>
             <Row className=" flex-grow-1 bg-1 position-relative">
+              <MapOfRelations></MapOfRelations>
               {showUploadWindow && <UploadFileWindow />}
               <Chatbot></Chatbot>
             </Row>
@@ -95,7 +97,7 @@ function Start() {
         </Row>
       </Container>
       {buttonClicked && <SettingsMenu />}
-      {showInfoWindow && <InfoWindow />}
+      {showInfoWindow && <InfoWindow />}  
       {showTimeline && <TimeLine closeTimeline={closeTimeline} />}
     </>
   );
