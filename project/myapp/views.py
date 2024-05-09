@@ -129,108 +129,6 @@ def chat_view(request):
    
 import subprocess
 import requests
-
-def start_chat2(input, previous_messages) -> str:
-    endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/us-central1/publishers/google/models/chat-bison:predict"
-    
-    #Load document from output.txt
-    dokument = ""
-    with open("output.txt", "r", encoding='utf-8') as file:
-        dokument = file.read()	
-    
-    #return
-    #Create a context string
-    context = "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. Detta är det dokument :" + dokument
-    #print("Context: ", context)
-    #Create a json struct for previous messages and the current message
-    messages = []
-    odd = True
-    for message in previous_messages:
-        if odd:
-            messages.append({
-                "author": "user",
-                "content": message
-            })
-            odd = False
-        else:
-            messages.append({
-                "author": "model",
-                "content": message
-            })
-            odd = True
-    messages.append({
-        "author": "user",
-        "content": input
-    })
-    for message in messages:
-        print(message)
-    
-    payload = {
-    "instances": [{
-        "context":  context,
-         "examples": [ 
-        #{
-        #     "input": {"content": "När har konstapel Kalle interagerat med den åtalade?"},
-        #     "output": {"content": "Konstapel kalle har interagerat med den åtalade vid två tillfällen. Första gången var den 12:e januari 2022 under ett förhör och andra gången var den 15:e januari 2022 då han tillkallades till bostaden."}
-        # },
-         {
-             "input": {"content": "Är den åtalade skyldig?"},
-             "output": {"content": "Jag är en opartisk assistent och är inte kapabel att besvara denna fråga. "}
-         }],
-        "messages": messages,
-    }],
-    "parameters": {
-        "temperature": 0.3,
-        "maxOutputTokens": 800,
-        "topP": 0.8,
-        "topK": 40
-    }
-    }
-    auth = subprocess.check_output("gcloud auth application-default print-access-token", shell=True)
-    
-    #Convert auth to string and remove last \r\n if on windows
-    if(auth[-2] == 13):
-        auth = auth.decode("utf-8")[:-2]
-    else:
-        auth = auth.decode("utf-8")[:-1]
-    # Set the request headers
-    print("Auth: ", auth)
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer "+auth
-    }
-    response = requests.post(endpoint, json=payload, headers=headers)
-
-    # Check the response status code
-    if response.status_code == 200:
-        #Get the response
-        resp = response.text
-        #print("Response: ", resp)
-        #Response is a json object so convert it to a json object
-        import json
-        resp = json.loads(resp)
-        #Get the response
-        resp = resp["predictions"][0]["candidates"][0]["content"]
-        return  resp
-    else:
-        print(response.text)
-        print(response.status_code)
-        return "Failed to start the chat"
-
-
-
-# Call the function with your project ID and location
-# prevmessages = []
-# while(True):
-#     #Prompt user for input
-#     print("Enter your message: ")
-#     message = input()
-#     res = start_chat(message, prevmessages)
-#     prevmessages.append(message)
-#     prevmessages.append(res)
-#     print(res)
-
-
 from django.shortcuts import render
 from rest_framework.views import APIView
 from .serializers import UserSerializer
@@ -390,17 +288,29 @@ def start_chat(request):
     vectorstore = PineconeVectorStore(  
         index, embeddings  
     )
+    
     print("Vectorstore created")
+    new_message = request.data.get('message')
+    messages_json = request.data.get('messages')
+        # global loc, optind, options
+    optind = 0
+    options = ["us-central1", "asia-southeast1"]
+    loc = options[optind]
     # Set the endpoint URL
-    MODEL="claude-3-haiku@20240307"
-    endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/europe-west4/publishers/anthropic/models/"+MODEL+":predict"
-    context = "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. Detta är de RAG delar av dokument du har att tillgå :" 
+    #MODEL="claude-3-haiku@20240307"
+    MODEL = "claude-3-sonnet@20240229"
+    # MODEL = "claude-3-opus@20240229"
+    context = """Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. 
+    Var konsis om möjligt. Till ditt förfogande har du endast vissa delar av dokumentet, de delar som anses mest relevanta för frågan som ställts.
+    Bryt gärna ner information i mindre punkter och hänvisa alltid till sidan i dokumentet där du hittade informationen. Hänvisa alltid till sidan direkt efter påståendet
+    som hämtats från den sidan.
+    """
     index = 0
     prepend = ""
     append = ""
-    new_message = request.data.get('message')
-    messages_json = request.data.get('messages')
-    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 40,})).invoke(new_message):
+    
+    #context = "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. Var konsis om möjligt. Detta är de delar av dokument du har att tillgå :" 
+    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 40, })).invoke(ragadapt(input, previous_messages, project_id=project_id)):
         #The first 10 documents are prepended to the context
         #The last 10 documents are appended to append
         if index < 10:
@@ -411,13 +321,11 @@ def start_chat(request):
             prepend += rag.page_content
         index += 1
         #Extract text from document
-    context += prepend + append
-    #print("Context: ", context)
-    print("Rag done")
+    context += prepend + append + "Tänk på att alltid hänvisa till de sidor du hittat informationen på. formatera på följade vis [sidnummer]. Kom ihåg att din uppgift är att hitta relevant information, inte att dra slutsatser som inte står i dokumentet. Om användare ber om din åsikt bör du förklara detta att du bara är en assistent som inte kan eller bör ge åsikter i juridiska frågor."
+
     #Create a json struct for previous messages and the current message
     messages = []
     odd = True
-    previous_messages = [msg['text'] for msg in messages_json]
     for message in previous_messages:
         if odd:
             messages.append({
@@ -433,21 +341,27 @@ def start_chat(request):
             odd = True
     messages.append({
         "role": "user",
-        "content": new_message
+        "content": input
     })
-
-    print(request.data.get('userid'))
-
-    LOCATION="europe-west4"
-
-    client = AnthropicVertex(region=LOCATION, project_id="sunlit-inn-417922")
-
-    message = client.messages.create(
-    max_tokens=500,
-    messages=messages,
-    model="claude-3-haiku@20240307",
-    system = context,
-    )
+    client = AnthropicVertex(region=loc, project_id="sunlit-inn-417922")
+    cont = ""
+    while True:
+        try:
+            message = client.messages.create(
+            max_tokens=1500,
+            messages=messages,
+            model=MODEL,
+            system = context,
+            )
+            cont = message.content[0].text
+            break
+        except Exception as e:
+            print("Error: ", e)
+            optind+=1
+            if(optind==len(options)):
+                optind = 0
+            loc = options[optind]
+            
     try:
         history = ChatHistory.objects.get(embedding_id=index_name)
     except ChatHistory.DoesNotExist:
@@ -458,10 +372,10 @@ def start_chat(request):
 
     inputoutput = InputOutput.objects.create(
         message= new_message,
-        response = message.content[0].text
+        response = cont
     )
     history.inputoutput.add(inputoutput)
-    return Response({"message" : message.content[0].text})
+    return Response({"message" : cont})
 
 from . models import GroupChatHistory
 @api_view(['POST'])
@@ -658,7 +572,7 @@ def text_to_rag(new_index_name, text):
         metric="cosine",
         spec=ServerlessSpec(
             cloud='aws', 
-            region='us-west-2'
+            region='eu-west-1'
         ) 
     ) 
     # Split documents
