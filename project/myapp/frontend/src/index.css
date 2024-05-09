@@ -351,6 +351,8 @@ button {
   position: relative;
   top: -5px;
   height: 120px;
+  border: 1px solid var(--color-3) !important;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   border: 1px solid var(--color-3) !important;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -448,6 +450,9 @@ button {
   color: var(--color-3);
   text-decoration: underline;
   cursor: pointer;
+}
+.pointer{
+  cursor: pointer !important;
 }
 .login-form {
   background-color: var(--color-3) !important;

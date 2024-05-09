@@ -8,7 +8,9 @@ import { IoMdHelp } from "react-icons/io";
 import SideMenuBottom from "./SideMenuBottom";
 import SettingsMenu from "./SettingsMenu";
 import { showInfoWindowContext } from "./ShowInfoWindowContextProvider.js";
-import { useContext, useEffect, useState } from "react";
+
+import { useContext, useState, useRef } from "react";
+
 import { AppContext } from "./ShowSettingsHandler";
 import SideMenuTop from "./SideMenuTop";
 import SideMenuMiddle from "./SideMenuMiddle";
@@ -23,15 +25,21 @@ function Start() {
   const { buttonClicked } = useContext(AppContext);
   const { showInfoWindow, handleShowInfo } = useContext(showInfoWindowContext);
   const { user } = useContext(AuthContext);
-  const { showUploadWindow } = useContext(UploadWindowContext);
+
+  const { showUploadWindow, setShowUploadWindow } = useContext(UploadWindowContext);
+
   const [clickedDocument, setClickedDocument] = useState(false);
-
   const [showTimeline, setShowTimeline] = useState(false);
-
+  const uploadRef = useRef(null);
+  
   const closeTimeline = () => {
     setShowTimeline(false);
   };
-
+  const handleClickOutsideUploadWindow = (event) => {
+    if (uploadRef.current && !uploadRef.current.contains(event.target)) {
+      setShowUploadWindow(false); 
+    }
+  };
   const handleDocumentButtonClick = (fileId) => {
     // Set clickedDocument state to true when a document button is clicked
     setClickedDocument(true);
@@ -44,6 +52,7 @@ function Start() {
           <Col color="" className="col main-left d-flex flex-column">
             <Row className="h-80px bg-2">
               <SideMenuTop
+                uploadRef={uploadRef}
                 clickedDocument={clickedDocument}
                 setClickedDocument={setClickedDocument}
               />
@@ -84,7 +93,11 @@ function Start() {
               </Row>
             </Row>
             <Row className=" flex-grow-1 bg-1 position-relative">
-              {showUploadWindow && <UploadFileWindow />}
+              {showUploadWindow && (
+                <UploadFileWindow 
+                handleClickOutsideUploadWindow={handleClickOutsideUploadWindow} uploadRef={uploadRef}
+                />
+              )}
               <Chatbot></Chatbot>
             </Row>
             <Row className="h-80px bg-1 align-items-top">
