@@ -35,7 +35,7 @@ class DocumentGroup(models.Model):
     _id = djmodels.ObjectIdField()
     name = models.CharField(max_length=255)
     documents = ArrayReferenceField(to=Document, on_delete=models.CASCADE)
-
+    timeline = djmodels.JSONField()
     def __getattribute__(self, attr):
         return super().__getattribute__(attr)
     def __id__(self):

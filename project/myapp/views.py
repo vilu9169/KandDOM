@@ -328,7 +328,7 @@ def upload_document(request):
         print(document.file)
         document.save()
         if not group:
-            document.timeline = handle_multi_pdfs([str(document.file)], str(document.__id__()), document.filename)
+            document.timeline = handle_multi_pdfs([{'file':str(document.file), 'filename':document.filename}], str(document.__id__()))
         document.save()
         print("document.save complete")
         user = User.objects.get(id=request.data['userID'])
@@ -694,7 +694,7 @@ def getTimeLine(request):
         raise ValueError({'error': 'Document not found'})
     if document.timeline is None:
         print("start make timeline")
-        timeline = handle_multi_pdfs([str(document.file)], documentID, document.filename)
+        timeline = handle_multi_pdfs([{'file':str(document.file), 'filename':document.filename}], documentID)
         document.timeline = timeline
         document.save()
         print("done timeline")
@@ -717,12 +717,14 @@ def createDocumentGroup(request):
     )
     doc = UserDocument.objects.get(_id=ObjectId(new_doc))
     doc.in_group = True
+    doc.save()
     doc2 = UserDocument.objects.get(_id=ObjectId(current_doc))
     doc2.in_group = True
+    doc2.save()
     document_group.documents.add(doc)
     document_group.documents.add(doc2)
+    document_group.timeline = handle_multi_pdfs([{'file':str(doc.file), 'filename': doc.filename}, {'file':str(doc2.file), 'filename': doc2.filename}], str(document_group.__id__()))
     document_group.save()
-    handle_multi_pdfs([str(doc.file), str(doc2.file)], str(document_group.__id__()), document.filename)
     try:
         user = User.objects.get(id=userID)
         user.document_groups.add(document_group)
@@ -738,12 +740,15 @@ def updateDocumentGroup(request):
     document_group = DocumentGroup.objects.get(_id=ObjectId(groupID))
     document_group.documents.add(new_doc_obj)
     new_doc_obj.in_group = True
+    new_doc_obj.save()
     alldocs = document_group.documents.all()
     documents = []
+    doc_names = []
     for doc in alldocs:
-        documents.append(str(doc.file))
+        documents.append({'file':str(doc.file), 'filename':doc.filename})
     document_group.save()
-    handle_multi_pdfs(documents, str(document_group.__id__()))
+    document_group.timeline = handle_multi_pdfs(documents, str(document_group.__id__()))
+    document_group.save()
     return Response({'message': 'Document group updated successfully'})
 
 @api_view(['POST'])
