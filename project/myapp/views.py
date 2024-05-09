@@ -327,7 +327,7 @@ def upload_document(request):
         print("Before document.save")
         print(document.file)
         document.save()
-        if group:
+        if not group:
             document.timeline = handle_multi_pdfs([str(document.file)], str(document.__id__()), document.filename)
         document.save()
         print("document.save complete")
