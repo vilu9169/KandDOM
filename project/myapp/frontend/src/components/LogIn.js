@@ -8,11 +8,6 @@ import LogInLogic from "./LogInLogic";
 import SignUpLogic from "./SignUpLogic";
 
 function LogIn() {
-  const videos = [
-    "../assets/videos/b_roll1.mp4",
-    "../assets/videos/b_roll2.mp4",
-    "../assets/videos/b_roll3.mp4",
-  ];
 
   const [showLogInForm, setShowLogInForm] = useState(false);
   const [showSignUpForm, setShowSignUpForm] = useState(false);
@@ -31,7 +26,7 @@ function LogIn() {
     <Container fluid className=" text-center login-container">
       <Row className="h-100">
         <Col className="col image-column m-0 p-0">
-          <VideoBackground videos={videos} />
+          <VideoBackground />
         </Col>
         <Col className="col bg-2 login-column">
           <Row className="h-100 align-items-center d-flex justify-content-center">

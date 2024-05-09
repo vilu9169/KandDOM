@@ -17,12 +17,14 @@ const AuthContextProvider = ({children}) => {
     const [files, setFiles] = useState(localStorage.getItem('files') ? JSON.parse(localStorage.getItem('files')) : []);
     const [currentFile, setCurrentFile] = useState(localStorage.getItem('currentFile') ? localStorage.getItem('currentFile') : null);
     const [timeLine, setTimeLine] = useState([]);
+    const [ docGroups, setDocGroups ] = useState(() => (localStorage.getItem('docGroups') ? JSON.parse(localStorage.getItem('docGroups')) : []));
+    const [ currentGroup, setCurrentGroup ] = useState(() => (localStorage.getItem('currentGroup') ? localStorage.getItem('currentGroup') : null));
 
     const baseURL = process.env.REACT_APP_API_URL
 
-    let getFiles = async () => {
+    let getFiles = async (uID = null) => {
         const body = {
-            user: userID
+            user: uID ? uID : userID
         }
       try {
         const {data} = await axios.post(baseURL+"api/documents/", body);
@@ -35,12 +37,14 @@ const AuthContextProvider = ({children}) => {
         setFiles(fileArr);
         localStorage.setItem('files', JSON.stringify(fileArr));
         console.log("Files:", files);
+        getDocumentGroups();
         return data;
       }
       catch (error) {
         console.error("Error fetching files:", error);
       }
     };
+
     axios.defaults.xsrfCookieName = 'csrftoken'
     axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN'   
 
@@ -76,11 +80,13 @@ const AuthContextProvider = ({children}) => {
                     setUser(jwtDecode(data.access).user)
                     setUserID(jwtDecode(data.access).user_id)
                     localStorage.setItem('userID', jwtDecode(data.access).user_id)
+                    localStorage.setItem('currentFile', null)
+                    localStorage.setItem('currentGroup', null)
                     console.log("decoded: ", jwtDecode(data.access).user)
-                    getFiles()
                     navigate("/");
                     setLoginError(null)
                     setSignupError(null)
+                    getFiles(jwtDecode(data.access).user_id)
                 } catch (error) {
                     setLoginError(error.response.data.detail)
                     console.log(error.response.data.detail)
@@ -107,6 +113,27 @@ const AuthContextProvider = ({children}) => {
         }
     }
 
+    let getDocumentGroups = async () => {
+        const body = {
+            user: userID
+        }
+        try {
+            const {data} = await axios.post(baseURL+"api/getDocGroups/", body);
+            console.log(data.data);
+            let fileArr = []
+            for (const doc of data.data) {
+              console.log(doc);
+              fileArr.push(doc);
+            }
+            setDocGroups(fileArr);
+            localStorage.setItem('docGroups', JSON.stringify(fileArr));
+            console.log("docgroups:", files);
+            return data;
+          }
+          catch (error) {
+            console.error("Error fetching files:", error);
+          }
+    }
 
     let logoutUser = (e) => {
         e.preventDefault()
@@ -116,8 +143,18 @@ const AuthContextProvider = ({children}) => {
         localStorage.removeItem('files')
         localStorage.removeItem('currentFile')
         localStorage.removeItem('messages')
+        localStorage.removeItem('currentGroup')
+        localStorage.removeItem('docGroups')
+        localStorage.removeItem('pinnedMessages')
+        localStorage.removeItem('timeLine')
         setAuthTokens(null)
         setUser(null)
+        setUserID(null)
+        setFiles([])
+        setCurrentFile(null)
+        setTimeLine([])
+        setDocGroups([])
+        setCurrentGroup(null)
         navigate('/login')
     }
 
@@ -154,6 +191,10 @@ const AuthContextProvider = ({children}) => {
         signupError:signupError,
         currentFile:currentFile,
         timeLine:timeLine,
+        docGroups:docGroups,
+        currentGroup:currentGroup,
+        setCurrentGroup:setCurrentGroup,
+        getDocumentGroups:getDocumentGroups,
         setTimeLine:setTimeLine,
         setCurrentFile:setCurrentFile,
         getTimeLine:getTimeLine,

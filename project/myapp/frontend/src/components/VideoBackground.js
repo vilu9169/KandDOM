@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import apolloLogo from "../assets/apollo.png";
+import b_roll_1 from "../assets/videos/b_roll1.mp4";
+import b_roll_2 from "../assets/videos/b_roll2.mp4";
+import b_roll_3 from "../assets/videos/b_roll3.mp4";
 
-const VideoBackground = ({ videos }) => {
+const VideoBackground = () => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-
+  const videos = [b_roll_1, b_roll_2, b_roll_3];
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length);
