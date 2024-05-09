@@ -10,15 +10,20 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 import FileDropZone from "./FileDropZone";
 import { useContext, useEffect, useState, useRef } from "react";
 import { useContext, useEffect, useState, useRef } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { UploadWindowContext } from "./UploadWindowContextProvider";
 import LoadingScreen  from "./LoadingScreen";
 import axios from "axios";
-function UploadFileWindow({clickedDocument, setClickedDocument}) {
-  const { value } = useContext(UploadWindowContext);
+
+function UploadFileWindow({ uploadRef, handleClickOutsideUploadWindow }) {
+  const { value, setShowUploadWindow } = useContext(UploadWindowContext);
   const { userID, getFiles } = useContext(AuthContext);
   const { currentFile, setCurrentFile } = useContext(AuthContext);
   const [title, setTitle] = useState("Upload document to start!");
   const { docGroups,  getDocumentGroups } = useContext(AuthContext);
+  
+
+
   const baseURL = process.env.REACT_APP_API_URL;
   const { currentGroup, setCurrentGroup } = useContext(AuthContext);
   const [ loading, setLoading ] = useState(false);
@@ -66,6 +71,7 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
       alert("Please select a PDF file.");
       return;
     }
+    console.log("userID:", userID);
     console.log("userID:", userID);
     let formData = new FormData();
 
