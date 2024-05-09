@@ -278,7 +278,7 @@ llm = VertexAI()
 import subprocess
 import requests
 
-def ragadapt(input, previous_messages, project_id) -> str:
+def ragadapt(new_message, previous_messages) -> str:
     # Set the endpoint URL
     # global loc, optind, options
     options = ["us-central1", "europe-west4"]
@@ -303,7 +303,7 @@ def ragadapt(input, previous_messages, project_id) -> str:
             odd = True
     messages.append({
         "role": "user",
-        "content": "Expand this question \" " +input + "\" and only answer with expansions of the question. Other text in the answer is strictly forbidden."
+        "content": "Expand this question \" " +new_message + "\" and only answer with expansions of the question. Other text in the answer is strictly forbidden."
     })
 
     while True:
@@ -356,7 +356,7 @@ def start_chat(request):
     append = ""
     
     #context = "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. Var konsis om möjligt. Detta är de delar av dokument du har att tillgå :" 
-    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 40, })).invoke(ragadapt(input, previous_messages, project_id=project_id)):
+    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 40, })).invoke(ragadapt(new_message, previous_messages, project_id=project_id)):
         #The first 10 documents are prepended to the context
         #The last 10 documents are appended to append
         if index < 10:
@@ -387,7 +387,7 @@ def start_chat(request):
             odd = True
     messages.append({
         "role": "user",
-        "content": input
+        "content": new_message
     })
     cont = ""
     while True:
