@@ -138,11 +138,11 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
         <h4 className="m-0">{title}</h4>
       </Row>
       <Row className="p-0 h-90 w-100 bg-2  m-0">
-        <Col className="col-5 p-0 bg-2 d-flex align-items-center justify-content-center">
+        <Col className="col-5 p-0 bg-2 d-flex align-items-center justify-content-center overflow-hidden">
         <PerfectScrollbar>
         {value === 2 ? (
           <>
-            Document Groups
+            { (docGroups !== null) ? <>Document Groups</> : <></>}
             {docGroups.map((docGroup) => (
               <Row key={docGroup.id} className="my-3 m-auto br-5 w-100">
                 <Button
@@ -164,6 +164,7 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
                 </Button>
               </Row>
             ))}
+            Docuents:
             {files.map((file) => (
               <Row key={file.id} className="my-3 m-auto br-5 w-100">
                 <Button
