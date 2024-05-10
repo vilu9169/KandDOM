@@ -755,6 +755,7 @@ def updateDocumentGroup(request):
 @api_view(['POST'])
 def getDocumentGroups(request):
     user = request.data.get('user')
+    print(user)
     document_groups = User.objects.get(id=user).document_groups.all()
     resp = []
     for group in document_groups:
