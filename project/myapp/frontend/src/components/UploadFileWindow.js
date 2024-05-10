@@ -99,6 +99,10 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
                   setLoading(false);
                 });
             }
+            else {
+              setLoadingText('')
+              setLoading(false);
+            }
             
           });
 
