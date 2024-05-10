@@ -661,5 +661,9 @@ button {
 }
 
 .filesScroll {
+  height:100%;
+  overflow: auto !important;
+}
+.filesScroll2 {
   overflow-y: auto !important;
 }
