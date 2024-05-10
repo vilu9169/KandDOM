@@ -1,11 +1,11 @@
 import { Container, Button, Row } from "react-bootstrap";
 import { useContext, useState, useEffect } from "react";
-import PerfectScrollbar from "react-perfect-scrollbar";
 import { IoIosDocument } from "react-icons/io";
 import { AuthContext } from "./AuthContextProvider";
 import { ResponseContext } from "./ResponseContextProvider";
 import axios from "axios";
-
+import PerfectScrollbar from "perfect-scrollbar";
+import "perfect-scrollbar/css/perfect-scrollbar.css";
 import { scrollToPin } from "./Chatbot";
 import { IoIosArchive } from "react-icons/io";
 import SimplePopup from "./ThreeDotLogic";
