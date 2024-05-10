@@ -68,8 +68,8 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
     console.log('userID:', userID)
     let formData = new FormData();
 
-    const group = (currentGroup !== null) ? true : false
-
+    const group = (currentGroup !== null) ? 1 : 0;
+    console.log('group:', group)
     formData.append('file', file); // Append the file to FormData
     formData.append('userID', userID);
     formData.append('group', group);
