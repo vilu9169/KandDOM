@@ -81,7 +81,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
 
 
   return (
-    <Container className="p-0 overflow-hidden">
+    <Container className="p-0 ofhimportant">
       {clickedDocument ? (
         <>
           {pinnedMessages.map((pin) => (

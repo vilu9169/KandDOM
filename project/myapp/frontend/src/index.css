@@ -660,8 +660,12 @@ button {
   }
 }
 
+.ofhimportant{
+  height: 80% !important;
+  overflow: hidden !important;
+}
+
 .filesScroll {
-  height:100%;
   overflow: auto !important;
 }
 .filesScroll2 {
