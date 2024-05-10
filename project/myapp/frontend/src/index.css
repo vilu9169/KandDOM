@@ -669,6 +669,10 @@ button {
   height: 75vh !important;
   max-height: 100% !important;
 }
+.scrollFiles2 {
+  height: 50vh !important;
+  max-height: 100% !important;
+}
 
 .filesScroll {
   overflow: auto !important;
