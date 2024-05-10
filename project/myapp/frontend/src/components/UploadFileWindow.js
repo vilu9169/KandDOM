@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import { IoIosDocument } from "react-icons/io";
 import { IoIosCopy } from "react-icons/io";
 import { AuthContext } from "./AuthContextProvider";
-import PerfectScrollbar from "perfect-scrollbar";
+import PerfectScrollbar from "react-perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 import FileDropZone from "./FileDropZone";
 import { useContext, useEffect, useState, useRef } from "react";
@@ -164,7 +164,8 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
       </Row>
       <Row className="p-0 h-90 w-100 bg-2  m-0">
         <Col className="col-5 p-0 bg-2 d-flex align-items-center justify-content-center">
-        <Container ref={fileRef}>
+        <PerfectScrollbar className="h-100">
+          <Container className="filesScroll2">
         {value === 2 ? (
           <>
             { (docGroups !== null) ? <>Document Groups</> : <></>}
@@ -216,6 +217,7 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
           <FileDropZone />
         )}
         </Container>
+        </PerfectScrollbar>
 
         </Col>
         <Col className="col-2 p-0 bg-2 d-flex align-items-center justify-content-center position-relative">
