@@ -1,5 +1,5 @@
 import { Container, Button, Row } from "react-bootstrap";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { IoIosDocument } from "react-icons/io";
 import { AuthContext } from "./AuthContextProvider";
 import { ResponseContext } from "./ResponseContextProvider";
@@ -23,6 +23,8 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
   const { docGroups } = useContext(AuthContext);
   const { currentGroup, setCurrentGroup } = useContext(AuthContext);
   const  [ docsInGroup, setDocsInGroup ]  = useState([]);
+  const menuRef = useRef(null);
+  let ps;
 
   const getDocsInGroup = async (groupid) => {
     const body = {
@@ -43,6 +45,20 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
       console.error("Error getting documents in group:", error);
     }
   };
+  useEffect(() => {
+    if (menuRef.current) {
+      ps = new PerfectScrollbar(menuRef.current, {
+        wheelPropagation: true, // Example option, you can add more options here
+      });
+    }
+
+    return () => {
+      if (ps) {
+        ps.destroy();
+      }
+    };
+  }, []); // Only initialize PerfectScrollbar once on component mount
+
   
   const chooseDocument = (fileid) => {
     setCurrentFile(fileid);
@@ -90,7 +106,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
       ) : (
         <>
           <hr className="w-90 m-auto" />
-          <PerfectScrollbar>
+          <Container ref={menuRef}>
             Document Groups
             {docGroups.map((docGroup) => (
               <Row key={docGroup.id} className="my-3 m-auto br-5 w-100">
@@ -148,7 +164,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
                 </Button>
               </Row>
             ))}
-          </PerfectScrollbar>
+          </Container>
         </>
       )}
     </Container>

@@ -8,7 +8,7 @@ import { AuthContext } from "./AuthContextProvider";
 import PerfectScrollbar from "perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 import FileDropZone from "./FileDropZone";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { UploadWindowContext } from "./UploadWindowContextProvider";
 import LoadingScreen  from "./LoadingScreen";
 import axios from "axios";
@@ -23,6 +23,8 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
   const [ loading, setLoading ] = useState(false);
   const  [ loadingText, setLoadingText ] = useState("");
   const { files } = useContext(AuthContext);
+  const fileRef = useRef(null);
+  let ps;
   const createDocGroup = async (fileid) => {
     const body = {
       user: userID,
@@ -57,6 +59,20 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
       console.error("Error updating document group:", error);
     }
   }
+  useEffect(() => {
+    if (fileRef.current) {
+      ps = new PerfectScrollbar(fileRef.current, {
+        wheelPropagation: true, // Example option, you can add more options here
+      });
+    }
+
+    return () => {
+      if (ps) {
+        ps.destroy();
+      }
+    };
+  }, []); // Only initialize PerfectScrollbar once on component mount
+
 
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
@@ -148,7 +164,7 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
       </Row>
       <Row className="p-0 h-90 w-100 bg-2  m-0">
         <Col className="col-5 p-0 bg-2 d-flex align-items-center justify-content-center overflow-y-scroll">
-        <PerfectScrollbar>
+        <Container ref={fileRef}>
         {value === 2 ? (
           <>
             { (docGroups !== null) ? <>Document Groups</> : <></>}
@@ -199,7 +215,7 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
         ) : (
           <FileDropZone />
         )}
-        </PerfectScrollbar>
+        </Container>
 
         </Col>
         <Col className="col-2 p-0 bg-2 d-flex align-items-center justify-content-center position-relative">
