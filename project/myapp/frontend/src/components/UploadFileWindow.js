@@ -86,14 +86,20 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
           .then(() => {
             alert(`File uploaded successfully. Document ID: ${data.document_id}`);
             if (value === 2 && !currentGroup){
-              createDocGroup(data.document_id)
               setLoadingText('Creating new group...')
+              createDocGroup(data.document_id)
+                .then(() => {
+                  setLoading(false);
+                });
             }
             else if (value === 2 && currentGroup){
-              updateDocgroup(data.document_id)
               setLoadingText('Updating group...')
+              updateDocgroup(data.document_id)
+                .then(() => {
+                  setLoading(false);
+                });
             }
-            setLoading(false);
+            
           });
 
     } catch (error) {
@@ -138,7 +144,7 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
         <h4 className="m-0">{title}</h4>
       </Row>
       <Row className="p-0 h-90 w-100 bg-2  m-0">
-        <Col className="col-5 p-0 bg-2 d-flex align-items-center justify-content-center overflow-hidden">
+        <Col className="col-5 p-0 bg-2 d-flex align-items-center justify-content-center overflow-y-scroll">
         <PerfectScrollbar>
         {value === 2 ? (
           <>
