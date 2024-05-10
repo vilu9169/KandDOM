@@ -107,6 +107,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
         <>
           <hr className="w-90 m-auto" />
           <Container ref={menuRef}>
+            <Container className=" overflow-hidden">
             Document Groups
             {docGroups.map((docGroup) => (
               <Row key={docGroup.id} className="my-3 m-auto br-5 w-100">
@@ -164,6 +165,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
                 </Button>
               </Row>
             ))}
+            </Container>
           </Container>
         </>
       )}
