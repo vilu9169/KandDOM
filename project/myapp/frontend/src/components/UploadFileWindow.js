@@ -148,7 +148,7 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
       </Row>
       <Row className="p-0 h-90 w-100 bg-2  m-0">
         <Col className="col-5 p-0 bg-2 d-flex align-items-center justify-content-center">
-        <PerfectScrollbar className="h-100">
+        <PerfectScrollbar className="" style={{height:'50vh !important'}}>
           <Container className="filesScroll2">
         {value === 2 ? (
           <>
