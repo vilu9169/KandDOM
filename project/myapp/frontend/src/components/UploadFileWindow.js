@@ -82,9 +82,7 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
             body: formData
         });
         const data = await response.json();
-        getFiles()
-          .then(() => {
-            alert(`File uploaded successfully. Document ID: ${data.document_id}`);
+            console.log(`File uploaded successfully. Document ID: ${data.document_id}`);
             if (value === 2 && !currentGroup){
               setLoadingText('Creating new group...')
               createDocGroup(data.document_id)
@@ -103,8 +101,8 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
               setLoadingText('')
               setLoading(false);
             }
-            
-          });
+            getFiles();
+            getDocumentGroups();
 
     } catch (error) {
       console.error("Error uploading file:", error);
