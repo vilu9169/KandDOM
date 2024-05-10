@@ -65,7 +65,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
 
 
   return (
-    <Container className="p-0">
+    <Container className="p-0 overflow-y-scroll">
       {clickedDocument ? (
         <>
           {pinnedMessages.map((pin) => (

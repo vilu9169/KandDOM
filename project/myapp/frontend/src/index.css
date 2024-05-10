@@ -303,7 +303,7 @@ button {
   background-color: var(--color-2);
 }
 .uploadfile-container {
-  z-index: 999;
+  z-index: 998;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--color-3) !important;
   width: 80% !important;
@@ -638,10 +638,11 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 100%;
-  background-color: var(--color-2);
   z-index: 999;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-3) !important;
+  width: 80% !important;
+  border-radius: 5px;
 }
 
 .spinner {
