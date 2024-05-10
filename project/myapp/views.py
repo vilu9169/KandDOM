@@ -307,7 +307,8 @@ embeddings = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001
 @api_view(['POST'])
 def upload_document(request):
     file_obj = request.FILES.get('file')
-    group = request.data['group']
+    group = request.data.get('group')
+    print(not group)
     print(request.data['userID'])
     
     """print("All documents in the database:")
