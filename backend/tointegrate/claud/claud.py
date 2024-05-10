@@ -6,7 +6,7 @@ from langchain_google_vertexai import VertexAI
 from pinecone import Pinecone
 
 pc = Pinecone(api_key="2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
-index_name = "ownreaders"
+index_name = "gbgmordforsok"
 index = pc.Index(index_name)  
 #print(index.describe_index_stats())
 
@@ -40,7 +40,7 @@ def ragadapt(input, previous_messages, project_id) -> str:
     options = ["us-central1", "europe-west4"]
     optind = 0
     loc = options[optind]
-    context = "Your purpose is to expand the users latest question. Short questions should be reasked in multiple ways and if there is relevant context available from previous messages use that context to expand the question. If you cant do anything relevant with the question just send it back as is" 
+    context = "Ditt syfte är att utöka användarens senaste fråga. Korta frågor bör ställas på flera olika sätt, och om det finns relevant kontext från tidigare meddelanden använder du den kontexten för att utöka frågan. Om du inte kan göra något relevant med frågan är det bara att skicka tillbaka den som den är" 
     #Create a json struct for previous messages and the current message
     messages = []
     odd = True
@@ -59,7 +59,9 @@ def ragadapt(input, previous_messages, project_id) -> str:
             odd = True
     messages.append({
         "role": "user",
-        "content": "Expand this question \" " +input + "\" and only answer with expansions of the question. Other text in the answer is strictly forbidden."
+        # "content": "Expand this question \" " +input + "\" and only answer with expansions of the question. Other text in the answer is strictly forbidden."
+        "content": "Utvidga denna fråga \" " + input + "\" och svara enbart med nya frågor. Annan text i svaret är strängt förbjudet."
+
     })
 
     while True:
