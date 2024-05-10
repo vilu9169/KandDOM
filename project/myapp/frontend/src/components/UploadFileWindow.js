@@ -163,7 +163,7 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
         <h4 className="m-0">{title}</h4>
       </Row>
       <Row className="p-0 h-90 w-100 bg-2  m-0">
-        <Col className="col-5 p-0 bg-2 d-flex align-items-center justify-content-center overflow-y-scroll">
+        <Col className="col-5 p-0 bg-2 d-flex align-items-center justify-content-center">
         <Container ref={fileRef}>
         {value === 2 ? (
           <>
