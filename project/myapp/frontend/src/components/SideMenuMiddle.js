@@ -106,7 +106,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
       ) : (
         <>
           <hr className="w-90 m-auto" />
-          <Container className=" overflow-auto" ref={menuRef}>
+          <Container className=" filesScroll" ref={menuRef}>
             <Container className=" overflow-hidden">
             Document Groups
             {docGroups.map((docGroup) => (

@@ -659,3 +659,7 @@ button {
     transform: rotate(360deg);
   }
 }
+
+.filesScroll {
+  overflow-y: auto !important;
+}
