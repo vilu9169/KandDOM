@@ -23,8 +23,6 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
   const [ loading, setLoading ] = useState(false);
   const  [ loadingText, setLoadingText ] = useState("");
   const { files } = useContext(AuthContext);
-  const fileRef = useRef(null);
-  let ps;
   const createDocGroup = async (fileid) => {
     const body = {
       user: userID,
@@ -59,20 +57,6 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
       console.error("Error updating document group:", error);
     }
   }
-  useEffect(() => {
-    if (fileRef.current) {
-      ps = new PerfectScrollbar(fileRef.current, {
-        wheelPropagation: true, // Example option, you can add more options here
-      });
-    }
-
-    return () => {
-      if (ps) {
-        ps.destroy();
-      }
-    };
-  }, []); // Only initialize PerfectScrollbar once on component mount
-
 
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
