@@ -179,7 +179,7 @@ def ragadapt(new_message, previous_messages, project_id) -> str:
     optind = 0
     loc = options[optind]
     print('rag, prev msg : ', previous_messages)
-    context = "Your purpose is to expand the users latest question. Short questions should be reasked in multiple ways and if there is relevant context available from previous messages use that context to expand the question. If you cant do anything relevant with the question just send it back as is" 
+    context = "Ditt syfte är att utöka användarens senaste fråga. Korta frågor bör ställas på flera olika sätt, och om det finns relevant kontext från tidigare meddelanden använder du den kontexten för att utöka frågan. Om du inte kan göra något relevant med frågan är det bara att skicka tillbaka den som den är" 
     #Create a json struct for previous messages and the current message
     messages = []
     odd = True
