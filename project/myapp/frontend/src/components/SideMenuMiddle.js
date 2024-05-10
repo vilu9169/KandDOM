@@ -92,7 +92,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
           <PerfectScrollbar>
             Document Groups
             {docGroups.map((docGroup) => (
-              <Row key={docGroup.id} className="my-3 m-auto br-5 w-100">
+              <Row key={docGroup.id} className="my-3 m-auto br-5 h-100 w-100">
               <Button
                 onClick={() => chooseGroup(docGroup.id)}
                 value={docGroup.id}
