@@ -48,7 +48,7 @@ function Start() {
                 setClickedDocument={setClickedDocument}
               />
             </Row>
-            <Row className="flex-grow-1 bg-2">
+            <Row className="flex-grow-1 bg-2 scrollFiles">
               <SideMenuMiddle
                 clickedDocument={clickedDocument}
                 setClickedDocument={setClickedDocument}
