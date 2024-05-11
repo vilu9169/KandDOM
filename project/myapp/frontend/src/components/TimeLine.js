@@ -9,7 +9,7 @@ function TimeLine({ closeTimeline }) {
   const { timeLine } = useContext(AuthContext);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutsideTimeLine = (event) => {
       if (
         timelineContainerRef.current &&
         !timelineContainerRef.current.contains(event.target)
@@ -19,11 +19,11 @@ function TimeLine({ closeTimeline }) {
     };
 
     // Add event listener to detect clicks outside of the timeline container
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutsideTimeLine);
 
     return () => {
       // Clean up event listener on component unmount
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutsideTimeLine);
     };
   }, [closeTimeline]);
   return (
