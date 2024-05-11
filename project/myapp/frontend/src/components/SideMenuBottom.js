@@ -15,10 +15,16 @@ import LogIn from "./LogIn";
 import Collapse from "react-bootstrap/Collapse";
 import Fade from "react-bootstrap/Fade";
 import { AuthContext } from "./AuthContextProvider";
-import { TbTimelineEventFilled } from "react-icons/tb";
-import TimeLine from "./TimeLine";
+import { TbTimelineEventFilled, TbCirclesRelation } from "react-icons/tb";
 
-function SideMenuBottom({ clickedDocument, showTimeline, setShowTimeline }) {
+
+function SideMenuBottom({
+  clickedDocument,
+  showTimeline,
+  setShowTimeline,
+  setShowMapOfRelations,
+  showMapOfRelations,
+}) {
   const [isVisible, setIsVisible] = useState(false);
   const { handleButtonClick } = useContext(AppContext);
   const innerContainerRef = useRef(null);
@@ -32,7 +38,9 @@ function SideMenuBottom({ clickedDocument, showTimeline, setShowTimeline }) {
   const handleTimelineButtonClick = () => {
     setShowTimeline(!showTimeline);
   };
-
+  const handleMapOfRelationsButtonClick = () => {
+    setShowMapOfRelations(!showMapOfRelations);
+  };
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
@@ -61,17 +69,30 @@ function SideMenuBottom({ clickedDocument, showTimeline, setShowTimeline }) {
   return (
     <Container className="p-0 m-0 position-absolute bottom-0 start-50 translate-middle-x mb-3">
       {clickedDocument && (
-        <Button
-          onClick={() => setShowTimeline(!showTimeline)}
-          className="m-auto mb-3 bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
-        >
-          <span className="text-center justify-content-center d-flex align-items-center w-75">
-            Timeline
-          </span>
-          <span className="w-25 justify-content-center d-flex align-items-center">
-            <TbTimelineEventFilled className="size-20" />
-          </span>
-        </Button>
+        <Container className="p-0 m-0">
+          <Button
+            onClick={() => setShowMapOfRelations(!showMapOfRelations)}
+            className="m-auto mb-3 bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
+          >
+            <span className="text-center justify-content-center d-flex align-items-center w-75">
+              Map of relations
+            </span>
+            <span className="w-25 justify-content-center d-flex align-items-center">
+              <TbCirclesRelation className="size-20" />
+            </span>
+          </Button>
+          <Button
+            onClick={() => setShowTimeline(!showTimeline)}
+            className="m-auto mb-3 bg-3 w-90 wide-button d-flex justify-content-center align-items-center p-1"
+          >
+            <span className="text-center justify-content-center d-flex align-items-center w-75">
+              Timeline
+            </span>
+            <span className="w-25 justify-content-center d-flex align-items-center">
+              <TbTimelineEventFilled className="size-20" />
+            </span>
+          </Button>
+        </Container>
       )}
 
       <Fade

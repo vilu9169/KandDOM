@@ -30,12 +30,17 @@ function Start() {
 
   const [showTimeline, setShowTimeline] = useState(false);
 
+  const [showMapOfRelations, setShowMapOfRelations] = useState(false);
+
+
   const closeTimeline = () => {
     setShowTimeline(false);
   };
+  const closeMapOfRelations = () => {
+    setShowMapOfRelations(false);
+  };
 
   const handleDocumentButtonClick = (fileId) => {
-    // Set clickedDocument state to true when a document button is clicked
     setClickedDocument(true);
     console.log("Clicked document with id:", fileId);
   };
@@ -61,6 +66,9 @@ function Start() {
                 clickedDocument={clickedDocument}
                 showTimeline={showTimeline}
                 setShowTimeline={setShowTimeline}
+                showMapOfRelations={showMapOfRelations}
+                setShowMapOfRelations={setShowMapOfRelations}
+                
               />
             </Row>
           </Col>
@@ -86,7 +94,6 @@ function Start() {
               </Row>
             </Row>
             <Row className=" flex-grow-1 bg-1 position-relative">
-              <MapOfRelations></MapOfRelations>
               {showUploadWindow && <UploadFileWindow />}
               <Chatbot></Chatbot>
             </Row>
@@ -99,6 +106,7 @@ function Start() {
       {buttonClicked && <SettingsMenu />}
       {showInfoWindow && <InfoWindow />}  
       {showTimeline && <TimeLine closeTimeline={closeTimeline} />}
+      {showMapOfRelations && <MapOfRelations closeMapOfRelations={closeMapOfRelations} />}
     </>
   );
 }

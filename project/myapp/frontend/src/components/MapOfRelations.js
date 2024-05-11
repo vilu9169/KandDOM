@@ -6,10 +6,31 @@ import Graphin, { Utils } from '@antv/graphin';
 // import jsondata from './data.js';
 // import { useState } from 'react';
 
-const MapOfRelations= () => {
+
+const MapOfRelations= ({ closeMapOfRelations }) => {
   // const graphConfig = {
   //   name: 'Ångströmsnätverket',
   // };
+  const mapOfRelationsContainerRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutsideMapOfRealtions = (event) => {
+      if (
+        mapOfRelationsContainerRef.current &&
+        !mapOfRelationsContainerRef.current.contains(event.target)
+      ) {
+        closeMapOfRelations();
+      }
+    };
+
+    // Add event listener to detect clicks outside of the timeline container
+    document.addEventListener("mousedown", handleClickOutsideMapOfRealtions);
+
+    return () => {
+      // Clean up event listener on component unmount
+      document.removeEventListener("mousedown", handleClickOutsideMapOfRealtions);
+    };
+  }, [closeMapOfRelations]);
   const swedishNames = [
     { name: "Karl", description: "Karl är en enkel soldat" },
     { name: "Johan", description: "Johan är en stor ledare" },
@@ -64,11 +85,15 @@ const MapOfRelations= () => {
     edges
   };
   return (
-    <div className="App" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '80vw', height: '80vh' }}>
-      <div style={{ width: '100%', height: '100%', border: '1px solid black' }}>
-        <Graphin data={data} style={{ width: '100%', height: '100%' }} layout={{ type: 'dagre' }}/>
-      </div>
-    </div>
+      <Container fluid className="info-container">
+        <Container
+        ref={mapOfRelationsContainerRef} 
+        className="w-75 bg-2 info-window h-80 p-0"
+      >
+        <Graphin style={{ borderRadius: '5px', border: '3px solid #dac0a3'}} theme={{primaryEdgeColor: '#dac0a3', background:'#eadbc8', primaryColor: '#0f2c59' }} data={data}  layout={{ type: 'dagre' }}/>
+        </Container>
+      </Container>
+    
   );
 }
 export default MapOfRelations;
