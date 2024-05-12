@@ -473,10 +473,7 @@ def get_chat_history(request):
     group = request.data.get('group')
     embedding_id = request.data.get('embedding_id')
     try:
-        if group:
-            history = GroupChatHistory.objects.get(embedding_id=embedding_id)
-        else:
-            history = ChatHistory.objects.get(embedding_id=embedding_id)
+        history = ChatHistory.objects.get(embedding_id=embedding_id)
     except ChatHistory.DoesNotExist:
         raise ValueError({'error': 'Chat history not found'})
     inputoutput = history.inputoutput.all()
