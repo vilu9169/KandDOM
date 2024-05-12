@@ -109,7 +109,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
                       : "icons-container"
                   }`}
                 >
-                  <SimplePopup file={docGroup} 
+                  <SimplePopup file={docGroup} is_group={true} 
                   />
                   <IoIosArchive
                     className="m-2 archive-icon"
@@ -138,7 +138,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
                         : "icons-container"
                     }`}
                   >
-                    <SimplePopup file={file} 
+                    <SimplePopup file={file} is_group={false}
                     />
                     <IoIosArchive
                       className="m-2 archive-icon"

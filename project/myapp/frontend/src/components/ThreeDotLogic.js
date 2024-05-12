@@ -9,7 +9,7 @@ import { AuthContext } from "./AuthContextProvider";
 import { MdOutlineOpenInNew } from "react-icons/md";
 
 
-export default function SimplePopup({ file }) {
+export default function SimplePopup({ file, is_group }) {
   const [anchor, setAnchor] = React.useState(null);
   const [editing, setEditing] = useState(false);
   const [newName, setNewName] = useState("");
@@ -24,6 +24,21 @@ export default function SimplePopup({ file }) {
     const resp = await axios.post(baseURL + 'api/deletefile/', { fileid: fileid, user: user.id });
     console.log(resp);
     getFiles();
+  };
+  const deleteGroup = async (fileid, event) => {
+    console.log('fileid:', fileid);
+    const resp = await axios.post(baseURL + 'api/deleteDocGroup/', { fileid: fileid, user: user.id });
+    console.log(resp);
+    getFiles();
+  };
+
+  const handleDelete = async (event) => {
+    if (is_group) {
+      deleteGroup(file.id);
+    }
+    else {
+      deleteDocument(file.id);
+    }
   };
   const handleRename = async () => {
     if (!editing) {
