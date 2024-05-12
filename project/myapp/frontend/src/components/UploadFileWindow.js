@@ -13,7 +13,7 @@ import { UploadWindowContext } from "./UploadWindowContextProvider";
 import LoadingScreen  from "./LoadingScreen";
 import axios from "axios";
 
-function UploadFileWindow({ clickedDocument, setClickedDocument, handleClickOutsideUploadWindow }) {
+function UploadFileWindow({ handleClickOutsideUploadWindow, uploadRef, setClickedDocument }) {
   const { value, setShowUploadWindow } = useContext(UploadWindowContext);
   const { userID, getFiles } = useContext(AuthContext);
   const { currentFile, setCurrentFile } = useContext(AuthContext);
@@ -150,7 +150,7 @@ function UploadFileWindow({ clickedDocument, setClickedDocument, handleClickOuts
     {loading ? (
       <LoadingScreen loadingText={loadingText}/>
     ) : (
-    <Container className="m-auto p-2 h-75 bg-2 uploadfile-container" ref={document}>
+    <Container className="m-auto p-2 h-75 bg-2 uploadfile-container" ref={uploadRef}>
       <Row className="h-10 w-100 bg-2 m-0 align-items-center d-flex justify-content-center">
         <h4 className="m-0">{title}</h4>
       </Row>
