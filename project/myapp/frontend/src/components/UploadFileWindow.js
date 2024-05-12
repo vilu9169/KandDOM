@@ -19,7 +19,6 @@ function UploadFileWindow({ handleClickOutsideUploadWindow, uploadRef, setClicke
   const { currentFile, setCurrentFile } = useContext(AuthContext);
   const [title, setTitle] = useState("Upload document to start!");
   const { docGroups,  getDocumentGroups } = useContext(AuthContext);
-  const document = useRef(null);
   const baseURL = process.env.REACT_APP_API_URL;
   const { currentGroup, setCurrentGroup } = useContext(AuthContext);
   const [ loading, setLoading ] = useState(false);
