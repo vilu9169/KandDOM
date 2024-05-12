@@ -763,10 +763,14 @@ def getDocumentGroups(request):
 def deleteDocgroup(request):
     user = request.data.get('user')
     docGroup = request.data.get('docGroup')
-    documet_group = DocumentGroup.objects.get(_id=ObjectId(docGroup))
+    document_group = DocumentGroup.objects.get(_id=ObjectId(docGroup))
     user = User.objects.get(id=user)
-    user.document_groups.remove(documet_group)
-    documet_group.delete()
+    user.document_groups.remove(document_group)
+    for doc in user.documents.all():
+        if doc in document_group.documents.all():
+            user.documents.remove(doc)
+        document_group.documents.remove(doc)
+    document_group.delete()
 
 @api_view(['POST'])
 def getDocumentsInGroup(request):
