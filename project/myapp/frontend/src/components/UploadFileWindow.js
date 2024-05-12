@@ -19,7 +19,7 @@ function UploadFileWindow({ clickedDocument, setClickedDocument, handleClickOuts
   const { currentFile, setCurrentFile } = useContext(AuthContext);
   const [title, setTitle] = useState("Upload document to start!");
   const { docGroups,  getDocumentGroups } = useContext(AuthContext);
-
+  const document = useRef(null);
   const baseURL = process.env.REACT_APP_API_URL;
   const { currentGroup, setCurrentGroup } = useContext(AuthContext);
   const [ loading, setLoading ] = useState(false);
@@ -150,7 +150,7 @@ function UploadFileWindow({ clickedDocument, setClickedDocument, handleClickOuts
     {loading ? (
       <LoadingScreen loadingText={loadingText}/>
     ) : (
-    <Container className="m-auto p-2 h-75 bg-2 uploadfile-container">
+    <Container className="m-auto p-2 h-75 bg-2 uploadfile-container" ref={document}>
       <Row className="h-10 w-100 bg-2 m-0 align-items-center d-flex justify-content-center">
         <h4 className="m-0">{title}</h4>
       </Row>
