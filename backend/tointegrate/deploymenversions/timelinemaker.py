@@ -27,12 +27,8 @@ tools = {
                         "description": "Datum och tid då händelsen inträffade. Skall endast vara en tid per händelse. Tider kan vara på formatet år-månad-dag eller dag-månad år, du måste avgöra vilket utifrån kontexten. Tider måste alltid sparas på formatet DD/MM/YY HH:MM.",
                     },
                     "pages": {
-                        # "type": "array",
-                        # "items": {
-                        #     "type": "int"
-                        # },
                         "type": "string",
-                        "description": "Sidnummer till där information om händelsen finns. Varje sidnummer skall bara förekomma en gång.",
+                        "description": "Sidnummer till sidan där information om händelsen finns. Det får bara vara tal i sidan.",
                     },
                     "information": {
                         "type": "string",
@@ -91,9 +87,9 @@ def summarise_claud(input, index, res):
     # Set the endpoint URL
     # context = "Skapa en tidslinje baserad på följande dokument. Använd bara information från detta dokument i dina svar och upprepa dig inte. Dethär är en sammanfattning av vad som skett "+ sammanf  
     context = """Du är en LLM som hämtar och dokumenterar händelser, när de skedde och på vilka sidor det finns information om dem.
-    Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen och när den skede.
-    Tidpunkter ska vara på formatet DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna. Sidnummer finns efter \"pagestart page\" och \"pageend page\" andra sidnummer ignoreras.
-    Namnet på dokumentet finns efter texten \"in document\", andra namn ignoreras. Här är materialet du ska behandla  :""" + input 
+    Dokumentera alla händelser du identifierar i texten med en beskrivning av händelsen samt tid och dag.
+    Tidpunkter ska vara på formatet DD/MM/YY HH:MM. Var utförlig i händelsebeskrivningarna. Sidnummer som skall använda finns efter \"pagestart page\" och \"pageend page\" andra sidnummer ignoreras.
+    Namnet på dokumentet finns efter texten \"in document\", andra namn på dokumentet ignoreras. Här är materialet du ska behandla  :""" + input 
     #Create a json struct for previous messages and the current message
     client = AnthropicVertex(region=loc, project_id="sunlit-inn-417922")
     while True:
@@ -101,7 +97,9 @@ def summarise_claud(input, index, res):
             print("loc: ", loc)
             message = client.messages.create(
             model=model,
-            messages = [{"content": ("Dokumentera alla händelser du identifierar i texten och inkludera tidpunkten när de sker. Alla relevanta händelser ska dokumenteras. Alla svar skall vara på svenska. Här är materialet du ska behandla  :" + input), "role": "user"}],
+            # messages = [{"content": ("Dokumentera alla händelser du identifierar i texten och inkludera tidpunkten när de sker. Alla relevanta händelser ska dokumenteras. Alla svar skall vara på svenska. Här är materialet du ska behandla  :" + input), "role": "user"}],
+            messages = [{"content":  input, "role": "user"}],
+            
             system = context,
             max_tokens = 3000
             )
@@ -170,7 +168,7 @@ def handlesplit(split, retvals, i, docname):
     instructions = """
     Du är en funktionsanropande LLM.
     Ditt jobb är att skapa händelser utifrån en text. Läs texten och skapa händelser med hjälp ett verktyg som sparar en händelsebeskrivning tillsammans med händelsens tid och vilka sidor man kan läsa om händelsen på . Det ska vara exakt en tid per händelse.
-    Du sak använda verktyget \"skapa_händelse\" och ange tider på formen DD/MM/YY HH:MM. Det är absolut förbjudet att inte ange en tid på detta format.
+    Du sak använda verktyget \"skapa_händelse\" och ange tider på formen DD/MM/YY HH:MM (day/month/year hour:minute). Det är absolut förbjudet att inte ange en tid på detta format.
     VIKTIGT: Använd ett av verktygen per händelse.
     """
     while True:
