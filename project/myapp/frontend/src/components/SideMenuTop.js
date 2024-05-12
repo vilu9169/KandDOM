@@ -52,6 +52,8 @@ function SideMenuTop({ uploadRef, clickedDocument, setClickedDocument }) {
     setMessages([])
     setMessage('')
     setCurrentFile(null)
+    localStorage.setItem("currentFile", null)
+    localStorage.setItem("currentGroup", null)
     setCurrentGroup(null)
   };
 
