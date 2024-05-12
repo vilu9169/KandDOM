@@ -13,7 +13,6 @@ import { ResponseContext } from "./ResponseContextProvider";
 import { MessageContext } from "./MessageContextProvider";
 
 function SideMenuTop({ uploadRef, clickedDocument, setClickedDocument }) {
-function SideMenuTop({ uploadRef, clickedDocument, setClickedDocument }) {
   const { handleShowUploadWindow } = useContext(UploadWindowContext);
   const [isVisible, setIsVisible] = useState(false);
   const { handleButtonClick } = useContext(AppContext);

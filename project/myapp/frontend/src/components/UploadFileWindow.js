@@ -9,20 +9,16 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 import FileDropZone from "./FileDropZone";
 import { useContext, useEffect, useState, useRef } from "react";
-import { useContext, useEffect, useState, useRef } from "react";
-import { useContext, useEffect, useState, useRef } from "react";
 import { UploadWindowContext } from "./UploadWindowContextProvider";
 import LoadingScreen  from "./LoadingScreen";
 import axios from "axios";
 
-function UploadFileWindow({ uploadRef, handleClickOutsideUploadWindow }) {
+function UploadFileWindow({ clickedDocument, setClickedDocument, handleClickOutsideUploadWindow }) {
   const { value, setShowUploadWindow } = useContext(UploadWindowContext);
   const { userID, getFiles } = useContext(AuthContext);
   const { currentFile, setCurrentFile } = useContext(AuthContext);
   const [title, setTitle] = useState("Upload document to start!");
   const { docGroups,  getDocumentGroups } = useContext(AuthContext);
-  
-
 
   const baseURL = process.env.REACT_APP_API_URL;
   const { currentGroup, setCurrentGroup } = useContext(AuthContext);
