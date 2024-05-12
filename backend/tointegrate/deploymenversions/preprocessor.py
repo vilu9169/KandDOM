@@ -18,6 +18,11 @@ from google.cloud import documentai
 import io
 import threading
 
+def piccand(page):
+     return( ((len(page) < 150)  or  ("Skiss" in page) or("DNA Arbetsblad" in page) or  ("Foto" in page) or ("Kart" in page) or ("Figur" in page) or "Bild" in page))
+def tablecand(page):
+    return(("Tabell" in page or page.count("\n") > 0.04*len(page)) and not(piccand(page)))
+
 def async_handle_chunk(chunk_num, chunk_size, num_pages, pdf_file, client, name, resstrings):
     while True:
         try:
@@ -74,7 +79,6 @@ def getraw(chunk_num, chunk_size, num_pages, pdf_file, num_chunks):
     reader = PyPDF2.PdfReader(pdf_file)
     start_page = chunk_num * chunk_size
     end_page = min((chunk_num + 1) * chunk_size, num_pages)
-    docs = []
     writer = PyPDF2.PdfWriter()
     for page_num in range(start_page, end_page):
         writer.add_page(reader.pages[page_num])
@@ -131,14 +135,9 @@ def swifthandle(pdf_file, chunk, resind, client, name, resstrings, chunksize, im
     resstrings[resind] = resstring
     pass
 
-def piccand(page):
-     return( ((len(page) < 150)  or  ("Skiss" in page) or("DNA Arbetsblad" in page) or  ("Foto" in page) or ("Kart" in page) or ("Figur" in page) or "Bild" in page))
-def tablecand(page):
-    return(("Tabell" in page or page.count("\n") > 0.04*len(page)) and not(piccand(page)))
-
-#Same as before but no threads with pdf reader
+#Performs the ocular character recognition on a pdf file
+#As well as the image analysis
 def ocr_pdf(pdf_file, project_id, location, processor_id, images):
-    # You must set the api_endpoint if you use a location other than 'us'.
     opts = {"api_endpoint": "eu-documentai.googleapis.com"}
     client = documentai.DocumentProcessorServiceClient(client_options=opts)
     name = client.processor_path(project_id, location, processor_id)
@@ -170,61 +169,6 @@ def ocr_pdf(pdf_file, project_id, location, processor_id, images):
     for res in resstrings:
         resstring += res
     return resstring
-
-#Takes a path to a pdf file and extracts contents for being used in the RAG
-# def ocr_pdf_old(pdf_file, project_id, location, processor_id):
-#     # You must set the api_endpoint if you use a location other than 'us'.
-#     opts = {"api_endpoint": "eu-documentai.googleapis.com"}
-#     client = documentai.DocumentProcessorServiceClient(client_options=opts)
-#     name = client.processor_path(project_id, location, processor_id)
-#     # Split the document into chunks of 15 pages
-#     chunk_size = 15
-#     reader = PyPDF2.PdfReader(pdf_file)
-#     num_pages = len(reader.pages)
-#     if(num_pages%chunk_size == 0):
-#         num_chunks = num_pages//chunk_size
-#     else:
-#         num_chunks = num_pages//chunk_size + 1
-#     #resstring = ""
-#     resstrings = []
-#     #Add a new string for each chunk
-#     for i in range(num_chunks):
-#         resstrings.append("")
-        
-#     threads = []
-#     # Create and start threads
-#     for i in range(num_chunks):
-#         t = threading.Thread(target=async_handle_chunk, args=(i, chunk_size, num_pages, pdf_file, client, name, resstrings))
-#         threads.append(t)
-#         t.start()
-
-#     # Wait for all threads to finish
-#     for thread in threads:
-#         thread.join()
-
-    
-#     resstring = ""
-#     for res in resstrings:
-#         resstring += res
-#     return resstring
-
-# def extract_text_from_pdf(pdf_file) -> str:
-#     try:
-#         with open(pdf_file, 'rb') as file:
-#             reader = PyPDF2.PdfReader(file)
-#             num_pages = len(reader.pages)
-#             text = ""
-#             #Separate pages so they start with { and end with }
-#             for page_num in range(num_pages):
-#                 text += "{pagestart page "+ str(page_num+1) + " in document "+pdf_file +" }"
-#                 page = reader.pages[page_num]
-#                 text += page.extract_text()
-#                 text +="{pageend page "+ str(page_num+1)+ " in document "+pdf_file +"}"+str(chr(28))
-
-#             return text
-#     except FileNotFoundError:
-#         print(f"Error: File '{pdf_file}' not found.")
-#         return None
     
 def text_to_rag(new_index_name, text):
     os.environ["PINECONE_API_KEY"] = "2e669c83-1a4f-4f19-a06a-42aaf6ea7e06"
@@ -261,9 +205,34 @@ def bettersort(theevents):
     else:
         return theevents["title"].timestamp()
 
+def get_images_helper(pdf_file, start, end, index, dump):
+    images = convert_from_path(pdf_file, fmt = "png",first_page  = start, last_page = end ,dpi = 200)
+    dump[index] = images
+
 def getimages(pdf_file):
-    #Get the images from the pdf
-    images = convert_from_path(pdf_file, fmt = "png")
+    #GEt the number of pages
+    reader = PyPDF2.PdfReader(pdf_file)
+    num_pages = len(reader.pages)
+    #Split pages into 16 page chunks
+    chunk_size = 16
+    numchunks = 0
+    if(num_pages%chunk_size == 0):
+        num_chunks = num_pages//chunk_size
+    else:
+        num_chunks = num_pages//chunk_size + 1
+    threads = []
+    images = []
+    for i in range(num_chunks):
+        start = i*chunk_size
+        end = min((i+1)*chunk_size, num_pages)
+        images.append([])
+        t = threading.Thread(target=get_images_helper, args=(pdf_file, start, end, i, images))
+        threads.append(t)
+        t.start()
+    for thread in threads:
+        thread.join()
+    #Merge all the images
+    images = [item for sublist in images for item in sublist]
     #Print the type of the images
     print(type(images))
     for image in images:
