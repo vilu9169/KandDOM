@@ -303,7 +303,7 @@ button {
   background-color: var(--color-2);
 }
 .uploadfile-container {
-  z-index: 999;
+  z-index: 998;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--color-3) !important;
   width: 80% !important;
@@ -351,6 +351,8 @@ button {
   position: relative;
   top: -5px;
   height: 120px;
+  border: 1px solid var(--color-3) !important;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   border: 1px solid var(--color-3) !important;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -448,6 +450,9 @@ button {
   color: var(--color-3);
   text-decoration: underline;
   cursor: pointer;
+}
+.pointer{
+  cursor: pointer !important;
 }
 .login-form {
   background-color: var(--color-3) !important;
@@ -547,14 +552,16 @@ button {
   font-weight: bold;
 }
 .document-button{
-  color: var(--color-2) !important;
+  color: var(--text-color-main) !important;
+  background-color: var(--color-1) !important;
   border: none !important;
   border-radius: 5px;
   overflow: hidden;
   min-height: 40px;
 }
-.document-button2{
-  color: var(--color-2) !important;
+.document-button{
+  color: var(--text-color-main) !important;
+  background-color: var(--color-1) !important;
   border: none !important;
   border-radius: 5px;
   overflow: hidden;
@@ -636,7 +643,11 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  z-index: 999;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-3) !important;
+  width: 80% !important;
+  border-radius: 5px;
 }
 
 .spinner {
@@ -652,4 +663,25 @@ button {
   to {
     transform: rotate(360deg);
   }
+}
+
+.ofhimportant{
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+.scrollFiles{
+  height: 75vh !important;
+  max-height: 100% !important;
+}
+.scrollFiles2 {
+  height: 50vh !important;
+  max-height: 100% !important;
+}
+
+.filesScroll {
+  overflow: auto !important;
+}
+.filesScroll2 {
+  overflow-y: auto !important;
 }
