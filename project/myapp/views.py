@@ -381,11 +381,64 @@ from anthropic import AnthropicVertex
 
 llm = VertexAI()
 
+
 import subprocess
 import requests
 
+def ragadapt(new_message, previous_messages, project_id) -> str:
+    # Set the endpoint URL
+    # global loc, optind, options
+    options = ["us-central1", "europe-west4"]
+    optind = 0
+    loc = options[optind]
+    print('rag, prev msg : ', previous_messages)
+    context = "Ditt syfte är att utöka användarens senaste fråga. Korta frågor bör ställas på flera olika sätt, och om det finns relevant kontext från tidigare meddelanden använder du den kontexten för att utöka frågan. Om du inte kan göra något relevant med frågan är det bara att skicka tillbaka den som den är" 
+    #Create a json struct for previous messages and the current message
+    messages = []
+    odd = True
+    for message in previous_messages:
+        if odd:
+            messages.append({
+                "role": "user",
+                "content": message
+            })
+            odd = False
+        else:
+            messages.append({
+                "role": "assistant",
+                "content": message
+            })
+            odd = True
+    messages.append({
+        "role": "user",
+        "content": "Utvidga denna fråga \" " + new_message + "\" och svara enbart med nya frågor. Annan text i svaret är strängt förbjudet."
+    })
+
+    while True:
+        try:
+            client = AnthropicVertex(region=loc, project_id=project_id)
+            message = client.messages.create(
+            max_tokens=300,
+            messages=messages,
+            model="claude-3-haiku@20240307",
+            system = context,
+            )
+            print("ragadapt: "+ str(message))
+
+            return message.content[0].text
+        except Exception as e:
+            print('messages: ', messages)
+            print("Error rag: ", e)
+            print(project_id)
+            optind+=1
+            if(optind==len(options)):
+                optind = 0
+            loc = options[optind]
+
+
 @api_view(['POST'])
 def start_chat(request):
+    project_id = "sunlit-inn-417922"
     print("Starting chat")
     print(request.data.get('index_name'))
     index_name = request.data.get('index_name')
@@ -394,17 +447,31 @@ def start_chat(request):
     vectorstore = PineconeVectorStore(  
         index, embeddings  
     )
+    
     print("Vectorstore created")
+    new_message = request.data.get('message')
+    previous_messages = request.data.get('messages')
+    previous_messages = [msg['text'] for msg in previous_messages]
+    print("Prev msg: ", previous_messages)
+        # global loc, optind, options
+    optind = 0
+    options = ["us-central1", "asia-southeast1"]
+    loc = options[optind]
     # Set the endpoint URL
-    MODEL="claude-3-haiku@20240307"
-    endpoint = f"https://us-central1-aiplatform.googleapis.com/v1/projects/sunlit-inn-417922/locations/europe-west4/publishers/anthropic/models/"+MODEL+":predict"
-    context = "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. Detta är de RAG delar av dokument du har att tillgå :" 
+    #MODEL="claude-3-haiku@20240307"
+    MODEL = "claude-3-sonnet@20240229"
+    # MODEL = "claude-3-opus@20240229"
+    context = """Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. 
+    Var konsis om möjligt. Till ditt förfogande har du endast vissa delar av dokumentet, de delar som anses mest relevanta för frågan som ställts.
+    Bryt gärna ner information i mindre punkter och hänvisa alltid till sidan i dokumentet där du hittade informationen. Hänvisa alltid till sidan direkt efter påståendet
+    som hämtats från den sidan.
+    """
     index = 0
     prepend = ""
     append = ""
-    new_message = request.data.get('message')
-    messages_json = request.data.get('messages')
-    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 40,})).invoke(new_message):
+    
+    #context = "Du analyserar juridiska dokument för att underlätta arbete med dem. Du ska svara sakligt, opartiskt och enbart använda information från detta dokument i dina svar. Var konsis om möjligt. Detta är de delar av dokument du har att tillgå :" 
+    for rag in vectorstore.as_retriever(search_type="mmr", search_kwargs = ({"k" : 40, })).invoke(ragadapt(new_message, previous_messages, project_id=project_id)):
         #The first 10 documents are prepended to the context
         #The last 10 documents are appended to append
         if index < 10:
@@ -415,13 +482,11 @@ def start_chat(request):
             prepend += rag.page_content
         index += 1
         #Extract text from document
-    context += prepend + append
-    #print("Context: ", context)
-    print("Rag done")
+    context += prepend + append + "Tänk på att alltid hänvisa till de sidor du hittat informationen på. formatera på följade vis [sidnummer]. Kom ihåg att din uppgift är att hitta relevant information, inte att dra slutsatser som inte står i dokumentet. Om användare ber om din åsikt bör du förklara detta att du bara är en assistent som inte kan eller bör ge åsikter i juridiska frågor."
+
     #Create a json struct for previous messages and the current message
     messages = []
     odd = True
-    previous_messages = [msg['text'] for msg in messages_json]
     for message in previous_messages:
         if odd:
             messages.append({
@@ -439,19 +504,26 @@ def start_chat(request):
         "role": "user",
         "content": new_message
     })
-
-    print(request.data.get('userid'))
-
-    LOCATION="europe-west4"
-
-    client = AnthropicVertex(region=LOCATION, project_id="sunlit-inn-417922")
-
-    message = client.messages.create(
-    max_tokens=500,
-    messages=messages,
-    model="claude-3-haiku@20240307",
-    system = context,
-    )
+    cont = ""
+    while True:
+        try:
+            client = AnthropicVertex(region=loc, project_id=project_id)
+            message = client.messages.create(
+            max_tokens=1500,
+            messages=messages,
+            model=MODEL,
+            system = context,
+            )
+            print("mainchat: "+ str(message.content))
+            cont = message.content[0].text
+            break
+        except Exception as e:
+            print("Error: ", e)
+            optind+=1
+            if(optind==len(options)):
+                optind = 0
+            loc = options[optind]
+            
     try:
         history = ChatHistory.objects.get(embedding_id=index_name)
     except ChatHistory.DoesNotExist:
@@ -462,10 +534,10 @@ def start_chat(request):
 
     inputoutput = InputOutput.objects.create(
         message= new_message,
-        response = message.content[0].text
+        response = cont
     )
     history.inputoutput.add(inputoutput)
-    return Response({"message" : message.content[0].text})
+    return Response({"message" : cont})
 
 from . models import GroupChatHistory
 @api_view(['POST'])
