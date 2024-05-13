@@ -142,7 +142,7 @@ export default function SimplePopup({ file, is_group }) {
               event.stopPropagation(); 
               handleRename();
             }}
-              className="m-auto my-2 bg-3s w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
+              className="m-auto my-2 bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
             >
               <span className="small text-center justify-content-center d-flex align-items-center w-75">
                 Rename Chat
@@ -153,7 +153,7 @@ export default function SimplePopup({ file, is_group }) {
             </Button>
           )}
           <Button
-            className="m-auto my-2 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
+            className="m-auto my-2 bg-3 w-90 pop-up-button d-flex justify-content-center align-items-center p-1"
             onClick={() => openPdf(file.id, 0)}
             value={file.id}
           >

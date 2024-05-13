@@ -89,9 +89,12 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
       ) : (
         <>
           <hr className="w-90 m-auto" />
+          <div className="h-100 overflow-auto">
           <PerfectScrollbar className="h-100">
             <Container className="filesScroll2">
-            Document Groups
+            
+            <p className="p-1">Document Groups</p>
+            <hr className="w-90 m-auto" />
             {docGroups.map((docGroup) => (
               <Row key={docGroup.id} className="my-3 m-auto br-5 w-100">
               <Button
@@ -120,7 +123,8 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
             </Row>
             ))
             }
-            Documents
+            <p className="p-1">Documents</p>
+            <hr className="w-90 m-auto" />
             {files.map((file) => (
               <Row key={file.id} className="my-3 m-auto br-5 w-100">
                 <Button
@@ -150,6 +154,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
             ))}
           </Container>
           </PerfectScrollbar>
+          </div>
         </>
       )}
     </Container>
