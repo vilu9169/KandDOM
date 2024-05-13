@@ -99,6 +99,8 @@ embeddings = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001
 @api_view(['POST'])
 def upload_document(request):
     file_obj = request.FILES.get('file')
+    group = request.data.get('group') == 'true'
+    print(request.data)
     print(request.data['userID'])
     
     """print("All documents in the database:")
@@ -118,7 +120,8 @@ def upload_document(request):
         print("Before document.save")
         print(document.file)
         document.save()
-        document.timeline = handle_multi_pdfs([str(document.file)], str(document.__id__()))
+        if not group:
+            document.timeline = handle_multi_pdfs([{'file':str(document.file), 'filename':document.filename}], str(document.__id__()))
         document.save()
         print("document.save complete")
         user = User.objects.get(id=request.data['userID'])
@@ -147,13 +150,14 @@ def get_documents(request):
     for document in documents:
         print(document, document.__id__())
         id = str(document.__id__())
-        resp.append({
-            "id": id,
-            "filename": document.filename,
-            "content_type": document.content_type,
-            "size": document.size,
-            "uploaded_at": document.uploaded_at
-        })
+        if not document.in_group:
+            resp.append({
+                "id": id,
+                "filename": document.filename,
+                "content_type": document.content_type,
+                "size": document.size,
+                "uploaded_at": document.uploaded_at
+            })
 
     return Response({'data' : resp})
 
@@ -168,6 +172,7 @@ from anthropic import AnthropicVertex
 
 
 llm = VertexAI()
+
 
 import subprocess
 import requests
@@ -216,14 +221,16 @@ def ragadapt(new_message, previous_messages, project_id) -> str:
         except Exception as e:
             print('messages: ', messages)
             print("Error rag: ", e)
+            print(project_id)
             optind+=1
             if(optind==len(options)):
                 optind = 0
             loc = options[optind]
 
+
 @api_view(['POST'])
 def start_chat(request):
-    project_id = os.getenv("GCLOUD_PROJECT_ID")
+    project_id = "sunlit-inn-417922"
     print("Starting chat")
     print(request.data.get('index_name'))
     index_name = request.data.get('index_name')
@@ -330,10 +337,7 @@ def get_chat_history(request):
     group = request.data.get('group')
     embedding_id = request.data.get('embedding_id')
     try:
-        if group:
-            history = GroupChatHistory.objects.get(embedding_id=embedding_id)
-        else:
-            history = ChatHistory.objects.get(embedding_id=embedding_id)
+        history = ChatHistory.objects.get(embedding_id=embedding_id)
     except ChatHistory.DoesNotExist:
         raise ValueError({'error': 'Chat history not found'})
     inputoutput = history.inputoutput.all()
@@ -383,6 +387,11 @@ def set_pinned(request):
 
 from bson import ObjectId
 import os
+
+pc = Pinecone(api_key="2e669c83-1a4f-4f19-a06a-42aaf6ea7e06")
+def delind(indexname):
+    pc.delete_index(indexname)
+
 @api_view(['POST'])
 def delete_document(request):
     document_id = request.data.get('fileid')
@@ -412,7 +421,7 @@ def delete_document(request):
         os.remove(str(document.file))
     else:
         print("The file does not exist")
-    pc.delete_index(document_id)
+    delind(document_id)
     document.delete()
     try:
         chat = ChatHistory.objects.get(embedding_id=document_id)
@@ -546,7 +555,7 @@ def getTimeLine(request):
         raise ValueError({'error': 'Document not found'})
     if document.timeline is None:
         print("start make timeline")
-        timeline = handle_multi_pdfs([str(document.file)], str(document.__id__()))
+        timeline = handle_multi_pdfs([{'file':str(document.file), 'filename':document.filename}], documentID)
         document.timeline = timeline
         document.save()
         print("done timeline")
@@ -566,13 +575,18 @@ def createDocumentGroup(request):
     current = request.data.get('current')
     document_group = DocumentGroup.objects.create(
         name=name,
+        timeline = [],
     )
     doc = UserDocument.objects.get(_id=ObjectId(new_doc))
+    doc.in_group = True
+    doc.save()
     doc2 = UserDocument.objects.get(_id=ObjectId(current_doc))
+    doc2.in_group = True
+    doc2.save()
     document_group.documents.add(doc)
     document_group.documents.add(doc2)
+    document_group.timeline = handle_multi_pdfs([{'file':str(doc.file), 'filename': doc.filename}, {'file':str(doc2.file), 'filename': doc2.filename}], str(document_group.__id__()))
     document_group.save()
-    handle_multi_pdfs([str(doc.file), str(doc2.file)], str(document_group.__id__()))
     try:
         user = User.objects.get(id=userID)
         user.document_groups.add(document_group)
@@ -587,17 +601,22 @@ def updateDocumentGroup(request):
     new_doc_obj = UserDocument.objects.get(_id=ObjectId(new_doc))
     document_group = DocumentGroup.objects.get(_id=ObjectId(groupID))
     document_group.documents.add(new_doc_obj)
+    new_doc_obj.in_group = True
+    new_doc_obj.save()
     alldocs = document_group.documents.all()
     documents = []
+    doc_names = []
     for doc in alldocs:
-        documents.append(str(doc.file))
+        documents.append({'file':str(doc.file), 'filename':doc.filename})
     document_group.save()
-    handle_multi_pdfs(documents, str(document_group.__id__()))
+    document_group.timeline = handle_multi_pdfs(documents, str(document_group.__id__()))
+    document_group.save()
     return Response({'message': 'Document group updated successfully'})
 
 @api_view(['POST'])
 def getDocumentGroups(request):
     user = request.data.get('user')
+    print(user)
     document_groups = User.objects.get(id=user).document_groups.all()
     resp = []
     for group in document_groups:
@@ -612,10 +631,14 @@ def getDocumentGroups(request):
 def deleteDocgroup(request):
     user = request.data.get('user')
     docGroup = request.data.get('docGroup')
-    documet_group = DocumentGroup.objects.get(_id=ObjectId(docGroup))
+    document_group = DocumentGroup.objects.get(_id=ObjectId(docGroup))
     user = User.objects.get(id=user)
-    user.document_groups.remove(documet_group)
-    documet_group.delete()
+    user.document_groups.remove(document_group)
+    for doc in user.documents.all():
+        if doc in document_group.documents.all():
+            user.documents.remove(doc)
+        document_group.documents.remove(doc)
+    document_group.delete()
 
 @api_view(['POST'])
 def getDocumentsInGroup(request):
