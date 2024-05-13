@@ -9,7 +9,7 @@ from langchain.schema.document import Document
 from pinecone import Pinecone, ServerlessSpec
 #from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_text_splitters import CharacterTextSplitter
-from timelinemaker import analyzefromstr
+from . timelinemaker import analyzefromstr
 from time import sleep
 from pdf2image import convert_from_bytes, convert_from_path
 from vertexai.generative_models import GenerativeModel, Part, FinishReason, Image
@@ -114,19 +114,22 @@ def swifthandle(pdf_file, chunk, resind, client, name, resstrings, chunksize, im
                 temp += document.text[0: int(split[0][split[0].find(":") +2:])]                
         #Check if temp is a candidate for being an image
         if(piccand(temp)):
-            model_name = "gemini-1.5-pro-preview-0409"
-            generative_multimodal_model = GenerativeModel(model_name)
-            instructions_text = """Dethär är en bild på en sida ur ett juridiskt dokument. Du ska återge innehållet på sidan. 
-            Inehåller sidan text skall du bara återge texten. Innehåller sidan en tabell skall du återge tabellen som text. 
-            Inehåller sidan en bild skall du beskriva bilden och vad den visar som text. Inehåller sidan en kombination av bilder, text och tabeller skall du återge allt.
-            Svara bara med inehåll och beskrivningar av materialet. """
-            img_byte_arr = io.BytesIO()
-            images[pagenr].save(img_byte_arr, format='PNG')
-            img_byte_arr = img_byte_arr.getvalue()
-            response = generative_multimodal_model.generate_content([instructions_text, Image.from_bytes(img_byte_arr)])
-            temp = response.candidates[0].text
-            print("Image found")
-            print("Image text: ", temp)
+            try:
+                model_name = "gemini-1.5-pro-preview-0409"
+                generative_multimodal_model = GenerativeModel(model_name)
+                instructions_text = """Dethär är en bild på en sida ur ett juridiskt dokument. Du ska återge innehållet på sidan. 
+                Inehåller sidan text skall du bara återge texten. Innehåller sidan en tabell skall du återge tabellen som text. 
+                Inehåller sidan en bild skall du beskriva bilden och vad den visar som text. Inehåller sidan en kombination av bilder, text och tabeller skall du återge allt.
+                Svara bara med inehåll och beskrivningar av materialet. """
+                img_byte_arr = io.BytesIO()
+                images[pagenr].save(img_byte_arr, format='PNG')
+                img_byte_arr = img_byte_arr.getvalue()
+                response = generative_multimodal_model.generate_content([instructions_text, Image.from_bytes(img_byte_arr)])
+                temp = response.candidates[0].text
+                print("Image found")
+                print("Image text: ", temp)
+            except Exception as e:
+                print("Gogo, gaga type beat")
         resstring += temp
         
         #resstring += page.layout.text_anchor.content
@@ -168,6 +171,7 @@ def ocr_pdf(pdf_file, project_id, location, processor_id, images):
     resstring = ""
     for res in resstrings:
         resstring += res
+    print("Resstring = ", resstring)
     return resstring
     
 def text_to_rag(new_index_name, text):
@@ -243,18 +247,18 @@ def handle_multi_pdfs(pdf_files, new_index_name):
     retarr = []
     #Handle all the pdf files
     for pdf_file in pdf_files:
-        print("Processing ", pdf_file.filename, "...")
-        images = getimages(pdf_file.file)
+        print("Processing ", pdf_file['filename'], "...")
+        images = getimages(pdf_file['file'])
         # Store Pdf with convert_from_path function
         print("Doing OCR...")
-        text = ocr_pdf(pdf_file.file, "sunlit-inn-417922", "eu", "54cf154d8c525451", images)
+        text = ocr_pdf(pdf_file['file'], "sunlit-inn-417922", "eu", "54cf154d8c525451", images)
         print("RAGING...")
         text_to_rag(new_index_name, text)
         #Find all candidates 
 
         #After text to rag run timelinemaker
         print("Analyzing...")
-        retarr += analyzefromstr(text, pdf_file.filename)
+        retarr += analyzefromstr(text, pdf_file['filename'])
     retarr = sorted(retarr, key = lambda x: bettersort(x))
     
     for elem in retarr:
