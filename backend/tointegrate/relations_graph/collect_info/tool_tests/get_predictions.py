@@ -10,7 +10,7 @@ import boto3
 import json
 import time
 
-from util import gemini_unfiltered
+#from util import gemini_unfiltered
 
 
 from dotenv import load_dotenv
@@ -100,9 +100,13 @@ def get_claude_prediction_string(
         if not use_vertex:
             raise Exception("Skipping vertex")
         if model == "sonnet":
-            result =  _get_vertex_claude_prediction(
-                prompt, system, model="claude-3-sonnet@20240229", max_tokens=max_tokens
-            )
+            try:
+                result =  _get_vertex_claude_prediction(
+                    prompt, system, model="claude-3-sonnet@20240229", max_tokens=max_tokens
+                )
+            except Exception as e:
+                print(e)
+                return
         elif model == "haiku":
             result =  _get_vertex_claude_prediction(
                 prompt, system, max_tokens=max_tokens
@@ -110,14 +114,20 @@ def get_claude_prediction_string(
         else:
             print(model+"  is not a model option")
         return result.content[0].text
-        return result.content[0].text
     except Exception as vertex_e:
         print(vertex_e)
         print("Switching to anthropic")
         try:
-            result =  _get_anthropic_prediction(
-            prompt, system, max_tokens=max_tokens
-        ).content[0].text
+            if model == "sonnet":
+                result =  _get_anthropic_prediction(
+                    prompt, system, model="claude-3-sonnet-20240229", max_tokens=max_tokens
+                ).content[0].text
+            elif model == "haiku":
+                result =  _get_anthropic_prediction(
+                prompt, system, max_tokens=max_tokens
+            ).content[0].text
+            else:
+                print(model+"  is not a model option")
         except Exception as anthro_e:
             print(anthro_e)
             if use_aws:
@@ -137,10 +147,10 @@ def get_claude_prediction_string(
 def get_gemini_prediction(
     prompt,
     system,
+    safety_settings,
     model="gemini-1.5-pro-preview-0409",
     tools=[],
     config={},
-    safety_settings=gemini_unfiltered,
 ) -> ChatCompletion:
     if client == None:
         client = GenerativeModel(
@@ -192,7 +202,7 @@ def _get_AWS_claude_prediction(prompt,
 def _get_vertex_claude_prediction(prompt,
     system,
     model="claude-3-haiku@20240307",
-    max_tokens=512,
+    max_tokens=1024,
     ):
     client = AnthropicVertex(region="europe-west4", project_id="robust-summit-417910")
     message = client.messages.create(

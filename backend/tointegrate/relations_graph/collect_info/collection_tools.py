@@ -7,9 +7,13 @@ tools = {
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "namn": {
+                    "förnamn": {
                         "type": "string",
                         "description": "Namnet på personen",
+                    },
+                    "efternamn": {
+                        "type": "string",
+                        "description": "Efternamnet på personen, skriv 'okänd' om efternamnet inte är känt",
                     },
                     "information": {
                         "type": "string",
@@ -30,23 +34,27 @@ tools = {
                 "properties": {
                     "list_med_personer": {
                         "type": "array",
-                        "items" :{
+                        "items": {
                             "type": "object",
                             "properties": {
-                                "namn": {
+                                "förnamn": {
                                     "type": "string",
                                     "description": "Namnet på personen",
+                                },
+                                "efternamn": {
+                                    "type": "string",
+                                    "description": "Efternamnet på personen, skriv 'okänd' om efternamnet inte är känt",
                                 },
                                 "description": {
                                     "type": "string",
                                     "description": "En text som innehåller informationen om personen",
                                 },
                             },
-                            "description" : "En lista med namn och information om personer",
-                        }
+                            "description": "En lista med namn och information om personer",
+                        },
                     },
                 },
-                #"required": ["namn", "information"],
+                # "required": ["namn", "information"],
             },
         },
     },
@@ -93,13 +101,12 @@ tools = {
                             "type": "string",
                         },
                         "description": "En lista med namn på personer som tillhör grupperingen, lämna tom om ingen person i gruppen kan identifieras",
-                        
                     },
                     "information": {
                         "type": "string",
                         "description": "En text som innehåller informationen om grupperingen",
                     },
-                    #"required": ["namn"],
+                    # "required": ["namn"],
                 },
             },
         },

@@ -5,7 +5,8 @@ from time import time
 import json
 from vertexai.generative_models import GenerativeModel, GenerationConfig
 
-from collection_tools import tools
+#from collection_tools import tools
+from openai_tools import tools
 from util import print_tool_call, gemini_unfiltered
 from get_predictions import get_claude_prediction_string, get_openai_prediction
 
@@ -34,11 +35,15 @@ Använd verktygen flera gånger, en gång per person, relation eller gruppering.
 """
 
 tool_instructions2 = """
-Ditt jobb är spara information om personer. Du får en sammanställning av informationen som samlats in. Du ska
-sedan spara informationen genom att använda ett verktyg där du anger namn och information om alla personer,
-ordnade i en lista.
+Ditt jobb är spara information om personer och relationer. Du får en sammanställning av informationen som samlats in. Du ska
+sedan spara informationen genom att använda verktyg där du anger namn och information om alla personer och relationer,
+ordnade i listor.
+"""
 
-Viktigt: Se till att alla personer som nämns är med i listan.
+
+relations_instructions = """
+Ditt jobb är att spara information om relationer mellan olika personer i text, varje relation består av två personer samt information om hur de är kopplade till varandra.
+Använd verktyget flera gånger, en gång per relation.
 """
 
 
@@ -70,15 +75,18 @@ def use_tools_on_summary(summary):
         messages=[
             {
                 "role": "system",
-                "content": tool_instructions,
+                "content": tool_instructions2,
+                #"content" : relations_instructions,
             },
             {
                 "role": "user",
                 "content": summary,
             }
         ],
-        tools = [tools["ny_information_om_personer"],
-                 #tools["ny_information_om_relation"], tools["ny_information_om_gruppering"]],
+        tools = [
+                 tools["spara_information_om_personer"],
+                 #tools["spara_information_om_relationer"], 
+                 #tools["ny_information_om_gruppering"]],
         ],
         #model="gpt-4-turbo-2024-04-09",
         model="gpt-3.5-turbo-0125"
