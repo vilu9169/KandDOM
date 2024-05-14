@@ -17,7 +17,8 @@ message = client.messages.create(
       "content": "Send me a recipe for banana bread.",
     }
   ],
-  model="claude-3-haiku@20240307",
+ # model="claude-3-haiku@20240307",
+  model="claude-3-sonnet@20240229"
 )
 
 print(message.content[0].text)

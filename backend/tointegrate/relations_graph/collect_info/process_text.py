@@ -26,19 +26,21 @@ Information om personerna:
 6. Oliwer Erik Larsson
    - Misstänkt för brott mot lagen om förbud beträffande knivar och andra farliga föremål, grovt brott, samt mord
    - Personnummer: 20040131-5759
+   - Har två undulater som husdjur och har just börjat studera på Borås Yrkeshögskola, inriktning mot bygg och anläggning
+   - Har aldrig varit i kontakt med polisen tidigare, har inga tidigare brott i belastningsregistret
+   - Vill inte svara på frågor om brottet
 
 7. Lars Nicklas Persson
    - Vittne
 
 Relationer och kopplingar mellan personerna:
 
-Enligt uppgifterna i texten finns det inga tydligt beskrivna relationer eller kopplingar mellan de olika personerna.
+Lars Nicklas Persson är vittne i ärendet om brottet som Oliwer Erik Larsson är misstänkt för.
 
 Grupperingar av personer:
 
 Texten nämner fem personer med efternamnet Larsson - Angela Larsson, Saga Larsson, Loke Larsson, Neo Larsson och Håkan Larsson. Detta tyder på att dessa personer troligen tillhör samma familj. Dock finns det inga ytterligare uppgifter som bekräftar detta.
 """
-
 
 
 
