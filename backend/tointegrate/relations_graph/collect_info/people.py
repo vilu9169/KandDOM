@@ -6,7 +6,7 @@ import json
 from vertexai.generative_models import GenerativeModel, GenerationConfig
 
 #from collection_tools import tools
-from openai_tools import tools
+from tool_tests.openai_tools import tools
 from util import print_tool_call, gemini_unfiltered
 from get_predictions import get_claude_prediction_string, get_openai_prediction
 
@@ -57,7 +57,7 @@ with open(file_path, "r") as file:
 
 def summarize_people(text):
     start = time()
-    summary = get_claude_prediction_string(text, summary_instructions)
+    summary = get_claude_prediction_string(text, summary_instructions, use_vertex=True)
     print(summary)
     print("done in", time() - start, "seconds")
     return summary
@@ -85,27 +85,13 @@ def use_tools_on_summary(summary):
         ],
         tools = [
                  tools["spara_information_om_personer"],
-                 #tools["spara_information_om_relationer"], 
-                 #tools["ny_information_om_gruppering"]],
+                 tools["spara_information_om_relationer"], 
+                 #tools["ny_information_om_gruppering"],
         ],
         #model="gpt-4-turbo-2024-04-09",
-        model="gpt-3.5-turbo-0125"
+        #model="gpt-3.5-turbo-0125"
+        model="gpt-4o",
     )
-    # log_people_info = client.chat.completions.create(
-    #     messages=[
-    #         {
-    #             "role": "system",
-    #             "content": tool_instructions,
-    #         },
-    #         {
-    #             "role": "user",
-    #             "content": summary,
-    #         }
-    #     ],
-    #     tools = [tools["ny_information_om_person"], tools["ny_information_om_relation"], 
-    #             tools["ny_information_om_gruppering"]],
-    #     model="llama3-70b-8192",
-    # )
 
     try:
         print("\n")

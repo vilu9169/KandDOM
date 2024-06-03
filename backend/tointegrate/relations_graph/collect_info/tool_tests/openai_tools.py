@@ -85,5 +85,33 @@ tools = {
                 }
             }
         }
-    }
+    },
+    "ny_information_om_gruppering": {
+        "type": "function",
+        "function": {
+            "name": "ny_information_om_gruppering",
+            "description": "Använd för att registrera information om en gruppering av personer, t. ex. en familj, företag, organisation etc.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "beskrivande_namn": {
+                        "type": "string",
+                        "description": "Namn som beskriver gruppen",
+                    },
+                    "gruppmedlemmar": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                        },
+                        "description": "En lista med namn på personer som tillhör grupperingen, lämna tom om ingen person i gruppen kan identifieras",
+                    },
+                    "information": {
+                        "type": "string",
+                        "description": "En text som innehåller informationen om grupperingen",
+                    },
+                    # "required": ["namn"],
+                },
+            },
+        },
+    },
 }

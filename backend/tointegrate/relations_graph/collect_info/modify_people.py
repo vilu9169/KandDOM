@@ -20,6 +20,9 @@ from util import print_tool_call, extract_args, gemini_unfiltered
 from langchain_community.vectorstores import FAISS, DistanceStrategy
 from get_predictions import get_openai_prediction, get_groq_prediction, get_claude_prediction_string
 
+import threading
+import time
+
 load_dotenv()
 
 dbclient = MongoClient(os.environ.get("MONGO_DB_URI"))
@@ -96,9 +99,9 @@ class Personhandler:
         self.people_collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["people"]
         self.relations_collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["relations"]
         self.groups_collection = MongoClient(os.environ.get("MONGO_DB_URI"))["collected_info"]["groups"]
-        #self.people_store = init_FAISS(self.embedder)#MongoDBAtlasVectorSearch(embedding=embedder, collection=self.people_collection, index_name="vector_cosine_index")
+        self.people_store = init_FAISS(self.embedder)#MongoDBAtlasVectorSearch(embedding=embedder, collection=self.people_collection, index_name="vector_cosine_index")
         self.people_dict : dict[str, Document] = {}
-        #self.groups_store = init_FAISS(self.embedder)#MongoDBAtlasVectorSearch(embedding=embedder, collection=self.groups_collection, index_name="vector_cosine_index")
+        self.groups_store = init_FAISS(self.embedder)#MongoDBAtlasVectorSearch(embedding=embedder, collection=self.groups_collection, index_name="vector_cosine_index")
         self.groups_dict : dict[str, Document] = {}
         self.relations_struct : dict[str, Relation] = {}
         config=GenerationConfig(temperature=0.0, candidate_count=1)
@@ -106,6 +109,8 @@ class Personhandler:
         self.groq = Groq(api_key=os.environ.get("GROQ_API_KEY")).chat.completions
         self.description_model = GenerativeModel("gemini-1.0-pro", system_instruction=[create_description_instructions], safety_settings=gemini_unfiltered, generation_config=config)
         self.anthropic = AnthropicVertex(region="europe-west4", project_id="robust-summit-417910")
+        self.creatingPerson = ""
+        self.creatingGroup = ""
 
     def ny_info_person(self, alias, new_info):
         person = self._get_current_info(alias, new_info)
@@ -227,6 +232,10 @@ class Personhandler:
     """
 
     def _check_if_new_person(self, name, info, nearest : List[Document]):
+        if self.creatingPerson != "":
+                print("Waiting for "+self.creatingPerson+" to be created before identifying "+name)
+                time.sleep(1)
+                self._check_if_new_person(name, info, nearest)
         search = "Namn: "+name+" Information: "+info
         nearest_names = [doc.metadata["name"] for doc in nearest]
         prompt = "Här är personen som ska matchas samt lite information: "+search+"\nHär är de möjliga alternativen för vem personen kan vara: "
@@ -253,16 +262,25 @@ class Personhandler:
         print(response)
 
         tools=[tools["identifiera_person"]]
-        tool_use = get_openai_prediction(prompt, self.tell_if_new_person_instructions,tools=tools)
+        response = get_openai_prediction(prompt, self.tell_if_new_person_instructions,tools=tools)
+        tool_use = response.choices[0].message.tool_calls
         try:
             args = extract_args(tool_use.choices[0].message.tool_calls[0])
             print_tool_call(tool_use.choices[0].message.tool_calls[0])
             if args["Siffra_på_alternativ"] == len(nearest)+1:
+                if self.creatingPerson != "":
+                    print("Waiting for "+self.creatingPerson+" to be created before identifying "+name)
+                    time.sleep(1)
+                    if self._check_if_search_changed(name, nearest):
+                        print("Search changed, restarting")
+                        return self._check_if_new_person(name, info, nearest)
+                self.creatingPerson = name
                 print("User was not found before")
                 metadata = {"name": name, "info": ""}
                 new_person = Document(page_content="init", metadata=metadata)
                 self.people_store.add_documents([new_person], ids=[name])
                 self.people_dict.update({name : new_person})
+                self.creatingPerson = ""
                 # self._generate_update_description(new_person)
                 return name
             else:
@@ -275,6 +293,17 @@ class Personhandler:
             print(traceback.format_exc())
             print("Did not classify person")
 
+
+    def _check_if_search_changed(self, search, old_results : list[Document]):
+        new_result = self.people_store.similarity_search(search,k=3)
+        new_names = [doc.metadata["name"] for doc in new_result]
+        old_names = [doc.metadata["name"] for doc in old_results]
+        search_changed = False
+        for new_name in new_names:
+            if new_name not in old_names:
+                same_search = True
+                return same_search
+        return same_search
 
     def ny_information_om_relation(self, name1, name2, relation):
         person1 = self.people_dict.get(name1)
@@ -304,19 +333,24 @@ class Personhandler:
         
 
     def _check_if_new_group(self, group_string, info):
+        if self.creatingGroup != "":
+            print("Waiting for "+self.creatingGroup+" to be created, before identifying "+group_string)
+            time.sleep(1)
+            self._check_if_new_group(group_string, info)
         options = self.groups_store.similarity_search(group_string, k=3)
         prompt = "Sökning: "+group_string+"\nAlternativ: "
         for i, option in enumerate(options):
             prompt += str(i+1)+". Grupp: "+option.metadata["name"]+"Medlemmar: "+option.page_content+"\n"
 
-        tools = [tools["lägg_till_info_om_existerande_gruppering"], tools["skapa_gruppering"]]
-        model = "mixtral-8x7b-32768"
+        tool_list = [tools["lägg_till_info_om_existerande_gruppering"], tools["skapa_gruppering"]]
+        model = "gpt-4o-2024-05-13"
         system = tell_if_new_group_instructions
         prompt = prompt
-        response = get_openai_prediction(prompt, tools, model, system)
+        response = get_openai_prediction(prompt, tool_list, model, system)
         try:
             name = response.choices[0].message.tool_calls[0].function.name
             if name == "skapa_gruppering":
+                self.creatingGroup = name
                 print_tool_call(response.choices[0].message.tool_calls[0])
                 args = extract_args(response.choices[0].message.tool_calls[0])
                 name = args["namn"]
@@ -325,6 +359,7 @@ class Personhandler:
                 new_group = Document(page_content=args["beskrivning_av_ny_gruppering"], metadata=metadata)
                 self.groups_store.add_documents([new_group], ids=[name])
                 self.groups_dict.update({name : new_group})
+                self.creatingGroup = ""
                 return name, members
             elif name == "lägg_till_info_om_existerande_gruppering":
                 print_tool_call(response.choices[0].message.tool_calls[0])

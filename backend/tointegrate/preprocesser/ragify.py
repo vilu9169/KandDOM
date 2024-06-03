@@ -7,19 +7,18 @@ import os
 import getpass
 
 #os.environ["PINECONE_API_KEY"] = getpass.getpass("Pinecone API Key:")
-os.environ["PINECONE_API_KEY"] = "2e669c83-1a4f-4f19-a06a-42aaf6ea7e06"
+os.environ["PINECONE_API_KEY"] = "bdd79dfa-69c4-4185-85c3-849f1fbea13b"
 os.environ["PINECONE_ENV"] = "default"
 
 from langchain_google_vertexai import VertexAIEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.document_loaders import TextLoader
 
-
 # Load documents
-loader = TextLoader("D:/Plugg/Kandarb/KandDOM/backend/tointegrate/output.txt", encoding="utf-8")
+loader = TextLoader("KandDOM/backend/tointegrate/Mord2008.txt", encoding="utf-8")
 # Split documents
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-text_splitter = RecursiveCharacterTextSplitter(chunk_size = 500, chunk_overlap = 0)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size = 200, chunk_overlap = 0)
 splits = text_splitter.split_documents(loader.load())
 
 embeddings = VertexAIEmbeddings(model_name="textembedding-gecko-multilingual@001")
@@ -28,7 +27,7 @@ from langchain_pinecone import PineconeVectorStore
 
 
 # initialize pinecone
-index_name = "langchain-demo"
+index_name = "2008"
 vectorstore = PineconeVectorStore(index_name, embeddings.embed_query, splits)
 
 

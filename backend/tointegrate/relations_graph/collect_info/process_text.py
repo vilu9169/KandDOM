@@ -49,17 +49,35 @@ Texten nämner fem personer med efternamnet Larsson - Angela Larsson, Saga Larss
 def treat_tool_call(tool_call, handler: Personhandler):
     print_tool_call(tool_call)
     function = tool_call.function
-    if function.name == "ny_information_om_person":
+    if function.name == "spara_information_om_personer":
         args = extract_args(tool_call)
-        name = args["namn"]
-        information = args["information"]
-        handler.ny_info_person(name, information)
-    elif function.name == "ny_information_om_relation":
+        people_info = args["list_med_personer"]
+        threads = []
+        for person in people_info:
+            name = person["förnamn"]+" "+person["efternamn"]
+            information = person["information"]
+            threads.append(threading.Thread(target=handler.ny_info_person, args=(name, information)))
+        for thread in threads:
+            thread.start()
+        for thread in threads:
+            thread.join()
+        print("all people treated")
+    elif function.name == "spara_information_om_relationer":
         args = extract_args(tool_call)
-        person1 = args["person1"]
-        person2 = args["person2"]
-        relation = args["beskrivning_av_relation"]
-        handler.ny_information_om_relation(person1, person2, relation)
+        relation_info = args["relationer"]
+        threads = []
+        for relation in relation_info:
+            person1 = relation["person1"]
+            person2 = relation["person2"]
+            name1 = person1["förnamn"]+" "+person1["efternamn"]
+            name2 = person2["förnamn"]+" "+person2["efternamn"]
+            relation_info = people_info["relation"]
+            threads.append(threading.Thread(target=handler.ny_information_om_relation, args=(name1, name2, relation_info)))
+        for thread in threads:
+            thread.start()
+        for thread in threads:
+            thread.join()
+        print("all relations treated")
     elif function.name == "ny_information_om_gruppering":
         args = extract_args(tool_call)
         name = args.get("beskrivande_namn")
@@ -74,7 +92,7 @@ def treat_tool_call(tool_call, handler: Personhandler):
         print(f'{function.name} not implemented yet')
 
 def process_text(text : str, handler : Personhandler, parallel=False):
-    summary = page1_summary#summarize_people(text)
+    summary = summarize_people(text)
 
     tool_calls = use_tools_on_summary(summary)
 
@@ -82,7 +100,7 @@ def process_text(text : str, handler : Personhandler, parallel=False):
         print_tool_call(tool_call)
     threads = []
     for tool_call in tool_calls:
-       pass#threads.append(threading.Thread(target=treat_tool_call, args=(tool_call, handler)))
+       threads.append(threading.Thread(target=treat_tool_call, args=(tool_call, handler)))
     for thread in threads:
         thread.start()
     for thread in threads:
