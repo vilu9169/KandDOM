@@ -5,12 +5,14 @@ from util import print_FAISS
 from people import use_tools_on_summary
 from openai import OpenAI
 from dotenv import load_dotenv
+from langchain_pinecone import PineconeVectorStore
 
 load_dotenv()
 
 text : str
 
-file_path = "KandDOM/fuppar_txt/schizzomord.txt"
+#file_path = "KandDOM/fuppar_txt/schizzomord.txt"
+file_path = "KandDOM/backend/tointegrate/Mord2008.txt"
 
 with open(file_path, "r") as file:
     text = file.read()
@@ -21,11 +23,14 @@ pages = text.split(chr(28))
 to_process = pages[0]
 
 
-#embedder = VertexAIEmbeddings("textembedding-gecko-multilingual")
-embedder = "hi"
+
+embedder = VertexAIEmbeddings("textembedding-gecko-multilingual")
 
 
-person_handler = Personhandler(embedder, "REPLACE")
+vectorstore = PineconeVectorStore("2008", embedder.embed_query)
+
+
+person_handler = Personhandler(embedder, vectorstore)
 
 
 summary = """
@@ -38,16 +43,16 @@ Bandidos är en kriminell organisation med 7000 medlemmar i Sverige, däribland 
 
 people, relations, groups = process_text(to_process, person_handler)
 
-# person_handler.move_to_db()
+person_handler.move_to_db()
 
 
-# print_FAISS(people)
+print_FAISS(people)
 
-# print_FAISS(groups)
+print_FAISS(groups)
 
-# for relation in relations.values():
-#     print()
-#     print(relation.person1)
-#     print(relation.person2)
-#     print("info:")
-#     print(relation.info)
+for relation in relations.values():
+    print()
+    print(relation.person1)
+    print(relation.person2)
+    print("info: ")
+    print(relation.info)
