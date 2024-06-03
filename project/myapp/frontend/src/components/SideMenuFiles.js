@@ -10,7 +10,7 @@ import axios from "axios";
 function SideMenuFiles() {
   const { files } = useContext(AuthContext);
   return (
-    <Container className="h-100 file-window">
+    <Container className="h-100 file-window overflow-hidden">
       <h3 className=" mt-3 ms-3 text-start">Filer</h3>
 
       <Col  className="h-100 files-scroll">
