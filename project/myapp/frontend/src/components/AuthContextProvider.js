@@ -23,8 +23,9 @@ const AuthContextProvider = ({children}) => {
     const baseURL = process.env.REACT_APP_API_URL
 
     let getFiles = async (uID = null) => {
+        user = uID ? uID : userID
         const body = {
-            user: uID ? uID : userID
+            user: user
         }
       try {
         const {data} = await axios.post(baseURL+"api/documents/", body);
@@ -37,7 +38,7 @@ const AuthContextProvider = ({children}) => {
         setFiles(fileArr);
         localStorage.setItem('files', JSON.stringify(fileArr));
         console.log("Files:", files);
-        getDocumentGroups();
+        getDocumentGroups(user);
         return data;
       }
       catch (error) {
@@ -82,6 +83,8 @@ const AuthContextProvider = ({children}) => {
                     localStorage.setItem('userID', jwtDecode(data.access).user_id)
                     localStorage.setItem('currentFile', null)
                     localStorage.setItem('currentGroup', null)
+                    setCurrentGroup(null)
+                    setCurrentFile(null)
                     console.log("decoded: ", jwtDecode(data.access).user)
                     navigate("/");
                     setLoginError(null)
@@ -113,9 +116,9 @@ const AuthContextProvider = ({children}) => {
         }
     }
 
-    let getDocumentGroups = async () => {
+    let getDocumentGroups = async (uID = null) => {
         const body = {
-            user: userID
+            user: uID ? uID : userID
         }
         try {
             const {data} = await axios.post(baseURL+"api/getDocGroups/", body);

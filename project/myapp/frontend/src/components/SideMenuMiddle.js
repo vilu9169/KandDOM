@@ -1,11 +1,11 @@
 import { Container, Button, Row } from "react-bootstrap";
-import { useContext, useState, useEffect } from "react";
-import PerfectScrollbar from "react-perfect-scrollbar";
+import { useContext, useState, useEffect, useRef } from "react";
 import { IoIosDocument } from "react-icons/io";
 import { AuthContext } from "./AuthContextProvider";
 import { ResponseContext } from "./ResponseContextProvider";
 import axios from "axios";
-
+import PerfectScrollbar from "react-perfect-scrollbar";
+import "perfect-scrollbar/css/perfect-scrollbar.css";
 import { scrollToPin } from "./Chatbot";
 import { IoIosArchive } from "react-icons/io";
 import SimplePopup from "./ThreeDotLogic";
@@ -43,7 +43,6 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
       console.error("Error getting documents in group:", error);
     }
   };
-  
   const chooseDocument = (fileid) => {
     setCurrentFile(fileid);
     setCurrentGroup(null);
@@ -65,7 +64,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
 
 
   return (
-    <Container className="p-0">
+    <Container className="p-0 ofhimportant">
       {clickedDocument ? (
         <>
           {pinnedMessages.map((pin) => (
@@ -90,8 +89,12 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
       ) : (
         <>
           <hr className="w-90 m-auto" />
-          <PerfectScrollbar>
-            Document Groups
+          <div className="h-100 overflow-auto">
+          <PerfectScrollbar className="h-100">
+            <Container className="filesScroll2">
+            
+            <p className="p-1">Document Groups</p>
+            <hr className="w-90 m-auto" />
             {docGroups.map((docGroup) => (
               <Row key={docGroup.id} className="my-3 m-auto br-5 w-100">
               <Button
@@ -109,7 +112,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
                       : "icons-container"
                   }`}
                 >
-                  <SimplePopup file={docGroup} 
+                  <SimplePopup file={docGroup} is_group={true} 
                   />
                   <IoIosArchive
                     className="m-2 archive-icon"
@@ -120,7 +123,8 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
             </Row>
             ))
             }
-            Documents
+            <p className="p-1">Documents</p>
+            <hr className="w-90 m-auto" />
             {files.map((file) => (
               <Row key={file.id} className="my-3 m-auto br-5 w-100">
                 <Button
@@ -138,7 +142,7 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
                         : "icons-container"
                     }`}
                   >
-                    <SimplePopup file={file} 
+                    <SimplePopup file={file} is_group={false}
                     />
                     <IoIosArchive
                       className="m-2 archive-icon"
@@ -148,7 +152,9 @@ function SideMenuMiddle({ clickedDocument, setClickedDocument }) {
                 </Button>
               </Row>
             ))}
+          </Container>
           </PerfectScrollbar>
+          </div>
         </>
       )}
     </Container>

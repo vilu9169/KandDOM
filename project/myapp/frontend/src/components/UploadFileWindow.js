@@ -6,13 +6,15 @@ import { IoIosDocument } from "react-icons/io";
 import { IoIosCopy } from "react-icons/io";
 import { AuthContext } from "./AuthContextProvider";
 import PerfectScrollbar from "react-perfect-scrollbar";
+import "perfect-scrollbar/css/perfect-scrollbar.css";
 import FileDropZone from "./FileDropZone";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { UploadWindowContext } from "./UploadWindowContextProvider";
 import LoadingScreen  from "./LoadingScreen";
 import axios from "axios";
-function UploadFileWindow({clickedDocument, setClickedDocument}) {
-  const { value } = useContext(UploadWindowContext);
+
+function UploadFileWindow({ handleClickOutsideUploadWindow, uploadRef, setClickedDocument }) {
+  const { value, setShowUploadWindow } = useContext(UploadWindowContext);
   const { userID, getFiles } = useContext(AuthContext);
   const { currentFile, setCurrentFile } = useContext(AuthContext);
   const [title, setTitle] = useState("Upload document to start!");
@@ -64,11 +66,16 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
       alert("Please select a PDF file.");
       return;
     }
-    console.log('userID:', userID)
+    console.log("userID:", userID);
+    console.log("userID:", userID);
     let formData = new FormData();
 
+    const group = (currentGroup != null) ? true : false;
+    console.log('group:', group)
+    console.log('currentGroup:', currentGroup)
     formData.append('file', file); // Append the file to FormData
     formData.append('userID', userID);
+    formData.append('group', group);
     console.log(baseURL+'upload/')
     try {
         setLoading(true);
@@ -79,19 +86,27 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
             body: formData
         });
         const data = await response.json();
-        getFiles()
-          .then(() => {
-            alert(`File uploaded successfully. Document ID: ${data.document_id}`);
+            console.log(`File uploaded successfully. Document ID: ${data.document_id}`);
             if (value === 2 && !currentGroup){
-              createDocGroup(data.document_id)
               setLoadingText('Creating new group...')
+              createDocGroup(data.document_id)
+                .then(() => {
+                  setLoading(false);
+                });
             }
             else if (value === 2 && currentGroup){
-              updateDocgroup(data.document_id)
               setLoadingText('Updating group...')
+              updateDocgroup(data.document_id)
+                .then(() => {
+                  setLoading(false);
+                });
             }
-            setLoading(false);
-          });
+            else {
+              setLoadingText('')
+              setLoading(false);
+            }
+            getFiles();
+            getDocumentGroups();
 
     } catch (error) {
       console.error("Error uploading file:", error);
@@ -106,8 +121,12 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
     } else if (value === 2) {
       setTitle("Upload document to current existing chat.");
     } else {
-      setTitle("Upload document to start!");
+      setTitle("Upload document to start!"); 
     }
+    document.addEventListener("mousedown", handleClickOutsideUploadWindow);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutsideUploadWindow);
+    };
   }, [value]);
 
   const chooseDocument = (fileid) => {
@@ -130,16 +149,17 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
     {loading ? (
       <LoadingScreen loadingText={loadingText}/>
     ) : (
-    <Container className="m-auto p-2 h-75 bg-2 uploadfile-container">
+    <Container className="m-auto p-2 h-75 bg-2 uploadfile-container" ref={uploadRef}>
       <Row className="h-10 w-100 bg-2 m-0 align-items-center d-flex justify-content-center">
         <h4 className="m-0">{title}</h4>
       </Row>
       <Row className="p-0 h-90 w-100 bg-2  m-0">
         <Col className="col-5 p-0 bg-2 d-flex align-items-center justify-content-center">
-        <PerfectScrollbar>
+        <PerfectScrollbar className="scrollFiles2">
+          <Container className="filesScroll2">
         {value === 2 ? (
           <>
-            Document Groups
+            { (docGroups !== null) ? <>Document Groups</> : <></>}
             {docGroups.map((docGroup) => (
               <Row key={docGroup.id} className="my-3 m-auto br-5 w-100">
                 <Button
@@ -161,6 +181,7 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
                 </Button>
               </Row>
             ))}
+            Docuents:
             {files.map((file) => (
               <Row key={file.id} className="my-3 m-auto br-5 w-100">
                 <Button
@@ -186,6 +207,7 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
         ) : (
           <FileDropZone />
         )}
+        </Container>
         </PerfectScrollbar>
 
         </Col>
@@ -202,7 +224,7 @@ function UploadFileWindow({clickedDocument, setClickedDocument}) {
               htmlFor="file-upload"
               className="m-auto bg-3 w-75 wide-button d-flex justify-content-center align-items-center p-0"
             >
-              <span className="text-center justify-content-center d-flex align-items-center w-75">
+              <span className="text-center pointer justify-content-center d-flex align-items-center w-75">
                 Choose file
               </span>
               <span className="w-25 justify-content-center d-flex align-items-center">

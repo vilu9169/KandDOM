@@ -44,11 +44,11 @@ const ResponseContextProvider = ({ children }) => {
   const getChatHistory = async (fileid) => {
     const body = {
       embedding_id: fileid ? fileid : currentFile,
-      group: (currentGroup !== null ) ? true : false,
+      group: (currentGroup != null ) ? true : false,
     };
 
     try {
-      if (!currentGroup && !currentFile) {
+      if (!fileid) {
         console.error("No file ID provided for fetching chat history");
         return;
       }
