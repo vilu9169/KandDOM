@@ -9,10 +9,6 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-#os.getenv('PINECONE_API_KEY') = "2e669c83-1a4f-4f19-a06a-42aaf6ea7e06"
-#os.getenv("GCLOUD_PROJECT_ID") = "sunlit-inn-417922"
-#os.environ["PINECONE_ENV"] = "default"
-
 
 def index(request):
     return render(request, 'index.html')
